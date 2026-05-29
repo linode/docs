@@ -19,7 +19,7 @@ deprecated: true
 {{< note type="alert" >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /note >}}
 
 ## What is the k8s-alpha CLI?
@@ -58,7 +58,7 @@ To get started with Rancher, review our [How to Deploy Kubernetes on Linode with
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
 
-When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
+When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers) (load balancers), and [Block Storage Volumes](https://techdocs.akamai.com/cloud-computing/docs/block-storage). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) guide.
 
 ### Beginners Resources
 
@@ -70,7 +70,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 ## Before You Begin
 
-1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of our API guide and create a token with read/write permissions.
+1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) section of our API guide and create a token with read/write permissions.
 
 1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
@@ -94,7 +94,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 ### Install the Linode CLI
 
-Follow the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
+Follow the [Install and Configure the Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
 ```command
 pip install --upgrade linode-cli
@@ -176,7 +176,7 @@ You will need to run all of your k8s-alpha CLI commands from the terminal that y
     Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
     ```
 
-    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/products/platform/get-started/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
     {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:

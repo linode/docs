@@ -54,7 +54,7 @@ To obtain the credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
     - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
@@ -74,7 +74,7 @@ The Ruby on Rails Quick Deploy App is running [Nginx](https://www.nginx.com/), [
 
 The Ruby on Rails sample application can be found in the `/var/www/$APPNAME` directory.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Go to the directory in which the application is stored, by running the following command:
 
@@ -83,7 +83,7 @@ The Ruby on Rails sample application can be found in the `/var/www/$APPNAME` dir
 
 ### Viewing the Ruby on Rails App through a Web Browser
 
-Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 ## Software Included
 

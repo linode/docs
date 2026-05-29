@@ -25,7 +25,7 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 Prior to starting, we recommend familiarizing yourself with the following:
 
 * [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
-* [Getting Started with VLANs](/docs/products/networking/vlans/get-started/)
+* [Getting Started with VLANs](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-vlans)
 * [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
@@ -98,7 +98,7 @@ cluster-node-timeout 15000
     {{< note type="alert" respectIndent=false >}}
 Without taking additional precautions, your Redis nodes may be exposed to the public internet via their respective public IP addresses. This means your nodes may be vulnerable to automated attacks. For more information, see [Redis Security](https://redis.io/topics/security).
 
-To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](/docs/products/networking/cloud-firewall/) or [VLANs](/docs/products/networking/vlans/) to limit access to your cluster Linodes.
+To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) or [VLANs](https://techdocs.akamai.com/cloud-computing/docs/vlan) to limit access to your cluster Linodes.
 
 When using VLANs, replace `192.0.2.1` with the respective Linode's IPAM address in each configuration file.
 {{< /note >}}
@@ -166,7 +166,7 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
     {{< note respectIndent=false >}}
-If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
+If utilizing a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-vlans), use each Linode's IPAM address.
 {{< /note >}}
 
         redis-cli --cluster create \

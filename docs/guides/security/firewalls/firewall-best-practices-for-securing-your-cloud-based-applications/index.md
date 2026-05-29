@@ -9,7 +9,7 @@ keywords: ['cloud-based firewall','block malicious traffic','stop ddos attacks',
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Moving to the cloud has many advantages, including flexibility, reduced management overhead, performance, and security. [Cloud-based firewalls](/docs/products/networking/cloud-firewall/) can offer finer-grained access control and more comprehensive threat mitigation than their traditional hardware-based counterparts.
+Moving to the cloud has many advantages, including flexibility, reduced management overhead, performance, and security. [Cloud-based firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) can offer finer-grained access control and more comprehensive threat mitigation than their traditional hardware-based counterparts.
 
 This guide outlines best practices for cloud-based firewall deployment. This includes network design review, creation of a security policy, firewall rule ordering, log analysis, and regular auditing.
 

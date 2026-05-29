@@ -30,7 +30,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
 2.  We recommend that you are already familiar with [Apache](/docs/guides/apache-web-server-on-ubuntu-14-04/) before beginning this guide.
 

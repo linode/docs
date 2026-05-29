@@ -36,7 +36,7 @@ Ollama with Open WebUI should be fully installed within 5-10 minutes after the C
 
 ### Open WebUI Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this deployment. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this deployment. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email is used for Let's Encrypt renewal notices. This allows you to securely access Open WebUI through a browser.
 
@@ -58,7 +58,7 @@ When deployment completes, the system generates the necessary environment config
 
 1. Log in to your Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
     - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the contents of the `.credentials` file:
@@ -71,7 +71,7 @@ When deployment completes, the system generates the necessary environment config
 
 Once your app has finished deploying, you can log into Open WebUI using your browser.
 
-Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}/`, where {{< placeholder "DOMAIN" >}} can be replaced with the custom domain you entered during deployment, or your Linode instance's rDNS domain (for example, `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}/`, where {{< placeholder "DOMAIN" >}} can be replaced with the custom domain you entered during deployment, or your Linode instance's rDNS domain (for example, `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 Now that you’ve accessed your dashboard, check out [the official OpenWebUI documentation](https://docs.openwebui.com/) and [the official Ollama documentation](https://docs.ollama.com/) to learn how to further use your instance.
 

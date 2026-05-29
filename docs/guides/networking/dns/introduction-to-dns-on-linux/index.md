@@ -84,25 +84,25 @@ Before diving into setup details, familiarize yourself with the different types 
 
 Each record describes a different type of information. For example, "A" records associate one hostname with one IPv4 address, while "AAAA" records do the same for IPv6.
 
-There are dozens of RR types; [this Linode guide](/docs/products/networking/dns-manager/get-started/#add-dns-records) covers some of the most common and important ones. Most authoritative name servers need at least the following RR types:
+There are dozens of RR types; [this Linode guide](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager#add-dns-records) covers some of the most common and important ones. Most authoritative name servers need at least the following RR types:
 
--   [**A**](/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv4 address.
--   [**AAAA**](/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv6 address (pronounced "quad-A").
--   [**MX**](/docs/products/networking/dns-manager/guides/mx-record/): Identifies a mail server for a given zone, and gives its priority.
--   [**NS**](/docs/products/networking/dns-manager/guides/ns-record/): Identifies a name server for a given zone.
--   [**SOA**](/docs/products/networking/dns-manager/guides/soa-record/): (Start of Authority) lists primary name server, administrative email contact, serial number, and default timers for a given zone.
+-   [**A**](https://techdocs.akamai.com/cloud-computing/docs/a-and-aaaa-records): Maps a hostname to an IPv4 address.
+-   [**AAAA**](https://techdocs.akamai.com/cloud-computing/docs/a-and-aaaa-records): Maps a hostname to an IPv6 address (pronounced "quad-A").
+-   [**MX**](https://techdocs.akamai.com/cloud-computing/docs/mx-records): Identifies a mail server for a given zone, and gives its priority.
+-   [**NS**](https://techdocs.akamai.com/cloud-computing/docs/ns-records): Identifies a name server for a given zone.
+-   [**SOA**](https://techdocs.akamai.com/cloud-computing/docs/soa-record): (Start of Authority) lists primary name server, administrative email contact, serial number, and default timers for a given zone.
 
 The above list is enough for a bare-bones setup, but other common RR types include:
 
--   [**CNAME**](/docs/products/networking/dns-manager/guides/cname-record/): Maps a hostname alias to a hostname defined in an A or AAAA record.
+-   [**CNAME**](https://techdocs.akamai.com/cloud-computing/docs/cname-records): Maps a hostname alias to a hostname defined in an A or AAAA record.
 -   [**PTR**](https://www.linode.com/community/questions/126/how-do-i-add-a-ptr-record): Maps an IP address to a hostname (sometimes referred to as "reverse DNS" or "rDNS").
--   [**TXT**](/docs/products/networking/dns-manager/guides/txt-record/): Provides information in text form and often aids in email security through use of [SPF, DKIM, and DMARC records](https://dmarcly.com/blog/how-to-implement-dmarc-dkim-spf-to-stop-email-spoofing-phishing-the-definitive-guide).
+-   [**TXT**](https://techdocs.akamai.com/cloud-computing/docs/txt-records): Provides information in text form and often aids in email security through use of [SPF, DKIM, and DMARC records](https://dmarcly.com/blog/how-to-implement-dmarc-dkim-spf-to-stop-email-spoofing-phishing-the-definitive-guide).
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. This guide is for Ubuntu 22.04 LTS instances.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file as follows:
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file as follows:
 
     ```file {title="/etc/hosts"}
     127.0.0.1 localhost
@@ -154,7 +154,7 @@ As packaged for Ubuntu 22.04 LTS, NSD’s main configuration file (`nsd.conf`) p
 
 Since the NSD documentation already includes a fully annotated sample configuration file, copy that file and work from there. The sample file lists many options with plenty of comments, making it a useful learning tool.
 
-1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or use the following command:
+1.  First, gather your Linode's external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) or use the following command:
 
     ```command
     ip a

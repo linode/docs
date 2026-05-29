@@ -13,13 +13,13 @@ aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution
 image: install-a-custom-distribution-on-a-linode.png
 ---
 
-Linode provides images for many Linux distributions, all of which are available to use when deploying Compute Instances. These officially supported distributions are constantly updated and include popular general purpose distributions (like Ubuntu, CentOS, and Debian) as well as many other more advanced or focused distributions (such as Arch, Kali, and Alpine). See the [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) guide for a complete list.
+Linode provides images for many Linux distributions, all of which are available to use when deploying Compute Instances. These officially supported distributions are constantly updated and include popular general purpose distributions (like Ubuntu, CentOS, and Debian) as well as many other more advanced or focused distributions (such as Arch, Kali, and Alpine). See the [Choosing a Linux Distribution](https://techdocs.akamai.com/cloud-computing/docs/choose-a-distribution) guide for a complete list.
 
 While these official images are generally sufficient for most customers, some applications or workloads may require distributions that aren't provided by Linode. There are a few methods that can be used to build custom images or install distributions on Linode.
 
-- **Upload a custom image.** This requires either obtaining the image from a third-party source or using a distribution's official installer. After downloading the image to your workstation, install it on a local virtual machine. Then, save the system to a compatible format. For more detailed instructions, see [Upload a Custom Image](/docs/products/tools/images/guides/upload-an-image/).
+- **Upload a custom image.** This requires either obtaining the image from a third-party source or using a distribution's official installer. After downloading the image to your workstation, install it on a local virtual machine. Then, save the system to a compatible format. For more detailed instructions, see [Upload a Custom Image](https://techdocs.akamai.com/cloud-computing/docs/upload-an-image).
 
-- **Install the distribution directly on a Compute Instance.** This requires that you download the distribution's installer to a Compute Instance and use [Glish](/docs/products/compute/compute-instances/guides/glish/) to install the distribution onto the instance's disks.
+- **Install the distribution directly on a Compute Instance.** This requires that you download the distribution's installer to a Compute Instance and use [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) to install the distribution onto the instance's disks.
 
 This guide covers the latter method. The instructions walk you through:
 
@@ -41,7 +41,7 @@ First, create the Compute Instance and add the necessary disks and configuration
 
 1. Click the **Create** button to create the Compute Instance. Once it has been created, you should be taken to its dashboard page.
 
-1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) guide for additional instructions.
+1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Creating a Disk](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#create-a-disk) guide for additional instructions.
 
     ![Screenshot of the Storage tab with the disks created](custom-distro-disks.png "Screenshot of the Storage tab with the disks created, according to the specifications in the following bullet points")
 
@@ -53,7 +53,7 @@ First, create the Compute Instance and add the necessary disks and configuration
 
         - If you plan to make this system compatible with [Linode platform features](#make-the-system-compatible-with-the-linode-platform), another third disk needs to be created (outlined later in this guide). As a result, the System disk cannot take up the rest of the free space available on your instance. The System disk and that other third disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
 
-1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for instructions.
+1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance) guide for instructions.
 
     ![Screenshot of the Configurations tab with the configuration profiles created](custom-distro-configuration-profiles.png "Screenshot of the Configurations tab with the configuration profiles created, according to the specifications in the following bullet points")
 
@@ -78,13 +78,13 @@ First, create the Compute Instance and add the necessary disks and configuration
 
 ### Download the Distribution's Installer Image
 
-After the Compute Instance has been created and prepared, the next step is to download the installer file for whichever distribution you wish to use. To do this, [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) is used. This loads a recovery operating system that can be used to mount and access your disks.
+After the Compute Instance has been created and prepared, the next step is to download the installer file for whichever distribution you wish to use. To do this, [Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild) is used. This loads a recovery operating system that can be used to mount and access your disks.
 
-1. Boot your Compute Instance into Rescue Mode. To do this, click the **ellipsis** menu on the top left of your instance's dashboard page and select **Rescue**. You are presented with a prompt to assign your disks. Set **/dev/sda** to your *Installer* disk and then click the **Reboot into Rescue Mode** button to continue. See [Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) for instructions.
+1. Boot your Compute Instance into Rescue Mode. To do this, click the **ellipsis** menu on the top left of your instance's dashboard page and select **Rescue**. You are presented with a prompt to assign your disks. Set **/dev/sda** to your *Installer* disk and then click the **Reboot into Rescue Mode** button to continue. See [Booting into Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) for instructions.
 
     ![Screenshot of Rescue Mode configuration](rescue-mode-assign-disks.png "Screenshot of Rescue Mode configuration, with /dev/sda assigned to the Installer disk")
 
-1. Connect to your instance using the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) and wait for it to fully boot into Rescue Mode.
+1. Connect to your instance using the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) and wait for it to fully boot into Rescue Mode.
 
 1. Download the installation media for the Linux distribution you wish to install and copy it to the *Installer* disk. The example below shows the instructions to download the network installer for the latest stable version of Debian, but you can replace the URL with one pointing to whichever installer you want.
 
@@ -117,7 +117,7 @@ After the installation disk is ready, you can install the distribution onto your
 
 1. In the Cloud Manager, reboot your Compute Instance using the *Installer* configuration profile.
 
-1. Open [Glish](/docs/products/compute/compute-instances/guides/glish/) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 11 installer.
+1. Open [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) and, once the instance fully boots up, you should see your distribution's installer. The screenshot below shows the Debian 11 installer.
 
     ![Screenshot of Debian installer in Glish](custom-distro-debian-installer.png)
 
@@ -149,7 +149,7 @@ At this point, you should have a working system that you can connect to over Gli
 
 - **Backups:** The Linode Backup Service needs to be able to mount your filesystem and does not support partitioned disks.
 
-- **Helpers:** Several helpful features, such as [root password resets](/docs/products/compute/compute-instances/guides/reset-root-password/) and [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/), need access to your file system in order to make changes. Since Network Helper is not able to work properly, your system is not configured with network access and cannot yet access the internet.
+- **Helpers:** Several helpful features, such as [root password resets](https://techdocs.akamai.com/cloud-computing/docs/reset-the-root-password-on-a-compute-instance) and [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking), need access to your file system in order to make changes. Since Network Helper is not able to work properly, your system is not configured with network access and cannot yet access the internet.
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
@@ -291,10 +291,10 @@ This next step involves making changes to your disks and configuration profiles,
     - **Swap Disk:** Set the **Label** to *Swap* and the **Filesystem** to *swap*. The size of this disk depends on your own swap needs, but should likely be at least 256-512 MB.
 
     {{< note >}}
-    If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/).
+    If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance).
     {{< /note >}}
 
-1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for instructions.
+1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance) guide for instructions.
 
     - **Main (compatible) Configuration Profile:** This should be the only configuration profile you need to use going forward.
 
@@ -310,9 +310,9 @@ This next step involves making changes to your disks and configuration profiles,
     - `/dev/sda` > *System*
     - `/dev/sdb` > *System (ext4)*
 
-    See [Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) to learn more about using Rescue Mode.
+    See [Booting into Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) to learn more about using Rescue Mode.
 
-1. Connect to your instance using the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) and wait for it to fully boot into Rescue Mode.
+1. Connect to your instance using the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) and wait for it to fully boot into Rescue Mode.
 
 1. Transfer your root file system from the `/dev/sda1` partition to your new ext4 disk:
 
@@ -336,9 +336,9 @@ You now should have a Linux system that's compatible with the Linode Platform. F
     ping www.linode.com
     ```
 
-    If the ping is not successful, verify that Network Helper is enabled (see [Enable or Disable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper)). If it was disabled, enable it and reboot using the same configuration profile. If you still do not have network connectivity, your distribution may not be compatible with Network Helper and you may need to manually adjust your network settings. See [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or consult the network software used within your distribution.
+    If the ping is not successful, verify that Network Helper is enabled (see [Enable or Disable Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking#enable-or-disable-network-helper)). If it was disabled, enable it and reboot using the same configuration profile. If you still do not have network connectivity, your distribution may not be compatible with Network Helper and you may need to manually adjust your network settings. See [Manual Network Configuration on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance) or consult the network software used within your distribution.
 
-1. Once you're satisfied that the system is working properly, you can delete any disks and configuration profiles that are no longer needed. If you intend to use our [Backup service](/docs/products/storage/backups/), this step is required as there can be no *raw* disks on your Compute Instance.
+1. Once you're satisfied that the system is working properly, you can delete any disks and configuration profiles that are no longer needed. If you intend to use our [Backup service](https://techdocs.akamai.com/cloud-computing/docs/backup-service), this step is required as there can be no *raw* disks on your Compute Instance.
 
     - **Disks:** You now only need two disks, the ones labelled *System (ext4)* and *Swap*. Any other disks, including the old *System* disk and *Installer* disks can be deleted.
 
@@ -346,4 +346,4 @@ You now should have a Linux system that's compatible with the Linode Platform. F
 
 ## Save the System as a Custom Image
 
-If you wish to save a copy of this system to quickly deploy later, you may want to use Linode's Custom Image feature. This lets you create a Compute Instance based on this system without needing to go through this guide again. See [Capture an Image](/docs/products/tools/images/guides/capture-an-image/) for instructions on creating the image.
+If you wish to save a copy of this system to quickly deploy later, you may want to use Linode's Custom Image feature. This lets you create a Compute Instance based on this system without needing to go through this guide again. See [Capture an Image](https://techdocs.akamai.com/cloud-computing/docs/capture-an-image) for instructions on creating the image.

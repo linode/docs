@@ -27,9 +27,9 @@ For a different Linux distribution or different mail server, review our [email t
 
 ## Before You Begin
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
-1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 1. Review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
 
@@ -43,7 +43,7 @@ example.com MX 10 example.com
 mail.example.com MX 10 example.com
 {{< /output >}}
 
-Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
+Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ## Update Hosts File
 
@@ -726,7 +726,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
 ### Domains
 
-1.  To add a new domain, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1.  To add a new domain, [connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance).
 
 1.  Log in to the MySQL server:
 

@@ -28,7 +28,7 @@ The example instructions in this guide result in the creation of three billable 
 
 While kubeadm automates several cluster-provisioning tasks, there are other even faster methods for creating a cluster, all of which are great options for production ready deployments:
 
-- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), allows you to spin up a Kubernetes cluster from the [Cloud Manager](/docs/products/compute/kubernetes/) or the [Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/), and Linode handles the management and maintenance of your control plane.
+- The [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), allows you to spin up a Kubernetes cluster from the [Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) or the [Linode API](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api), and Linode handles the management and maintenance of your control plane.
 
 - If you prefer a full featured GUI, [Linode's Rancher integration](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) enables you to deploy and manage Kubernetes clusters with a simple web interface.
 
@@ -41,10 +41,10 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
     - One Linode to use as the control plane with 4GB RAM and 2 CPU cores.
     - Two Linodes to use as the worker nodes each with 2GB RAM and 1 CPU core.
 
-1.  Follow the [Getting Started](/docs/products/platform/get-started/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1.  Follow the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
     {{< note >}}
-    When following the [Getting Started](/docs/products/platform/get-started/) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
+    When following the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
     {{< /note >}}
 
 1.  Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the <abbr title="The kube-scheduler is a function that looks for newly created Pods that have no nodes.">kube-scheduler</abbr> from assigning a Pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
@@ -462,4 +462,4 @@ Now that you have a Kubernetes cluster up and running, you can begin experimenti
 
 ## Tear Down Your Cluster
 
-If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Managing Billing in the Cloud Manager > Removing Services](/docs/products/platform/billing/guides/stop-billing/) guide.
+If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Managing Billing in the Cloud Manager > Removing Services](https://techdocs.akamai.com/cloud-computing/docs/stop-further-billing) guide.

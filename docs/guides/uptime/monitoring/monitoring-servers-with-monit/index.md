@@ -154,7 +154,7 @@ You can optionally restrict web interface access to just your IP address.
     set httpd port 2812
         allow 10.0.0.1 (your ip address)
 {{< note >}}
-If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
+If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall).
 {{< /note >}}
 
 ## Configure Monit's Checking Actions

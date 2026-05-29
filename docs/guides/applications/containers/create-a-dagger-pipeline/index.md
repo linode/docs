@@ -54,9 +54,9 @@ For more background on Dagger, see the [Dagger Documentation](https://docs.dagge
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  To publish the container, you must have access to a container registry. This guide uses the open source [Harbor](https://goharbor.io/) registry to publish the container. However, it is possible to push the container to any container repository. For information on how to create a Harbor registry on a separate Compute Instance, see the guide on [Deploying Harbor through the Linode Marketplace](/docs/marketplace-docs/guides/harbor/). Before using Harbor, it is necessary to create a project named `dagger` to host the example container.
 

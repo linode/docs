@@ -825,7 +825,7 @@ You could certainly let this code run for a long while from your local machine, 
 
     ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
-1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. When creating your instance, use the following options:
+1. Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide. When creating your instance, use the following options:
 
     - Pick Ubuntu 20.04 as your Linux distribution.
 
@@ -841,7 +841,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) section of our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note respectIndent=false >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
@@ -853,7 +853,7 @@ Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
 {{< /note >}}
 
-1. To create a non-root-user, follow the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
+1. To create a non-root-user, follow the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
     {{< note respectIndent=false >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
@@ -862,7 +862,7 @@ Here's a video that also shows how to create a limited user: [Tech Republic: How
 1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
     {{< note respectIndent=false >}}
-The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
+The rest of the steps in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
 {{< /note >}}
 
 ### Perform Software Updates and Prepare for the Bot
@@ -899,7 +899,7 @@ The server is now ready to run the bot, but you still need to upload the bot's c
 
     | Field | Value |
     |-------|-------|
-    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your IP address in the Cloud Manager. |
+    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide to locate your IP address in the Cloud Manager. |
     | Username | This should be the name for the limited non-root-user you created. |
     | Password | The password for the limited non-root-user you created. |
     | Port | This should be set to 22. |

@@ -91,18 +91,18 @@ This guide will evaluate six different backup utilities to see how they meet the
 -   **Where**: The files are stored in our secure data centers.
 -   **Rotation**: Backups are rotated automatically so you'll always have a daily, weekly, and bi-weekly backup. You can also store one snapshot of your choice indefinitely.
 
-To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/products/storage/backups/).
+To configure Linode's Backup Service for your Linode, follow [these instructions](https://techdocs.akamai.com/cloud-computing/docs/backup-service).
 
 ### Linode's Disks
 
-You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#clone-to-an-existing-compute-instance). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Cloud Manager to [duplicate/clone your Linode's disk](https://techdocs.akamai.com/cloud-computing/docs/clone-a-compute-instance#clone-to-an-existing-compute-instance). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) to learn more about disks.
+See [Managing Disks and Storage on a Linode](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance) to learn more about disks.
 
 ### Rsync
 

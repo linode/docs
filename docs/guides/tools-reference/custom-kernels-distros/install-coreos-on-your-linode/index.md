@@ -27,7 +27,7 @@ CoreOS Container Linux is now available for deployment from the Linode Manager.
 
 CoreOS is not officially supported by Linode so there are limitations to using it in comparison to the Linux images provided in the Linode Manager.
 
-*   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](/docs/products/storage/backups/) service because the disk image is not be directly mountable.
+*   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](https://techdocs.akamai.com/cloud-computing/docs/backup-service) service because the disk image is not be directly mountable.
 
 *   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
 {{< note type="alert" >}}
@@ -57,7 +57,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     ![Set /dev/sda to CoreOS disk image](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 {{< note >}}

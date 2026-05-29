@@ -61,7 +61,7 @@ You should see the version of Rclone installed, as well as some information abou
 
 ## Configure Rclone
 
-Before you configure Rclone, [create a new Linode bucket](/docs/products/storage/object-storage/guides/manage-buckets/) and then [generate an associated Access Key](/docs/products/storage/object-storage/guides/access-keys/) for that bucket. You can also create a new access key for an existing bucket. When you create an access key, you are given the **Access Key** and the **Secret Key**. Make sure to copy both of those strings, because you need them when configuring Rclone.
+Before you configure Rclone, [create a new Linode bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets) and then [generate an associated Access Key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) for that bucket. You can also create a new access key for an existing bucket. When you create an access key, you are given the **Access Key** and the **Secret Key**. Make sure to copy both of those strings, because you need them when configuring Rclone.
 
 1.  Once you have created the Linode bucket and have the access keys, set up a new configuration with the following command:
 
@@ -94,15 +94,15 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
       \ (false)
     ```
 
-    As part of this step, you'll be requested to enter an access key and secret key for our Object Storage service. If you do not have this information, you can [generate a new access key](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key).
+    As part of this step, you'll be requested to enter an access key and secret key for our Object Storage service. If you do not have this information, you can [generate a new access key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys#create-an-access-key).
 
 1.  When prompted, leave the `region` section blank.
 
-1.  For the endpoint, type the URL that corresponds with the region your buckets are located within. Review [Cluster URL (S3 Endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint) for a full list.
+1.  For the endpoint, type the URL that corresponds with the region your buckets are located within. Review [Cluster URL (S3 Endpoint)](https://techdocs.akamai.com/cloud-computing/docs/access-buckets-and-files-through-urls#cluster-url-s3-endpoint) for a full list.
 
 1.  Leave `location_constraint` blank.
 
-1.  Next, you are requested to enter the Access Control List (ACL) to use when creating buckets and objects. This is based on your preferences and how you intend to use your buckets. Review [Define Access and Permissions using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/) for more details about ACLs and the various permission levels. For a personal bucket (or if you are unsure), you may want to enter *private*.
+1.  Next, you are requested to enter the Access Control List (ACL) to use when creating buckets and objects. This is based on your preferences and how you intend to use your buckets. Review [Define Access and Permissions using ACLs (Access Control Lists)](https://techdocs.akamai.com/cloud-computing/docs/define-access-and-permissions-using-acls-access-control-lists) for more details about ACLs and the various permission levels. For a personal bucket (or if you are unsure), you may want to enter *private*.
 
 1.  You are then given the option for advanced configuration. For this tutorial, select *no* or just hit enter.
 

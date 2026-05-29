@@ -39,7 +39,7 @@ Postfix is a widely-used open source SMTP server and is included in most Linux d
 
 1.  This guide recommends using a **Dedicated 8 GB** Compute Instance using **Ubuntu 24.04 LTS**. This plan size is the recommended starting point for an email server for a small to medium enterprise. See our [Get started with Compute Instances](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update and secure your system. Make sure to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update and secure your system. Make sure to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note type="warning" title="Do not enable IPv6" >}}
     When setting up and securing your Compute Instance, do not enable IPv6. Enabling IPv6 may cause issues later when Certbot attempts to [update the Let's Encrypt certificate](#update-lets-encrypt).

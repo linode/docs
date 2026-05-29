@@ -19,7 +19,7 @@ image: Hosting-a-Website-smg.jpg
 
 Hosting a website is one of the most common uses for a Linode. A website can be anything from a single HTML file to an interactive application with multiple components, and the hosting process varies greatly depending on the type of website being served. This guide walks you through the process of setting up some of the most common simple website types.
 
-Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
+Complete the steps in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
 
 This guide is written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, adapt the commands (e.g. using `yum` instead of `apt`).
 
@@ -110,7 +110,7 @@ Test your website(s) before you add DNS records and make the site available publ
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
-Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/products/networking/dns-manager/) guide.
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide.
 {{< /note >}}
 
 1.  From the **Domains** section, click on **Create Domain**. The domain creation page is displayed.
@@ -162,7 +162,7 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Enter a hostname in the **Hostname** field.
 
-1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) to find your Linode's IP address.
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) to find your Linode's IP address.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 

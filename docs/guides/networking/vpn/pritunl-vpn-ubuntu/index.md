@@ -23,7 +23,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides for help configuring the Linode.
+1.  Have a Linode running Ubuntu 14.04. Follow the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides for help configuring the Linode.
 
 2.  Ensure the Linode is up-to-date:
 
@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo iptables -A INPUT -p `your protocol here` -m `your protocol here` --sport `your_port_here` --dport 1025:65355 -j ACCEPT
 
     {{< note respectIndent=false >}}
-If you've configured the firewall according to the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
+If you've configured the firewall according to the [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
 {{< /note >}}
 
 ## Install Pritunl

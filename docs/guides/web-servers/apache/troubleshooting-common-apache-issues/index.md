@@ -22,11 +22,11 @@ In this guide, you'll start with some basic troubleshooting steps and then proce
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/products/compute/compute-instances/guides/troubleshooting-services/#check-if-the-service-is-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-web-servers#check-if-the-service-is-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-memory-issues-on-compute-instances), if Apache is stopping unexpectedly.
 
 ## Restart Apache
 

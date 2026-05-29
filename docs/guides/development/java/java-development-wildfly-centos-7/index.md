@@ -43,7 +43,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ## Before You Begin
 
--   Please follow the steps mentioned in [Linode: Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
+-   Please follow the steps mentioned in [Linode: Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
 
 -   Start & enable Firewalld
 

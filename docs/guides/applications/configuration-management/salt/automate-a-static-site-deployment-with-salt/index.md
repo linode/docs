@@ -71,15 +71,15 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
 ### Deploy the Linodes
 
-1.  Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and deploy two Linodes running Debian 9.
+1.  Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide and deploy two Linodes running Debian 9.
 
 1.  In the settings tab of your Linodes' dashboards, label one of the Linodes as `salt-master` and the other as `salt-minion`. This is not required, but it will help keep track of which Linode serves which purpose.
 
-1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{% content "limited-user-note-shortguide" %}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Salt minion's IP address.
+1.  Configure DNS for your site by adding a [domain zone](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) and setting up [reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) on your Salt minion's IP address.
 
 ## Set Up the Salt Master and Salt Minion
 
@@ -94,7 +94,7 @@ Before you can start setting up the Salt formulas for the minion, you first need
 The `-M` option tells the script to install the Salt master software, and the `-N` option tells the script to not install the minion software.
 {{< /note >}}
 
-1.  Log into the Salt **minion** Linode via SSH and [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). This guide uses `hugo-webserver` as the example hostname:
+1.  Log into the Salt **minion** Linode via SSH and [set the hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). This guide uses `hugo-webserver` as the example hostname:
 
         sudo hostnamectl set-hostname hugo-webserver
 

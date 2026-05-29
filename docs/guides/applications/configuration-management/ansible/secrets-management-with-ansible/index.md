@@ -22,7 +22,7 @@ In this tutorial, learn the most useful methods for implementing secrets managem
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/products/platform/get-started/) guide.
+1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
 1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
 
@@ -130,7 +130,7 @@ The vault password can either be entered manually or automatically through a pas
 
 This example of Ansible Vault deploys [rclone](https://rclone.org/) to the managed nodes and configures it to connect to a Linode Object Storage instance. The secrets are the access keys for the object storage instance.
 
-To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do so in our guide [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/).
+To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do so in our guide [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage).
 
 1.  Create a file with the access keys for your Linode Object Storage instance. You can do so with the following command, just replace the text in arrow brackets with your corresponding object storage keys:
 

@@ -74,7 +74,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  With a text editor, open the `terraform.tfvars` file in the `rcdc-terraform`. Replace the `LINODE_API_TOKEN` and `INSTANCE_ROOT_PASSWORD` values with your own.
 
-    -   The value for `token` needs to be your Linode API access token. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   The value for `token` needs to be your Linode API access token. You can follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   The `password` value should be the root password you intend to use for the nodes in the infrastructure.
 
@@ -313,7 +313,7 @@ Setting up a cloud firewall is optional for testing the infrastructure, but it i
 
 The Linode Cloud Firewall provides an easy-to-implement firewall that you can attach to the gateway instances deployed above.
 
-Learn more about Linode Cloud Firewalls in our [selection of guides](/docs/products/networking/cloud-firewall/guides/) on the topic.
+Learn more about Linode Cloud Firewalls in our [selection of guides](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on the topic.
 
 The steps below outline a basic configuration you can use with the infrastructure deployed in this tutorial.
 

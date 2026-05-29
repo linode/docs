@@ -13,7 +13,7 @@ external_resources:
 
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard solution for automating server deployments, with support across platforms and distributions. Combining platform metadata with custom user data scripts, cloud-init can vastly simplify the process of initializing new servers.
 
-With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service, you can leverage cloud-init to deploy Compute Instances. A cloud-config user data script can define everything you need to initialize instances, from security and user set up to software installation and shell scripts.
+With Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service, you can leverage cloud-init to deploy Compute Instances. A cloud-config user data script can define everything you need to initialize instances, from security and user set up to software installation and shell scripts.
 
 This guide details how to start working with users as part of your cloud-init deployments. Read on for cloud-config scripts to provision users, add SSH keys, and disable remote root access.
 

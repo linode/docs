@@ -46,7 +46,7 @@ Once the app is deployed, you need to obtain the credentials from the server. To
 
 1. Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
     - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the contents of the credentials file:
@@ -61,7 +61,7 @@ This returns the admin password and other details that were automatically genera
 
 Once you've obtained the credentials, you can access your Cribl instance and open a browser and navigate to your Linode domain entered during deployment or the rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`.
 
-1. In a browser, paste your instance's rDNS domain. Replace `{{< placeholder "https://203-0-113-0.ip.linodeusercontent.com" >}}` with your [Linode's actual rDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+1. In a browser, paste your instance's rDNS domain. Replace `{{< placeholder "https://203-0-113-0.ip.linodeusercontent.com" >}}` with your [Linode's actual rDNS domain](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses).
 
 2. Log in with the admin username (`admin`) and the password in the credentials file.
 

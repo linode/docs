@@ -52,11 +52,11 @@ It can be challenging to run and maintain a web server. To maintain a positive r
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Create and configure a domain name and point it at the Linode. The Postal server requires several additional subdomains which are described in a subsequent section of this guide. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
+1.  Create and configure a domain name and point it at the Linode. The Postal server requires several additional subdomains which are described in a subsequent section of this guide. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 1.  To send emails from a server, TCP port 25 must be enabled on the Linode. This is the well-known port for *Simple Mail Transfer Protocol* (SMTP). Postal send outgoing emails and listens for incoming mail on this port. Contact Linode support to determine whether this port is restricted on your server.
 
@@ -81,7 +81,7 @@ After the configuration is complete, the Postal web portal can be used to comple
 
 ### How to Configure DNS Records for Postal
 
-In addition to the main A/AAAA records for the primary domain, Postal requires a few additional DNS records. Certain other optional records are highly recommended to ensure reliable delivery. These records can be created either before or after installing Postal. However, it is a good idea to create them in advance to allow time for propagation. To determine how to create the various types of DNS records from the Linode dashboard, consult the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
+In addition to the main A/AAAA records for the primary domain, Postal requires a few additional DNS records. Certain other optional records are highly recommended to ensure reliable delivery. These records can be created either before or after installing Postal. However, it is a good idea to create them in advance to allow time for propagation. To determine how to create the various types of DNS records from the Linode dashboard, consult the [Linode DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 To enable a successful Postal deployment, create the following records. For the entirety of this section, replace `example.com` with the name of your domain wherever it occurs.
 

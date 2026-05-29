@@ -20,9 +20,9 @@ Learn more about Astro in this tutorial, covering Astro's key features and provi
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -383,9 +383,9 @@ This creates a `dist/` directory within your project that contains the static fi
 
 With Linode, you have two immediate options for deploying your newly-built website.
 
-- Using a [Linode Compute Instance](/docs/products/compute/compute-instances/plans/shared-cpu/). This method uses an HTTP server like NGINX or Apache to serve the static files. You can learn more through our [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/) guide. In this case, you would move your site's files from `dist/` to `/var/www/example.com`, replacing `example.com` with your actual domain name.
+- Using a [Linode Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/shared-cpu-compute-instances). This method uses an HTTP server like NGINX or Apache to serve the static files. You can learn more through our [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/) guide. In this case, you would move your site's files from `dist/` to `/var/www/example.com`, replacing `example.com` with your actual domain name.
 
-- Using a [Linode Object Storage](/docs/products/storage/object-storage/) bucket. This method stores your website's built files within an object storage instance, where they can be accessed as a static website. Hosting your website in this way has the advantage of not having to set up and maintain the infrastructure for an HTTP server. You can see an example of this deployment through our tutorial [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/). The `public/` directory in that tutorial would be equivalent to the `dist/` directory with Astro.
+- Using a [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) bucket. This method stores your website's built files within an object storage instance, where they can be accessed as a static website. Hosting your website in this way has the advantage of not having to set up and maintain the infrastructure for an HTTP server. You can see an example of this deployment through our tutorial [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/). The `public/` directory in that tutorial would be equivalent to the `dist/` directory with Astro.
 
 You can learn more about Astro deployments, including other deployment options, through Astro's [official documentation](https://docs.astro.build/en/guides/deploy/).
 

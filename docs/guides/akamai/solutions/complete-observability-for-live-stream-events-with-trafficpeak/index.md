@@ -43,7 +43,7 @@ TrafficPeak offers sub-second querying and optimizes log indexing with fully cus
 
 1.  [Akamai Media Services Live (Akamai MSL)](https://www.akamai.com/resources/product-brief/media-services-live) ingests the live stream feeds in a duplicated fashion. MSL logs are sent to TrafficPeak to ensure full visibility for any ingest-related issues in real-time.
 
-1.  [Linode Object Storage](/docs/products/storage/object-storage/) stores all live streaming content for instantaneous, low-latency delivery, as well as playback. Object Storage logs are sent to TrafficPeak.
+1.  [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) stores all live streaming content for instantaneous, low-latency delivery, as well as playback. Object Storage logs are sent to TrafficPeak.
 
 1.  [Akamai CDN](https://www.akamai.com/solutions/content-delivery-network) caches and delivers live streaming content to millions of concurrent users. CDN logs are also sent to TrafficPeak via Akamai DataStream, including all relevant HTTP(S) information for troubleshooting purposes.
 

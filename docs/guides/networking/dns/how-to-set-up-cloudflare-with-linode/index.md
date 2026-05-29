@@ -45,7 +45,7 @@ In addition to caching content, Cloudflare's network is engineered to absorb and
 
 When you set up Cloudflare, you should keep your Linode's IP address secret from everyone except for Cloudflare. This is because if an attacker were able to discover the IP, they could direct a DDoS towards it. To keep the address hidden, make sure that none of your domains and DNS records reference it.
 
-If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support) and request a new IP address for your Linode for use with Cloudflare.
+If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support#contact-customer-support) and request a new IP address for your Linode for use with Cloudflare.
 
 If you're not sure if your Linode's IP is still directly referenced by any of your DNS records, you can run `nmap` with [the following options](https://nmap.org/nsedoc/scripts/dns-brute.html) to check for possible references. `nmap` will try to resolve a set of common subdomains on your domain:
 
@@ -55,7 +55,7 @@ A frequent source of accidental IP exposure is when [your MX records directly re
 
 ## Set Up Cloudflare
 
-Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](/docs/products/networking/dns-manager/get-started/) set up on your Linode before proceeding with these steps.
+Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) set up on your Linode before proceeding with these steps.
 
 1.  Create an account on [Cloudflare.com](https://dash.cloudflare.com/sign-up).
 

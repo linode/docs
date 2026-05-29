@@ -26,13 +26,13 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, deploy a Debian image.
+1. Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, deploy a Debian image.
 
 1. [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
 1. [Create a new disk][/docs/guides/disks-and-storage/#creating-a-disk] and select **raw** under **Filesystem**:
 
-1. Open your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+1. Open your [configuration profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
 1. After your block device assignments are configured, boot your Linode.
 
@@ -48,7 +48,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     apt install cryptsetup
     ```
 {{< note >}}
-Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/products/storage/block-storage/) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
+Another way to set up an encrypted data partition is by attaching a [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
 {{< /note >}}
 
 ## How to Map Whole Disks, Partitions and Files

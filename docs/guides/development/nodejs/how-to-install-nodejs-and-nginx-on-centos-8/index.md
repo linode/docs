@@ -32,12 +32,12 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 ## Before You Begin
 
-1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) and [create a domain record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for it.
+1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) to [add the domain](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) and [create a domain record](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+1.  Set up your Linode using the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
 
     {{< note respectIndent=false >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#update-your-systems-hosts-file) section of the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
     {{< /note >}}
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.

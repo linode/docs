@@ -46,7 +46,7 @@ Weaviate should be fully installed within 5-10 minutes after your instance has f
 
 Weaviate is a database service accessed programmatically through its API rather than through a web-based user interface. Your deployment includes two API keys stored in a credentials file.
 
-1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Once logged in, retrieve your API keys from the `.credentials` file:
 

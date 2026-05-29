@@ -34,7 +34,7 @@ Create a highly available Apache Cassandra cluster. Apache Cassandra is an open-
 
 ### Apache Cassandra Options
 
-- **[Linode API Token](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token):** The provisioner node uses an authenticated API token to create the additional components to the cluster. This is required to fully create the Apache Cassandra cluster.
+- **[Linode API Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens#create-an-api-token):** The provisioner node uses an authenticated API token to create the additional components to the cluster. This is required to fully create the Apache Cassandra cluster.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 

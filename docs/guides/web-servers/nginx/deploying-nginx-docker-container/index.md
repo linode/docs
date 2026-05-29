@@ -18,9 +18,9 @@ Follow along with this tutorial to learn about the advantages of running Nginx v
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -92,7 +92,7 @@ Open a Web browser and navigate to your system's public IP address. For example,
 ![The default Nginx welcome page](nginx-welcome.png)
 
 {{< note >}}
-Depending on the system's firewall settings, you may first need to open port `80`/`http`. Refer to the links in the firewall section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) guide to learn how.
+Depending on the system's firewall settings, you may first need to open port `80`/`http`. Refer to the links in the firewall section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) guide to learn how.
 {{< /note >}}
 
 Jump ahead to the section on [Applying Custom Nginx Configurations](/docs/guides/deploying-nginx-docker-container/#applying-custom-nginx-configurations) to take the next step in running your own website through the Nginx container.

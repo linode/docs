@@ -62,7 +62,7 @@ Before you can use Nextcloud, you must set up your deployment with the [Nextclou
 
     ![Screenshot of the Nextcloud AIO log in prompt](nextcloud-aio-login.png)
 
-1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Quick Deploy App app or use your [rDNS](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
+1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Quick Deploy App app or use your [rDNS](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
 
     ![Screenshot of the domain name prompt](nextcloud-aio-new.png)
 

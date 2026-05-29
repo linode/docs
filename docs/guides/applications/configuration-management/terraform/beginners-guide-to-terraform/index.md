@@ -28,7 +28,7 @@ Terraform is a general orchestration tool that can interface with a number of di
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
-The Linode provider relies on Linode's [APIv4](/docs/products/tools/api/), and an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
+The Linode provider relies on Linode's [APIv4](https://techdocs.akamai.com/linode-api/reference/api-summary), and an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
 
 {{< note >}}
 As of May 22, 2019, [Terraform’s Linode Provider](https://github.com/linode/terraform-provider-linode) requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of Terraform versions, features, and incompatibility notes.

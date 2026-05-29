@@ -36,10 +36,10 @@ To run the commands in this tutorial, you'll need:
 
     - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/guides/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide.
 
-    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
 {{< note >}}
-Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for help with creating Linodes.
+Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide for help with creating Linodes.
 {{< /note >}}
 
 The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/guides/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide outlines how to set up an inventory file.
@@ -111,7 +111,7 @@ The `-f` option is used to define number of [forks](https://docs.ansible.com/ans
 {{< /note >}}
 
 {{< note >}}
-If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
 ## Collecting System Diagnostics

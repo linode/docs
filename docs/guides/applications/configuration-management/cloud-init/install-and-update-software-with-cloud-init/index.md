@@ -12,7 +12,7 @@ external_resources:
 - '[Cloud-init Documentation - Cloud-config Examples: Install Arbitrary Packages](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#install-arbitrary-packages)'
 ---
 
-[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) offers a cross-platform, cross-distribution approach to automating server initialization. With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service, you can leverage cloud-init to deploy Compute Instances, employing custom user data scripts to define your desired setup.
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) offers a cross-platform, cross-distribution approach to automating server initialization. With Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service, you can leverage cloud-init to deploy Compute Instances, employing custom user data scripts to define your desired setup.
 
 In this guide, learn how to manage packages on new servers using cloud-init. Whether you want to upgrade system packages, install packages during initialization, or manage your repositories, this tutorial shows you how.
 

@@ -9,7 +9,7 @@ keywords: ['load balancing protocols','http load balancing','tcp load balancing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Load balancing is the process of distributing client requests across multiple servers. Originally, load balancers were dedicated hardware appliances connected to physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/) perform the same role with cloud-based servers.
+Load balancing is the process of distributing client requests across multiple servers. Originally, load balancers were dedicated hardware appliances connected to physical servers in data centers. Today, software products such as [Akamai NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer) perform the same role with cloud-based servers.
 
 Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion. Load balancers take many forms and offer [many features](/docs/guides/load-balancing-fundamentals/). However, they all route client requests to back-end servers using either application-layer (HTTP/S) or transport-layer (TCP) criteria. Distributing the load in this way can help ensure the best performance, availability, scalability, and security. With Akamai NodeBalancers, it’s simple to take advantage of the features available at either layer.
 
@@ -23,7 +23,7 @@ In this guide, learn what benefits each protocol offers, and which makes the mos
 
 ## HTTP (Application/L7) Load Balancing Overview
 
-With HTTP/S load balancing, the [NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/) examines each packet's application layer HTTP headers to decide how to route client requests to back-end servers. Besides improving application performance, availability, and horizontal scalability for Web applications, HTTP load balancing also affords web-specific benefits not available from TCP load balancing.
+With HTTP/S load balancing, the [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers) examines each packet's application layer HTTP headers to decide how to route client requests to back-end servers. Besides improving application performance, availability, and horizontal scalability for Web applications, HTTP load balancing also affords web-specific benefits not available from TCP load balancing.
 
 ### HTTP Load Balancer Benefits
 

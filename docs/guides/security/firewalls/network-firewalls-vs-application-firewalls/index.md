@@ -25,7 +25,7 @@ Today, there are three new types of firewalls, with considerable overlap between
 
 - **Cloud-Based Firewalls** may be an NGFW, WAF, or some combination of the two. You typically deploy cloud-based NGFWs at the perimeter of cloud deployments, and WAFs close to application servers. Importantly, this is not an either/or scenario, as the two working together provide more defense than either working alone.
 
-Regardless of type, you may provision a cloud-based firewall as a firewall-as-a-service (FWaaS) or an application running on a VM. [Akamai offers FWaaS products](/docs/products/networking/cloud-firewall/) that protect hosts anywhere in the cloud, even across multiple data centers. FWaaS offerings have the advantage of offloading system maintenance onto the provider.
+Regardless of type, you may provision a cloud-based firewall as a firewall-as-a-service (FWaaS) or an application running on a VM. [Akamai offers FWaaS products](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) that protect hosts anywhere in the cloud, even across multiple data centers. FWaaS offerings have the advantage of offloading system maintenance onto the provider.
 
 Firewall applications may be software versions of commercial firewalls or open source packages included with Linux or BSD distributions. As applications running on a VM, these firewalls work similarly to their non-cloud versions.
 

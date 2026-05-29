@@ -18,9 +18,9 @@ Neoj4 is an incredibly popular graph database management system (*DBMS*). At the
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and several Compute Instances. See our [Getting Started](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address to both instances.
+1.  If you have not already done so, create a Linode account and several Compute Instances. See our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. You need two Ubuntu 22.04 LTS instances in the same datacenter. While it's possible to experiment with Neo4j on a single-core instance backed by one gigabyte of RAM, practical Neo4j applications generally occupy at least four cores and eight or more gigabytes of RAM. Also be sure to add a private IP address to both instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

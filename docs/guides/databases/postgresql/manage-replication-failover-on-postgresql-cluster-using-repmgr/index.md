@@ -71,9 +71,9 @@ A drawback of repmgr is that it cannot recover resources or restore the state of
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with the Akamai cloud computing platform](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  This guide requires at least two compute instances. The examples here only require Shared CPU instances with 4GB of RAM, to accommodate larger data sets, use High Memory instances. One system must be designated as the primary node and the other as a standby or backup node. Additional standby systems can be added depending upon business requirements. All servers within the same HA cluster must use the same release of the same Linux distribution. The steps that follow are geared towards Ubuntu 22.04 LTS users, but are generally applicable for earlier releases and other Linux distributions.
 
@@ -125,7 +125,7 @@ Users can choose to install PostgreSQL either from the default Ubuntu packages o
 To install PostgreSQL, execute the instructions in this section on both the primary and standby nodes.
 
 {{< note >}}
-Instead of running the same commands on both nodes, users have the option of cloning the primary server configuration to the standby server. Users selecting this option must perform the clone operation before adding any primary-specific PostgreSQL or repmgr configuration. See the [Instance Cloning guide](/docs/products/compute/compute-instances/guides/clone-instance/) for more information.
+Instead of running the same commands on both nodes, users have the option of cloning the primary server configuration to the standby server. Users selecting this option must perform the clone operation before adding any primary-specific PostgreSQL or repmgr configuration. See the [Instance Cloning guide](https://techdocs.akamai.com/cloud-computing/docs/clone-a-compute-instance) for more information.
 {{< /note >}}
 
 1.  Ensure the server is up to date. Use the `apt update` command to install any updates. Reboot the server if necessary.

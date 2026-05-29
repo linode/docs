@@ -54,7 +54,7 @@ The Splunk Quick Deploy App on Akamai Cloud includes support for the [Akamai SIE
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
 ```
 cat /home/$USERNAME/.credentials
 sudo username: $USERNAME
@@ -65,7 +65,7 @@ splunk admin password: fRLdHksJoMPrjLtRCogEPVLYOML1zQtQ0kIsL7IWvo49
 
 ### Access your Splunk App
 
-Open a browser and navigate to `https://192-0-2-1.ip.linodeusercontent.com:8000`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+Open a browser and navigate to `https://192-0-2-1.ip.linodeusercontent.com:8000`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 
 You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and the generated *Splunk Password* in `/home/$USERNAME/.credentials`.
 

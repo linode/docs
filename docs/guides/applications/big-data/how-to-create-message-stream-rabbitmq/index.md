@@ -77,9 +77,9 @@ Streams achieve their speedy characteristics by taking some shortcuts. For examp
 
 The examples in this guide assume that you have a RabbitMQ installation available. Follow the instructions and links below to set up a RabbitMQ instance:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started on the Linode Platform](/docs/products/platform/get-started/) and [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. An Ubuntu 22.04 LTS, Nanode 1 GB, Shared CPU instance is sufficient for the examples in this guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started on the Linode Platform](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. An Ubuntu 22.04 LTS, Nanode 1 GB, Shared CPU instance is sufficient for the examples in this guide.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the instructions contained in the CloudSmith section of RabbitMQ's official [Installing on Debian and Ubuntu](https://www.rabbitmq.com/install-debian.html#apt-quick-start-cloudsmith) guide. It provides everything required for a basic installation, and is the setup used for this guide. To use the streams feature covered in this guide, ensure that you have RabbitMQ 3.9 or above installed on your server:
 

@@ -18,7 +18,7 @@ Periodically, you may wish to download files from a Compute Instance to retain a
 
 If you intend to download lots of files, consider compressing them into a single archive file before continuing with this guide. This results in a faster and smoother download when compared with large numbers of individual files. Once the archive file has been downloaded, you can extract it and view the individual files on your local system.
 
-To create an archive and compress it, [log in to your Compute Instance](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance) and run the following command. Replace *[archive-name]* with the file name to use for the new file and *[file-or-directory]* with the path of the directory or the path and name of the file you'd like to archive. This command creates a tar file (also called a tarball) and compresses it with gzip. Most modern operating systems can extract tar files.
+To create an archive and compress it, [log in to your Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances#connect-to-the-instance) and run the following command. Replace *[archive-name]* with the file name to use for the new file and *[file-or-directory]* with the path of the directory or the path and name of the file you'd like to archive. This command creates a tar file (also called a tarball) and compresses it with gzip. Most modern operating systems can extract tar files.
 
 ```command
 tar -czvf [archive-name].tar.gz [fle-or-directory]
@@ -109,10 +109,10 @@ Special care is needed when downloading data from a database. Before it can be d
 
 ## Download a Disk
 
-Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) guide for further instructions.
+Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](https://techdocs.akamai.com/cloud-computing/docs/copy-a-disk-over-ssh) guide for further instructions.
 
 ## Download Data from a Block Storage Volume
 
-1. [Attach and mount](/docs/products/storage/block-storage/guides/attach-and-detach/) the block storage volume.
+1. [Attach and mount](https://techdocs.akamai.com/cloud-computing/docs/attach-and-detach-a-volume) the block storage volume.
 
 2. Download files from it by following the same instructions in the [Download Specific Files or Directories over SSH](#download-specific-files-or-directories-over-ssh) section of this guide.

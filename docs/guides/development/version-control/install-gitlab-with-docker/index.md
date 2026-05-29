@@ -33,7 +33,7 @@ This guide was written for and tested with Ubuntu 18.04. You may be able to adap
 
 ### Secure your Server
 
-Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+Review and implement the measures in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, including creating a [limited user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 
@@ -61,7 +61,7 @@ Assign a domain or subdomain to your GitLab server. This step is optional, as yo
 
 It takes some time for DNS changes to propagate through the internet, so it's suggested that you do this before you set up GitLab. There are several options for updating your DNS records:
 
--   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](/docs/products/networking/dns-manager/) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
+-   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
 
 -   If you use a different DNS provider, review that provider's documentation for setting up a new A record.
 

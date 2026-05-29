@@ -29,9 +29,9 @@ This guide shows how to set up a Harbor registry on a dedicated compute instance
 
 ## Before You Begin
 
-The Harbor installation in this guide assumes that you have [a domain name registered through a domain registrar](/docs/products/networking/dns-manager/get-started/#register-the-domain), and that you can edit the DNS records for this domain. This is so that SSL connections can be configured for the Harbor server. If you do not have a domain name, register one now.
+The Harbor installation in this guide assumes that you have [a domain name registered through a domain registrar](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager#register-the-domain), and that you can edit the DNS records for this domain. This is so that SSL connections can be configured for the Harbor server. If you do not have a domain name, register one now.
 
-The infrastructure for this guide is created on the Akamai Cloud platform. If you do not already have one, [create an account](/docs/products/platform/get-started/) for the platform.
+The infrastructure for this guide is created on the Akamai Cloud platform. If you do not already have one, [create an account](https://techdocs.akamai.com/cloud-computing/docs/getting-started) for the platform.
 
 The following is a summary of the infrastructure created in this guide. Instructions for creating these services are included later in the guide:
 
@@ -39,7 +39,7 @@ The following is a summary of the infrastructure created in this guide. Instruct
 
 - An LKE cluster with 3 nodes, used to demonstrate pulling an image from the Harbor server.
 
-If you would like to remove these services after you finish following the guide, review our [Stop Further Billing](/docs/products/platform/billing/guides/stop-billing/) guide. For more information on how billing for services works, review the [Billing Overview](/docs/products/platform/billing/).
+If you would like to remove these services after you finish following the guide, review our [Stop Further Billing](https://techdocs.akamai.com/cloud-computing/docs/stop-further-billing) guide. For more information on how billing for services works, review the [Billing Overview](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -75,27 +75,27 @@ This tutorial requires you to have a domain for your Harbor server. Doing so all
 
 In your DNS manager for your own domain, create an [A record](/docs/guides/dns-overview/#a-and-aaaa) named `harbor`:
 
-- If you use the Linode DNS Manager, follow our [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide to create the new a record.
+- If you use the Linode DNS Manager, follow our [Manage DNS Records](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) guide to create the new a record.
 
 - If you use another DNS manager, follow their instructions for creating the A record.
 
 {{< note >}}
 If you use another DNS manager but would like to start using the Linode DNS Manager, refer to these guides:
 
-    - [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/)
-    - [Configure Your Domain's Authoritative Name Servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/)
-    - [Incoming DNS Zone Transfers](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/)
+    - [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager)
+    - [Configure Your Domain's Authoritative Name Servers](https://techdocs.akamai.com/cloud-computing/docs/configure-your-domains-authoritative-name-servers)
+    - [Incoming DNS Zone Transfers](https://techdocs.akamai.com/cloud-computing/docs/incoming-dns-zone-transfers)
 {{< /note >}}
 
 ### Provision a Compute Instance
 
 For this tutorial, the Harbor server is run on a compute instance. Follow these instructions to create the instance:
 
-1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
+1. Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide to create the instance. Instructions for installing Harbor on Debian, Ubuntu, CentOS, and Fedora are included in this guide.
 
-    Images stored with the registry are kept in the compute instance's included [persistent storage](/docs/products/compute/compute-instances/guides/disks-and-storage/#understanding-storage). Different instance plans have different amounts of included storage. You should pick a plan whose storage can accommodate the total size of the images you want to store. Review the [pricing page](/pricing/) to determine which plan has enough storage for you. If you intend to use this server for testing and learning, a plan with minimal specs is adequate.
+    Images stored with the registry are kept in the compute instance's included [persistent storage](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#understanding-storage). Different instance plans have different amounts of included storage. You should pick a plan whose storage can accommodate the total size of the images you want to store. Review the [pricing page](/pricing/) to determine which plan has enough storage for you. If you intend to use this server for testing and learning, a plan with minimal specs is adequate.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system,create a limited user account, and harden SSH access. You may also wish to set the timezone and configure your hostname.
 
 ### Install Docker and Docker Compose
 
@@ -422,7 +422,7 @@ You can go to the Harbor dashboard in your browser to see the results. Navigate 
 
 Harbor can act as the image registry for a Kubernetes cluster. The steps in this section show how to deploy the example Docker image in the previous section from your Harbor registry to your LKE cluster.
 
-1. Provision an LKE cluster. Follow our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide to install the kubectl tool on your local workstation, deploy a cluster, and download your cluster's kubeconfig. The new cluster should have a node pool with three nodes. The nodes can have minimal specifications, because they are only used to serve a small website.
+1. Provision an LKE cluster. Follow our [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to install the kubectl tool on your local workstation, deploy a cluster, and download your cluster's kubeconfig. The new cluster should have a node pool with three nodes. The nodes can have minimal specifications, because they are only used to serve a small website.
 
     The commands in the next steps should be run from your workstation.
 

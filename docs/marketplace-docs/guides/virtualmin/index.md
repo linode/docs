@@ -43,7 +43,7 @@ Virtualmin has been removed from the App Quick Deploy App and can no longer be d
 ### Virtualmin Options
 
 {{% content "marketplace-limited-user-fields-shortguide" %}}
-- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
+- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
 
@@ -63,8 +63,8 @@ Virtualmin is now installed and ready to use.
 
 1.  Before you go to our app, if you filled out the optional Virtualmin configuration fields:
 
-    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode.
+    - In Cloud Manager's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - [Configure the rDNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) on your Linode.
 
 1.  Virtualmin is served on port 10000, to access it, navigate to either the IP address of your server or to your domain name followed by port 10000. For example, `http://example.com:10000` or `http://203.0.113.0:10000`, replacing the domain name or IP address with values for your server.
 

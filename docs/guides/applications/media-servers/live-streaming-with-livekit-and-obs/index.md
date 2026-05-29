@@ -18,9 +18,9 @@ This guide shows you how to use Docker Compose to install LiveKit on a Compute I
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the instructions in our [How to Use Docker Compose V2](/docs/guides/how-to-use-docker-compose-v2/#how-to-install-docker-compose-and-docker-engine) guide to install **Docker Compose** and **Docker Engine**.
 
@@ -66,7 +66,7 @@ Prior to deploying the LiveKit server, you must configure domain names for the L
 - For the LiveKit server, use `livekit.{{< placeholder "example.com" >}}`.
 - For the TURN server, use `livekit-turn.{{< placeholder "example.com" >}}`. This is bundled with LiveKit to help manage traffic.
 
-Your DNS records can be setup using the [DNS Manager](/docs/products/networking/dns-manager/get-started/) in Cloud Manager. Follow the linked guide to add your domain (e.g. {{< placeholder "example.com" >}}) and create A records for the `livekit` and `livekit-turn` subdomains.
+Your DNS records can be setup using the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) in Cloud Manager. Follow the linked guide to add your domain (e.g. {{< placeholder "example.com" >}}) and create A records for the `livekit` and `livekit-turn` subdomains.
 
 ### LiveKit Server Setup
 
@@ -120,7 +120,7 @@ Your DNS records can be setup using the [DNS Manager](/docs/products/networking/
     {{< note title="Your firewall settings may be different" >}}
     The exact commands you use may vary depending on your instance's distribution and firewall manager. See our guides on firewalls for documentation on other common firewall managers: [Linode Guides: Firewalls](/docs/guides/security/firewalls/)
 
-    Likewise, if your Compute Instance is attached to a Cloud Firewall, you will want to make sure the appropriate ports are open in your Cloud Firewall configuration: [Cloud Firewall: Manage Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/)
+    Likewise, if your Compute Instance is attached to a Cloud Firewall, you will want to make sure the appropriate ports are open in your Cloud Firewall configuration: [Cloud Firewall: Manage Firewall Rules](https://techdocs.akamai.com/cloud-computing/docs/manage-firewall-rules)
     {{< /note >}}
 
 1.  Navigate into the newly created `livekit.{{< placeholder "example.com" >}}` directory, replacing {{< placeholder "example.com" >}} with your domain:

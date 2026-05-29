@@ -22,9 +22,9 @@ Keeping your system up-to-date with the latest packages and security updates can
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
+1.  Complete the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update.
 

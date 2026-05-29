@@ -31,7 +31,7 @@ Rook automates the deployment and management of Ceph to create self-managing, se
 
 1.  Before you can work with Ceph and Rook, you need a Kubernetes cluster running Kubernetes version 1.28 or later with `kubectl` configured to communicate with your cluster. The recommended minimum Kubernetes setup for Rook includes three nodes with 4 GB memory and 2 CPUs each.
 
-    To create a cluster and configure `kubectl`, follow the instructions in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide.
+    To create a cluster and configure `kubectl`, follow the instructions in our [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide.
 
 1.  The Ceph storage cluster configured by Rook requires one of the following local storage options as a [prerequisite](https://rook.io/docs/rook/latest-release/Getting-Started/Prerequisites/prerequisites/):
 

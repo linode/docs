@@ -20,9 +20,9 @@ NGINX contributes to the acronym "LEMP" because English-speakers pronounce NGINX
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -148,7 +148,7 @@ This demonstrates that PHP is installed and that the modules needed to communica
 
 ### Verify NGINX
 
-Verification of NGINX service is a little more involved. The first step is [identification of the IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the host.
+Verification of NGINX service is a little more involved. The first step is [identification of the IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the host.
 
 1.  Navigate a browser to a URL such as `http://localhost` or `http://23.77.NNN.NNN`, henceforth referred to as `$LEMP_HOST`
 

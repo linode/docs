@@ -44,9 +44,9 @@ This guide shows you how to:
 
 - Finally, you need to create an LKE cluster, if you do not already have one:
 
-    - To create a cluster from the Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
+    - To create a cluster from the Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) guide. Specifically, follow the [Create an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) and [Connect to your LKE Cluster with kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl) sections.
 
-    - To create a cluster via the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
+    - To create a cluster via the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api) tutorial. Specifically, follow the [Create an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api#create-an-lke-cluster) section.
 
 ### Install kubectl
 
@@ -455,7 +455,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers).
 
     {{< note title="Cloud Controller Manager (CCM)" >}}
     The NodeBalancer's creation is controlled through the [Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
@@ -510,11 +510,11 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 ## General Network and Firewall Information
 
-To learn more about networking within LKE, open ports, and configuring firewall rules, see [General Network and Firewall Information](/docs/products/compute/kubernetes/get-started/#general-network-and-firewall-information).
+To learn more about networking within LKE, open ports, and configuring firewall rules, see [General Network and Firewall Information](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#general-network-and-firewall-information).
 
 ## Next Steps
 
-If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
+If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove any billable resources that were generated.
 
@@ -540,4 +540,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You are prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#persist-the-kubeconfig-context).

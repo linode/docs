@@ -54,7 +54,7 @@ The following software and components must be installed and configured on your l
 
 -   The [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) Python library
 
--   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
+-   A [Linode API access token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
 
@@ -193,7 +193,7 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     - `soa_email_address`: An SOA administrator email for DNS records
     - `jvb_cluster_size`: The number of JVB instances in the cluster deployment
     - `sudo_username`: A sudo username for each cluster instance
-    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the Jitsi meet instance's default rDNS value once the cluster is provisioned. See our guide on [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) for how to find an instance's rDNS value.
+    - `subdomain` and `subdomain` (optional): If you have a FQDN, you can use these optional values to customize your Jitsi meet URL. If you choose to leave these blank, you can navigate to your Jitsi meet using the Jitsi meet instance's default rDNS value once the cluster is provisioned. See our guide on [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) for how to find an instance's rDNS value.
 
     ```file {title="group_vars/jitsi/vars"}
     ssh_keys:

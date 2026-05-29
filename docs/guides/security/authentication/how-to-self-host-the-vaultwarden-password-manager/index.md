@@ -30,15 +30,15 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting the hostname and timezone.
+1. Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
 
-1. Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
+1. Follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
 
    {{< note respectIndent=false >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
+If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) section of the guide outlines different firewall software options.
 {{< /note >}}
 
-1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
+1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
 
 ## Install Docker
 
@@ -321,7 +321,7 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 
    This indicates that a backup is taken in 5 hours and 50 minutes.
 {{< note type="alert" >}}
-Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/products/storage/block-storage/) as one potential solution for permanent backup storage and archival.
+Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) as one potential solution for permanent backup storage and archival.
 {{< /note >}}
 
 ## Using Vaultwarden

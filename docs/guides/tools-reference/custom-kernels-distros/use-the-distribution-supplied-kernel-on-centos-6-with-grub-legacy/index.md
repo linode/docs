@@ -15,7 +15,7 @@ deprecated: true
 
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/products/platform/get-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 {{< note >}}
 This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) guide.
@@ -64,7 +64,7 @@ title CentOS 6
 {{< /file >}}
 
 
-5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#edit-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
+5.  In the Linode Manager, edit your Linode's [configuration profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance#edit-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
 
 6.  Make sure the root device is specified as **/dev/sda**, and click **Save Profile** at the bottom of the page to confirm your changes.
 

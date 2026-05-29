@@ -66,7 +66,7 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 The Ant Media Server will deploy with an administrator account preconfigured using the email entered in the `email address` UDF on deployment. The generated password can be found in `/home/$USERNAME/.credentials`, along with the sudo user password.
 {{< /note >}}
 
-1.  Using [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username.
+1.  Using [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](/docs/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username.
 
     ```command
     cat /home/$USERNAME/.credentials
@@ -79,7 +79,7 @@ The Ant Media Server will deploy with an administrator account preconfigured usi
     Ant Media Server Password: 79KP106i3AxW8YOmaWA7FNVo
     ```
 
-1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
 1.  Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log in to the Ant Media Dashboard.
 

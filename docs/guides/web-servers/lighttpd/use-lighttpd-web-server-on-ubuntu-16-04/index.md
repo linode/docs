@@ -32,9 +32,9 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 ## Before You Begin
 
-1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
+1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance), setting your Linode's hostname and timezone.
 
-1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure-lighttpd) to use an alternate port until it's configured properly.
 
@@ -130,7 +130,7 @@ simple-vhost.default-host = "example.com"
     -   If a request is made for the URL `exampleA.com`, content is served from `/var/www/html/exampleA.com/htdocs`.
     -   If a request is made for a URL which resolves to the server, but does not have a directory, content is served from `/var/www/html/example.com/htdocs`, because `example.com` is the default host.
 
-    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](/docs/products/networking/dns-manager/) for any subdomains you plan to use.
+    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) for any subdomains you plan to use.
 
 1.  Restart the web server again to reload changes:
 

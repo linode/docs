@@ -35,7 +35,7 @@ marketplace_app_name: "Haltdos Community WAF"
 
 ### Accessing Haltdos Community WAF
 
-1. Open your web browser and navigate to `https://[ip-address]:9000/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `https://[ip-address]:9000/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
     {{< note type="warning" >}}
     Haltdos uses a self-signed TLS/SSL certificate. It is likely that your web browser will display a security warning. You need to accept this risk and bypass the warning to continue.

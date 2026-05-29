@@ -15,7 +15,7 @@ The basic premise of load balancing is "sharing the work". This guide explores w
 
 ## What Is Load Balancing?
 
-Load balancing is the process of distributing client requests among multiple servers. Originally, load balancers were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/guides/configure/) perform the same role with cloud-based servers.
+Load balancing is the process of distributing client requests among multiple servers. Originally, load balancers were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers) perform the same role with cloud-based servers.
 
 Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion.
 

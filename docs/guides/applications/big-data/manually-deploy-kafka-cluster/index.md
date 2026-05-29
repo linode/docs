@@ -36,7 +36,7 @@ The following software and components must be installed and configured on your l
 
 -   [Python](https://www.python.org/downloads/) version: > v3.11
 -   The [venv](https://docs.python.org/3/library/venv.html) Python module
--   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
+-   A [Linode API access token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 -   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
 -   The [Git](https://git-scm.com/) utility
 

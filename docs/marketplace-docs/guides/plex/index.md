@@ -16,7 +16,7 @@ marketplace_app_id: 662119
 marketplace_app_name: "Plex Media Server"
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Quick Deploy App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
+[Plex](https://www.plex.tv/) is a feature-rich streaming platform that lets you organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Quick Deploy App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) service with this app.
 
 ## Why Use Plex Media Server
 
@@ -88,13 +88,13 @@ You can now access [uploaded media](#uploading-media) and manage your Plex Serve
 
 ### (Optional) Connecting a Linode Block Storage Volume
 
-If your media collection is larger than the space available from your Linode plan, [Block Storage](/docs/products/storage/block-storage/) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
+If your media collection is larger than the space available from your Linode plan, [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) is a convenient solution. This section outlines the steps for creating and connecting a Block Storage Volume for use with your Plex Server.
 
 {{< note >}}
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
 {{< /note >}}
 
-1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you don't have one already prepared.
+1.  [View, Create, and Delete Block Storage Volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes) if you don't have one already prepared.
 
 1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-marketplace-app-options).
 
@@ -147,7 +147,7 @@ This section directs you to run commands either on your Plex Server Linode throu
 
         mkdir ~/plex/media/movies
 
-1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Plex Server Linode:
+1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of your Plex Server Linode:
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 

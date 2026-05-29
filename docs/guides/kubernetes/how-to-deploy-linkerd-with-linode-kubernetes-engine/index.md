@@ -39,7 +39,7 @@ This guide provides instructions to:
 {{< note type="alert" >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /note >}}
 
 ## Before You Begin
@@ -48,7 +48,7 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) to create and connect to an LKE cluster.
 
 {{< note >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.

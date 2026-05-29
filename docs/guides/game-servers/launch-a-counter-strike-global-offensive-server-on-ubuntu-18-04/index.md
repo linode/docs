@@ -28,7 +28,7 @@ relations:
 
 ## Before You Begin
 
-1.  [Create a Linode](/docs/products/compute/compute-instances/guides/create/) running Ubuntu 18.04.
+1.  [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) running Ubuntu 18.04.
 
 1.  Create a [Steam](http://store.steampowered.com) account if you do not have one, and download [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/) to your computer.
 

@@ -122,4 +122,4 @@ The output for the above command only lists information for the module from the 
 
 ## Conclusion
 
-Whenever you need information about a particular Linux kernel module, `lsmod` and `modinfo` are commands you can rely on. Using the combination of `lsmod` and `modinfo`, you can gather plenty of details for each available module. If you're looking for more information on managing your Linux kernel, check out our [Managing the Kernel on a Linode](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide.
+Whenever you need information about a particular Linux kernel module, `lsmod` and `modinfo` are commands you can rely on. Using the combination of `lsmod` and `modinfo`, you can gather plenty of details for each available module. If you're looking for more information on managing your Linux kernel, check out our [Managing the Kernel on a Linode](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance) guide.

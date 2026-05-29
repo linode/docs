@@ -16,7 +16,7 @@ aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-s
 image: deploy-wordpress-using-terraform-linode-stackscripts.png
 ---
 
-Linode's Terraform provider supports [StackScripts](/docs/products/tools/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux distribution images or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
+Linode's Terraform provider supports [StackScripts](https://techdocs.akamai.com/cloud-computing/docs/stackscripts). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux distribution images or on any of your [saved custom images](https://techdocs.akamai.com/cloud-computing/docs/images). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
 
 This guide covers how to use a Community StackScript to deploy WordPress on a Compute Instance using Terraform.
 
@@ -34,9 +34,9 @@ Following this guide results in the creation of billable resources on your accou
     The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or greater. See [Terraform's developer documentation](https://developer.hashicorp.com/terraform/language/v1.1.x/upgrade-guides/1-0) for guidance on upgrading to version 1.0.
     {{< /note >}}
 
-1. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain one.
+1. Terraform requires an API access token. Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) guide to obtain one.
 
-1. If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) to your domain at your domain name's registrar.
+1. If you have not already, [assign Linode's name servers](https://techdocs.akamai.com/cloud-computing/docs/configure-your-domains-authoritative-name-servers) to your domain at your domain name's registrar.
 
 1. Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -145,7 +145,7 @@ Let's take a closer look at each block in the configuration file:
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
     {{< note >}}
-    If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key).
+    If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#upload-ssh-key).
     {{< /note >}}
 
 1. The `random_string` resource can be used to create a random string of 32 characters. The `linode_instance` resource will use it to create a root user password:
@@ -186,7 +186,7 @@ Let's take a closer look at each block in the configuration file:
 
     - To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
-        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
+        StackScripts support user defined data. A StackScript can use the [`UDF` tag](https://techdocs.akamai.com/cloud-computing/docs/write-a-custom-script-for-use-with-stackscripts#declare-user-defined-fields-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
         The StackScript is responsible for installing WordPress on your Compute Instance along with all other requirements, such as installing Apache, configuring Apache, configuring the Virtual Hosts file, and installing MySQL.
 
@@ -220,7 +220,7 @@ Let's take a closer look at each block in the configuration file:
     If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
     {{< /note >}}
 
-    The `linode_domain` resource creates a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) for your domain.
+    The `linode_domain` resource creates a [domain zone](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) for your domain.
 
     Each `linode_domain_record` resource retrieves the `linode_domain` resource's ID and assigns it to that record's `domain_id` argument. Each record's `target` argument retrieves the IP address from the Linode instance. Every `linode_instance` resource exposes [several attributes](https://www.terraform.io/docs/providers/linode/r/instance.html#attributes), including a Compute Instance's IPv4 address.
 

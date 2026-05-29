@@ -31,7 +31,7 @@ This guide explains how to install the latest, stable, and prepackaged version o
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
 {{< note >}}
-This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account.
+This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account.
 {{< /note >}}
 
 ## How to Install Git on Mac OSX

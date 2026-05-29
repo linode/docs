@@ -25,7 +25,7 @@ Typically, SurrealDB uses either in-memory or in-file storage, but SurrealDB als
 
 To get started, you need to have a Kubernetes cluster up and running, along with `kubectl` or a similar tool set up to manage the cluster. This tutorial provides commands specifically for `kubectl`.
 
-Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
+Linode offers the Linode Kubernetes Engine (LKE) as a convenient way to get started. You can deploy a cluster directly from the Cloud Manager. Our guide [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) includes steps for deploying a new cluster and setting up a `kubectl` instance to manage it.
 
 The rest of this tutorial assumes you have a Kubernetes cluster up and running and configured for management with a local `kubectl` instance. The examples in this tutorial also assume that your cluster has three nodes, so adjust accordingly throughout if your cluster differs.
 

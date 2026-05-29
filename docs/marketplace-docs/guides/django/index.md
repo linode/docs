@@ -53,7 +53,7 @@ marketplace_app_name: "Django"
 The Django Quick Deploy App will assign `django_sample` as the [Django project name](https://docs.djangoproject.com/en/5.0/intro/tutorial01/#creating-a-project) at `/var/www/django_app/django_sample/`.
 {{< /note >}}
 
-1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
     ![View your Django site's test page.](django-test-page.png "View your Django site's test page")
 

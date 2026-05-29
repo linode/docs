@@ -26,9 +26,9 @@ deprecated_link: uptime/monitoring/install-graphite-and-grafana/
 
 ### Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
+2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 

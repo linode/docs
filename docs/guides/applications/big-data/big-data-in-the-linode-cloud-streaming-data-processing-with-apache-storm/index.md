@@ -30,7 +30,7 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) service with this setup.
 
 {{< note type="alert" >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
@@ -78,7 +78,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/products/platform/accounts/guides/manage-api-tokens/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
@@ -253,7 +253,7 @@ Creating a new Storm cluster involves four main steps, some of which are necessa
 
 ### Create a Zookeeper Image
 
-A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](/docs/products/tools/images/) The benefits of using a Zookeeper image include:
+A *Zookeeper image* is a master disk image with all necessary Zookeeper software and libraries installed. We'll create our using [Linode Images](https://techdocs.akamai.com/cloud-computing/docs/images) The benefits of using a Zookeeper image include:
 
 -  Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors

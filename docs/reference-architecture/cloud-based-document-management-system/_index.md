@@ -16,9 +16,9 @@ This reference architecture provides guidance on IaaS primitives, open source so
 
 This deployment is using the [Mayan Electronic Document Management System](https://mayan-edms.com/) (EDMS) – an open source web application for document collaboration, tamper proof signing, transformations, and more. Mayan EDMS also comes with a REST API for integrations with 3rd party software. For this example, we are using the recommended [Docker Compose installation](https://docs.mayan-edms.com/chapters/docker/install_docker_compose.html#docker-compose-install), which the Mayan EDMS project recommends for most cases, with two exceptions. This architecture decouples the [PostgreSQL](https://www.postgresql.org/) database layer to achieve separation of concerns and architect for high availability; and employs [NGINX](https://www.nginx.com/) as reverse proxies to the application, using [Certbot](https://certbot.eff.org/) with the [dns_linode plugin](https://certbot-dns-linode.readthedocs.io/en/stable/) for SSL/TLS certificate management. [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) provides bi-directional synchronization of the Let’s Encrypt directories so that both application nodes contain the same certificate and private key. Unison also synchronizes the Docker volume directories between the two instances.
 
-A [NodeBalancer](/docs/products/networking/nodebalancers/) is configured with the TCP protocol to pass traffic through to the backend servers for SSL/TLS termination, and with Proxy Protocol V1 so that NGINX can log the originating client IP addresses. Linode [Object Storage](/docs/products/storage/object-storage/) is the storage backend for Mayan EDNS documents, as well as for routine database backups.
+A [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer) is configured with the TCP protocol to pass traffic through to the backend servers for SSL/TLS termination, and with Proxy Protocol V1 so that NGINX can log the originating client IP addresses. Linode [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) is the storage backend for Mayan EDNS documents, as well as for routine database backups.
 
-All nodes are secured with [Cloud Firewalls](/docs/products/networking/cloud-firewall/) for protection from the outside world, and communicate internally via private [VLAN](/docs/products/networking/vlans/). The application servers connect to the databases via a shared floating VLAN IP address, with [Keepalived](/docs/guides/ip-failover-legacy-keepalived/) to facilitate failover.
+All nodes are secured with [Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) for protection from the outside world, and communicate internally via private [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan). The application servers connect to the databases via a shared floating VLAN IP address, with [Keepalived](/docs/guides/ip-failover-legacy-keepalived/) to facilitate failover.
 
 The PostgreSQL databases are implemented as an active-active cluster, using [Bucardo](https://bucardo.org/Bucardo/) for bi-directional replication. A backup script dumps the Mayan database, compresses the dump file, and then leverages [Rclone](https://rclone.org/) to upload the timestamped archive to the Object Storage bucket.
 
@@ -37,11 +37,11 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
 - [Unison](https://www.cis.upenn.edu/~bcpierce/unison/)
 - [Rclone](https://rclone.org/)
 - **Linode Services**:
-    - [Compute](/docs/products/compute/)
-    - [Object Storage](/docs/products/storage/object-storage/)
-    - [VLAN](/docs/products/networking/vlans/)
-    - [NodeBalancer](/docs/products/networking/nodebalancers/)
-    - [DNS Manager](/docs/products/networking/dns-manager/)
+    - [Compute](https://techdocs.akamai.com/cloud-computing/docs/compute-instance)
+    - [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)
+    - [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan)
+    - [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)
+    - [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)
     - [API](https://techdocs.akamai.com/linode-api/reference/api)
 
 ## Business Benefits

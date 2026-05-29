@@ -22,7 +22,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Ubuntu 10.04 LTS (Lucid). Please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, it is recommended that you do so prior to following these instructions.
 
 ## Prerequisites
 

@@ -22,25 +22,25 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 {{< note type="alert" >}}
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
 
-Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
+Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service) can't mount encrypted disks.
 
-Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/products/platform/get-started/guides/support/).
+Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support).
 {{< /note >}}
 
 ## Before you Begin
 
 1.  Create a Linode in the data center of your choice.
-2.  [Delete the disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#delete-a-disk) in the Linode that you created.
+2.  [Delete the disks](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#delete-a-disk) in the Linode that you created.
 3.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
-1.  [Create two raw disk images](/docs/products/compute/compute-instances/guides/disks-and-storage/#create-a-disk) from the Linode's Dashboard:
+1.  [Create two raw disk images](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#create-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 300MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. This will take up the rest of the free space available on your Linode.
 
-2.  [Create two configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#create-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2.  [Create two configuration profiles](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance#create-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
     **Installer profile**
 
@@ -57,7 +57,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
     - /dev/sda: *Boot* disk image.
     - root / boot device: Standard /dev/sda
 
-3.  Boot into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+3.  Boot into [Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
@@ -68,7 +68,7 @@ As an additional security step, you can use the keys provided in the same direct
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
-5. Reboot into your *Installer* configuration profile, and open the [Glish](/docs/products/compute/compute-instances/guides/glish/) graphical console from your Linode's Dashboard.
+5. Reboot into your *Installer* configuration profile, and open the [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) graphical console from your Linode's Dashboard.
 
 ## Install the Operating System
 
@@ -204,4 +204,4 @@ Your output will be similar to this:
     mode:    read/write
 
 
-You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to begin configuring your Linode.
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to begin configuring your Linode.

@@ -44,7 +44,7 @@ Webmin has been removed from Quick Deploy Apps and can no longer be deployed. Th
 ### Webmin Options
 
 {{% content "marketplace-limited-user-fields-shortguide" %}}
-- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
+- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
 
@@ -64,8 +64,8 @@ Webmin is now installed and ready to use.
 
 1.  If you filled out the optional Webmin configuration fields:
 
-    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to your new domain name.
+    - In Cloud Manager's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - [Configure rDNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.
 

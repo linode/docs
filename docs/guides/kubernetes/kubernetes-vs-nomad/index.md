@@ -104,7 +104,7 @@ Despite the similarities, Kubernetes and Nomad have different features to recomm
 
 -   **Flexibility**: Nomad not only supports containerized applications, but also standalone applications and frameworks ranging from Docker to Java. Nomad can also operate on a wider range of operating systems, whereas Kubernetes focuses solely on Linux.
 
--   **Supporting Platforms**: While both Nomad and Kubernetes are cloud-agnostic, Kubernetes has the undeniable advantage of supporting cloud platforms. Google, Amazon, and IBM, for instance, all offer Kubernetes services. Linode has its own [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/guides/create-lke-cluster) that provides a prepared Kubernetes cluster.
+-   **Supporting Platforms**: While both Nomad and Kubernetes are cloud-agnostic, Kubernetes has the undeniable advantage of supporting cloud platforms. Google, Amazon, and IBM, for instance, all offer Kubernetes services. Linode has its own [Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) that provides a prepared Kubernetes cluster.
 
 ## Which Should You Use: Kubernetes or Nomad?
 

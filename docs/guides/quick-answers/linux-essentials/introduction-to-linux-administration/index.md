@@ -32,7 +32,7 @@ Making sure that all important data is backed up is one of a system administrato
 
 ## Monitoring and Diagnostic Tools
 
-The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/products/tools/longview/get-started/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
+The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-longview) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
 
 Simple tools like `ping` and [MTR](/docs/guides/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/guides/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
 
@@ -62,7 +62,7 @@ For larger-scale projects, orchestration tools can be very helpful. These tools 
 
 ### Load Balancing
 
-In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
+In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
 
 ### Set Up an Email Server
 

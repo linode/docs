@@ -20,7 +20,7 @@ In this guide, you can see how to install and get started using the Consul servi
 
 ## Before You Begin
 
-- Follow the [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/) guide to create a Kubernetes cluster using LKE.
+- Follow the [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to create a Kubernetes cluster using LKE.
 - Make sure you install `kubectl` on your local machine and download your cluster's `kubeconfig` file.
 
 ## Setting Up Consul

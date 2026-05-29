@@ -85,7 +85,7 @@ Root or sudo permissions must be available to install Apache Subversion.
 
         systemctl start apache2
 
-1. To verify that the installation was successful, open a browser window and enter the [Linode instance’s IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), `http://<<host IP address>>:80`.
+1. To verify that the installation was successful, open a browser window and enter the [Linode instance’s IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance), `http://<<host IP address>>:80`.
 
 1. If the instance is not accessible, the instance hosting Apache might require opening firewall ports. To enable `ufw` to let traffic flow between interfaces and the Apache daemon, you must instruct `ufw` to open ports for Apache.
 
@@ -241,6 +241,6 @@ A complete and in-depth discussion of Subversion commands, version control strat
 
 The [SVN Book](https://svnbook.red-bean.com/) is a must-read for those who manage projects using Apache Subversion. There are many tools that support the use of Subversion, including GUIs like [TortoiseSVN](https://tortoisesvn.net/).
 
-You should make sure to back up your Apache Subversion repository at reasonable intervals. One way to do so is by backing up your Subversion server using the [Linode Backup service](/docs/products/storage/backups/).
+You should make sure to back up your Apache Subversion repository at reasonable intervals. One way to do so is by backing up your Subversion server using the [Linode Backup service](https://techdocs.akamai.com/cloud-computing/docs/backup-service).
 
 Refer to our [How to Install and Use the Subversion CLI Client](/docs/guides/subversion-svn-tutorial) for client installation steps, along with the essential commands to support a Subversion workflow.

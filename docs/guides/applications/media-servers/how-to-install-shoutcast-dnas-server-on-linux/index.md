@@ -19,7 +19,7 @@ dedicated_cpu_link: true
 
 ![How to Install A SHOUTcast DNAS Server on Linux](install-shoutcast-dnas-title.jpg "How to Install A SHOUTcast DNAS Server on Linux title graphic")
 
-SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
+SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) service with this setup.
 
 {{< note >}}
 Be sure to [check the broadcast tools download page](http://www.shoutcast.com/broadcast-tools) for the newest version of SHOUTcast.

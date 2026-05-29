@@ -21,7 +21,7 @@ deprecated: true
 
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
-If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/products/compute/compute-instances/faqs/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
+If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
 
 ## Installing Fetchmail
 

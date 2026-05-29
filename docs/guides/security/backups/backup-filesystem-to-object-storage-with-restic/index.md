@@ -28,13 +28,13 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Before You Begin
 
-1. Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+1. Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/get-started/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/products/storage/object-storage/get-started/) guide if you do not already have one.
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage#create-a-bucket) section of the [How to Use Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide if you do not already have one.
 
     {{% content "object-storage-cancellation-shortguide" %}}
 
-1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
+1.  [Generate Object Storage access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys).
 
 1.  Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 

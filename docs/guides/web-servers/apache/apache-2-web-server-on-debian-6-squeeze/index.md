@@ -24,8 +24,8 @@ Note that if you're looking to install a full LAMP stack, you may want to consid
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -34,7 +34,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 ## Install Apache 2
 

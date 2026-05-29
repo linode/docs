@@ -38,19 +38,19 @@ The setup in this guide requires the following *minimal* Linode specifications:
 
 * A Shared **1GB** Linode (Nanode) to install the Odoo 13 web application
 
-Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/products/compute/compute-instances/guides/resize/) to a higher plan later on.
+Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance) to a higher plan later on.
 
 {{< note >}}
-If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
+If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs).
 {{< /note >}}
 
 All examples in this guide are for Debian 10. If you plan to use a different operating system, adapt the commands as necessary.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide. Create the Linodes described in the previous [System Requirements](#system-requirements) section of the current guide. Complete the steps for setting your Linodes' hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. Create the Linodes described in the previous [System Requirements](#system-requirements) section of the current guide. Complete the steps for setting your Linodes' hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
     {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -121,12 +121,12 @@ In order to simplify communication between Linodes, set hostnames for each serve
 | Odoo 13  | odoo | odoo.yourdomain.com |
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
-On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your addresses.
+On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide to locate your addresses.
 
 {{< note >}}
-A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
+A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
-Linode can configure your new private address for you through the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
+Linode can configure your new private address for you through the [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
 {{< /note >}}
 
 - **PostgreSQL database server**:

@@ -21,7 +21,7 @@ Ubuntu 20.04 is a Long-Term Support (LTS) release that is supported by Canonical
 {{< note type="alert" >}}
 Inline distribution upgrades can yield unpredictable results. Before continuing, read through [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options. This guide also provides instructions to perform a clean install of the latest distribution version.
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 {{< /note >}}
 
@@ -49,11 +49,11 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) before upgrading to Ubuntu 20.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service), we recommend that you [take a manual snapshot](https://techdocs.akamai.com/cloud-computing/docs/take-a-manual-snapshot) before upgrading to Ubuntu 20.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance#apply-kernel-updates) for more information.
 
 ### Stop Services
 

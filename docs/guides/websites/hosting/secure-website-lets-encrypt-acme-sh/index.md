@@ -20,15 +20,15 @@ external_resources:
 
 - acme.sh supports [more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) than other similar clients.
 
-If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/products/networking/dns-manager/) as the domain ownership verification.
+If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) as the domain ownership verification.
 
 ## Before You Begin
 
-1. Deploy a Linode by following the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+1. Deploy a Linode by following the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
 
 1. Ensure that either NGINX or the Apache web server is installed and pre-configured on your distro by following our [web server documentation](/docs/guides/web-servers/). Ensure that port 443 is open on your firewall to allow for SSL/TLS resolution.
 
-1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
+1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
 
 ## Install acme.sh
 
@@ -87,7 +87,7 @@ v2.8.7
 
 ## Create an API token
 
-acme.sh can use the [Linode v4 API](https://techdocs.akamai.com/linode-api/reference/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
+acme.sh can use the [Linode v4 API](https://techdocs.akamai.com/linode-api/reference/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) product documentation to create a Linode API v4 token.
 
 {{< note >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
@@ -95,7 +95,7 @@ Ensure the token you create has **Read/Write** access to **Domains**.
 
 ## Issue a certificate
 
-1. [Connect to your Linode](/docs/products/compute/compute-instances/get-started/#connect-to-the-instance) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
+1. [Connect to your Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances#connect-to-the-instance) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
 
         export LINODE_V4_API_KEY="your-api-token-here"
 

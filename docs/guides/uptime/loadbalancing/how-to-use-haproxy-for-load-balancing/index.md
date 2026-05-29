@@ -26,13 +26,13 @@ This guide will describe the installation and configuration of HAProxy for load-
 
 ## Before You Begin
 
-1.  This guide will use `sudo` for commands that require administrative privileges. To get started, follow the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to set up a standard user account, secure SSH access, and remove any unnecessary network services.
+1.  This guide will use `sudo` for commands that require administrative privileges. To get started, follow the steps in our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to set up a standard user account, secure SSH access, and remove any unnecessary network services.
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. To set up private IPs and enable internal networking between Linodes, follow the steps in our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
+3.  This guide uses private IP addresses in the example configurations. To set up private IPs and enable internal networking between Linodes, follow the steps in our [Linux Static IP Configuration](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance) guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands requiring administrative privileges are prefixed with `sudo`. Refer to our [Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on how to use `sudo`.

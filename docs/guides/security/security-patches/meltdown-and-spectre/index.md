@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
-  - '[How to Install Software Updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates)'
+  - '[How to Install Software Updates](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#perform-system-updates)'
   - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]

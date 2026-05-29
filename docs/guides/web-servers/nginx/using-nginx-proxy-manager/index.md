@@ -20,9 +20,9 @@ This tutorial introduces the Nginx Proxy Manager and illustrates how to start us
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -240,7 +240,7 @@ The demonstration here leverages useful features of the Nginx Proxy Manager. Fir
 
 You must create at least one DNS record for a domain name to proxy your service to. The rest of this tutorial uses `example.com` as the domain, replace that in the example commands with your actual domain name.
 
-While Linode does not provide domain name registration, you can use the Linode DNS manager to manage DNS records for a domain name. Refer to our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) for details on these steps if you are using the Linode DNS Manager.
+While Linode does not provide domain name registration, you can use the Linode DNS manager to manage DNS records for a domain name. Refer to our guide [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) for details on these steps if you are using the Linode DNS Manager.
 
 The rest of this tutorial assumes that you have done the following:
 

@@ -63,13 +63,13 @@ Take a look at our [Configure a Firewall with Firewalld](/docs/guides/introducti
 
 ## Managed Cloud Firewall Service
 
-Cloud firewall services, like Akamai's [Cloud Firewall](/docs/products/networking/cloud-firewall/), offer a different approach to cloud security and have some advantages over local software firewalls. For instance, Akamai's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
+Cloud firewall services, like Akamai's [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall), offer a different approach to cloud security and have some advantages over local software firewalls. For instance, Akamai's Cloud Firewall can configure and manage firewall rules across multiple cloud instances.
 
 That said, cloud firewalls often do not cover all of the features of software firewalls. Typically, a software firewall can offer more configuration options and advanced control of network traffic.
 
 One solution — cloud or software firewall — is likely to better fit your needs than the other. But often you can get the best results by using both together. As an example, you can use a cloud firewall to apply "absolute" network rules across multiple cloud instances and prevent unwanted traffic from ever reaching your servers. Then, use a software firewall to fine-tune your network filtering on each server.
 
-Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/) guide.
+Learn more about cloud firewalls and how they compare to software firewalls in our [Comparing Cloud Firewalls to Linux Firewall Software](https://techdocs.akamai.com/cloud-computing/docs/comparing-cloud-firewalls-to-linux-firewall-software) guide.
 
 ## Basic Usage Comparison
 

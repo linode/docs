@@ -26,13 +26,13 @@ You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.
 
 ## Before You Begin
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide, selecting a Linux distribution that's supported by cPanel. This guide covers AlmaLinux 8, Rocky Linux 8, and CentOS 7 (though cPanel does not recommend using CentOS 7 for new installations). While Ubuntu 20.04 LTS is also supported, it is outside the scope of this guide. Review the [System Requirements](https://docs.cpanel.net/installation-guide/system-requirements/) page within cPanel's documentation for a current list of supported operating systems.
+1.  Follow Linode's [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide, selecting a Linux distribution that's supported by cPanel. This guide covers AlmaLinux 8, Rocky Linux 8, and CentOS 7 (though cPanel does not recommend using CentOS 7 for new installations). While Ubuntu 20.04 LTS is also supported, it is outside the scope of this guide. Review the [System Requirements](https://docs.cpanel.net/installation-guide/system-requirements/) page within cPanel's documentation for a current list of supported operating systems.
 
-1.  Use the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
+1.  Use the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a limited Linux user with `sudo` privileges.
 
 ## DNS Prerequisites
 
-cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](/docs/products/networking/dns-manager/guides/common-dns-configurations/) because it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
+cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations) because it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
 
 Should you wish to provide DNS services, you'll need to add *A records* for your nameservers in your WHM as described in the [DNS on cPanel guide](/docs/guides/set-up-dns-services-on-cpanel/#nameserver-selection).
 
@@ -40,7 +40,7 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Kernel Prerequisites
 
-CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide for instructions on switching to the upstream kernel.
+CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance) guide for instructions on switching to the upstream kernel.
 
 ## Install cPanel
 

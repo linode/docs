@@ -54,9 +54,9 @@ First, you need to choose the right flavor of Quay for the kind of project you w
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. Use a minimum of a Linode 4 GB plan to create a Quay setup on CentOS Stream. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. Use a minimum of a Linode 4 GB plan to create a Quay setup on CentOS Stream. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  This guide used Docker to run Quay containers. To install Docker, follow the instructions in our [Installing and Using Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/) guide through the *Managing Docker with a Non-Root User* section. Verify that Docker is ready for use with the `docker version` command. This guide uses [Docker Community Edition (CE) 24.0.7](https://www.ibm.com/docs/en/db2/11.5?topic=docker-downloading-installing-editions), but newer versions and the Docker Enterprise Edition (EE) should work.
 

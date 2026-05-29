@@ -46,7 +46,7 @@ There are two considerations when creating a new Linode: which data center the L
 
     -  To determine which plan to choose, review the [Linode Pricing page](http://www.linode.com/pricing#all). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current hosting provider.
 
-        CPU and RAM allocations are also important since a service with a higher workload/higher traffic requires more of each. If you're not sure what your workload requires, start with a smaller Linode and then [resize your plan](/docs/products/compute/compute-instances/guides/resize/) up or down as needed.
+        CPU and RAM allocations are also important since a service with a higher workload/higher traffic requires more of each. If you're not sure what your workload requires, start with a smaller Linode and then [resize your plan](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance) up or down as needed.
 
 ### Deploy Linux
 
@@ -54,7 +54,7 @@ If you know which Linux distribution your current host uses, deploy that to the 
 
 If your host offers a shared environment and you are not sure which Linux distribution is being used, then you can select any new Linux image. The most commonly used distributions on Linode are Ubuntu, Debian, and CentOS. Most Linux distributions should support the software your service uses, but a few software packages are better-suited to specific distributions. Review Linode's [Guides & Tutorials](/docs/) to see which guides have been written for the software and distributions you're interested in.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/products/platform/get-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide once you have deployed your new image.
 
 ### Install Software
 
@@ -104,9 +104,9 @@ When you have finished testing, move on to the last step in migrating: updating 
 
 ## Migrating DNS Records
 
-To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). There are two options for moving your DNS records:
+To direct your visitors to your Linode, associate your domain with [your new Linode's IP](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance). There are two options for moving your DNS records:
 
--  Use Linode's fast, stable [DNS hosting](/docs/products/networking/dns-manager/) which is free as long as you have one active Linode on your account.
+-  Use Linode's fast, stable [DNS hosting](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) which is free as long as you have one active Linode on your account.
 
 -  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
 
@@ -118,7 +118,7 @@ If you'd like to continue with your current nameservers, update all of the DNS r
 
 {{% content "update-dns-at-common-name-server-authorities" %}}
 
-After DNS propagation has finished, [set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
+After DNS propagation has finished, [set reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) for your domain. This is especially important if you are running a mail server.
 
 ## Next Steps
 

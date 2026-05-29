@@ -31,9 +31,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Before You Begin
 
-1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
+1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f

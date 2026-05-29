@@ -61,7 +61,7 @@ Vitess features fall into 5 major areas.
 
 ## Prerequisites
 
-Before you install Vitess on LKE, you need to create a basic Kubernetes cluster. Follow the generic instructions in our [LKE getting started guide](/docs/products/compute/kubernetes/get-started/). You also need to install `kubectl`, the `mysql client`, and `vtctldclient` locally.
+Before you install Vitess on LKE, you need to create a basic Kubernetes cluster. Follow the generic instructions in our [LKE getting started guide](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine). You also need to install `kubectl`, the `mysql client`, and `vtctldclient` locally.
 
 ### Create an LKE (Kubernetes) Cluster
 

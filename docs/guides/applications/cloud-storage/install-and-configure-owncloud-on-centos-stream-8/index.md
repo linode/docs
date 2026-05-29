@@ -48,12 +48,12 @@ To automatically install ownCloud on a Compute Instance, consider deploying [own
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
+If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
 {{< /note >}}
 
 ## Install ownCloud
@@ -83,7 +83,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
     sudo firewall-cmd --reload
     ```
 
-1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
+1. Ensure you can reach the Apache server. Open a web browser, and enter in your [Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance). For example, enter in `http://192.0.2.0` and replace the IP address with your own. You should see the Apache welcome page.
 
 #### Install MariaDB
 
@@ -228,7 +228,7 @@ Apache requires a [virtual host configuration file](https://httpd.apache.org/doc
     sudo nano /etc/httpd/conf.d/owncloud.conf
     ```
 
-1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1. Paste the following text into the new file. Replace mentions of `example.com` with your own domain name or your [Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance):
 
     ```file {title="etc/httpd/conf.d/owncloud.conf"}
     Alias /owncloud "/var/www/html/owncloud/"

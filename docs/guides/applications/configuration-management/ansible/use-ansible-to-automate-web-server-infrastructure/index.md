@@ -25,13 +25,13 @@ In this guide you:
 {{< note type="alert" >}}
 The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to delete them once you have finished this how-to guide.
 
-If you remove these resources afterward, you are only [billed for the time](/docs/products/platform/billing/) the resources were present on your account.
+If you remove these resources afterward, you are only [billed for the time](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works) the resources were present on your account.
 {{< /note >}}
 
 ## Prerequisites
 
 - Intermediate understanding of the Bash shell and its utilities.
-- Install the [Linode CLI](/docs/products/tools/cli/guides/install/) or you can use the [Linode Cloud Manager](https://cloud.linode.com/linodes).
+- Install the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) or you can use the [Linode Cloud Manager](https://cloud.linode.com/linodes).
   - Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
 - Create a new directory to work from. For example, you can name it, **"Ansible_Infra"**.
 
@@ -44,7 +44,7 @@ The steps in this guide are written for non-root users. Commands that require el
 ### Create One Ansible Control Node and Four Managed Nodes
 
 {{< note >}}
-This section requires that you have the [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured on your computer.
+This section requires that you have the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) installed and configured on your computer.
 {{< /note >}}
 
 On your local machine, set up an environment variable to temporarily store a password. This environment variable will be sued in later steps in a `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
@@ -383,7 +383,7 @@ Ansible playbooks are what makes Ansible powerful software. The syntax of the ta
 Using `scp`, the above files are sent to the Ansible control node. You can then log into the control node and execute the control node script, `ansibleCN_setup.sh`.
 
 {{< note >}}
-Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) obtained from either the Linode CLI or Cloud Manager.
+Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
 {{< note type="alert" >}}

@@ -86,7 +86,7 @@ These IP restrictions can be managed with different solutions on different platf
 
 - Use the Windows firewall (or any dedicate hardware firewall) on Microsoft platforms.
 
-- You can also [add the free Linode Cloud Firewalls service](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) to a Linode Compute Instance that hosts SQL Server.
+- You can also [add the free Linode Cloud Firewalls service](https://techdocs.akamai.com/cloud-computing/docs/create-a-cloud-firewall) to a Linode Compute Instance that hosts SQL Server.
 
 ## SQL Server Patches (Service Packs)
 

@@ -56,7 +56,7 @@ There are several third-party mail services available:
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
 - [Microsoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -165,7 +165,7 @@ Each MX record has a:
 | ------------ |:--------:|:----:|:----:| ----- | ----- |
 | example.com  | 86400  | MX | 10 | mail.example.com |
 
-When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
+When using Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
 
 To configure an MX record for a subdomain email address, use the "Subdomain" field when setting the MX record for your domain. For example, the address `user@sub.example.com` requires an MX record with a "Subdomain" value of `sub` under the `example.com` domain.
 
@@ -187,11 +187,11 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your mail server's domain or subdomain.
+[Set reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 
@@ -240,7 +240,7 @@ Here are some of the typical mail ports:
 * `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
 * `465`: SMTP (should only be used for legacy support)
 
-If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for more information.
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for more information.
 
 ### Webmail
 

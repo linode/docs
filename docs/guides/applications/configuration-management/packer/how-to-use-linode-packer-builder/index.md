@@ -23,7 +23,7 @@ Packer *templates* store the configuration parameters used for building an image
 
 In Packer's ecosystem, [builders](https://www.packer.io/docs/builders) are responsible for building a system and generating an image from that system. Packer has multiple different types of builders, with each one being used to create images for a specific platform.
 
-The [Linode builder](https://developer.hashicorp.com/packer/integrations/linode/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](/docs/products/tools/images/) on your account that can be used for rapidly deploying new Linodes.
+The [Linode builder](https://developer.hashicorp.com/packer/integrations/linode/linode) integrates Packer with the Linode platform. This allows Packer to deploy a temporary Linode on your account (using an APIv4 token), configure the system on the Linode according to the parameters in the provided template file, and then create an image based on that Linode. Essentially, this is a convenient way to automatically create [Linode Images](https://techdocs.akamai.com/cloud-computing/docs/images) on your account that can be used for rapidly deploying new Linodes.
 
 ## Before You Begin
 
@@ -31,7 +31,7 @@ This guide will walk you through the process of installing Packer, creating a  t
 
 1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
-1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
+1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) section of the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started) guide if you do not already have one.
 
 1. *Optional:* Set a variable named `TOKEN` in your shell environment by running the following command. Replace *x* with your own API token.
 
@@ -81,7 +81,7 @@ packer plugins install github.com/linode/linode
 Now that Packer is installed, you can make a Packer [template](https://www.packer.io/docs/templates). A template is a file that contains the configurations needed to build a machine image. A template can be formatted in [JSON](https://www.packer.io/docs/templates/legacy_json_templates) or [HCL2](https://www.packer.io/docs/templates/hcl_templates) (Hashicorp Configuration Language). As of Packer v1.7.0, the HCL2 template format is preferred and, as such, will be used in the examples within this guide.
 
 {{< note >}}
-The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/products/platform/billing/) guide for details about how hourly billing works.
+The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works) guide for details about how hourly billing works.
 {{< /note >}}
 
 ### Creating the Template File
@@ -176,11 +176,11 @@ To learn how to securely store and use your API v4 token, see the [Vault](https:
 
 ## Deploying a Linode with the New Image
 
-Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed in a few ways:
+Once the Packer build process completes, a new [Custom Image](https://techdocs.akamai.com/cloud-computing/docs/images) will appear on your account. This image can be deployed in a few ways:
 
-- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
+- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/deploy-an-image-to-a-new-compute-instance) guide.
 
-- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/products/tools/cli/get-started/) guide. The [Linode Instances](/docs/products/tools/cli/guides/linode-instances/) guide provides example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
+- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) guide. The [Linode Instances](https://techdocs.akamai.com/cloud-computing/docs/linode-instances-commands) guide provides example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
 
       linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian10
 

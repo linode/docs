@@ -18,9 +18,9 @@ This reference architecture showcases a [Jenkins](https://www.jenkins.io/) CI/CD
 - [Jenkins](https://www.jenkins.io/)
 - [Terraform](https://www.terraform.io/)
 - **Linode Services**:
-    - [Compute](/docs/products/compute/dedicated-cpu/)
-    - [Firewall](/docs/products/networking/cloud-firewall/)
-    - [Object Storage](/docs/products/storage/object-storage/)
+    - [Compute](https://techdocs.akamai.com/cloud-computing/docs/dedicated-cpu-compute-instances)
+    - [Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall)
+    - [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)
 
 ## Business Benefits
 

@@ -53,7 +53,7 @@ To obtain the credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
     - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
@@ -68,7 +68,7 @@ This returns passwords that were automatically generated when the instance was d
 
 Once your new Compute Instance has been fully deployed, follow the instructions below to access your new Gitlab app.
 
-1. Log in to your Gitlab site by opening a web browser and entering either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. Log in to your Gitlab site by opening a web browser and entering either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing and setting the rDNS value.
 
     On the login screen, enter the following credentials:
 

@@ -39,7 +39,7 @@ marketplace_app_name: "CyberPanel"
 
 ### Access your CyberPanel App
 
-1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), and entering your Linode's root password when prompted:
+1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance), and entering your Linode's root password when prompted:
 
     ```command
     ssh root@192.0.2.1

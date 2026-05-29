@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
 bundles: ['debian-security', 'centos-security', 'network-security']
 external_resources:
- - '[Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)'
+ - '[Security Basics](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
@@ -334,7 +334,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/products/tools/longview/get-started/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-longview) or [Linode's NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
@@ -619,7 +619,7 @@ To verify the rules are applied and available after the system reboot use the co
 
 ## Network Lock-out
 
-When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/products/compute/compute-instances/guides/lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
+When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
 1.  Connect to the Linode Cloud Manager.
 2.  Select the Linode you wish to gain access to.

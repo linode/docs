@@ -97,7 +97,7 @@ You need to start by installing Jenkins on a central server. This central Jenkin
     sudo systemctl enable jenkins
     ```
 
-1. In a web browser, navigate to port `8080` on your system's public IP address. You may first need to open the port in your system's firewall, which you can learn how to do from our guide on [securing a Linode Compute instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
+1. In a web browser, navigate to port `8080` on your system's public IP address. You may first need to open the port in your system's firewall, which you can learn how to do from our guide on [securing a Linode Compute instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall).
 
 1. Follow the installation steps you are presented with. Select to **Install suggested plugins**, and complete the form to create an initial administrator user.
 
@@ -107,15 +107,15 @@ At this point, you have a Jenkins server up and running and ready to start using
 
 Part of the architecture covered in this tutorial has logs and build artifacts stored on Linode Object Storage. Object Storage provides an efficient and accessible way to backup artifacts from you CI/CD pipelines.
 
-To start, you need to have a Linode Object Storage bucket prepared to store your logs and artifacts. Our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide to do so.
+To start, you need to have a Linode Object Storage bucket prepared to store your logs and artifacts. Our [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide to do so.
 
 To follow along with the rest of the guide, perform these steps:
 
-1.  [Provision a Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket). When creating the bucket, you need to choose a cluster that it belongs to (under the **Region** menu). Take note of the cluster ID for the cluster you choose, which is displayed next to your **Region** menu selection. For example, if you chose the *Atlanta* region, your cluster ID is `us-southeast-1`.
+1.  [Provision a Linode Object Storage bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets#create-a-bucket). When creating the bucket, you need to choose a cluster that it belongs to (under the **Region** menu). Take note of the cluster ID for the cluster you choose, which is displayed next to your **Region** menu selection. For example, if you chose the *Atlanta* region, your cluster ID is `us-southeast-1`.
 
     The name of the bucket needs to be unique for the cluster it is created in, not only among the buckets on your account, but also among buckets from all other Object Storage users on other accounts.
 
-1.  [Generate an Object Storage access key](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key). The key should have **Limited Access** permissions. It should have read and write access to the bucket that you created. You need to save both the access key and secret access key for use later.
+1.  [Generate an Object Storage access key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys#create-an-access-key). The key should have **Limited Access** permissions. It should have read and write access to the bucket that you created. You need to save both the access key and secret access key for use later.
 
 ### Create Jenkins Build Agents
 
@@ -184,7 +184,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1. Open the `terraform.tfvars` file, and customize the variables there to your setup. Specifically, you need to provide:
 
-    - A Linode personal access token, which you can learn about in our guide  [Linode API - Get Started](/docs/products/tools/api/get-started/#get-an-access-token)
+    - A Linode personal access token, which you can learn about in our guide  [Linode API - Get Started](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 
     - A root password to be used for the deployed instances
 
@@ -202,7 +202,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
     - The ID of the region that the Jenkins agent Compute Instances should be created in. Note that these are not necessarily the same as an Object Storage cluster ID. For example, the region ID for Atlanta is `us-southeast`, while the ID for the Object Storage cluster in Atlanta is `us-southeast-1`. There are several ways to find out what the ID of a region is:
 
-        - Run the `regions list` command of the [Linode CLI](/docs/products/tools/cli/get-started/):
+        - Run the `regions list` command of the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli):
 
             ```command
             linode-cli regions list
@@ -243,7 +243,7 @@ The architecture covered here aims to use Jenkins to build an application and de
 
 Because this tutorial builds its example application into a Docker image, it makes sense to deploy the application to a Kubernetes cluster. This is what the example pipeline and Jenkins configuration in the rest of this tutorial do.
 
-You can follow along with the tutorial by deploying a Linode Kubernetes Engine (LKE) cluster. Learn how in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
+You can follow along with the tutorial by deploying a Linode Kubernetes Engine (LKE) cluster. Learn how in our [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
 
 However, the "Deploy" step in the pipeline elaborated below uses kubectl. This means that the setup can readily be adapted to deployments for almost any cloud Kubernetes provider.
 
@@ -267,7 +267,7 @@ Whatever solution you choose, you need later to provide the registry's path to t
 
 Each Jenkins instance, from the server to the agents, uses a system firewall. However, you can further safeguard and manage traffic on these instances by adding Linode Cloud Firewalls for each.
 
-To get started, see our guide [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/). Then follow our [Manage Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/) to add the individual rules you need.
+To get started, see our guide [Create a Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/create-a-cloud-firewall). Then follow our [Manage Firewall Rules](https://techdocs.akamai.com/cloud-computing/docs/manage-firewall-rules) to add the individual rules you need.
 
 The following is a basic example setup that you can expand on.
 
@@ -597,7 +597,7 @@ Navigating to your Slack workspace, you should see messages from the Jenkins bot
 Finally, to see the deployed example application in action, you can forward the port on the Kubernetes cluster to your workstation.
 
 {{< note >}}
-Install `kubectl` on your workstation if you don't have it already: [Install kubectl](https://www.linode.com/docs/products/compute/kubernetes/guides/kubectl/#install-kubectl).
+Install `kubectl` on your workstation if you don't have it already: [Install kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#install-kubectl).
 {{< /note >}}
 
 1. Enter following command from your Jenkins server to make the application's service available on port `8080` on `localhost`. Update the path to your downloaded Kubernetes cluster's config on the first line:

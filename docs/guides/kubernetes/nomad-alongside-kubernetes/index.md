@@ -46,7 +46,7 @@ The infrastructure in this tutorial builds on a Kubernetes base. For that reason
 
 The most straightforward way to deploy a Kubernetes cluster with Linode is using the Linode Kubernetes Engine (LKE). LKE lets you configure and deploy a full Kubernetes cluster through the Linode Cloud Manager.
 
-Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/).
+Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
 
 The present tutorial assumes you followed the guide above to create an LKE cluster with three nodes. The tutorial has been tested with Dedicated 4GB nodes, but that can be adjusted to fit your needs.
 

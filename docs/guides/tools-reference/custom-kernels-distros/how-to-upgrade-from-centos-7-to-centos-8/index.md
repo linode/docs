@@ -36,13 +36,13 @@ This guide will walk you through the steps to migrate from CentOS 7 to CentOS 8 
 ### Back Up Your Data
 For this guide you will need a backup of your existing CentOS 7 installation. You can back up your Linode in two ways.
 
-- You can enroll in [Linode's Backup Service](/docs/products/storage/backups/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) at any time.
+- You can enroll in [Linode's Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](https://techdocs.akamai.com/cloud-computing/docs/take-a-manual-snapshot) at any time.
 - For alternative backups solutions, see our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide.
 
-When creating your backup, it's recommended that you [Resize Your Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
+When creating your backup, it's recommended that you [Resize Your Disk](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
 {{< note type="alert" >}}
 
-It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) which will never expire unless manually overwritten.
+It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](https://techdocs.akamai.com/cloud-computing/docs/take-a-manual-snapshot) which will never expire unless manually overwritten.
 
 {{< /note >}}
 
@@ -54,7 +54,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
 1.  From the **Images** drop down menu, select the CentOS 8 image and enter a Root Password. Optionally, add an SSH key.
 
-1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide.
+1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Managing Configuration Profiles on a Linode](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance) guide.
 
 1.  Shut down the Linode by clicking on the status icon and choosing **Power Off** from the drop down menu.
 
@@ -71,7 +71,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
     ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
 
     {{< note >}}
-    If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) so that you can take a new [Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/), or [Resize Your Linode](/docs/products/compute/compute-instances/guides/resize/)
+    If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance) so that you can take a new [Snapshot](https://techdocs.akamai.com/cloud-computing/docs/take-a-manual-snapshot), or [Resize Your Linode](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance)
     {{< /note >}}
 
 1.  Select the current Linode and leave the box for **Overwrite Linode** unchecked. Then click the **Restore** button.
@@ -98,7 +98,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
     ![Boot This Configuration Drop Down Menu](upgrade-centos8-boot-this-config.png "Boot This Configuration Drop Down Menu")
 
-1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
+1.  Now you can SSH into your server. Don't forget to [secure your new installation](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance).
 
 ### Mount the Disk
 

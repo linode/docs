@@ -32,7 +32,7 @@ There is no cross-play between different platforms (Linux and Xbox, for example)
 
 ## Before You Begin
 
-1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.wiki.gg/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/products/platform/get-started/) guide for instructions.
+1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.wiki.gg/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide for instructions.
 
 1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 

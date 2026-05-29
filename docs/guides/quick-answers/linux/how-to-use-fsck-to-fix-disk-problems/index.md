@@ -27,7 +27,7 @@ fsck, short for file system consistency check, is a utility that examines the fi
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note >}}
-`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) for guidance.
+`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) for guidance.
 {{< /note >}}
 
 ## When to Use fsck
@@ -58,7 +58,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
+If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 
@@ -74,7 +74,7 @@ If you are using fsck on a Linode, the easiest and safest way to unmount your di
 
 ### Configuration Profile
 
-If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance). Apply the changes and reboot the Linode.
 
 ### Manual Unmount
 

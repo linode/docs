@@ -14,7 +14,7 @@ external_resources:
 - '[PostHog user guide](https://posthog.com/docs/user-guides)'
 ---
 
-[*PostHog*](https://posthog.com/) is an open-source product analytics tool that can replace Google Analytics. PostHog can be self-hosted on the [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) (LKE) and installed using `kubectl` and [*Helm 3*](https://helm.sh/), a client that acts as a package manager for Kubernetes. PostHog offers a wide variety of features including funnel analysis, product use trends, and session recordings. This guide introduces PostHog and explains how to install and configure it on the LKE.
+[*PostHog*](https://posthog.com/) is an open-source product analytics tool that can replace Google Analytics. PostHog can be self-hosted on the [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) (LKE) and installed using `kubectl` and [*Helm 3*](https://helm.sh/), a client that acts as a package manager for Kubernetes. PostHog offers a wide variety of features including funnel analysis, product use trends, and session recordings. This guide introduces PostHog and explains how to install and configure it on the LKE.
 
 ## An Introduction to PostHog
 
@@ -49,9 +49,9 @@ Even though Google Analytics is the industry standard, there are many advantages
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
@@ -71,10 +71,10 @@ When the cluster is deployed and ready, PostHog can be installed using Helm and 
 
 To install PostHog on an LKE cluster, the system must satisfy the following requirements:
 
-- A Kubernetes cluster must have been created using LKE. To create a cluster, see the [Linode Kubernetes Engine Documentation](/docs/products/compute/kubernetes/). PostHog requires Kubernetes release 1.19 or newer.
+- A Kubernetes cluster must have been created using LKE. To create a cluster, see the [Linode Kubernetes Engine Documentation](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine). PostHog requires Kubernetes release 1.19 or newer.
 - The cluster must have enough resources to run PostHog. A minimum of four virtual CPUs and 8GB of memory is recommended.
-- The `kubectl` client must be installed. `kubectl` allows users to install applications on a cluster, view and manage Kubernetes resources, and access log files. `kubectl` can be installed using a package manager or directly downloaded using the `curl` command. More information about `kubectl` is also available in the [Linode Kubernetes Engine Documentation](/docs/products/compute/kubernetes/) or on the [Kubernetes installation page](https://kubernetes.io/docs/tasks/tools/#install-kubectl-on-linux).
-- PostHog works best in conjunction with a registered domain name. This name is used to set up PostHog and access the dashboard. For instructions on how to register a domain name and configure the associated DNS records, see the [Linode guide to DNS Configuration](/docs/products/networking/dns-manager/guides/common-dns-configurations/).
+- The `kubectl` client must be installed. `kubectl` allows users to install applications on a cluster, view and manage Kubernetes resources, and access log files. `kubectl` can be installed using a package manager or directly downloaded using the `curl` command. More information about `kubectl` is also available in the [Linode Kubernetes Engine Documentation](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) or on the [Kubernetes installation page](https://kubernetes.io/docs/tasks/tools/#install-kubectl-on-linux).
+- PostHog works best in conjunction with a registered domain name. This name is used to set up PostHog and access the dashboard. For instructions on how to register a domain name and configure the associated DNS records, see the [Linode guide to DNS Configuration](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations).
 - To install PostHog, first install [Helm v3](https://helm.sh/), which can be used to download, install, and upgrade applications on a cluster. Applications are installed using a Helm chart, which describes the essential resources using a common format. See the [Linode guide to Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/) for more information about Helm.
 
 To install Helm, follow the steps below:
@@ -250,7 +250,7 @@ posthog-ingress-nginx-controller   LoadBalancer   ww.xx.yy.zz    ww.xx.yy.zz    
 
 ### Set Up DNS
 
-The IP address from the previous section is used to configure the domain's DNS record. Instructions on how to configure a DNS record can be found in the [Linode guide to DNS Configuration](/docs/products/networking/dns-manager/guides/common-dns-configurations/). If a different IP address has already been configured for the domain, it can be edited as follows.
+The IP address from the previous section is used to configure the domain's DNS record. Instructions on how to configure a DNS record can be found in the [Linode guide to DNS Configuration](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations). If a different IP address has already been configured for the domain, it can be edited as follows.
 
 1. Find the domain using the Linode Dashboard. Select **Domains** and then select the domain name.
 

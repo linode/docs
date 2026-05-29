@@ -46,7 +46,7 @@ GitOps focuses on automating infrastructure, so it's a perfect workflow for busi
 - GitOps ensures everything operates as it was intended.
 - Kubernetes ensures stability and availability.
 
-[Kubernetes](/docs/products/compute/kubernetes/get-started/) always makes sure a deployed application or service remains in a stable state and scales as needed. When GitOps is along for the ride, it ensures everything runs as it should, including the infrastructure necessary for the deployments. GitOps serves as the glue between application build/delivery (Kubernetes) and where the application is to run.
+[Kubernetes](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) always makes sure a deployed application or service remains in a stable state and scales as needed. When GitOps is along for the ride, it ensures everything runs as it should, including the infrastructure necessary for the deployments. GitOps serves as the glue between application build/delivery (Kubernetes) and where the application is to run.
 
 ## The GitOps Workflow
 

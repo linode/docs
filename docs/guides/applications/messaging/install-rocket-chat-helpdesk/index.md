@@ -192,7 +192,7 @@ The instructions below require you to be logged into your instance as a user wit
 With a reverse proxy in place, you can enable SSL encryption and secure the web traffic for your Rocket.Chat instance using [Certbot](https://certbot.eff.org/).
 
 {{< note title="Domain Name" >}}
-Completing these steps require your system's public IP address to be associated with a domain name. For information on managing and setting up domains with your Compute Instance, see our [DNS Manager](/docs/products/networking/dns-manager/get-started/) guide.
+Completing these steps require your system's public IP address to be associated with a domain name. For information on managing and setting up domains with your Compute Instance, see our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) guide.
 {{< /note >}}
 
 1.  Follow the instructions in our [Use Certbot to Enable HTTPS with NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) guide to install Certbot and obtain an SSL certificate.
@@ -260,7 +260,7 @@ For a scalable solution, Rocket.Chat supports Kubernetes deployments. The steps 
 
 This requires the following prerequisites:
 
--   An active LKE cluster with the `kubectl` tool configured. See [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
+-   An active LKE cluster with the `kubectl` tool configured. See [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
 -   Helm installed and configured on your local machine. See [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client).
 
 1.  Once your LKE cluster is running and `kubectl` is configured, use the following `kubectl` command to view the cluster's context name:
@@ -331,7 +331,7 @@ There are multiple options for accessing the Rocket.Chat instance from the Kuber
 
     For more on this method, and steps for implementing it, follow our guide on [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/deploy-nginx-ingress-on-lke/#install-the-nginx-ingress-controller) starting with the **Install the NGINX Ingress Controller** section.
 
-    To enable TLS for the Ingress, follow [Getting Started with Load Balancing on an LKE Cluster](/docs/products/compute/kubernetes/guides/load-balancing/#configuring-linode-nodebalancers-for-tls-encryption) starting with the **Configuring NodeBalancers for TLS Encryption** section.
+    To enable TLS for the Ingress, follow [Getting Started with Load Balancing on an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster#configuring-linode-nodebalancers-for-tls-encryption) starting with the **Configuring NodeBalancers for TLS Encryption** section.
 
 ## Getting Started With Rocket.Chat After Deployment
 

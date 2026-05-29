@@ -31,7 +31,7 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
 2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/) to get familiar with kubeadm.
 
-3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
+3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) to get a token.
 
     {{< note >}}
     When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
@@ -88,7 +88,7 @@ By default, Terraform uses the SSH agent of the operating system to connect to a
 Agent pid 11308
    {{</ output >}}
 
-2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#upload-ssh-key). This command adds keys from the default location, `~/.ssh/`
+2. Add the SSH keys to the agent. For more information, see [creating an authentication key-pair](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#upload-ssh-key). This command adds keys from the default location, `~/.ssh/`
 
         ssh-add
 

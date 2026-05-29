@@ -18,9 +18,9 @@ When your Python program needs to run an external password-dependent program, or
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Paramiko
 
@@ -37,7 +37,7 @@ If your system is [configured to use Anaconda](/docs/guides/how-to-install-anaco
 
 ## A Paramiko SSH Example: Connect to Your Server Using a Password
 
-This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide, if needed.
+This section shows you how to authenticate to a remote server with a username and password. To begin, create a new file named `first_experiment.py` and add the contents of the example file. Ensure that you update the file with your own Linode's details. Replace the values for `YOUR_IP_ADDRESS`, `YOUR_LIMITED_USER_ACCOUNT`, and `YOUR_PASSWORD`. Use the [Find Your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide, if needed.
 
 {{< file "password_login.py" >}}
 import paramiko

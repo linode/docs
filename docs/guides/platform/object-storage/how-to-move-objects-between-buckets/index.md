@@ -33,7 +33,7 @@ The easiest way to move objects between buckets is using a Graphical User Interf
 
 To transfer objects within the same cluster on the same account, you need to open only one Cyberduck window.
 
-1.  Open Cyberduck and make a connection to access your buckets as described in [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/).
+1.  Open Cyberduck and make a connection to access your buckets as described in [Using Cyberduck with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/using-cyberduck-with-object-storage).
 
 1.  Expand the two buckets you want to transfer objects between by clicking the down arrow to the left of the folders.
 
@@ -70,7 +70,7 @@ You can easily copy multiple items, folders, or buckets by selecting everything 
 
 ## Cyberduck CLI
 
-You can also use the Cyberduck CLI, duck, to move objects from one bucket to another using the command line. The file transfer tool duck, is available for Linux, macOS, and Windows. To transfer using duck, you need the [access keys](/docs/products/storage/object-storage/guides/access-keys/) that you generated for the source and destination buckets.
+You can also use the Cyberduck CLI, duck, to move objects from one bucket to another using the command line. The file transfer tool duck, is available for Linux, macOS, and Windows. To transfer using duck, you need the [access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) that you generated for the source and destination buckets.
 
 1.  [Install duck](https://duck.sh) using the instructions for your platform.
 

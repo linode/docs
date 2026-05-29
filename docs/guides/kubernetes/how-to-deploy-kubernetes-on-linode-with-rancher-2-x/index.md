@@ -57,7 +57,7 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
     {{< note >}}
     You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
@@ -68,9 +68,9 @@ The Rancher web application will run on a Linode in your Cloud Manager account. 
 
 You will also need to generate an API token and prepare a domain zone:
 
-1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to get a token.
+1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) guide.
 
     {{< note >}}
     If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
@@ -121,13 +121,13 @@ After you have your Linode up and running with Docker, you can then install and 
 
 Rancher includes two kinds of integrations with hosting providers:
 
-- A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](/docs/products/compute/kubernetes/).
+- A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine).
 
 - A [*node driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/node-drivers/) allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
 ## Deploy an LKE Cluster on Rancher
 
-The [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
+The [Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
 
 ### The LKE Cluster Driver for Rancher
 
@@ -155,7 +155,7 @@ Once Rancher been installed and the cluster driver has been activated, a new LKE
 
    ![Cluster Name Token](cluster-name-token.png)
 
-1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/products/tools/cloud-manager/guides/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](https://techdocs.akamai.com/cloud-computing/docs/tags-and-groups) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
 
     ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
 
@@ -190,7 +190,7 @@ Rancher is shipped with a node driver for Linode that is activated by default. N
 ### Add a Node Template
 
 {{< note >}}
-Nodes created using Rancher are dependent on the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+Nodes created using Rancher are dependent on the [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
 {{< /note >}}
 
 [*Node templates*](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used by Rancher to provision cluster nodes. When you create a node template, you can specify configuration parameters, like the region, instance type, and Linux image that should be used for any node in the cluster. You can set different templates for different clusters, which allows you to choose the right resources for your different workloads.
@@ -208,7 +208,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
 1. Click on the **Create** button.
 
-1. Another dialog appears which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/products/tools/cloud-manager/guides/tags-and-groups/) you’d like to apply to your nodes.
+1. Another dialog appears which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](https://techdocs.akamai.com/cloud-computing/docs/tags-and-groups) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
@@ -300,7 +300,7 @@ Before provisioning your cluster, you will need to add the node template it will
 1.  If you visit the list of your Linodes in the Linode Cloud Manager, you will see the new nodes in your cluster.
 
     {{< note >}}
-    If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
+    If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support) if you believe this may be the case.
     {{< /note >}}
 
 ## Explore the New Cluster

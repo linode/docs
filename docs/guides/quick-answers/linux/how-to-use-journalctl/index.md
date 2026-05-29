@@ -31,7 +31,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 

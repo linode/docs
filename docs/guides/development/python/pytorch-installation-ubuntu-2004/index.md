@@ -20,9 +20,9 @@ PyTorch allows popular Python-based apps to access GPU hardware to speed up mach
 
 ### Prerequisites
 
-The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](/docs/products/compute/compute-instances/get-started/) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
+The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
 
-Optimizing a task may also require using external data sources. If using external data sources and data sets, like [Linode Object Storage](/docs/products/tools/cli/guides/object-storage/), you should prepare them ahead of setting up your PyTorch GPU instance.
+Optimizing a task may also require using external data sources. If using external data sources and data sets, like [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage-commands), you should prepare them ahead of setting up your PyTorch GPU instance.
 
 1. Update your Ubuntu 20.04 instance. The base packages and libraries must be updated first.
 
@@ -36,7 +36,7 @@ Optimizing a task may also require using external data sources. If using externa
 
         sudo apt install nvidia-cuda-toolkit
 
-    For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/compute-instances/guides/install-nvidia-cuda/).
+    For full instructions, see [Installing the NVIDIA CUDA Toolkit](https://techdocs.akamai.com/cloud-computing/docs/install-the-nvidia-cuda-toolkit-on-gpu-compute-instances).
 
 {{< note >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.

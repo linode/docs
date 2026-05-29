@@ -787,7 +787,7 @@ The steps that follow outline a method for deploying the Gatsby application crea
     gatsby build
     ```
 
-1.  Install `s3cmd` and configure it for your Linode Object Storage credentials and settings. See how to do that in our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/).
+1.  Install `s3cmd` and configure it for your Linode Object Storage credentials and settings. See how to do that in our guide [Using S3cmd with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage).
 
 1.  Use `s3cmd` to create a new bucket, initialize the bucket as a website, and sync the application's static files to the bucket:
 

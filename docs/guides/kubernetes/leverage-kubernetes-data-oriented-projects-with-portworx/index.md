@@ -38,9 +38,9 @@ Portworx integrates with widely known software systems such as Kubernetes, Kafka
 
 ## Before You Begin
 
-1.  Create a Kubernetes cluster that meets the [Portworx installation prerequisites](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites). A **Shared CPU**, **Linode 8 GB** plan is suitable. You must have `kubectl` configured on your local machine to interact with the cluster. See our [Getting Stated with Kubernetes](/docs/products/compute/kubernetes/get-started/) guide for instructions. Also, take note of the Kubernetes version running on your cluster as it is needed later.
+1.  Create a Kubernetes cluster that meets the [Portworx installation prerequisites](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites). A **Shared CPU**, **Linode 8 GB** plan is suitable. You must have `kubectl` configured on your local machine to interact with the cluster. See our [Getting Stated with Kubernetes](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide for instructions. Also, take note of the Kubernetes version running on your cluster as it is needed later.
 
-1.  The Portworx installation prerequisites also include a backing drive (i.e. Volume) for each of three nodes, which must be at least 8 GB. Follow our [Getting Started with Block Storage](/docs/products/storage/block-storage/get-started/) guide to create and attach a 10 GB Volume to each node. Creating volumes via the **Storage** tab of the individual Kubernetes instances is more efficient than via **Volumes**, as it creates *and* attaches in one step.
+1.  The Portworx installation prerequisites also include a backing drive (i.e. Volume) for each of three nodes, which must be at least 8 GB. Follow our [Getting Started with Block Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-block-storage) guide to create and attach a 10 GB Volume to each node. Creating volumes via the **Storage** tab of the individual Kubernetes instances is more efficient than via **Volumes**, as it creates *and* attaches in one step.
 
 1.  Sign up for a personal account on [Portworx Central](https://central.portworx.com).
 

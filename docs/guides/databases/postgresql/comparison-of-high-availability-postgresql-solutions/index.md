@@ -115,7 +115,7 @@ The Akamai Quick Deploy Apps solution uses the [*repmgr*](https://www.repmgr.org
 
 This solution has some limitations. It is not possible to choose the size of the HA cluster or manually edit any application variables. It is a viable option for a smaller organization with less technical expertise. However, it might not meet the specific requirements of a more complicated network.
 
-It is also possible to configure redundancy using the [IP failover](/docs/products/compute/compute-instances/guides/failover/) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves configuring the [Lelastic](https://github.com/linode/lelastic) utility on your instances.
+It is also possible to configure redundancy using the [IP failover](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves configuring the [Lelastic](https://github.com/linode/lelastic) utility on your instances.
 
 ### Manual Deployment Using a Replication Manager
 

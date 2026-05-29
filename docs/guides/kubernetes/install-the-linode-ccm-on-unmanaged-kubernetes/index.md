@@ -14,18 +14,18 @@ image: TutInstall_LinCCM_UnmanagedKubCluster.png
 aliases: ['/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/','/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/']
 ---
 
-The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) provides a way for Kubernetes clusters to access additional Linode services. Linode’s CCM provides access to Linode’s load balancing service, [Linode NodeBalancers](/docs/products/networking/nodebalancers/).
+The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) provides a way for Kubernetes clusters to access additional Linode services. Linode’s CCM provides access to Linode’s load balancing service, [Linode NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer).
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The Linode CCM handles the creation and deletion of the NodeBalancer, and, along with other Master Plane components, correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
 {{< note >}}
 This guide shows you how to manually install the Linode CCM on an **unmanaged** Kubernetes cluster. This guide exists to support special use cases. For example, if you would like to experiment with various elements of a Kubernetes control plane.
 
-If you would like to use Kubernetes for production scenarios and make use of Linode NodeBalancers to expose your cluster's resources, it is recommended that you [use the Linode Kubernetes Engine to deploy your cluster](/docs/products/compute/kubernetes/). An LKE cluster's control plane has the Linode CCM preinstalled and does not require any of the steps included in this guide.
+If you would like to use Kubernetes for production scenarios and make use of Linode NodeBalancers to expose your cluster's resources, it is recommended that you [use the Linode Kubernetes Engine to deploy your cluster](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine). An LKE cluster's control plane has the Linode CCM preinstalled and does not require any of the steps included in this guide.
 
 Another option for deploying Kubernetes clusters on Linode is to use [Cluster API Provider Linode (CAPL)](https://linode.github.io/cluster-api-provider-linode/). It provisions a management Kubernetes cluster which can then be used to provision and manage multiple other child Kubernetes clusters on Linode. It installs CCM by default and supports provisioning Kubernetes clusters using kubeadm, rke2 and k3s.
 
-If you have used the Linode Kubernetes Engine (LKE) or Cluster API Provider Linode (CAPL) to deploy your cluster, you should refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/products/compute/kubernetes/guides/load-balancing/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
+If you have used the Linode Kubernetes Engine (LKE) or Cluster API Provider Linode (CAPL) to deploy your cluster, you should refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
 {{< /note >}}
 
 ## In this Guide
@@ -52,7 +52,7 @@ Instructions are shown for manually installing the Linode CCM on your unmanaged 
 
 1. Ensure you have [kubectl installed](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/#install-kubectl) on your local computer and you can access your Kubernetes cluster with it.
 
-1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token). This is required for both methods of installing the Linode CCM in this guide.
+1. Generate a [Linode APIv4 token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token). This is required for both methods of installing the Linode CCM in this guide.
 
 ## Running the Linode Cloud Controller Manager
 
@@ -106,7 +106,7 @@ The Linode CCM's GitHub repository provides a helper script that creates a Kuber
     cd linode-cloud-controller-manager/deploy/
     ```
 
-1. Run the `generate-manifest.sh` script. Ensure you replace `$LINODE_API_TOKEN` with your own Linode APIv4 token and `us-east` with the Linode region where your cluster resides. To view a list of regions, you can use the [Linode CLI](/docs/products/tools/cli/get-started/), or you can view the [Regions API endpoint](https://api.linode.com/v4/regions).
+1. Run the `generate-manifest.sh` script. Ensure you replace `$LINODE_API_TOKEN` with your own Linode APIv4 token and `us-east` with the Linode region where your cluster resides. To view a list of regions, you can use the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli), or you can view the [Regions API endpoint](https://api.linode.com/v4/regions).
 
     ```command
     ./generate-manifest.sh $LINODE_API_TOKEN us-east
@@ -165,4 +165,4 @@ The easiest way to update the Linode CCM is to edit the DaemonSet that creates t
 
 ## Next Steps
 
-Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](/docs/products/compute/kubernetes/guides/load-balancing/#configuring-your-linode-nodebalancers-with-annotations).
+Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster#configuring-your-linode-nodebalancers-with-annotations).

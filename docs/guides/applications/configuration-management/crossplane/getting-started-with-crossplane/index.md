@@ -57,7 +57,7 @@ Follow along with the steps in this section to set up a Kubernetes cluster and g
 
 Crossplane runs on a Kubernetes cluster, so you need a running cluster available to get started with it.
 
-With Linode, you can quickly deploy a Kubernetes cluster from the Cloud Manager. To do so, follow along with our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/). When done, you should have a fully operational Kubernetes cluster and a `kubectl` instance configured to manage it.
+With Linode, you can quickly deploy a Kubernetes cluster from the Cloud Manager. To do so, follow along with our guide [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine). When done, you should have a fully operational Kubernetes cluster and a `kubectl` instance configured to manage it.
 
 In addition to having an active Kubernetes cluster, you need kubectl configured to manage it. You can find this information covered in the LKE guide linked just above.
 
@@ -156,7 +156,7 @@ The configurations and commands used in this guide add one or more Linode instan
 
     -   Replace `${ROOT_PASSWORD}` with a root password to be used for the new Linode Compute instance.
 
-    - Replace `${LINODE_API_TOKEN}` with your Linode API personal access token, which you can generate by following the relevant section of our guide on [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token)
+    - Replace `${LINODE_API_TOKEN}` with your Linode API personal access token, which you can generate by following the relevant section of our guide on [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 
     -   Replace `${SSH_PUBLIC_KEY}` with a public SSH key to access the Linode Compute instance. Learn more about SSH keys in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/).
 

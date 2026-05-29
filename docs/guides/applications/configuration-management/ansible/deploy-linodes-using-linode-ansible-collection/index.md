@@ -41,9 +41,9 @@ If you remove the resource, [you are only be billed for the hour(s) that the res
 The steps outlined in this guide require [Ansible version 2.9.10 or greater](https://github.com/ansible/ansible/releases/tag/v2.9.10) and were tested on a Linode running Ubuntu 22.04. The instructions can be adapted to other Linux distributions or operating systems.
 {{< /note >}}
 
-1.  Provision a server that acts as the Ansible [*control node*](/docs/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
+1.  Provision a server that acts as the Ansible [*control node*](/docs/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
 
-1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
+1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
 
 1.  Ensure that you have performed system updates:
 
@@ -63,7 +63,7 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
         sudo apt install python3-pip
 
-1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide.
+1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) section of the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started) guide.
 
 ## Install the Linode Ansible Collection
 
@@ -88,7 +88,7 @@ The Linode Ansible collection is now installed and ready to deploy and manage Li
 
 ## Configure Ansible
 
-When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/platform/accounts/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
 
 ### Create an Ansible Vault Password File
 

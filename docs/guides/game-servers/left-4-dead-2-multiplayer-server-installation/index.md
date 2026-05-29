@@ -25,7 +25,7 @@ You will need the following items to get started:
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 2GB of RAM and 10GB of free disk space.
-- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/products/platform/get-started/) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide for help configuring your Linode.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -63,7 +63,7 @@ sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
         sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT
 
     {{< note respectIndent=false >}}
-If you've configured your firewall according to our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+If you've configured your firewall according to our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
 {{< /note >}}
 
 ## Install SteamCMD and Left 4 Dead 2

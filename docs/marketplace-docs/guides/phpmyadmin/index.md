@@ -55,11 +55,11 @@ However, entering your phpMyAdmin credentials through an HTTP connection is inse
 
 ### Configure Your Domain with DNS Manager
 
-The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/products/networking/dns-manager/) guide, configure your domain's [name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) and add a [DNS record](/docs/products/networking/dns-manager/guides/manage-dns-records/) so that your domain is pointing to your phpMyAdmin Linode.
+The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide, configure your domain's [name servers](https://techdocs.akamai.com/cloud-computing/docs/configure-your-domains-authoritative-name-servers) and add a [DNS record](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
 
 ### Enable HTTPS with Certbot
 
-1.  [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to Your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance).
 
 1.  Install Certbot for authentication with Python and Apache:
 

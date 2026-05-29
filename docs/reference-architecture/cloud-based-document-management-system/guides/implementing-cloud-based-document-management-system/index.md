@@ -34,7 +34,7 @@ This architecture requires deployment of several parallel nodes. In order to mak
 
 Before you get started provisioning the architecture, you need to prepare the following:
 
--   A personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+-   A personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
 -   This tutorial uses [Terraform](https://www.terraform.io/) for provisioning instances, and you need to install Terraform to follow along. Terraform automates the process of provisioning infrastructure, making it an excellent solution when you need to deploy multiple similar nodes simultaneously.
 
@@ -46,9 +46,9 @@ Before you get started provisioning the architecture, you need to prepare the fo
 
     Once you have a domain name, you should configure Linode as its DNS name server. Then add that domain to your Linode Cloud Manager via the **Domains** option.
 
-    Learn more about this process through our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) and our other [DNS Manager guides](/docs/products/networking/dns-manager/guides/).
+    Learn more about this process through our guide [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) and our other [DNS Manager guides](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
--   The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to do so. Follow our guide on how to [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key) for steps to create an access key for your Linode Object Storage. Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
+-   The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to do so. Follow our guide on how to [Manage Access Keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys#create-an-access-key) for steps to create an access key for your Linode Object Storage. Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
 
 ### Application and Database Nodes
 
@@ -257,7 +257,7 @@ Prometheus and Grafana get their own node in the architecture. Deploying that no
 
 ### NodeBalancer
 
-The process for provisioning a Linode NodeBalancer instance can be managed entirely from within the Linode Cloud Manager. Follow along with our [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide to set up your NodeBalancer.
+The process for provisioning a Linode NodeBalancer instance can be managed entirely from within the Linode Cloud Manager. Follow along with our [Create a NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/create-a-nodebalancer) guide to set up your NodeBalancer.
 
 Give your NodeBalancer the following settings:
 
@@ -271,13 +271,13 @@ Any other configuration options you can leave at their defaults or adjust as you
 
 With your NodeBalancer established, you can have the Linode DNS name servers point your domain at it. The two application nodes were granted SSL certificates under the domain name. The NodeBalancer proxies requests for the domain to the nodes, where the SSL certification resides.
 
-To complete this setup, you need to add an **A/AAAA** record for the domain name, with the record pointing to the IP address of the NodeBalancer. Follow our guide on how to [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/#add-or-edit-a-dns-record) for steps to do so. You need to have your domain name set up in the Linode Cloud Manager, as indicated towards the beginning of this tutorial.
+To complete this setup, you need to add an **A/AAAA** record for the domain name, with the record pointing to the IP address of the NodeBalancer. Follow our guide on how to [Manage DNS Records](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records#add-or-edit-a-dns-record) for steps to do so. You need to have your domain name set up in the Linode Cloud Manager, as indicated towards the beginning of this tutorial.
 
 You can learn more about DNS records through our guide [Overview of DNS and DNS Records](/docs/guides/dns-overview/#a-and-aaaa).
 
 ### Cloud Firewalls
 
-The Linode Cloud Firewall provides an easy-to-implement and robust firewall that you can attach to your Linode instances via the Cloud Manager. You can learn more about Linode Cloud Firewalls in our [selection of guides](/docs/products/networking/cloud-firewall/guides/) on the topic.
+The Linode Cloud Firewall provides an easy-to-implement and robust firewall that you can attach to your Linode instances via the Cloud Manager. You can learn more about Linode Cloud Firewalls in our [selection of guides](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) on the topic.
 
 The cloud-based document management system architecture employs a Cloud Firewall on each node. Most of the nodes' communications between each other take place over the VLAN. Combining this with the Cloud Firewall for public Internet connections can give your system a potent security setup.
 

@@ -49,7 +49,7 @@ DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-t
 
 ## Before you Begin
 
-- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
     {{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -67,9 +67,9 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## Create a New Linode
 
-To get started, create a new Linode by following the instructions within the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Keep the following considerations in mind:
+To get started, create a new Linode by following the instructions within the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides. Keep the following considerations in mind:
 
--  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of the distribution images available on Linode.
+-  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](https://techdocs.akamai.com/cloud-computing/docs/choose-a-distribution) for a full list of the distribution images available on Linode.
 -  **Region:** The new Linode must reside in the same region (data center) as the original Linode.
 -  **Linode Plan:** Chose a plan that accommodates the applications you wish to run and meets any storage requirements you may have. In many cases, selecting the same (or larger) plan is a safe choice.
 
@@ -158,7 +158,7 @@ Databases can be copied in much the same way as files. The major difference is t
 
 ## Transfer IPv4 Addresses
 
-After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses)
+After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#transferring-ip-addresses)
 {{< note >}}
 The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-overview/#a-and-aaaa) on your domain(s).
 {{< /note >}}

@@ -34,8 +34,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:
 

@@ -16,7 +16,7 @@ tags: ["linode platform"]
 
 This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.
 
-The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/guides/linux-system-administration-basics/), [security hardening](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and [system backups](/docs/guides/backing-up-your-data/).
+The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/guides/linux-system-administration-basics/), [security hardening](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) and [system backups](/docs/guides/backing-up-your-data/).
 
 ## Before You Begin
 
@@ -30,7 +30,7 @@ This guide makes three assumptions:
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
-See our [Getting Started](/docs/products/platform/get-started/) guide for more information on signing up and setting up your Linode.
+See our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
@@ -48,7 +48,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/products/networking/dns-manager/guides/manage-dns-records/).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records).
 
 ## Back Up Your Website
 
@@ -122,7 +122,7 @@ A Linode can run both your web server and an [email server](/docs/guides/running
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/docs/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
@@ -138,7 +138,7 @@ The last step in your migration is to point your domain at your Linode's IP addr
 
 5.  Navigate to your domain in a web browser. It should now show the website being served from your Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](/docs/guides/use-dig-to-perform-manual-dns-queries/). It should show the IP address for your Linode.
 
-6.  [Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain.
+6.  [Set reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) for your domain.
 
     {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
@@ -148,4 +148,4 @@ Your website is now fully migrated to Linode. It is a good idea to wait a few da
 
 ## Next Steps
 
-Your server is only as secure as you make it. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to make sure your Linode is hardened against unauthorized access.
+Your server is only as secure as you make it. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to make sure your Linode is hardened against unauthorized access.

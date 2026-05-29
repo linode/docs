@@ -19,11 +19,11 @@ MongoDB is a popular non-relationship database management system that stores key
 Backing up the data stored in a MongoDB database is an important step to maintain data integrity and disaster recovery plans. To assure that the MongoDB databases are backed up regularly to an external source such as a Linode Object Storage bucket, a simple Bash script can be created. Then, the Bash script can be configured to run daily using the Linux Cron job workflow.
 ## Before You Begin
 
-1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or by reviewing the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide or by reviewing the available [Object Storage guides](https://techdocs.akamai.com/cloud-computing/docs/object-storage).
 
-1. Create a [Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). This bucket is used to store your MongoDB backups.
+1. Create a [Linode Object Storage bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets). This bucket is used to store your MongoDB backups.
 
-1. Create a pair of [Access Keys](/docs/products/storage/object-storage/guides/access-keys/) for your Linode Object Storage bucket.
+1. Create a pair of [Access Keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) for your Linode Object Storage bucket.
 
 1. Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 

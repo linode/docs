@@ -30,9 +30,9 @@ This document provides both instructions for deploying the Redis server, and an 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -116,7 +116,7 @@ vm.overcommit_memory = 1
 
 ### Additional Swap
 
-Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
+Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#resize-a-disk) in the Cloud Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
 
 ## Distributed Redis
 
@@ -138,9 +138,9 @@ To communicate over the private network, your master and slave Linodes must resi
 
 ###  Prepare Your Linodes
 
-1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) option in the Cloud Manager.
+1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#resize-a-disk) option in the Cloud Manager.
 
-2.  Configure [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
+2.  Configure [Private IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
 ### Configure the Master Linode
 
@@ -198,7 +198,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Set up a firewall using [your tool of choice](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
+- Set up a firewall using [your tool of choice](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall).
 
 - Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

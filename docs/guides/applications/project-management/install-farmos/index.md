@@ -22,9 +22,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account), [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access), and [create firewall rules](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{% content "limited-user-note-shortguide" %}}
 
@@ -105,7 +105,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 ## Configure farmOS
 
-1.  Go to your Linode's domain or [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
+1.  Go to your Linode's domain or [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
 
 1.  The first screen you encounter asks you to choose a profile and a language:
 
@@ -146,7 +146,7 @@ After each user is created, use the **People** tab to verify success:
 
 ### Registering a Domain Name for farmOS
 
-To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/products/networking/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
+To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 

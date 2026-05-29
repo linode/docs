@@ -71,9 +71,9 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
@@ -109,13 +109,13 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
     sudo apt autoremove -y && sudo apt autoclean -y
     ```
 
-3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates).
+3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance#apply-kernel-updates).
 
     ```command
     sudo reboot
     ```
 
-4.  Make a backup copy of the system configuration and all application data. The easiest way to do this is to back up the entire system. Subscribing to the [Linode Backup Service](/docs/products/storage/backups/) allows you to take a manual snapshot before the upgrade.
+4.  Make a backup copy of the system configuration and all application data. The easiest way to do this is to back up the entire system. Subscribing to the [Linode Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service) allows you to take a manual snapshot before the upgrade.
 
 5.  Stop as many non-critical user applications services as possible, including web and database servers. Focus on applications that might be subject to data corruption. To see a list of the active services, use the command `systemctl | grep running`.
 

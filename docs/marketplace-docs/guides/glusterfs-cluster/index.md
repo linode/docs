@@ -38,7 +38,7 @@ marketplace_app_name: "GlusterFS Cluster"
 
 ### GlusterFS Options
 
-- **[Linode API Token](/docs/products/platform/accounts/guides/manage-api-tokens/#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
+- **[Linode API Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens#create-an-api-token):** The provisioner node will use an authenticated API token to create the additional components to the cluster. This is required to fully create the GlusterFS cluster.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 

@@ -23,9 +23,9 @@ Learn how to get started with Nagios on CentOS, AlmaLinux, and Rocky Linux in th
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -192,7 +192,7 @@ With the new Nagios instance installed and running, access the Nagios interface 
 For example, if your public IP is `192.0.2.0`, then you would navigate to `http://192.0.2.0/nagios`. Alternatively, if your domain name is `example.com`, you would navigate to `example.com/nagios`.
 
 {{< note >}}
-Learn more about setting up a domain name for your system through the Linode DNS Manager with our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/). While other DNS managers can set up a domain name, Linode's provides added convenience. Regardless, this guide can serve as a general introduction to the process.
+Learn more about setting up a domain name for your system through the Linode DNS Manager with our guide [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager). While other DNS managers can set up a domain name, Linode's provides added convenience. Regardless, this guide can serve as a general introduction to the process.
 {{< /note >}}
 
 The browser should prompt for a login. Use the `nagiosadmin` username and the password configured with the `htpasswd` command above. Once logged in, you should arrive at the Nagios dashboard:

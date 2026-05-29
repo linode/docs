@@ -14,16 +14,16 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
 {{< note >}}
-For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
+For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#transfer-allowance) section of the [Network Transfer Usage and Costs](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs) guide.
 {{< /note >}}
 
 It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
-- The [Cloud Manager](/docs/products/platform/get-started/guides/network-transfer/#cloud-manager) displays your current transfer usage.
+- The [Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#cloud-manager) displays your current transfer usage.
 
-- The [Linode CLI](/docs/products/platform/get-started/guides/network-transfer/#linode-cli) can report your current transfer usage.
+- The [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#linode-cli) can report your current transfer usage.
 
-- Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
+- Linode sends [email alerts](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
 Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](https://techdocs.akamai.com/linode-api/reference/api-summary#network-transfer-view) of the Linode API.
 
@@ -41,9 +41,9 @@ Using Twilio, you can also build a custom text message notification system for y
 
 1. This guide shows how to set up the notification system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
 1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Linode API and Twilio API together. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Python Bindings for the Linode API](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-python-bindings-for-the-linode-api) section.
 
@@ -494,7 +494,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     {{< note type="secondary" title="About the code" isCollapsible=true >}}
     - Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
 
-    - Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/products/platform/get-started/guides/network-transfer/#usage-costs).
+    - Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](https://techdocs.akamai.com/cloud-computing/docs/network-transfer-usage-and-costs#usage-costs).
 
     - On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
 

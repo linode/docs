@@ -27,9 +27,9 @@ The Linode Terraform Provider version 3.0.0 requires `terraform` version 1.0 or 
 
 1.  Terraform and the Linode Terraform provider should be installed in your development environment. You should also have a basic understanding of [Terraform resources](https://www.terraform.io/docs/configuration/resources.html). To install and learn about Terraform, read our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-2.  To use Terraform you must have a valid API access token. For more information on creating a Linode API access token, visit our [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide.
+2.  To use Terraform you must have a valid API access token. For more information on creating a Linode API access token, visit our [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) guide.
 
-3.  This guide uses the Linode CLI to retrieve information about the Linode infrastructure you import to Terraform. For more information on the setup, installation, and usage of the Linode CLI, check out the [Using the Linode CLI](/docs/products/tools/cli/get-started/) guide.
+3.  This guide uses the Linode CLI to retrieve information about the Linode infrastructure you import to Terraform. For more information on the setup, installation, and usage of the Linode CLI, check out the [Using the Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli) guide.
 
 ## Terraform's Import Command
 
@@ -251,11 +251,11 @@ resource "linode_instance" "example_label" {
 {{</ file >}}
 
     {{< note respectIndent=false >}}
-If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](/docs/products/storage/block-storage/)), you need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
+If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](https://techdocs.akamai.com/cloud-computing/docs/block-storage)), you need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
     {{< /note >}}
 
     {{< note respectIndent=false >}}
-If you have more than one [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
+If you have more than one [configuration profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance), you must choose which profile to boot from with the `boot_config_label` key. For example:
 
     resource "linode_instance" "example_label" {
         boot_config_label = "My Debian 9 Disk Profile"
@@ -635,7 +635,7 @@ Though it is not required, it's a good idea to include a configuration for the s
 
 ## Import a NodeBalancer to Terraform
 
-Configuring [Linode NodeBalancers](/docs/products/networking/nodebalancers/get-started/) with Terraform requires three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes.
+Configuring [Linode NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers) with Terraform requires three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes.
 
 ### Retrieve Your NodeBalancer, NodeBalancer Config, NodeBalancer Node IDs
 

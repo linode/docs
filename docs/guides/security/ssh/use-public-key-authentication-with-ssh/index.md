@@ -26,7 +26,7 @@ image: use_public_key_authentication_with_ssh.png
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with a Linode Linux server.
 
 {{< note >}}
-If you're unfamiliar with logging in to a remote machine with SSH, review the [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide that corresponds with the operating system of your local workstation. You can also review the instructions for connecting to a Compute Instance over SSH within our [Set Up and Secure](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) guide.
+If you're unfamiliar with logging in to a remote machine with SSH, review the [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide that corresponds with the operating system of your local workstation. You can also review the instructions for connecting to a Compute Instance over SSH within our [Set Up and Secure](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) guide.
 {{< /note >}}
 
 ## How Does SSH Public Key Authentication Work?
@@ -125,7 +125,7 @@ This section covers using the [ssh-keygen](https://man7.org/linux/man-pages/man1
     {{< note type="alert" >}}
     If you've already created a key pair using the default name (or a custom one that you've entered), **the file will be overwritten and you may be locked out of your remote systems**. For this reason, you may want to check for existing keys before continuing, run `ls ~/.ssh/id_ed25519*`.
 
-    If you accidentally lock yourself out of the SSH service on your Compute Instance, you can still use the [Lish](/docs/products/compute/compute-instances/guides/lish/) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
+    If you accidentally lock yourself out of the SSH service on your Compute Instance, you can still use the [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
     {{< /note >}}
 
 1.  Next, enter a passphrase, which is used to encrypt (and decrypt) your private key locally. This is optional but is generally recommended unless you are using the key for automation purposes. Each time you log in using that key, you must enter the passphrase (unless you save that passphrase to your local machine's keychain manager or through the ssh-add tool). Leave this field blank if you don't want to use a passphrase.
@@ -395,7 +395,7 @@ Start PuTTY and **Load** your saved session. You are prompted to enter your serv
 
 ## Upload Your SSH Key to Linode Cloud Manager
 
-To use your SSH key when deploying new Linodes, you must first upload it to your account. This can be done through the Cloud Manager by following the [Manage SSH Keys > Add a Public Key](/docs/products/platform/accounts/guides/manage-ssh-keys/#add-a-public-key) guide. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
+To use your SSH key when deploying new Linodes, you must first upload it to your account. This can be done through the Cloud Manager by following the [Manage SSH Keys > Add a Public Key](https://techdocs.akamai.com/cloud-computing/docs/manage-ssh-keys#add-a-public-key) guide. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance#create-a-password-and-add-ssh-keys).
 
 ## Is it Safe to Share Public SSH Keys?
 
@@ -431,12 +431,12 @@ Copy the public key to a new file named `id_rsa.pub` in your home folder's `.ssh
 
 ## Disable Password Authentication
 
-The SSH daemon on a Linux server allows you to configure and fine-tune its behavior and security settings. If you have set up SSH keys for all users who need to authenticate to a server, you can disable password authentication in order to further secure the server. While this is a recommended step to take when hardening your server, prior to disabling password authentication, you should make sure that you can reliably access your server using SSH key-pair authentication. To learn how to disable password authentication on a Linux server, see the [SSH Daemon Options](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+The SSH daemon on a Linux server allows you to configure and fine-tune its behavior and security settings. If you have set up SSH keys for all users who need to authenticate to a server, you can disable password authentication in order to further secure the server. While this is a recommended step to take when hardening your server, prior to disabling password authentication, you should make sure that you can reliably access your server using SSH key-pair authentication. To learn how to disable password authentication on a Linux server, see the [SSH Daemon Options](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#ssh-daemon-options) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-ssh-on-compute-instances) guide for troubleshooting help.
 
 ## Next Steps
 
-After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.
+After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#ssh-daemon-options) guide for instructions on disabling password authentication for your server.

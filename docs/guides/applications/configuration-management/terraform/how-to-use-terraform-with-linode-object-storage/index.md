@@ -24,7 +24,7 @@ external_resources:
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
 ---
 
-[Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use it to create [Linode Object Storage](/docs/products/storage/object-storage/) solutions.
+[Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use it to create [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) solutions.
 
 ## What is Terraform?
 
@@ -52,9 +52,9 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure all Linode servers are updated. The following commands can be used to update Ubuntu systems.
 
@@ -180,7 +180,7 @@ To construct the Terraform file, execute the following instructions. For more in
     }
     ```
 
-1. Define the `linode` provider. Include the [Linode v4 API](https://techdocs.akamai.com/linode-api/reference/api) `token` for the account. See the [Getting Started with the Linode API guide](/docs/products/tools/api/get-started/#get-an-access-token) for more information about tokens.
+1. Define the `linode` provider. Include the [Linode v4 API](https://techdocs.akamai.com/linode-api/reference/api) `token` for the account. See the [Getting Started with the Linode API guide](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) for more information about tokens.
 
     {{< note respectIndent=false >}}
 To hide sensitive information, such as API tokens, declare a `variables.tf` file and store the information there. Retrieve the variables using the `var` keyword. See the [Linode introduction to HCL](/docs/guides/introduction-to-hcl/#input-variables) for guidance on how to use variables.
@@ -195,7 +195,7 @@ To hide sensitive information, such as API tokens, declare a `variables.tf` file
 1. Create a `linode_object_storage_cluster` data source. In the following code sample, the new cluster object is named `primary`. Designate a region for the cluster using the `id` attribute. In the following example, the region is `eu-central-1`. The cluster object provides access to the domain, status, and region of the cluster. See the Terraform registry documentation for the [Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster) for more information.
 
     {{< note respectIndent=false >}}
-Not all regions support storage clusters. For a full list of all data centers where a storage cluster can be configured, see the Linode [Object Storage Product Information](/docs/products/storage/object-storage/).
+Not all regions support storage clusters. For a full list of all data centers where a storage cluster can be configured, see the Linode [Object Storage Product Information](https://techdocs.akamai.com/cloud-computing/docs/object-storage).
     {{< /note >}}
 
     ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="14"}
@@ -480,4 +480,4 @@ For steps on how to use Linode Object Storage as a remote backend to store state
 
 Terraform is a powerful and efficient *Infrastructure as Code* (IaC) application. It automates the process of deploying infrastructure. To use Terraform, use the HCL or JSON formats to describe the final state of the network. Use the `terraform plan` command from the Terraform client to preview the changes and `terraform apply` to deploy the configuration.
 
-The [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest) includes an API for configuring [Linode Object Storage infrastructure](/docs/products/storage/object-storage/). First declare the Linode provider and the [Linode Object Storage Cluster](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster) data source. Define the object storage infrastructure using [Linode object storage buckets](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket), [object storage keys](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_key), and [object storage objects](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object). The object storage objects are the files or strings of text to be stored. For more information on using Terraform, consult the [Terraform documentation](https://developer.hashicorp.com/terraform/docs).
+The [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest) includes an API for configuring [Linode Object Storage infrastructure](https://techdocs.akamai.com/cloud-computing/docs/object-storage). First declare the Linode provider and the [Linode Object Storage Cluster](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster) data source. Define the object storage infrastructure using [Linode object storage buckets](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket), [object storage keys](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_key), and [object storage objects](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object). The object storage objects are the files or strings of text to be stored. For more information on using Terraform, consult the [Terraform documentation](https://developer.hashicorp.com/terraform/docs).

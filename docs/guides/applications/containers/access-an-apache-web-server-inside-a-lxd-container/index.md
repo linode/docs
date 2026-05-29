@@ -32,9 +32,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Mount Storage Volume
 
@@ -42,7 +42,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 ### Block Storage Volume
 
-1.  Follow the [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
+1.  Follow the [View, Create, and Delete Block Storage Volumes](https://techdocs.akamai.com/cloud-computing/docs/manage-block-storage-volumes) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
 
     {{< note type="alert" respectIndent=false >}}
 **Do not** format the volume and do not add it to `/etc/fstab`.
@@ -50,7 +50,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
     ![Add a volume for Disk Storage](add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
-2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more information.
+2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance) for more information.
 
 3.  Reboot your Linode from the Linode Manager.
 
@@ -61,7 +61,7 @@ When setting up LXD, you can either store container data in an [external volume]
     ![Create a Linode Disk](create-new-disk.png)
 
     {{< note respectIndent=false >}}
-If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resize-a-disk) for more information.
+If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance#resize-a-disk) for more information.
 {{< /note >}}
 
 2.  Edit your Linode's Configuration Profile. Under **Block Device Assignment**, assign your new disk to `/dev/sdc`. Make a note of this path, which you will need when configuring LXD in the next section.

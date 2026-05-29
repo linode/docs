@@ -90,9 +90,9 @@ A key component of a good monitoring plan is alerting. When configuring alerts, 
 
 The following components must be in place prior to installing Kubecost:
 
--   An active Kubernetes cluster running Kubernetes version 1.20 or higher. To deploy a cluster using Linode Kubernetes Engine (LKE), see [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/). The example below uses a 4 GB plan for each cluster node.
+-   An active Kubernetes cluster running Kubernetes version 1.20 or higher. To deploy a cluster using Linode Kubernetes Engine (LKE), see [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine). The example below uses a 4 GB plan for each cluster node.
 -   `kubectl` installed and configured to communicate with your cluster from your local system.
--   Your cluster's [kubeconfig file](/docs/products/compute/kubernetes/get-started/#access-and-download-your-kubeconfig) downloaded and saved to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the path to, and name of, your cluster's kubeconfig .yaml file:
+-   Your cluster's [kubeconfig file](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#access-and-download-your-kubeconfig) downloaded and saved to your `$KUBECONFIG` environment variable. Replace {{< placeholder "~/Downloads/kubeconfig.yaml" >}} with the path to, and name of, your cluster's kubeconfig .yaml file:
     ```command
     export KUBECONFIG={{< placeholder "~/Downloads/kubeconfig.yaml" >}}
     ```

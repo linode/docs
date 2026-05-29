@@ -18,7 +18,7 @@ relations:
 deprecated: true
 ---
 
-This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/).
+This tutorial explains how to install and configure the Apache web server on Fedora 13. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 13](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/).
 
 ## Install Apache HTTP Server
 

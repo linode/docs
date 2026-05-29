@@ -20,9 +20,9 @@ This guide walks you through configuring a new or existing Mastodon instance to 
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -36,7 +36,7 @@ If your Mastodon instance stays below a certain size and traffic level, these im
 
 But object storage, by contrast, excels when it comes to storing static files — like Mastodon's media attachments. An Amazon S3-compatible object storage bucket can more readily store a large number of static files and scale appropriately.
 
-To learn more about the features of object storage generally and Linode Object Storage more particularly, take a look at our [Linode Object Storage overview](/docs/products/storage/object-storage/).
+To learn more about the features of object storage generally and Linode Object Storage more particularly, take a look at our [Linode Object Storage overview](https://techdocs.akamai.com/cloud-computing/docs/object-storage).
 
 ## How to Use Linode Object Storage with Mastodon
 
@@ -46,7 +46,7 @@ The tutorial gives instructions for creating a new Mastodon instance, but the in
 
 ### Creating the Linode Object Storage Bucket
 
-To get started, your Mastodon instance needs its own access key and bucket on your Linode Object Storage instance. Follow our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide to generate the access key and create a bucket for Mastodon.
+To get started, your Mastodon instance needs its own access key and bucket on your Linode Object Storage instance. Follow our [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide to generate the access key and create a bucket for Mastodon.
 
 The access keys you generate will be used later within your Mastodon configuration, so keep them somewhere safe. The secret key generated at this time cannot be viewed later — you have to regenerate the keys if you lose them.
 
@@ -54,7 +54,7 @@ This tutorial uses the name `example-mastodon-bucket` for the Linode Object Stor
 
 Additionally, this guide places the bucket in the Atlanta region, which has the region designation `us-southeast-1`. Likewise, replace this throughout the rest of the guide with your bucket's actual region designation. You can determine your bucket's region designation through the bucket's URL. The region designation is given between the bucket name and `linodeobjects.com`, as in `example-mastodon-bucket.us-southeast-1.linodeobjects.com`.
 
-You can learn more about creating and managing Linode Object Storage buckets through our guide [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/).
+You can learn more about creating and managing Linode Object Storage buckets through our guide [Create and Manage Buckets](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets).
 
 ### Installing Mastodon
 

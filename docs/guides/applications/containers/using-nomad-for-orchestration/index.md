@@ -35,9 +35,9 @@ Follow the steps here to install Nomad manually. These walk through everything n
 
 #### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 A Linode instance is needed to run Nomad on, so follow the linked guides here to start up and configure your own instance:
 
 {{< note >}}
@@ -206,7 +206,7 @@ This tutorial leverages our custom Terraform script to deploy the Nomad cluster.
 
 Here's a rundown of what the Terraform script does:
 
--   Creates a given number of Nomad server and client nodes. All instances deploy within a single region and leverage [Linode's VLAN](/docs/products/networking/vlans/) feature for virtual private cloud (VPC) communications between nodes.
+-   Creates a given number of Nomad server and client nodes. All instances deploy within a single region and leverage [Linode's VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan) feature for virtual private cloud (VPC) communications between nodes.
 
 -   Executes a script on each node to install Nomad, Consul, and Docker.
 
@@ -246,7 +246,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  Open the `terraform.tfvars` file, and configure the variables there. Here is a breakdown of the variables and how to set them:
 
-    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes. Enter the full public key for your local machine in one line.
 
@@ -254,7 +254,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
     -   `server_count` and `client_count` dictate the number of Nomad server and client nodes to provision, respectively. Nomad recommends three or five server nodes for each region. This tutorial uses three server nodes and three client nodes.
 
-    -   `region` determines what Linode region the nodes should be created in. The full list of regions and their designations is available via the [Linode regions API](https://api.linode.com/v4/regions). However, this tutorial uses Linode's VLAN feature, which is only available for certain regions. Those regions are listed on the [VLAN Overview](/docs/products/networking/vlans/#availability) page.
+    -   `region` determines what Linode region the nodes should be created in. The full list of regions and their designations is available via the [Linode regions API](https://api.linode.com/v4/regions). However, this tutorial uses Linode's VLAN feature, which is only available for certain regions. Those regions are listed on the [VLAN Overview](https://techdocs.akamai.com/cloud-computing/docs/vlan#availability) page.
 
     -   `linode_image` points to an image to use for each node. The default for this tutorial is an Ubuntu 20.04 LTS image. Find a list of possible images via the [Linode images API](https://api.linode.com/v4/images). Be aware that changing the image requires accordingly adjusting the scripts for installing Consul, Nomad, and Docker.
 

@@ -44,7 +44,7 @@ marketplace_app_name: "ONLYOFFICE Docs"
 
 ### Accessing ONLYOFFICE Docs
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or the IP address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or the IP address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 
 1. The ONLYOFFICE Docs welcome page includes a command to retrieve the randomly generated JSON validation token and an example document management system to test the application.
 

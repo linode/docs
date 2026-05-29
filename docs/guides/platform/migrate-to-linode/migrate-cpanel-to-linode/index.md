@@ -37,7 +37,7 @@ The first step is to deploy cPanel on the Linode platform. cPanel can be install
 Whichever method you choose, select a Linode Compute Instance plan with enough storage capacity to accommodate the data within the cPanel accounts on your current host.
 
 {{< note type="warning" >}}
-When performing the initial cPanel configuration steps, use the Linode’s generic domain name for WHM’s Hostname setting. This generic domain will be listed under the **Reverse DNS** column of the *Networking* tab for your instance in the Cloud Manager and it will have the form `203-0-113-0.ip.linodeusercontent.com`. Review the [Viewing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) guide for more details. If you set the Hostname as your domain name now, the WHM and cPanel dashboards on your new Linode will redirect to your current host and you will not be able to access the settings for your new Linode.
+When performing the initial cPanel configuration steps, use the Linode’s generic domain name for WHM’s Hostname setting. This generic domain will be listed under the **Reverse DNS** column of the *Networking* tab for your instance in the Cloud Manager and it will have the form `203-0-113-0.ip.linodeusercontent.com`. Review the [Viewing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) guide for more details. If you set the Hostname as your domain name now, the WHM and cPanel dashboards on your new Linode will redirect to your current host and you will not be able to access the settings for your new Linode.
 {{< /note >}}
 
 ### Use the cPanel Transfer Tool

@@ -13,7 +13,7 @@ external_resources:
 - '[DreamHost Knowledge Base: Configuring (CORS) on a DreamObjects Bucket](https://help.dreamhost.com/hc/en-us/articles/216201557-How-to-setup-Cross-Origin-Resource-Sharing-CORS-on-DreamObjects)'
 ---
 
-[Linode Object Storage](/docs/products/storage/object-storage/) offers a globally-available, Amazon S3-compatible storage solution. Whether you are storing critical backup files or data for a static website, Amazon S3-compatible object storage can efficiently answer the call.
+[Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) offers a globally-available, Amazon S3-compatible storage solution. Whether you are storing critical backup files or data for a static website, Amazon S3-compatible object storage can efficiently answer the call.
 
 To make the most of object storage, you may need to access the data from other domains. For instance, your dynamic applications may opt to use S3 for static file storage.
 
@@ -33,7 +33,7 @@ This is where managing CORS policies on your object storage service becomes impe
 
 ## Working with CORS Policies on Linode Object Storage
 
-One of the best tools for managing policies for your Amazon S3-compatible storage, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) to:
+One of the best tools for managing policies for your Amazon S3-compatible storage, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage) to:
 
 1.  Install `s3cmd` on your system. The installation takes place on the system from which you intend to manage your S3 storage.
 
@@ -73,7 +73,7 @@ The basic CORS policy above is fairly permissive, allowing access for any reques
 
 As you can see above, the Linode Cloud Manager can set up a general CORS policy for your bucket. However, if you need more fine-grained control, you need to deploy custom CORS policies.
 
-Creating CORS policies follows a similar methodology to the one outlined in our [Define Access and Permissions using Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/) tutorial.
+Creating CORS policies follows a similar methodology to the one outlined in our [Define Access and Permissions using Bucket Policies](https://techdocs.akamai.com/cloud-computing/docs/define-access-and-permissions-using-bucket-policies) tutorial.
 
 These next sections break down the particular fields needed for CORS policies and how each affects your bucket's availability.
 
@@ -234,4 +234,4 @@ Having CORS-related issues with your Amazon S3-compatible storage? Take these st
 
 This covers the tools and approaches you need to start managing CORS for your Linode Object Storage or other Amazon S3-compatible storage. Once you have these, addressing CORS issues is a matter of reviewing and adjusting policies against desired origins and request types.
 
-Keep improving your resources for managing your S3 through our [object storage guides](/docs/products/storage/object-storage/guides/).
+Keep improving your resources for managing your S3 through our [object storage guides](https://techdocs.akamai.com/cloud-computing/docs/object-storage).

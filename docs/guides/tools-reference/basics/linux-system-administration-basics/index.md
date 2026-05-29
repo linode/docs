@@ -35,11 +35,11 @@ Commonly, the Linux administration role typically involves:
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -117,7 +117,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 
 ## Network Diagnostics
 
-In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/products/platform/get-started/guides/support/) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](https://techdocs.akamai.com/cloud-computing/docs/help-and-support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### The ping Command
 
@@ -170,7 +170,7 @@ Here is an example of output from a `traceroute` command:
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
 
-Adding `traceroute` output to [Linode support](/docs/products/platform/get-started/guides/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Adding `traceroute` output to [Linode support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### The mtr Command
 
@@ -199,7 +199,7 @@ Be aware that `mtr` will pause for a few moments while generating output. For mo
 
 If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics) nor another application issue, it may help to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these.
 
-If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/). Use the following tools and approaches to determine the specific cause of your troubles.
+If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-memory-issues-on-compute-instances). Use the following tools and approaches to determine the specific cause of your troubles.
 
 ### Check Current Memory Usage
 
@@ -255,7 +255,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/docs/products/platform/get-started/guides/support/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -282,7 +282,7 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
 {{< note type="alert" >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) of all additional access that you grant to third parties.
 {{< /note >}}
 
 ### Upload Files to a Remote Server
@@ -666,7 +666,7 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-overview/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/products/networking/dns-manager/).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-overview/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 ### Redirect DNS Queries with CNAME Records
 
@@ -674,15 +674,15 @@ The *Domain Name System*, or DNS, is the service that the internet uses to assoc
 
 CNAME records are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAME records will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAME records must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAME records can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAME records are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
+Although limited in their capabilities, CNAME records can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAME records are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 ### Set Up Subdomains
 
 When [reading domain names](/docs/guides/dns-overview/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configure-subdomains):
+Follow these steps to [create and host a sub-domain](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations#configure-subdomains):
 
-1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/products/networking/dns-manager/). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager). You may host the DNS for your domain with any provider you choose.
 
 2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 

@@ -57,7 +57,7 @@ The admin password for the OpenVPN application is no longer manually entered whe
 
 **OpenVPN Admin Interface:**
 
-- **URL:** `https://192-0-2-1.ip.linodeusercontent.com`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+- **URL:** `https://192-0-2-1.ip.linodeusercontent.com`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 - **Username:** `openvpn`
 - **Password:** See [Obtaining the Admin Password](#obtaining-the-admin-password) below.
 
@@ -69,7 +69,7 @@ For more details on logging in to the OpenVPN admin interface for the first time
 
 ### Obtaining the Admin Password
 
-The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish). The credentials are available in the file `/root/.credentials`
+The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish). The credentials are available in the file `/root/.credentials`
 ```
 cat /root/.credentials
 Sudo Username: $SUDO_USER
