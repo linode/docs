@@ -184,6 +184,7 @@ basename
 bashdoor
 bashrc
 bc
+bcrypt
 bdd
 bellovin
 benchmarked
