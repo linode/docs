@@ -1,144 +1,323 @@
 ---
 slug: apache-access-control
-title: 'Apache Access Control'
-description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
-authors: ["Linode"]
-contributors: ["Linode"]
+title: "Access control in Apache"
+description: "Learn how to configure rule-based access control in Apache using the modern Require directive introduced in Apache 2.4. This guide covers IP- and host-based restrictions, rule combinations, and migration from legacy Apache 2.2 configurations."
+og_description: "Learn how to configure rule-based access control in Apache using the modern Require directive introduced in Apache 2.4. This guide covers IP- and host-based restrictions, rule combinations, and migration from legacy Apache 2.2 configurations."
+authors: ["Akamai"]
+contributors: ["Akamai"]
 published: 2009-12-07
-modified: 2015-11-20
-keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
-tags: ["http","web server","apache","security"]
+modified: 2026-05-26
+keywords: ['apache', 'apache 2.4', 'access control', 'require directive', 'web server security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/','/websites/authbased-access-control-with-apache/']
+aliases: ['/guides/rulebased-access-control-for-apache/','/web-servers/apache/configuration/rule-based-access-control/','/websites/apache-tips-and-tricks/rulebased-access-control-for-apache/','/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/']
 external_resources:
- - '[Installation of the Apache web server](/docs/web-servers/apache/)'
- - '[LAMP stack guides](/docs/web-servers/lamp/)'
- - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
- - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+ - '[Apache authorization documentation](https://httpd.apache.org/docs/2.4/howto/access.html)'
+ - '[mod_authz_core documentation](https://httpd.apache.org/docs/2.4/mod/mod_authz_core.html)'
+tags: ["web server","apache"]
 ---
 
-While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.
+Rule-based access control in Apache determines which clients can access specific resources on your server. Apache 2.4 introduced a new authorization model based on the `Require` directive, replacing the deprecated `Order`, `Allow`, and `Deny` directives used in earlier versions.
 
-This guide provides an overview of both credential-based and rule-based access control tools for Apache.
+Access control is a fundamental part of securing web applications. By restricting access at the web server level, you can prevent unauthorized users from reaching sensitive resources before application logic is ever executed. Common use cases include limiting access to administrative interfaces, internal tools, staging environments, or API endpoints.
 
-## Before You Begin
+This guide demonstrates how to configure access control using modern Apache 2.4 directives. For password-protected resources and user authentication, see our [HTTP Basic authentication in Apache](/docs/guides/apache-http-basic-authentication/) guide.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+## Before you begin
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  If you do not already have a virtual machine to use, create a compute instance with at least 4 GB of memory. See our [Get started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-    To check your hostname run:
+1.  Follow our [Set up and secure a Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-        hostname
-        hostname -f
+1.  Install Apache HTTP Server 2.4 or later on your system:
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
+    ```command {title="Debian-based Linux distributions"}
+    sudo apt update
+    sudo apt install apache2 -y
+    ```
+
+    ```command {title="RHEL-based Linux distributions"}
+    sudo dnf install httpd -y
+    ```
+
+1.  Ensure that you have root or `sudo` privileges to edit configuration files.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-
-This guide uses the same example file paths as our [Apache on Debian 8](/docs/guides/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.
 {{< /note >}}
 
-## Apache Access Control
+## Understanding rule-based access control in Apache 2.4
 
-To enable passwords for a directory, insert the following lines into the appropriate `<Directory>` section of an Apache configuration file. You may also insert authentication information in an `.htaccess` file or in a virtual host configuration section. The required directives are:
+In Apache 2.4, authorization is explicit and rule-based. Instead of relying on evaluation order, each `Require` directive defines a condition that must be met. These conditions can be combined to create precise access policies without relying on implicit behavior.
 
-{{< file "Apache Configuration File" apache >}}
-AuthType Basic
-AuthUserFile /var/www/example.com/.htpasswd
-AuthName "Sign In Here To Gain Access To the Site"
-Require valid-user
+Access control rules are typically applied in `<Directory>` and `<Location>` blocks within virtual host configuration files.
 
-{{< /file >}}
+The exact configuration file location depends on your Linux distribution and Apache deployment. Debian-based systems commonly use site-specific virtual host configuration files in `/etc/apache2/sites-available/`, such as `/etc/apache2/sites-available/000-default.conf`. RHEL-based systems often use `/etc/httpd/conf/httpd.conf` or site-specific files in `/etc/httpd/conf.d/`.
 
+Access control rules can also be applied via `.htaccess` files.
 
-* The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
+Most access control functionality is provided by the `mod_authz_core` and `mod_authz_host` modules. These modules are enabled by default in most Apache installations.
 
-* The `AuthUserFile` specifies the path (in full) to the password file where the passwords are stored. In this example we're using the path `/var/www/example.com/.htpassword`. This is one directory above the `public_html` folder, preventing accidental exposure of the file. By default, all files beginning with `.ht` are not web-accessible in most default configurations of Apache, but this should not be assumed.
+## Basic access control rules
 
+These directives are typically used to establish a default policy. For example, you might deny all access by default and then selectively allow specific clients.
 
-* The `AuthName` directive contains the message browser uses to inform the user of what resource they're authenticating to. The value is arbitrary.
+Use the `Require` directive to define access control rules.
 
-* The `Require valid-user` setting simply tells Apache that any valid user can authenticate.
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require all granted
+```
 
-At this point we need to create a password file.
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require all denied
+```
 
-## Generating HTTP AUTH Passwords
+These rules are often used as a baseline before applying more specific restrictions.
 
-To generate passwords, we need the `htpasswd` tool. For many distributions, this tool may have been installed when you installed Apache itself. Debian and Ubuntu users will have to install the `apache2-utils` package with the following commands:
+Restrict access to requests originating from the local system:
 
-    sudo apt-get install apache2-utils
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require local
+```
 
-To create a new file with a single user, issue the following command:
+You can also negate a condition with `Require not` to exclude specific clients while allowing broader access:
 
-    htpasswd -c /var/www/example.com/.htpasswd username
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require all granted
+Require not ip 192.168.1.50
+```
 
-In this example, we create a new `AuthUserFile` with the `-c` option. The file is located at `/var/www/example.com/.htpasswd` and the user name is `username`. `htpasswd` will prompt you to enter a password and then confirm the password. If you have an existing file, omit the `-c` option.
+## Restricting access by IP address
 
-The `-b` option allows you to enter the password as the last parameter of the command, as in this example :
+IP-based restrictions are the most common form of access control. They are fast, reliable, and do not depend on DNS resolution.
 
-    htpasswd -b /srv/auth/.htpasswd username 5t1ck6
+Use `Require ip` to allow specific IP addresses or subnets.
 
-The `AuthUserFile` will, when populated look something like this:
+Allow a single IP:
 
-{{< file "/var/www/example.com/.htpasswd" >}}
-hobby:isiA3Q4djD/.Q
-admin:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
-username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require ip 192.168.1.10
+```
 
-{{< /file >}}
+Allow a subnet:
 
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require ip 192.168.1.0/24
+```
 
-Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the users' password. This provides one-way encryption and some small measure of additional security.
+Allow an IPv6 subnet:
 
-In the above example, the first `hobby` user's password is hashed using the "CRYPT" method, which is the default. This is not considered a secure encryption mechanism. If you specify the `-s` option in the `htpasswd` command, the password will be hashed with the SHA algorithm as in the second line of the above example. Finally, if you specify the `-m` option, `htpasswd` will use the MD5 hash to store the password. We recommend using either the SHA or the MD5 hash.
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require ip 2001:db8::/32
+```
 
-Additionally, if you would prefer to organize and maintain the `AuthUserFile` yourself, you can still use the `htpasswd` tool to generate the user entries. By specifying the `-n` option the program will output the appropriate line in the terminal. In the following example, the `htpasswd` entry is followed by the output of the command:
+Allow multiple networks:
 
-    htpasswd -nbs user2 strongpassword
-    user2:{SHA}KuhoB50pPgoYXGcce82sUd8244U=
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require ip 192.168.1.0/24
+Require ip 10.0.0.0/8
+```
 
-You can now append the `user2:{SHA}KuhoB50pPgoYXGcce82sUd8244U=` line to your `AuthUserFile` manually. Once this line is in the password file, the `betty` user credentials will be able to authenticate the HTTP server.
+## Restricting access by hostname
 
-## Access Control Lists with Groups
+Hostname-based rules can be useful in environments where clients are identified by domain rather than fixed IP addresses.
 
-In the `Require` directive above we specified the `valid-user`. This told Apache that any user who could authenticate against one of the users specified in the `AuthUserFile` could gain access to the site. While you can maintain separate password files for different resources, this is difficult to maintain for deployments with complex authentication needs.
+Use `Require host` to match client hostnames:
 
-To address this need, Apache allows you to use a single `AuthUserFile`, containing all users that will need to authenticate to the server. To limit the set of valid credentials to a specific subset of the users listed in the `.htpasswd` file, we must specify users in the `Require` directive. Only users specified after the `Require user` directive will be permitted to access the specified resource. For example:
+```file {title="Apache virtual host configuration file" lang="apache"}
+Require host example.com
+```
 
-{{< file "Apache configuration option" >}}
-Require user username admin
+Hostname-based rules rely on reverse DNS lookups and can introduce latency or inconsistencies. Prefer IP-based rules when possible.
 
-{{< /file >}}
+## Combining access rules
 
+Combine rules using containers to express logical relationships between conditions. For example, requiring multiple conditions to be true, or allowing access if any one condition is satisfied.
 
-Given this directive, the users `username` and `admin` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
+### RequireAll
 
-{{< file "Apache configuration file" apache >}}
-AuthType Basic
-AuthUserFile /srv/auth/.htpasswd
-AuthGroupFile /srv/auth/.htgroup
-Require group Authorized
+The `RequireAll` container allows access only if all of the enclosed conditions are met. This is useful for enforcing multiple requirements at the same time.
 
-{{< /file >}}
+```file {title="Apache virtual host configuration file" lang="apache"}
+<RequireAll>
+    Require ip 192.168.1.0/24
+    Require not ip 192.168.1.50
+</RequireAll>
+```
 
+### RequireAny
 
-In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` that specifies user groups. The group file contains a list of user groups and the usernames associated with each group. The `htgroup` file, like the `htpasswd` file, can be located anywhere on the file system. For clarity's sake, we recommend that `htgroup` be in the same directory as the `htpasswd` file. Here is an example of an `htgroup` file:
+The `RequireAny` container allows access if any of the enclosed conditions are met. This is useful when multiple independent conditions should grant access.
 
-{{< file "/var/www/example.com/.htgroup" >}}
-Authorized: username username2
-Team: admin hobby
+```file {title="Apache virtual host configuration file" lang="apache"}
+<RequireAny>
+    Require ip 192.168.1.0/24
+    Require ip 10.0.0.0/8
+</RequireAny>
+```
 
-{{< /file >}}
+### RequireNone
 
+The `RequireNone` container excludes requests that match any of the enclosed conditions. Because `RequireNone` cannot grant access on its own, use it inside a broader rule such as `RequireAll`:
 
-Given this `htgroup` file, only the users `username` and `username2` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
+```file {title="Apache virtual host configuration file" lang="apache"}
+<RequireAll>
+    Require all granted
+    <RequireNone>
+        Require ip 203.0.113.10
+    </RequireNone>
+</RequireAll>
+```
 
-## The Caveats of HTTP Authentication
+In most cases, `Require not` is a simpler alternative, but `RequireNone` is useful when grouping multiple exclusion rules.
 
--   The `AuthType Basic` directive means credentials are sent unencrypted, which makes HTTP AUTH particularly subject to "man-in-the-middle" attacks. As a result, this authentication method shouldn't be used for protecting sensitive information without first encrypting the traffic over SSL.
+## Applying access control rules
 
--   In HTTP AUTH session authentication credentials must be exchanged between the client and the server for every request. While most client software can cache this information so that the user only has to enter the username and password once, the authentication credentials must be passed for every request. This can add additional network overhead.
+The following example demonstrates how to apply an access control rule to a specific directory and verify the result.
 
--   When Apache processes an HTTP AUTH request it must parse through the entire `htpasswd` file. When the file only stores a few passwords the processing time is negligible, but when password files grow, requests can longer to process.
+1.  Create a test directory and file:
+
+    ```command
+    sudo mkdir -p /var/www/html/private
+    echo "private test" | sudo tee /var/www/html/private/index.html
+    ```
+
+1.  Edit your Apache virtual host configuration file:
+
+    ```command {title="Debian-based Linux distributions"}
+    sudo nano /etc/apache2/sites-available/000-default.conf
+    ```
+
+    ```command {title="RHEL-based Linux distributions"}
+    sudo nano /etc/httpd/conf/httpd.conf
+    ```
+
+    Add a rule to restrict access to a directory:
+
+    ```file {title="Apache virtual host configuration file" lang="apache"}
+    <Directory /var/www/html/private>
+        Require ip 192.168.1.0/24
+    </Directory>
+    ```
+
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+1.  Test the Apache configuration:
+
+    ```command {title="Debian-based Linux distributions"}
+    sudo apachectl configtest
+    ```
+
+    ```command {title="RHEL-based Linux distributions"}
+    sudo httpd -t
+    ```
+
+    ```output
+    Syntax OK
+    ```
+
+    {{< note type="primary" title="AH00558 warning" >}}
+    If you see an `AH00558` warning about the server's fully qualified domain name, Apache was unable to determine a global `ServerName`. This warning does not indicate a syntax error and does not prevent Apache from starting.
+    {{< /note >}}
+
+1.  Restart Apache to apply changes:
+
+    ```command {title="Debian-based Linux distributions"}
+    sudo systemctl restart apache2
+    ```
+
+    ```command {title="RHEL-based Linux distributions"}
+    sudo systemctl restart httpd
+    ```
+
+1.  Verify access to the restricted directory from an allowed IP address:
+
+    ```command
+    curl -I http://your-server-ip/private/
+    ```
+
+    ```output
+    HTTP/1.1 200 OK
+    ```
+
+    {{< note type="primary" title="Testing from an external client" >}}
+    If you are testing from another system, ensure HTTP traffic on port 80 is allowed by any local firewall applications or Akamai Cloud Firewall. Otherwise, the request may time out before reaching Apache.
+    {{< /note >}}
+
+1.  Attempt to access the restricted directory from a blocked IP address:
+
+    ```command
+    curl -I http://your-server-ip/private/
+    ```
+
+    ```output
+    HTTP/1.1 403 Forbidden
+    ```
+
+### Using `.htaccess`
+
+You can apply rules in a `.htaccess` file when you cannot modify the main configuration:
+
+```file {title="/var/www/html/.htaccess"}
+Require all denied
+```
+
+`.htaccess` files introduce performance overhead and should only be used when necessary.
+
+## Migrating from Apache 2.2
+
+Apache 2.2 used a different access control model based on `Order`, `Allow`, and `Deny`.
+
+Because the underlying authorization model changed significantly, older configurations may not behave as expected when copied directly into Apache 2.4 without modification.
+
+| Apache 2.2 Directive | Apache 2.4 Equivalent |
+|---------------------|----------------------|
+| `Allow from all` | `Require all granted` |
+| `Deny from all` | `Require all denied` |
+| `Allow from 192.168.1.0/24` | `Require ip 192.168.1.0/24` |
+| `Deny from 192.168.1.10` | `Require not ip 192.168.1.10` |
+
+Example conversion:
+
+```file {title="Apache virtual host configuration file" lang="apache"}
+# Apache 2.2
+Order deny,allow
+Deny from all
+Allow from 192.168.1.0/24
+```
+
+```file {title="Apache virtual host configuration file" lang="apache"}
+# Apache 2.4
+Require ip 192.168.1.0/24
+```
+
+Apache 2.4 includes the `mod_access_compat` module for backward compatibility. Avoid using it in new configurations.
+
+## Common access control patterns
+
+The following examples demonstrate common real-world use cases for access control in Apache.
+
+Restrict an admin directory:
+
+```file {title="Apache virtual host configuration file" lang="apache"}
+<Directory /var/www/html/admin>
+    Require ip 192.168.1.0/24
+</Directory>
+```
+
+Block a specific IP:
+
+```file {title="Apache virtual host configuration file" lang="apache"}
+<RequireAll>
+    Require all granted
+    Require not ip 203.0.113.10
+</RequireAll>
+```
+
+Allow multiple trusted networks:
+
+```file {title="Apache virtual host configuration file" lang="apache"}
+<RequireAny>
+    Require ip 192.168.1.0/24
+    Require ip 10.0.0.0/8
+</RequireAny>
+```
