@@ -84,7 +84,7 @@ username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
 
 Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the user's password. This stores passwords as one-way hashes rather than plaintext values.
 
-The `htpasswd` utility supports multiple hashing formats, including APR1-MD5, SHA-1, and bcrypt depending on the Apache version and platform.
+The `htpasswd` utility supports multiple hashing formats, including APR1-MD5, SHA-1, and Bcrypt depending on the Apache version and platform.
 
 In the above example, the first `hobby` user's password is hashed using the "CRYPT" method, which is the default. This is not considered a secure hashing method. If you specify the `-s` option in the `htpasswd` command, the password will be hashed with the SHA-1 algorithm as in the second line of the above example. The `-m` option uses the APR1-MD5 hashing format, which remains common in Apache environments but is considered legacy compared to newer hashing methods.
 
