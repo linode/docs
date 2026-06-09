@@ -532,6 +532,7 @@ deallocation
 deathmatch
 debconf
 declaratively
+deduplicated
 deduplication
 deepin
 defragment
