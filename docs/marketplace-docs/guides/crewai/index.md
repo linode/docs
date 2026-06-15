@@ -68,6 +68,6 @@ crewai run
 
 Once the command above is executed, all of the agents and tasks will start running. On execution you will be able to see the agent's reasoning and how they perform the tasks assigned to them.
 
-The default crew for CrewAI allows a group of agents to perform research on AI trends for the year. A markdown file is created highlighting the reseach in bullet form.
+The default crew for CrewAI allows a group of agents to perform research on AI trends for the year. A Markdown file is created highlighting the research in bullet form.
 
 {{% content "marketplace-update-note-shortguide" %}}
