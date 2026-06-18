@@ -987,6 +987,7 @@ hebern
 Heinemeier
 Helpdesk
 heredoc
+hermes
 heroku
 hexo
 hiera
