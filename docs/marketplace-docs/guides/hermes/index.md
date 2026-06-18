@@ -16,7 +16,7 @@ marketplace_app_id: 2141074
 marketplace_app_name: "Hermes"
 ---
 
-[Hermes Agent](https://hermes-agent.nousresearch.com) is an open-source AI agent platform designed for autonomous task execution through a persistent Relay service. The Relay connects communication channels, tools, and AI models, allowing the agent to receive instructions, perform actions, and automate multi-step workflows. Administrators configure and manage the system through a CLI setup wizard and a local web dashboard. Our Quick Deploy App allows you to connect to the Hermes Agent dashboard via a secure HTTPS endpoint protected by HTPASSWD.
+[Hermes Agent](https://hermes-agent.nousresearch.com) is an open-source AI agent platform designed for autonomous task execution through a persistent relay service. The relay connects communication channels, tools, and AI models, allowing the agent to receive instructions, perform actions, and automate multi-step workflows. Administrators configure and manage the system through a CLI setup wizard and a local web dashboard. Our Quick Deploy App allows you to connect to the Hermes Agent dashboard via a secure HTTPS endpoint protected by HTPASSWD.
 
 This Quick Deploy App creates a Hermes Agent user on the system called `hermes`.
 
@@ -37,7 +37,7 @@ This Quick Deploy App creates a Hermes Agent user on the system called `hermes`.
 
 ## Hermes Agent Options
 
-- **Email address** *(optional)*: Enter the email address you want to use for SOA email DNS record.
+- **Email address** *(optional)*: Enter the email address you want to use when configuring the SOA DNS record for a custom domain.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -49,65 +49,53 @@ This Quick Deploy App creates a Hermes Agent user on the system called `hermes`.
 
 ### Performing Hermes Agent Onboarding
 
-Once the deployment is complete, `hermes` will be installed on the instance but will not be running. Before you can start using Hermes Agent, you need to go through the setup wizard. This Quick Deploy App triggers the onboarding for you when you log in as root.
+Once the deployment is complete, `hermes` is installed on the instance but is not running yet. Before you can start using Hermes Agent, you need to go through the setup wizard. This Quick Deploy App triggers the onboarding for you when you log in as root.
 
-1.  Log into the instance.
+1. Log in to the instance.
 
-    If you disabled root login to the server during the setup of the Hermes Agent app, you need to log into the server as the sudo user.
+   If you disabled root login to the server during the setup of the Hermes Agent app, log in to the server as a sudo user.
 
-```command
-    ssh admin@YOUR_INSTANCE_IP
-```
+   ```command
+   ssh admin@YOUR_INSTANCE_IP
+   ```
 
-    Replace `YOUR_INSTANCE_IP` with the IP address of your Linode instance and `admin` with the sudo user you created.
+   Replace `YOUR_INSTANCE_IP` with the IP address of your Linode instance and `admin` with the sudo user you created.
 
-1.  Escalate privileges to root.
+2. Escalate privileges to root.
 
-    Once you've logged in, note the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
+   Once you've logged in, you can see the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
 
-```output
-    *********************************************************
-    Akamai Connected Cloud Hermes Quick Deploy App
-    Credentials File: /home/admin/.credentials
-    Documentation: https://www.linode.com/docs/marketplace-docs/guides/hermes/
-    *********************************************************
-```
+   ```output
+   *********************************************************
+   Akamai Connected Cloud Hermes Quick Deploy App
+   Credentials File: /home/admin/.credentials
+   Documentation: https://www.linode.com/docs/marketplace-docs/guides/hermes/
+   *********************************************************
+   ```
 
-    Copy the sudo password from `~/.credentials.txt` and enter the following command from the terminal:
+   Copy the sudo password from the `~/.credentials.txt` file and enter the following command in the terminal:
 
-```command
-    sudo su -
-```
+   ```command
+   sudo su -
+   ```
 
-    When prompted for the password, paste the sudo password you got from the `~/.credentials.txt` file. When you log in as **root**, note the following message about the setup wizard. If you are ready to perform the onboarding, enter `y` and it will take you to Hermes Agent's & Hermes Gateway setup wizards where you can complete the configuration.
+   When prompted for the password, paste the sudo password you copied from the `~/.credentials.txt` file. When you log in as **root**, the message about the setup wizard appears. If you are ready to perform the onboarding, enter `y` and it takes you to Hermes Agent's & Hermes Gateway setup wizards where you can complete the configuration.
 
-    Once onboarding is complete, the setup script is removed.
+   Once onboarding is complete, the setup script is removed.
 
-### Confirm Hermes Status
+### Confirm Hermes and Gateway Statuses
 
-At this time, you've configured Hermes Agent on the server. To verify the relay is running, you need to become the `hermes` user. Enter the following from the terminal as the **root** user:
+At this point, you've configured Hermes Agent on the server. To verify the relay and gateway are running, you need to become the `hermes` user. Enter the following in the terminal as the **root** user:
 
 ```command
 su - hermes
 ```
 
-To view the hermes status, enter the following as the **hermes** user:
+To view the hermes and gateway statuses, enter the following as the **hermes** user:
 
 ```command
 hermes agent status
-```
 
-### Confirm Gateway Status
-
-To verify the gateway is running, you need to become the `hermes` user. Enter the following from the terminal as the **root** user:
-
-```command
-su - hermes
-```
-
-To view the gateway status, enter the following as the **hermes** user:
-
-```command
 hermes gateway status
 ```
 
