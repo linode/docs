@@ -1310,6 +1310,7 @@ lambdabunker
 Laminas
 Langa
 langchain
+Langflow
 langgraph
 LANs
 laravel
