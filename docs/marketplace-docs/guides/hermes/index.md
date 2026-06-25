@@ -16,7 +16,7 @@ marketplace_app_id: 2141074
 marketplace_app_name: "Hermes"
 ---
 
-[Hermes Agent](https://hermes-agent.nousresearch.com) is an open-source AI agent platform designed for autonomous task execution through a persistent relay service. The relay connects communication channels, tools, and AI models, allowing the agent to receive instructions, perform actions, and automate multi-step workflows. Administrators configure and manage the system through a CLI setup wizard and a local web dashboard. Our Quick Deploy App allows you to connect to the Hermes Agent dashboard via a secure HTTPS endpoint protected by HTPASSWD.
+[Hermes Agent](https://hermes-agent.nousresearch.com) is an open-source AI agent platform designed for autonomous task execution through a persistent gateway service. The gateway connects communication channels, tools, and AI models, allowing the agent to receive instructions, perform actions, and automate multi-step workflows. Administrators configure and manage the system through a CLI setup wizard and a local web dashboard. Our Quick Deploy App allows you to connect to the Hermes Agent dashboard via a secure HTTPS endpoint protected by HTPASSWD.
 
 This Quick Deploy App creates a Hermes Agent user on the system called `hermes`.
 
@@ -85,7 +85,7 @@ Once the deployment is complete, `hermes` is installed on the instance but is no
 
 ### Confirm Hermes and Gateway Statuses
 
-At this point, you've configured Hermes Agent on the server. To verify the relay and gateway are running, you need to become the `hermes` user. Enter the following in the terminal as the **root** user:
+At this point, you've configured Hermes Agent on the server. To verify the Hermes and Hermes gateway are running, you need to become the `hermes` user. Enter the following in the terminal as the **root** user:
 
 ```command
 su - hermes
