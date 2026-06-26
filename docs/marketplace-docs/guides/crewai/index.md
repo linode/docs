@@ -1,6 +1,6 @@
 ---
 title: "Deploy CrewAI"
-description: "This tutorial will show you how deploy CrewAI as a Quick Deploy App."
+description: "This tutorial will show you how to deploy CrewAI as a Quick Deploy App."
 published: 2026-06-15
 modified: 2026-03-15
 keywords: ['AI Framework', 'AI', 'AI Agent']
