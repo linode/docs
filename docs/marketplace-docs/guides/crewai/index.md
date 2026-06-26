@@ -16,7 +16,7 @@ marketplace_app_id: 2138475
 marketplace_app_name: "CrewAI"
 ---
 
-CrewAI is an open-source framework for building and orchestrating AI agents that work together as a team to accomplish complex tasks. Instead of relying on a single large language model prompt, CrewAI allows developers to create specialized agents with distinct roles, responsibilities, and goals. These agents can collaborate, delegate work, share information, and execute multi-step workflows autonomously.
+CrewAI is an open source framework for building and orchestrating AI agents that work together as a team to accomplish complex tasks. Instead of relying on a single large language model prompt, CrewAI allows developers to create specialized agents with distinct roles, responsibilities, and goals. These agents can collaborate, delegate work, share information, and execute multi-step workflows autonomously.
 
 ## Deploying a Quick Deploy App
 
@@ -43,31 +43,31 @@ CrewAI is an open-source framework for building and orchestrating AI agents that
 
 ### Create Your First Crew
 
-Once the deployment is complete, the `crewai` binary will be installed on the instance. This will allow you to create the first group of agents. 
+Once the deployment is complete, the `crewai` binary is installed on the instance. This allows you to create the first group of agents.
 
 1. To get started, create an example crew called `research`.
 
-```command
-crewai create crew research
-```
+    ```command
+    crewai create crew research
+    ```
 
-This command will create a project scaffold with everything that you need to run your agents. To understand more about the project structure, please be sure to reference the CrewAI [documentation](https://docs.crewai.com/en/installation#creating-a-crewai-project).
+    This command creates a project scaffold with everything that you need to run your agents. To understand more about the project structure, see the [Crew AI documentation](https://docs.crewai.com/en/installation#creating-a-crewai-project).
 
-1. Install the research crew. This will install the default crew of agents that comes with CrewAI.
+2. Install the `research` crew. This installs the default crew of agents that comes with CrewAI.
 
-```command
-cd research
-crewai install --prerelease=allow
-```
+    ```command
+    cd research
+    crewai install --prerelease=allow
+    ```
 
-1. To run the agents, simply run the following command.
+3. To run the agents, use the following command.
 
-```command
-crewai run
-```
+    ```command
+    crewai run
+    ```
 
-Once the command above is executed, all of the agents and tasks will start running. On execution you will be able to see the agent's reasoning and how they perform the tasks assigned to them.
+    Once the command is executed, all of the agents and tasks start running. On execution, you can see the agent's reasoning and how they perform tasks assigned to them.
 
-The default crew for CrewAI allows a group of agents to perform research on AI trends for the year. A Markdown file is created highlighting the research in bullet form.
+    The default crew for CrewAI allows a group of agents to research AI trends for the year. A Markdown file is created, highlighting the research in a bulleted list.
 
 {{% content "marketplace-update-note-shortguide" %}}
