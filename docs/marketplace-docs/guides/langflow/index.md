@@ -48,7 +48,7 @@ marketplace_app_name: "Langflow"
 
 ### Accessing the Langflow Web Interface
 
-1. Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain, for example, `192-0-2-1.ip.linodeusercontent.com`. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide.
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain, for example, `192-0-2-1.ip.linodeusercontent.com`. To learn more about viewing IP addresses and rDNS, see the [Manage IP addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide.
 
     ![Langflow login page](langflow-login.png)
 
