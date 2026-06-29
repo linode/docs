@@ -41,7 +41,7 @@ WebRTC is a free, open-source specification for transmitting high-quality audio 
 
 -   To establish the initial peer-to-peer connection, WebRTC must rely on an intermediate signaling server. The protocol is agnostic regarding what signaling service to use. Most implementations use a *Traversal Using Relays around NAT* (TURN) or *Session Traversal Utilities for NAT* (STUN) server to set up the *signal channel*. Peers share connection parameters and advertise their media channels using the *Session Description Protocol* (SDP).
 
-For more in-depth information about WebRTC, see our introduction guide [What Is WebRTC?](/docs/guides/what-is-webrtc/) For API information, see [Mozilla's WebRTC documentation](https://developer.mozilla.org/en-US/docs/Glossary/WebRTC).
+For more in-depth information about WebRTC, see our introduction guide [What Is WebRTC?](/cloud/guides/what-is-webrtc/) For API information, see [Mozilla's WebRTC documentation](https://developer.mozilla.org/en-US/docs/Glossary/WebRTC).
 
 ### Advantages and Disadvantages of WebRTC
 
@@ -79,7 +79,7 @@ WebSockets is also an open standard protocol for web applications. It enables a 
 
 -   The WebSocket Protocol offers an event-based API for incorporation into JavaScript or other programming languages. Developers can listen for, and react to, events from the server. Polling is never required. Servers can choose from four different events, including `Open`, `Message`, `Error`, and `Close`.
 
-For more information on WebSockets, including how to create and use a socket, see our [Introduction to WebSockets](/docs/guides/introduction-to-websockets/) guide. The [Mozilla WebSockets documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) contains technical details about the web API.
+For more information on WebSockets, including how to create and use a socket, see our [Introduction to WebSockets](/cloud/guides/introduction-to-websockets/) guide. The [Mozilla WebSockets documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) contains technical details about the web API.
 
 ### Advantages and Disadvantages of WebSockets
 

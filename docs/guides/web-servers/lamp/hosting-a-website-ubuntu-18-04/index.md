@@ -18,12 +18,12 @@ In this guide, you learn how to host a website on Ubuntu 18.04 using the LAMP st
 This guide is intended for small and medium-sized websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you need to assess your requirements and install custom packages tailored for your particular requirements.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Hosting an Apache Web Server on Ubuntu 18.04
 
-Hosting a website starts with installing a *web server*, which is an application on your Linode that delivers content through the Internet. This section helps you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see the [guides on web servers](/docs/web-servers/).
+Hosting a website starts with installing a *web server*, which is an application on your Linode that delivers content through the Internet. This section helps you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see the [guides on web servers](/cloud/guides/web-servers/).
 
 If you are using Ubuntu 18.04, instead of installing each component separately, use *Tasksel* to install a LAMP stack on your Linode. When *Tasksel* completes, skip the installation steps in each section below and continue on to the configuration steps of each part of the stack:
 
@@ -128,7 +128,7 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
 {{< note >}}
-You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 {{< /note >}}
 
 1.  Disable the default Apache virtual host:
@@ -187,7 +187,7 @@ You've configured Apache to host one or more websites on your Linode. After you 
 
 ## Hosting a Website on Ubuntu - Installing MySQL
 
-Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section helps you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference guides](/docs/databases/).
+Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section helps you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference guides](/cloud/guides/databases/).
 
 ### Install MySQL
 
@@ -349,7 +349,7 @@ PHP is now installed on your Linode and configured for optimal performance.
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet.
 
-1.  If you haven't done so already, download and install an SFTP capable client on your computer. Linode recommends using the [FileZilla](/docs/guides/filezilla/) SFTP client. Follow the instructions in that guide to connect to your Linode.
+1.  If you haven't done so already, download and install an SFTP capable client on your computer. Linode recommends using the [FileZilla](/cloud/guides/filezilla/) SFTP client. Follow the instructions in that guide to connect to your Linode.
 
 1.  Upload your website's files to the `/var/www/html/example.com/public_html` directory. Replace `example.com` with your domain name.
 
@@ -408,10 +408,10 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
     {{< note respectIndent=false >}}
-  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
     {{< /note >}}
 
-1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide for more information.
+1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/cloud/guides/previewing-websites-without-dns/) guide for more information.
 
 1.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on a local device. Your websites should load in the web browser.
 
@@ -421,4 +421,4 @@ Remember to remove the entries for the name-based virtual hosts from your `hosts
 
 ## Next Steps
 
-Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/products/compute/compute-instances/guides/configure-rdns/) for more information on how to set up reverse DNS.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) for more information on how to set up reverse DNS.

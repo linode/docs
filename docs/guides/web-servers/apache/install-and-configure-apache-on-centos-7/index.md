@@ -1,7 +1,7 @@
 ---
 slug: install-and-configure-apache-on-centos-7
 title: How to Install Apache on CentOS 7
-description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
+description: 'Learn how to install & configure Apache web server on CentOS 7 on a Linode.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2016-11-18
@@ -25,7 +25,7 @@ relations:
 This guide explains how to install and configure the Apache web server on CentOS 7. Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with the domain name of the website.
 {{< /note >}}
@@ -33,9 +33,9 @@ Replace each instance of `example.com` in this guide with the domain name of the
 
 ## Before you begin
 
-1.  Ensure you have followed both the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+1.  Ensure you have followed both the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). To check the hostname run:
+2.  Check that the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). To check the hostname run:
 
         hostname
         hostname -f
@@ -149,12 +149,12 @@ Congratulations! You've set up Apache and you're now ready to host websites. If 
 
 ### Secure the server with SELinux
 
-SELinux is a *mandatory access control* (MAC) system that confines privileged processes and automates security policy creation. To enable it on your Linode, see the [Beginner's Guide  to SELinux on CentOS 7](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/).
+SELinux is a *mandatory access control* (MAC) system that confines privileged processes and automates security policy creation. To enable it on your Linode, see the [Beginner's Guide  to SELinux on CentOS 7](/cloud/guides/a-beginners-guide-to-selinux-on-centos-7/).
 
 ### Secure the site with SSL
 
-To add additional security to the site, consider [enabling a *secure sockets layer* (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
+To add additional security to the site, consider [enabling a *secure sockets layer* (SSL) certificate](/cloud/guides/ssl-apache2-centos/).
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
-Consult the [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/) guide to mitigate downtime through redundancy, monitoring, and failover.
+Consult the [Host a Website with High Availability](/cloud/guides/host-a-website-with-high-availability/) guide to mitigate downtime through redundancy, monitoring, and failover.

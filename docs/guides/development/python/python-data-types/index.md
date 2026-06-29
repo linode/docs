@@ -170,7 +170,7 @@ In the section above, strings are called sequences of characters. Strings act as
 
 Many of these operations can be used on strings as well. Using them can give you powerful tools for manipulating and extracting data from strings in Python.
 
-To see these capabilities and learn more about them, take a look at our guide on [How to Slice and Index Strings in Python](/docs/guides/how-to-slice-and-index-strings-in-python/).
+To see these capabilities and learn more about them, take a look at our guide on [How to Slice and Index Strings in Python](/cloud/guides/how-to-slice-and-index-strings-in-python/).
 
 ### Collections
 
@@ -224,7 +224,7 @@ print(set_variable)
 
 Python's collections are powerful but more complicated than most other data types. As such, they have many operations, more than we can cover here.
 
-Instead, take a look at our other guides to learn more about the basics of Python collections. See our [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/) guide. You may also want to refer to the guide on slicing and indexing strings, [How to Slice and Index Strings in Python](/docs/guides/how-to-slice-and-index-strings-in-python/), for an in-depth look at slice notation.
+Instead, take a look at our other guides to learn more about the basics of Python collections. See our [Python Lists and How to Use Them](/cloud/guides/python-lists-and-how-to-use-them/) guide. You may also want to refer to the guide on slicing and indexing strings, [How to Slice and Index Strings in Python](/cloud/guides/how-to-slice-and-index-strings-in-python/), for an in-depth look at slice notation.
 
 ### Dictionaries
 
@@ -266,7 +266,7 @@ else:
 Melissa is taller than Edgar.
 ```
 
-You can learn more about Python dictionaries and how to make the most of them by reading our [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) guide.
+You can learn more about Python dictionaries and how to make the most of them by reading our [Using Dictionaries in Python 3](/cloud/guides/python-3-dictionaries/) guide.
 
 ## Python Data Type Operations
 
@@ -335,12 +335,12 @@ Python has three functions for casting between numbers and strings.
 
 You now have what you need to start working effectively with the most common data types in Python. Following this guide can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
 
-Looking to deepen your understanding? Then be sure to look at our other [guides on Python](/docs/guides/development/python/). A few of these have been linked throughout this guide, but here is a list gathering those together:
+Looking to deepen your understanding? Then be sure to look at our other [guides on Python](/cloud/guides/development/python/). A few of these have been linked throughout this guide, but here is a list gathering those together:
 
- - [How to Slice and Index Strings in Python](/docs/guides/how-to-slice-and-index-strings-in-python/)
+ - [How to Slice and Index Strings in Python](/cloud/guides/how-to-slice-and-index-strings-in-python/)
 
-- [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/)
+- [Python Lists and How to Use Them](/cloud/guides/python-lists-and-how-to-use-them/)
 
 - **Getting Started with Python Sets**
 
-- [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/)
+- [Using Dictionaries in Python 3](/cloud/guides/python-3-dictionaries/)

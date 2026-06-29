@@ -33,7 +33,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
 ## Before You Begin Installing WordPress
 
--   Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, and ensure that the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -42,7 +42,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
     The first command outputs the short hostname; the second, a fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
+-   Configure a [LAMP](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/cloud/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
 
 -   If you are running NGINX, edit the `location /` block of the configuration to set `index.php` as an index for the site:
 

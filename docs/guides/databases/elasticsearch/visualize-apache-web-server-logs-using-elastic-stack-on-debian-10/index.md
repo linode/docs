@@ -48,23 +48,23 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
     {{< note respectIndent=false >}}
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
 {{< /note >}}
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< note respectIndent=false >}}
-Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Follow the steps in our [Apache Web Server on Debian 10 (Buster)](/docs/guides/how-to-install-apache-web-server-debian-10/) guide to set up and configure Apache on your server.
+1.  Follow the steps in our [Apache Web Server on Debian 10 (Buster)](/cloud/guides/how-to-install-apache-web-server-debian-10/) guide to set up and configure Apache on your server.
 
 1.  The Elasticsearch package is bundled with its own version of a Java runtime, but Logstash requires Java to be present on the system. Install the default version of Java available on Debian 10:
 
@@ -238,7 +238,7 @@ output {
     {{< note respectIndent=false >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-debian-10/#configure-virtual-hosting) section of the [Apache Web Server on Debian 10](/docs/guides/how-to-install-apache-web-server-debian-10/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+If your site was set up by following the [Configure Apache for Virtual Hosting](/cloud/guides/how-to-install-apache-web-server-debian-10/#configure-virtual-hosting) section of the [Apache Web Server on Debian 10](/cloud/guides/how-to-install-apache-web-server-debian-10/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
 {{< /note >}}
 
 1.  Start and enable `logstash`:

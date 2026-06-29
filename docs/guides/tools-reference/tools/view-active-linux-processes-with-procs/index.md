@@ -14,7 +14,7 @@ external_resources:
 - '[Sample procs config files](https://github.com/dalance/procs/tree/master/config)'
 ---
 
-The [*procs*](https://github.com/dalance/procs) utility is a useful and informative alternative to the original Linux [*`ps` (process status) command*](/docs/guides/use-the-ps-aux-command-in-linux/). Like ps, procs displays information about the active processes running on the system, including their CPU and memory usage. However, procs enhances its output with additional columns, an intuitive color scheme, and other helpful features. This guide provides some background on procs, and explains how to install and use it.
+The [*procs*](https://github.com/dalance/procs) utility is a useful and informative alternative to the original Linux [*`ps` (process status) command*](/cloud/guides/use-the-ps-aux-command-in-linux/). Like ps, procs displays information about the active processes running on the system, including their CPU and memory usage. However, procs enhances its output with additional columns, an intuitive color scheme, and other helpful features. This guide provides some background on procs, and explains how to install and use it.
 
 ## An Introduction to procs
 
@@ -35,16 +35,16 @@ The [*procs GitHub page*](https://github.com/dalance/procs#kind-list) has a comp
 
 The procs utility is very similar to the `ps` command which it seeks to replace. Procs can do everything ps does, but it can also display additional fields and has more options. For this reason it is the better choice in most cases. However, both commands have the most significant information available. The `ps` command is often supplemented with the `top` command. top displays a real-time view of the most resource-intensive processes. In procs, the `--watch` and `--watch-interval` options provide the same information. Procs supports tree format and customization, while ps does not.
 
-Because the `ps` command's output is relatively sparse, users often append the `-ef` option for more meaningful results. `ps` is often used in conjunction with other commands, such as `grep`, to extract and summarize information. For more information about the `ps` command, see the [*Linode ps guide*](/docs/guides/use-the-ps-aux-command-in-linux/).
+Because the `ps` command's output is relatively sparse, users often append the `-ef` option for more meaningful results. `ps` is often used in conjunction with other commands, such as `grep`, to extract and summarize information. For more information about the `ps` command, see the [*Linode ps guide*](/cloud/guides/use-the-ps-aux-command-in-linux/).
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install procs

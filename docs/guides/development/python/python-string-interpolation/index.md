@@ -209,7 +209,7 @@ The Python interpreter returns the interpolated string:
 'Welcome, Frida!'
 {{</ output >}}
 
-The Python 3 Template class provides more readable code, especially when using a single template with various values stored in a [dictionary](/docs/guides/python-3-dictionaries/). For example:
+The Python 3 Template class provides more readable code, especially when using a single template with various values stored in a [dictionary](/cloud/guides/python-3-dictionaries/). For example:
 
 {{< file "~/home/username/template_example.py">}}
 from string import Template

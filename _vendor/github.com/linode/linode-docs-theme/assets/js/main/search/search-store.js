@@ -1,7 +1,7 @@
 import { newQuery, QueryHandler } from './query';
-import { getCurrentLang, toDateString } from '../helpers/helpers';
+import { toDateString } from '../helpers/helpers';
 import { LRUMap } from '../helpers/lru';
-import { newCreateHref, addLangToHref } from '../navigation/index';
+import { newCreateHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
@@ -39,7 +39,7 @@ const createSectionFacetsSorted = function (searchConfig, result) {
 			let title = last.replace('-', ' ');
 			// First letter upper case.
 			title = title.charAt(0).toUpperCase() + title.slice(1);
-			let href = `/docs/${parts.join('/').toLowerCase()}/`;
+			let href = `${window.docsRelUrl('/')}${parts.join('/').toLowerCase()}/`;
 			let node = {
 				href: href,
 				key: k,
@@ -397,7 +397,7 @@ export function newSearchStore(searchConfig, params, Alpine) {
 	return store;
 }
 
-export function normalizeAlgoliaResult(result, lang = '') {
+export function normalizeAlgoliaResult(result) {
 	let index = result.index;
 	let queryID = result.queryID ? result.queryID : '';
 
@@ -443,10 +443,6 @@ export function normalizeAlgoliaResult(result, lang = '') {
 			hit.isExternalLink = hit.href.startsWith('http');
 		}
 
-		if (lang && lang !== 'en' && hit.href) {
-			hit.href = addLangToHref(hit.href, lang);
-		}
-
 		hit.firstPublishedDateString = '';
 		if (hit.firstPublishedTime) {
 			hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
@@ -464,7 +460,7 @@ export function normalizeAlgoliaResult(result, lang = '') {
 		};
 
 		if (!hit.thumbnailUrl) {
-			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
+			hit.thumbnailUrl = window.docsRelUrl('/media/images/Linode-Default-416x234.jpg');
 		}
 
 		hit.tagsValues = function () {
@@ -571,9 +567,7 @@ const normalizeResult = function (self, result) {
 		return sections;
 	};
 
-	let lang = getCurrentLang();
-
-	normalizeAlgoliaResult(result, lang);
+	normalizeAlgoliaResult(result);
 };
 
 class SearchBatcher {

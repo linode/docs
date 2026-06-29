@@ -7,7 +7,7 @@
     {{ if $platformParent }}
       <li class="flex items-center mt-1">
         {{ template "breadcrumbs-arrow" . }}
-        <a href="{{ $platformParent.page.Permalink }}" class="truncate"
+        <a href="{{ $platformParent.page.RelPermalink }}" class="truncate"
           >{{ $platformParent.page.LinkTitle }}</a
         >
       </li>
@@ -18,9 +18,10 @@
 {{ define "breadcrumbs-home" }}
   <a
     class="max-w-32 truncate"
+    data-turbo="false"
     href="{{ site.Home.RelPermalink }}"
     @click="$store.search.clearQuery()">
-    Docs Home
+    Akamai Cloud
   </a>
 {{ end }}
 
@@ -34,7 +35,7 @@
     {{ else }}
       {{ if ne .p1 .p2 }}
         {{ template "breadcrumbs-arrow" . }}
-        <a href="{{ .p1.Permalink }}" class="truncate">
+        <a href="{{ .p1.RelPermalink }}" class="truncate">
           {{ .p1.LinkTitle }}
         </a>
       {{ end }}

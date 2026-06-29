@@ -18,11 +18,11 @@ relations:
 deprecated: true
 ---
 
-This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/).
+This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/cloud/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -144,7 +144,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for Fedora 14](/cloud/guides/how-to-install-lamp-stack-on-fedora-alma-rocky-linux/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 
@@ -230,6 +230,6 @@ There are many other possibilities for using mod\_rewrite to allow users to see 
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
+- [Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
 - [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)

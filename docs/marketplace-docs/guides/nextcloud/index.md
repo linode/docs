@@ -1,13 +1,13 @@
 ---
-title: "Deploy Nextcloud through the Linode Marketplace"
-description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
+title: "Deploy Nextcloud"
+description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Quick Deploy App."
 published: 2020-06-11
 modified: 2023-04-21
 keywords: ['Nextcloud','marketplace','file sharing']
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 - '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/nextcloud/','/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
 authors: ["Akamai"]
@@ -19,7 +19,7 @@ marketplace_app_name: "Nextcloud"
 
 [Nextcloud](https://nextcloud.com/) is an open source solution to file hosting and sharing. With Nextcloud, you can synchronize files from a local computer to the Linode server and share them with collaborators. Nextcloud’s customizable security features and intuitive user interface help to keep files safe and easy to manage.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -62,7 +62,7 @@ Before you can use Nextcloud, you must set up your deployment with the [Nextclou
 
     ![Screenshot of the Nextcloud AIO log in prompt](nextcloud-aio-login.png)
 
-1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Marketplace app or use your [rDNS](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
+1. Once you have successfully logged in, you are prompted to either create a new AIO instance or restore from a backup. If your intention is to install a fresh Nextcloud instance, enter the domain you specified earlier when deploying the Quick Deploy App app or use your [rDNS](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) value if no domain was specified. Then, click **Submit**.
 
     ![Screenshot of the domain name prompt](nextcloud-aio-new.png)
 
@@ -92,5 +92,5 @@ After performing the [initial setup and configuration steps](#configure-nextclou
 
 {{% content "marketplace-update-note-shortguide" %}}
 
-- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/docs/guides/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
+- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/cloud/guides/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
 - Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily synchronize the desktop files to the Nextcloud server.

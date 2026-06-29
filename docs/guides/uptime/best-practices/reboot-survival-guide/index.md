@@ -38,7 +38,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/guides/mysqldump-backups/).
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/cloud/guides/mysqldump-backups/).
 
 ### Backing up Important Files
 
@@ -155,7 +155,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/products/compute/compute-instances/guides/lish/) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -175,7 +175,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 
@@ -190,7 +190,7 @@ If your system absolutely **cannot** afford any downtime, then scale the platfor
 You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
 {{< /note >}}
 
- - [Linode NodeBalancers](/docs/products/networking/nodebalancers/)
- - [Using Nginx for Proxy Services and Software Load Balancing](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
- - [MySQL Master-Master Replication](/docs/guides/configure-master-master-mysql-database-replication/)
- - [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+ - [Linode NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer)
+ - [Using Nginx for Proxy Services and Software Load Balancing](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+ - [MySQL Master-Master Replication](/cloud/guides/configure-master-master-mysql-database-replication/)
+ - [MariaDB Clusters with Galera](/cloud/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

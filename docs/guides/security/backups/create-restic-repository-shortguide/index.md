@@ -12,7 +12,7 @@ show_on_rss_feed: false
 ---
 
 {{< note >}}
-[Create an Object Storage access key pair](/docs/products/storage/object-storage/guides/access-keys/) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
+[Create an Object Storage access key pair](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
 {{< /note >}}
 
 1. Configure Restic to use your Object Storage access key pair and to use the bucket you created in the [Before You Begin](#before-you-begin) section of this guide. Replace `your-key`, `your-secret`, and `us-east-1.linodeobjects.com/your-bucket-name` with your own values.
@@ -52,7 +52,7 @@ Store this password securely and somewhere other than your Linode. Your backups 
 Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
 {{< note >}}
-The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
+The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/cloud/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
 {{< /note >}}
 
 1. To keep your credentials secure, using a text editor, create the example script in the root user's home directory, and run all your Restic scripts as the root user. The example uses the Nano text editor.

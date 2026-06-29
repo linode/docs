@@ -1,10 +1,10 @@
 ---
-title: "Deploy LinuxGSM through the Linode Marketplace"
+title: "Deploy LinuxGSM"
 description: "Deploy LinuxGSM on a Linode Compute Instance. LinuxGSM is a command line utility for managing multiplayer game servers."
 published: 2024-03-19
 modified: 2024-03-22
 keywords: ['game servers','multiplayer','game']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
 aliases: ['/products/tools/marketplace/guides/linuxgsm/']
@@ -17,7 +17,7 @@ marketplace_app_name: "LinuxGSM"
 
 [LinuxGSM](https://linuxgsm.com/) is a command-line tool for managing game servers.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -47,7 +47,7 @@ marketplace_app_name: "LinuxGSM"
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish), or with SSH if you provided an [Account Key](/docs/products/platform/accounts/guides/manage-ssh-keys/). The credentials are available in the file `/home/$USERNAME/.credentials`:
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish), or with SSH if you provided an [Account Key](https://techdocs.akamai.com/cloud-computing/docs/manage-ssh-keys). The credentials are available in the file `/home/$USERNAME/.credentials`:
 
 ```command
 cat /home/$USERNAME/.credentials

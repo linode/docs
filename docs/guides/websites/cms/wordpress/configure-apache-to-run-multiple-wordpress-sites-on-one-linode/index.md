@@ -25,11 +25,11 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
+1. Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode’s hostname and timezone.
 
-1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1. If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) to your domain at your domain name's registrar.
+1. If you have not already, [assign Linode's name servers](https://techdocs.akamai.com/cloud-computing/docs/configure-your-domains-authoritative-name-servers) to your domain at your domain name's registrar.
 
 1. Update your system:
 
@@ -201,7 +201,7 @@ In this section, you will configure the Apache virtual hosts file so that a visi
 
 ## Configure WordPress
 
-Follow the [Configure WordPress](/docs/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
+Follow the [Configure WordPress](/cloud/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
 If you do not yet have registered domains to use, you can still perform the WordPress installation using your Linode's IP address. For example:
 
@@ -214,7 +214,7 @@ If you do not yet have registered domains to use, you can still perform the Word
 
     ![WordPress setup-config.php](wp-config.png)
 
-1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
+1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/cloud/guides/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
-1. If you have not yet added DNS records for your Domains, follow Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide.
+1. If you have not yet added DNS records for your Domains, follow Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide.
 

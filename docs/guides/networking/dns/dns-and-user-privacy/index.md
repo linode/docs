@@ -30,7 +30,7 @@ HTTPS establishes encrypted tunnels between web browsers and servers using TLS, 
 
 VPNs offer somewhat better protection from snooping, since they usually tunnel all traffic, including DNS. The potential downside is that VPN security rests on the assumption that the DNS servers are trusted. Many commercial VPN services perform data mining on customers’ DNS traffic. There’s no guarantee that a commercial service isn’t monetizing or otherwise sharing DNS data.
 
-Commercial VPN providers, and some cloud DNS providers, may even redirect DNS traffic, sending users places other than intended. In fact, Google started its popular 8.8 cloud-DNS service after another provider, OpenDNS, [began redirecting queries for Google sites to its own search engine](https://www.dnsfilter.com/blog/paul-vixie-and-peter-lowe-on-why-doh-is-politically-motivated). DNSSEC would have prevented this, but that requires a nontrivial amount of server configuration (see our guide [How to Secure DNS With DNSSEC](/docs/guides/dnssec)).
+Commercial VPN providers, and some cloud DNS providers, may even redirect DNS traffic, sending users places other than intended. In fact, Google started its popular 8.8 cloud-DNS service after another provider, OpenDNS, [began redirecting queries for Google sites to its own search engine](https://www.dnsfilter.com/blog/paul-vixie-and-peter-lowe-on-why-doh-is-politically-motivated). DNSSEC would have prevented this, but that requires a nontrivial amount of server configuration (see our guide [How to Secure DNS With DNSSEC](/cloud/guides/dnssec)).
 
 In short, a VPN does not guarantee DNS privacy. Only mechanisms intended to authenticate and encrypt DNS, coupled with the use of a trusted DNS server, can do that.
 
@@ -68,7 +68,7 @@ For users, DoT offers greater transparency. Any attempt to block or tamper with 
 
 [Bind 9](https://www.isc.org/bind/), the most widely used DNS server software, natively supports both DoT (starting in version 9.17.7) and DoH (starting in version 9.17.10). This support covers Linodes running Ubuntu 22.04 LTS, since this distribution includes Bind version 9.18.1.
 
-To add DoT support to a recursive server running Bind 9, add these lines to `/etc/bind/named.conf`. This example assumes you’ve used [Let’s Encrypt to generate a TLS certificate and key for your DNS server](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/). Substitute the full paths and names of your certificate and key files as appropriate:
+To add DoT support to a recursive server running Bind 9, add these lines to `/etc/bind/named.conf`. This example assumes you’ve used [Let’s Encrypt to generate a TLS certificate and key for your DNS server](/cloud/guides/install-lets-encrypt-to-create-ssl-certificates/). Substitute the full paths and names of your certificate and key files as appropriate:
 
 ```file {title="/etc/bind/named.conf" lang="aconf"}
 tls mytls {
@@ -175,7 +175,7 @@ So far, no major web browser natively supports DoT. Two of the most popular brow
 
 Effective DNS security depends on four elements: hardening of DNS servers, cryptographic signing of DNS zones, protection of DNS queries and responses in flight, and use of a trusted DNS server.
 
-DNS server security requires one or more secondary servers, keys to authenticate zone updates, and possibly a hidden primary server (see How to [Configure Primary and Secondary Servers](/docs/guides/dns-primary-and-secondary-server-setup)). Signing zones with DNSSEC ensures that the sites you visit really are what they claim to be (see [How to Secure DNS With DNSSEC](/docs/guides/dnssec)).
+DNS server security requires one or more secondary servers, keys to authenticate zone updates, and possibly a hidden primary server (see How to [Configure Primary and Secondary Servers](/cloud/guides/dns-primary-and-secondary-server-setup)). Signing zones with DNSSEC ensures that the sites you visit really are what they claim to be (see [How to Secure DNS With DNSSEC](/cloud/guides/dnssec)).
 
 Either DoT or DoH work well to authenticate and encrypt DNS traffic in flight. If the greatest concern is interception or forgery of DNS traffic, either mechanism protects traffic. DoH has the advantage of being enabled by default in some widely used software (e.g. Windows 11 and Google Chrome). Meanwhile, DoT has the advantage of being easier to identify and control.
 

@@ -1,9 +1,9 @@
 ---
-title: "Deploy Appwrite through the Linode Marketplace"
+title: "Deploy Appwrite"
 description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobile & Flutter Developers, on a Linode Compute Instance."
 published: 2023-06-26
 keywords: ['Appwrite','Firebase','backend', 'low-code']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/appwrite/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -14,7 +14,7 @@ marketplace_app_name: "Appwrite"
 
 [Appwrite](https://appwrite.io/) is an open-source, self-hosted back-end server that provides developers with a set of tools and services to build and manage web and mobile applications. It offers various features to simplify the development process, including user authentication, database management, file storage, and more.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -33,7 +33,7 @@ marketplace_app_name: "Appwrite"
 
 ### Accessing the Appwrite Web UI
 
-1.  Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* is your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+1.  Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* is your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses.
 
 1.  In the **Sign in** page that is displayed, click the **Sign Up** link if this is your first time accessing the app.
 

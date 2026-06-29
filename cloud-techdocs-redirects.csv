@@ -1,0 +1,12 @@
+/cloud/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations,https://techdocs.akamai.com/cloud-computing/docs/get-started-with-load-balancing-on-an-lke-cluster
+/cloud/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/,https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine
+/cloud/networking/dns/configure-your-linode-for-reverse-dns/,https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance
+/cloud/guides/understanding-billing-and-payments/,https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works
+/cloud/guides/resize-a-linode-disk/,https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance
+/cloud/guides/disks-and-storage/#creating-a-disk,https://techdocs.akamai.com/cloud-computing/docs/manage-disks-on-a-compute-instance
+/cloud/networking/using-the-linode-shell-lish,https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish
+/cloud/guides/lassie-shutdown-watchdog/#enable-or-disable-shutdown-watchdog,https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie
+/cloud/guides/ip-failover-legacy-keepalived/,https://techdocs.akamai.com/cloud-computing/docs/configuring-ip-failover-using-keepalived
+/cloud/guides/getting-started/,https://techdocs.akamai.com/cloud-computing/docs/getting-started
+/cloud/guides/creating-a-compute-instance/,https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance
+/cloud/guides/set-up-and-secure/,https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance

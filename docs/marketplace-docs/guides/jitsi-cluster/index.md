@@ -1,9 +1,9 @@
 ---
-title: "Deploy Jitsi Cluster through the Linode Marketplace"
-description: "Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using Marketplace Apps."
+title: "Deploy Jitsi Cluster"
+description: "Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using Quick Deploy Apps."
 published: 2024-04-26
 keywords: ['jitsi','marketplace', 'server']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl", "education"]
+tags: ["ubuntu","quick deploy apps", "web applications","linode platform", "cloud manager", "ssl", "education"]
 external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
@@ -22,7 +22,7 @@ marketplace_app_name: "Jitsi Cluster"
 
 [Jitsi](https://jitsi.org) is a suite of open source projects that lets you host your own virtual video conferences.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -52,8 +52,8 @@ Jitsi is now installed and ready to use.
 
 1.  Before you go to your app, if you filled out the optional Jitsi configuration fields:
 
-    - In Cloud Manager's [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
-    - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode.
+    - In Cloud Manager's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
+    - [Configure the rDNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) on your Linode.
 
 1.  If you didn't setup a domain, navigate to the rDNS address of the Linode in your browser. You can find the rDNS address in the **Networking** tab for your Linode in [Cloud Manager](https://cloud.linode.com). If you did setup a domain, navigate to the address as described in the [Jitsi Options](#jitsi-options) section above.
 
@@ -63,7 +63,7 @@ Jitsi is now installed and ready to use.
 
 ## Software Included
 
-The Jitsi Marketplace App installs the following software on your Linode:
+The Jitsi Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

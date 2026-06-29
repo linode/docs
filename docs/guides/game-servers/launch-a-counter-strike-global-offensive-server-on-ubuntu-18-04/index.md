@@ -28,23 +28,23 @@ relations:
 
 ## Before You Begin
 
-1.  [Create a Linode](/docs/products/compute/compute-instances/guides/create/) running Ubuntu 18.04.
+1.  [Create a Linode](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) running Ubuntu 18.04.
 
 1.  Create a [Steam](http://store.steampowered.com) account if you do not have one, and download [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/) to your computer.
 
 1.  A Steam game server login token (GSLT) is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only. [Register your GSLT](https://steamcommunity.com/dev/managegameservers) on Steam's website. Enter `730` as the App ID when creating your GSLT. Review [Steam's documentation](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Registering_Game_Server_Login_Token) for more information about GSLTs.
 
-1.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+1.  Complete our guide: [Install SteamCMD for a Steam Game Server](/cloud/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
     {{< note respectIndent=false >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Counter-Strike: Global Offensive
 
 After following the SteamCMD guide, some firewall modifications are needed specifically for CS:GO:
 
-1.  [Stop the SteamCMD process](/docs/guides/install-steamcmd-for-a-steam-game-server/#stop-steamcmd)  if it is currently running.
+1.  [Stop the SteamCMD process](/cloud/guides/install-steamcmd-for-a-steam-game-server/#stop-steamcmd)  if it is currently running.
 
 1.  Replace a firewall rule to slightly extend the UDP port range available to the game. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide:
 
@@ -56,7 +56,7 @@ After following the SteamCMD guide, some firewall modifications are needed speci
 
 ## Install Counter Strike: Global Offense
 
-1.  [Run SteamCMD and login to Steam](/docs/guides/install-steamcmd-for-a-steam-game-server/#run-steamcmd) inside a screen session.
+1.  [Run SteamCMD and login to Steam](/cloud/guides/install-steamcmd-for-a-steam-game-server/#run-steamcmd) inside a screen session.
 
 1.  From the SteamCMD prompt, install CS:GO to the `steam` user's home directory:
 
@@ -118,7 +118,7 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
     | Package manager | `~/.steam/steamcmd/csgo-ds/` |
     | Manual installation | `~/Steam/csgo-ds/` |
 
-    When run, the script will execute a Dust2 server in competitive game mode in a [screen session](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/). For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
+    When run, the script will execute a Dust2 server in competitive game mode in a [screen session](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/). For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
 
 1.  Make the script executable:
 
@@ -130,7 +130,7 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
 
         cd ~ && ./startcsgo.sh
 
-1.  Review instructions for [detaching from or stopping SteamCMD](/docs/guides/install-steamcmd-for-a-steam-game-server/#exit-steamcmd) to exit the CS:GO server.
+1.  Review instructions for [detaching from or stopping SteamCMD](/cloud/guides/install-steamcmd-for-a-steam-game-server/#exit-steamcmd) to exit the CS:GO server.
 
 ## Join the Game
 
@@ -160,4 +160,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the backtick button (`` ` ``), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/guides/team-fortress2-on-debian-and-ubuntu/#rcon).
+When logged into the server, you can open the RCON console with the backtick button (`` ` ``), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/cloud/guides/team-fortress2-on-debian-and-ubuntu/#rcon).

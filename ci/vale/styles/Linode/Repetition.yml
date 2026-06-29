@@ -10,3 +10,5 @@ level: error
 alpha: true
 tokens:
   - '[^\s]+'
+exceptions:
+  - Tiny

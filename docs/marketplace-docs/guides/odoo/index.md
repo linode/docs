@@ -1,10 +1,10 @@
 ---
-title: "Deploy Odoo through the Linode Marketplace"
+title: "Deploy Odoo"
 description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
 published: 2022-02-22
 modified: 2023-10-27
 keywords: ['odoo','business','crm','ecommerce']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
 aliases: ['/products/tools/marketplace/guides/odoo/','/guides/odoo-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "Odoo"
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company’s processes.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -46,7 +46,7 @@ marketplace_app_name: "Odoo"
 
 ### Accessing the Odoo App
 
-1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*), enter *odoo* as the **Database Name**, and fill out the remaining details for your account.
 

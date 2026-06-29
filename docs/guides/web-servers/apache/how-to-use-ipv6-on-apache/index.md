@@ -42,12 +42,12 @@ Although IPv4 and IPv6 are not directly compatible, several transitional and upg
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Configure IPv6
@@ -261,7 +261,7 @@ LISTEN 0      128                                 [::]:22             [::]:*    
 
 ## Adding an IPv6 Address to the Domain DNS Records
 
-To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
+To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
 
 ## Additional IPv6 Tools
 

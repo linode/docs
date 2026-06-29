@@ -114,6 +114,6 @@ One caveat to using Helm and Terraform together is the added complexity that may
 
 With the information provided in this guide, you should now be equipped to make an informed decision between Terraform and Helm, or even consider using them in tandem. To learn more about these tools, review some of our other resources:
 
--   Navigate to the [Terraform](/docs/guides/applications/configuration-management/terraform/) section for a list of related guides.
+-   Navigate to the [Terraform](/cloud/guides/applications/configuration-management/terraform/) section for a list of related guides.
 
--   For Helm, you can start with our [Introduction to Helm | LKE Workshop](https://www.linode.com/content/introduction-to-helm-lke-workshop-with-jerome-petazzoni/) video. Then, dive deeper with our [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/) guide.
+-   For Helm, you can start with our [Introduction to Helm | LKE Workshop](https://www.linode.com/content/introduction-to-helm-lke-workshop-with-jerome-petazzoni/) video. Then, dive deeper with our [How to Install Apps on Kubernetes with Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/) guide.

@@ -1,9 +1,9 @@
 ---
-title: "Deploy Cribl Stream through the Linode Marketplace"
+title: "Deploy Cribl Stream"
 description: "Deploy Cribl Stream for data routing, shaping, and observability pipeline management"
 published: 2025-10-03
 keywords: ['cribl', 'stream', 'observability', 'log routing', 'data pipeline']
-tags: ["ubuntu", "marketplace", "observability", "developer", "linode platform", "cloud manager"]
+tags: ["ubuntu", "quick deploy apps", "observability", "developer", "linode platform", "cloud manager"]
 external_resources:
 - '[Cribl](https://cribl.io/)'
 - '[Cribl Stream official documentation](https://docs.cribl.io/stream/)'
@@ -16,9 +16,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 Cribl Stream is a vendor-agnostic observability pipeline that gives you full control over your data—allowing you to route, shape, enrich, and reduce event data from any source to any destination. It enables organizations to optimize costs and improve observability by filtering and transforming data before it reaches downstream systems like SIEMs, observability platforms, or data lakes. With its intuitive UI and powerful processing engine, Cribl Stream makes it easier to manage high-volume data ingestion without sacrificing visibility.
 
-This guide includes steps for deploying the Cribl Stream Marketplace App on a Linode instance.
+This guide includes steps for deploying the Cribl Stream Quick Deploy App on a Linode instance.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -46,8 +46,8 @@ Once the app is deployed, you need to obtain the credentials from the server. To
 
 1. Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the contents of the credentials file:
 
@@ -61,7 +61,7 @@ This returns the admin password and other details that were automatically genera
 
 Once you've obtained the credentials, you can access your Cribl instance and open a browser and navigate to your Linode domain entered during deployment or the rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`.
 
-1. In a browser, paste your instance's rDNS domain. Replace `{{< placeholder "https://203-0-113-0.ip.linodeusercontent.com" >}}` with your [Linode's actual rDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+1. In a browser, paste your instance's rDNS domain. Replace `{{< placeholder "https://203-0-113-0.ip.linodeusercontent.com" >}}` with your [Linode's actual rDNS domain](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses).
 
 2. Log in with the admin username (`admin`) and the password in the credentials file.
 

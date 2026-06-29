@@ -1,9 +1,9 @@
 ---
-title: "Deploy Easypanel through the Linode Marketplace"
+title: "Deploy Easypanel"
 description: "Deploy Easypanel on a Linode Compute Instance. This provides a modern server control panel which uses Docker."
 published: 2022-05-31
 keywords: ['easypanel','control panel','cpanel']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/easypanel/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
@@ -14,7 +14,7 @@ marketplace_app_name: "Easypanel"
 
 [Easypanel](https://easypanel.io) is a modern server control panel built for quickly deploying web applications. Based on Docker, Easypanel allows for zero downtime deployments and push deployments through GitHub. It includes support for most popular web programming languages, including PHP, Python, Java, Go, Ruby, and Node.js.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -31,7 +31,7 @@ marketplace_app_name: "Easypanel"
 
 ## Getting Started after Deployment
 
-1.  Open your web browser and navigate to `https://[ip-address]:3000` where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses. The connection uses the `https` protocol with a self-signed certificate. Your browser will likely display a message stating that the connection is not private or that there is a potential security risk. You can safely continue past this message. In most browsers, click **Advanced** and then **Proceed** or **Accept risk**.
+1.  Open your web browser and navigate to `https://[ip-address]:3000` where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses. The connection uses the `https` protocol with a self-signed certificate. Your browser will likely display a message stating that the connection is not private or that there is a potential security risk. You can safely continue past this message. In most browsers, click **Advanced** and then **Proceed** or **Accept risk**.
 
 1. In the setup screen, enter your preferred username, password, email address. You can also enter your Github token now or you can leave that field blank to enter it at a later time. Click **Setup** once finished.
 

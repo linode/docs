@@ -10,7 +10,7 @@ keywords: ['getting started with black and isort','python','black','isort','deve
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, widely adopted in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
+[Python](/cloud/guides/development/python/) is one of the world's most widely used programming languages, widely adopted in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
 
 However, projects spanning larger teams benefit from consistency. While an application written in a number of different styles is no less correct, these different styles becomes a distraction to those maintaining the code. For instance, the following two example Python fragments execute identically:
 
@@ -166,7 +166,7 @@ As a Python programmer, Black and isort are entirely optional. If your formattin
 
 ## Black and isort Examples
 
-Black and isort can be used in a number of different ways. Use the following command to invoke both Black and isort as command line utilities on your local desktop or [Linode server](/docs/guides/use-a-linode-for-web-development-on-remote-devices/):
+Black and isort can be used in a number of different ways. Use the following command to invoke both Black and isort as command line utilities on your local desktop or [Linode server](/cloud/guides/use-a-linode-for-web-development-on-remote-devices/):
 
 ```command
 black example.py; isort example.py

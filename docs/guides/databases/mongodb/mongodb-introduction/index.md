@@ -33,7 +33,7 @@ MongoDB does not use the *Structured Query Language* (SQL) for queries. It inste
 
 MongoDB has some other distinctive characteristics. It is designed as a distributed database, which allows it to scale and store large amounts of data and achieve high availability. MongoDB also supports ad hoc queries based on regular expressions or JavaScript functions. MongoDB provides support for real-time aggregation as a way to sort and organize the queries.
 
-For information on how to install MongoDB on a Linode, see our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/), or the guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
+For information on how to install MongoDB on a Linode, see our guide on [How To Install MongoDB on CentOS 7](/cloud/guides/install-mongodb-on-centos-7/), or the guide on [How To Install MongoDB on Ubuntu 16.04](/cloud/guides/install-mongodb-on-ubuntu-16-04/).
 
 {{< note >}}
 Earlier releases of MongoDB had some problems with security issues and some significant bugs. These have been fixed in recent releases and application security is now comparable to other databases.

@@ -70,12 +70,12 @@ At the command line level, Kali Linux is similar to Debian and other Linux distr
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. To deploy Kali Linux using the Linode Marketplace, consult the guide to [the Kali Linux Application](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. To deploy Kali Linux using the Linode Marketplace, consult the guide to [the Kali Linux Application](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide ares written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide ares written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Use Kali Linux to Launch a SYN Flood Attack
@@ -96,7 +96,7 @@ This is a very dangerous and potentially destructive test. It must only be used 
 This command must only be used to test servers inside your organization and under your control. **DO NOT** use this command to probe external servers. Tampering with the public internet infrastructure is a serious offense in many jurisdictions.
 {{< /note >}}
 
-1.  Ensure any Kali Linux compute instances running the stress test are fully configured and up-to-date. A single Kali Linux instance can emulate a basic non-distributed denial-of-service attack. But multiple Kali Linux systems are more effective in creating a realistic DDoS scenario. For more information, consult the [Linode guide to deploying Kali Linux using the Marketplace App](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
+1.  Ensure any Kali Linux compute instances running the stress test are fully configured and up-to-date. A single Kali Linux instance can emulate a basic non-distributed denial-of-service attack. But multiple Kali Linux systems are more effective in creating a realistic DDoS scenario. For more information, consult the [Linode guide to deploying Kali Linux using the Quick Deploy App](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/).
 
 1.  Install the `hping3` package. This package might already be installed on the Kali Linux server.
 

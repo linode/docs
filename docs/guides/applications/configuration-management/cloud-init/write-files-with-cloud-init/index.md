@@ -14,11 +14,11 @@ external_resources:
 
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard tool that automates server initialization and has cross-distribution, cross-platform support. While the cloud platform provides cloud-init with metadata for server deployment, custom user data lets you script almost every aspect of server initialization.
 
-Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service allows you to leverage cloud-init to deploy Compute Instances. Using a cloud-config script, you can define everything you need, from security and user set up to software installation and shell script execution.
+Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service allows you to leverage cloud-init to deploy Compute Instances. Using a cloud-config script, you can define everything you need, from security and user set up to software installation and shell script execution.
 
 In this guide, learn how to use a cloud-config script to write files to your server during initialization. Automate the process of creating and editing files so that your software and system configurations are precisely as you need them from the start.
 
-Before getting started, review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above details how.
+Before getting started, review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/cloud/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with this guide. When you are ready to deploy your cloud-config, the guide linked above details how.
 
 ## Write to a File
 
@@ -50,13 +50,13 @@ The example defines a set of file contents as well as details like ownership and
 
 -   `owner` optionally lets you define a user and/or group to assign ownership of the file to. The default is `root:root`. To specify a user and/or group created within the cloud-config script, you should use the `defer: true` option, as described further below, to ensure the user/group is created before the file.
 
--   `permissions` optionally specifies the file's permissions. Use the format `0###` where `###` is an octal notation as used with `chmod`. You can learn more about permissions and octal notation in our guide on how to [Modify File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/#using-octal-notation-syntax-with-chmod).
+-   `permissions` optionally specifies the file's permissions. Use the format `0###` where `###` is an octal notation as used with `chmod`. You can learn more about permissions and octal notation in our guide on how to [Modify File Permissions with chmod](/cloud/guides/modify-file-permissions-with-chmod/#using-octal-notation-syntax-with-chmod).
 
     Here, `permissions` gives the owner user read-write permission (`6--`), read permission for the user's group (`-4-`), and read permission for all other users (`--4`).
 
 An additional `defer` option can be useful when you want to delay creation of the file until the final stage of cloud-init's initialization. That way, you can ensure that a file is only created after all user creation and software installation.
 
-Here is a further example showing that feature off by creating an [Apache Web Server](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) configuration. Using the `defer` option ensures that Apache is installed and the Apache user (typically `www-data` on Debian and Ubuntu) is created before the file.
+Here is a further example showing that feature off by creating an [Apache Web Server](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/) configuration. Using the `defer` option ensures that Apache is installed and the Apache user (typically `www-data` on Debian and Ubuntu) is created before the file.
 
 ```file {title="cloud-config.yaml" lang="yaml"}
 write_files:
@@ -92,7 +92,7 @@ When you need to modify a file, cloud-init has a couple of approaches to use:
 
     Otherwise, `write_files` can only provide modifications by recreating the files. In that case, you would need to copy the whole configuration with your desired modifications into your cloud-config script.
 
--   The more approachable and maintainable solution is to use cloud-init's `runcmd` option to run `sed` commands on the server. `sed` provides text editing via shell commands, and `runcmd` lets you run shell commands from a cloud-init script. Learn more about using `runcmd` in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/docs/guides/run-shell-commands-with-cloud-init/) and more about `sed` in our guide [Manipulate Text from the Command Line with sed](/docs/guides/manipulate-text-from-the-command-line-with-sed/).
+-   The more approachable and maintainable solution is to use cloud-init's `runcmd` option to run `sed` commands on the server. `sed` provides text editing via shell commands, and `runcmd` lets you run shell commands from a cloud-init script. Learn more about using `runcmd` in our guide [Use Cloud-Init to Run Commands and Bash Scripts on First Boot](/cloud/guides/run-shell-commands-with-cloud-init/) and more about `sed` in our guide [Manipulate Text from the Command Line with sed](/cloud/guides/manipulate-text-from-the-command-line-with-sed/).
 
     The `runcmd` option takes a list of shell commands. In the example that follows, two shell commands run to change the SSH service configuration, similar to the example above. However, `sed` lets you replace existing settings, rather than just appending a new setting.
 

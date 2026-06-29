@@ -1,10 +1,10 @@
 ---
-title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
+title: "Deploy LiteSpeed cPanel"
 description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provides you with a lightning fast, performant, and secure web server that conserves resources."
 published: 2021-11-12
 modified: 2022-05-17
 keywords: ['web server','cpanel','litespeed']
-tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
+tags: ["quick deploy apps", "linode platform", "cloud manager","managed hosting"]
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 aliases: ['/products/tools/marketplace/guides/litespeed-cpanel/','/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
@@ -29,7 +29,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 LiteSpeed offers both free and paid plans. Visit [LiteSpeed's website](https://www.litespeedtech.com/products/litespeed-web-server/lsws-pricing) to view available plans and pricing information.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -46,7 +46,7 @@ LiteSpeed offers both free and paid plans. Visit [LiteSpeed's website](https://w
 
 ## Verify Installation
 
-To determine if the installation has completed successfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and run:
+To determine if the installation has completed successfully, log in to your instance through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) and run:
 
 ```command
 tail -3 /var/log/stackscript.log
@@ -64,7 +64,7 @@ Please make sure to save this password.
 
 ### Accessing WHM/cPanel
 
-1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing your IP address.
 
 1.  The WHM login page appears. Enter `root` as the username and the root password you created when deploying your instance. Click the **Log In** button to continue.
 
@@ -82,7 +82,7 @@ Please make sure to save this password.
 
 1.  In the next screen, enter in an email address to receive status and error notifications.
 
-    You are also prompted to provide nameserver's for your cPanel instance. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/products/networking/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
+    You are also prompted to provide nameserver's for your cPanel instance. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
 
     {{< note >}}
     Linode's nameservers are the following:
@@ -106,7 +106,7 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 ### Accessing the LiteSpeed WebAdmin Interface
 
-1. Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1. Log in to your instance through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1. Run the following script to reset the password:
 
@@ -116,7 +116,7 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 1. When requested, enter *admin* as the username and then enter your desired password.
 
-1. Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
+1. Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing your IP address.
 
 1. The LiteSpeed WebAdmin Console login prompt appears. Enter *admin* as the username and use the password you just set in the previous steps.
 

@@ -1,8 +1,11 @@
 # If you update baseURL, *YOU NEED TO UPDATE* scripts/generate_permanent_redirects.sh
 # so that it correctly parses the URL
-baseURL = "https://www.linode.com/docs/"
+baseURL = "https://www.akamai.com/cloud/"
 languageCode = "en-us"
 title = "Linode Guides & Tutorials"
+
+
+disableAliases = false
 
 # disableKinds = ["taxonomy", "taxonomyTerm"]
 themeDir = ".."
@@ -14,9 +17,11 @@ disqusShortname="linode-1"
 
 enableGitInfo = true
 
+[sitemap]
+filename = "sitemap.xml"
+
 [outputs]
-# The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
-home = ["HTML", "JSON", "RSS"]
+home = ["HTML", "RSS"]
 
 [taxonomies]
 bundle = "bundles"

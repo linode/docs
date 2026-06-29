@@ -154,7 +154,7 @@ With the Docker requirements installed, you can gather the LibreNMS setup and st
     sudo docker compose up -d
     ```
 
-1. To allow external access to the LibreNMS interface, you should open port `8000` on your system's firewall. Refer to our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) guide for information on managing firewalls.
+1. To allow external access to the LibreNMS interface, you should open port `8000` on your system's firewall. Refer to our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) guide for information on managing firewalls.
 
     Follow that guide to verify which firewall tool your system is using and to ensure that the tool is active. Then, use the commands below to open port `8000`.
 

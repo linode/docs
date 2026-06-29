@@ -12,11 +12,11 @@ image: IntroFunctionAsAService.png
 
 Developers are used to breaking business logic into standalone functions that an application can call when necessary. Functions as a Service (FaaS) takes advantage of cloud architectures, spinning up functions (and their system resources) only when needed. Using FaaS has several advantages, not the least of which is affordability, but it can also create more complexity.
 
-Cloud computing's strength comes from an architecture based on composable resources. The cloud infrastructure is built from a programmatic orchestration of many sources and destinations, connected through IP addresses and [DNS](/docs/guides/networking/dns/). The architecture's puzzle pieces, sometimes called a *composable disaggregated infrastructure*, include events as well as the network, storage, compute, and communications and authentication fabrics.
+Cloud computing's strength comes from an architecture based on composable resources. The cloud infrastructure is built from a programmatic orchestration of many sources and destinations, connected through IP addresses and [DNS](/cloud/guides/networking/dns/). The architecture's puzzle pieces, sometimes called a *composable disaggregated infrastructure*, include events as well as the network, storage, compute, and communications and authentication fabrics.
 
 Composable architectures use resources sparingly, by design. FaaS gets attention as a cost saver, but it's the overall model that is appealing. FaaS is highlighted by scalability, affordability, and its ability to be maintained as a sum of integrated parts, as contrasted to the top-down maintenance of monolithic architectures.
 
-FaaS are functional ad-hoc processing elements as a composable component building block, and are part of a model called [serverless computing](/docs/guides/what-is-serverless-computing/). Rather than bearing the costs of having instances ready to handle processing 24/7, FaaS are built once, then used only when needed, as triggered by an event. A FaaS is dormant and stateless, consuming no resources (such as CPU or disk storage). Because they don't exist (until called for), these functions are not-billed-for until they're used, and billed only until their process terminates. This saves money, and allows applications to be rapidly composed, executed, and become dormant (and not billed).
+FaaS are functional ad-hoc processing elements as a composable component building block, and are part of a model called [serverless computing](/cloud/guides/what-is-serverless-computing/). Rather than bearing the costs of having instances ready to handle processing 24/7, FaaS are built once, then used only when needed, as triggered by an event. A FaaS is dormant and stateless, consuming no resources (such as CPU or disk storage). Because they don't exist (until called for), these functions are not-billed-for until they're used, and billed only until their process terminates. This saves money, and allows applications to be rapidly composed, executed, and become dormant (and not billed).
 
 FaaS are constantly available, called when needed, and are then terminated/destroyed. Whether publicly available, or functions you've uploaded, FaaS don't exist until your framework calls them. Ultimately, FaaS are an ephemeral tool in the serverless architecture.
 
@@ -73,7 +73,7 @@ To summarize the FaaS advantages:
 - No dedicated resources are required to meet high demand. FaaS instances are stacked and scale linearly.
 - Security steps, such as multiple varying types of authentication, can be managed from multiple sources, concurrently, by using different FaaS for each family of authentication methodology.
 - High availability is achievable. Use multiple cloud providers for redundancy.
-- FaaS is part of the DevOps culture. Changing the function lends itself to the modular, [continuous delivery](/docs/guides/introduction-ci-cd/) philosophies.
+- FaaS is part of the DevOps culture. Changing the function lends itself to the modular, [continuous delivery](/cloud/guides/introduction-ci-cd/) philosophies.
 - Better support for different regions and language handling. Use one FaaS for an EU audience and another for North America, for instance.
 - You can choose any language, any framework, any cloud vendor.
 

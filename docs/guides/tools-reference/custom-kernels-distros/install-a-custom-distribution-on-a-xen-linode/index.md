@@ -17,7 +17,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 {{% content "all-linodes-kvm-shortguide" %}}
 
 {{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution/).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/cloud/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
@@ -149,7 +149,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 ## Starting SSH in Finnix
 
@@ -210,6 +210,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

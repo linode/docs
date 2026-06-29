@@ -1,10 +1,10 @@
 ---
-title: "Deploy a MongoDB Cluster through the Linode Marketplace"
-description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
+title: "Deploy a MongoDB Cluster"
+description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Akamai Quick Deploy App."
 published: 2023-03-20
 expiryDate: 2023-05-01
 keywords: ['mongodb','marketplace', 'database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
+tags: ["linode platform","database","quick deploy apps","cloud-manager"]
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -19,11 +19,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.com/community/deployments) and is currently one of the most popular database engines across all systems.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}}
-This Marketplace App deploys 3 Compute Instances to create a highly available and redundant MongoDB cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items.
+{{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
+This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant MongoDB cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-app-cluster-shortguide" %}}
 
@@ -40,11 +40,11 @@ This Marketplace App deploys 3 Compute Instances to create a highly available an
 
 ### MongoDB Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. The password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
-- **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used as part of the system's hostname and when creating the TLS/SSL certificate. No domain records are created within Linode's [DNS Manager](/docs/products/networking/dns-manager/).
+- **Domain** *(required)*: The domain name you wish to use, such as *example.com*. This domain name is only used as part of the system's hostname and when creating the TLS/SSL certificate. No domain records are created within Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -70,7 +70,7 @@ The following fields (in addition to the domain field above) are used when creat
 
 After your cluster has been fully provisioned, use the instructs below to obtain and save passwords that were generated on your behalf during deployment.
 
-1. Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance. If you opted to include your SSH keys as part of this deployment, you can also log in using those keys as either the `root` user or the limited user account you specified during deployment.
+1. Log in to your new Compute Instance through [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](/cloud/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance. If you opted to include your SSH keys as part of this deployment, you can also log in using those keys as either the `root` user or the limited user account you specified during deployment.
 
 1. The passwords have been saved in a `.deployment-secrets.txt` file located in your user's home directory. You can view this file in your preferred text editor or through the `cat` command. In the command below, replace *[username]* with the limited sudo user you created during deployment.
 
@@ -102,7 +102,7 @@ After your cluster has been fully provisioned, use the instructs below to obtain
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 
@@ -150,5 +150,5 @@ For more information on access control and user management, as well as other tip
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/cloud/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/cloud/guides/build-database-clusters-with-mongodb/)

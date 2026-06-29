@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/guides/migrate-to-linode-object-storage/']
 external_resources:
 - '[Linode Object Storage product documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
-- '[Linode Object Storage guides & tutorials](/docs/guides/platform/object-storage/)'
+- '[Linode Object Storage guides & tutorials](/cloud/guides/platform/object-storage/)'
 ---
 
 Linode Object Storage is an Amazon S3-compatible service used for storing large amounts of unstructured data. This guide includes steps on how to migrate up to 100TB of static content from AWS S3 to Linode Object Storage using rclone, along with how to monitor your migration using rclone’s WebUI GUI.

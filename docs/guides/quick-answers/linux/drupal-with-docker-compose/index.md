@@ -139,4 +139,4 @@ The `docker-compose.yml` specifies the `latest` version of the Drupal image, so 
 
 ## Next Steps
 
-More extensive documentation on Docker is available in the [Containers](/docs/applications/containers/) section of the Linode Guides & Tutorials site.
+More extensive documentation on Docker is available in the [Containers](/cloud/guides/applications/containers/) section of the Linode Guides & Tutorials site.

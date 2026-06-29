@@ -48,11 +48,11 @@ Developers should ignore files and folders they do not plan to push, rather than
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
+1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
 
     ```command {title="Debain / Ubuntu"}
     sudo apt install git
@@ -76,7 +76,7 @@ Developers should ignore files and folders they do not plan to push, rather than
     mkdir {subdir1,subdir2,subdir3} && touch 1.bak a.bin b.bin file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt one.bak subdir1/file7.txt subdir2/file8.txt subdir3/files.log
     ```
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Use the gitignore file

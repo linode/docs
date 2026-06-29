@@ -103,7 +103,7 @@ Some key features of figure 3 are described as follows:
 1. Content creators ingest files into Linode Object Storage. Object storage can receive files from a CLI, a programmatic integration, or from desktop tools such as Cyberduck. Linode Object Storage supports lifecycle policies, so source files can be automatically purged regularly. A purging policy should only be implemented if a separate system-of-record for your high resolution source content is maintained.
 
     {{< note >}}
-    Supported upload methods are described in the [Linode Object Storage documentation](/docs/products/storage/object-storage/guides/#clients-and-tools).
+    Supported upload methods are described in the [Linode Object Storage documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage#clients-and-tools).
     {{< /note >}}
 
 1. [Argo Event Sources](https://argoproj.github.io/argo-events/concepts/event_source/) includes 20+ origination mechanisms that can be setup to generate event messages that are written to [Argo Event Bus](https://argoproj.github.io/argo-events/concepts/eventbus/). In this reference architecture we have enabled a [Webhook Event Source](https://argoproj.github.io/argo-events/eventsources/setup/webhook/) that a user or system can send HTTP requests. The the filename they are ingesting is included in this request.

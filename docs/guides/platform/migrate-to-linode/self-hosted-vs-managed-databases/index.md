@@ -263,7 +263,7 @@ And using `mysqldump`:
   defaultdb > outfile_mysql.sql
 ```
 
-Exported backups can also be stored in Object Storage using tools like [`rclone`](/docs/guides/rclone-object-storage-file-sync/) or [`s3cmd`](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage). This approach allows you to enforce your own retention and [access control policies](https://techdocs.akamai.com/cloud-computing/docs/define-access-and-permissions-using-bucket-policies).
+Exported backups can also be stored in Object Storage using tools like [`rclone`](/cloud/guides/rclone-object-storage-file-sync/) or [`s3cmd`](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage). This approach allows you to enforce your own retention and [access control policies](https://techdocs.akamai.com/cloud-computing/docs/define-access-and-permissions-using-bucket-policies).
 
 You can also test backups by restoring them to a temporary environment to ensure data integrity. This also provides a way to benchmark recovery times and identify potential gaps in coverage.
 

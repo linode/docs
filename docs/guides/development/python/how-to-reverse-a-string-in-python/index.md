@@ -10,13 +10,13 @@ keywords: ['how to reverse a string in python','python reverse string','reverse 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Python supports several common string operations, like [slicing, indexing, searching,](/docs/guides/how-to-slice-and-index-strings-in-python/) and [advanced formatting](/docs/guides/string-manipulation-python-3/). However, it lacks a dedicated, built-in method for reversing strings. This guide shows you how to reverse a string in Python by leveraging Python's tools for working with sequences.
+Python supports several common string operations, like [slicing, indexing, searching,](/cloud/guides/how-to-slice-and-index-strings-in-python/) and [advanced formatting](/cloud/guides/string-manipulation-python-3/). However, it lacks a dedicated, built-in method for reversing strings. This guide shows you how to reverse a string in Python by leveraging Python's tools for working with sequences.
 
 ## Before You Begin
 
 This guide's example rely on Python 3. Make sure that you have Python 3 installed on your system before getting started.
 
-You can learn how to install Python 3 from our guide [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/). Be sure to use the drop-down menu at the top of the guide to select the Linux distribution that is compatible with your system.
+You can learn how to install Python 3 from our guide [How to Install Python 3](/cloud/guides/how-to-install-python-on-ubuntu-20-04/). Be sure to use the drop-down menu at the top of the guide to select the Linux distribution that is compatible with your system.
 
 ## How to Reverse a String in Python: 5 Ways
 
@@ -30,7 +30,7 @@ The string, when reversed, reads "flow mood".
 
 ### Using Slicing
 
-Python's *slice* notation is a powerful tool for manipulating lists and other sequences. You can learn more about Python slices in our guide [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/).
+Python's *slice* notation is a powerful tool for manipulating lists and other sequences. You can learn more about Python slices in our guide [Python Lists and How to Use Them](/cloud/guides/python-lists-and-how-to-use-them/).
 
 Slice notation also extends to strings, where it treats each character in a string as an item in a list. This means you can use the slice notation you would use for reversing a list to reverse a string:
 
@@ -57,7 +57,7 @@ Of the methods for reversing a string covered in this guide, slicing is the fast
 
 ### Reverse a String Using a Loop
 
-Loops can be used to "manually" reverse a string by iterating through each character. Python provides two kinds of loops you can use: the `while` loop and the `for` loop. See our [For and While Loops in Python 3](/docs/guides/python-for-and-while-loops/) guide for deeper dive into these loop statements.
+Loops can be used to "manually" reverse a string by iterating through each character. Python provides two kinds of loops you can use: the `while` loop and the `for` loop. See our [For and While Loops in Python 3](/cloud/guides/python-for-and-while-loops/) guide for deeper dive into these loop statements.
 
 #### While Loop
 
@@ -115,7 +115,7 @@ A `for` loop takes a sequence and loops through each item in it. You can use it 
 flow mood
 {{< /output >}}
 
-The `for` loop used above is one of the fastest ways to reverse a string using Python. It is second only to the slice method, and it roughly ties with Python's own `reversed()` method. The `reversed()` method is covered [later on in this guide](/docs/guides/how-to-reverse-a-string-in-python/#using-the-reversed-method).
+The `for` loop used above is one of the fastest ways to reverse a string using Python. It is second only to the slice method, and it roughly ties with Python's own `reversed()` method. The `reversed()` method is covered [later on in this guide](/cloud/guides/how-to-reverse-a-string-in-python/#using-the-reversed-method).
 
 ### Using Join
 
@@ -218,7 +218,7 @@ Aside from the slicing approach, the `reversed()` method is faster than the othe
 
 ### Using a Custom Function
 
-In the [Using Recursion](/docs/guides/how-to-reverse-a-string-in-python/#using-recursion) section, a custom function is used to reverse a string. In fact, you can use a custom function for any of the approaches outlined in this guide.
+In the [Using Recursion](/cloud/guides/how-to-reverse-a-string-in-python/#using-recursion) section, a custom function is used to reverse a string. In fact, you can use a custom function for any of the approaches outlined in this guide.
 
 Creating a dedicated function for reversing a string can be convenient when you want to use the same approach in multiple places. This is especially the case when you are using a more complicated approach, like the `while` or `for` loop.
 
@@ -269,4 +269,4 @@ wolf doom
 
 There are many ways to reverse a string in Python. However, some approaches are more efficient than others and which you choose depends on your own needs. For example, if execution speed is a concern, you should use slicing, since it is the fastest. You can also create a custom function that employs looping if you'd like to reuse the function throughout your code. If you're not as concerned with performance, you may choose to use a recursive function.
 
-If you'de like to learn more about Python, take a look through our other [Python guides and tutorials](/docs/guides/development/python/).
+If you'de like to learn more about Python, take a look through our other [Python guides and tutorials](/cloud/guides/development/python/).

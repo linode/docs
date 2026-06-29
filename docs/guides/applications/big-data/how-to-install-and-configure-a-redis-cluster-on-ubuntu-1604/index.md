@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/big-data/redis-cluster/','/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/']
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
- - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
+ - '[Install and Configure Redis on CentOS 7](/cloud/guides/install-and-configure-redis-on-centos-7/)'
 deprecated: true
 ---
 
@@ -24,9 +24,9 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend familiarizing yourself with the following:
 
-* [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
-* [Getting Started with VLANs](/docs/products/networking/vlans/get-started/)
-* [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+* [Firewall settings using iptables or ufw](/cloud/guides/configure-firewall-with-ufw/)
+* [Getting Started with VLANs](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-vlans)
+* [Master-Replicas Replication](/cloud/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
 
@@ -70,7 +70,7 @@ Alternatively, you can install the "build-essential" meta-package to load the de
 
 ## Configure Redis Masters and Replicas
 
-This guide manually connects each of the masters and replicas across three Linodes. Consider using [tmux](/docs/guides/persistent-terminal-sessions-with-tmux/) for the management of multiple terminal windows.
+This guide manually connects each of the masters and replicas across three Linodes. Consider using [tmux](/cloud/guides/persistent-terminal-sessions-with-tmux/) for the management of multiple terminal windows.
 
 This guide uses a minimum of six nodes with the following topology:
 
@@ -98,7 +98,7 @@ cluster-node-timeout 15000
     {{< note type="alert" respectIndent=false >}}
 Without taking additional precautions, your Redis nodes may be exposed to the public internet via their respective public IP addresses. This means your nodes may be vulnerable to automated attacks. For more information, see [Redis Security](https://redis.io/topics/security).
 
-To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](/docs/products/networking/cloud-firewall/) or [VLANs](/docs/products/networking/vlans/) to limit access to your cluster Linodes.
+To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) or [VLANs](https://techdocs.akamai.com/cloud-computing/docs/vlan) to limit access to your cluster Linodes.
 
 When using VLANs, replace `192.0.2.1` with the respective Linode's IPAM address in each configuration file.
 {{< /note >}}
@@ -166,7 +166,7 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
     {{< note respectIndent=false >}}
-If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
+If utilizing a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-vlans), use each Linode's IPAM address.
 {{< /note >}}
 
         redis-cli --cluster create \

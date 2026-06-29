@@ -1,9 +1,9 @@
 ---
-title: "Deploy ownCloud Server through the Linode Marketplace"
-description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Marketplace."
+title: "Deploy ownCloud Server"
+description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Akamai Quick Deploy App."
 published: 2023-06-26
 keywords: ['owncloud','filesharing','collaboration']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ownCloud](https://owncloud.com/)'
 aliases: ['/products/tools/marketplace/guides/owncloud/']
@@ -16,7 +16,7 @@ marketplace_app_name: "ownCloud"
 
 ownCloud is a self-hosted file sharing and collaboration platform. It allows users to securely access and share files, calendars, and contacts from any device. With ownCloud, you have complete control over your data and can easily share files with others while maintaining full privacy and security. The app is easy to configure and offers a wide range of features, including file syncing, versioning, access control, and more.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -51,7 +51,7 @@ After deployment, follow the instructions below to access your application.
 
 ### Access the ownCloud Site
 
-1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's default rDNS domain or your own domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the IP address and rDNS value.
+1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's default rDNS domain or your own domain name (if you entered one during deployment). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing the IP address and rDNS value.
 
     ```command
     https://[domain]/

@@ -1,14 +1,13 @@
 ---
-title: "Deploy ClusterControl through the Linode Marketplace"
+title: "Deploy ClusterControl"
 description: "Manage the most popular open-source databases on-premise or in the cloud."
 published: 2021-08-13
 modified: 2022-05-17
 keywords: ['database','cluster','backups','configuration management']
-tags: ["marketplace", "linode platform", "cloud manager"]
-aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
-aliases: ['/products/tools/marketplace/guides/clustercontrol/']
+aliases: ['/products/tools/marketplace/guides/clustercontrol/','/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -24,7 +23,7 @@ marketplace_app_name: "ClusterControl"
 ClusterControl offers both free and paid plans. Visit [Severalnines' website](https://severalnines.com/pricing) to view available plans and pricing information.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -54,7 +53,7 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 
 ### Access your ClusterControl App
 
-To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses).
 
 From there you will see the welcome screen where you can enter the requested information to setup your ClusterControl instance:
 

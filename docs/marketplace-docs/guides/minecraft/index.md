@@ -1,12 +1,12 @@
 ---
-title: "Deploy a Minecraft Server through the Linode Marketplace"
-description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
+title: "Deploy a Minecraft Server"
+description: "This guide shows you how to deploy a Minecraft Server on a Linode using the Quick Deploy App so you can create your own world on your own or with friends."
 published: 2019-04-01
 modified: 2022-04-01
 keywords: ['minecraft','marketplace', 'server']
 external_resources:
 - '[Minecraft Wiki](https://minecraft.wiki/w/Server)'
-tags: ["linode platform","marketplace","cloud-manager"]
+tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/minecraft/','/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/platform/one-click/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-one-click-apps/', '/guides/deploying-minecraft-with-marketplace-apps/','/guides/deploy-minecraft-marketplace-app/','/guides/minecraft-marketplace-app/']
 image: deploy-a-minecraft-server-with-oneclick-apps.png
 authors: ["Akamai"]
@@ -18,7 +18,7 @@ marketplace_app_name: "Minecraft Game Server - Java Edition"
 
 With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -69,8 +69,8 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **Port Number:** The server's listening port number. *Advanced Configuration*.
 - **Snooper Enabled:** Determines if the server sends stats to [https://snoop.minecraft.net](https://snoop.minecraft.net). *Advanced Configuration*.
 - **Use Native Transport Enabled:** Improve server performance by optimizing sent and received packets. *Advanced Configuration*.
-- **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
-- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
+- **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/cloud/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
+- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
 
@@ -88,7 +88,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
     ![Screenshot of Multiplayer game options](minecraft-add-server.png)
 
-1. Create a name for your server and enter the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Click **Done** to add the server.
+1. Create a name for your server and enter the IPv4 address of your Compute Instance. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS. Click **Done** to add the server.
 
     ![Screenshot of Add Server options](minecraft-server-ip.png)
 

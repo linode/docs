@@ -1,10 +1,10 @@
 ---
-title: "Deploy Yacht through the Linode Marketplace"
-description: "Yacht is a web interface for managing Docker containers, with an emphasis on templating. Learn how to deploy Yacht on Linode using Marketplace Apps."
+title: "Deploy Yacht"
+description: "Yacht is a web interface for managing Docker containers, with an emphasis on templating. Learn how to deploy Yacht on Linode using Quick Deploy Apps."
 published: 2021-02-23
 modified: 2023-10-27
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
-tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
+tags: ["quick deploy apps", "linode platform", "cloud manager", "docker", "container"]
 image: DeployYacht_marketplaceapps.png
 aliases: ['/products/tools/marketplace/guides/yacht/','/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:
@@ -18,7 +18,7 @@ marketplace_app_name: "Yacht"
 
 [Yacht](https://yacht.sh/) is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -52,7 +52,7 @@ marketplace_app_name: "Yacht"
 
 ### Access your Yacht App
 
-1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 1. Enter your [Yacht email address and password](#yacht-options):
 

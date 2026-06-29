@@ -12,8 +12,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-sshfs-on-linux-and-macos-x/','/networking/ssh/using-sshfs-on-linux/','/networking/ssh-filesystems/']
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
- - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
+ - '[Linux Security Basics](/cloud/guides/security/basics/)'
+ - '[Use Public Key Authentication with SSH](/cloud/guides/use-public-key-authentication-with-ssh/)'
 ---
 
 ![SSHFS](sshfs_mount_remote.png)
@@ -28,7 +28,7 @@ This guide will assume you have two systems set up:
 
 -   A client system which will connect to the remote server using SSHFS. This system also runs Ubuntu 18.04.
 
-Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
+Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) guide.
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
 
@@ -55,7 +55,7 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
 
 {{< note >}}
-If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
+If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}
 
 1. To check if the `fuse` group exists run:
@@ -104,7 +104,7 @@ To keep your server's directory mounted on your system through reboots, create a
 
 ### Set Up Key-Based Authentication for SSH
 
-When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
+When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/cloud/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 {{< note type="alert" >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
 
@@ -149,4 +149,4 @@ You will need to use `sudo` privileges to edit this file from your limited user.
 
 ## Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/guides/filezilla/).
+After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/cloud/guides/filezilla/).

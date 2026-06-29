@@ -16,7 +16,7 @@ external_resources:
 
 This guide includes steps for deploying a Kafka cluster using Ansible. The provided Ansible playbook creates a functioning Kafka cluster comprised of three broker nodes configured to authenticate with encrypted secrets. Also included are steps for producing and consuming sample data for testing cluster functionality.
 
-If you wish to deploy Kafka automatically rather than manually, consider our [Apache Kafka cluster marketplace deployment](/docs/marketplace-docs/guides/apache-kafka-cluster/).
+If you wish to deploy Kafka automatically rather than manually, consider our [Apache Kafka cluster marketplace deployment](/cloud/marketplace-docs/guides/apache-kafka-cluster/).
 
 ## Architecture Diagram
 
@@ -36,8 +36,8 @@ The following software and components must be installed and configured on your l
 
 -   [Python](https://www.python.org/downloads/) version: > v3.11
 -   The [venv](https://docs.python.org/3/library/venv.html) Python module
--   A [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token)
--   A configured [SSH key pair](/docs/guides/use-public-key-authentication-with-ssh/) along with your public key
+-   A [Linode API access token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
+-   A configured [SSH key pair](/cloud/guides/use-public-key-authentication-with-ssh/) along with your public key
 -   The [Git](https://git-scm.com/) utility
 
 ## Deployment Details, Software, and Supported Distributions
@@ -239,7 +239,7 @@ All secrets are encrypted with the Ansible Vault utility as a best practice.
     -   `type`: Compute Instance type and plan for each Kafka instance.
     -   `region`: The data center region for the cluster.
     -   `image`: The distribution image to be installed on each Kafka instance. The deployment in this guide supports the `ubuntu24.04` image.
-    -   `group` and `linode_tags` (optional): Any [groups or tags](/docs/guides/tags-and-groups/) you with to apply to your cluster’s instances for organizational purposes.
+    -   `group` and `linode_tags` (optional): Any [groups or tags](/cloud/guides/tags-and-groups/) you with to apply to your cluster’s instances for organizational purposes.
     -   `firewall_label` (optional): The label for a [Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) that can be created for the cluster. If this label is not provided, the firewall is not created.
     -   `vpc_label` (optional): The label for a [VPC](https://techdocs.akamai.com/cloud-computing/docs/vpc) that can be created for the cluster. If this label is not provided, the VPC is not created.
     -   `domain_name` and `ttl_sec` (optional): A domain name and [TTL (in seconds)](https://techdocs.akamai.com/cloud-computing/docs/troubleshooting-dns-records#set-the-time-to-live-or-ttl) for the cluster. Each cluster instance is assigned a subdomain of this domain name. For example, if your domain name is `example.com`, a record named `instance_label.example.com` is created for each instance. If a domain name is not provided, these records are not created.

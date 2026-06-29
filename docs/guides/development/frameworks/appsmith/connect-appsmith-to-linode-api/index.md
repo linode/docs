@@ -14,7 +14,7 @@ external_resources:
 
 [Appsmith](https://www.appsmith.com/) is a platform for building applications in a low-code, visual interface. It is an open source tool ideal for quickly developing internal applications with a combination of drag-and-drop UI widgets and JavaScript code.
 
-You can learn more about Appsmith and how to host your own instance in our guide [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker).
+You can learn more about Appsmith and how to host your own instance in our guide [How to Self-host Appsmith with Docker Compose](/cloud/guides/deploy-appsmith-docker).
 
 This tutorial covers everything you need to connect your Appsmith instance to the Linode API. With this, you can build your own Linode cloud manager or integrate Linode control into your application.
 
@@ -22,9 +22,9 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -36,10 +36,10 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
             sudo dnf upgrade
 
-1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
+1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/cloud/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Getting Familiar with the Linode API
@@ -48,7 +48,7 @@ The [Linode API](https://www.linode.com/products/linode-api/) gives you complete
 
 The API has been designed to give both developers and system administrators tools for managing Linode products and services programmatically. Not only that, but it also allows for integrating those services into other applications.
 
-Take a look at the link to the page on the Linode API above to learn more about the API and its capabilities. Then, see the [Preparing the Linode API](/docs/guides/connect-appsmith-to-linode-api/#preparing-the-linode-api) section further on to learn about setting up the Linode API for your own use.
+Take a look at the link to the page on the Linode API above to learn more about the API and its capabilities. Then, see the [Preparing the Linode API](/cloud/guides/connect-appsmith-to-linode-api/#preparing-the-linode-api) section further on to learn about setting up the Linode API for your own use.
 
 ## Connecting Appsmith to the Linode API
 
@@ -56,7 +56,7 @@ The next several sections in this tutorial walk you through the steps to connect
 
 ### Preparing the Linode API
 
-To get started using the API, with the prerequisites you need for this Appsmith tutorial, follow our [Linode API documentation](/docs/api/).
+To get started using the API, with the prerequisites you need for this Appsmith tutorial, follow our [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/api).
 
 Be sure particularly to follow the steps for authentication, getting either a personal access token or configuring OAuth, depending on your needs.
 
@@ -86,7 +86,7 @@ You may first have to create an organization to house the application under, whi
 
 1.  Select the **Authenticated API** option, which directs you to a form where you can enter the API information.
 
-1.  Fill out the form to create a datasource for the Linode API's [Linodes List](/docs/api/linode-instances/#linodes-list) endpoint. Click the pencil icon to rename it `Linode API - Linodes List`. Enter `https://api.linode.com/v4/linode/instances` in the **URL** field. In the **Bearer Token** field, enter your personal authentication token for the Linode API. When complete, your form should look like this:
+1.  Fill out the form to create a datasource for the Linode API's [Linodes List](https://techdocs.akamai.com/linode-api/reference/api-summary#linodes-list) endpoint. Click the pencil icon to rename it `Linode API - Linodes List`. Enter `https://api.linode.com/v4/linode/instances` in the **URL** field. In the **Bearer Token** field, enter your personal authentication token for the Linode API. When complete, your form should look like this:
 
     ![Authenticated API for the example application](appsmith-example-app-authenticated-api.png)
 

@@ -33,12 +33,12 @@ As a potential replacement for CentOS, AlmaLinux provides many attractive sellin
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install and Enable the Apache Web Server on AlmaLinux
@@ -142,7 +142,7 @@ If you do not have an `index.html` file in `/var/www/html` directory, you can cr
 
 1. Navigate to the IP address of the Linode again. You should now see the web page contents for the home page of your domain.
 
-1. **(Optional)** You should ideally create a virtual host for each site on the server. For more information on creating virtual hosts on Apache, consult the Linode guide on [Apache Configuration Basics](/docs/guides/apache-configuration-basics/).
+1. **(Optional)** You should ideally create a virtual host for each site on the server. For more information on creating virtual hosts on Apache, consult the Linode guide on [Apache Configuration Basics](/cloud/guides/apache-configuration-basics/).
 
 ## Learn More About AlmaLinux
 

@@ -9,7 +9,7 @@ layout  = "content-only"
 [[cascade]]
     [cascade._target]
         environment = "production"
-    [cascade._build]
+    [cascade.build]
         render           = "never"
         list             = "never"
         publishResources = false

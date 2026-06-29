@@ -8,11 +8,11 @@ published: 2024-10-09
 keywords: ['data transfer utility','data transfer','file transfer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Introduction to Rsync](/docs/guides/introduction-to-rsync/)'
-- '[Transfer Files With the scp Command on Linux](/docs/guides/how-to-use-scp/)'
-- '[Transfer Files with SFTP](/docs/guides/sftp-linux/)'
-- '[What Is FTP and How Does It Work?](/docs/guides/what-is-ftp/)'
-- '[Transfer Files with FileZilla](/docs/guides/filezilla/)'
+- '[Introduction to Rsync](/cloud/guides/introduction-to-rsync/)'
+- '[Transfer Files With the scp Command on Linux](/cloud/guides/how-to-use-scp/)'
+- '[Transfer Files with SFTP](/cloud/guides/sftp-linux/)'
+- '[What Is FTP and How Does It Work?](/cloud/guides/what-is-ftp/)'
+- '[Transfer Files with FileZilla](/cloud/guides/filezilla/)'
 ---
 
 Technology professionals and end users rely on a myriad of utilities for moving data between locations. This guide discusses several of these data transfer protocols and utilities:
@@ -107,7 +107,7 @@ SFTP works like traditional FTP, but over an encrypted, secure connection. SFTP 
 
 SFTP can be used to transfer files without requiring shell access to the user on the remote host (by using the [ForceCommand SSH config parameter](https://man7.org/linux/man-pages/man5/sshd_config.5.html)). In other words, a user on the remote host can be configured that has no shell access while still accepting file transfers. This can be relevant because limiting shell access is an important tool for securing a server. If a user has shell access, then if it is compromised, an attacker can run any permitted command for the user. By comparison, [SFTP has a narrower range of commands](https://man7.org/linux/man-pages/man1/sftp.1.html#INTERACTIVE_COMMANDS) that can be executed.
 
-SFTP can be further secured by creating an [SFTP *jail*](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/), which limits which directory can be accessed on the remote server.
+SFTP can be further secured by creating an [SFTP *jail*](/cloud/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/), which limits which directory can be accessed on the remote server.
 
 ### FTP/SFTP Clients
 

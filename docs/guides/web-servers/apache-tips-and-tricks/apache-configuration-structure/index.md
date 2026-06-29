@@ -10,19 +10,19 @@ keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/apache-configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/','/web-servers/apache/configuration/configuration-structure/']
 external_resources:
- - '[Apache Installation](/docs/web-servers/apache/)'
- - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
- - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
+ - '[Apache Installation](/cloud/guides/web-servers/apache/)'
+ - '[LAMP Stack Guides](/cloud/guides/web-servers/lamp/)'
+ - '[Troubleshooting Apache](/cloud/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
 ---
 
-Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.
+Throughout our [Apache section](/cloud/guides/web-servers/apache/) and [LAMP stack tutorials](/cloud/guides/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.
 
 ![Apache configuration structure](apache-configuration-structure-headerimg.jpg "Apache configuration structure")
 
 The `<VirtualHost>` block provides administrators with the ability to modify the behavior of the web server on a per-host or per-domain basis; any options specified in the `<VirtualHost>` block apply to the entire domain. However, they don't provide the ability to specify options on a per-directory basis. Thankfully, Apache provides additional possibilities for specific configuration.
 
-This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/docs/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/docs/).
+This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/cloud/guides/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/docs/).
 
 ## Directory and Options
 

@@ -11,9 +11,6 @@ aliases: ['/quick-answers/linux/how-to-use-head/','/quick-answers/how-to-use-hea
 tags: ["linux"]
 ---
 
-<div class="wistia_responsive_padding" style="padding:56.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/0nhqzoqhea?videoFoam=true" title="Linode - How to use the head command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
-<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
-
 In this guide, you'll learn how to use the `head` command. Using `head` is a simple way to show the beginning of text files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `head` is one of the most useful tools available.
 
 1.  Enter the `head` command, followed by the file of which you'd like to view:
@@ -40,4 +37,4 @@ In this guide, you'll learn how to use the `head` command. Using `head` is a sim
 
     This command would search the first ten lines of your access log and only display those that contain the IP address `198.51.100.1`. You can also apply options to `head` for an even more specific output.
 
-These are just the basics of how to use `head`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the head command](/docs/guides/view-the-beginning-of-text-files-with-head/).
+These are just the basics of how to use `head`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the head command](/cloud/guides/view-the-beginning-of-text-files-with-head/).

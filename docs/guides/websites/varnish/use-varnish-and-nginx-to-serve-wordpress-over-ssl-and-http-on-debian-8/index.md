@@ -43,11 +43,11 @@ Our setup is illustrated below. Please note that frontend NGINX and backend NGIN
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started:
 
-1.  Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
+1.  Complete the steps in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
-2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/guides/install-a-lemp-stack-on-debian/) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
+2.  Follow the steps outlined in our [LEMP on Debian 8](/cloud/guides/install-a-lemp-stack-on-debian/) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
-3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
+3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/cloud/guides/how-to-install-and-configure-wordpress/) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 
 ## Install and Configure Varnish
 
@@ -287,7 +287,7 @@ set resp.http.X-Purger = req.http.X-Purger;
 {{< /file >}}
 
 
-    This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](/docs/assets/custom.vcl).
+    This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](custom.vcl).
 
     {{< note respectIndent=false >}}
 You can download the complete sample configuration file using the link above and `wget`. If you do, remember to replace the variables as described above.
@@ -488,7 +488,7 @@ server {
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
     {{< note type="alert" respectIndent=false >}}
-The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
+The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
 {{< /note >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
@@ -526,7 +526,7 @@ server {
         sudo systemctl restart nginx
         sudo systemctl start varnish
 
-8.  Install WordPress, following our [How to Install and Configure WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide. Once WordPress is installed, continue with this guide.
+8.  Install WordPress, following our [How to Install and Configure WordPress](/cloud/guides/how-to-install-and-configure-wordpress/) guide. Once WordPress is installed, continue with this guide.
 
 9.  After installing WordPress, restart Varnish to clear any cached redirects to the setup page:
 
@@ -588,4 +588,4 @@ By using nginx in conjunction with Varnish, the speed of any WordPress website c
 
 You can strengthen the security of the SSL connection by generating a custom Diffie-Hellman (DH) parameter, for a more secure cryptographic key exchange process.
 
-An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.
+An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/cloud/guides/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.

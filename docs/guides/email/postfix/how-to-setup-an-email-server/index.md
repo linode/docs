@@ -39,7 +39,7 @@ Postfix is a widely-used open source SMTP server and is included in most Linux d
 
 1.  This guide recommends using a **Dedicated 8 GB** Compute Instance using **Ubuntu 24.04 LTS**. This plan size is the recommended starting point for an email server for a small to medium enterprise. See our [Get started with Compute Instances](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances) and [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update and secure your system. Make sure to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update and secure your system. Make sure to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note type="warning" title="Do not enable IPv6" >}}
     When setting up and securing your Compute Instance, do not enable IPv6. Enabling IPv6 may cause issues later when Certbot attempts to [update the Let's Encrypt certificate](#update-lets-encrypt).
@@ -63,14 +63,14 @@ Postfix is a widely-used open source SMTP server and is included in most Linux d
     | `{{< placeholder "external@email.tld" >}}` | A working external email address. |
     | `{{< placeholder "POSTFIXADMIN_PASSWORD" >}}` | Your PostfixAdmin database user password. |
 
-1.  Familiarity with [SMTP](/docs/guides/what-is-smtp/) and [IMAP/POP](/docs/guides/what-are-pop-and-imap/) protocols.
+1.  Familiarity with [SMTP](/cloud/guides/what-is-smtp/) and [IMAP/POP](/cloud/guides/what-are-pop-and-imap/) protocols.
 
 1.  Although Postfix and Dovecot servers can operate in the *system* or *virtual* mode, only virtual mode is used in this setup.
 
     In system mode, only users with local logins can send and receive emails. System mode users do this with lookups against the operating system’s `/etc/passwd` file with all users residing in a single domain. Virtual mode allows an unlimited number of domains, users, and aliases, all unrelated to the underlying operating system.
 
 {{< note title="Non-root users recommended" >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Step 1: Configure DNS
@@ -502,7 +502,7 @@ The Postfix server allows your server to send outgoing messages and receive emai
     !include_try /usr/share/dovecot/protocols.d/*.protocol
     ```
 
-    LMTP protocol is explained in the next section: [Local Message Storage (LMTP)](/docs/guides/how-to-setup-an-email-server/#step-6-local-message-storage-lmtp).
+    LMTP protocol is explained in the next section: [Local Message Storage (LMTP)](/cloud/guides/how-to-setup-an-email-server/#step-6-local-message-storage-lmtp).
 
     If using POP3 protocol, edit the line to also include `pop3`:
 
@@ -840,7 +840,7 @@ PostfixAdmin is a management tool for Postfix/Dovecot that helps with email admi
 
 Even though PostfixAdmin runs on the same host, you must use a different hostname such as `postfixadmin.{{< placeholder "example.tld" >}}` for email management. To do this, add **A** and/or **AAAA** DNS records for your new hostname.
 
-If you’re using the Linode DNS Manager to manage your DNS, select the **Domains** menu on the left side of the Cloud Manager dashboard (see [Step 1](/docs/guides/how-to-setup-an-email-server/#step-1-linode-server-creation)). Point `postfixadmin.{{< placeholder "example.tld" >}}` to the same IP address(es) you are using for `mail.{{< placeholder "example.tld" >}}`.
+If you’re using the Linode DNS Manager to manage your DNS, select the **Domains** menu on the left side of the Cloud Manager dashboard (see [Step 1](/cloud/guides/how-to-setup-an-email-server/#step-1-linode-server-creation)). Point `postfixadmin.{{< placeholder "example.tld" >}}` to the same IP address(es) you are using for `mail.{{< placeholder "example.tld" >}}`.
 
 Note that DNS propagation may take up to 24 hours.
 
@@ -1114,7 +1114,7 @@ Configure Postfix to send and receive mail on behalf of virtual users and domain
     sudo setfacl -R -m u:postfix:rx /etc/postfix/sql/
     ```
 
-1.  During [Postfix installation in step 2](/docs/guides/how-to-setup-an-email-server/#step-2-install-postfix), the `mydestination` parameter may have been set to include the canonical hostname (e.g., `mail.{{< placeholder "example.tld" >}}`). Since virtual users and domains have been enabled, the canonical hostname is no longer needed. Open the main Postfix configuration file:
+1.  During [Postfix installation in step 2](/cloud/guides/how-to-setup-an-email-server/#step-2-install-postfix), the `mydestination` parameter may have been set to include the canonical hostname (e.g., `mail.{{< placeholder "example.tld" >}}`). Since virtual users and domains have been enabled, the canonical hostname is no longer needed. Open the main Postfix configuration file:
 
     ```command
     sudo nano /etc/postfix/main.cf
@@ -1245,7 +1245,7 @@ Like Postfix, Dovecot must be configured to work with the `postfixadmin` databas
 
 ### Access Control Lists (ACLs)
 
-PostfixAdmin uses a `templates_c` directory, and access to that directory must be granted to NGINX. As in [step 6](/docs/guides/how-to-setup-an-email-server/#step-6-local-message-storage-lmtp), you can use ACLs to grant access.
+PostfixAdmin uses a `templates_c` directory, and access to that directory must be granted to NGINX. As in [step 6](/cloud/guides/how-to-setup-an-email-server/#step-6-local-message-storage-lmtp), you can use ACLs to grant access.
 
 1.  Create the `templates_c` directory, and set the appropriate permissions:
 
@@ -1543,7 +1543,7 @@ The Let's Encrypt certificate and key must also be updated to include the virtua
 
 -   In the `/etc/dovecot/conf.d/10-auth.conf` file, two lines were added for verbose debugging, both beginning with the string `auth_debug`. To avoid crowded logs, these lines can be commented out or deleted. Restart Dovecot to apply your changes.
 
--   Consider configuring valid Sender Policy Framework (SPF) and DomainKeys Identified Mail (DKIM) records in your DNS to combat spam. Optionally, you can also set up a Domain Message Authentication, Reporting & Conformance (DMARC) record to specify how your server handles failed SPF and/or DKIM validations, as well as request reports from other servers. See our [separate email server guide](/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-8/) for SPF, DKIM, and DMARC configuration.
+-   Consider configuring valid Sender Policy Framework (SPF) and DomainKeys Identified Mail (DKIM) records in your DNS to combat spam. Optionally, you can also set up a Domain Message Authentication, Reporting & Conformance (DMARC) record to specify how your server handles failed SPF and/or DKIM validations, as well as request reports from other servers. See our [separate email server guide](/cloud/guides/configure-spf-and-dkim-in-postfix-on-debian-8/) for SPF, DKIM, and DMARC configuration.
 
 -   Stay vigilant about [security vulnerabilities](https://ubuntu.com/security/notices) by keeping your operating system and server software up to date. Regularly apply patches and updates to help maintain a secure server.
 

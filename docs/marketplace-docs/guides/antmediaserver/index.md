@@ -1,10 +1,10 @@
 ---
-title: "Deploy Ant Media Server Community Edition through the Linode Marketplace"
-description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode One-Click Marketplace App.'
+title: "Deploy Ant Media Server Community Edition"
+description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Akamai Quick Deploy App.'
 published: 2021-03-30
 modified: 2024-06-06
-keywords: ['streaming', "marketplace", "live video streaming"]
-tags: ["marketplace", "linode platform", "cloud manager"]
+keywords: ['streaming', "quick deploy apps", "live video streaming"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
@@ -16,7 +16,7 @@ marketplace_app_id: 804144
 marketplace_app_name: "Ant Media Server Community Edition"
 ---
 
-[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Community Edition.
+[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Quick Deploy App installs the Community Edition.
 
 The Community Edition is a limited version of Ant Media Server Enterprise Edition and supports the following features.
 
@@ -31,9 +31,9 @@ The Community Edition is a limited version of Ant Media Server Enterprise Editio
 - Simulcasting to Periscope
 - Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
 
-If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/marketplace-docs/guides/antmediaenterpriseserver/).
+If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/cloud/marketplace-docs/guides/antmediaenterpriseserver/).
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -66,7 +66,7 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 The Ant Media Server will deploy with an administrator account preconfigured using the email entered in the `email address` UDF on deployment. The generated password can be found in `/home/$USERNAME/.credentials`, along with the sudo user password.
 {{< /note >}}
 
-1.  Using [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username.
+1.  Using [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](/cloud/guides/connect-to-server-over-ssh/) connect to the instance and access the Ant Media Server credentials in the `/home/$USERNAME/.credentials` file. You will find an example of the output below. Keep in mind that $USERNAME will be replaced with your chosen sudo username.
 
     ```command
     cat /home/$USERNAME/.credentials
@@ -79,7 +79,7 @@ The Ant Media Server will deploy with an administrator account preconfigured usi
     Ant Media Server Password: 79KP106i3AxW8YOmaWA7FNVo
     ```
 
-1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `https://[domain]:5443`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
 1.  Use the `Ant Media Server Username` and `Ant Media Server Password` from the `credentials` file to log in to the Ant Media Dashboard.
 

@@ -17,7 +17,7 @@ Web animations add dynamic graphics and effects to a web page. Movement on a web
 
 ## Setup the Angular Project
 
-1. Follow the steps in our [Getting Started with Angular](/docs/guides/angular-tutorial-for-beginners/#getting-started-with-angular) guide to install Node.js, the Node Version Manager (nvm), and Angular. As a result of following those steps, you should have a directory named `example-app` in your home folder.
+1. Follow the steps in our [Getting Started with Angular](/cloud/guides/angular-tutorial-for-beginners/#getting-started-with-angular) guide to install Node.js, the Node Version Manager (nvm), and Angular. As a result of following those steps, you should have a directory named `example-app` in your home folder.
 
 1. In your Angular project's root application module, enable the animations module by importing the `BrowserAnimationsModule` as shown in the following code:
 

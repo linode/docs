@@ -13,11 +13,11 @@ external_resources:
 - '[Akamai App Platform Documentation](https://techdocs.akamai.com/app-platform/docs/welcome)'
 ---
 
-This guide extends the LLM (Large Language Model) inference architecture built in our [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
+This guide extends the LLM (Large Language Model) inference architecture built in our [Deploy an LLM for AI Inference with App Platform for LKE](/cloud/guides/deploy-llm-for-ai-inferencing-on-apl) guide by deploying a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set. RAG is a particular method of context augmentation that attaches relevant data as context when users send queries to an LLM.
 
 Follow the steps in this tutorial to enable Kubeflow Pipelines and deploy a RAG pipeline using App Platform for LKE. The data set you use may vary depending on your use case. For example purposes, this guide uses a sample data set from Akamai Techdocs that includes documentation about all Akamai Cloud services.
 
-If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
+If you prefer a manual installation rather than one using App Platform for LKE, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/cloud/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
 ## Diagram
 
@@ -47,7 +47,7 @@ If you prefer a manual installation rather than one using App Platform for LKE, 
 
 ## Prerequisites
 
--   Complete the deployment in the [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
+-   Complete the deployment in the [Deploy an LLM for AI Inference with App Platform for LKE](/cloud/guides/deploy-llm-for-ai-inferencing-on-apl) guide. Your LKE cluster should include the following minimum hardware requirements:
 
     -   3 **8GB Dedicated CPUs** with [autoscaling](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#autoscale-automatically-resize-node-pools) turned on
 
@@ -446,7 +446,7 @@ The Agent pipeline files in this section are not related to the Kubeflow pipelin
 
 ### Deploy the open-webui Pipeline and Web Interface
 
-Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
+Update the Kyverno **Policy** `open-webui-policy.yaml` created in the previous tutorial ([Deploy an LLM for AI Inference with App Platform for LKE](/cloud/guides/deploy-llm-for-ai-inferencing-on-apl)) to mutate the `open-webui` pods that will be deployed.
 
 #### Add the pipelines Helm Chart to the Catalog
 
@@ -560,7 +560,7 @@ The agent pipeline requires access to the PGvector database. For configure this,
 
 1.  Click on **Create Workload**.
 
-1.  Select the _open-webui_ Helm chart from the catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inference with App Platform for LKE](/docs/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
+1.  Select the _open-webui_ Helm chart from the catalog. This Helm chart should have been added in the previous [Deploy an LLM for AI Inference with App Platform for LKE](/cloud/guides/deploy-llm-for-ai-inferencing-on-apl/#add-the-open-webui-helm-chart-to-the-catalog) guide.
 
 1.  Click on **Values**.
 

@@ -34,8 +34,8 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ### Before You Begin
 
-1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
-2. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
+1. Complete the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide for setting up a new Linode.
+2. While it is recommended you complete the entire [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, it will be necessary at least to possess a limited user account.
 
 ### Add Repositories and GPG Keys
 

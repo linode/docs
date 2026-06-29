@@ -1,10 +1,10 @@
 ---
-title: "Deploy a MERN Stack through the Linode Marketplace"
-description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
+title: "Deploy a MERN Stack"
+description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our Quick Deploy App."
 published: 2019-04-02
 modified: 2025-03-10
 keywords: ['mongodb','mern','react','express', 'web app']
-tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
+tags: ["web server","database","cloud-manager","linode platform","web applications","quick deploy apps"]
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
@@ -30,7 +30,7 @@ A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web so
 
 All of these technologies are well-established, offer robust feature sets, and are well-supported by their maintaining organizations. These characteristics make them a great choice for your applications. Upload your existing MERN website code to your new Linode, or use MERN's scaffolding tool to start writing new web applications on the Linode.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -63,8 +63,8 @@ To obtain credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
 
@@ -78,8 +78,8 @@ This returns passwords that were automatically generated when the instance was d
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 
-    - [Build Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)
-    - [Deploy a React Application on Linode](/docs/guides/how-to-deploy-a-react-app-on-debian-10/)
+    - [Build Database Clusters with MongoDB](/cloud/guides/build-database-clusters-with-mongodb/)
+    - [Deploy a React Application on Linode](/cloud/guides/how-to-deploy-a-react-app-on-debian-10/)
 
 ## Software Included
 

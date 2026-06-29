@@ -1,7 +1,7 @@
 ---
 slug: customization-tricks-for-ssh
 title: "SSH Customization Tricks"
-description: 'The SSH Secure Shell defaults are good, but there are tricks administrators use to increase security and handle different kinds of auths. Customization can mean productivity and security.'
+description: 'The SSH Secure Shell defaults are good, but there are tricks administrators use to increase security and handle different kinds of authentication. Customization can mean productivity and security.'
 authors: ["Tom Henderson"]
 contributors: ["Tom Henderson"]
 published: 2023-06-12

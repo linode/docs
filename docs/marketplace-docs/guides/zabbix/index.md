@@ -1,10 +1,10 @@
 ---
-title: "Deploy Zabbix through the Linode Marketplace"
-description: "Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps."
+title: "Deploy Zabbix"
+description: "Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Quick Deploy Apps."
 published: 2021-02-23
 modified: 2024-04-17
 keywords: ['monitoring','networking','incident response']
-tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
+tags: ["quick deploy apps", "networking", "linode platform", "cloud manager", "monitoring"]
 image: DeployZabbix_marketplaceapps.png
 external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Zabbix"
 
 [Zabbix](https://www.zabbix.com/) is an enterprise-class, open-source, distributed monitoring solution. Designed as an all-in-one monitoring solution, Zabbix can track performance and availability of network servers, devices, services, and other IT resources. Zabbix empowers administrators to quickly respond to incidents with on-screen display capabilities and alerts by email, SMS, or Jabber. Users can also collect, store, manage, and analyze information received from IT infrastructure. Actively used by SMBs and large enterprises across all industries and in almost every country, Zabbix has a robust community driving its continued development.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -51,7 +51,7 @@ marketplace_app_name: "Zabbix"
 
 After Zabbix has finished installing, you must first obtain the login credentials. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log in to your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
+1.  From your terminal, log in to your new Compute Instance as the `root` user, or the `sudo` user created during deployment. Use the following command, replacing `192.0.2.1` with your instance's [IPv4 address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance):
 
     ```command
     ssh root@192.0.2.1
@@ -71,7 +71,7 @@ After Zabbix has finished installing, you must first obtain the login credential
     MySQL Root Password: fpzdhOpcyw0arno6pw9SGr5vlRiu4GeyrH45kFlypXKrR
     ```
 
-1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `https://[domain]`, replacing *[domain]* with the rDNS domain assigned to your new Compute Instance, or the custom domain entered on deployment. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
+1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `https://[domain]`, replacing *[domain]* with the rDNS domain assigned to your new Compute Instance, or the custom domain entered on deployment. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses.
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 

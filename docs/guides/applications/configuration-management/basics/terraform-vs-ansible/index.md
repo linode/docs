@@ -18,7 +18,7 @@ To eliminate the problems associated with manual configuration, many tech firms 
 
 ## The Basics of Infrastructure as Code
 
-Infrastructure as Code is a method of managing infrastructure through automation. IaC speeds up Cloud deployments and reduces operational costs. It helps avoid potentially costly errors and enforces consistency and standardization across the Cloud. Infrastructure as Code is central to the concept of DevOps, which is an alliance of the development and operations teams. These groups work together to plan the structure, layout, and configuration of the network. Linode's [Introduction to Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code) offers a more comprehensive overview of this subject.
+Infrastructure as Code is a method of managing infrastructure through automation. IaC speeds up Cloud deployments and reduces operational costs. It helps avoid potentially costly errors and enforces consistency and standardization across the Cloud. Infrastructure as Code is central to the concept of DevOps, which is an alliance of the development and operations teams. These groups work together to plan the structure, layout, and configuration of the network. Linode's [Introduction to Infrastructure as Code](/cloud/guides/introduction-to-infrastructure-as-code) offers a more comprehensive overview of this subject.
 
 An important step in this planning process is deciding which IaC tool to use. Although the various products have considerable overlap, they each have different strengths. Some are easier to use than others. Some are geared towards different programming approaches. Some are optimized for configuration management while others are better for service orchestration.
 
@@ -71,7 +71,7 @@ Operators typically move back and forth between the writing and planning stages 
 
 Although Terraform is not a configuration management tool, it can be used with one for a more comprehensive solution. Terraform can provide the higher-level abstraction of the network, while a configuration management application can be used on the individual devices. Terraform can additionally be used to bootstrap configuration management software. Terraform Cloud is a commercial application that streamlines processes and supplies workspace capabilities. It is very handy for teams working together on the same network.
 
-Linode has an extensive collection of [Terraform guides](/docs/applications/configuration-management/terraform). These guides cover specific scenarios and explain how to install and use Terraform.
+Linode has an extensive collection of [Terraform guides](/cloud/guides/applications/configuration-management/terraform/). These guides cover specific scenarios and explain how to install and use Terraform.
 
 ## An Introduction to Ansible
 
@@ -102,7 +102,7 @@ dbthree.example.com
 
 ### Ansible Tasks, Modules, and Playbooks
 
-The main configuration activities in Ansible are expressed as tasks. These are the operations that take place on the target. A task can be either a one-off ad hoc command, or a call to a *module*. Modules are stand-alone script files that are usually written in Python, although Perl and Ruby can also be used. A module typically has a specific purpose, for example, managing a particular application. They are frequently grouped together into [*collections*](https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections) for easier access. Ansible ships with many default modules, and for easy deployment of your Linodes, there is a [Linode Ansible module](/docs/guides/deploy-linodes-using-ansible/) too.
+The main configuration activities in Ansible are expressed as tasks. These are the operations that take place on the target. A task can be either a one-off ad hoc command, or a call to a *module*. Modules are stand-alone script files that are usually written in Python, although Perl and Ruby can also be used. A module typically has a specific purpose, for example, managing a particular application. They are frequently grouped together into [*collections*](https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections) for easier access. Ansible ships with many default modules, and for easy deployment of your Linodes, there is a [Linode Ansible module](/cloud/guides/deploy-linodes-using-ansible/) too.
 
 Ansible *Playbooks* group together related tasks, along with associated variables, for easier implementation. Playbooks are usually written in an easy, descriptive, human-readable language like YAML, or with a Jinja template. They might contain the desired layout of the network, configurations, deployment details, user IDs, and logins. Playbooks can map the hosts from the inventory files to roles, which are a special type of self-contained playbook consisting of Ansible functions. A playbook runs in sequential order, but can contain loops, control operators, and event handlers. It allows administrators to prompt for values, set variables and defaults, and use command results to determine the flow of the configuration. Playbooks have a mode for dry-run testing.
 
@@ -128,7 +128,7 @@ Here is an example of a snippet from a playbook that updates an Apache server:
 
 Ansible can be used in one of several ways. It can work in a very simple manner, using ad-hoc commands. However it is more common to run Ansible Playbooks, which allow for a more extensive mix of instructions. Finally, there is the commercial Ansible Tower product. Tower offers features including a REST API, a web service console, scheduling operations, an access-control list (ACL), and one-button execution. Tower makes Ansible easier to use, and can serve as a hub for automation. Other commercial products include Ansible Galaxy, a repository of ready-to-use roles, and Ansible Vault, to enable encryption.
 
-Linode has several [guides](/docs/applications/configuration-management/ansible) to help you install Ansible and start using it to run ad hoc commands and deploy Linodes.
+Linode has several [guides](/cloud/guides/applications/configuration-management/ansible/) to help you install Ansible and start using it to run ad hoc commands and deploy Linodes.
 
 ## A Comparison Between Ansible and Terraform
 

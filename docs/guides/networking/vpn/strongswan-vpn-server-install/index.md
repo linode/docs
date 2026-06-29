@@ -21,22 +21,22 @@ The steps in this section show you how to install and configure a StrongSwan gat
 
 ### Prerequisites
 
-1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install StrongSwan
 
-1. [SSH into your Ubuntu 20.04 server](/docs/guides/connect-to-server-over-ssh-on-linux/).
+1. [SSH into your Ubuntu 20.04 server](/cloud/guides/connect-to-server-over-ssh-on-linux/).
 
-1. [Use APT](/docs/guides/apt-package-manager/) to install StrongSwan and the supporting plugins and libraries.
+1. [Use APT](/cloud/guides/apt-package-manager/) to install StrongSwan and the supporting plugins and libraries.
 
         sudo apt install strongswan strongswan-pki libcharon-extra-plugins libcharon-extauth-plugins libstrongswan-extra-plugins libtss2-tcti-tabrmd0 -y
 
@@ -296,7 +296,7 @@ The client authentication process relies on the `ipsec.secrets` file located on 
 
 #### Importing the VPN Root Certificate on macOS
 
-1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-a-compute-instance/#download-files-with-scp).
+1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/cloud/guides/download-files-from-a-compute-instance/#download-files-with-scp).
 
 1. Click on the downloaded file to open **Keychain Access**. Provide your user's administrative password, to accept the certificate. Then, click **Modify Keychain**.
 
@@ -322,7 +322,7 @@ The client authentication process relies on the `ipsec.secrets` file located on 
 
 - Connection problems are frequently due to mismatched username and passwords between the host gateway VPN server (`/etc/ipsec.secrets`) and the VPN client settings.
 
-- Connection issues can also be caused by your firewall settings. Ensure you [check your system's firewall settings](/docs/guides/configure-firewall-with-ufw/) when troubleshooting.
+- Connection issues can also be caused by your firewall settings. Ensure you [check your system's firewall settings](/cloud/guides/configure-firewall-with-ufw/) when troubleshooting.
 
 - Finally, check your StrongSwan VPN server's log file (`/var/log/syslog`) to further investigate connection issues.
 

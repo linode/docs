@@ -30,7 +30,7 @@ Kubernetes typically operates on a cluster of nodes, where Kubernetes agents con
 
 Kubernetes has become a significant technology within the cloud computing world. Its influence continues to spread, changing not only how many operations manage deployments, but how people think of deployments entirely. Kubernetes' use cases and capabilities continue to be extended and developed.
 
-For a more in-depth breakdown of Kubernetes, see our guide [Advantages of Using Kubernetes](/docs/guides/kubernetes-use-cases/).
+For a more in-depth breakdown of Kubernetes, see our guide [Advantages of Using Kubernetes](/cloud/guides/kubernetes-use-cases/).
 
 ### Pros and Cons
 
@@ -56,7 +56,7 @@ Nomad is part of the HashiCorp ecosystem, making it easy to integrate with Hashi
 
 Discussions around Nomad have centered around Nomad as a simplified Kubernetes alternative. However, Nomad's flexibility makes it stand out on its own. Nomad can handle scheduling and management for highly scalable clusters, and can work with applications that are containerized, non-containerized, or a mix. What's more, it can accomplish all of this across a wider range of systems.
 
-Learn more about Nomad and how it operates in our tutorial [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
+Learn more about Nomad and how it operates in our tutorial [How to Use Nomad for Container Orchestration](/cloud/guides/using-nomad-for-orchestration/).
 
 ### Pros and Cons
 
@@ -90,7 +90,7 @@ Below are just a few of the similarities, but they highlight key features that m
 
 -   **Rolling Deployments**: Nomad and Kubernetes support rolling upgrades that verify a deployment's health before replacing an old deployment, and each can automatically rollback changes if a deployment fails.
 
--   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/).
+-   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/cloud/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/).
 
 ### Differences
 
@@ -104,7 +104,7 @@ Despite the similarities, Kubernetes and Nomad have different features to recomm
 
 -   **Flexibility**: Nomad not only supports containerized applications, but also standalone applications and frameworks ranging from Docker to Java. Nomad can also operate on a wider range of operating systems, whereas Kubernetes focuses solely on Linux.
 
--   **Supporting Platforms**: While both Nomad and Kubernetes are cloud-agnostic, Kubernetes has the undeniable advantage of supporting cloud platforms. Google, Amazon, and IBM, for instance, all offer Kubernetes services. Linode has its own [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/guides/create-lke-cluster) that provides a prepared Kubernetes cluster.
+-   **Supporting Platforms**: While both Nomad and Kubernetes are cloud-agnostic, Kubernetes has the undeniable advantage of supporting cloud platforms. Google, Amazon, and IBM, for instance, all offer Kubernetes services. Linode has its own [Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) that provides a prepared Kubernetes cluster.
 
 ## Which Should You Use: Kubernetes or Nomad?
 
@@ -128,8 +128,8 @@ This tutorial showcases what features set Nomad and Kubernetes apart, and which 
 
 Be sure to reference the tutorials linked throughout this guide to keep learning about Kubernetes and Nomad. For reference, here are several that can act as next steps:
 
-- [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+- [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine)
 
-- [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
+- [Manage a Docker Cluster with Kubernetes](/cloud/guides/manage-a-docker-cluster-with-kubernetes/)
 
-- [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/)
+- [How to Use Nomad for Container Orchestration](/cloud/guides/using-nomad-for-orchestration/)

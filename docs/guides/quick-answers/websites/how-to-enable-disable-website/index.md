@@ -24,7 +24,7 @@ Taking a site offline, even temporarily, can affect its *Search Engine Optimizat
 
 ## Disable and Enable a Website on the NGINX Web Server
 
-By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems uses the `sites-available` and `sites-enabled` directories or folders to control website access. This approach is often used even on other Linux systems. If the Linode instance is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
+By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems uses the `sites-available` and `sites-enabled` directories or folders to control website access. This approach is often used even on other Linux systems. If the Linode instance is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/cloud/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
 
 ### Use the Sites-Enabled Directory
 
@@ -107,7 +107,7 @@ Some Linux systems do not use the `sites-available` and `sites-enabled` director
 1.  Reload NGINX and confirm the site is accessible again.
 
 {{< note >}}
-There could be cases where a website does not have a separate virtual host file. This might occur if it is the only site on the Linode instance, or if the system is using a non-standard configuration. In this case, comment out all the lines in the website's vhost entry, using the `#` symbol. See the [Use the Virtual Host File on the Apache Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-apache-web-server) section of this guide for more information.
+There could be cases where a website does not have a separate virtual host file. This might occur if it is the only site on the Linode instance, or if the system is using a non-standard configuration. In this case, comment out all the lines in the website's vhost entry, using the `#` symbol. See the [Use the Virtual Host File on the Apache Web Server](/cloud/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-apache-web-server) section of this guide for more information.
 {{< /note >}}
 
 ## Disable and Enable a Website on the Apache Web Server

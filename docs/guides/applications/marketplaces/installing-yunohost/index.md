@@ -18,14 +18,14 @@ This tutorial walks through installing YunoHost on a base Debian server and outl
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Optionally, create a domain name and configure it with the Linode DNS Manager. See our [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) guide for instructions on adding a domain to Linode and using the Linode name servers with the domain registrar.
+1. Optionally, create a domain name and configure it with the Linode DNS Manager. See our [DNS Manager - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) guide for instructions on adding a domain to Linode and using the Linode name servers with the domain registrar.
 
-    Be sure to also add an [A and AAA record](/docs/products/networking/dns-manager/guides/a-record/) pointing to the remote IP address of your Compute Instance.
+    Be sure to also add an [A and AAA record](https://techdocs.akamai.com/cloud-computing/docs/a-and-aaaa-records) pointing to the remote IP address of your Compute Instance.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is YunoHost?
@@ -46,7 +46,7 @@ Both tools promote an open source ethos, but YunoHost operates on a totally open
 
 However, Cloudron provides a more polished and simplified presentation. The setup for YunoHost can be more complicated, and its interface may not be as clear for some users at the outset.
 
-Linode offers a streamlined Cloudron deployment through the Linode Marketplace. Learn more about Cloudron and its deployment process through its [Marketplace page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
+Linode offers a streamlined Cloudron deployment through Quick Deploy Apps. Learn more about Cloudron and its deployment process through its [Quick Deploy App page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
 
 ## How to Install YunoHost
 

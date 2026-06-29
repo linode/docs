@@ -1,10 +1,10 @@
 ---
-title: "Deploy a LAMP Stack through the Linode Marketplace"
-description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
+title: "Deploy a LAMP Stack"
+description: "This guide shows you how to use the Akamai Quick Deploy App to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 published: 2019-03-26
 modified: 2025-04-29
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
-tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
+tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","quick deploy apps"]
 external_resources:
 - '[Apache Getting Started](http://httpd.apache.org/docs/current/getting-started.html)'
 aliases: ['/products/tools/marketplace/guides/lamp-stack/','/platform/marketplace/deploy-lamp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lamp-stack-with-one-click-apps/','/platform/one-click/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-one-click-apps/','/guides/deploy-lamp-stack-with-marketplace-apps/','/guides/lamp-stack-marketplace-app/']
@@ -15,9 +15,9 @@ marketplace_app_id: 401701
 marketplace_app_name: "LAMP"
 ---
 
-A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Marketplace App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.
+A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com), [PHP](https://www.php.net)) stack is a popular, free, and open-source web software bundle used for hosting websites on Linux. This software environment is a foundation for popular PHP application frameworks like WordPress, Drupal, and Laravel. After you deploy your LAMP Quick Deploy App, you can upload your existing PHP application code to it or use a PHP framework to write a new application on your Linode.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -52,23 +52,23 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 After your LAMP stack has finished deploying, you can:
 
-- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
+- [Connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-- [Navigate to the public IP address or domain entered during creation](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of your Linode in a browser. You will see the default Apache webpage.
+- [Navigate to the public IP address or domain entered during creation](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of your Linode in a browser. You will see the default Apache webpage.
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 
-    - [Secure HTTP Traffic with Certbot](/docs/guides/secure-http-traffic-certbot/)
-    - [Apache Configuration Basics](/docs/guides/apache-configuration-basics/)
-    - [How to Optimize MySQL Performance Using MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
+    - [Secure HTTP Traffic with Certbot](/cloud/guides/secure-http-traffic-certbot/)
+    - [Apache Configuration Basics](/cloud/guides/apache-configuration-basics/)
+    - [How to Optimize MySQL Performance Using MySQLTuner](/cloud/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
 
--   Upload files to your web root directory with an SFTP application like [FileZilla](/docs/guides/filezilla/). Use the same root credentials that you would use for SSH.
+-   Upload files to your web root directory with an SFTP application like [FileZilla](/cloud/guides/filezilla/). Use the same root credentials that you would use for SSH.
 
--   Assign a domain name to your Linode's IP address. Review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
+-   Assign a domain name to your Linode's IP address. Review the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/cloud/guides/dns-overview/) for general information about how DNS works.
 
 ## Software Included
 
-The LAMP Stack Marketplace App installs the following software on your Linode:
+The LAMP Stack Quick Deploy App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
@@ -79,6 +79,6 @@ The LAMP Stack Marketplace App installs the following software on your Linode:
 
 ## Going Further
 
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 {{% content "marketplace-update-note-shortguide" %}}

@@ -18,13 +18,13 @@ tags: ["web server","nginx"]
 deprecated: true
 ---
 
-Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.
+Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/cloud/guides/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, NGINX uses an asynchronous event-driven model to provide more predictable performance under load.
 
-Before you begin installing the NGINX web server, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), our [beginner's guide](/docs/products/compute/compute-instances/faqs/), and our [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before you begin installing the NGINX web server, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), our [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances), and our [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -54,13 +54,13 @@ To start the server for the first time, use the following command:
 
     /etc/rc.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by NGINX. Continue reading our introduction to [basic NGINX configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by NGINX. Continue reading our introduction to [basic NGINX configuration](/cloud/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
 
 ## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs NGINX Documentation](/docs/web-servers/nginx/)
+- [Linode Docs NGINX Documentation](/cloud/guides/web-servers/nginx/)
 - [NGINX Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with NGINX](/docs/guides/nginx-and-perlfastcgi-on-arch-linux/)
-- [Configure PHP and FastCGI with NGINX](/docs/guides/nginx-and-phpfastcgi-on-arch-linux/)
+- [Configure Perl and FastCGI with NGINX](/cloud/guides/nginx-and-perlfastcgi-on-arch-linux/)
+- [Configure PHP and FastCGI with NGINX](/cloud/guides/nginx-and-phpfastcgi-on-arch-linux/)

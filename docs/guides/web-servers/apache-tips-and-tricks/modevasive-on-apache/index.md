@@ -22,7 +22,7 @@ mod_evasive is a module for Apache that provides evasive action in the event of 
 
 ![mod_evasive on Apache](mod_evasive.png "mod_evasive on Apache")
 
-This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found in our [LAMP guides](/docs/lamp-guides) section.
+This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found in our [LAMP guides](/cloud/guides/web-servers/lamp/) section.
 
 ## How does mod_evasive work?
 
@@ -256,4 +256,4 @@ In the output above, the part that says `Blacklisting address 127.0.0.1: possibl
 
 ## How to Load Test mod_evasive
 
-Refer to our guide on [Load Testing with Siege](/docs/guides/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.
+Refer to our guide on [Load Testing with Siege](/cloud/guides/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.

@@ -21,11 +21,11 @@ A single NGINX installation can host multiple websites and any number of them ca
 
 ## Before You Begin
 
-* This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, complete at least [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) before going further.
+* This guide is Part 3 of our *Getting Started with NGINX* series and you will need a working NGINX setup with your site accessible via HTTP. If do not already have that, complete at least [Part 1: Basic Installation and Setup](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) before going further.
 
 * You will need root access to the system, or a user account with `sudo` privileges.
 
-* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/guides/create-a-self-signed-tls-certificate/) or a [certificate signing request](/docs/guides/obtain-a-commercially-signed-tls-certificate/).
+* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/cloud/guides/create-a-self-signed-tls-certificate/) or a [certificate signing request](/cloud/guides/obtain-a-commercially-signed-tls-certificate/).
 
 * If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 
@@ -177,4 +177,4 @@ server {
 
 Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. It only gets HTTPS working on your server and is inherently insecure without further configuration.
 
-To harden your server's handling of TLS connections, continue to Part 4 of this series: [TLS Deployment Best Practices for NGINX](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/).
+To harden your server's handling of TLS connections, continue to Part 4 of this series: [TLS Deployment Best Practices for NGINX](/cloud/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/).

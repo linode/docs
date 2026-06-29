@@ -17,20 +17,20 @@ One feature found in ownCloud is the ability to connect an instance to Linode Ob
 
 ## Before You Begin
 
-1. Ensure you have a [running instance of ownCloud](/docs/guides/install-and-configure-owncloud-on-ubuntu-20-04/) deployed on your Linode.
+1. Ensure you have a [running instance of ownCloud](/cloud/guides/install-and-configure-owncloud-on-ubuntu-20-04/) deployed on your Linode.
 
     {{< note >}}
-    To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/marketplace-docs/guides/owncloud/).
+    To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through Akamai Quick Deploy Apps](/cloud/marketplace-docs/guides/owncloud/).
     {{< /note >}}
 
 1. Purchase an [enterprise license for ownCloud](https://doc.owncloud.com/server/admin_manual/enterprise/installation/install.html) (to enable the necessary external storage app).
 
-1. Generate a pair of [Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
+1. Generate a pair of [Object Storage access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys).
 
 {{< note >}}
 - ownCloud requires the installation of two external storage applications to connect to an Object Storage service.
 
-- Once the ownCloud Marketplace external storage app is installed, you can configure a connection to your Linode Object Storage bucket.
+- Once the ownCloud Quick Deploy App external storage app is installed, you can configure a connection to your Linode Object Storage bucket.
 {{< /note >}}
 
 ## Configuring ownCloud

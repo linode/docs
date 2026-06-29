@@ -1,6 +1,6 @@
 {
 
-  "_build": {
+  "build": {
     "elements": ["list"],
     "required": false,
     "type": "dict",

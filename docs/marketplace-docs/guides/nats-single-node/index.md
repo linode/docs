@@ -1,9 +1,9 @@
 ---
-title: "Deploy NATS through the Linode Marketplace"
+title: "Deploy NATS"
 description: "Deploy NATS on a Linode Compute Instance. NATS is a connective technology responsible for addressing, discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing."
 published: 2024-02-20
 keywords: ['cloud native','microservices','distributed systems', 'PubSub']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[NATS](https://nats.io/)'
 aliases: ['/products/tools/marketplace/guides/nats-single-node/']
@@ -16,7 +16,7 @@ marketplace_app_name: "NATS"
 
 [NATS](https://docs.nats.io/nats-concepts/overview) is a connective technology built for the hyper-connected world. It is a single technology that enables applications to securely communicate across any combination of cloud vendors, on-premise, edge, web and mobile, and devices. NATS consists of a family of open-source products that are tightly integrated but can be deployed easily and independently. NATS is being used globally by thousands of companies, spanning use-cases including microservices, edge computing, mobile, and IoT.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -56,7 +56,7 @@ Open your web browser and go to the custom domain you specified during deploymen
 
 ## Obtaining the NATS users passwords.
 
-By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) or via SSH, then just read the `/home/$USERNAME/.credentials` file, ie:
+By default, this NATS deployment creates 2 users, one named "example" and another system user named "system". The passwords for these users are generated during the initial install process. To obtain these password, log in to your Compute Instance either through the [LISH Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish) or via SSH, then just read the `/home/$USERNAME/.credentials` file, ie:
 
 ```command
 cat /home/$USERNAME/.credentials

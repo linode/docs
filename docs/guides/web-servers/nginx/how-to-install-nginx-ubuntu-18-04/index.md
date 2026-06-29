@@ -28,11 +28,11 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Set up your Linode in the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide.
 
-    - Don't forget to update your `/etc/hosts` file with the public IP and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+    - Don't forget to update your `/etc/hosts` file with the public IP and your site's fully qualified domain name as explained in the [Update Your System's hosts File](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
     {{% content "limited-user-note-shortguide" %}}
 
@@ -110,7 +110,7 @@ server {
 
 For more advanced configuration options, including security and performance optimizations and TLS setup, see our four-part series on NGINX:
 
-- [Part 1: Installation and Basic Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
-- [Part 2: (Slightly More) Advanced Configurations](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/)
-- [Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
-- [Part 4: TLS Deployment Best Practices](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/)
+- [Part 1: Installation and Basic Setup](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
+- [Part 2: (Slightly More) Advanced Configurations](/cloud/guides/getting-started-with-nginx-part-2-advanced-configuration/)
+- [Part 3: Enable TLS for HTTPS Connections](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
+- [Part 4: TLS Deployment Best Practices](/cloud/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/)

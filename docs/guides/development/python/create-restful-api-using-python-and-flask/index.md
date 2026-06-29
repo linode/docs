@@ -26,7 +26,7 @@ The REST protocol gives clients access to resources stored in a database and all
 
 ### Install Flask
 {{< note >}}
-This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/docs/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
+This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/cloud/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
 {{< /note >}}
 
 - Create a directory to store your Flask web application and move into the directory.
@@ -43,7 +43,7 @@ This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/)
         python3 -m venv venv
         . venv/bin/activate
 
-In order to run a Flask server, you install Flask first using the [Python Package Index (pip)](/docs/guides/how-to-create-a-private-python-package-repository/). Use the following command to install Flask:
+In order to run a Flask server, you install Flask first using the [Python Package Index (pip)](/cloud/guides/how-to-create-a-private-python-package-repository/). Use the following command to install Flask:
 
     pip install flask
 

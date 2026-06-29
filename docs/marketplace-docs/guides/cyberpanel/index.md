@@ -1,10 +1,10 @@
 ---
-title: "Deploy CyberPanel through the Linode Marketplace"
-description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
+title: "Deploy CyberPanel"
+description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Quick Deploy Apps."
 published: 2021-02-23
 modified: 2024-01-30
 keywords: ['cyberpanel','marketplace','server']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 image: DeployCyberPanel_marketplaceapps.png
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
@@ -18,7 +18,7 @@ marketplace_app_name: "CyberPanel"
 
 [CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -39,7 +39,7 @@ marketplace_app_name: "CyberPanel"
 
 ### Access your CyberPanel App
 
-1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/), and entering your Linode's root password when prompted:
+1. When the installation completes, log in to your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance), and entering your Linode's root password when prompted:
 
     ```command
     ssh root@192.0.2.1

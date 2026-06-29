@@ -17,7 +17,7 @@ This reference architecture provides a concrete example of how to create a scala
 - Producing video or digital assets for streaming services
 - Embedding content in business applications
 
-Review the [video transcoding architecture diagrams](/docs/reference-architecture/video-transcoding/diagrams/) for a high-level depiction of a general video transcoding workflow, as well as a more granular version which prescribes specific technologies to implement the workflow.
+Review the [video transcoding architecture diagrams](/cloud/reference-architecture/video-transcoding/diagrams/) for a high-level depiction of a general video transcoding workflow, as well as a more granular version which prescribes specific technologies to implement the workflow.
 
 ## Technologies Used
 

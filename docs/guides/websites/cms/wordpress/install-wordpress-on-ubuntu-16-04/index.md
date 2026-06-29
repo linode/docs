@@ -25,7 +25,7 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
 ![Install WordPress on Ubuntu 16.04](wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
 
@@ -34,7 +34,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
--   This guide assumes you have followed the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that your Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   This guide assumes you have followed the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, and that your Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check your hostname run:
 
@@ -43,7 +43,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) or [LEMP](/docs/guides/how-to-install-a-lemp-server-on-ubuntu-16-04/) web stack.
+-   Configure a [LAMP](/cloud/guides/install-lamp-stack-on-ubuntu-16-04/) or [LEMP](/cloud/guides/how-to-install-a-lemp-server-on-ubuntu-16-04/) web stack.
 
 -   Make sure MySQL has a database set up for WordPress. If you do not have a WordPress database, create one:
 

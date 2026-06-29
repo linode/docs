@@ -16,14 +16,14 @@ Kompose is a tool that makes it easier to convert Docker Compose files into Kube
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Have an active Kubernetes cluster configured with `kubectl` or a similar tool. You can follow our [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) guide to deploy an LKE cluster from the Linode Cloud Manager. The guide also includes steps for installing and configuring `kubectl` to manage the cluster.
+1.  Have an active Kubernetes cluster configured with `kubectl` or a similar tool. You can follow our [Linode Kubernetes Engine - Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to deploy an LKE cluster from the Linode Cloud Manager. The guide also includes steps for installing and configuring `kubectl` to manage the cluster.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Kompose?
@@ -222,7 +222,7 @@ The resources have been deployed, meaning your Kubernetes cluster should be runn
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-    Refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide, and use the following commands to open the HTTP port.
+    Refer to our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide, and use the following commands to open the HTTP port.
 
     ```command
     sudo ufw allow 8080/tcp
@@ -230,7 +230,7 @@ The resources have been deployed, meaning your Kubernetes cluster should be runn
     ```
     {{< /tab >}}
     {{< tab "CentOS Stream, AlmaLinux, and Rocky Linux" >}}
-    Refer to our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide, and use the following commands to open the HTTP port:
+    Refer to our [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/) guide, and use the following commands to open the HTTP port:
 
     ```command
     sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
@@ -255,6 +255,6 @@ Kompose is a powerful tool. Whether you are a Docker Compose aficionado beginnin
 
 The links below are helpful resources for learning more about working with Kompose. Additionally, you may be interested in moving forward with more on Kubernetes and Docker Compose:
 
-- Refer to our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to go deeper with Kubernetes, and see our [collection of Kubernetes guides](/docs/guides/kubernetes/) for a range of use cases to build on.
+- Refer to our [Beginner's Guide to Kubernetes](/cloud/guides/beginners-guide-to-kubernetes/) series to go deeper with Kubernetes, and see our [collection of Kubernetes guides](/cloud/guides/kubernetes/) for a range of use cases to build on.
 
-- Search our documentation for Docker Compose to see everything from getting started guides like [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) to specific use cases like how to [Install a Mastodon Server](/docs/guides/install-mastodon-on-ubuntu-2004/).
+- Search our documentation for Docker Compose to see everything from getting started guides like [How to Use Docker Compose](/cloud/guides/how-to-use-docker-compose/) to specific use cases like how to [Install a Mastodon Server](/cloud/guides/install-mastodon-on-ubuntu-2004/).

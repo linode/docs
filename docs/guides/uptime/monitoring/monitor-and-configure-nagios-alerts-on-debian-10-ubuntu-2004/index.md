@@ -22,16 +22,16 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/docs/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
+1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/cloud/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up Nagios Email Alerts
@@ -75,7 +75,7 @@ This guide also provides instructions for configuring local emails, which are no
         - `+` for the local inbox extension character
         - Select **all** for the Internet protocols
 
-    - Alternatively, you can follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
+    - Alternatively, you can follow the [Configure Postfix to Send Email Using External SMTP Servers](/cloud/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/cloud/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
 
 1. Test the email configuration with the following command below; replace `example-user` with the username of a local user that you can log in as.
 
@@ -173,4 +173,4 @@ This guide uses [NagIRCBot](https://manpages.ubuntu.com/manpages/trusty/man1/nag
 
 1. Connect to the IRC channel, and verify that you are receiving status updates at the expected interval.
 
-1. By default, NagIRCBot must be re-initiated using the command described above after each system reboot. Refer to the [Use systemd to Start a Linux Service at Boot](/docs/guides/start-service-at-boot/) or the [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide for instructions on how to schedule tasks to run automatically.
+1. By default, NagIRCBot must be re-initiated using the command described above after each system reboot. Refer to the [Use systemd to Start a Linux Service at Boot](/cloud/guides/start-service-at-boot/) or the [Schedule Tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) guide for instructions on how to schedule tasks to run automatically.

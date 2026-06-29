@@ -53,7 +53,7 @@
     {{ end }}
   {{ end }}
 {{- else -}}
-  {{ if and  (not (strings.HasPrefix $destination "http"))  (not (strings.HasPrefix $destination "/docs"))}}
+  {{ if and  (not (strings.HasPrefix $destination "http"))  (not (strings.HasPrefix $destination (partial "get-basepath.html" .)))}}
   {{/* Assume these are stored in /static. */}}
   {{ $destination =  ($destination | relURL) }}
   {{ end }}

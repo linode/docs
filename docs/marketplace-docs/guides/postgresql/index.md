@@ -1,10 +1,10 @@
 ---
-title: "Deploy PostgreSQL through the Linode Marketplace"
-description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
+title: "Deploy PostgreSQL"
+description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here's how to easily deploy PostgreSQL using Quick Deploy Apps."
 published: 2020-03-17
 modified: 2025-03-05
 keywords: ['database','postgresql','rdbms','relational database']
-tags: ["linode platform","postgresql","marketplace","cloud-manager"]
+tags: ["linode platform","postgresql","quick deploy apps","cloud-manager"]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
@@ -18,7 +18,7 @@ marketplace_app_name: "PostgreSQL"
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -49,8 +49,8 @@ To obtain credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
 
@@ -150,4 +150,4 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 For more on PostgreSQL, checkout the following guides:
 
-- [Securely Manage Remote PostgreSQL Servers](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
+- [Securely Manage Remote PostgreSQL Servers](/cloud/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

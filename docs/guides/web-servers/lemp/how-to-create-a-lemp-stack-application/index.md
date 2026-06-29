@@ -10,29 +10,29 @@ keywords: ['lemp','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-[LEMP stack](/docs/guides/web-servers/lemp/) refers to a development framework for Web and mobile applications based on four open source components:
+[LEMP stack](/cloud/guides/web-servers/lemp/) refers to a development framework for Web and mobile applications based on four open source components:
 1.  [Linux](https://www.linode.com/distributions/) operating system
-2.  [NGINX](/docs/guides/web-servers/nginx/) Web server
-3.  [MySQL](/docs/guides/databases/mysql/) relational database management system (RDBMS)
-4.  [PHP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/), [Perl](/docs/guides/development/perl/), or [Python](/docs/guides/development/python/) programming language
+2.  [NGINX](/cloud/guides/web-servers/nginx/) Web server
+3.  [MySQL](/cloud/guides/databases/mysql/) relational database management system (RDBMS)
+4.  [PHP](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/), [Perl](/cloud/guides/development/perl/), or [Python](/cloud/guides/development/python/) programming language
 
 NGINX contributes to the acronym "LEMP" because English-speakers pronounce NGINX as "engine-x", hence an "E".
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Does LEMP Differ from LAMP?
 
-[LAMP](/docs/guides/web-servers/lamp/) is just like LEMP, except with Apache in place of NGINX.
+[LAMP](/cloud/guides/web-servers/lamp/) is just like LEMP, except with Apache in place of NGINX.
 
-LAMP played a crucial role in the Web for [over twenty years](https://www.marpis.net/lamp-history.php). NGINX was released publicly in 2004, largely to address faults in LAMP. LEMP use spread widely after 2008, and NGINX is now the second [most popular Web server](https://kinsta.com/knowledgebase/what-is-nginx/), after the [Apache Web server](/docs/guides/web-servers/apache/) that LAMP uses.
+LAMP played a crucial role in the Web for [over twenty years](https://www.marpis.net/lamp-history.php). NGINX was released publicly in 2004, largely to address faults in LAMP. LEMP use spread widely after 2008, and NGINX is now the second [most popular Web server](https://kinsta.com/knowledgebase/what-is-nginx/), after the [Apache Web server](/cloud/guides/web-servers/apache/) that LAMP uses.
 
 Both LEMP and LAMP combine open source tools to supply the essentials for a Web application. This includes an underlying Linux operating system which hosts everything else, including:
 -   The NGINX or Apache Web server that receives and responds to end-user actions.
@@ -47,7 +47,7 @@ In broad terms, the two Web servers have much in common. [NGINX is faster than A
 
 ### RDBMS and Programming Language
 
-Two other variations deserve clarity in regard to the initials "M" and "P". [MariaDB](/docs/guides/databases/mariadb/) is a drop-in replacement for MySQL. The differences between the two are explained in [this tutorial](https://www.guru99.com/mariadb-vs-mysql.html). Everything you do with MySQL applies immediately with MariaDB as well.
+Two other variations deserve clarity in regard to the initials "M" and "P". [MariaDB](/cloud/guides/databases/mariadb/) is a drop-in replacement for MySQL. The differences between the two are explained in [this tutorial](https://www.guru99.com/mariadb-vs-mysql.html). Everything you do with MySQL applies immediately with MariaDB as well.
 
 While several different programming languages work well in a LEMP stack, this guide focuses on PHP. However, nearly all the principles of LEMP illustrated below apply with Python or another alternative.
 
@@ -59,7 +59,7 @@ LEMP's suitability extends beyond purely technical dimensions. Its flexible open
 
 ## Install the LEMP Stack
 
-Linode's support for LEMP begins with abundant documentation, including [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/).
+Linode's support for LEMP begins with abundant documentation, including [How to Install the LEMP Stack on Ubuntu 18.04](/cloud/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/).
 
 Rich collections of documentation are available to readers [new to Linux](https://opensource.com/article/19/7/ways-get-started-linux) and its command line. This guide assumes familiarity with the command line and Linux filesystems, along with permission to run as root or with sudo privileges. With the "L" (Linux) in place, the installation in this Guide focuses purely on the "EMP" layers of LEMP.
 
@@ -148,7 +148,7 @@ This demonstrates that PHP is installed and that the modules needed to communica
 
 ### Verify NGINX
 
-Verification of NGINX service is a little more involved. The first step is [identification of the IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the host.
+Verification of NGINX service is a little more involved. The first step is [identification of the IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the host.
 
 1.  Navigate a browser to a URL such as `http://localhost` or `http://23.77.NNN.NNN`, henceforth referred to as `$LEMP_HOST`
 
@@ -335,7 +335,7 @@ This demonstrates the flow of data from a Web browser to the database server. Ea
 
 ## Application Context
 
-LEMP is a trustworthy basis for Web development, with decades of successful deliveries over a range of requirements. It directly supports only [server-side processing](https://www.indeed.com/career-advice/career-development/client-side-vs-server-side). The model application above delivers pure HTML to the browser. However, LEMP is equally capable of serving up CSS and [JavaScript](/docs/guides/languages/javascript/), but does not build in tooling for these client-side technologies. Projects reliant on elaborate user interface effects usually choose a framework focused on the client side. [React](/docs/guides/development/react/) is an example of such a framework.
+LEMP is a trustworthy basis for Web development, with decades of successful deliveries over a range of requirements. It directly supports only [server-side processing](https://www.indeed.com/career-advice/career-development/client-side-vs-server-side). The model application above delivers pure HTML to the browser. However, LEMP is equally capable of serving up CSS and [JavaScript](/cloud/guides/languages/javascript/), but does not build in tooling for these client-side technologies. Projects reliant on elaborate user interface effects usually choose a framework focused on the client side. [React](/cloud/guides/development/react/) is an example of such a framework.
 
 Server-side orientation remains adequate for many applications, and LEMP fits these well. Server-side computation typically involves several functions beyond the model application above, including:
 -   Account Management

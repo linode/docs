@@ -26,11 +26,11 @@ In this application model, consumers can play dual roles as subsequent producers
 
 Kafka is designed for speed, scale, and reliable distributed infrastructure. It is well-suited for frameworks constructed for Big Data, complex multi-partner trading, log accumulation & processing, and traditional transaction tracking systems.
 
-For more information, see [An Introduction to Apache Kafka](/docs/guides/what-is-apache-kafka/).
+For more information, see [An Introduction to Apache Kafka](/cloud/guides/what-is-apache-kafka/).
 
 ### The Kafka Pub/Sub Model and Terminology
 
-Kafka uses an architectural model called [Publisher-Subscriber](/docs/guides/what-is-pub-sub/) (pub/sub). In this model, a framework is established between publisher applications, which provide event information, and subscriber applications, which consume the logged data from these providers.
+Kafka uses an architectural model called [Publisher-Subscriber](/cloud/guides/what-is-pub-sub/) (pub/sub). In this model, a framework is established between publisher applications, which provide event information, and subscriber applications, which consume the logged data from these providers.
 
 In the pub/sub paradigm, Kafka refers to its application server instances as *brokers*. There is usually only one *leader broker*. However, it is common to store topic data across several brokers for resiliency, redundancy, data localization, or other processing requirements. These replicas of data are called *partitions*.
 
@@ -131,7 +131,7 @@ Application development with Kafka is performed using an Integrated Development 
 
 Libraries joining these objects to other languages, such as C#, Python, and Ruby are available for many IDE platforms.
 
-Akamai offers a guide on how to [Install and Configure Apache Kafka on Ubuntu](/docs/guides/how-to-install-apache-kafka-on-ubuntu/). This example is based on the installation and configuration shown in that guide.
+Akamai offers a guide on how to [Install and Configure Apache Kafka on Ubuntu](/cloud/guides/how-to-install-apache-kafka-on-ubuntu/). This example is based on the installation and configuration shown in that guide.
 
 This is code is written in modern Java and utilizes the `slf4j` logging framework, [a commonly used logging facade in Java](https://www.slf4j.org/). The dependencies for the Java Kafka client include the following commonly used configurations:
 

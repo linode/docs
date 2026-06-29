@@ -11,13 +11,13 @@ external_resources:
 - '[Ansible Collaborative Official Site](https://www.ansible.com/)'
 ---
 
-[Ansible](/docs/guides/applications/configuration-management/ansible/) is an automation engine used for enabling infrastructure as code (IaC), managing and deploying applications, and automating processes. It is often considered a tool for system administrators, DevOps practitioners, and related IT specialists.
+[Ansible](/cloud/guides/applications/configuration-management/ansible/) is an automation engine used for enabling infrastructure as code (IaC), managing and deploying applications, and automating processes. It is often considered a tool for system administrators, DevOps practitioners, and related IT specialists.
 
 Ansible workflows have significant implications for IT security, both enhancing it and introducing potential risks. This guide discusses various security benefits and considerations of using Ansible.
 
 ## Source Control Integration
 
-Ansible's configuration management capabilities enable various security techniques associated with effective [infrastructure as code](/docs/guides/introduction-to-infrastructure-as-code/), including:
+Ansible's configuration management capabilities enable various security techniques associated with effective [infrastructure as code](/cloud/guides/introduction-to-infrastructure-as-code/), including:
 
 -   **Versioning and Change Tracking**: Keeps a detailed record of what changes are made, when, and by whom.
 -   **Auditing and Compliance**: Ensures changes to sensitive documents are made, reviewed, and approved by authorized personnel.
@@ -29,7 +29,7 @@ The integration of these techniques together allows you to use the same Single S
 
 ## Secure Communication
 
-Ansible uses `ssh` as its default transport protocol. In addition to accessing `ssh` through standard clients and servers, Ansible also uses [Paramiko](https://www.paramiko.org/), a [Python](/docs/guides/development/python/) implementation of [OpenSSH](https://www.openssh.com/). These components are regarded as secure for commercial traffic.
+Ansible uses `ssh` as its default transport protocol. In addition to accessing `ssh` through standard clients and servers, Ansible also uses [Paramiko](https://www.paramiko.org/), a [Python](/cloud/guides/development/python/) implementation of [OpenSSH](https://www.openssh.com/). These components are regarded as secure for commercial traffic.
 
 Ansible encrypts all communications, and authentication mechanisms include public-key, password, and [Kerberos](https://www.techtarget.com/searchsecurity/definition/Kerberos) protocol.
 

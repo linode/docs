@@ -36,7 +36,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 You will need:
 
-- Two or more Linodes with [Private IPs](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
+- Two or more Linodes with [Private IPs](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address)
 - Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
@@ -52,9 +52,9 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  Create two Linodes with at least 2GB memory within the same data center.
 
-1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
+1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
-1.  Configure a firewall with [UFW](/docs/guides/configure-firewall-with-ufw/) or [iptables](/docs/guides/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
+1.  Configure a firewall with [UFW](/cloud/guides/configure-firewall-with-ufw/) or [iptables](/cloud/guides/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 
@@ -465,7 +465,7 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-For more details on Helm and installing Helm, see [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/).
+For more details on Helm and installing Helm, see [How to Install Apps on Kubernetes with Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/).
 
 ### Installing Ingress Controller
 

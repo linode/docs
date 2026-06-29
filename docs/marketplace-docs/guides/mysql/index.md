@@ -1,10 +1,10 @@
 ---
-title: "Deploy MySQL/MariaDB through the Linode Marketplace"
-description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
+title: "Deploy MySQL/MariaDB"
+description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Akamai Quick Deploy App."
 published: 2020-03-13
 modified: 2025-02-28
 keywords: ['database','mysql','rdbms','relational database','mariadb']
-tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
+tags: ["database","cloud-manager","linode platform","mysql","quick deploy apps","mariadb"]
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -17,9 +17,9 @@ marketplace_app_id: 607026
 marketplace_app_name: "MySQL/MariaDB"
 ---
 
-The MySQL/MariaDB Marketplace app can deploy MySQL or MariaDB. MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL that's maintained and developed by the MariaDB Foundation.
+The MySQL/MariaDB Quick Deploy App app can deploy MySQL or MariaDB. MySQL is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB is an open-source, multi-threaded relational database management system, backward compatible replacement for MySQL that's maintained and developed by the MariaDB Foundation.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -52,8 +52,8 @@ To obtain credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
 
@@ -108,11 +108,11 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 ### Create a Sample Table
 
-1.  Log back in as sudo user that you set when launching the Marketplace App. In the following example the sudo user is `webuser`.
+1.  Log back in as sudo user that you set when launching the Quick Deploy App. In the following example the sudo user is `webuser`.
 
         sudo mysql -u webuser -p
 
-2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Marketplace App.
+2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. In the following example `webdata` is the database that you created when launching the Quick Deploy App.
 
         use webdata;
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
@@ -141,4 +141,4 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 For more on MySQL/MariaDB, checkout the following guides:
 
-- [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [MariaDB Clusters with Galera](/cloud/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

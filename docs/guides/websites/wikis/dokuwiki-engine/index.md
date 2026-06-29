@@ -20,7 +20,7 @@ DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage
 
 ![Build a Fully Featured Wiki with DokuWiki](dokuwiki_title_graphic.png)
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Install Prerequisites
 
@@ -30,7 +30,7 @@ There are a few prerequisites that you will need before embarking on the install
     apt-get upgrade
     apt-get install php5 php-pear apache2 wget
 
-Additionally, you will likely want to configure your Apache instance for virtual hosting according to our guide for [name based virtual hosting](/docs/guides/apache-2-web-server-on-debian-5-lenny/). On CentOS and Fedora powered systems, issue the following commands to run system updates, install required prerequisites, and ensure that Apache will resume following the next reboot cycle:
+Additionally, you will likely want to configure your Apache instance for virtual hosting according to our guide for [name based virtual hosting](/cloud/guides/apache-2-web-server-on-debian-5-lenny/). On CentOS and Fedora powered systems, issue the following commands to run system updates, install required prerequisites, and ensure that Apache will resume following the next reboot cycle:
 
     yum update
     yum install php php-pear httpd wget

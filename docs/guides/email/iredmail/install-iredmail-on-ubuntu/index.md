@@ -32,16 +32,16 @@ Running your own mail server has many benefits. It allows you to manage the size
 Before beginning this guide you should have:
 
 - A domain name.
-- An understanding of the [Linux command line](/docs/guides/using-the-terminal).
+- An understanding of the [Linux command line](/cloud/guides/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](/docs/products/platform/get-started/) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups) guide.
 
 ### MX Record
 
-A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-overview/) page.
+A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/cloud/guides/dns-overview/) page.
 
 ## Install iRedMail
 
@@ -152,7 +152,7 @@ iRedMail is packaged with a mail server account configuration called iRedAdmin. 
 
 By default, iRedMail generates a key and self-signed certificate for the mail server, and web server. To avoid other email servers marking email from our server as spam, we install a trusted certificate.
 
-The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide to obtain a certificate.
+The process of obtaining a trusted certificate is outside the scope of this guide. You can follow the [Obtaining a Commercial TLS Certificate](/cloud/guides/obtain-a-commercially-signed-tls-certificate/) guide to obtain a certificate.
 
 The next section assumes you have the .key and .crt (or .pem) file in hand and are ready to go.
 
@@ -244,7 +244,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 

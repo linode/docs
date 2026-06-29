@@ -9,7 +9,7 @@ export function newCreateHref(searchConfig) {
 		throw 'newCreateHref: must provide searchConfig';
 	}
 
-	const SECTIONS_BASEPATH = '/docs/';
+	const SECTIONS_BASEPATH = window.docsRelUrl('/');
 
 	return {
 		sectionsFromPath: function () {

@@ -307,4 +307,4 @@ To see all custom chains or rules added to firewalld:
     firewall-cmd --direct --get-all-chains
     firewall-cmd --direct --get-all-rules
 
-Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](/docs/guides/control-network-traffic-with-iptables/).
+Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](/cloud/guides/control-network-traffic-with-iptables/).

@@ -55,7 +55,7 @@ $GOPATH/go/
 
 ## Go Workspace Configuration: Set the GOPATH
 
-It is not necessary to set your `GOPATH` unless you want to use a location that is different from the default location. The default location of the `GOPATH` is `$HOME/go`. On a Linux system, the full path is `/home/username/go`. Setting your `GOPATH` is similar to [setting any Linux system environment variable](/docs/guides/how-to-set-linux-environment-variables/). To set your `GOPATH`, use the following command:
+It is not necessary to set your `GOPATH` unless you want to use a location that is different from the default location. The default location of the `GOPATH` is `$HOME/go`. On a Linux system, the full path is `/home/username/go`. Setting your `GOPATH` is similar to [setting any Linux system environment variable](/cloud/guides/how-to-set-linux-environment-variables/). To set your `GOPATH`, use the following command:
 
     export = GOPATH=/home/example_user/a_new_workspace
 
@@ -106,7 +106,7 @@ Hello, World!
 
 ## Conclusion
 
-Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable with outside collaborators or users. As a next step, check out our [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide to learn more about organizing, packaging, and distributing your Go programs.
+Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable with outside collaborators or users. As a next step, check out our [Getting Started with Go Packages](/cloud/guides/getting-started-with-go-packages/) guide to learn more about organizing, packaging, and distributing your Go programs.
 
 
 

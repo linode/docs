@@ -34,10 +34,10 @@ FreeIPA is the Linux version or implementation of Active Directory, which featur
 This guide assumes:
 
 - Two fully functional Linodes equal to a [2GB Plan](https://www.linode.com/pricing/) or greater must be created using CentOS 7 or later. One will host the FreeIPA server, while the other will host the client.
-- You have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. One will host the FreeIPA server, while the other will host the client.
-- You are familiar with the [command line](/docs/guides/introduction-to-linux-concepts/#so-youre-staring-at-a-shell-prompt)
-- FreeIPA requires that the user has possession of their own fully qualified domain name (FQDN) with an active subdomain for both the client and server. Before proceeding, ensure that each Linode has A/AAAA records configured using a [Unique Subdomain](/docs/products/networking/dns-manager/) for both the server and client Linode respectively.
-- [Set up Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for each Linode using their full unique subdomain.
+- You have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides. One will host the FreeIPA server, while the other will host the client.
+- You are familiar with the [command line](/cloud/guides/introduction-to-linux-concepts/#so-youre-staring-at-a-shell-prompt)
+- FreeIPA requires that the user has possession of their own fully qualified domain name (FQDN) with an active subdomain for both the client and server. Before proceeding, ensure that each Linode has A/AAAA records configured using a [Unique Subdomain](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) for both the server and client Linode respectively.
+- [Set up Reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) for each Linode using their full unique subdomain.
 
 ## Prepare the Client and Server
 
@@ -49,7 +49,7 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
     sudo hostname ipa.example.com
     ```
 
-1. [Edit the systems hosts file](/docs/guides/using-your-systems-hosts-file/) to reflect the new hostname.
+1. [Edit the systems hosts file](/cloud/guides/using-your-systems-hosts-file/) to reflect the new hostname.
 
     ```file {title="/etc/hosts" lang="conf"}
     127.0.0.1 localhost.localdomain localhost
@@ -66,7 +66,7 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
     | 53 | DNS | TCP/UDP |
     | 123 | NTP | UDP |
 
-    All of the above ports can be opened using the commands in[firewalld cmd list](/docs/guides/introduction-to-firewalld-on-centos/). Type the following command:
+    All of the above ports can be opened using the commands in[firewalld cmd list](/cloud/guides/introduction-to-firewalld-on-centos/). Type the following command:
 
     ```command
     firewall-cmd --permanent --add-port={80/tcp,443/tcp,389/tcp,636/tcp,88/tcp,464/tcp,53/tcp,88/udp,464/udp,53/udp,123/udp}

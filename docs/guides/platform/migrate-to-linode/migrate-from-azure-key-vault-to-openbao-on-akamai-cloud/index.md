@@ -27,16 +27,16 @@ This guide provides steps and considerations for how to migrate secrets stored i
 
 1.  When migrating from Azure Key Vault to OpenBao on Akamai Cloud, OpenBao should be deployed before you begin. OpenBao can be installed on a single Linode instance or deployed to a multi-node cluster using Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your production needs:
 
-    -   [Deploying OpenBao on a Linode Instance](/docs/guides/deploying-openbao-on-a-linode-instance/)
-    -   [Deploy OpenBao on Linode Kubernetes Engine](/docs/guides/deploy-openbao-on-linode-kubernetes-engine/)
-    -   [Deploying OpenBao through the Linode Marketplace](/docs/marketplace-docs/guides/openbao/)
+    -   [Deploying OpenBao on a Linode Instance](/cloud/guides/deploying-openbao-on-a-linode-instance/)
+    -   [Deploy OpenBao on Linode Kubernetes Engine](/cloud/guides/deploy-openbao-on-linode-kubernetes-engine/)
+    -   [Deploying OpenBao through the Linode Marketplace](/cloud/marketplace-docs/guides/openbao/)
 
 1.  Ensure that you have access to your Azure cloud platform account with sufficient permissions to work with Azure Key Vault. The [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) must also be installed and configured.
 
 1.  Install `jq`, a lightweight command line JSON processor.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) doc.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) doc.
 {{< /note >}}
 
 ### Using This Guide

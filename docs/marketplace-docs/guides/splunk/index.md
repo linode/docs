@@ -1,10 +1,10 @@
 ---
-title: "Deploy Splunk through the Linode Marketplace"
-description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Linode One-Click Marketplace."
+title: "Deploy Splunk"
+description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Akamai Quick Deploy App."
 published: 2021-09-03
 modified: 2024-01-31
 keywords: ['monitoring','splunk', 'data solution']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 aliases: ['/products/tools/marketplace/guides/splunk/','/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
@@ -17,9 +17,9 @@ marketplace_app_name: "Splunk"
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.
 
-The Splunk Marketplace App on Akamai Cloud includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
+The Splunk Quick Deploy App on Akamai Cloud includes support for the [Akamai SIEM integration](https://techdocs.akamai.com/siem-integration/docs/akamai-siem-integration-for-splunk-and-cef-syslog) on deployment. For details on generating valid tokens, see [create authentication credentials](https://techdocs.akamai.com/developer/docs/set-up-authentication-credentials).
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -54,7 +54,7 @@ The Splunk Marketplace App on Akamai Cloud includes support for the [Akamai SIEM
 
 ### Obtaining the Admin Password
 
-The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
+The password for the sudo user account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish). The credentials are available in the file `/home/$USERNAME/.credentials`
 ```
 cat /home/$USERNAME/.credentials
 sudo username: $USERNAME
@@ -65,7 +65,7 @@ splunk admin password: fRLdHksJoMPrjLtRCogEPVLYOML1zQtQ0kIsL7IWvo49
 
 ### Access your Splunk App
 
-Open a browser and navigate to `https://192-0-2-1.ip.linodeusercontent.com:8000`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+Open a browser and navigate to `https://192-0-2-1.ip.linodeusercontent.com:8000`, where `192-0-2-1` represents the IPv4 address of your new Compute Instance. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 
 You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and the generated *Splunk Password* in `/home/$USERNAME/.credentials`.
 

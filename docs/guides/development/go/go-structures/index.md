@@ -33,7 +33,7 @@ In this guide you will:
 
 {{% content "before-you-begin-install-go-shortguide" %}}
 
-An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/cloud/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 
 {{< note >}}
 This guide was written with Go version 1.13.
@@ -735,4 +735,4 @@ Executing `json.go` and processing the data found in `record.json` will generate
 
 ## Next Steps
 
-Structs are a versatile Go data type because they allow you to create new types by combining existing data types. If you feel confident in the topics covered in this tutorial, try exploring our [other guides on the Go language](/docs/development/go/).
+Structs are a versatile Go data type because they allow you to create new types by combining existing data types. If you feel confident in the topics covered in this tutorial, try exploring our [other guides on the Go language](/cloud/guides/development/go/).

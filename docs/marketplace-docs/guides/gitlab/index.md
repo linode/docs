@@ -1,10 +1,10 @@
 ---
-title: "Deploy Gitlab through the Linode Marketplace"
-description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Marketplace."
+title: "Deploy Gitlab"
+description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Akamai Quick Deploy App."
 published: 2019-03-27
 modified: 2022-03-08
 keywords: ['gitlab','marketplace apps','version control','git']
-tags: ["linode platform","version control system","marketplace","cloud-manager"]
+tags: ["linode platform","version control system","quick deploy apps","cloud-manager"]
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
 - '[GitLab Official Documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html)'
@@ -20,7 +20,7 @@ marketplace_app_name: "Gitlab"
 
 Self-hosting your software development with GitLab offers total control of your codebase. At the same time, its familiar interface will ease collaboration for you and your team. GitLab is the most popular self-hosted Git repository software, so you'll benefit from a robust set of integrated tools and an active community.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -53,8 +53,8 @@ To obtain the credentials:
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Run the following command to access the credentials file:
 
@@ -68,7 +68,7 @@ This returns passwords that were automatically generated when the instance was d
 
 Once your new Compute Instance has been fully deployed, follow the instructions below to access your new Gitlab app.
 
-1. Log in to your Gitlab site by opening a web browser and entering either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. Log in to your Gitlab site by opening a web browser and entering either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing and setting the rDNS value.
 
     On the login screen, enter the following credentials:
 
@@ -83,7 +83,7 @@ You can now begin creating GitLab repositories, users, and more. To learn more, 
 
 ## Software Included
 
-The GitLab Marketplace App installs the following required software on your Linode:
+The GitLab Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

@@ -8,7 +8,7 @@ published: 2018-05-18
 keywords: ["backups", "snapshot", "Linode backup", "beginners"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-  - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
+  - '[Backing Up Your Data](/cloud/guides/backing-up-your-data/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/introduction-to-backups/']
 ---
@@ -25,13 +25,13 @@ Aside from protecting your files against data-loss scenarios, making periodic ba
 
 ## Linode Backups
 
-One simple way to make sure your entire system is backed up is to use the official Linode Backup service. This is a paid add-on to your account, and it will automatically take a snapshot of your disk at regular intervals. If your data is ever lost, you can use the most recent snapshot to recover the disk. For more information, see [Linode Backups](/docs/products/storage/backups/).
+One simple way to make sure your entire system is backed up is to use the official Linode Backup service. This is a paid add-on to your account, and it will automatically take a snapshot of your disk at regular intervals. If your data is ever lost, you can use the most recent snapshot to recover the disk. For more information, see [Linode Backups](https://techdocs.akamai.com/cloud-computing/docs/backup-service).
 
 ## Manual Backups
 
 If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill.
 
-You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/products/storage/block-storage/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
+You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](https://techdocs.akamai.com/cloud-computing/docs/block-storage). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
 
 1.  On your Linode, use the `zip` tool to create a compressed archive of the directory you want to back up:
 
@@ -52,15 +52,15 @@ You may have made manual backups of files on your personal computer by dragging 
 
         cp backup.zip /mnt/my-volume
 
-If you are more comfortable working on the command line, this kind of backup can be automated with a [cron job](/docs/guides/schedule-tasks-with-cron/) so that it can run automatically at a set interval.
+If you are more comfortable working on the command line, this kind of backup can be automated with a [cron job](/cloud/guides/schedule-tasks-with-cron/) so that it can run automatically at a set interval.
 
 ## Database Backups
 
 Many applications, including common CMS platforms like WordPress, store their data in a database. It is crucial to make sure that this data can be restored in the event of a system compromise. Fortunately, most database systems include tools to make backing up simple and painless.
 
-If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/mysqldump-backups/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/cloud/guides/mysqldump-backups/) guide, or try making [physical backups](/cloud/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
-If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/).
+If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/cloud/guides/back-up-a-postgresql-database/).
 
 ## Third-Party Tools
 

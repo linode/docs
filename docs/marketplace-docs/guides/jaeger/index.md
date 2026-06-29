@@ -1,10 +1,10 @@
 ---
-title: "Deploy Jaeger all-in-one through the Linode Marketplace"
+title: "Deploy Jaeger all-in-one"
 description: "Learn how to deploy the all-in-one configuration of Jaeger, a CNCF distributed tracing system for monitoring and troubleshooting microservices architectures, on an Akamai Compute Instance."
 published: 2025-09-04
 modified: 2025-09-04
 keywords: ['distributed tracing', 'tracing','microservices','monitoring','observability','jaeger','cncf']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Jaeger Official Documentation](https://www.jaegertracing.io/docs/)'
 aliases: ['/products/tools/marketplace/guides/jaeger/','/guides/jaeger-marketplace-app/']
@@ -17,7 +17,7 @@ marketplace_app_name: "Jaeger"
 
 [Jaeger](https://www.jaegertracing.io/) is a CNCF distributed tracing system designed for monitoring and troubleshooting microservices-based distributed systems. It helps developers understand the architecture of complex systems through data-driven dependency diagrams, analyze request timelines, identify performance bottlenecks, and diagnose issues across service boundaries. Jaeger supports OpenTelemetry for instrumentation and provides a comprehensive platform for distributed trace collection, storage, and visualization.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -47,7 +47,7 @@ marketplace_app_name: "Jaeger"
 
 ### Accessing the Jaeger Web Interface
 
-1.  Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}`, where `{{< placeholder "DOMAIN" >}}` is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1.  Open your web browser and navigate to `https://{{< placeholder "DOMAIN" >}}`, where `{{< placeholder "DOMAIN" >}}` is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
 2.  Use the following credentials to log in:
     - **Username**: Enter the administrator username you configured during deployment. The default is `jaegeradmin`.

@@ -17,18 +17,18 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 HTTP/2 is supported by the majority of the most popular websites and is considered the current standard. It dramatically improves speed and latency due to optimizations in how data is transmitted. However, most of the changes are internal, and users do not have to make any adjustments. HTTP/2 still uses the same fields, format, and status codes, and serves the same function as the original HTTP service. It continues to use [*Transmission Control Protocol*](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) (TCP) for the transport layer and supports all contemporary browsers, web servers, and proxies. A negotiation mechanism helps the client and server elect whether to use HTTP/2 or fall back to HTTP/1.1. Most clients require data encryption whenever HTTP/2 is used. This means HTTPS is the de facto standard in HTTP/2.
 
-For more comprehensive information and a collection of resources about HTTP/2, see our [An Introduction to HTTP/2](/docs/guides/introducing-http-2/) guide.
+For more comprehensive information and a collection of resources about HTTP/2, see our [An Introduction to HTTP/2](/cloud/guides/introducing-http-2/) guide.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## A Summary of the HTTP/2 on Apache Configuration Process
@@ -42,7 +42,7 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 
 ### Install Apache
 
-Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
+Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/cloud/guides/apache-configuration-basics/) guide.
 
 {{< note >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
@@ -135,7 +135,7 @@ Earlier versions of Apache have a different file and directory structure. The ma
     ...
     {{< /file >}}
     {{< note respectIndent=false >}}
-HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
+HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/cloud/guides/apache-configuration-basics/) guide.
     {{< /note >}}
 
 ### Enable HTTPS Support

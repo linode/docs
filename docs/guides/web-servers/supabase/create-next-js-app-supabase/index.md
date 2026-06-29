@@ -22,9 +22,9 @@ This tutorial covers everything you need to get started using these two tools to
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system.
 
@@ -37,7 +37,7 @@ This tutorial covers everything you need to get started using these two tools to
     ```
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Create a Supabase Backend
@@ -52,7 +52,7 @@ You have two options when it comes to setting up your Supabase instance:
 
 -   The first is the cloud-hosted option provided by Supabase. To begin, navigate to the [Supabase project creation](https://app.supabase.com/) page and create an account. From there, select **New Project** to get started.
 
--   The other option is self-hosted. To get started with your own self-hosted Supabase instance follow section two of our guide on [How to Self-host Supabase with Docker](/docs/guides/installing-supabase/). Ensure that your self-hosted instance is up and running by executing the following command from its base directory:
+-   The other option is self-hosted. To get started with your own self-hosted Supabase instance follow section two of our guide on [How to Self-host Supabase with Docker](/cloud/guides/installing-supabase/). Ensure that your self-hosted instance is up and running by executing the following command from its base directory:
 
     ```command
     sudo docker compose up -d
@@ -115,7 +115,7 @@ The following steps show you how to initialize a Next.js application with NPM an
 
 This guide uses JavaScript code for the Next.js application. However, you can configure Next.js for TypeScript. With that configuration, all of your Next.js application can be managed using TypeScript code instead of JavaScript. You can learn more about setting up a Next.js project with TypeScript in our guide **Building a Next.js App with TypeScript** .
 
-1.  Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend. It also includes `npx`, which the next step uses to bootstrap a template Next.js project.
+1.  Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend. It also includes `npx`, which the next step uses to bootstrap a template Next.js project.
 
 1.  Create the Next.js project, using `create-next-app` to bootstrap a template application. This example names the new project `example-app`.
 
@@ -154,7 +154,7 @@ The following sections walk you through each of these files. Follow along to see
 
 Typically, Next.js projects use the `pages/index.js` file as an entry point, acting as the center of your application's look and feel. The file may not contain much, but it references other components and brings everything together.
 
-The template created above includes a default `pages/index.js` file. Open that file, and modify its existing contents to those shown below. You can find the full example file [here](/docs/guides/create-next-js-app-supabase/example-app-src/pages/index.js).
+The template created above includes a default `pages/index.js` file. Open that file, and modify its existing contents to those shown below. You can find the full example file [here](/cloud/guides/create-next-js-app-supabase/example-app-src/pages/index.js).
 
 Follow along with the in-code comments to get explanations what each part of the Next.js code is doing.
 
@@ -189,7 +189,7 @@ export default function Home() {
 
 The next file supplies a simple and reusable interface to the Supabase backend.
 
-Add a new `utils` subdirectory to your Next.js project, and create a file there named `supabaseConnection.js`. Give that file the contents shown here. Make sure to replace `http://192.0.2.0:8000` and `example-supabse-anon-key` with your Supabase instance's **API URL** and **anon key**. You can find the full example file [here](/docs/guides/create-next-js-app-supabase/example-app-src/utils/supabaseConnection.js).
+Add a new `utils` subdirectory to your Next.js project, and create a file there named `supabaseConnection.js`. Give that file the contents shown here. Make sure to replace `http://192.0.2.0:8000` and `example-supabse-anon-key` with your Supabase instance's **API URL** and **anon key**. You can find the full example file [here](/cloud/guides/create-next-js-app-supabase/example-app-src/utils/supabaseConnection.js).
 
 ```file {title="utils/supabaseConnection.js" lang="js" hl_lines="7,8"}
 // Import the module for client creation from the Supabase SDK.
@@ -209,7 +209,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 To handle the logic for processing and rendering the shopping list, you can create a `ShoppingList` component. Recall that the `index.js` file includes a tag for this component. The component itself handles all of the logic for the shopping list, making your application much more adaptable and expandable.
 
-Add another subdirectory to the project, `components`, and add a file to it named `ShoppingList.js`. Give that file the contents shown in each of the following code blocks. Because this file is more extensive and complicated than the other two, this section breaks it down into parts. However, you can see the whole file [here](/docs/guides/create-next-js-app-supabase/example-app-src/components/ShoppingList.js).
+Add another subdirectory to the project, `components`, and add a file to it named `ShoppingList.js`. Give that file the contents shown in each of the following code blocks. Because this file is more extensive and complicated than the other two, this section breaks it down into parts. However, you can see the whole file [here](/cloud/guides/create-next-js-app-supabase/example-app-src/components/ShoppingList.js).
 
 -   The component first needs to import the necessary modules and set up its state variables. The component also uses the `useEffect` function to call for a fresh shopping list when the component loads.
 
@@ -372,9 +372,9 @@ To start up your Next.js frontend, you should first specify what port you want i
 
 -   Open the chosen port on your system's firewall to access the application remotely.
 
-    -   For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+    -   For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
-    -   For AlmaLinux, CentOS Stream, Fedora, and Rocky Linux refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
+    -   For AlmaLinux, CentOS Stream, Fedora, and Rocky Linux refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 Once you have the port set up, start the Next.js development server with the following command:
 

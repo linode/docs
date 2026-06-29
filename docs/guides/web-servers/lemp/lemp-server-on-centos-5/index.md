@@ -21,11 +21,11 @@ deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -44,7 +44,7 @@ There are several viable and popular options for installing nginx. The first opt
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Fedora project. All options are compatible, but in most cases we recommend using the packages from the EPEL repositories, unless your needs require a version newer than the one available in the EPEL repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/guides/websites-with-nginx-on-centos-5/).
+For more in-depth installation instructions consider our [guide to installing nginx](/cloud/guides/websites-with-nginx-on-centos-5/).
 
 ### Deploy from EPEL Packages
 
@@ -100,9 +100,9 @@ Create a dedicated system user to run the nginx process under by issuing the fol
 
     useradd -M -r --shell /bin/sh --home-dir /opt/nginx nginx
 
-Now install and configure the [init script](/docs/assets/561-init-rpm.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
+Now install and configure the [init script](561-init-rpm.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
 
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/561-init-rpm.sh
+    wget -O init-rpm.sh 561-init-rpm.sh
     mv init-rpm.sh /etc/rc.d/init.d/nginx
     chmod +x /etc/rc.d/init.d/nginx
     chkconfig --add nginx
@@ -165,7 +165,7 @@ include /opt/nginx-sites.conf;
 {{< /file >}}
 
 
-Depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file` format. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/guides/how-to-configure-nginx/).
+Depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file` format. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/cloud/guides/how-to-configure-nginx/).
 
 Once you've configured and loaded the nginx configuration, restart the web server to implement the new configuration by issuing the following command:
 
@@ -175,7 +175,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/guides/nginx-and-phpfastcgi-on-centos-5/). Begin the deployment process by issuing the following commands to install the required dependencies:
+If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/cloud/guides/nginx-and-phpfastcgi-on-centos-5/). Begin the deployment process by issuing the following commands to install the required dependencies:
 
     rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
     yum update
@@ -184,10 +184,10 @@ If your application includes PHP code you will need to implement the following "
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
     cd /opt/
-    wget -O php-fastcgi-rpm.sh http://www.linode.com/docs/assets/563-php-fastcgi-rpm.sh
+    wget -O php-fastcgi-rpm.sh 563-php-fastcgi-rpm.sh
     mv /opt/php-fastcgi-rpm.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
-    wget -O init-php-fastcgi-rpm.sh http://www.linode.com/docs/assets/562-init-php-fastcgi-rpm.sh
+    wget -O init-php-fastcgi-rpm.sh 562-init-php-fastcgi-rpm.sh
     mv /opt/init-php-fastcgi-rpm.sh /etc/init.d/php-fastcgi
     chmod +x /etc/init.d/php-fastcgi
     chkconfig --add php-fastcgi
@@ -296,8 +296,8 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/docs/guides/how-to-configure-nginx/)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
-- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/guides/nginx-and-perlfastcgi-on-centos-5/)
-- [Use PostgreSQL as an Alternative to MySQL for data storage](/docs/guides/centos-5/)
-- [Deploy Python Applications with uWSGI and nginx](/docs/guides/wsgi-using-uwsgi-and-nginx-on-centos-5/)
+- [Basic nginx Configuration](/cloud/guides/how-to-configure-nginx/)
+- [Clustered Web Servers and Software Load Balancing with nginx](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/cloud/guides/nginx-and-perlfastcgi-on-centos-5/)
+- [Use PostgreSQL as an Alternative to MySQL for data storage](/cloud/guides/centos-5/)
+- [Deploy Python Applications with uWSGI and nginx](/cloud/guides/wsgi-using-uwsgi-and-nginx-on-centos-5/)

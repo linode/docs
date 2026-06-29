@@ -36,17 +36,17 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
+1.  If you'd like to use your own [Domain Name](/cloud/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager) to point to your Linode's IP address.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  Follow the [Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide. **Skip the steps** in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/#configure-name-based-virtual-hosts), the [Create a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on CentOS 8](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/) guide. **Skip the steps** in the [Configure Name-Based Virtual Hosts](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/#configure-name-based-virtual-hosts), the [Create a MariaDB Database](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
 ## Install WP-CLI
 

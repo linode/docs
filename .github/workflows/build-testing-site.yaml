@@ -219,6 +219,13 @@ jobs:
       run: |
         echo $GITHUB_SHA > public/gitcommithash.txt
 
+      # Temporarily need this for akamai.com/cloud renaming
+    - name: 14. Make duplicate sitemap file under different name
+      working-directory: ./docs-repo
+      run: |
+        cd public
+        cp sitemap.xml ${{ vars.DUPE_SITEMAP_NAME }}
+
       # Make a tarball of the site, because it will upload much, much quicker
       # than the uncompressed rendered site. The commit for this workflow run
       # is encoded in the name of the tarball.

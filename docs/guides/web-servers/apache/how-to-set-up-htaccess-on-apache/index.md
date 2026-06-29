@@ -24,11 +24,11 @@ An .htaccess file makes Apache web server configuration changes on a per-directo
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Complete the Apache section in the [Install a Lamp Stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
+1.  Complete the Apache section in the [Install a Lamp Stack](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 
 {{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
@@ -36,7 +36,7 @@ Throughout this guide, replace each instance of `testuser` with your custom user
 
 ## Enable the Apache .htaccess File
 
-To enable the .htaccess file, you must update your website's [Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/#virtual-hosts) file to add an `AllowOverride All` directive.
+To enable the .htaccess file, you must update your website's [Virtual Hosts](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/#virtual-hosts) file to add an `AllowOverride All` directive.
 
 1. Use a text editor to open your configuration file:
 
@@ -74,7 +74,7 @@ Apache's [mod_autoindex module](https://httpd.apache.org/docs/2.4/mod/mod_autoin
 One way to restrict a directory listing is through Apache's .htaccess file. This section shows you how to update an .htaccess file to disable directory listings.
 
 {{< note >}}
-CMS systems such as [WordPress](/docs/guides/how-to-install-wordpress-ubuntu-2004/) create .htaccess configurations by default. This guide assumes that no .htaccess file exists. If you have not created an .htaccess file, follow the steps in the [Create the .htaccess File](/docs/guides/how-to-set-up-htaccess-on-apache/#create-the-htaccess-file) section of this guide.
+CMS systems such as [WordPress](/cloud/guides/how-to-install-wordpress-ubuntu-2004/) create .htaccess configurations by default. This guide assumes that no .htaccess file exists. If you have not created an .htaccess file, follow the steps in the [Create the .htaccess File](/cloud/guides/how-to-set-up-htaccess-on-apache/#create-the-htaccess-file) section of this guide.
 {{< /note >}}
 
 1. Using your preferred text editor, open your .htaccess file and add the following configuration:

@@ -1,11 +1,10 @@
 ---
-title: "Deploy Shadowsocks through the Linode Marketplace"
-description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
+title: "Deploy Shadowsocks"
+description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the Quick Deploy App."
 published: 2020-03-18
 modified: 2022-03-08
 keywords: ['shadowsocks','marketplace', 'server']
-tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
-image: DeployShadowsocksServer_oneclickapps.png
+tags: ["proxy","cloud-manager","linode platform","security","quick deploy apps"]
 external_resources:
 - '[Shadowsocks Official](https://shadowsocks.org)'
 - '[Shadowsocks-libev Github](https://github.com/shadowsocks/shadowsocks-libev)'
@@ -20,7 +19,7 @@ marketplace_app_name: "Shadowsocks"
 
 Shadowsocks is a lightweight SOCKS5 web proxy tool primarily used to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -45,14 +44,14 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily used to bypass netw
 
 Once the Shadowsocks server is up and running, you must install the [Shadowsocks Client](https://shadowsocks.org/en/download/clients.html) on any device or devices that you'd like to have connect to the service. There are currently client services available for [Windows](https://github.com/shadowsocks/shadowsocks-windows/releases), [Mac OS X](https://github.com/Jigsaw-Code/outline-client/), [Linux](https://github.com/Jigsaw-Code/outline-client/), [Android](https://play.google.com/store/apps/details?id=com.github.shadowsocks), and [iOS](http://apt.thebigboss.org/onepackage.php?bundleid=com.linusyang.shadowsocks).
 
-For a full set of instructions on how to install Shadowsocks on Windows and Mac OS X, see the [Install a Shadowsocks Client](/docs/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/#install-a-shadowsocks-client) section of our guide for [Creating a Shadowsocks Server Manually](/docs/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/).
+For a full set of instructions on how to install Shadowsocks on Windows and Mac OS X, see the [Install a Shadowsocks Client](/cloud/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/#install-a-shadowsocks-client) section of our guide for [Creating a Shadowsocks Server Manually](/cloud/guides/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/).
 
 When the client has completed the installation process, ensure that you're setting up your client to connect using the following unique information:
 
 | **Configuration** | **Description** |
 |-------------------|-----------------|
 | **Address** | Your linodes IPv4 address. Can be found in the `Linodes` section of [Cloud Manager](https://cloud.linode.com/linodes).
-| **Port** | The Shadowsocks Marketplace App connects through port `8000` by default. |
+| **Port** | The Shadowsocks Quick Deploy App connects through port `8000` by default. |
 | **Encryption** | Set to use the `aes-256-gcm` encryption mode. |
 | **Password** | This is the `Shadowsocks Password` field you created when initially deploying your app. |
 

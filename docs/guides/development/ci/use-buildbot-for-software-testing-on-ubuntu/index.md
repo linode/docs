@@ -28,17 +28,17 @@ aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
 
 ## Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
+3.  Complete the [Add DNS Records](/cloud/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
 
     {{< note respectIndent=false >}}
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.
 {{< /note >}}
 
-1.  Your Buildbot site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](/docs/guides/secure-http-traffic-certbot/#use-certbot-on-ubuntu) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/).
+1.  Your Buildbot site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](/cloud/guides/secure-http-traffic-certbot/#use-certbot-on-ubuntu) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/).
 
         sudo apt install software-properties-common
         sudo add-apt-repository ppa:certbot/certbot
@@ -49,7 +49,7 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
     {{< note respectIndent=false >}}
-  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section of the guide.
+  The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/cloud/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section of the guide.
     {{< /note >}}
 
 ## Install Buildbot
@@ -120,7 +120,7 @@ c['buildbotURL'] = "https://example.com/"
 ...
     {{</ file >}}
 
-    These options assume that you will use a custom domain secured with Let's Encrypt certificates from `certbot` as outlined in the [Before You Begin](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#before-you-begin) section of this guide.
+    These options assume that you will use a custom domain secured with Let's Encrypt certificates from `certbot` as outlined in the [Before You Begin](/cloud/guides/use-buildbot-for-software-testing-on-ubuntu/#before-you-begin) section of this guide.
 
 1.  Uncomment the web interface configuration lines and keep the default options:
 
@@ -247,7 +247,7 @@ server {
 
     Your continuous integration test server is now up and running.
 
-1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
+1. Ensure that you can log into your Buildbot instance with the admin credentials you created in the [Configure Buildbot Master](/cloud/guides/use-buildbot-for-software-testing-on-ubuntu/#set-up-the-buildbot-master-web-interface) section. Click on the top right hand dropdown menu entitled **Anonymous** and then, click on **Login**. A *Sign In* modal will appear. Enter your credentials to log in to Buildbot as the admin user.
 
 ### Install the Buildbot Worker
 

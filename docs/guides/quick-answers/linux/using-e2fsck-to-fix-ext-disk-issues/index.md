@@ -2,7 +2,7 @@
 slug: using-e2fsck-to-fix-ext-disk-issues
 title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
 title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
-description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
+description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the integrity and repairing issues with ext filesystems using e2fsck."
 og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 authors: ["Linode"]
 contributors: ["Linode"]
@@ -17,12 +17,12 @@ aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
 
 ## What is e2fsck?
 
-**e2fsck** is a utility that examines `ext2`, `ext3`, and `ext4` filesystems for errors, and attempts to repair them if possible. It is the backend tool that the popular [fsck](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) frontend utility calls for a combination of tasks related to `ext` filesystems.
+**e2fsck** is a utility that examines `ext2`, `ext3`, and `ext4` filesystems for errors, and attempts to repair them if possible. It is the backend tool that the popular [fsck](/cloud/guides/how-to-use-fsck-to-fix-disk-problems/) frontend utility calls for a combination of tasks related to `ext` filesystems.
 
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note >}}
-When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) for guidance.
+When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) for guidance.
 {{< /note >}}
 
 ## When to Use e2fsck
@@ -63,7 +63,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
+If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 
@@ -79,7 +79,7 @@ If you are using e2fsck on a Linode, the easiest and safest way to unmount your 
 
 ### Configuration Profile
 
-If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance). Apply the changes and reboot the Linode.
 
 ### Manual Unmount
 

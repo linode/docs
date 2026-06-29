@@ -13,20 +13,20 @@ external_resources:
 
 With Jenkins, you can implement a robust continuous integration and continuous delivery (CI/CD) setup for automating application builds, tests, and deployments. Linode's Jenkins CI/CD reference architecture ensures a scalable setup capable of deploying applications to Linode or any of many other hosting providers.
 
-Get started by taking a look at the overview and diagrams for the architecture in our [Jenkins CI/CD on Linode to Any Hyperscaler](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/).
+Get started by taking a look at the overview and diagrams for the architecture in our [Jenkins CI/CD on Linode to Any Hyperscaler](/cloud/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/).
 
 The present tutorial walks you through a complete implementation of our Jenkins CI/CD architecture. Throughout, follow along to provision the base setup and see extensive examples to help you get started using the architecture for your particular needs.
 
 ## Before You Begin
 
-1. Create a Linode account, if you don't have one. See the [Getting Started with Linode](/docs/guides/getting-started/) documentation.
+1. Create a Linode account, if you don't have one. See the [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) documentation.
 
-1. Create a new Compute Instance, which acts as the primary Jenkins server in this tutorial. See the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+1. Create a new Compute Instance, which acts as the primary Jenkins server in this tutorial. See the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Jenkins?
@@ -37,9 +37,9 @@ All this makes Jenkins an exceptional tool for automating CI/CD workflows. Jenki
 
 Further plugins mean that you can adapt Jenkins to your needs — whether using a particular test suite, storing artifacts, or deploying to cloud providers.
 
-Learn more about CI/CD principles in our guide [Introduction to Continuous Integration and Continuous Deployment](/docs/guides/introduction-ci-cd/).
+Learn more about CI/CD principles in our guide [Introduction to Continuous Integration and Continuous Deployment](/cloud/guides/introduction-ci-cd/).
 
-You can also learn more particulars about automating builds with Jenkins through our guide [How to Automate Builds with Jenkins on Ubuntu 22.04](/docs/guides/automate-builds-with-jenkins-on-ubuntu/).
+You can also learn more particulars about automating builds with Jenkins through our guide [How to Automate Builds with Jenkins on Ubuntu 22.04](/cloud/guides/automate-builds-with-jenkins-on-ubuntu/).
 
 ## How to Provision Jenkins for CI/CD
 
@@ -97,7 +97,7 @@ You need to start by installing Jenkins on a central server. This central Jenkin
     sudo systemctl enable jenkins
     ```
 
-1. In a web browser, navigate to port `8080` on your system's public IP address. You may first need to open the port in your system's firewall, which you can learn how to do from our guide on [securing a Linode Compute instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
+1. In a web browser, navigate to port `8080` on your system's public IP address. You may first need to open the port in your system's firewall, which you can learn how to do from our guide on [securing a Linode Compute instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall).
 
 1. Follow the installation steps you are presented with. Select to **Install suggested plugins**, and complete the form to create an initial administrator user.
 
@@ -107,15 +107,15 @@ At this point, you have a Jenkins server up and running and ready to start using
 
 Part of the architecture covered in this tutorial has logs and build artifacts stored on Linode Object Storage. Object Storage provides an efficient and accessible way to backup artifacts from you CI/CD pipelines.
 
-To start, you need to have a Linode Object Storage bucket prepared to store your logs and artifacts. Our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide to do so.
+To start, you need to have a Linode Object Storage bucket prepared to store your logs and artifacts. Our [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage) guide to do so.
 
 To follow along with the rest of the guide, perform these steps:
 
-1.  [Provision a Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket). When creating the bucket, you need to choose a cluster that it belongs to (under the **Region** menu). Take note of the cluster ID for the cluster you choose, which is displayed next to your **Region** menu selection. For example, if you chose the *Atlanta* region, your cluster ID is `us-southeast-1`.
+1.  [Provision a Linode Object Storage bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets#create-a-bucket). When creating the bucket, you need to choose a cluster that it belongs to (under the **Region** menu). Take note of the cluster ID for the cluster you choose, which is displayed next to your **Region** menu selection. For example, if you chose the *Atlanta* region, your cluster ID is `us-southeast-1`.
 
     The name of the bucket needs to be unique for the cluster it is created in, not only among the buckets on your account, but also among buckets from all other Object Storage users on other accounts.
 
-1.  [Generate an Object Storage access key](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key). The key should have **Limited Access** permissions. It should have read and write access to the bucket that you created. You need to save both the access key and secret access key for use later.
+1.  [Generate an Object Storage access key](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys#create-an-access-key). The key should have **Limited Access** permissions. It should have read and write access to the bucket that you created. You need to save both the access key and secret access key for use later.
 
 ### Create Jenkins Build Agents
 
@@ -167,7 +167,7 @@ Now you have what you need to support three build agents. This tutorial deploys 
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
 {{< /note >}}
 
-1. Install Terraform. Follow the relevant section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide to do so.
+1. Install Terraform. Follow the relevant section of our [Use Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide to do so.
 
 1. Download our Terraform package for deploying Jenkins build agents:
 
@@ -184,7 +184,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1. Open the `terraform.tfvars` file, and customize the variables there to your setup. Specifically, you need to provide:
 
-    - A Linode personal access token, which you can learn about in our guide  [Linode API - Get Started](/docs/products/tools/api/get-started/#get-an-access-token)
+    - A Linode personal access token, which you can learn about in our guide  [Linode API - Get Started](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token)
 
     - A root password to be used for the deployed instances
 
@@ -202,13 +202,13 @@ The configurations and commands used in this guide add multiple Linode instances
 
     - The ID of the region that the Jenkins agent Compute Instances should be created in. Note that these are not necessarily the same as an Object Storage cluster ID. For example, the region ID for Atlanta is `us-southeast`, while the ID for the Object Storage cluster in Atlanta is `us-southeast-1`. There are several ways to find out what the ID of a region is:
 
-        - Run the `regions list` command of the [Linode CLI](/docs/products/tools/cli/get-started/):
+        - Run the `regions list` command of the [Linode CLI](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-the-linode-cli):
 
             ```command
             linode-cli regions list
             ```
 
-        - Visit the [Regions List API endpoint](/docs/api/regions/#regions-list):
+        - Visit the [Regions List API endpoint](https://techdocs.akamai.com/linode-api/reference/api-summary#regions-list):
 
             ```command
             curl https://api.linode.com/v4/regions
@@ -243,7 +243,7 @@ The architecture covered here aims to use Jenkins to build an application and de
 
 Because this tutorial builds its example application into a Docker image, it makes sense to deploy the application to a Kubernetes cluster. This is what the example pipeline and Jenkins configuration in the rest of this tutorial do.
 
-You can follow along with the tutorial by deploying a Linode Kubernetes Engine (LKE) cluster. Learn how in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
+You can follow along with the tutorial by deploying a Linode Kubernetes Engine (LKE) cluster. Learn how in our [Linode Kubernetes Engine - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine).
 
 However, the "Deploy" step in the pipeline elaborated below uses kubectl. This means that the setup can readily be adapted to deployments for almost any cloud Kubernetes provider.
 
@@ -253,9 +253,9 @@ And in fact you can adapt the commands in the "Deploy" portion of the pipeline f
 
 Because this tutorial uses Kubernetes for its deployment, you need to have a Docker registry. This allows you to push built Docker images from the Jenkins agents and pull them onto the Kubernetes cluster.
 
-The easiest solution here is [Docker Hub](https://hub.docker.com/), where you can add images after registering an account. Learn more, with a full-functioning example, in our guide [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/).
+The easiest solution here is [Docker Hub](https://hub.docker.com/), where you can add images after registering an account. Learn more, with a full-functioning example, in our guide [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/cloud/guides/deploy-container-image-to-kubernetes/).
 
-You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/marketplace-docs/guides/harbor/) to see how.
+You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/cloud/marketplace-docs/guides/harbor/) to see how.
 
 Whatever solution you choose, you need later to provide the registry's path to the Jenkins pipeline.
 
@@ -267,7 +267,7 @@ Whatever solution you choose, you need later to provide the registry's path to t
 
 Each Jenkins instance, from the server to the agents, uses a system firewall. However, you can further safeguard and manage traffic on these instances by adding Linode Cloud Firewalls for each.
 
-To get started, see our guide [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/). Then follow our [Manage Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/) to add the individual rules you need.
+To get started, see our guide [Create a Cloud Firewall](https://techdocs.akamai.com/cloud-computing/docs/create-a-cloud-firewall). Then follow our [Manage Firewall Rules](https://techdocs.akamai.com/cloud-computing/docs/manage-firewall-rules) to add the individual rules you need.
 
 The following is a basic example setup that you can expand on.
 
@@ -349,7 +349,7 @@ For convenience, this tutorial opts to use a `Jenkinsfile` included within the p
 
 - *Deploy*, where a kubectl command deploys the built Docker image to the Kubernetes cluster
 
-The example pipeline uses ESLint for a simple JavaScript code analysis, but there are more options to choose from depending on your codebase and needs. You can learn more about code analysis tools in our guide [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/).
+The example pipeline uses ESLint for a simple JavaScript code analysis, but there are more options to choose from depending on your codebase and needs. You can learn more about code analysis tools in our guide [What is Static Code Analysis?](/cloud/guides/what-is-static-code-analysis/).
 
 #### Create a Remote Repository
 
@@ -597,7 +597,7 @@ Navigating to your Slack workspace, you should see messages from the Jenkins bot
 Finally, to see the deployed example application in action, you can forward the port on the Kubernetes cluster to your workstation.
 
 {{< note >}}
-Install `kubectl` on your workstation if you don't have it already: [Install kubectl](https://www.linode.com/docs/products/compute/kubernetes/guides/kubectl/#install-kubectl).
+Install `kubectl` on your workstation if you don't have it already: [Install kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#install-kubectl).
 {{< /note >}}
 
 1. Enter following command from your Jenkins server to make the application's service available on port `8080` on `localhost`. Update the path to your downloaded Kubernetes cluster's config on the first line:

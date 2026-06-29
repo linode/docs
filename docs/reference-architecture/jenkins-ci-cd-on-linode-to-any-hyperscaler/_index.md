@@ -18,9 +18,9 @@ This reference architecture showcases a [Jenkins](https://www.jenkins.io/) CI/CD
 - [Jenkins](https://www.jenkins.io/)
 - [Terraform](https://www.terraform.io/)
 - **Linode Services**:
-    - [Compute](/docs/products/compute/dedicated-cpu/)
-    - [Firewall](/docs/products/networking/cloud-firewall/)
-    - [Object Storage](/docs/products/storage/object-storage/)
+    - [Compute](https://techdocs.akamai.com/cloud-computing/docs/dedicated-cpu-compute-instances)
+    - [Firewall](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall)
+    - [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)
 
 ## Business Benefits
 
@@ -31,6 +31,6 @@ This reference architecture showcases a [Jenkins](https://www.jenkins.io/) CI/CD
 
 ## Diagrams
 
-[![Thumbnail of Jenkins pipeline example reference architecture](jenkins-pipeline-diagram-thumnail-1.png)](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#jenkins-pipeline)
+[![Thumbnail of Jenkins pipeline example reference architecture](jenkins-pipeline-diagram-thumnail-1.png)](/cloud/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#jenkins-pipeline)
 
-[![Thumbnail of entire CI/CD reference architecture](jenkins-cicd-diagram-thumnail.png)](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#cicd-infrastructure)
+[![Thumbnail of entire CI/CD reference architecture](jenkins-cicd-diagram-thumnail.png)](/cloud/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#cicd-infrastructure)

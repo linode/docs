@@ -29,11 +29,11 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 ## System Requirements
 
-To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Cloud Manager to generate a [private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each Linode.
+To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Cloud Manager to generate a [private IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#adding-an-ip-address) for each Linode.
 
 ## Before You Begin
 
-This article requires that you first complete our [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](/docs/guides/how-to-deploy-nginx-on-a-kubernetes-cluster/) guide and follow the procedures described there to configure one master node and two worker nodes.
+This article requires that you first complete our [How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster](/cloud/guides/how-to-deploy-nginx-on-a-kubernetes-cluster/) guide and follow the procedures described there to configure one master node and two worker nodes.
 
 Set the hostnames of the three Linodes as follows:
 

@@ -10,8 +10,8 @@ keywords: ["high availability", "disaster recovery", "hosting", "website", "fail
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/)'
-- '[Deploy a High Availability WordPress Website on Linode](/docs/guides/high-availability-wordpress/)'
+- '[Host a Website with High Availability](/cloud/guides/host-a-website-with-high-availability/)'
+- '[Deploy a High Availability WordPress Website on Linode](/cloud/guides/high-availability-wordpress/)'
 - '[Configure failover on a Linode](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance)'
 - '[High availability (HA) control plane on LKE](https://techdocs.akamai.com/cloud-computing/docs/high-availability-ha-control-plane-on-lke)'
 - '[Monitor and maintain a Linode](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance)'
@@ -44,14 +44,14 @@ Disaster recovery is a process that is employed in the event of a wider-ranging 
 
 A disaster recovery plan documents key information and procedures that should be adhered to in these scenarios. This can include lists of staff that are responsible for the plan, inventories of systems and software, activation of backup sites and systems, criteria that should be met during the recovery operation (including [RTO and RPO](#rtorpo)), and other considerations.
 
-Our [Creating a Disaster Recovery Plan: A Definitive Guide](/docs/guides/disaster-recovery/) contains further guidance for creating a disaster recovery plan.
+Our [Creating a Disaster Recovery Plan: A Definitive Guide](/cloud/guides/disaster-recovery/) contains further guidance for creating a disaster recovery plan.
 
 ## High Availability Architecture
 
 This section describes an example of a high availability architecture that features a WordPress website running in a single data center. There are redundant copies of each component in the architecture, and the health of each set of components is continually monitored. If any component fails, automatic failover is triggered and other healthy components are promoted.
 
 {{< note >}}
-This specific architecture is implemented in the [host a website with high availability](/docs/guides/host-a-website-with-high-availability/) guide. While some of the technologies used are specific to this example, the concepts can be more broadly applied to other HA systems.
+This specific architecture is implemented in the [host a website with high availability](/cloud/guides/host-a-website-with-high-availability/) guide. While some of the technologies used are specific to this example, the concepts can be more broadly applied to other HA systems.
 {{< /note >}}
 
 ![High availability server configuration](ha-diagram.svg?diagram-description-id=ha-architecture)
@@ -232,7 +232,7 @@ Open source software and tools can support monitoring and failover, including:
 
 - **[Keepalived](https://www.keepalived.org/)**: A software package that can run periodic health checks and run notification scripts that are triggered by different health check changes over time. These notification scripts can then interact with features of your cloud platform (like [IP Sharing and BGP-based failover](https://techdocs.akamai.com/cloud-computing/docs/use-keepalived-health-checks-with-bgp-based-failover) on Akamai Cloud) to support failover of infrastructure. In the [high availability architecture](#high-availability-architecture) example in this guide, the database cluster runs keepalived to monitor failures of the primary database server and then promote a backup DB to be the new primary.
 
-- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
+- **[HAProxy](/cloud/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution. HAProxy can perform health checks of backend servers and stop routing traffic to backends that experience failures.
 
 ### Load Balancing
 
@@ -254,11 +254,11 @@ Akamai offers multiple tools to assist with load balancing, including:
 
 Open source software and tools can support load balancing, including:
 
-- **Web servers**, like NGINX and Apache: These can be configured as [reverse proxies](/docs/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
+- **Web servers**, like NGINX and Apache: These can be configured as [reverse proxies](/cloud/guides/use-nginx-reverse-proxy/#what-is-a-reverse-proxy) for backend servers.
 
-- **[HAProxy](/docs/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution.
+- **[HAProxy](/cloud/guides/how-to-configure-haproxy-http-load-balancing-and-health-checks/)**: A dedicated reverse proxy software solution.
 
-- **[Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)**: [A range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
+- **[Kubernetes](/cloud/guides/beginners-guide-to-kubernetes-part-1-introduction/)**: [A range of load balancing functionality](https://kubernetes.io/docs/concepts/services-networking/) is offered by Kubernetes. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are an abstraction layer for a set of Pods that run your application code, and traffic is collectively routed across them. [LoadBalancer-type Services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) correspond to cloud load balancing products provided by cloud platforms.
 
 ### Replication
 
@@ -277,9 +277,9 @@ Multiple Akamai services provide data replication, or can be used to support dat
 
 - **[Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage)**: Akamai Cloud's object storage service uses [an internal replication system](https://www.linode.com/products/object-storage/#accordion-7252094bf6-item-97b2f59293) to ensure that data is highly-available.
 
-    Users can enhance redundancy of their object storage data by [synchronizing bucket data across regions using rclone](/docs/guides/replicate-bucket-contents-with-rclone/), which can support high availability, disaster recovery, and load balancing strategies.
+    Users can enhance redundancy of their object storage data by [synchronizing bucket data across regions using rclone](/cloud/guides/replicate-bucket-contents-with-rclone/), which can support high availability, disaster recovery, and load balancing strategies.
 
-    Users can also [backup files from a Linode to Object Storage](/docs/guides/rclone-object-storage-file-sync/), which can play a role in backup and recovery.
+    Users can also [backup files from a Linode to Object Storage](/cloud/guides/rclone-object-storage-file-sync/), which can play a role in backup and recovery.
 
 - **[Managed Databases](https://techdocs.akamai.com/cloud-computing/docs/aiven-database-clusters)**: All database clusters created with Akamai's Managed Databases receive daily backups. For 3-node clusters, built-in data replication, redundancy, and automatic failover are provided.
 
@@ -293,11 +293,11 @@ Multiple Akamai services provide data replication, or can be used to support dat
 
 Open source software that supports replication includes:
 
-- **Database replication tools**: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/docs/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
+- **Database replication tools**: Some tools are built into the database system, like MySQL's [source-replica replication mechanism](/cloud/guides/configure-source-replica-replication-in-mysql/). Other tools, like [Galera](https://galeracluster.com/), can be additionally installed to support replication.
 
 - **Networked filesystems, like [GlusterFS](https://www.gluster.org/)**: These are used to create distributed storage systems across multiple block storage devices, like a Linode's built-in storage disk, or a Block Storage volume.
 
-- **[Command-line data transfer utilities](/docs/guides/comparing-data-transfer-utilities/)** like [rsync](/docs/guides/introduction-to-rsync/) and [rclone](/docs/guides/rclone-object-storage-file-sync/).
+- **[Command-line data transfer utilities](/cloud/guides/comparing-data-transfer-utilities/)** like [rsync](/cloud/guides/introduction-to-rsync/) and [rclone](/cloud/guides/rclone-object-storage-file-sync/).
 
 ### Scaling
 

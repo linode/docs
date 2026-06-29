@@ -18,16 +18,16 @@ In this tutorial, learn how to get started with Adagios on a CentOS Stream 8 or 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Your Linode Compute Instance needs to be running CentOS 8 or a comparable distribution. The instructions in this tutorial have been specifically tested on CentOS 8, but should be compatible with systems like AlmaLinux 8 and Rocky Linux 8 as well.
 
 1.  Your Compute Instance needs to be on the Linode 8 GB Shared CPU plan, at minimum, as these instructions require a large amount of disk space.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Getting Started with Nagios
@@ -40,7 +40,7 @@ Before diving into Adagios, you should have a base familiarity with Nagios, the 
 
 ### How to Install Nagios
 
-Before getting started with Adagios, Nagios must be installed and configured on your system. To install Nagios, follow our [How to Install Nagios on CentOS 8](/docs/guides/install-nagios-on-centos-8/) guide.
+Before getting started with Adagios, Nagios must be installed and configured on your system. To install Nagios, follow our [How to Install Nagios on CentOS 8](/cloud/guides/install-nagios-on-centos-8/) guide.
 
 Alternatively, refer to the official [installation documentation](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) for Nagios Core for details on installing Nagios on other operating systems.
 

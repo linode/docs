@@ -1,10 +1,10 @@
 ---
-title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
+title: "Deploy OpenLiteSpeed WordPress"
 description: "Deploy OpenLiteSpeed on a Linode Compute Instance. This provides you with a high performance web server to manage your WordPress site."
 published: 2021-01-15
 modified: 2024-06-06
 keywords: [ 'openlitespeed','marketplace','hosting']
-tags: ["cloud-manager","linode platform", "marketplace"]
+tags: ["cloud-manager","linode platform", "quick deploy apps"]
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
@@ -17,9 +17,9 @@ marketplace_app_id: 691622
 marketplace_app_name: "OpenLiteSpeed WordPress"
 ---
 
-This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for WordPress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
+This Quick Deploy App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for WordPress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -54,7 +54,7 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Getting Started After Deployment
 
-Log in to your Compute Instance over SSH, using the `root` user or the sudo user created during deployment. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLs:
+Log in to your Compute Instance over SSH, using the `root` user or the sudo user created during deployment. See [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/) for assistance. Once logged in, you should see Message of the Day output which includes OpenLiteSpeed HTTPS URLs:
 
 ```command
 cat /etc/motd
@@ -62,7 +62,7 @@ cat /etc/motd
 
 ```output
 *********************************************************
-Akamai Cloud OpenLiteSpeed Wordpress Marketplace App
+Akamai Cloud OpenLiteSpeed Wordpress Quick Deploy App
 App URL:
 * The Wordpress site: https://example-domain.tld/
 * The Wordpress admin login site: https://example-domain.tld/wp-login.php
@@ -77,7 +77,7 @@ The file `/home/$SUDO_USER/.credentials` includes chosen usernames and strong ge
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `https://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `https://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -107,13 +107,13 @@ Now that OpenLiteSpeed WordPress has been fully deployed, you can begin adding c
 
 - See the Linode tab at: https://docs.litespeedtech.com/cloud/images/wordpress/
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
-- [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+- [Securing WordPress](/cloud/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
-- [Marketplace Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
+- [Quick Deploy Apps Repository](https://github.com/akamai-compute-marketplace/marketplace-apps): Review the deployment Ansible playbooks.
 
 ### Software Included
 
-The OpenLiteSpeed WordPress Marketplace App installs the following required software on your Linode:
+The OpenLiteSpeed WordPress Quick Deploy App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|

@@ -17,12 +17,12 @@ Gtop is a system monitoring dashboard for your terminal, with a rich graphical d
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is gtop?
@@ -74,7 +74,7 @@ One advantage of gtop is that, despite its graphical display, it is a straight-f
 
     gtop
 
-What follows is a breakdown of the parts, or widgets, of the gtop display. You can refer to the screenshots in the [What is gtop?](/docs/guides/installing-and-using-gtop-on-linux/#what-is-gtop) section above to follow along.
+What follows is a breakdown of the parts, or widgets, of the gtop display. You can refer to the screenshots in the [What is gtop?](/cloud/guides/installing-and-using-gtop-on-linux/#what-is-gtop) section above to follow along.
 
 - **CPU History** displays a graph of CPU usage over the last minute. Each line on the graph represents one of your system's CPUs. In addition, the right side of the widget includes the current percentage usage for each CPU.
 - **Memory and Swap History** provides the same graphical information but for your system's memory, both physical and swap.
@@ -89,4 +89,4 @@ Gtop is limited in its interactive options. You can navigate the **Processes** t
 
 For all its simplicity, gtop provides an effective at-a-glance summary of your system. Tools like top and htop focus on providing more comprehensive information about running processes — and, in the case of htop, more control of those processes. Gtop excels if you want to be able to quickly gather your system's current performance.
 
-Do you like the graphical system monitoring of `gtop` but want more control and customization? You may want to check out bottom in that case, which takes the visual direction of gtop and gives you more control. Take a look at our guide [How to Install and Use bottom](/docs/guides/installing-and-using-bottom-on-linux/) to learn more.
+Do you like the graphical system monitoring of `gtop` but want more control and customization? You may want to check out bottom in that case, which takes the visual direction of gtop and gives you more control. Take a look at our guide [How to Install and Use bottom](/cloud/guides/installing-and-using-bottom-on-linux/) to learn more.

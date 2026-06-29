@@ -37,24 +37,24 @@ WordPress can be downloaded to an Ubuntu server using `wget`. It only requires m
 
 ## WordPress Prerequisites
 
-A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack includes the Linux operating system, the [Apache web server](https://httpd.apache.org/docs/2.4/), the [MySQL RDBMS](https://dev.mysql.com/), and the PHP programming language. A LEMP stack substitutes [NGINX](https://www.nginx.com/) (pronounced "engine-x") in place of Apache and sometimes uses the MariaDB database instead of MySQL. Either stack can be installed using the standard Ubuntu library. For information on [installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/), see the Linode guide. There is also a Linode guide to [installing a LEMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).
+A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack includes the Linux operating system, the [Apache web server](https://httpd.apache.org/docs/2.4/), the [MySQL RDBMS](https://dev.mysql.com/), and the PHP programming language. A LEMP stack substitutes [NGINX](https://www.nginx.com/) (pronounced "engine-x") in place of Apache and sometimes uses the MariaDB database instead of MySQL. Either stack can be installed using the standard Ubuntu library. For information on [installing a LAMP stack on Ubuntu 22.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/), see the Linode guide. There is also a Linode guide to [installing a LEMP stack on Ubuntu 22.04](/cloud/guides/how-to-install-a-lemp-stack-on-ubuntu-22-04/).
 
-For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
+For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/cloud/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/cloud/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
 {{< note >}}
-WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
+WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Prepare the LAMP or LEMP Stack for WordPress
@@ -291,7 +291,7 @@ The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. F
 
 The WordPress Dashboard is fairly self-explanatory. From the left-menu of the Dashboard, users can access pages allowing them to change settings, select themes, and install new plug-ins. Users can select the **Posts** option to add new pages or modify existing content.
 
-Before proceeding, it is worthwhile to spend more time learning about WordPress. The [First Steps with WordPress guide](https://wordpress.org/support/article/first-steps-with-wordpress/) is very useful. It walks users through the WordPress interface and explains how to perform basic tasks. In addition, [How to Configure WordPress](/docs/guides/configuring-wordpress/) summarizes how to configure some of the more common WordPress settings.
+Before proceeding, it is worthwhile to spend more time learning about WordPress. The [First Steps with WordPress guide](https://wordpress.org/support/article/first-steps-with-wordpress/) is very useful. It walks users through the WordPress interface and explains how to perform basic tasks. In addition, [How to Configure WordPress](/cloud/guides/configuring-wordpress/) summarizes how to configure some of the more common WordPress settings.
 
 For complete information about WordPress, including all advanced settings, see the [WordPress documentation site](https://wordpress.org/support/).
 

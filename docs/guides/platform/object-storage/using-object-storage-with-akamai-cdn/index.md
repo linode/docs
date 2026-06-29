@@ -20,7 +20,7 @@ The solution presented in this guide focuses on the architectural best practices
 
 ## Object Storage For Data Delivery
 
-With the right [bucket architecture](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports critical features such as encryption, compression, deduplication, and versioning.
+With the right [bucket architecture](/cloud/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/), object storage can be used to house content for effective unstructured data delivery. Object storage supports critical features such as encryption, compression, deduplication, and versioning.
 
 Its accessibility via HTTP protocols offers direct access to objects. Object storage doesn't require an intermediary proxy to serve files (i.e. Block Storage Volumes attached to a Compute Instance) and can be accessed by a wide range of APIs.
 
@@ -103,4 +103,4 @@ When architected properly and paired with Akamai’s CDN, Object Storage on Akam
 
 To learn more about object storage bucket design for streaming and steps for CDN integration, see the following guide:
 
-- [Optimizing Object Storage Bucket Architecture for Akamai CDN](/docs/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/)
+- [Optimizing Object Storage Bucket Architecture for Akamai CDN](/cloud/guides/optimizing-obj-bucket-architecture-for-akamai-cdn/)

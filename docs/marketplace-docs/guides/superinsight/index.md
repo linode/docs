@@ -1,9 +1,9 @@
 ---
-title: "Deploy Superinsight DB through the Linode Marketplace"
+title: "Deploy Superinsight DB"
 description: "Deploy Superinsight DB, a relational database for unstructured data, on the Linode platform."
 published: 2023-01-23
 keywords: ['superinsight','database','relational','unstructured','postgresql']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
 aliases: ['/products/tools/marketplace/guides/superinsight/']
@@ -16,7 +16,7 @@ marketplace_app_name: "Superinsight"
 
 [Superinsight DB](https://github.com/superinsight/superinsight-db) is a relational database for unstructured data. Its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is built on top of PostgreSQL, which means you can take advantage of PostgreSQL features and the ability to run machine learning operations using SQL statements.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -33,7 +33,7 @@ marketplace_app_name: "Superinsight"
 
 ## Getting Started after Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. If you log in on the same day you deployed the app, a message is displayed with the username and password for the new database as well as an example database connection string.
 

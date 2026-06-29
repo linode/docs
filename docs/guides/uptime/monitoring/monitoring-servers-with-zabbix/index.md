@@ -76,7 +76,7 @@ You have successfully added the `zabbix` user.
 
 You'll first want to install MySQL on your Linode and create a MySQL user for Zabbix. Here's how:
 
-1.  If you haven't already, install and configure MySQL on your Linode. See the [MySQL reference manuals](/docs/databases/mysql/) for more information.
+1.  If you haven't already, install and configure MySQL on your Linode. See the [MySQL reference manuals](/cloud/guides/databases/mysql/) for more information.
 2.  Log in to MySQL by entering the following command:
 
         mysql -uroot -p
@@ -112,7 +112,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/cloud/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server).
 
 The required applications, modules, and libraries have been installed on your Linode.
 

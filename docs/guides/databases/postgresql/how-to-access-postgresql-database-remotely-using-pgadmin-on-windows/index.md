@@ -18,7 +18,7 @@ tags: ["database","postgresql"]
 
 ![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)
 
-PgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Mac OS X, and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure, remote access to PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
+PgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Mac OS X, and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure, remote access to PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/cloud/guides/databases/postgresql/).
 
 ## Install pgAdmin
 
@@ -58,7 +58,7 @@ Click the "Open" button to start your connection. If you haven't logged into you
 
 ![An unknown host key warning in PuTTY on Windows 7](371-putty-02-host-key-warning.png)
 
-PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/products/compute/compute-instances/guides/lish/) and executing the following command:
+PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 

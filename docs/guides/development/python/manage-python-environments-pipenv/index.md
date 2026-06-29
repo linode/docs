@@ -3,7 +3,7 @@ slug: manage-python-environments-pipenv
 title: "Using Pipenv to Manage Python Packages and Versions"
 title_meta: "How to Use Pipenv to Manage Python Packages and Versions"
 description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool. Here's how to use it."
-og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages."
+og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual environments, and install packages."
 authors: ["Jared Kobos"]
 contributors: ["Jared Kobos"]
 published: 2018-05-01

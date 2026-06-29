@@ -20,18 +20,15 @@ deprecated_link: websites/cms/install-wordpress-ubuntu-18-04/
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
-If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/docs/guides/install-wordpress-on-ubuntu-16-04/).
+If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/cloud/guides/install-wordpress-on-ubuntu-16-04/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/weh2nc2dad?videoFoam=true" title="How to install and configure WordPress" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
-<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Before You Begin
 
--  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+-  Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and that the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check your hostname run:
 
@@ -40,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--  You have a configured web stack set up. This can be a [LAMP](/docs/websites/lamp/) or [LEMP](/docs/websites/lemp/) stack.
+-  You have a configured web stack set up. This can be a [LAMP](/cloud/guides/web-servers/lamp/) or [LEMP](/cloud/guides/web-servers/lemp/) stack.
 
 
 -   MySQL has a database set up for WordPress. If you do not have a database, create it:

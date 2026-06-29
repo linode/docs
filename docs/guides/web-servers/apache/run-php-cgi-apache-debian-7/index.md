@@ -24,12 +24,12 @@ deprecated: true
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check your hostname run:
 
@@ -48,7 +48,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install apache2
 
-2.  You can now [configure virtual hosting](/docs/guides/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
+2.  You can now [configure virtual hosting](/cloud/guides/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
 
         sudo apt-get install php5-cgi
 
@@ -60,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo a2enmod actions
 
-2.  The required directives can be set anywhere in Apache's [configuration tree](/docs/guides/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Debian systems this directory is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
+2.  The required directives can be set anywhere in Apache's [configuration tree](/cloud/guides/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Debian systems this directory is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
     {{< file "Apache Configuration Block" apache >}}
 ScriptAlias /local-bin /usr/bin
@@ -119,4 +119,4 @@ This may not be ideal if you have multiple users running publicly accessible scr
 {{< /file >}}
 
 
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/guides/linux-users-and-groups/) for more information about creating the necessary users and groups.
+In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/cloud/guides/linux-users-and-groups/) for more information about creating the necessary users and groups.

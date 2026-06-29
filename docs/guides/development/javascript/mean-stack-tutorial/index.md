@@ -23,7 +23,7 @@ MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**
 - Angular is a web framework for the front end.
 
 {{< note >}}
-You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](/docs/guides/databases/mongodb/), and [Express.js](/docs/guides/express-js-tutorial/).
+You can learn about each technology of the MEAN stack in our guides on [Angular](/cloud/guides/angular-tutorial-for-beginners/), [Node.js](/cloud/guides/how-to-install-nodejs/), [MongoDB](/cloud/guides/databases/mongodb/), and [Express.js](/cloud/guides/express-js-tutorial/).
 {{< /note >}}
 
 ## Install the MEAN Stack
@@ -179,7 +179,7 @@ users
 
 At this point, Node and Mongo are both installed and MongoDB is running successfully. You've created a Node project and a Mongo database with a couple of tables. Now, it’s time for these two components to connect.
 
-1. Navigate to the `my-angular-app` directory you created in the [Angular Installation](/docs/guides/mean-stack-tutorial/#angular-installation) section.
+1. Navigate to the `my-angular-app` directory you created in the [Angular Installation](/cloud/guides/mean-stack-tutorial/#angular-installation) section.
 
 1. Install the Node.js MongoDB driver:
 

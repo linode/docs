@@ -1,32 +1,21 @@
-{{ if not .Params.deprecated }}
 <div
   class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4"
-  x-data="lncPromoCodes()">
-  {{/* We fetch the promo codes via an API. That may fail, but we want to show the signup banner in all cases. */}}
-  <div
-    class="text-white text-md md:text-lg font-regular tracking-normal w-3/4"
-    style="min-height: 60px;">
-    <span x-cloak>
+  x-data>
+  <div class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
+    <span>
       <a
-        :href="signupURL(true)"
+        href="https://login.linode.com/signup"
         target="_blank"
         @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid, 'DOCS: Promo Code')"
         class="font-semibold text-white underline"
         style="text-underline-offset: 2px;"
-        >Create a Linode account</a
+        >Create an Akamai Cloud account</a
       >
-      to try this guide<span x-show="promoCode()"
-        >&nbsp;with a $<span x-text="data.code.promo_value"></span> credit</span
-      >.
-      <div class="text-sm italic" x-show="promoCode()">
-        This credit will be applied to any valid services used during your first
-        <span x-text="data.code.promo_days"></span>&nbsp;days.
-      </div>
+      to try this guide.
     </span>
   </div>
   <div>
-    <form :action="signupURL(false)" data-turbo="false">
-      <input type="hidden" name="promo" :value="promoCode()" />
+    <form action="https://login.linode.com/signup" data-turbo="false">
       <button
         @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid, 'DOCS: Promo Code')"
         type="submit"
@@ -37,4 +26,3 @@
     </form>
   </div>
 </div>
-{{ end }}

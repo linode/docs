@@ -13,11 +13,11 @@ external_resources:
 
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) is an industry-standard solution for automating server deployments, with support across platforms and distributions. Combining platform metadata with custom user data scripts, cloud-init can vastly simplify the process of initializing new servers.
 
-With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service, you can leverage cloud-init to deploy Compute Instances. A cloud-config user data script can define everything you need to initialize instances, from security and user set up to software installation and shell scripts.
+With Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service, you can leverage cloud-init to deploy Compute Instances. A cloud-config user data script can define everything you need to initialize instances, from security and user set up to software installation and shell scripts.
 
 This guide details how to start working with users as part of your cloud-init deployments. Read on for cloud-config scripts to provision users, add SSH keys, and disable remote root access.
 
-Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow the present guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
+Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/cloud/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow the present guide. When you are ready to deploy your cloud-config, the guide linked above shows how.
 
 ## Create User
 
@@ -96,7 +96,7 @@ By default, cloud-init creates and assigns each user to a self-named user group.
 
 ### Assigning Sudo Access
 
-Cloud-init controls `sudo` access on users primarily through the `sudo` option. This option takes a list of `sudo` rule strings, just they appear in the `sudoers` file. You can learn more about `sudo` access and `sudo` rules in the appropriate sections of our [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Cloud-init controls `sudo` access on users primarily through the `sudo` option. This option takes a list of `sudo` rule strings, just they appear in the `sudoers` file. You can learn more about `sudo` access and `sudo` rules in the appropriate sections of our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 
 In the example below, a new `example-user` is created and given `sudo` access. The one rule applied allows the user to run any command as `sudo` after entering the user's password. This example also adds the user to the `sudo` user group.
 
@@ -121,7 +121,7 @@ Alternatively, you can use the following `sudoers` rule to permit `sudo` access 
 
 Using the `ssh_authorized_keys` option, you can authorize a list of SSH public keys for accessing a user remotely. Doing so provides a more secure authorization route than passwords, and so it is recommended over password configuration.
 
-If you do not have an SSH key pair yet, get one by following the relevant section of our guide on how to [Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair).
+If you do not have an SSH key pair yet, get one by following the relevant section of our guide on how to [Use SSH Public Key Authentication](/cloud/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair).
 
 Once you have the SSH key pair, you can add your SSH public key to the `ssh_authorized_keys` list in the user configuration. In this example, `example-user` has authorized access from two SSH keys:
 

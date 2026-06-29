@@ -25,7 +25,6 @@ Thumbs.dbi
 *.jar
 *.rar
 *.tar
-*.zip
 
 *.log
 *.sql
@@ -46,4 +45,5 @@ hugo_stats.json
 .hugo_build.lock
 redirects.conf
 scripts/duplicates.csv
+scripts/.product_link_cache.json
 algolia_out/

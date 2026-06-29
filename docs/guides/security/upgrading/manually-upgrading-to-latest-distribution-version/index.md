@@ -33,8 +33,8 @@ Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [cl
 
 An inline (or in-place) upgrade involves upgrading your existing Linux system (or a copy of that existing system). All of your data remains and the operating system upgrades itself to the latest version. The viability of this process depends on several factors, including if your Linux distribution supports it, how reliable the process is for your distribution, and how complex your system configuration is. When this process works smoothly, its quicker and easier compared to other options as it typically just involves running a few commands. This guide does not cover inline upgrades, though the following guides do:
 
-- [How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)](/docs/guides/upgrade-to-ubuntu-18-04/)
-- [Upgrade Debian to the Newest Release](/docs/guides/upgrade-debian-to-the-newest-release/)
+- [How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)](/cloud/guides/upgrade-to-ubuntu-18-04/)
+- [Upgrade Debian to the Newest Release](/cloud/guides/upgrade-debian-to-the-newest-release/)
 
 *Consider an inline upgrade when your system is just one release behind your distribution's latest version and the built-in method for inline upgrades for your distribution is reliable.*
 
@@ -44,18 +44,18 @@ This entails deploying the desired distribution version to a new server, potenti
 
 *Consider a clean install when your system is several releases behind your distribution's latest version, when switching to a different distribution altogether, or when making major changes to your software stack.*
 {{< note >}}
-DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
+DevOps provisioning tools (such as [Terraform](/cloud/guides/beginners-guide-to-terraform/) and [Ansible](/cloud/guides/getting-started-with-ansible/)), container platforms ([Docker](/cloud/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/cloud/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
 {{< /note >}}
 
 ## Before you Begin
 
-- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
     {{< note respectIndent=false >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
-- **Back up any important data stored on your Linode.** If your Linode has the [Backups](https://www.linode.com/products/backups/) service enabled, consider taking a manual snapshot before upgrading your system. If you use a different backup service or application, you should verify that a recent backup is available. See [Backing Up Your Data](/docs/guides/backing-up-your-data/).
+- **Back up any important data stored on your Linode.** If your Linode has the [Backups](https://www.linode.com/products/backups/) service enabled, consider taking a manual snapshot before upgrading your system. If you use a different backup service or application, you should verify that a recent backup is available. See [Backing Up Your Data](/cloud/guides/backing-up-your-data/).
 
 ## Steps for Performing an Upgrade through a Clean Install
 
@@ -67,9 +67,9 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## Create a New Linode
 
-To get started, create a new Linode by following the instructions within the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Keep the following considerations in mind:
+To get started, create a new Linode by following the instructions within the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides. Keep the following considerations in mind:
 
--  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) for a full list of the distribution images available on Linode.
+-  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](https://techdocs.akamai.com/cloud-computing/docs/choose-a-distribution) for a full list of the distribution images available on Linode.
 -  **Region:** The new Linode must reside in the same region (data center) as the original Linode.
 -  **Linode Plan:** Chose a plan that accommodates the applications you wish to run and meets any storage requirements you may have. In many cases, selecting the same (or larger) plan is a safe choice.
 
@@ -83,9 +83,9 @@ As part of this upgrade process, all packages required for the applications you 
 
 This approach involves reviewing the installation instructions (and requirements) for each application you wish to use. This approach may be the cleanest approach, as only packages that are currently required by your application will be installed. You can review the official documentation for a given application or take a look at our own guides for installing certain software stacks and applications. Here are a few of our popular guides. While Ubuntu versions of the guides are linked, other distributions are available.
 
-- [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/)
-- [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/)
-- [Install WordPress on Ubuntu 20.04](/docs/guides/how-to-install-wordpress-ubuntu-2004/)
+- [How to Install the LEMP Stack on Ubuntu 18.04](/cloud/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/)
+- [How to Install a LAMP Stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/)
+- [Install WordPress on Ubuntu 20.04](/cloud/guides/how-to-install-wordpress-ubuntu-2004/)
 
 Whichever documentation you review, follow the installation steps to install all required software.
 
@@ -95,33 +95,33 @@ The downside to this approach is that you may need to do a bit of research if yo
 
 You can also view the packages that are currently installed on the original system and then install them on the new system. This process can be more tedious, as there are often hundreds or thousands of packages (including obscure dependencies that you might not recognize). The commands needed to view and install packages depend on the distribution and package manager you are using. Below are example commands for finding all installed packages using popular default package managers:
 
--   [**APT**](/docs/guides/apt-package-manager/) - Debian and Ubuntu
+-   [**APT**](/cloud/guides/apt-package-manager/) - Debian and Ubuntu
 
         sudo apt list --installed
 
--   [**DNF**](/docs/guides/dnf-package-manager/) - RHEL/CentOS 8, other RHEL 8 derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora 22 (and later)
+-   [**DNF**](/cloud/guides/dnf-package-manager/) - RHEL/CentOS 8, other RHEL 8 derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora 22 (and later)
 
         sudo dnf list installed
 
--   [**YUM**](/docs/guides/yum-package-manager/) - RHEL/CentOS 7
+-   [**YUM**](/cloud/guides/yum-package-manager/) - RHEL/CentOS 7
 
         sudo yum list installed
 
 Next, install all the required packages onto the new system. Again, here are some example commands based on common package managers:
 
--   [**APT**](/docs/guides/apt-package-manager/) - Debian and Ubuntu
+-   [**APT**](/cloud/guides/apt-package-manager/) - Debian and Ubuntu
 
         sudo apt install [package-name]
 
--   [**DNF**](/docs/guides/dnf-package-manager/) - RHEL/CentOS 8, other RHEL 8 derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora 22 (and later)
+-   [**DNF**](/cloud/guides/dnf-package-manager/) - RHEL/CentOS 8, other RHEL 8 derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora 22 (and later)
 
         sudo dnf install [package-name]
 
--   [**YUM**](/docs/guides/yum-package-manager/) - RHEL/CentOS 7
+-   [**YUM**](/cloud/guides/yum-package-manager/) - RHEL/CentOS 7
 
         sudo yum install [package-name]
 
-If you are using a different distribution or a different package manager, review the [Overview of Package Management in Linux](/docs/guides/linux-package-management-overview/) guide, as well as the individual pages for each package manager, to determine how to list currently installed packages.
+If you are using a different distribution or a different package manager, review the [Overview of Package Management in Linux](/cloud/guides/linux-package-management-overview/) guide, as well as the individual pages for each package manager, to determine how to list currently installed packages.
 
 ## Copy Data and Configuration Files
 
@@ -140,27 +140,27 @@ Before transferring data, you may want to place any applications in a *maintenan
 
 ### SFTP (SSH File Transfer Protocol)
 
-SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/docs/guides/filezilla/) for more information.
+SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/cloud/guides/filezilla/) for more information.
 
 ### SCP (Secure Copy Protocol)
 
-SCP is a common file transfer command line tool available on most macOS and Linux systems, including WSL on Windows 10. Review the [Download Files from Your Compute Instance > Download Files with SCP](/docs/guides/download-files-from-a-compute-instance/#download-files-with-scp) guide for more details.
+SCP is a common file transfer command line tool available on most macOS and Linux systems, including WSL on Windows 10. Review the [Download Files from Your Compute Instance > Download Files with SCP](/cloud/guides/download-files-from-a-compute-instance/#download-files-with-scp) guide for more details.
 
 ## Copy any Databases
 
 Databases can be copied in much the same way as files. The major difference is that most databases first require a *database dump*, which writes all of the data stored within the database to a backup file. This database backup file can then be copied to the new system and used to restored the data.
 
--   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
+-   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/cloud/guides/mysqldump-backups/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
 
--   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+-   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/cloud/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/cloud/guides/back-up-a-postgresql-database/) guide.
 
 ## Transfer IPv4 Addresses
 
-After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses)
+After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#transferring-ip-addresses)
 {{< note >}}
-The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-overview/#a-and-aaaa) on your domain(s).
+The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/cloud/guides/dns-overview/#a-and-aaaa) on your domain(s).
 {{< /note >}}
 
 ## Start Using the New Linode

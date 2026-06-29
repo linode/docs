@@ -22,12 +22,12 @@ relations:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache
@@ -45,7 +45,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo systemctl enable apache2
         sudo systemctl start apache2
 
-3. See the guide for [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) for more details and configuration options for the Apache web server.
+3. See the guide for [How to Install Apache Web Server on Ubuntu 18.04 LTS](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/) for more details and configuration options for the Apache web server.
 
 ## Install PHP
 
@@ -80,7 +80,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
         sudo systemctl enable mariadb
         sudo systemctl start mariadb
 
-4. See the guide for [How to Install MariaDB on Ubuntu 18.04 LTS](/docs/guides/how-to-install-mariadb-on-ubuntu-18-04/) for more details and configuration options for the MariaDB installation.
+4. See the guide for [How to Install MariaDB on Ubuntu 18.04 LTS](/cloud/guides/how-to-install-mariadb-on-ubuntu-18-04/) for more details and configuration options for the MariaDB installation.
 
 5. Create a database and a database user for MediaWiki by opening MariaDB as the root user (`sudo mariadb -u root -p`) and entering the commands given in the following example. Replace `wikidb` with the desired database name, `wikiuser` with the desired database username, and `password` with a password for that user, which should not match the database's root password:
 
@@ -118,7 +118,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
     {{< note respectIndent=false >}}
- Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/docs/guides/linux-users-and-groups/#changing-file-ownership).
+ Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#changing-file-ownership).
     {{< /note >}}
 
 ## Install MediaWiki

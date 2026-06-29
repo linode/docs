@@ -20,12 +20,12 @@ deprecated: true
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 
-Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/).
+Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/cloud/guides/how-to-install-a-lamp-stack-on-debian-11/).
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -34,7 +34,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 ## Install Apache 2
 
@@ -212,7 +212,7 @@ Later files take precedence over earlier ones. Within a directory, files are rea
 
 Apache will follow symbolic links to read configuration files, so it's possible to put files in other locations as well.
 
-Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/cloud/guides/how-to-install-a-lamp-stack-on-debian-11/) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
 
 We recommend that you *not* modify these files:
 
@@ -222,7 +222,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/guides/troubleshooting-common-apache-issues/#troubleshoot-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/cloud/guides/troubleshooting-common-apache-issues/#troubleshoot-conflicting-directives) article.
 
 ## Multi-Processing Module
 
@@ -260,4 +260,4 @@ For more complex setups, however, we recommend that you consider using an altern
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
+- [Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)

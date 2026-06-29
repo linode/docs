@@ -33,7 +33,7 @@ Trouble with VNC usually surrounds one of five problems:
 
 VNC requires a clear network path between hosts on the ports chosen, which default to `5901`, and perhaps the range `5900`-`5904`. Both the server and client hosts must have these ports open between hosts.
 
-In Windows, on either a server or client host, this port must be open on both hosts. Linode always recommends using a secure transport, even behind a firewall or other systems security barrier. When using SSH as a transport between VNC Server and Client, refer to the [Connect To A Remote Server](/docs/guides/connect-to-server-over-ssh/) guide to initially setup and troubleshoot the SSH circuit.
+In Windows, on either a server or client host, this port must be open on both hosts. Linode always recommends using a secure transport, even behind a firewall or other systems security barrier. When using SSH as a transport between VNC Server and Client, refer to the [Connect To A Remote Server](/cloud/guides/connect-to-server-over-ssh/) guide to initially setup and troubleshoot the SSH circuit.
 
 Once the VNC SSH circuit is installed and successfully tested between the proposed VNC server and client hosts, the VNC server must be started in one host, and the client in the other. The VNC server offers and connects its screen information and receives input from both systems keyboards and mice, unless this feature is disabled by configuration on either end.
 

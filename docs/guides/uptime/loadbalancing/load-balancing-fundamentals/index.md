@@ -15,7 +15,7 @@ The basic premise of load balancing is "sharing the work". This guide explores w
 
 ## What Is Load Balancing?
 
-Load balancing is the process of distributing client requests among multiple servers. Originally, load balancers were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](/docs/products/networking/nodebalancers/guides/configure/) perform the same role with cloud-based servers.
+Load balancing is the process of distributing client requests among multiple servers. Originally, load balancers were dedicated hardware appliances that sat in front of physical servers in data centers. Today, software products such as [Akamai NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers) perform the same role with cloud-based servers.
 
 Whether hardware or software, the concept is the same. Load balancers act as a reverse proxy for client requests, parceling out requests across servers to avoid resource exhaustion.
 
@@ -61,7 +61,7 @@ Static algorithms always make the same decisions based on the same inputs. Dynam
 
 A round robin algorithm rotates among all available servers when parceling out client requests. For example, Request 1 goes to Server 1, Request 2 goes to Server 2, and so on up to Server N. At that point, the algorithm sends the next request to Server 1.
 
-- **Pros**: Easiest algorithm to [implement and manage](/docs/guides/setting-up-round-robin-dns/). A good choice when client requests and responses are highly self-similar. Each request resembles every other in terms of size and response time. Also good when processing capacity is equal across all servers.
+- **Pros**: Easiest algorithm to [implement and manage](/cloud/guides/setting-up-round-robin-dns/). A good choice when client requests and responses are highly self-similar. Each request resembles every other in terms of size and response time. Also good when processing capacity is equal across all servers.
 
 - **Cons**: May worsen existing congestion by sending requests to an already overloaded server. Performance may degrade over time because clients invariably request objects of different sizes, leading to uneven server loading. Also ill-suited when servers differ in terms of processing capability.
 
@@ -102,7 +102,7 @@ HTTP/HTTPS load balancers may compute a hash of a URL and then cache the hashed 
 - **Cons**: Not appropriate for email, most types of instant messaging, and other applications or services that do not run over HTTP. May require decryption and re-encryption of traffic secured with Transport Layer Security (TLS, which now represents the vast majority of web requests) before it can read HTTP requests. TLS decryption/encryption requires additional processing capability.
 
 {{< note >}}
-For more information on TCP and HTTP/HTTPS load balancers, see our [Application (HTTP) vs Network (TCP) Load Balancers](/docs/guides/application-http-vs-network-tcp-load-balancers/) guide.
+For more information on TCP and HTTP/HTTPS load balancers, see our [Application (HTTP) vs Network (TCP) Load Balancers](/cloud/guides/application-http-vs-network-tcp-load-balancers/) guide.
 {{< /note >}}
 
 ### Dynamic Load Balancing Algorithms

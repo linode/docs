@@ -29,7 +29,7 @@ This guide outlines benefits and considerations for cross-region replication of 
 
 -   **Large file counts may take longer.** The solution in this guide uses the rclone utility to sync contents from one bucket to another, and the time it takes to complete depends on the amount of files being synced.
 
--   **The method in this guide syncs bucket contents automatically once.** After the sync occurs, multiple buckets can be managed congruently to ensure consistency between bucket contents. This can be achieved by uploading and deleting objects at the same time via the Linode CLI, the Linode API, or other [Object Storage compatible tools](/docs/products/storage/object-storage/get-started/#object-storage-tools) such as s3cmd.
+-   **The method in this guide syncs bucket contents automatically once.** After the sync occurs, multiple buckets can be managed congruently to ensure consistency between bucket contents. This can be achieved by uploading and deleting objects at the same time via the Linode CLI, the Linode API, or other [Object Storage compatible tools](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage#object-storage-tools) such as s3cmd.
 
 -   **One-way syncing.** The method in the provided scripts runs a one-way sync from a source bucket to a destination bucket.
 
@@ -138,7 +138,7 @@ $RCLONE_SYNC_COMMAND
 
 -   **Script location:** The script is designed to be run from a Compute Instance on a supported distribution by a user with sudo permissions.
 
--   **Bucket access:** The script requires access to both your source and destination buckets via an access key and a secret key. If you do not have an access key or secret key for your buckets, follow the instructions for generating them in our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/#generate-an-access-key) guide.
+-   **Bucket access:** The script requires access to both your source and destination buckets via an access key and a secret key. If you do not have an access key or secret key for your buckets, follow the instructions for generating them in our [Object Storage - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-object-storage#generate-an-access-key) guide.
 
 -   **Defining bucket information:** Prior to running the script, define the following variables at the top of the script (lines 3-13) with the corresponding information for your source and destination buckets. This can be done by typing in the required information between the quotation marks after each variable.
 
@@ -154,22 +154,22 @@ $RCLONE_SYNC_COMMAND
     - `DEST_SECRETKEY_PASSWORD`: The secret key for your destination bucket
 
     {{< note title="Object Storage Region IDs" >}}
-    A full list of region IDs and their corresponding data centers is listed under the **Availability** section of our [Object Storage](/docs/products/storage/object-storage/#availability) guide.
+    A full list of region IDs and their corresponding data centers is listed under the **Availability** section of our [Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage#availability) guide.
     {{< /note >}}
 
 ## Alternative Script Deployment Methods
 
-Another method for running the rclone sync is to run the script functions automatically on a newly deployed Compute Instance. You can achieve this by using either our [Metadata](/docs/products/compute/compute-instances/guides/metadata/) (recommended) or [StackScripts](/docs/products/tools/stackscripts/) services.
+Another method for running the rclone sync is to run the script functions automatically on a newly deployed Compute Instance. You can achieve this by using either our [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) (recommended) or [StackScripts](https://techdocs.akamai.com/cloud-computing/docs/stackscripts) services.
 
 The first method below uses user data with our Metadata service during instance creation, and the second method uses StackScripts to create the new instance. In both methods, the script functions are run once automatically upon initial boot.
 
 ### Deploying with Metadata
 
-1.  Begin the process of deploying a new Compute Instance using the steps in our [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
+1.  Begin the process of deploying a new Compute Instance using the steps in our [Create a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide.
 
     When choosing a distribution image, select one of the versions of Ubuntu that is both supported by the script (see [Running the Script](#running-the-script)) and compatible with cloud-init (denoted with a note icon).
 
-    When choosing a region, select a region where the Metadata service is available. A list of data center availability for Metadata can be found in our [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/#availability) guide.
+    When choosing a region, select a region where the Metadata service is available. A list of data center availability for Metadata can be found in our [Overview of the Metadata Service](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service#availability) guide.
 
     Stop when you get to the **Add User Data** section.
 
@@ -242,7 +242,7 @@ The first method below uses user data with our Metadata service during instance 
 
 ### Deploying with StackScripts
 
-1.  Create a new StackScript using the steps in our [StackScripts - Get Started](/docs/products/tools/stackscripts/get-started/#create-the-stackscript) guide.
+1.  Create a new StackScript using the steps in our [StackScripts - Get Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-stackscripts#create-the-stackscript) guide.
 
 1.  Enter your **StackScript Label** and **Description**, and select your **Target Image**. Supported distribution images are listed in the [Running the Script](#running-the-script) section.
 
@@ -330,4 +330,4 @@ For more information on using rclone or managing Object Storage, see the below l
 
 - [Rclone official documentation](https://rclone.org/docs/)
 
-- [Object Storage - Guides](/docs/products/storage/object-storage/guides/)
+- [Object Storage - Guides](https://techdocs.akamai.com/cloud-computing/docs/object-storage)

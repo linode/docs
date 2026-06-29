@@ -42,14 +42,14 @@ Below is a list comparing the key features of Azure Service Bus and RabbitMQ:
 
 1.  Migrating from Azure Service Bus to RabbitMQ on Akamai requires choosing between a single Linode instance or a larger scale, more fault-tolerant environment with Linode Kubernetes Engine (LKE). Follow the appropriate guide below based on your needs:
 
-    -   [Deploy RabbitMQ through the Linode Marketplace](/docs/marketplace-docs/guides/rabbitmq/)
-    -   [Deploying RabbitMQ on a Linode](/docs/guides/deploying-rabbitmq-on-a-linode/)
-    -   [Deploying RabbitMQ on Kubernetes with LKE](/docs/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
+    -   [Deploy RabbitMQ through the Linode Marketplace](/cloud/marketplace-docs/guides/rabbitmq/)
+    -   [Deploying RabbitMQ on a Linode](/cloud/guides/deploying-rabbitmq-on-a-linode/)
+    -   [Deploying RabbitMQ on Kubernetes with LKE](/cloud/guides/deploying-rabbitmq-on-kubernetes-with-lke/)
 
 1.  You must have access to your Azure account with sufficient permissions to work with Service Bus resources.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Migrate from Azure Service Bus to RabbitMQ

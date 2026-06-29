@@ -36,9 +36,9 @@ This guide will show you how to:
 
 ## Before You Begin
 
-1. Review the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
+1. Review the [Beginner's Guide to Kubernetes](/cloud/guides/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-1. Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and to [add a DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
+1. Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) and to [add a DNS "A" record](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
     {{< note >}}
     Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -48,15 +48,15 @@ This guide will show you how to:
 
 1. **Create a Kubernetes cluster** through the [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/) (LKE) using either the Cloud Manager, the Linode API, or Terraform:
 
-    - [Cloud Manager LKE instructions](/docs/products/compute/kubernetes/)
-    - [Linode API LKE instructions](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
-    - [Terraform instructions](/docs/guides/deploy-lke-cluster-using-terraform/)
+    - [Cloud Manager LKE instructions](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine)
+    - [Linode API LKE instructions](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api)
+    - [Terraform instructions](/cloud/guides/deploy-lke-cluster-using-terraform/)
 
-    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
+    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/cloud/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
 
-1. **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/kubectl/) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
+1. **Setup your local environment** by installing [Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
 
-1. **Configure kubectl** to use the new Kubernetes cluster by downloading the kubeconfig YAML file and adding it to kubectl. See the instructions within the [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/kubectl/) guide.
+1. **Configure kubectl** to use the new Kubernetes cluster by downloading the kubeconfig YAML file and adding it to kubectl. See the instructions within the [Download Your kubeconfig](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl) guide.
 
 ## Creating a Sample Application
 
@@ -224,7 +224,7 @@ Now that Linode NodeBalancers have been created by the NGINX Ingress Controller,
     my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
     ```
 
-1. Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+1. Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
 
 ## Configuring the Ingress Controller
 
@@ -275,7 +275,7 @@ Once your Ingress Controller is installed and DNS records have been created poin
 
 ## Next Steps
 
-If you would like to secure your site with TLS encryption, you can follow the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/).
+If you would like to secure your site with TLS encryption, you can follow the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/cloud/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/).
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
 
@@ -294,9 +294,9 @@ If you would rather not continue using the cluster you just created, review the 
     ```
 
     {{< note type="warning" >}}
-    If you do not also remove the NodeBalancer from your Linode account, you will continue to be billed for the service. See [Manage NodeBalancers > Delete a NodeBalancer](/docs/products/networking/nodebalancers/guides/manage/#delete-a-nodebalancer) for instructions on removing the NodeBalancer in the Cloud Manager.
+    If you do not also remove the NodeBalancer from your Linode account, you will continue to be billed for the service. See [Manage NodeBalancers > Delete a NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/manage-nodebalancers#delete-a-nodebalancer) for instructions on removing the NodeBalancer in the Cloud Manager.
     {{< /note >}}
 
-- To remove the LKE Cluster and the associated nodes from your account, follow the instructions within [Manage Kubernetes Clusters > Delete a Cluster](/docs/products/compute/kubernetes/guides/manage-clusters/#delete-a-cluster).
+- To remove the LKE Cluster and the associated nodes from your account, follow the instructions within [Manage Kubernetes Clusters > Delete a Cluster](https://techdocs.akamai.com/cloud-computing/docs/manage-kubernetes-clusters-on-lke#delete-a-cluster).
 
-- Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
+- Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#persist-the-kubeconfig-context).

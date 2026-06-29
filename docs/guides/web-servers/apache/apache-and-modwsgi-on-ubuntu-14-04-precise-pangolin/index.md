@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/','/websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
 external_resources:
  - '[A Basic "Hello World" Django Application](https://dfpp.readthedocs.io/en/latest/chapter_01.html)'
- - '[Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)'
- - '[Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Django Applications with mod\_wsgi](/cloud/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/cloud/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
@@ -30,16 +30,16 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Ensure that you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and the Linode's [hostname is set](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
-2.  We recommend that you are already familiar with [Apache](/docs/guides/apache-web-server-on-ubuntu-14-04/) before beginning this guide.
+2.  We recommend that you are already familiar with [Apache](/cloud/guides/apache-web-server-on-ubuntu-14-04/) before beginning this guide.
 
 3.  Update your system:
 
         sudo apt-get update
         sudo apt-get upgrade
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies
@@ -83,7 +83,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/cloud/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/var/www/html/example.com/application/application.wsgi" python >}}
 import web

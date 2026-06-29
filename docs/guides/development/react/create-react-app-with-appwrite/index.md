@@ -25,13 +25,13 @@ This tutorial gets you started making your own application using Appwrite and Re
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
     {{< note >}}
-    To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/marketplace-docs/guides/appwrite/).
+    To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/cloud/marketplace-docs/guides/appwrite/).
     {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system.
 
@@ -43,7 +43,7 @@ This tutorial gets you started making your own application using Appwrite and Re
     sudo dnf upgrade
     ```
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Create an Appwrite Backend
@@ -56,7 +56,7 @@ The goal of these steps is to give you a fully operational Appwrite backend serv
 
 First, you need to install your own self-hosted Appwrite instance. You also need to do some specific set up to prepare Appwrite to support your React application. The next series of steps show you how.
 
-1.  Follow the steps in our guide [Getting Started with Appwrite as a Backend Server](/docs/guides/getting-started-appwrite/). This shows you how to install and configure your own Appwrite instance.
+1.  Follow the steps in our guide [Getting Started with Appwrite as a Backend Server](/cloud/guides/getting-started-appwrite/). This shows you how to install and configure your own Appwrite instance.
 
 1.  Make sure that the Docker services are started and enabled. Enabling the services ensures that they initiate at system startup:
 
@@ -132,7 +132,7 @@ The example application built here shows two lists, one of films marked "To Watc
 
 This guide assumes you are creating a fresh React application to interact with the Appwrite backend. The next steps show you how to initialize and perform the necessary setup for putting together the new React application.
 
-1.  Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). This example uses NPM to bootstrap a React project, to install the Appwrite web SDK, and to run the React frontend.
+1.  Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/). This example uses NPM to bootstrap a React project, to install the Appwrite web SDK, and to run the React frontend.
 
 1.  Create the React project. This example uses `create-react-app` to bootstrap a new React project and names the new project `example-app`. The command results in an `example-app` directory being created in the current directory.
 
@@ -419,9 +419,9 @@ You are now about ready to run the React application.
 
 First, you need to open port `3000` on your server's firewall. This is the default port for React to serve your frontend on, and it is the port this guide uses to get you started.
 
--   **Debian / Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+-   **Debian / Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
--   **AlmaLinux / CentOS Stream / Fedora / Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+-   **AlmaLinux / CentOS Stream / Fedora / Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/)
 
 Once you have done that, you can start up the React server with the following command:
 

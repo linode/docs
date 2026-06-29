@@ -19,7 +19,7 @@ Historically, developers run static code analysis in an exploratory way as part 
 
 ## How Does Static Code Analysis Fit into DevOps and CI/CD?
 
-If you want static code analysis to help you with DevOps and [CI/CD](/docs/guides/introduction-ci-cd/), you need to run it in your centralized build process. To do so, define the code analysis rules you care about as *severity 1*, also known as errors or bugs. Then configure the build server to halt any builds with severity 1 errors. Running static code analysis in the centralized build process guarantees that any checked-in code that is promoted to test, staging, or production environments is tested for common coding errors. Developers should also run the code analysis themselves in their local environment prior to pushing their code through their CI/CD pipeline.
+If you want static code analysis to help you with DevOps and [CI/CD](/cloud/guides/introduction-ci-cd/), you need to run it in your centralized build process. To do so, define the code analysis rules you care about as *severity 1*, also known as errors or bugs. Then configure the build server to halt any builds with severity 1 errors. Running static code analysis in the centralized build process guarantees that any checked-in code that is promoted to test, staging, or production environments is tested for common coding errors. Developers should also run the code analysis themselves in their local environment prior to pushing their code through their CI/CD pipeline.
 
 ## Static Code Analysis Tools
 

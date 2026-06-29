@@ -1,0 +1,287 @@
+#!/usr/bin/perl
+# Setup file for ikiwiki.
+#
+# Passing this to ikiwiki --setup will make ikiwiki generate
+# wrappers and build the wiki.
+#
+# Remember to re-run ikiwiki --setup any time you edit this file.
+use IkiWiki::Setup::Standard {
+
+   ## Basic Configuration Options. These are all required settings
+   ## that control where and how Ikiwiki's files are located. 
+
+	# name of the wiki
+	wikiname => 'example.com Wiki',
+	# where the source of the wiki is located
+	allow_symlinks_before_srcdir => 1,
+	srcdir => '/home/username/wiki/source',
+	# where to build the wiki
+	destdir => '/srv/www/example.com/public_html',
+	# base url to the wiki
+	url => 'http://example.com',
+
+   ## User Configuration Options. These configure which users are
+   ## granted administration access to the wiki. You can also ban
+   ## users from the wiki, by adding them to the `banned_users` array.
+
+	# contact email for wiki
+	adminemail => 'username@example.com',
+	# users who are wiki admins
+	adminuser => ['http://www.example.com/'],
+	# users who are banned from the wiki
+	banned_users => [],
+
+
+   ## CGI Options. In these options specify the locations and urls for
+   ## the wrapper script which allows for editing the wiki via the
+   ## web. If you're running ikiwiki and gitosis, you'll want to the
+   ## `cgi_wrapermdoe` to be '6755,' otherwise, you may be able to get
+   ## away with limiting to 755. 
+
+	# url to the ikiwiki.cgi
+	cgiurl => 'http://www.example.com/ikiwiki.cgi',
+	# filename of cgi wrapper to generate
+	cgi_wrapper => '/srv/www/example.com/public_html/ikiwiki.cgi',
+	# mode for cgi_wrapper (can safely be made suid)
+	cgi_wrappermode => '6755',
+
+   ## Version Control Options. The following options allow you to
+   ## control the way that ikiwiki works with git. Note, Ikiwiki can
+   ## work with other version control systems, however this config is
+   ## only compatible with git. 
+   ## 
+   ## Alter the paths to reflect the locations of your
+   ## repositories. Also in the gitweb section at the end of the
+   ## configuration, alter the paths and the repository name to
+   ## reflect the location of the gitweb instance where your
+   ## repository is visible. Comment these lines if you are not or do
+   ## not want to run gitweb.
+	# rcs backend to use
+	rcs => 'git',
+       	# git plugin
+	# git hook to generate
+	git_wrapper => '/srv/git/wiki.git/hooks/post-update',
+	# mode for git_wrapper (can safely be made suid)
+	git_wrappermode => '06755',
+	# git pre-receive hook to generate
+        #git_test_receive_wrapper => '/srv/git/wiki.git/hooks/pre-receive',
+	# unix users whose commits should be checked by the pre-receive hook
+        #untrusted_committers => [],
+	# where to pull and push changes (set to empty string to disable)
+	gitorigin_branch => 'origin',
+	# branch that the wiki is stored in
+	gitmaster_branch => 'master',
+	# GitWeb Options
+	# gitweb url to show file history ([[file]] substituted)
+	historyurl => 'http://example.com/git/?p=wiki.git;a=history;f=[[file]]',
+	# gitweb url to show a diff ([[file]], [[sha1_to]], [[sha1_from]], [[sha1_commit]], and [[sha1_parent]] substituted)
+	diffurl => 'http://example.com/git/?p=wiki.git;a=blobdiff;f=[[file]];h=[[sha1_to]];hp=[[sha1_from]];hb=[[sha1_commit]];hpb=[[sha1_parent]]',
+
+
+  ## Adding and Disable Plugins. This section allows you to enable and
+  ## disable plugins by adding the names of the plugins to the
+  ## following arrays. The following list adds a number of plugins
+  ## that you may find helpful. Edit this list to your own whim. To
+  ## find out more about available plugins, visit the following
+  ## resource on the ikiwiki wiki: http://ikiwiki.info/plugins/
+
+	# plugins to add to the default configuration
+	add_plugins => ['goodstuff', 'camelcase', 'htmlscrubber', 'lockedit', 'toggle', 'inline', 'openid', 'anonok'],
+	# plugins to disable
+	disable_plugins => [],
+
+
+  ## Ikiwiki Configuration Options. The following section of contains
+  ## important options that control the basic behavior of
+  ## Ikiwiki. The options as listed are functional, but feel free to
+  ## edit them to your liking. 
+	# display verbose messages?
+	verbose => 1,
+	# log to syslog?
+	#syslog => 1,
+	# create output files named page/index.html?
+	usedirs => 1,
+	# use '!'-prefixed preprocessor directives?
+	prefix_directives => 1,
+	# use page/index.mdwn source files
+	indexpages => 0,
+	# enable Discussion pages?
+	discussion => 1,
+	# only send cookies over SSL connections?
+	sslcookie => 0,
+	# extension to use for new pages
+	default_pageext => 'mdwn',
+	# extension to use for html files
+	htmlext => 'html',
+	# strftime format string to display date
+	timeformat => '%c',
+	# UTF-8 locale to use
+	locale => '',
+	# put user pages below specified page
+	userdir => 'editors',
+	# how many backlinks to show before hiding excess (0 to show all)
+	numbacklinks => 15,
+	# attempt to hardlink source files? (optimisation for large files)
+	hardlink => 0,
+	# force ikiwiki to use a particular umask
+	umask => 18,
+	# group for wrappers to run in
+	# wrappergroup => 'git',
+	# extra library and plugin directory
+	libdir => '~/.ikiwiki/',
+	# environment variables
+	ENV => {},
+	# regexp of source files to ignore
+	#exclude => '\\.wav$',
+	# specifies the characters that are allowed in source filenames
+	wiki_file_chars => '-[:alnum:]+/.:_',
+
+
+  ## Plugin Configuration Options. The following option blocks allow
+  ## you to configure ikiwiki plugins, which are enabled above. Once
+  ## enabled, edit the options below to configure the behavior of the
+  ## ikiwiki plugins. 
+	# repolist plugin
+	# URIs of repositories containing the wiki's source
+	repositories => [qw{http://example.com/git/ciwiki.git}],
+
+	# search plugin
+	# path to the omega cgi program
+	#
+	# Uncomment the following line if you're installed the
+	# "xapian-omega" package from Debian and have enabled the
+	# plugin above: 
+	omega_cgi => '/usr/lib/cgi-bin/omega/omega',
+
+	# aggregate plugin
+	# enable aggregation to internal pages?
+	aggregateinternal => 1,
+	# allow aggregation to be triggered via the web?
+	aggregate_webtrigger => 0,
+
+	# lockedit plugin
+	# PageSpec controlling which pages are locked
+	locked_pages => '',
+
+	# anonok plugin
+	# PageSpec to limit which pages anonymous users can edit
+	anonok_pagespec => '*/discussion',
+
+	# attachment plugin
+	# enhanced PageSpec specifying what attachments are allowed
+	#allowed_attachments => 'virusfree() and mimetype(image/*) and maxsize(50kb)',
+	# virus checker program (reads STDIN, returns nonzero if virus found)
+	#virus_checker => 'clamdscan -',
+
+	# blogspam plugin
+	# PageSpec of pages to check for spam
+	#blogspam_pagespec => 'postcomment(*)',
+	# options to send to blogspam server
+	#blogspam_options => 'blacklist=1.2.3.4,blacklist=8.7.6.5,max-links=10',
+	# blogspam server XML-RPC url
+	#blogspam_server => '',
+
+	# calendar plugin
+	# base of the archives hierarchy
+	#archivebase => 'archives',
+
+	# camelcase plugin
+	# list of words to not turn into links
+	camelcase_ignore => [],
+
+	# comments plugin
+	# PageSpec of pages where comments are allowed
+	#comments_pagespec => 'blog/* and !*/Discussion',
+	# PageSpec of pages where posting new comments is not allowed
+	#comments_closed_pagespec => 'blog/controversial or blog/flamewar',
+	# Base name for comments, e.g. "comment_" for pages like "sandbox/comment_12"
+	#comments_pagename => '',
+	# Interpret directives in comments?
+	#comments_allowdirectives => 0,
+	# Allow anonymous commenters to set an author name?
+	#comments_allowauthor => 0,
+	# commit comments to the VCS
+	#comments_commit => 1,
+
+	# htmlscrubber plugin
+	# PageSpec specifying pages not to scrub
+	#htmlscrubber_skip => '!*/Discussion',
+
+	# inline plugin
+	# enable rss feeds by default?
+	rss => 1,
+	# enable atom feeds by default?
+	atom => 1,
+	# allow rss feeds to be used?
+	allowrss => 1,
+	# allow atom feeds to be used?
+	allowatom => 1,
+	# urls to ping (using XML-RPC) on feed update
+        # pingurl => [],
+
+	# listdirectives plugin
+	# directory in srcdir that contains directive descriptions
+	#directive_description_dir => 'ikiwiki/directive',
+
+	# mdwn plugin
+	# enable multimarkdown features?
+	multimarkdown => 0,
+
+	# mirrorlist plugin
+	# list of mirrors
+	#mirrorlist => {},
+
+	# openid plugin
+	# an url where users can signup for an OpenID
+	openidsignup => 'http://myopenid.com/',
+
+	# passwordauth plugin
+	# a password that must be entered when signing up for an account
+	#account_creation_password => 's3cr1t',
+	# cost of generating a password using Authen::Passphrase::BlowfishCrypt
+	#password_cost => 8,
+
+	# pinger plugin
+	# how many seconds to try pinging before timing out
+	#pinger_timeout => 15,
+
+	# prettydate plugin
+	# format to use to display date
+	#prettydateformat => '%X, %B %o, %Y',
+
+	# recentchanges plugin
+	# name of the recentchanges page
+	recentchangespage => 'recentchanges',
+	# number of changes to track
+	recentchangesnum => 100,
+
+	# tag plugin
+	# parent page tags are located under
+	tagbase => 'tag',
+
+	# teximg plugin
+	# Should teximg use dvipng to render, or dvips and convert?
+	#teximg_dvipng => '',
+	# LaTeX prefix for teximg plugin
+	#teximg_prefix => '\\documentclass{article}
+	#\\usepackage{amsmath}
+	#\\usepackage{amsfonts}
+	#\\usepackage{amssymb}
+	#\\pagestyle{empty}
+	#\\begin{document}
+	#',
+	# LaTeX postfix for teximg plugin
+	#teximg_postfix => '\\end{document}',
+
+	# underlay plugin
+	# extra underlay directories to add
+	#add_underlays => '',
+
+	# websetup plugin
+	# list of plugins that cannot be enabled/disabled via the web interface
+	#websetup_force_plugins => [],
+	# show unsafe settings, read-only, in web interface?
+	#websetup_show_unsafe => 1,
+}
+
+

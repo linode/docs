@@ -29,20 +29,20 @@ The basic syntax for invoking an adhoc command is:
 
 To run the commands in this tutorial, you'll need:
 
-- A workstation or server with the Ansible command line tool installed on it that will act as the control node. The [Set Up the Control Node](/docs/guides/getting-started-with-ansible/#set-up-the-control-node)
- section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide has instructions for setting up a Linode as a control node. Installation instructions for non-Linux distributions can be found on the [Ansible documentation site](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+- A workstation or server with the Ansible command line tool installed on it that will act as the control node. The [Set Up the Control Node](/cloud/guides/getting-started-with-ansible/#set-up-the-control-node)
+ section of the [Getting Started With Ansible](/cloud/guides/getting-started-with-ansible/) guide has instructions for setting up a Linode as a control node. Installation instructions for non-Linux distributions can be found on the [Ansible documentation site](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
 - At least one other server that will be managed by Ansible. Some commands in this guide will target a non-root user on this server. This user should have sudo privileges. There are a couple options for setting up this user:
 
-    - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/guides/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide.
+    - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/cloud/guides/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/cloud/guides/running-ansible-playbooks/) guide.
 
-    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
 {{< note >}}
-Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for help with creating Linodes.
+Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide for help with creating Linodes.
 {{< /note >}}
 
-The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/guides/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide outlines how to set up an inventory file.
+The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/cloud/guides/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/cloud/guides/getting-started-with-ansible/) guide outlines how to set up an inventory file.
 
 {{< note >}}
 Alternatively, you can modify the commands in this guide to use a different host name.
@@ -111,7 +111,7 @@ The `-f` option is used to define number of [forks](https://docs.ansible.com/ans
 {{< /note >}}
 
 {{< note >}}
-If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
 ## Collecting System Diagnostics

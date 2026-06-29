@@ -1,7 +1,7 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-6-squeeze
 title: 'Manage Content with Markdown and Mango on Debian 6 (Squeeze)'
-description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Debian 6.'
+description: 'This guide will show you how Mango can publish Markdown documents from plain text files into a fully customized and dynamic website using Debian 6.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-04-05
@@ -22,7 +22,7 @@ Mango is a simple static content management system for publishing blogs from con
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

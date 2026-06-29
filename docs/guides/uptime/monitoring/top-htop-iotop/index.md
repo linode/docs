@@ -1,7 +1,7 @@
 ---
 slug: top-htop-iotop
 title: Using top to Monitor Server Performance
-description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utilitie included with most distros, to monitor performance.'
+description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utility included with most distros, to monitor performance.'
 authors: ["Elle Krout"]
 contributors: ["Elle Krout"]
 published: 2015-02-19

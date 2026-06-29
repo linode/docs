@@ -20,9 +20,9 @@ In this tutorial, learn about what APIs are, the types of APIs that are availabl
 
 An API — short for *Application Programming Interface* — defines a set of rules by which applications and services can interact.
 
-APIs are used in a wide variety of contexts. However, often, when people talk about APIs, they are talking about *web APIs*. These APIs allow for communication between applications and services using the [HTTP protocol](/docs/guides/introducing-http-2/).
+APIs are used in a wide variety of contexts. However, often, when people talk about APIs, they are talking about *web APIs*. These APIs allow for communication between applications and services using the [HTTP protocol](/cloud/guides/introducing-http-2/).
 
-Often, web APIs are used for web application servers and web browsers to communicate. However, you may also see web APIs used for communication between different web servers, or between applications on the same server. You may even see web APIs at work between different services acting as parts of the same application. One example of an API enabling communication between different services of the same application, is Kubernetes. The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) is the linchpin to its powerful orchestration system.
+Often, web APIs are used for web application servers and web browsers to communicate. However, you may also see web APIs used for communication between different web servers, or between applications on the same server. You may even see web APIs at work between different services acting as parts of the same application. One example of an API enabling communication between different services of the same application, is Kubernetes. The [Kubernetes API](/cloud/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) is the linchpin to its powerful orchestration system.
 
 ## The Four Main Types of APIs
 
@@ -90,7 +90,7 @@ To give an example of a composite API in action, think of an online ordering for
 
 Make use of a composite API when your application exposes endpoints that are likely to be called in groups or in quick succession. This is often the case with microservices, where requests and responses frequently need to be combined.
 
-This type of API can be especially useful when your [microservice application](/docs/guides/deploying-microservices-with-docker/#what-is-a-microservice) needs to communicate with users' web browsers. Here, you want to optimize network traffic to reduce load times and improve user experience. You also want to reduce your server load to make your application scalable for a larger number of users.
+This type of API can be especially useful when your [microservice application](/cloud/guides/deploying-microservices-with-docker/#what-is-a-microservice) needs to communicate with users' web browsers. Here, you want to optimize network traffic to reduce load times and improve user experience. You also want to reduce your server load to make your application scalable for a larger number of users.
 
 ## What are the Different API Protocol Types?
 
@@ -98,7 +98,7 @@ Every API uses a particular protocol. An API's protocol defines the rules for ho
 
 There are three main protocols used by web APIs.
 
-- **REST**. Short for Representational State Transfer, REST implements stateless APIs with uniform interfaces using HTTP. REST is actually more of a set of architectural principles for APIs than a protocol proper. You can use the [Flask Python framework](/docs/guides/create-restful-api-using-python-and-flask/) to build your own REST API.
+- **REST**. Short for Representational State Transfer, REST implements stateless APIs with uniform interfaces using HTTP. REST is actually more of a set of architectural principles for APIs than a protocol proper. You can use the [Flask Python framework](/cloud/guides/create-restful-api-using-python-and-flask/) to build your own REST API.
 
 - **SOAP**. The Simple Object Access Protocol uses XML for requests and responses and maintains strict definitions for messages. SOAP is highly adaptable, designed to be neutral, and applicable in many contexts, not just for web APIs. It can even be used in conjunction with REST principles.
 

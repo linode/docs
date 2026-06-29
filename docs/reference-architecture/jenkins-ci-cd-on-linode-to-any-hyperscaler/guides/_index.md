@@ -9,4 +9,4 @@ tab_group_main:
     weight: 30
 ---
 
-- [How to Implement Jenkins CI/CD on Linode to Any Hyperscaler](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/guides/implement-jenkins-ci-cd/)
+- [How to Implement Jenkins CI/CD on Linode to Any Hyperscaler](/cloud/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/guides/implement-jenkins-ci-cd/)

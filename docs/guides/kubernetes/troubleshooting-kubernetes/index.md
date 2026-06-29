@@ -27,7 +27,7 @@ Troubleshooting issues with Kubernetes can be complex, and it can be difficult t
 {{< note title="Where to go for help outside this guide" isCollapsible=true >}}
 If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
 
-If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/products/platform/get-started/guides/support/). Examples in this category include:
+If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support). Examples in this category include:
 
 - Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
 
@@ -77,7 +77,7 @@ mariadb-0         1/1       Running            0          2h
     ```
 
     {{< note >}}
-    If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) Pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
+    If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/cloud/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/cloud/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) Pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
     {{< /note >}}
 
 
@@ -182,7 +182,7 @@ If the Kubernetes API server isn't working normally, then you may not be able to
 
 #### Non-systemd systems
 
-If your nodes do not run [systemd](/docs/guides/what-is-systemd/), the location of logs on your master nodes should be:
+If your nodes do not run [systemd](/cloud/guides/what-is-systemd/), the location of logs on your master nodes should be:
 
 - `/var/log/kube-apiserver.log` - [API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 - `/var/log/kube-scheduler.log` - [Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/ )
@@ -261,7 +261,7 @@ If you are not able to create new nodes in your cluster, you may see an error me
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 ```
 
-This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contact-customer-support).
+This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](https://techdocs.akamai.com/cloud-computing/docs/help-and-support#contact-customer-support).
 
 ### Insufficient CPU or Memory
 
@@ -286,8 +286,8 @@ If one of your Pods requests more memory or CPU than is available on your worker
 If your cluster has insufficient resources for a new Pod, you will need to do one or more of the following:
 
 - Reduce the number of other pods/deployments/applications running on your cluster.
-- [Add a new worker node or nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/) to your cluster.
-- [Add a new Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool) with access to more resources and migrate the workload to the new pool.
+- [Add a new worker node or nodes](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools) to your cluster.
+- [Add a new Node Pool](https://techdocs.akamai.com/cloud-computing/docs/manage-nodes-and-node-pools#add-a-node-pool) with access to more resources and migrate the workload to the new pool.
 
 ### Rolling Back a Highly Available (HA) LKE Cluster
 

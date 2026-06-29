@@ -20,12 +20,12 @@ This guide gives you everything you need to get started self-hosting a Strapi in
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Strapi?
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Strapi also works exceptionally well with a Jamstack architecture. Your frontend, using whatever framework you choose, can readily access your content from Strapi APIs, allowing your content to be rendered from markup. And Strapi's APIs can be customized in myriad ways to meet your applications' needs.
 
-To learn more about the Jamstack architecture and what it offers, take a look at our [Getting Started with the Jamstack](/docs/guides/what-is-jamstack/) guide.
+To learn more about the Jamstack architecture and what it offers, take a look at our [Getting Started with the Jamstack](/cloud/guides/what-is-jamstack/) guide.
 
 ### Why Strapi?
 
@@ -60,7 +60,7 @@ This guide follows Strapi's Node.js setup process, Strapi's preferred installati
 
 Strapi runs as a Node.js project, which this guide sets up using the Node Package Manager (NPM). Once you run the Strapi project-setup script, you can start running your instance and create your administrator user.
 
-1.  Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) guide, and then use the following command to install Node:
+1.  Install the appropriate version of Node using NVM. Follow along with our [Installing and Using NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) guide, and then use the following command to install Node:
 
     ```command
     nvm install node
@@ -74,7 +74,7 @@ Strapi runs as a Node.js project, which this guide sets up using the Node Packag
 
 1.  Install Python if you intend to use SQLite for Strapi's database. This is the default behavior with Strapi, and the database used in this guide's example. But Strapi also supports other databases, from MySQL to PostgreSQL.
 
-    Refer to our [Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/) guide for steps to install Python on your system. Use the dropdown at the top of the guide to select the appropriate distribution for you.
+    Refer to our [Install Python 3](/cloud/guides/how-to-install-python-on-ubuntu-20-04/) guide for steps to install Python on your system. Use the dropdown at the top of the guide to select the appropriate distribution for you.
 
 1.  Run the Strapi installation script. This uses NPM to run the script, creating the base Strapi project.
 
@@ -117,7 +117,7 @@ Strapi runs as a Node.js project, which this guide sets up using the Node Packag
 
 The Strapi API server and administrator panel are ready for access. As shown in the output, the services are running on `localhost:1337`. You need to either access your server over an SSH tunnel or follow the steps in the next section to access the Strapi interfaces.
 
-To use an SSH tunnel, you can see the steps in our guide on [accessing Futon over SSH](/docs/guides/access-futon-over-ssh-using-putty-on-windows/#establish-an-ssh-connection). Replace the port number in that guide (`5984`) with Strapi's port number — `1337`.
+To use an SSH tunnel, you can see the steps in our guide on [accessing Futon over SSH](/cloud/guides/access-futon-over-ssh-using-putty-on-windows/#establish-an-ssh-connection). Replace the port number in that guide (`5984`) with Strapi's port number — `1337`.
 
 Whichever way you use to access Strapi, start by navigating to its administrator panel. There you are prompted to create an initial administrator user.
 
@@ -128,12 +128,12 @@ From there, you are taken into the administrator panel for your new Strapi insta
 ![Strapi administrator panel](strapi-welcome.png)
 
 {{< note >}}
-Subsequent sections of this guide assume you have followed the [Setting Up for Remote Access](/docs/guides/using-strapi-cms/#setting-up-for-remote-access) section below to configure Strapi for remote access.
+Subsequent sections of this guide assume you have followed the [Setting Up for Remote Access](/cloud/guides/using-strapi-cms/#setting-up-for-remote-access) section below to configure Strapi for remote access.
 {{< /note >}}
 
 #### Setting Up for Remote Access
 
-By default, Strapi runs its server and administrator panel on `localhost`. Preferably, you would then use a reverse proxy like [NGINX](/docs/guides/use-nginx-reverse-proxy/) to provide access to the API server endpoints.
+By default, Strapi runs its server and administrator panel on `localhost`. Preferably, you would then use a reverse proxy like [NGINX](/cloud/guides/use-nginx-reverse-proxy/) to provide access to the API server endpoints.
 
 However, Strapi's administrator interface requires some additional configuration if you want to be able to access it remotely. The steps in this section show you how to make the necessary changes.
 
@@ -169,13 +169,13 @@ These steps use `example.com` as the access point, so replace this with your ser
 
 1.  Open the port you are using to access Strapi in your system's firewall.
 
-    - On **Debian** and **Ubuntu**, manage firewall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port using the following command:
+    - On **Debian** and **Ubuntu**, manage firewall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port using the following command:
 
         ```command
         sudo ufw allow 1337/tcp
         ```
 
-    - On **CentOS** and similar distributions, manage the firewall rules using Firewalld. Learn more in our guide [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/). With Firewalld configured and running, you should be able to open the necessary port using the following commands:
+    - On **CentOS** and similar distributions, manage the firewall rules using Firewalld. Learn more in our guide [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/). With Firewalld configured and running, you should be able to open the necessary port using the following commands:
 
         ```command
         sudo firewall-cmd --zone=public --add-port=1337/tcp --permanent
@@ -380,7 +380,7 @@ curl http://example.com:1337/api/posts -H "Authorization: bearer <STRAPI_API_TOK
 
 You have your own Strapi CMS operating now. With Strapi, you have a range of ways you can use the managed content in your applications — from REST and GraphQL APIs to specialized libraries. The rest of this guide gives you a sound working example for using your Strapi CMS for website content using a modern frontend framework.
 
-The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our [Getting Started with Next.js](/docs/guides/getting-started-next-js/) guide. But the example uses straightforward HTTP calls and concepts that should make everything readily adaptable to most any other framework.
+The example uses [Next.js](https://nextjs.org/) to build a website. You can learn more about Next.js in our [Getting Started with Next.js](/cloud/guides/getting-started-next-js/) guide. But the example uses straightforward HTTP calls and concepts that should make everything readily adaptable to most any other framework.
 
 ### Setting Up an Example Project
 
@@ -560,9 +560,9 @@ From there, you can navigate the example website to see how it renders your Stra
 
 1.  Access the Next.js website via a web browser. To access the website remotely, there are two ready options.
 
-    - Using an SSH tunnel. Follow steps in our guide on [accessing Futon over SSH](/docs/guides/access-futon-over-ssh-using-putty-on-windows/#establish-an-ssh-connection), being sure to replace the port number in that guide (`5984`) with the website port, `3000`.
+    - Using an SSH tunnel. Follow steps in our guide on [accessing Futon over SSH](/cloud/guides/access-futon-over-ssh-using-putty-on-windows/#establish-an-ssh-connection), being sure to replace the port number in that guide (`5984`) with the website port, `3000`.
 
-    - Using the server's public IP address. This requires you to open port `3000` in your system's firewall. You can derive the steps from the [Setting Up for Remote Access](/docs/guides/using-strapi-cms/#setting-up-for-remote-access) section above.
+    - Using the server's public IP address. This requires you to open port `3000` in your system's firewall. You can derive the steps from the [Setting Up for Remote Access](/cloud/guides/using-strapi-cms/#setting-up-for-remote-access) section above.
 
 From the main page for the example website, you should see content reflecting the *Homepage* entry you added to Strapi.
 

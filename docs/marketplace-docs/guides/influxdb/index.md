@@ -1,9 +1,9 @@
 ---
 description: "Deploy InfluxDB on a Linode Compute Instance. InfluxDB is a high-performance time series database designed to handle massive volumes of data with ease."
 keywords: ['time series database','monitoring','analytics','data']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 published: 2024-08-05
-title: "Deploy InfluxDB through the Linode Marketplace"
+title: "Deploy InfluxDB"
 external_resources:
 - '[InfluxData](https://www.influxdata.com/)'
 aliases: ['/products/tools/marketplace/guides/influxdb/']
@@ -14,7 +14,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 [InfluxDB](https://www.influxdata.com/) is a high-performance time series database designed to handle massive volumes of data with ease. Its intuitive query language and powerful visualization capabilities make it the go-to choice for monitoring, analytics, and IoT applications.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -46,7 +46,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ### Accessing the InfluxDB Server
 
-1. Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as `192-0-2-17.ip.linodeusercontent.com`. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions.
+1. Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as `192-0-2-17.ip.linodeusercontent.com`. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for detailed instructions.
 
     ![Screenshot of InfluxDB login page](influxdb_login.jpg)
 

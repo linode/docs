@@ -1,10 +1,10 @@
 ---
-title: "Deploy cPanel through the Linode Marketplace"
-description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
+title: "Deploy cPanel"
+description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Quick Deploy Apps."
 published: 2020-03-13
 modified: 2022-05-31
 keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
+tags: ["cpanel","linode platform","quick deploy apps","cloud-manager","managed hosting"]
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/products/tools/marketplace/guides/cpanel/','/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
@@ -21,7 +21,7 @@ marketplace_app_name: "cPanel"
 cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
 {{< /note >}}
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -42,7 +42,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 WHM is the core interface for managing your server and all websites (also called "accounts").
 
-1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing IP addresses and rDNS.
 
 1. The WHM login page should appear. Enter `root` as the username and use the root password you created when deploying this instance. Then click the **Log In** button.
 
@@ -54,7 +54,7 @@ WHM is the core interface for managing your server and all websites (also called
 
 1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel lets you quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
 
-    1. Within the nameservers for your domain name, create two [*A records*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
+    1. Within the nameservers for your domain name, create two [*A records*](/cloud/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager).
 
     1. Within the cPanel form, enter the following values into the nameserver fields. Replace *example.com* with the domain name you are using.
 
@@ -70,7 +70,7 @@ WHM is the core interface for managing your server and all websites (also called
 1. The cPanel license screen appears. Click on the **Purchase** button to be taken to cPanel's license management system. From here, you can obtain a trial license (if eligible) or purchase a license.
 
     {{< note >}}
-    Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
+    Provided the IP address hasn't already been registered in cPanel, your cPanel Quick Deploy App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
     {{< /note >}}
 
 1. After obtaining a license, you are automatically logged in and taken to WHM.

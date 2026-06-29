@@ -29,7 +29,7 @@ Many workloads benefit from custom routing or port forwarding solutions, includi
 
 Here are the basic steps needed to configure a Linux system as a router:
 
-1. **[Deploy *at least two* Compute Instances](#deploy-compute-instances)** (or other virtual machines) to the same data center. Connect all systems to the same private network, like a [VLAN](/docs/products/networking/vlans/). Designate one system as the router and connect it to the public internet or a different private network.
+1. **[Deploy *at least two* Compute Instances](#deploy-compute-instances)** (or other virtual machines) to the same data center. Connect all systems to the same private network, like a [VLAN](https://techdocs.akamai.com/cloud-computing/docs/vlan). Designate one system as the router and connect it to the public internet or a different private network.
 
 1.  **[Enable IP Forwarding](#enable-ip-forwarding)** on the Compute Instance designated as the router.
 
@@ -43,17 +43,17 @@ Continue reading for detailed instructions on each of these steps.
 
 To get started, use the Akamai Cloud Compute platform to deploy multiple Compute Instances. These can mimic a basic application that is operating on a private VLAN with a single router. Skip this section if you already have an application deployed and just wish to know how to configure IP forwarding or the router software.
 
-1.  Deploy two or more Compute Instances to the same region and designate one as the router. This guide uses Debian 12, but the instructions are generally applicable to other Linux distributions. On the deployment page, skip the VLAN section for now. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) to learn how to deploy Linode Compute Instances.
+1.  Deploy two or more Compute Instances to the same region and designate one as the router. This guide uses Debian 12, but the instructions are generally applicable to other Linux distributions. On the deployment page, skip the VLAN section for now. See [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) to learn how to deploy Linode Compute Instances.
 
-1.  Edit each Compute Instance's configuration profile. See [Managing Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) for information on viewing and editing configuration profiles.
+1.  Edit each Compute Instance's configuration profile. See [Managing Configuration Profiles](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance) for information on viewing and editing configuration profiles.
 
     - **Router Instance**: On the Compute Instance designated as the *router*, leave **eth0** as the public internet and set **eth1** as a VLAN. Enter a name for the VLAN and assign it an IP address from whichever subnet range you wish to use. For example, if you wish to use the `10.0.2.0/24` subnet range, assign the IP address `10.0.2.1/24`. By convention, the router should be assigned the value of `1` in the last segment.
 
     - **Other Instance/s**: On each Compute Instance *other than the router*, remove all existing network interfaces. Set *eth0* as a VLAN, select the VLAN you just created, and enter another IP address within your desired subnet (e.g. `10.0.2.2/24`, `10.0.2.3/24`, and so on).
 
-1.  Confirm that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is enabled and reboot each Compute Instance for the changes to take effect.
+1.  Confirm that [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking) is enabled and reboot each Compute Instance for the changes to take effect.
 
-1.  Log in to each instance and test the connectivity on each Compute Instance to ensure proper configuration. To do this, you can use [SSH](/docs/guides/connect-to-server-over-ssh/), or [Lish](/docs/products/compute/compute-instances/guides/lish/) if utilizing an Akamai Cloud Compute Instance.
+1.  Log in to each instance and test the connectivity on each Compute Instance to ensure proper configuration. To do this, you can use [SSH](/cloud/guides/connect-to-server-over-ssh/), or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) if utilizing an Akamai Cloud Compute Instance.
 
     -   Ping the VLAN IPv4 address of another system within the same VLAN:
 
@@ -104,7 +104,7 @@ Forwarding is disabled on most Linux systems by default. However, this must be e
     ```
     {{< /note >}}
 
-1.  Open the `/etc/sysctl.conf` file using a command-line text editor with `sudo` permissions such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/):
+1.  Open the `/etc/sysctl.conf` file using a command-line text editor with `sudo` permissions such as [nano](/cloud/guides/use-nano-to-edit-files-in-linux/):
 
     ```command {title="Router Instance"}
     sudo nano /etc/sysctl.conf
@@ -330,7 +330,7 @@ Linux network utilities like nftables, iptables, and Firewalld can serve as both
 
     By default, iptables rules are ephemeral. To make your configuration changes persistent, install the `iptables-persistent` package. When you do this, the rules saved within `/etc/iptables/rules.v4` (and `rules.v6` for IPv6) are loaded when the system boots up.
 
-    You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6`) file. For more information, see the relevant section in the [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
+    You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6`) file. For more information, see the relevant section in the [Controlling Network Traffic with iptables](/cloud/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
 
     ```command {title="Router Instance"}
     sudo mkdir /etc/iptables | sudo iptables-save | sudo tee /etc/iptables/rules.v4
@@ -366,17 +366,17 @@ Linux network utilities like nftables, iptables, and Firewalld can serve as both
 
 The last step is to manually adjust the network configuration settings for each Compute Instance *other than* the router.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) for each non-router Compute Instance you've deployed. While Network Helper was useful for automatically configuring the VLAN IP addresses, the configuration files controlled by Network Helper now need to be manually edited.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) and disable [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking#enable-or-disable-network-helper) for each non-router Compute Instance you've deployed. While Network Helper was useful for automatically configuring the VLAN IP addresses, the configuration files controlled by Network Helper now need to be manually edited.
 
-1.  Log in to each Linux system that is *not* designated as the router. To do so, you can use [SSH](/docs/guides/connect-to-server-over-ssh/) from the router, or [Lish](/docs/products/compute/compute-instances/guides/lish/) if using an Akamai Cloud Compute Instance.
+1.  Log in to each Linux system that is *not* designated as the router. To do so, you can use [SSH](/cloud/guides/connect-to-server-over-ssh/) from the router, or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) if using an Akamai Cloud Compute Instance.
 
-1.  Edit the configuration file that contains the settings for the private VLAN interface. The name and location of this file depends on the Linux distribution you are using. See the [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) series of guides and select the specific guide for your distribution. For a system running [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) on Debian 12, the network configuration is typically stored within `/etc/network/interfaces`:
+1.  Edit the configuration file that contains the settings for the private VLAN interface. The name and location of this file depends on the Linux distribution you are using. See the [Manual Network Configuration on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance) series of guides and select the specific guide for your distribution. For a system running [ifupdown](https://techdocs.akamai.com/cloud-computing/docs/network-configuration-using-ifupdown) on Debian 12, the network configuration is typically stored within `/etc/network/interfaces`:
 
     ```command {title="Other Instance/s"}
     sudo nano /etc/network/interfaces
     ```
 
-1.  Within this file, adjust the parameter that defines the gateway for the VLAN interface. The value should be set to the IP address assigned to the *router's* VLAN interface, such as `10.0.2.1` if using the examples in this guide. For a system running [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) on Debian 12, add the gateway parameter in the location shown in the example below:
+1.  Within this file, adjust the parameter that defines the gateway for the VLAN interface. The value should be set to the IP address assigned to the *router's* VLAN interface, such as `10.0.2.1` if using the examples in this guide. For a system running [ifupdown](https://techdocs.akamai.com/cloud-computing/docs/network-configuration-using-ifupdown) on Debian 12, add the gateway parameter in the location shown in the example below:
 
     ```file {title="/etc/network/interfaces" hl_lines="27"}
     # Generated by Linode Network Helper
@@ -410,7 +410,7 @@ The last step is to manually adjust the network configuration settings for each 
 
 1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Once those settings are saved, restart the Compute Instance or run the corresponding command to apply the changes. Continuing to use [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) as an example, run the command below to apply the new network configuration settings:
+1.  Once those settings are saved, restart the Compute Instance or run the corresponding command to apply the changes. Continuing to use [ifupdown](https://techdocs.akamai.com/cloud-computing/docs/network-configuration-using-ifupdown) as an example, run the command below to apply the new network configuration settings:
 
     ```command {title="Other Instance/s"}
     sudo ifdown eth0 && sudo ip addr flush eth0 && sudo ifup eth0

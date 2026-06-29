@@ -1,9 +1,9 @@
 ---
-title: "Deploy Passky through the Linode Marketplace"
+title: "Deploy Passky"
 description: "Learn how to deploy Passky, a lightweight, open-source password manager, on the Linode platform."
 published: 2023-01-23
 keywords: ['passky','password manager','security','authentication']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
 aliases: ['/products/tools/marketplace/guides/passky/']
@@ -16,7 +16,7 @@ marketplace_app_name: "Passky"
 
 [Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -46,7 +46,7 @@ marketplace_app_name: "Passky"
 
 ### Accessing the Passky App
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing the rDNS value.
 
 1. On the Passky front page, enter the username and password you set during deployment to access the server GUI.
 

@@ -42,7 +42,7 @@ This guide assumes you have some basic familiarity with the following concepts a
 
 ## Create Your Data Sets
 
-In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then create a third data set using a Perl script that will extract information from the first two data sets. In the [Create Visualizations for your Data](/docs/guides/visualize-history/#create-visualizations-for-your-data) section of the guide, you will use these various data sets to create corresponding visualizations.
+In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then create a third data set using a Perl script that will extract information from the first two data sets. In the [Create Visualizations for your Data](/cloud/guides/visualize-history/#create-visualizations-for-your-data) section of the guide, you will use these various data sets to create corresponding visualizations.
 
 ### Data Set 1 - Bash History File
 A Bash history file stores all commands executed in your command line interpreter. View your 10 most recently executed commands with the following command:
@@ -70,7 +70,7 @@ Create a new directory named `data-sets`to store your data and copy your Bash hi
 
 ### Data Set 2 - Zsh History File
 
-If you are using the Zsh shell interpreter, you can use its history file as a second data set. Zsh's history file format includes data that you will need to exclude from your data set. Use [AWK](/docs/guides/introduction-to-awk/) to clean up your Zsh history file and save the output to a new file in the `data-sets` directory:
+If you are using the Zsh shell interpreter, you can use its history file as a second data set. Zsh's history file format includes data that you will need to exclude from your data set. Use [AWK](/cloud/guides/introduction-to-awk/) to clean up your Zsh history file and save the output to a new file in the `data-sets` directory:
 
     awk -F ";" '{$1=""; print $0}' ~/.zsh_history | sed -e "s/^[ \t]*//" -e "/^$/d" > data-sets/data-2
 
@@ -529,5 +529,5 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
 Now that you are familiar with some data visualization tools and simple techniques, you can begin to explore more sophisticated approaches using the same tools explored in this guide. Here are a few ideas you can consider:
 
 - Create a new data set by extracting all `git` related commands from your history files; analyze and visualize them.
-- Automate some of the techniques discussed in this guide using [Cron](/docs/guides/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
+- Automate some of the techniques discussed in this guide using [Cron](/cloud/guides/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
 - Explore the [Python for Data Science](http://wavedatalab.github.io/datawithpython/index.html) eBook's [data visualization](http://wavedatalab.github.io/datawithpython/visualize.html) section for a deeper dive into using pandas.

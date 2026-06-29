@@ -1,10 +1,10 @@
 ---
-title: "Deploy MongoDB through the Linode Marketplace"
-description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
+title: "Deploy MongoDB"
+description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Akamai Quick Deploy App."
 published: 2020-03-11
 modified: 2022-03-08
 keywords: ['mongodb','marketplace', 'database']
-tags: ["linode platform","database","marketplace","cloud-manager"]
+tags: ["linode platform","database","quick deploy apps","cloud-manager"]
 expiryDate: 2023-05-01
 image: MongoDB_oneclickapps.png
 external_resources:
@@ -21,7 +21,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 MongoDB seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON output and specialized, language-specific bindings that make it particularly attractive for use in custom application development and rapid prototyping. MongoDB has been used in a number of large scale [production deployments](https://www.mongodb.com/community/deployments) and is currently one of the most popular database engines across all systems.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -54,7 +54,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 
@@ -94,5 +94,5 @@ For more information on access control and user management, as well as other tip
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/cloud/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/cloud/guides/build-database-clusters-with-mongodb/)

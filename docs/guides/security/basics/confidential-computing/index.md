@@ -20,7 +20,7 @@ The Consortium was launched in August, 2019 under the wing of the Linux Foundati
 
 Cloud computing technology walls off sensitive data in a protected enclave in a CPU during processing – aka data in use. The data tucked inside – and the processing munching on it – are only accessible by authorized computer code. No one and nothing else can detect its presence. Think of it as a black box. Once the processing is done, the data reverts to another state – either at rest (stored) or in transit (migrating to another destination).
 
-The primary goal is to make accessing data stored in the cloud and allowing cloud services to access sensitive data residing anywhere, safe for the most sensitive of data and workloads. It’s a tall order in an age with an increasing amount of [cyber attacks](/docs/guides/types-of-cyber-attacks/#the-major-cyber-attacks). But that’s exactly why a new approach and a team of protectors are so sorely needed.
+The primary goal is to make accessing data stored in the cloud and allowing cloud services to access sensitive data residing anywhere, safe for the most sensitive of data and workloads. It’s a tall order in an age with an increasing amount of [cyber attacks](/cloud/guides/types-of-cyber-attacks/#the-major-cyber-attacks). But that’s exactly why a new approach and a team of protectors are so sorely needed.
 
 ## Confidential Computing Use Cases
 

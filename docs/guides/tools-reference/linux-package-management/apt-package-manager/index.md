@@ -24,12 +24,12 @@ This guide aims to walk you through using APT and its command-line tools to perf
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
+1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish). Review the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
-Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## What's the difference between `apt` and `apt-get`/`apt-cache`?
@@ -139,11 +139,11 @@ The `apt list` command lists all available, installed, or upgradeable packages. 
 
 Additional options, commands, and notes:
 
--   Use [grep](/docs/guides/how-to-use-grep/) to quickly search through the list for specific package names or other strings. Replace *[string]* with the package name or other term you wish to search for.
+-   Use [grep](/cloud/guides/how-to-use-grep/) to quickly search through the list for specific package names or other strings. Replace *[string]* with the package name or other term you wish to search for.
 
         apt list --installed | grep [string]
 
--   Use a content viewer like [less](/docs/guides/how-to-use-less/) to interact with the output, which may help you view or search for your desired information.
+-   Use a content viewer like [less](/cloud/guides/how-to-use-less/) to interact with the output, which may help you view or search for your desired information.
 
         apt list --installed | less
 
@@ -207,7 +207,7 @@ If you wish to replicate the currently installed packages to another system with
 
     This command creates a new file using the name provided in the last step and appending `.apt-clone.tar.gz`.
 
-1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
+1.  Copy the file to your new system. See the [Download Files from Your Linode](/cloud/guides/download-files-from-a-compute-instance/) guide or the [File Transfer](/cloud/guides/tools-reference/file-transfer/) section for more information.
 
 1.  Install apt-clone on the new system (see Step 1).
 

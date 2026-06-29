@@ -25,7 +25,7 @@ Today, there are three new types of firewalls, with considerable overlap between
 
 - **Cloud-Based Firewalls** may be an NGFW, WAF, or some combination of the two. You typically deploy cloud-based NGFWs at the perimeter of cloud deployments, and WAFs close to application servers. Importantly, this is not an either/or scenario, as the two working together provide more defense than either working alone.
 
-Regardless of type, you may provision a cloud-based firewall as a firewall-as-a-service (FWaaS) or an application running on a VM. [Akamai offers FWaaS products](/docs/products/networking/cloud-firewall/) that protect hosts anywhere in the cloud, even across multiple data centers. FWaaS offerings have the advantage of offloading system maintenance onto the provider.
+Regardless of type, you may provision a cloud-based firewall as a firewall-as-a-service (FWaaS) or an application running on a VM. [Akamai offers FWaaS products](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall) that protect hosts anywhere in the cloud, even across multiple data centers. FWaaS offerings have the advantage of offloading system maintenance onto the provider.
 
 Firewall applications may be software versions of commercial firewalls or open source packages included with Linux or BSD distributions. As applications running on a VM, these firewalls work similarly to their non-cloud versions.
 
@@ -37,11 +37,11 @@ There are two key differences between network and application firewalls: how the
 
 A useful metaphor is that of a large office building, with network firewalls playing the role of security staff at the building entrances. In contrast, application firewalls are more like the locks or badge readers on interior doors. Here, network firewalls cover the entire building, while application firewalls cover specific rooms.
 
-Network firewalls generally make access-control decisions using criteria at the network and/or transport layers, or Layers 3 and 4 of [the seven-layer OSI model](/docs/guides/introduction-to-osi-networking-model/).
+Network firewalls generally make access-control decisions using criteria at the network and/or transport layers, or Layers 3 and 4 of [the seven-layer OSI model](/cloud/guides/introduction-to-osi-networking-model/).
 
 It’s best practice to place network firewalls at or close to the perimeter of each data center in your cloud network. Think of these as gatekeepers, blocking malicious traffic before it enters your network.
 
-Just as importantly, a firewall at the network edge also manages which traffic can leave. A common error in firewall configuration is to allow all outbound traffic from protected hosts. To protect against malware and rogue applications that "phone home", your firewalls should only allow the minimal amount of outbound traffic your security policy permits. See [Firewall Best Practices for Securing Your Cloud-based Applications](/docs/guides/firewall-best-practices-for-securing-your-cloud-based-applications/) for more information.
+Just as importantly, a firewall at the network edge also manages which traffic can leave. A common error in firewall configuration is to allow all outbound traffic from protected hosts. To protect against malware and rogue applications that "phone home", your firewalls should only allow the minimal amount of outbound traffic your security policy permits. See [Firewall Best Practices for Securing Your Cloud-based Applications](/cloud/guides/firewall-best-practices-for-securing-your-cloud-based-applications/) for more information.
 
 Because cloud-based firewalls allow for microsegmentation, it’s best practice to deploy network firewalls *between* network segments in addition to the periphery. This is a defense-in-depth approach to network design.
 

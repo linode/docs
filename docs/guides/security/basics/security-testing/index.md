@@ -50,7 +50,7 @@ Dynamic application security testing (DAST) tools examine applications while the
 
 One popular technique employed by DAST tools is the use of fuzzing. This is the practice of deliberately providing software with unexpected or illegal values, often at high rates and/or in high volumes.
 
-Consider the example of network routing software. A fuzzing tool might bombard routing software with illegal and constantly iterating values for every field in the [IP header of every packet](/docs/guides/how-to-understand-ip-addresses/#what-is-an-internet-protocol). Fuzzing tests often expose memory leaks or trigger hangs and reboots. They represent an excellent way to detect problems relatively early in development.
+Consider the example of network routing software. A fuzzing tool might bombard routing software with illegal and constantly iterating values for every field in the [IP header of every packet](/cloud/guides/how-to-understand-ip-addresses/#what-is-an-internet-protocol). Fuzzing tests often expose memory leaks or trigger hangs and reboots. They represent an excellent way to detect problems relatively early in development.
 
 Examples of DAST tools include [Acunetix](https://www.acunetix.com/plp/dast/), [AppSider](https://www.rapid7.com/products/appspider/), [CheckMarx AST](https://checkmarx.com/product/application-security-platform/), [GitLab](https://about.gitlab.com/enterprise/), [InsightAppSec](https://www.rapid7.com/products/insightappsec/), [Stackhawk](https://www.stackhawk.com/product/), and [Veracode](https://www.veracode.com/products/dynamic-analysis-dast).
 
@@ -68,7 +68,7 @@ SQL injection test tools exist as a standalone category because injection attack
 
 For example, a successful SQL injection attack modifies a database by adding, updating, or deleting fields. It may expose personally identifiable information (PII) such as credit-card numbers or medical records. In some cases, SQL injection attacks also send commands to the underlying operating system.
 
-Because SQL injection attacks are so common, numerous tools exist to automate testing of this class of vulnerabilities. Some examples include [SQLmap](https://sqlmap.org/), [jSQL Injection](https://github.com/ron190/jsql-injection), and [BBQSQL](https://github.com/CiscoCXSecurity/bbqsql). Another open-source tool, [NoSQLMap](https://github.com/codingo/NoSQLMap), automates testing of code-injection vulnerabilities in NoSQL databases such as [CouchDB](/docs/guides/install-couchdb-20-on-ubuntu/) and [MongoDB](/docs/guides/mongodb-introduction/).
+Because SQL injection attacks are so common, numerous tools exist to automate testing of this class of vulnerabilities. Some examples include [SQLmap](https://sqlmap.org/), [jSQL Injection](https://github.com/ron190/jsql-injection), and [BBQSQL](https://github.com/CiscoCXSecurity/bbqsql). Another open-source tool, [NoSQLMap](https://github.com/codingo/NoSQLMap), automates testing of code-injection vulnerabilities in NoSQL databases such as [CouchDB](/cloud/guides/install-couchdb-20-on-ubuntu/) and [MongoDB](/cloud/guides/mongodb-introduction/).
 
 ### Software Composition Analysis
 
@@ -98,7 +98,7 @@ The list below includes five ways that you can make optimal use of AST tools.
 
 - **Don’t trust third-party code**. Virtually all networked applications today include third-party components. [As a famous comic wryly observed](https://xkcd.com/2347/), modern infrastructure today might well depend on, “a project some random person in Nebraska has been thanklessly maintaining since 2003.” There are many excellent third-party components available, but the onus is on development teams to ensure any outsourced code is free from known vulnerabilities and kept up to date. SCA tools should be an essential part of any AST toolkit.
 
-- **Integrate patch management into CI/CD processes**. With the proliferation of zero-day vulnerabilities, it’s no longer sufficient to task IT managers with patch management, the practice of continually updating software to guard against newly discovered attack vectors in software. Certainly patch management is important in production settings, but it’s also critical in earlier stages of the software lifecycle. [Continuous development and integration (CI/CD)](/docs/guides/introduction-ci-cd/) teams need to include patching as part of their development processes, and ensure vulnerabilities are mitigated as soon as they’re discovered. This is particularly true when incorporating third-party components such as open-source libraries; those also need to be patched as soon as those projects announce fixes for known vulnerabilities.
+- **Integrate patch management into CI/CD processes**. With the proliferation of zero-day vulnerabilities, it’s no longer sufficient to task IT managers with patch management, the practice of continually updating software to guard against newly discovered attack vectors in software. Certainly patch management is important in production settings, but it’s also critical in earlier stages of the software lifecycle. [Continuous development and integration (CI/CD)](/cloud/guides/introduction-ci-cd/) teams need to include patching as part of their development processes, and ensure vulnerabilities are mitigated as soon as they’re discovered. This is particularly true when incorporating third-party components such as open-source libraries; those also need to be patched as soon as those projects announce fixes for known vulnerabilities.
 
 - **Think negative thoughts**. Especially in early-stage unit testing, it’s all too common to design tests that merely verify a component works as intended. Attackers don’t think this way, and neither should developers. Negative testing – presenting applications with unexpected values – should be part of every test plan.
 
@@ -106,7 +106,7 @@ The list below includes five ways that you can make optimal use of AST tools.
 
 ## Conclusion
 
-To reduce the risk of malicious attacks on your applications, it's important to use application security testing tools to mitigate any vulnerabilities. This guide covered some of the most important areas of AST, like static application security testing, dynamic application security testing, and SQL injecting testing. These areas help cover security throughout an application's technology stack and the software development lifecycle. See the [security basics](/docs/guides/security/basics/) section our documentation library to learn more about security best practices in information technology.
+To reduce the risk of malicious attacks on your applications, it's important to use application security testing tools to mitigate any vulnerabilities. This guide covered some of the most important areas of AST, like static application security testing, dynamic application security testing, and SQL injecting testing. These areas help cover security throughout an application's technology stack and the software development lifecycle. See the [security basics](/cloud/guides/security/basics/) section our documentation library to learn more about security best practices in information technology.
 
 
 

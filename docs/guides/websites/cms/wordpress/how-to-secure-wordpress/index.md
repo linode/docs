@@ -23,7 +23,7 @@ WordPress is a popular content management and website creation software system u
 
 ## Securing Your Website Through HTTPS
 
-The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/docs/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualys SSL Labs.
+The first step in securing your WordPress installation is to ensure that you have a [TLS/SSL certificate](/cloud/guides/what-is-a-tls-certificate/) configured using the TLS v1.2 (or later) protocol. This allows your website to be accessed securely on all major browsers, including Chrome, Firefox, Safari, and Edge (all of which require TLS v1.2 or later as of 2020). You can quickly analyze your site's current connection by navigating to your domain in a web browser. Look for the lock icon to the left of the URL in the address bar. Clicking on this lock should show a message similar to "Connection secure" if your site meets the browser's TLS requirements. You can also check a domain's certificate by using the [SSL Server Test](https://www.ssllabs.com/ssltest/) by Qualys SSL Labs.
 
 ### Installing a TLS Certificate using Certbot
 
@@ -31,12 +31,12 @@ If your site does not yet have a certificate, you can easily generate one direct
 
 Install certbot and configure your TLS certificate by using one of the following guides:
 
-- [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/)
-- [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/)
+- [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/cloud/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/)
+- [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/cloud/guides/enabling-https-using-certbot-with-apache-on-ubuntu/)
 
 You can also follow the [installation instructions](https://certbot.eff.org/instructions) on certbot's website. This should prompt you to select your web server software as well as the operating system of your server and will output the specific instructions that should work for you.
 
-If you prefer to use a Certificate Authority other then Let's Encrypt, see the [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) guide for further instructions.
+If you prefer to use a Certificate Authority other then Let's Encrypt, see the [Obtain a Commercially Signed TLS Certificate](/cloud/guides/obtain-a-commercially-signed-tls-certificate/) guide for further instructions.
 
 ### Configuring the Web Server
 
@@ -44,11 +44,11 @@ Next, you'll want to verify that your web server is properly configured to handl
 
 - **Nginx**
   - **Nginx documentation:** [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
-  - **Linode guide:** [Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
+  - **Linode guide:** [Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
 - **Apache**
   - **Apache documentation:** [SSL/TLS Strong Encryption: How-To
 ](https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html)
-  - **Linode guide:** [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/)
+  - **Linode guide:** [SSL Certificates with Apache on Debian & Ubuntu](/cloud/guides/ssl-apache2-debian-ubuntu/)
 
 
 ## Enforcing a Strong Password Policy

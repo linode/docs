@@ -27,7 +27,7 @@ There are several best practices you can adopt to help you avoid merge conflicts
 
 - Modularize your project by splitting it into several small files instead of a few large ones.
 
-- Keep your feature branches up-to-date by [rebasing](/docs/guides/git-rebase-command/) them frequently.
+- Keep your feature branches up-to-date by [rebasing](/cloud/guides/git-rebase-command/) them frequently.
 
 - Avoid making sweeping changes to your code base. For example, avoid changing your code-formatting conventions or renaming a widely-used class. If you have to do this, let everyone on the project know so that they can merge these changes into their local working branches.
 
@@ -139,7 +139,7 @@ Remember to commit or stash any uncommitted changes in your working directory, s
 You can also use `git commit`. This method doesn't check for unresolved conflicts, so it’s not as safe as `git merge --continue`.
     {{< /note >}}
 
-- If you resolve conflicts on the command line, instead of using a merge tool, it’s a good idea to use the [Grep command](/docs/guides/how-to-use-grep/) to search for conflict markers that you may have missed.
+- If you resolve conflicts on the command line, instead of using a merge tool, it’s a good idea to use the [Grep command](/cloud/guides/how-to-use-grep/) to search for conflict markers that you may have missed.
 
 - Git enters your system's default editor so that you can edit the commit message (unless you use the `--no-edit` option). In your commit message, add some information about what caused the conflict and how you resolved it.
 
@@ -245,7 +245,7 @@ The chapter on [Advanced Merging](https://git-scm.com/book/en/v2/Git-Tools-Advan
 
 ### Visual Studio Code (VS Code)
 
-[Visual Studio Code (VS Code)](/docs/guides/vscode-marketplace-app/) is a full-featured code editor. VS Code provides a good set of conflict-resolution tools that can be invoked from the command line. You must configure Git to use VS Code as a merge tool. Use the following Git commands to set this up:
+[Visual Studio Code (VS Code)](/cloud/marketplace-docs/guides/vscode/) is a full-featured code editor. VS Code provides a good set of conflict-resolution tools that can be invoked from the command line. You must configure Git to use VS Code as a merge tool. Use the following Git commands to set this up:
 
     git config --global merge.tool code
     git config --global mergetool.code.cmd 'code --wait $MERGED'

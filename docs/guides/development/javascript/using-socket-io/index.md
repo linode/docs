@@ -18,12 +18,12 @@ Socket.IO provides applications real-time, bidirectional communications. It is s
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Socket.IO?
@@ -44,7 +44,7 @@ Beyond that, Socket.IO provides a set of higher-level APIs over WebSockets. This
 
 So, why use WebSockets directly? Socket.IO gives a higher-level interface, but for some use cases that is not wanted. In fact, some use cases specifically call for lower-level control over connections and communications. Such cases likely need to work directly with WebSockets.
 
-You can learn more about WebSockets in our tutorial [Introduction to WebSockets](/docs/guides/introduction-to-websockets/).
+You can learn more about WebSockets in our tutorial [Introduction to WebSockets](/cloud/guides/introduction-to-websockets/).
 
 ## How to Use Socket.IO
 
@@ -56,9 +56,9 @@ This tutorial's example application requires a Socket.IO server, as well as a se
 
 More options exist for Socket.IO, including a Python implementation, [python-socketio](https://github.com/miguelgrinberg/python-socketio). The general approach taken here should be similar regardless of the Socket.IO server implementation.
 
-To learn more about Express JS, reference our [Express JS Tutorial](/docs/guides/express-js-tutorial/). This guide uses a simpler setup, but the Express JS tutorial showcases more capabilities.
+To learn more about Express JS, reference our [Express JS Tutorial](/cloud/guides/express-js-tutorial/). This guide uses a simpler setup, but the Express JS tutorial showcases more capabilities.
 
-1.  Install the Node Package Manager (NPM). Follow the relevant section of our guide on [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm).
+1.  Install the Node Package Manager (NPM). Follow the relevant section of our guide on [How to Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#how-to-install-npm).
 
 1.  Create a directory for the example project and change into it as the working directory. This tutorial uses the directory name `socket-example`. The client-side code gets added to a subdirectory in the next section.
 
@@ -214,7 +214,7 @@ Below are a couple of notable AI projects. Both are open source, making them eff
 
 -   [botpress](https://github.com/botpress/botpress) is a full developer stack application for building and running conversational AI applications. botpress provides an easy-to-navigate administrator interface to construct custom chatbots.
 
-See how to set up a chatbot using Rasa through our guide [Introduction to the Rasa Framework for Automated Chats](/docs/guides/getting-started-with-rasa/).
+See how to set up a chatbot using Rasa through our guide [Introduction to the Rasa Framework for Automated Chats](/cloud/guides/getting-started-with-rasa/).
 
 ### Creating a Client
 
@@ -368,7 +368,7 @@ node index.js
 
 Navigate to `localhost:3000` in a web browser to see the application. To access the application remotely, use an SSH tunnel:
 
--   On **Windows**, use the PuTTY tool to set up an SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use `3000` as the **Source port** and `127.0.0.1:3000` as the **Destination**.
+-   On **Windows**, use the PuTTY tool to set up an SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/cloud/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use `3000` as the **Source port** and `127.0.0.1:3000` as the **Destination**.
 
 -   On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the remote server and `192.0.2.0` with the remote server's IP address:
 
@@ -384,4 +384,4 @@ This covers the basics of setting up WebSockets with Socket.IO, from developing 
 
 The example shown here is a brief example of Socket.IO's capabilities, but you can learn more through the link to the official Socket.IO documentation below.
 
-Interested in the idea of integrating a chatbot with a Socket.IO server? Be sure to check out our [Introduction to the Rasa Framework for Automated Chats](/docs/guides/getting-started-with-rasa/) guide discussed above.
+Interested in the idea of integrating a chatbot with a Socket.IO server? Be sure to check out our [Introduction to the Rasa Framework for Automated Chats](/cloud/guides/getting-started-with-rasa/) guide discussed above.

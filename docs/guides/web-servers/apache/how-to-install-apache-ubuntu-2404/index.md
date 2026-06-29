@@ -21,9 +21,9 @@ The Apache HTTP Web Server — usually just called Apache — is one of the most
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
@@ -32,7 +32,7 @@ The Apache HTTP Web Server — usually just called Apache — is one of the most
     ```
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Apache
@@ -105,7 +105,7 @@ The Apache service runs on `systemd`, which can be used to manage the Apache ser
 
 ### Apache Modules
 
-Apache can be extended and modified with modules. These range from modules that integrate interpreters like PHP and Python, enabling dynamic content, to modules that change Apache's fundamental model for handling connections. (See the next section for more on the latter type of modules, called [Multi-processing Modules](/docs/guides/how-to-install-apache-ubuntu-2404/#multi-processing-modules)).
+Apache can be extended and modified with modules. These range from modules that integrate interpreters like PHP and Python, enabling dynamic content, to modules that change Apache's fundamental model for handling connections. (See the next section for more on the latter type of modules, called [Multi-processing Modules](/cloud/guides/how-to-install-apache-ubuntu-2404/#multi-processing-modules)).
 
 Apache modules are typically installed via the package manager. After that, you can manage modules through Apache.
 
@@ -258,7 +258,7 @@ This section walks you through setting up your own website using Apache. In doin
     sudo ufw allow http
     ```
 
-    Refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more on how to use UFW for managing your firewall.
+    Refer to our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide for more on how to use UFW for managing your firewall.
 
 ### Launching the Website
 

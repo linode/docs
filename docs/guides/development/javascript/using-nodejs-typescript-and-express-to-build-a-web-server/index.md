@@ -28,7 +28,7 @@ This guide shows you how to use TypeScript with two tools that are commonly used
 The majority of the steps in this guide are performed on your computer's local development environment. The following sections show you how to install TypeScript, Node.js, Express, and package dependencies on your computer. Any additional configuration steps required by each tool are also covered.
 
 {{< note >}}
-If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
+If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
 {{< /note >}}
 
 1. In your home directory, create a new directory named `typescript-nodejs` and move into the new directory.
@@ -72,7 +72,7 @@ If you do not have Node.js and the node version manager (nvm) installed on your 
 There is also a field defined in the `package.json` file called the `repository` field. You don't have to provide a value for this field if you don’t have a repository configured to store your code.
 {{< /note >}}
 
-1. Use [npm](/docs/guides/install-and-use-npm-on-linux/) to install Express with the command below. Ensure you are still in the `typescript-nodejs` directory when running the command.
+1. Use [npm](/cloud/guides/install-and-use-npm-on-linux/) to install Express with the command below. Ensure you are still in the `typescript-nodejs` directory when running the command.
 
         npm install express
 
@@ -202,4 +202,4 @@ app.listen(3000, () => {
 
 ## Conclusion
 
- When you use TypeScript to build a web application, you get the benefits of stricter programming language that is interchangeable with JavaScript. When using Express and Node.js with TypeScript your code is mush less error prone and verbose. Their benefits allow you to spend more time creating your web application's features. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about the differences between the two languages. If you are newer to TypeScript, you can refer to our guides on TypeScript [classes](/docs/guides/typescript-classes-get-started/), [decorators](/docs/guides/typescript-decorators-getting-started/), [functions](/docs/guides/typescript-functions-getting-started/), and [types](/docs/guides/typescript-types-get-started/).
+ When you use TypeScript to build a web application, you get the benefits of stricter programming language that is interchangeable with JavaScript. When using Express and Node.js with TypeScript your code is mush less error prone and verbose. Their benefits allow you to spend more time creating your web application's features. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about the differences between the two languages. If you are newer to TypeScript, you can refer to our guides on TypeScript [classes](/cloud/guides/typescript-classes-get-started/), [decorators](/cloud/guides/typescript-decorators-getting-started/), [functions](/cloud/guides/typescript-functions-getting-started/), and [types](/cloud/guides/typescript-types-get-started/).

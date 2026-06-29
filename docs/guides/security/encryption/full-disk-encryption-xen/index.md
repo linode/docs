@@ -24,7 +24,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 
 ## Potential Drawbacks
 
-Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
+Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service) can't mount encrypted disks.
 
 ## Getting Started
 
@@ -37,7 +37,7 @@ Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full di
     - A swap image. You'll need to choose an appropriate swap size based your particular needs.
     - A `root` image to store the files in the root of your filesystem.
 
-3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode). Ensure that your disks are attached as follows:
+3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode). Ensure that your disks are attached as follows:
 
     - /boot xvda
     - swap xvdb
@@ -49,7 +49,7 @@ You've successfully created the disks for your Linode.
 
 Next, you'll need to create a configuration profile for the new Linode. Here's how to do it:
 
-1.  [Create a new configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#create-a-configuration-profile) in the Linode Manager.
+1.  [Create a new configuration profile](https://techdocs.akamai.com/cloud-computing/docs/manage-configuration-profiles-on-a-compute-instance#create-a-configuration-profile) in the Linode Manager.
 2.  Select the `pv-grub-x86_64` kernel from the **Kernel** menu.
 3.  In the **Block Device Assignment** section, select the disks you created in the previous section of this guide.
 4.  Disable the **Automount devtmpfs** and **Distro Helper** settings.
@@ -61,8 +61,8 @@ Congratulations! You're now ready to set up full disk encryption on your Linode.
 
 Now you're ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here's how to do it:
 
-1.  [Reboot into Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
-2.  [Connect to LISH](/docs/products/compute/compute-instances/guides/lish/), which will allow you to access the Linode's virtual console.
+1.  [Reboot into Finnix](https://techdocs.akamai.com/cloud-computing/docs/rescue-and-rebuild#boot-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
+2.  [Connect to LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish), which will allow you to access the Linode's virtual console.
 3.  Enter the following command to create an encrypted volume. You'll be prompted for a passphrase. Make sure that you enter a very strong passphrase, and that you store the passphrase in a physically secure location. Or better yet, memorize the passphrase and don't store it anywhere! :
 
         cryptsetup luksFormat /dev/xvdc
@@ -197,4 +197,4 @@ You're almost finished! Just a couple more steps and you'll have a Linode with e
         ^a^d
         reboot 1
 
-If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.

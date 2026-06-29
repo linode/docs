@@ -21,9 +21,9 @@ This guide covers Redis's SCAN commands, which provide a cursor-based method for
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -35,10 +35,10 @@ This guide covers Redis's SCAN commands, which provide a cursor-based method for
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install a Redis Server](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install a Redis Server](/cloud/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the SCAN Command?
@@ -166,4 +166,4 @@ The `TYPE` option for the `SCAN` command is only supported in Redis 6 or later. 
 
 With that, you are ready to start making use of SCAN commands on your Redis instance. These commands can provide effective methods for dealing with large and complex data sets. And the tools discussed in this guide help you to make the most of these commands to efficiently handle your data.
 
-Want to continue learning about Redis, and get the most effective use out of your server? Thankfully, we have plenty of [guides on using Redis](/docs/guides/databases/redis/) that can help you navigate Redis data types, configurations, and more.
+Want to continue learning about Redis, and get the most effective use out of your server? Thankfully, we have plenty of [guides on using Redis](/cloud/guides/databases/redis/) that can help you navigate Redis data types, configurations, and more.

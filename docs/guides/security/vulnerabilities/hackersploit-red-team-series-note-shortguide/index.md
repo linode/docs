@@ -13,4 +13,4 @@ show_on_rss_feed: false
 
 ## HackerSploit Red Team Series
 
-This guide is part of the HackerSploit Red Team series of guides. To navigate to other guides in the series, visit the [series' parent page](/docs/guides/hackersploit-red-team-series/).
+This guide is part of the HackerSploit Red Team series of guides. To navigate to other guides in the series, visit the [series' parent page](/cloud/guides/hackersploit-red-team-series/).

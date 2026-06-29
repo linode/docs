@@ -21,7 +21,7 @@ deprecated: true
 
 ## Dolphin Prerequisites
 
-Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
+Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/cloud/guides/hosting-a-website-ubuntu-18-04/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
 
 ### Installing PHP Extensions
 
@@ -72,7 +72,7 @@ You have successfully modified your `php.ini` file for Dolphin.
 
 ### Setting Up Email
 
-To configure Dolphin to send email, you'll need to install either Sendmail or [Postfix](/docs/email/postfix/). You should be able to use [send-only exim](/docs/email/exim/) as well.
+To configure Dolphin to send email, you'll need to install either Sendmail or [Postfix](/cloud/guides/email/postfix/). You should be able to use [send-only exim](/cloud/guides/email/exim/) as well.
 
 ### Installing JRE
 
@@ -82,7 +82,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) and the [Firewall reference manuals](/cloud/guides/security/firewalls/).
 
 You have successfully installed JRE on your Linode.
 
@@ -91,7 +91,7 @@ You have successfully installed JRE on your Linode.
 Now that you've installed the necessary prerequisites, we can start installing Dolphin. We'll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.
 
 {{< note >}}
-We assume that you followed the [Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+We assume that you followed the [Hosting a Website guide](/cloud/guides/hosting-a-website-ubuntu-18-04/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 
 ### Downloading Dolphin
@@ -364,7 +364,7 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 20. If the start was successful, you can use the [Boonex Media Server Tester](http://www.boonex.com/rms.html) to verify that your RMS install is working properly. If you get "NetConnection.Connect.Success", everything is working.
 
     {{< note>}}
-    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) and the [Firewall reference manuals](/cloud/security/firewalls).
     {{< /note >}}
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.

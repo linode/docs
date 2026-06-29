@@ -11,13 +11,10 @@ import {
 	newDropdownsController,
 	newTabsController,
 } from './components/index';
-import { toggleBooleanClass, setIsTranslating, getCurrentLang, scrollToActiveExplorerNode } from './helpers/helpers';
+import { toggleBooleanClass, scrollToActiveExplorerNode } from './helpers/helpers';
 import { leackChecker } from './helpers/leak-checker';
 import {
-	addLangToLinks,
-	newLanguageSwitcherController,
 	newNavController,
-	newPromoCodesController,
 	newToCController,
 	newPaginatorController,
 	newSearchExplorerInitial,
@@ -35,11 +32,20 @@ import { newFileIssueButton } from './navigation/file-issue-button';
 // Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
 
-// Handle consent changes.
 (function () {
+	// Handle consent changes.
 	window.OptanonWrapper = function () {
 		const e = new CustomEvent('onetrust:groups-updated', { detail: OnetrustActiveGroups });
 		window.dispatchEvent(e);
+	};
+
+	// These are placed on the window object for convenience.
+	window.docsBasePath = params.base_path || '';
+	window.docsRelUrl = function (url) {
+		if (url.startsWith('/')) {
+			return window.docsBasePath + url;
+		}
+		return url;
 	};
 })();
 
@@ -85,8 +91,7 @@ const searchConfig = getSearchConfig(params);
 	// Register AlpineJS controllers.
 	{
 		// Search and navigation.
-		Alpine.data('lncNav', () => newNavController(params.weglot_api_key));
-		Alpine.data('lncLanguageSwitcher', newLanguageSwitcherController(params.weglot_api_key));
+		Alpine.data('lncNav', () => newNavController());
 		Alpine.data('lncSearchFilters', () => newSearchFiltersController(searchConfig));
 		Alpine.data('lncSearchInput', newSearchInputController);
 		Alpine.data('lncSearchExplorerNode', (node = {}) => newSearchExplorerNode(searchConfig, node));
@@ -97,7 +102,6 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncTabs', newTabsController);
 		Alpine.data('lncDisqus', newDisqus);
 		Alpine.data('lncPaginator', newPaginatorController);
-		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 		Alpine.data('lncFetch', fetchController);
 		Alpine.data('lnvSVGViewer', newSVGViewerController);
 		if (params.file_issue_button && params.file_issue_button.enable) {
@@ -159,13 +163,6 @@ const searchConfig = getSearchConfig(params);
 	};
 
 	document.addEventListener('turbo:load', function (event) {
-		// Update any static links to the current language.
-		let lang = getCurrentLang();
-		if (lang && lang !== 'en') {
-			addLangToLinks(lang, document.getElementById('linode-menus'));
-			addLangToLinks(lang, document.getElementById('footer'));
-		}
-
 		if (window.turbolinksLoaded) {
 			// Make sure we only fire one event to GTM.
 			// The navigation events gets handled by turbo:render
@@ -174,25 +171,10 @@ const searchConfig = getSearchConfig(params);
 
 		toggleBooleanClass('turbo-loaded', document.documentElement, true);
 
-		// Init language links.
-		let languageSwitcherTarget = document.getElementById('weglot_here');
-
-		let languageSwitcherTemplate = document.getElementById('language-switcher-template');
-		let languageSwitcherSource = document.importNode(languageSwitcherTemplate.content, true);
-		languageSwitcherTarget.replaceChildren(languageSwitcherSource);
-
 		window.turbolinksLoaded = true;
 		setTimeout(function () {
 			pushDataLayer('docs_load');
 		}, 2000);
-	});
-
-	document.addEventListener('turbo:before-render', function (event) {
-		let body = event.detail.newBody;
-
-		// This hides the relevant elements for a second if the user has selected a language different from the default one.
-		// This should avoid the static and untranslated content showing.
-		setIsTranslating(body.querySelectorAll('.hide-on-lang-nav'));
 	});
 
 	document.addEventListener('turbo:render', function (event) {
@@ -212,13 +194,6 @@ const searchConfig = getSearchConfig(params);
 	}
 	if (!window.scrollHandledByClick) {
 		window.scrollHandledByClick = {};
-	}
-
-	function turboClick(e) {
-		if (e.detail.url.includes('/docs/api')) {
-			// Disable Turbo for the API docs to allow for edge redirects.
-			e.preventDefault();
-		}
 	}
 
 	function preserveScroll(e) {
@@ -269,7 +244,6 @@ const searchConfig = getSearchConfig(params);
 	}
 
 	window.addEventListener('turbo:click', preserveScroll);
-	window.addEventListener('turbo:click', turboClick);
 	window.addEventListener('turbo:before-render', restoreScroll);
 	window.addEventListener('turbo:render', restoreScroll);
 })();

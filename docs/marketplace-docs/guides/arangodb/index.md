@@ -1,10 +1,10 @@
 ---
-title: "Deploy ArangoDB through the Linode Marketplace"
+title: "Deploy ArangoDB"
 description: "Learn how to deploy ArangoDB, a multi-model NoSQL database that combines graph, document, and search capabilities in a single platform, on an Akamai Compute Instance."
 published: 2025-07-10
 modified: 2025-07-10
 keywords: ['database','graph','document','nosql','multi-model','arangodb']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ArangoDB](https://arangodb.com/community-server/)'
 - '[ArangoDB documentation](https://docs.arangodb.com/stable/about-arangodb/)'
@@ -18,7 +18,7 @@ marketplace_app_name: "ArangoDB"
 
 [ArangoDB](https://arangodb.com/community-server/) is a native multi-model database that combines graph, document, and search capabilities into a single platform. It provides a unified query language (AQL) to access all data models seamlessly. ArangoDB is designed for high performance and scalability, making it suitable for various applications including fraud detection, recommendation systems, knowledge graphs, and IoT data management. The Community Edition offers core functionality including native graph traversal, document storage, and ArangoSearch capabilities. With its flexible schema and powerful query capabilities, ArangoDB enables developers to build applications that can handle complex data relationships and perform sophisticated analytics.
 
-## Deploying a Marketplace App
+## Deploying a Quick Deploy App
 
 {{% content "deploy-marketplace-apps-shortguide" %}}
 
@@ -47,7 +47,7 @@ marketplace_app_name: "ArangoDB"
 
 ### Accessing the ArangoDB Web Interface
 
-1.  Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1.  Open your web browser and navigate to `https://[domain]`, where *[domain]* is the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, but this connection is not encrypted. To learn more about viewing IP addresses and rDNS, see the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
 ![Screenshot of the ArangoDB login page](arangodb-login.png)
 

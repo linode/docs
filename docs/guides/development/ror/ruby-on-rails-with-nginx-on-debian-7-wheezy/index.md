@@ -15,7 +15,7 @@ external_resources:
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[Nginx Home Page](http://nginx.org/)'
  - '[Nginx Documentation](http://nginx.org/en/docs/)'
- - '[Nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+ - '[Nginx Configuration](/cloud/guides/how-to-configure-nginx/)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
@@ -27,13 +27,13 @@ relations:
 deprecated: true
 ---
 
-Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ![Using the Ruby on Rails framework for Nginx web applications on Debian 7](ruby_on_rails_with_nginx_debian_7_smg.png "Using the Ruby on Rails framework for Nginx web applications on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -107,6 +107,6 @@ The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This is 
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Debian 7 (Wheezy) guide](/docs/databases/mysql/debian-7-wheezy). Once it's installed and configured properly, issue the following command:
+If your application uses MySQL, install the database server by following our [MySQL on Debian 7 (Wheezy) guide](/cloud/guides/how-to-install-mysql-on-debian-7/). Once it's installed and configured properly, issue the following command:
 
     apt-get install libmysqlclient-dev libmysql-ruby
