@@ -51,7 +51,7 @@ This Quick Deploy App creates a Hermes Agent user on the system called `hermes`.
 
 Once the deployment is complete, `hermes` is installed on the instance but is not running yet. Before you can start using Hermes Agent, you need to go through the setup wizard. This Quick Deploy App triggers the onboarding for you when you log in as root.
 
-1. Log in to the instance.
+1. Log in to the instance:
 
    If you disabled root login to the server during the setup of the Hermes Agent app, log in to the server as a sudo user.
 
@@ -61,7 +61,7 @@ Once the deployment is complete, `hermes` is installed on the instance but is no
 
    Replace `YOUR_INSTANCE_IP` with the IP address of your Linode instance and `admin` with the sudo user you created.
 
-2. Escalate privileges to root.
+2. Escalate privileges to root:
 
    Once you've logged in, you can see the [motd](https://man7.org/linux/man-pages/man5/motd.5.html):
 
