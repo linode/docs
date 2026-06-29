@@ -54,7 +54,7 @@ marketplace_app_name: "Langflow"
 
 2. Use the following credentials to log in:
     - **Username:** *admin*
-    - **Password:** Enter the Langflow admin password stored in the credentials file on your server. To obtain it, log in to your Compute Instance via SSH or Lish and run:
+    - **Password:** Enter the Langflow admin password stored in the credentials file on your server. To obtain it, log in to your Compute Instance via [SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-linode) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) and run:
 
         ```command
         cat /home/$USER/.credentials
@@ -63,7 +63,7 @@ marketplace_app_name: "Langflow"
     The credentials file also contains your limited sudo user's password and the PostgreSQL database credentials.
 
 3. Once you are logged in to Langflow, go to the canvas.
-4. Drag components from the left panel onto the board and connect them to build a flow. Running a flow that calls an LLM or embeddings provider requires you to add your own provider API key, for example, OpenAI, in the relevant component or under **Settings > Global Variables**. To learn more, see:
+4. Drag components from the left panel onto the board and connect them to build a flow. Running a flow that calls an LLM or embeddings provider requires you to add your own provider API key (for example, OpenAI) in the relevant component or under **Settings > Global Variables**. To learn more, see:
 
    - [Langflow Quickstart](https://docs.langflow.org/get-started-quickstart)
    - [Langflow Global Variables](https://docs.langflow.org/configuration-global-variables)
