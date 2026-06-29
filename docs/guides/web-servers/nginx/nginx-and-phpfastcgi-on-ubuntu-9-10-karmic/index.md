@@ -20,7 +20,7 @@ deprecated: true
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Ubuntu 9.10 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -128,7 +128,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations) pointing your domain name to your Linode's IP address.
 
 ## Install spawn-fcgi
 
@@ -145,10 +145,10 @@ Visit the [spawn-fcgi project page](http://redmine.lighttpd.net/projects/spawn-f
 Issue the following command sequence to download scripts to control spawn-fcgi and php-fastcgi, set privileges, make the init script run at startup, and launch it for the first time:
 
     cd /opt
-    wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/644-php-fastcgi-deb.sh
+    wget -O php-fastcgi-deb.sh 644-php-fastcgi-deb.sh
     mv php-fastcgi-deb.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
-    wget -O php-fastcgi-init-deb.sh http://www.linode.com/docs/assets/643-php-fastcgi-init-deb.sh
+    wget -O php-fastcgi-init-deb.sh 643-php-fastcgi-init-deb.sh
     mv php-fastcgi-init-deb.sh /etc/init.d/php-fastcgi
     chmod +x /etc/init.d/php-fastcgi
     update-rc.d php-fastcgi defaults
@@ -171,5 +171,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Installing Nginx on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic)
-- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)
+- [Installing Nginx on Ubuntu 9.10 (Karmic)](/cloud/guides/websites-with-nginx-on-ubuntu-9-10-karmic/)
+- [Basic NGINX Configuration](/cloud/guides/how-to-configure-nginx/)

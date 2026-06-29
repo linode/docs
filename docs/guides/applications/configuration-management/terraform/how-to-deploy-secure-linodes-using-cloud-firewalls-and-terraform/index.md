@@ -12,28 +12,27 @@ image: feature.png
 external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/']
-tags: ["saas"]
 ---
 
 Terraform modules allow you to better organize your configuration code and to distribute and reuse it. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
 
-In this guide, you will create a Linode Firewalls module which declares commonly used Cloud Firewall configurations. You will then use the module to create a Linode instance and assign the Linode to the Cloud Firewall. You can adopt the example configurations in this guide to create your own reusable Cloud Firewall configurations. For more information on Cloud Firewalls, see the [Cloud Firewalls documentation](/docs/products/networking/cloud-firewall/).
+In this guide, you will create a Linode Firewalls module which declares commonly used Cloud Firewall configurations. You will then use the module to create a Linode instance and assign the Linode to the Cloud Firewall. You can adopt the example configurations in this guide to create your own reusable Cloud Firewall configurations. For more information on Cloud Firewalls, see the [Cloud Firewalls documentation](https://techdocs.akamai.com/cloud-computing/docs/cloud-firewall).
 
 ## Before You Begin
 
-1. If you are new to Terraform, read through our [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) guide to familiarize yourself with key concepts.
+1. If you are new to Terraform, read through our [A Beginner's Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/) guide to familiarize yourself with key concepts.
 
-1. See [Create a Terraform Module](/docs/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
+1. See [Create a Terraform Module](/cloud/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/platform/accounts/guides/manage-api-tokens/) guide for steps to create a token.
+1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide for steps to create a token.
 
     {{< note respectIndent=false >}}
 When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
     {{< /note >}}
 
-1. [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer. This guide uses [Terraform version 1.12.2](https://github.com/hashicorp/terraform/releases).
+1. [Install Terraform](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer. This guide uses [Terraform version 1.12.2](https://github.com/hashicorp/terraform/releases).
 
-1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/guides/how-to-configure-git/#configure-git).
+1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/cloud/guides/how-to-configure-git/#configure-git).
 
 ## Create Your Cloud Firewalls Module
 
@@ -85,7 +84,7 @@ main_firewalls/
     ```
 
     {{< note respectIndent=false >}}
-If you followed the steps in our guide for [installing Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform), then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
+If you followed the steps in our guide for [installing Terraform](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform), then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
     {{< /note >}}
 
 ### Create the Inbound SSH Child Module
@@ -341,7 +340,7 @@ Now that all the Cloud Firewalls child modules have been created, you can create
     }
     ```
 
-    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](/docs/api/).
+    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](https://techdocs.akamai.com/linode-api/reference/api).
 
     - The `locals` block declares a local variable `key` whose value will be provided by an input variable. The `linode_ids` local variable is used by the `web_server` module instance in the next block to retrieve the Linode ids for the Linodes to be assigned to the Cloud Firewall that will be created.
 
@@ -504,4 +503,4 @@ Whenever a new provider is used in a Terraform configuration, it must first be i
 
 ## Next Steps
 
-To learn how to [version control](/docs/guides/create-terraform-module/#version-control-your-terraform-module) the `main-firewalls` module that you created in this guide, see the [Create a Terraform Module](/docs/guides/create-terraform-module/) guide.
+To learn how to [version control](/cloud/guides/create-terraform-module/#version-control-your-terraform-module) the `main-firewalls` module that you created in this guide, see the [Create a Terraform Module](/cloud/guides/create-terraform-module/) guide.

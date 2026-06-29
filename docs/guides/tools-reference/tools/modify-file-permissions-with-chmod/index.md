@@ -9,8 +9,8 @@ modified: 2023-11-14
 keywords: ["chmod", "commands", "reference", "file permissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
- - '[Manage File Permission with Users and Groups](/docs/guides/linux-users-and-groups/)'
- - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
+ - '[Manage File Permission with Users and Groups](/cloud/guides/linux-users-and-groups/)'
+ - '[Administration Basics](/cloud/guides/linux-system-administration-basics/)'
 aliases: ['/linux-tools/common-commands/chmod/','/tools-reference/modify-file-permissions-with-chmod/','/tools-reference/tools/modify-file-permissions-with-chmod/']
 bundles: ['debian-security', 'centos-security']
 tags: ["security","linux"]
@@ -23,7 +23,7 @@ The `chmod` command allows users to change read and write permissions in Unix sy
 
 Unix-like systems, including the Linux distributions that run on the Akamai cloud computing platform, have an incredibly robust access control system. It allows systems administrators to effectively permit multiple users access to a single system, without giving every user access to every file. The `chmod` command is the simplest way to modify these file permissions.
 
-This guide provides an overview of file permissions and the `chmod` command, along with a number of practical examples and applications of `chmod`. If you find this guide helpful, also consider reading our [basic administration practices guide](/docs/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/guides/linux-users-and-groups/).
+This guide provides an overview of file permissions and the `chmod` command, along with a number of practical examples and applications of `chmod`. If you find this guide helpful, also consider reading our [basic administration practices guide](/cloud/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/cloud/guides/linux-users-and-groups/).
 
 ### Basics of Linux File Permissions
 
@@ -58,7 +58,7 @@ The first character represents the type of file. The remaining nine bits in grou
 - `x`: e**X**ecute
 
 {{< note >}}
-Access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/guides/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
+Access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/cloud/guides/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
 {{< /note >}}
 
 ## How to Use chmod

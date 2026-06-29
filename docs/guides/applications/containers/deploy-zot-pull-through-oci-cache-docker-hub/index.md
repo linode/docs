@@ -5,8 +5,10 @@ description: "Zot is a vendor-neutral Open Container Initiative (OCI) Native Reg
 authors: ["Vishwas Rajashekar"]
 contributors: ["Vishwas Rajashekar"]
 published: 2025-10-01
+modified: 2026-02-11
 keywords: ['container', 'cloud-native', 'oci', 'registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+image: zot-1-login-page.png
 external_resources:
 - '[Zot documentation](https://zotregistry.dev/latest/general/concepts/)'
 - '[Zot website](https://zotregistry.dev)'
@@ -14,7 +16,7 @@ external_resources:
 - '[Open Container Initiative](https://opencontainers.org/)'
 ---
 
-A wide range of internet services, embedded software, and other applications are packaged and run with [containers](/docs/guides/cloud-containers/). Many tools have been developed around the container ecosystem, and a common standard known as [Open Container Initiative (OCI)](https://opencontainers.org/) facilitates interoperability between these tools.
+A wide range of internet services, embedded software, and other applications are packaged and run with [containers](/cloud/guides/cloud-containers/). Many tools have been developed around the container ecosystem, and a common standard known as [Open Container Initiative (OCI)](https://opencontainers.org/) facilitates interoperability between these tools.
 
 Container images need to be stored and then distributed when an application is deployed. This guide explores storage and distribution of OCI container images with Zot. In particular, this guide shows how to set up Zot as a cache for images stored on Docker Hub. By setting up your own container cache, you can reduce latency and avoid rate limits of public container registries.
 
@@ -24,7 +26,7 @@ Container images need to be stored and then distributed when an application is d
 
 - Security integrations including Single Sign-On (SSO) support with OpenID Connect (OIDC), htpasswd, and API keys
 - An authorization system that supports repository-level access control
-- Built-in artifact scanning with [Trivy](https://trivy.dev/latest/)
+- Built-in artifact scanning with [Trivy](https://trivy.dev)
 - Support for multiple backends for storing data, including S3-compatible services
 - Options for creating high-scale deployments
 - Monitoring with built-in metrics
@@ -62,10 +64,10 @@ While this guide focuses on how to configure and use Zot as a pull through cache
 
     - A domain name needs to be assigned to the IP address of the compute instance. If you use Akamai's DNS Manager, [assign a domain, or a subdomain, to your instance's IP](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager#add-dns-records). If you use another DNS provider, like your domain registrar's DNS management, use that service to create the DNS record.
 
-    - Ensure you have generated a set of certificates for the server to use. To learn more about SSL certification, review the [Understanding TLS Certificates and Connections](/docs/guides/what-is-a-tls-certificate/) guide. Free certificates are available from the [Let's Encrypt](https://letsencrypt.org/) authority, and you can use [Certbot](https://certbot.eff.org/) to get a certificate. If using Certbot, the [`--standalone`](https://eff-certbot.readthedocs.io/en/stable/using.html#standalone) option can be used, because no web server proxy is set up in this guide.
+    - Ensure you have generated a set of certificates for the server to use. To learn more about SSL certification, review the [Understanding TLS Certificates and Connections](/cloud/guides/what-is-a-tls-certificate/) guide. Free certificates are available from the [Let's Encrypt](https://letsencrypt.org/) authority, and you can use [Certbot](https://certbot.eff.org/) to get a certificate. If using Certbot, the [`--standalone`](https://eff-certbot.readthedocs.io/en/stable/using.html#standalone) option can be used, because no web server proxy is set up in this guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Deploy Zot
@@ -280,7 +282,7 @@ For this guide, a simple setup with UI, security scanning, and password authenti
     }
     ```
 
-1. Enable the UI and [container security scanning](https://zotregistry.dev/v1.4.3/general/architecture/#security-scanning) extensions. These are specified under the `extensions` keyword in the configuration. Add these new highlighted lines to your file:
+1. Enable the UI and [container security scanning](https://zotregistry.dev/v2.1.14/general/architecture/#security-scanning) extensions. These are specified under the `extensions` keyword in the configuration. Add these new highlighted lines to your file:
 
     ```file {title="/etc/zot/config.json" lang="json" hl_lines="6-15"}
     {
@@ -326,7 +328,7 @@ For this guide, a simple setup with UI, security scanning, and password authenti
     }
     ```
 
-    More information about sync settings can be found in the [Zot documentation](https://zotregistry.dev/v2.1.8/admin-guide/admin-configuration/?h=sync#syncing-and-mirroring-registries).
+    More information about sync settings can be found in the [Zot documentation](https://zotregistry.dev/v2.1.14/admin-guide/admin-configuration/?h=sync#syncing-and-mirroring-registries).
 
 1. Enable TLS to secure connections to the Zot server. Add these highlighted lines to your file within the `http` block. Replace {{< placeholder "/path/to/certfile" >}} and {{< placeholder "/path/to/keyfile" >}} with the paths to your web certificate and key files respectively:
 
@@ -508,7 +510,7 @@ This output should appear:
 
 1. Access the Zot UI from a web browser by navigating to `https://{{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}}:8080`. Replace {{< placeholder "ZOT_MACHINE_HOST_NAME_OR_IP" >}} with your machine's host name or IP address. This should bring up a login page:
 
-    ![zot login page](zot-login-page.png)
+    ![zot login page](zot-1-login-page.png)
 
     The credentials supplied for htpasswd file creation earlier can be used to login.
 

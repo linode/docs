@@ -44,7 +44,7 @@ One of the pros of Linux is that the Linux kernel is free and it comes under the
 
 ### Fantastic Terminal Support
 
-You don’t need to install special software to contact the backend servers for your project using add-on software with Linux. All you need is the Secure Shell (SSH) utility to access the server securely. In addition, you have access to editors like [Emacs](/docs/guides/emacs-evil-mode/), [Nano](/docs/guides/use-nano-text-editor-commands/), and [Vim](/docs/guides/introduction-to-vim-customization/) that allow you to update config files or hosted Python scripts on the fly. These advantages of using Linux mean that developers spend more time writing and testing code than figuring out some arcane process to complete tasks.
+You don’t need to install special software to contact the backend servers for your project using add-on software with Linux. All you need is the Secure Shell (SSH) utility to access the server securely. In addition, you have access to editors like [Emacs](/cloud/guides/emacs-evil-mode/), [Nano](/cloud/guides/use-nano-text-editor-commands/), and [Vim](/cloud/guides/introduction-to-vim-customization/) that allow you to update config files or hosted Python scripts on the fly. These advantages of using Linux mean that developers spend more time writing and testing code than figuring out some arcane process to complete tasks.
 
 ### Amazing Driver Support
 

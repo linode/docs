@@ -22,15 +22,15 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 This guide uses Ubuntu, but the commands are similar for other systems.
 {{< /note >}}
 
-1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
+1.  Complete the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 
         sudo apt update && sudo apt upgrade
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing And Configuring Fail2Ban
@@ -198,4 +198,4 @@ You have successfully been able to set up, implement, test, and analyze Fail2Ban
 
 ## Next Steps
 
-For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#use-fail2ban-for-ssh-login-protection) guide.

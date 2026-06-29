@@ -18,7 +18,7 @@ relations:
 deprecated: true
 ---
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/guides/lamp-server-on-ubuntu-9-04-jaunty/).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/cloud/guides/lamp-server-on-ubuntu-9-04-jaunty/).
 
 ## Install Apache 2
 
@@ -161,7 +161,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/guides/how-to-install-a-lamp-stack-on-debian-11/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian Lenny](/cloud/guides/how-to-install-a-lamp-stack-on-debian-11/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice the vast majority of configuration options will probably be located in site-specific virtual host configuration files.
 
@@ -245,4 +245,4 @@ You may wish to consult the following resources for additional information on th
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
 - [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
+- [Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)

@@ -34,7 +34,7 @@
       </title>
 
       {{/* See https://turbo.hotwired.dev/handbook/drive#setting-a-root-location */}}
-      <meta name="turbo-root" content="/docs" />
+      <meta name="turbo-root" content="{{  (partial `get-basepath.html` .) }}" />
 
       {{/* SEO */}}
       {{ partial "sections/head-seo.html" . }}

@@ -50,7 +50,7 @@ After deploying your Jenkins instance, log in and continue the configuration.
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using `root` or the `sudo user` created during deployment if you added Account SSH Keys.
+1. [Connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) using `root` or the `sudo user` created during deployment if you added Account SSH Keys.
 
 1. Retrieve your Jenkins admin password from the `/home/$SUDO_USER/.credentials` file.
 

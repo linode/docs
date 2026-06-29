@@ -27,20 +27,20 @@ Asterisk is an open source *private branch exchange* (PBX) server that uses *Ses
 This guide covers the steps necessary to provision a new CentOS 7 Linode as a dedicated Asterisk server for your home or office.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
 1.  Create a CentOS 7 Linode in your closest data center. A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/) enabled, your Linode is back up and running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](https://techdocs.akamai.com/cloud-computing/docs/recover-from-unexpected-shutdowns-with-lassie) enabled, your Linode is back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 

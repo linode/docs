@@ -1,7 +1,7 @@
 ---
 
 cascade:
-    _build:
+    build:
       render: false
       list: local
       publishResources: false

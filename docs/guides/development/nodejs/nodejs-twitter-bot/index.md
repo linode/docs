@@ -17,7 +17,7 @@ external_resources:
     - "[twit - npm](https://www.npmjs.com/package/twit)"
     - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
-    - "[FileZilla](/docs/guides/filezilla/)"
+    - "[FileZilla](/cloud/guides/filezilla/)"
 ---
 
 ## Introduction
@@ -50,17 +50,17 @@ The following software is needed on your workstation to complete the tutorial:
 
     These tools are used to download a copy of the GitHub repository that is created in this guide. The GitHub Desktop software can be more user-friendly for beginners, but you might prefer to work out of the command line. Instructions for using both are provided in this tutorial.
 
-    To install the command line software, follow our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide. Then, follow the [Configure Git](/docs/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
+    To install the command line software, follow our [How to Install Git on Linux, Mac or Windows](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/) guide. Then, follow the [Configure Git](/cloud/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/cloud/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
 
 - **[Node.js](https://nodejs.org/en/) and the [Node Package Manager](https://www.npmjs.com/) (*npm*)**, which are used to initialize a new npm package for the Twitter bot.
 
-    There are a number of different ways to install Node.js and npm. Our [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide outlines some of these options. For this tutorial, we recommend using the *Node Version Manager* (*nvm*), which can manage multiple versions of Node.js and npm. Follow the next [Install Node.js and npm via the Node Version Manager](#install-nodejs-and-npm-via-the-node-version-manager) section for instructions.
+    There are a number of different ways to install Node.js and npm. Our [How to Install Node.js](/cloud/guides/how-to-install-nodejs/) guide outlines some of these options. For this tutorial, we recommend using the *Node Version Manager* (*nvm*), which can manage multiple versions of Node.js and npm. Follow the next [Install Node.js and npm via the Node Version Manager](#install-nodejs-and-npm-via-the-node-version-manager) section for instructions.
 
 ### Install Node.js and npm via the Node Version Manager
 
 The original [nvm](https://github.com/nvm-sh/nvm) software project is used on **Unix, Linux, and macOS**:
 
-1. Follow the [Install NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
+1. Follow the [Install NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) section of our [How to Install and Use the Node Version Manager](/cloud/guides/how-to-install-use-node-version-manager-nvm/) guide to install nvm.
 
 1. Run this command from your terminal. This installs the latest version of Node.js and npm:
 
@@ -825,7 +825,7 @@ You could certainly let this code run for a long while from your local machine, 
 
     ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
-1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. When creating your instance, use the following options:
+1. Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide. When creating your instance, use the following options:
 
     - Pick Ubuntu 20.04 as your Linux distribution.
 
@@ -841,10 +841,10 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) section of our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish#through-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note respectIndent=false >}}
-Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
+Our [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
 {{< /note >}}
 
     When logging in for the first time, you use the `root` username and the root password that you set when creating the Linode. However, it's important to create a non-root-user with limited permissions to run your programs from.
@@ -853,7 +853,7 @@ Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
 {{< /note >}}
 
-1. To create a non-root-user, follow the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
+1. To create a non-root-user, follow the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
     {{< note respectIndent=false >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
@@ -862,7 +862,7 @@ Here's a video that also shows how to create a limited user: [Tech Republic: How
 1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
     {{< note respectIndent=false >}}
-The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
+The rest of the steps in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
 {{< /note >}}
 
 ### Perform Software Updates and Prepare for the Bot
@@ -883,7 +883,7 @@ The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/
 
 The server is now ready to run the bot, but you still need to upload the bot's code to the server. We present two ways to do this:
 
-- **Filezilla**: You can transfer your code to the Linux instance from your workstation, via the [Filezilla](/docs/guides/filezilla/) GUI desktop application. Because you're using a desktop application, this can be a little more user-friendly for beginners. Follow the [Upload the Bot Using Filezilla](#upload-the-bot-using-filezilla) section to do this.
+- **Filezilla**: You can transfer your code to the Linux instance from your workstation, via the [Filezilla](/cloud/guides/filezilla/) GUI desktop application. Because you're using a desktop application, this can be a little more user-friendly for beginners. Follow the [Upload the Bot Using Filezilla](#upload-the-bot-using-filezilla) section to do this.
 
 - **git clone**: You can directly clone your repository on GitHub to your Linode with the Git command line tool. Follow the [Upload the Bot with Git Clone](#upload-the-bot-with-git-clone) section to do this.
 
@@ -899,7 +899,7 @@ The server is now ready to run the bot, but you still need to upload the bot's c
 
     | Field | Value |
     |-------|-------|
-    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide to locate your IP address in the Cloud Manager. |
+    | Host | The IP Address for your Linode. Use the [Find your Linode's IP Address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide to locate your IP address in the Cloud Manager. |
     | Username | This should be the name for the limited non-root-user you created. |
     | Password | The password for the limited non-root-user you created. |
     | Port | This should be set to 22. |
@@ -916,7 +916,7 @@ After finishing the file transfer, proceed to the [run the bot](#run-the-bot-on-
 
 ### Upload the Bot with Git Clone
 
-1. Git is preinstalled on Ubuntu 20.04, but you still need to configure it like you did on your workstation. While inside your SSH or Lish connection to your Linode, follow the [Configure Git](/docs/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
+1. Git is preinstalled on Ubuntu 20.04, but you still need to configure it like you did on your workstation. While inside your SSH or Lish connection to your Linode, follow the [Configure Git](/cloud/guides/how-to-configure-git/#configure-git) section of our [Getting Started with Git](/cloud/guides/how-to-configure-git/) guide. When doing this, you don't need to set the `core.editor` option, but it is important to set your username and email for Git.
 
 1. To clone your GitHub repository to your Linode, run the `git clone` command from your SSH or Lish connection. Be sure to substitute your own GitHub username in for `your-github-username` and the name you chose for the repository for `snes-soundtracks` before running the command:
 
@@ -933,7 +933,7 @@ If you previously created a private GitHub repository, then the above command pr
 
     The `npm install` command looks at your package.json and installs every dependency that it finds into the `node_modules` folder.
 
-1. The `.env` file was also excluded from version control, so it needs to be copied to your Linode separately. On your workstation, open your local `.env` and copy its contents to your clipboard. Then inside the code repository on the Linode, create a new `.env` file. You can use [the `nano` command line text editor](/docs/guides/use-nano-to-edit-files-in-linux/) to do this:
+1. The `.env` file was also excluded from version control, so it needs to be copied to your Linode separately. On your workstation, open your local `.env` and copy its contents to your clipboard. Then inside the code repository on the Linode, create a new `.env` file. You can use [the `nano` command line text editor](/cloud/guides/use-nano-to-edit-files-in-linux/) to do this:
 
         nano .env
 
@@ -947,7 +947,7 @@ If you previously created a private GitHub repository, then the above command pr
 
 1. Type `CTRL-x` to exit the editor.
 
-1. Remove file system read and write [file permissions](/docs/guides/modify-file-permissions-with-chmod/) for groups and other users on the Linode for the `.env` file:
+1. Remove file system read and write [file permissions](/cloud/guides/modify-file-permissions-with-chmod/) for groups and other users on the Linode for the `.env` file:
 
         chmod go-rw .env
 
@@ -963,7 +963,7 @@ Once you’ve transferred the files, you can use your SSH connection or Lish con
 
 However, the bot does not stay running if you close your SSH connection (for example, if you put your workstation to sleep), or if you need to perform some other action in the Lish console.
 
-To keep your bot running uninterrupted, you can start a Screen session. [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) is a useful tool for creating terminal sessions that stay alive and that can be accessed from any SSH or Lish connection. It's also preinstalled on Ubuntu 20.04, so you can start using it immediately:
+To keep your bot running uninterrupted, you can start a Screen session. [Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) is a useful tool for creating terminal sessions that stay alive and that can be accessed from any SSH or Lish connection. It's also preinstalled on Ubuntu 20.04, so you can start using it immediately:
 
 1. If you ran `npm run develop` on your Linode, type `CTRL-c` to stop the bot.
 

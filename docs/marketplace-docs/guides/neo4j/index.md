@@ -57,8 +57,8 @@ When deployment completes, the system automatically generates and stores credent
 
 1. Log in to your Compute Instance using one of the methods below:
 
-   - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-   - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+   - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+   - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the contents of the `.credentials` file:
 
@@ -69,9 +69,9 @@ cat /home/$USERNAME/.credentials
 
 Once your app has finished deploying, you can log into Neo4j UI using your browser.
 
-1.  Open your web browser and navigate to `https://$DOMAIN$:7473/browser`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://$DOMAIN$:7473/browser`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
-**Please Note** If you did not add your local IP to the allow list at the beginning of the deployment, you will need to add it to the firewall in order to access the UI. You can utilize [UFW firewall guide](/docs/guides/configure-firewall-with-ufw/) to add your IP to the allow list.
+**Please Note** If you did not add your local IP to the allow list at the beginning of the deployment, you will need to add it to the firewall in order to access the UI. You can utilize [UFW firewall guide](/cloud/guides/configure-firewall-with-ufw/) to add your IP to the allow list.
 
 Log in using the credentials from the `/home/$USERNAME/.credentialsoffic` file.
 

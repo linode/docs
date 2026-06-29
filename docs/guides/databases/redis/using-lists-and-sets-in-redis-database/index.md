@@ -17,18 +17,18 @@ Redis is an open-source NoSQL database that provides performant storage for cach
 
 Redis has multiple data types for working with collections. The most common are **Lists** and **Sets**. This tutorial explains what Redis's lists and sets are and illustrates how to use them.
 
-Also, check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/redis-getting-started/).
+Also, check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/cloud/guides/redis-getting-started/).
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/cloud/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Lists and Sets in Redis?
@@ -61,7 +61,7 @@ Redis has another related data type: *Sorted Sets*. These are Sets that include 
 
 Because of ordering, hashes, and labeling of values, Sorted Sets in Redis actually work as a cross between Lists.
 
-Sorted Sets have an array of commands and ways that you can work with their collections. To learn more about how Sorted Sets work and how you can start using them, take a look at our [How to Use Sorted Sets in Redis](/docs/guides/using-sorted-sets-in-redis-database/) guide.
+Sorted Sets have an array of commands and ways that you can work with their collections. To learn more about how Sorted Sets work and how you can start using them, take a look at our [How to Use Sorted Sets in Redis](/cloud/guides/using-sorted-sets-in-redis-database/) guide.
 
 ## How to Use Lists in Redis
 

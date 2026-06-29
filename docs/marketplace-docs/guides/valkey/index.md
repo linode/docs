@@ -1,6 +1,6 @@
 ---
 title: "Deploy Valkey"
-description: "Valkey is an open-source, keyvalue database driven by community development and supported by the Linux Foundation. Valkey is forked from Redis release 7.2, and maintains BSD-3 licensing. Valkey can serve production roles such as caching and message queues, or as a primary database."
+description: "Valkey is an open-source, key-value database driven by community development and supported by the Linux Foundation. Valkey is forked from Redis release 7.2, and maintains BSD-3 licensing. Valkey can serve production roles such as caching and message queues, or as a primary database."
 published: 2024-08-05
 keywords: ['nosql','database', 'marketplace', 'valkey']
 tags: ["ubuntu","quick deploy apps", "database", "linode platform", "cloud manager", "ssl", "cloud storage", "high availability", "compute storage"]

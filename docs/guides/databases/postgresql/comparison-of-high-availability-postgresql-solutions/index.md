@@ -103,19 +103,19 @@ Another relevant set of concepts relates to how the HA cluster handles a split-b
 
 ## Deploying a PostgreSQL HA Cluster on Akamai Cloud Computing
 
-There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai. There is the traditional manual configuration method and [Akamai Quick Deploy Apps](/docs/marketplace-docs/guides/postgresql-cluster/) solution.
+There are two main methods of deploying a PostgreSQL high-availability cluster on Akamai. There is the traditional manual configuration method and [Akamai Quick Deploy Apps](/cloud/marketplace-docs/guides/postgresql-cluster/) solution.
 
 For a concise discussion and comparison of the three main alternatives, see the Akamai blog about PostgreSQL's high availability.
 
 ### The Quick Deploy Apps PostgreSQL HA Cluster
 
-Akamai allows users to configure a PostgreSQL HA cluster as a [Quick Deploy Application](/docs/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
+Akamai allows users to configure a PostgreSQL HA cluster as a [Quick Deploy Application](/cloud/marketplace-docs/guides/postgresql-cluster/). Using this technique, database administrators can set up an HA cluster from the Linode Dashboard. This solution is supported on Ubuntu 22.04 LTS distribution on any plan type.
 
 The Akamai Quick Deploy Apps solution uses the [*repmgr*](https://www.repmgr.org/) replication manager to control the PostgreSQL high availability cluster. The Quick Deploy Application automatically configures a three-node HA cluster. Users only have to create users, roles, schemas, and tables before deploying the database.
 
 This solution has some limitations. It is not possible to choose the size of the HA cluster or manually edit any application variables. It is a viable option for a smaller organization with less technical expertise. However, it might not meet the specific requirements of a more complicated network.
 
-It is also possible to configure redundancy using the [IP failover](/docs/products/compute/compute-instances/guides/failover/) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves configuring the [Lelastic](https://github.com/linode/lelastic) utility on your instances.
+It is also possible to configure redundancy using the [IP failover](https://techdocs.akamai.com/cloud-computing/docs/configure-failover-on-a-compute-instance) option. This feature allows multiple computing instances to share an IP address. If the primary system becomes inaccessible, the secondary server can take over. This enables some level of redundancy, although it is more limited than a full high-availability solution. Adding this enhancement involves configuring the [Lelastic](https://github.com/linode/lelastic) utility on your instances.
 
 ### Manual Deployment Using a Replication Manager
 

@@ -60,11 +60,11 @@ Although Linux users have been waiting for the “Year of the Linux Desktop”, 
 
 ## Web Server Technologies: Windows vs. Linux
 
-Linux dominates Windows when it comes to web services, thanks to the success of the [Apache web server](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/), the [Docker container runtime](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/), the [Kubernetes container orchestration system](/docs/guides/beginners-guide-to-kubernetes/), and [WordPress publishing platform](/docs/guides/how-to-install-wordpress-ubuntu-2004/).
+Linux dominates Windows when it comes to web services, thanks to the success of the [Apache web server](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/), the [Docker container runtime](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/), the [Kubernetes container orchestration system](/cloud/guides/beginners-guide-to-kubernetes/), and [WordPress publishing platform](/cloud/guides/how-to-install-wordpress-ubuntu-2004/).
 
 Web hosting and other internet services are changing. Microsoft server editions, which can be expensive, host both non-Microsoft web server products as well as its own products. Microsoft attempts to make its offerings including client-side browsers, browser support, web services programming, and hosting models, highly proprietary.
 
-Linux dominates web services partially because of the [LAMP stack (Linux, Apache, MySQL, and Perl/PHP)](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Today, the LAMP stack and variants are a systematic, highly-deployed, go-to development stack. Many of the word's web applications use variants of the LAMP stack to server their content to the Internet.
+Linux dominates web services partially because of the [LAMP stack (Linux, Apache, MySQL, and Perl/PHP)](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Today, the LAMP stack and variants are a systematic, highly-deployed, go-to development stack. Many of the word's web applications use variants of the LAMP stack to server their content to the Internet.
 
 Both Apache and [NGINX web servers] dominate the world-wide web, far eclipsing Microsoft’s Internet Information Server/IIS. Both Apache and NGINX FOSS web servers run freely on Windows Server platform, and do so at a highly-scalable and license-cost-free model.
 

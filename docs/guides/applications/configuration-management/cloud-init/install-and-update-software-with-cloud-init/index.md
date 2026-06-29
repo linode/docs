@@ -12,11 +12,11 @@ external_resources:
 - '[Cloud-init Documentation - Cloud-config Examples: Install Arbitrary Packages](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#install-arbitrary-packages)'
 ---
 
-[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) offers a cross-platform, cross-distribution approach to automating server initialization. With Akamai's [Metadata](/docs/products/compute/compute-instances/guides/metadata/) service, you can leverage cloud-init to deploy Compute Instances, employing custom user data scripts to define your desired setup.
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) offers a cross-platform, cross-distribution approach to automating server initialization. With Akamai's [Metadata](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) service, you can leverage cloud-init to deploy Compute Instances, employing custom user data scripts to define your desired setup.
 
 In this guide, learn how to manage packages on new servers using cloud-init. Whether you want to upgrade system packages, install packages during initialization, or manage your repositories, this tutorial shows you how.
 
-Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with the present guide. When you are ready to deploy your cloud-config, the guide linked above shows you how.
+Before getting started, you should review our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/cloud/guides/configure-and-secure-servers-with-cloud-init/). There, you can see how to create a cloud-config file, which you need to follow along with the present guide. When you are ready to deploy your cloud-config, the guide linked above shows you how.
 
 ## Upgrade Packages
 
@@ -46,7 +46,7 @@ To install packages with cloud-init, use the `packages` option in your cloud-con
 
 Below are examples installing the main components of a LAMP stack, a popular web application setup. Cloud-config requires exact package names, which can vary between distributions, as can the overall prerequisites for a setup. To demonstrate, the examples below show how the setup would look between two different distributions.
 
-Learn more about the LAMP stack, and its package prerequisites, in our guide on [How to Install a LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/). Use the drop down at the top of that guide to see different distributions.
+Learn more about the LAMP stack, and its package prerequisites, in our guide on [How to Install a LAMP Stack](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/). Use the drop down at the top of that guide to see different distributions.
 
 {{< tabs >}}
 {{< tab "Ubuntu 22.04" >}}
@@ -77,9 +77,9 @@ The `package_reboot_if_required` option covered in the previous section also aff
 
 ## Add Software Repositories
 
-Among the more advanced package manager tools within cloud-init is the ability to add custom repositories during initialization. Cloud-init uses specific modules for managing different package managers, so the steps vary depending on your distribution. What follows covers two of the most popular: [APT](/docs/guides/apt-package-manager/), most often found on Debian and Ubuntu systems, and [Yum](/docs/guides/yum-package-manager/)/[DNF](/docs/guides/dnf-package-manager/), mostly found on CentOS, Fedora, and other RHEL-based distributions.
+Among the more advanced package manager tools within cloud-init is the ability to add custom repositories during initialization. Cloud-init uses specific modules for managing different package managers, so the steps vary depending on your distribution. What follows covers two of the most popular: [APT](/cloud/guides/apt-package-manager/), most often found on Debian and Ubuntu systems, and [Yum](/cloud/guides/yum-package-manager/)/[DNF](/cloud/guides/dnf-package-manager/), mostly found on CentOS, Fedora, and other RHEL-based distributions.
 
-Other than these, cloud-init also supports the [Zypper](/docs/guides/zypper-package-manager/) package manager, used on openSUSE distributions. You can learn about adding repositories for Zypper in cloud-init's [Zypper Add Repo](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#zypper-add-repo) module reference documentation.
+Other than these, cloud-init also supports the [Zypper](/cloud/guides/zypper-package-manager/) package manager, used on openSUSE distributions. You can learn about adding repositories for Zypper in cloud-init's [Zypper Add Repo](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#zypper-add-repo) module reference documentation.
 
 {{< tabs >}}
 {{< tab "APT" >}}

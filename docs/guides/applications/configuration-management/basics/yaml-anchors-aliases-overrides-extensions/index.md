@@ -16,7 +16,7 @@ external_resources:
 
 ---
 
-YAML anchors, aliases, overrides, and extensions help reduce the repetition of data in your YAML files. These features of YAML are discussed in this guide to take you beyond the basics covered in the [A YAML Syntax Reference](/docs/guides/yaml-reference/) guide.
+YAML anchors, aliases, overrides, and extensions help reduce the repetition of data in your YAML files. These features of YAML are discussed in this guide to take you beyond the basics covered in the [A YAML Syntax Reference](/cloud/guides/yaml-reference/) guide.
 
 ## YAML Anchors and Aliases
 

@@ -56,4 +56,4 @@ Now that Streamlink Twitch GUI is installed, here’s a walkthrough of its most 
 
     ![Click on the chat icon to open a stream's chat window.](open-a-stream-chat.png)
 
-With the above configurations, you should be able to watch your favorite Twitch streams using the Streamlink GUI. If you prefer to use the Streamlink CLI, see our [Install Streamlink CLI on Ubuntu and macOS](/docs/guides/how-to-install-streamlink-cli-on-ubuntu-macos/) guide.
+With the above configurations, you should be able to watch your favorite Twitch streams using the Streamlink GUI. If you prefer to use the Streamlink CLI, see our [Install Streamlink CLI on Ubuntu and macOS](/cloud/guides/how-to-install-streamlink-cli-on-ubuntu-macos/) guide.

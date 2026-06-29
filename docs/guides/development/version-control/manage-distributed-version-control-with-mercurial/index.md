@@ -21,7 +21,7 @@ deprecated: true
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privileges.
-- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 - Update your system.
 
 ## Installing Mercurial

@@ -19,12 +19,12 @@ In this tutorial, learn how to get started with Rasa. From installing the framew
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Rasa Open Source
@@ -153,7 +153,7 @@ The contents should resemble the following outline excluding files like `__init_
 
     The official documentation has a page on [Connecting to Messaging and Voice Channels](https://rasa.com/docs/rasa/messaging-and-voice-channels) that provides more information.
 
-    Also refer to our tutorial on [How to Use WebSockets with Socket.IO](/docs/guides/using-socket-io) for an example of a Socket.IO chat application that can integrate with a Rasa assistant.
+    Also refer to our tutorial on [How to Use WebSockets with Socket.IO](/cloud/guides/using-socket-io) for an example of a Socket.IO chat application that can integrate with a Rasa assistant.
 
 -   `domain.yml` specifies what components from the configurations to include in the Rasa assistant's "world". For example, use this to include intents defined in the `nlu.yml` file or any created actions. This file is also where responses are defined.
 
@@ -219,7 +219,7 @@ The following steps walk through setting up these prerequisites and deploying an
     deactivate
     ```
 
-1.  Follow our [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to set up a Kubernetes cluster and configure kubectl.
+1.  Follow our [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine) guide to set up a Kubernetes cluster and configure kubectl.
 
 1.  Create a namespace for the Rasa Kubernetes cluster. This example designates the namespace `rasacluster`.
 
@@ -227,7 +227,7 @@ The following steps walk through setting up these prerequisites and deploying an
     kubectl create namespace rasacluster
     ```
 
-1.  Follow our [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client) tutorial how to install the Helm CLI client.
+1.  Follow our [Installing Apps on Kubernetes with Helm 3](/cloud/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client) tutorial how to install the Helm CLI client.
 
     {{< note >}}
     AlmaLinux, CentOS Stream, and Rocky Linux users may need to install `git` and `tar` prior to installing Helm:

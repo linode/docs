@@ -2,7 +2,7 @@
 slug: configure-modsecurity-on-apache
 title: 'How to Configure ModSecurity on Apache'
 description: 'Learn how to install ModSecurity, a web application firewall for the Apache server, which provides logging capabilities and real time monitoring.'
-og_description: 'Besides providing logging capabilities, Mod_security, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run Mod_security on your Linode.'
+og_description: 'Besides providing logging capabilities, ModSecurity, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run ModSecurity on your Linode.'
 authors: ["Linode"]
 contributors: ["Linode"]
 published: 2011-11-10
@@ -27,7 +27,7 @@ Although ModSecurity comes with a default configuration, this guide will use OWA
 
 ## Install ModSecurity
 
-Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/docs/websites/lamp/).
+Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/cloud/guides/web-servers/lamp/).
 
 
 ### Ubuntu or Debian

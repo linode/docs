@@ -24,9 +24,9 @@ ExternalDNS is a tool that automatically manages external DNS records from withi
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
-- **Previous section:** [Part 7: Managing Stacks with Helm](/docs/guides/build-a-cd-pipeline-with-lke-part-7/)
-- **Next section:** [Part 9: Installing Traefik](/docs/guides/build-a-cd-pipeline-with-lke-part-9/)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/cloud/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 7: Managing Stacks with Helm](/cloud/guides/build-a-cd-pipeline-with-lke-part-7/)
+- **Next section:** [Part 9: Installing Traefik](/cloud/guides/build-a-cd-pipeline-with-lke-part-9/)
 
 ## Presentation Text
 

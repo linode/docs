@@ -25,7 +25,7 @@ deprecated: true
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -94,7 +94,7 @@ Issue the following command to return to a root shell.
 Issue the following commands to create an init script to control the Confluence application, mark this file executable, and configure Confluence to start automatically when the system boots:
 
     cd /opt/
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/614-init-rpm.sh
+    wget -O init-rpm.sh 614-init-rpm.sh
     mv init-rpm.sh /etc/init.d/confluence
     chmod +x /etc/init.d/confluence
     chkconfig --add confluence

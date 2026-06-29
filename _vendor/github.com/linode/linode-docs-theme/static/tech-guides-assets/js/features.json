@@ -1,0 +1,136 @@
+[
+  {
+    "slot": "why_linode",
+    "eyebrow": "Featured",
+    "wrap_styles": "--c-featured-color:#ffffff;",
+    "background_image": {
+      "src": "https://www.linode.com/ns/features/prod/images/hero-forge-craft-of-code-632x279.jpg",
+      "width": 632,
+      "height": 279,
+      "srcset": "https://www.linode.com/ns/features/prod/images/hero-forge-craft-of-code-632x279.jpg 632w, https://www.linode.com/ns/features/prod/images/hero-forge-craft-of-code-1064x470.jpg 1064w, https://www.linode.com/ns/features/prod/images/hero-forge-craft-of-code-1944x858.jpg 1944w, data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w",
+      "sizes": "(max-width:991px) 1px, 632px",
+      "alt": "Hero Forge Craft of Code Header"
+    },
+    "foreground_image":[],
+    "headline": "Hero Forge",
+    "excerpt": "Secure, accessible GPU instances. <br>Unleash millions of adventures.",
+    "link_text": "Read story",
+    "link_url": "https://www.akamai.com/resources/customer-story/hero-forge",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "linode-vs-competitors",
+    "css": ""
+  },
+  {
+    "slot": "products",
+    "eyebrow": "Featured",
+    "wrap_styles": "--c-featured-border-width:2px;--c-featured-border-color:#ededf4;",
+    "background_image": {
+      "src": "https://www.linode.com/ns/features/prod/images/gpu-438.png",
+      "width": 438,
+      "height": 320,
+      "srcset": "https://www.linode.com/ns/features/prod/images/gpu-438.png 438w, https://www.linode.com/ns/features/prod/images/gpu-1008.png 1008w, data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w",
+      "sizes": "(max-width:991px) 1px, 438px",
+      "alt": "GPU acceleration"
+    },
+    "foreground_image":[],
+    "headline": "GPU acceleration",
+    "excerpt": "Power AI and media workloads with on-demand NVIDIA™ GPUs at cost-effective pricing.",
+    "link_text": "View product details",
+    "link_url": "https://www.linode.com/products/gpu/",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "gpu",
+    "css": "#c-featured--products{padding-right:36%;}#c-featured--products .c-featured__background{object-fit:contain;object-position:right center;}"
+  },
+  {
+    "slot": "solutions",
+    "eyebrow": "Featured",
+    "wrap_styles": "--c-featured-color:#ffffff;",
+    "background_image": {
+      "src": "https://www.linode.com/ns/features/prod/images/MRK-4404-Portability-i632x217-px.jpg",
+      "width": 632,
+      "height": 217,
+      "srcset": "https://www.linode.com/ns/features/prod/images/MRK-4404-Portability-i632x217-px.jpg 632w, data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w",
+      "sizes": "(max-width:991px) 1px, 632px",
+      "alt": "Portability in the Cloud: Best Practices for Building SaaS-Based Applications"
+    },
+    "foreground_image":[],
+    "headline": "Portability in the cloud",
+    "excerpt": "Best practices for building SaaS-based applications.",
+    "link_text": "Get your copy",
+    "link_url": "https://www.linode.com/resources/ebook/cloud-portability-saas-applications/",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "portability-saas-best-practices-ebook",
+    "css": ""
+  },
+  {
+    "slot": "pricing",
+    "eyebrow": "Featured",
+    "wrap_styles": "--c-featured-border-width:2px;--c-featured-border-color:#ededf4;",
+    "background_image": {
+    },
+    "foreground_image":{
+      "src": "https://www.linode.com/ns/features/prod/images/Cloud_Pricing_MockUp2-416x376.png",
+      "width": 416,
+      "height": 376,
+      "srcset": "https://www.linode.com/ns/features/prod/images/Cloud_Pricing_MockUp2.png 620w, data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w",
+      "sizes": "(max-width:991px) 1px, 416px",
+      "alt": "Cloud Pricing Calculator"
+    },
+    "headline": "Cloud computing calculator",
+    "excerpt": "Estimate your cloud costs. Price and configure cloud features to match your needs.",
+    "link_text": "Launch calculator",
+    "link_url": "https://www.linode.com/pricing/cloud-cost-calculator/",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "Calculator",
+    "css": ""
+  },
+  {
+    "slot": "community",
+    "eyebrow": "",
+    "wrap_styles": "--c-featured-color:#ffffff;",
+    "background_image": {
+      "src": "https://www.linode.com/ns/features/prod/images/IaCeBook-CommunityPg-632x217.jpg",
+      "width": 632,
+      "height": 217,
+      "srcset": "https://www.linode.com/ns/features/prod/images/IaCeBook-CommunityPg-632x217.jpg 632w, https://www.linode.com/ns/features/prod/images/IaCeBook-CommunityPg-1064x366.jpg 1064w, https://www.linode.com/ns/features/prod/images/IaCeBook-CommunityPg-1944x669.jpg 1944w, data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w",
+      "sizes": "(max-width:991px) 1px, 632px",
+      "alt": ""
+    },
+    "foreground_image":[],
+    "headline": "",
+    "excerpt": "",
+    "link_text": "",
+    "link_url": "",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "ebook-iac",
+    "css": ""
+  },
+  {
+    "slot": "resources",
+    "eyebrow": "Featured",
+    "wrap_styles": "--c-featured-border-width:2px;--c-featured-border-color:#ededf4;",
+    "background_image": {
+    },
+    "foreground_image":{
+      "src": "https://www.linode.com/ns/features/prod/images/developerHub-submenu-sm.jpg",
+      "width": 340,
+      "height": 310,
+      "srcset": false,
+      "sizes": "(max-width:991px) 1px, 340px",
+      "alt": ""
+    },
+    "headline": "Developer hub",
+    "excerpt": "Comprehensive guides, documentation, and endpoints. Everything you need to get started.",
+    "link_text": "Visit hub",
+    "link_url": "https://www.linode.com/developers/",
+    "ga_category": "Navigation",
+    "ga_action": "click",
+    "ga_label": "developer-hub",
+    "css": ""
+  }
+]

@@ -12,7 +12,7 @@ tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: DrupalThemesMods_DrushUbuntu1804.png
 external_resources:
- - '[SSL Certificates](/docs/security/ssl/)'
+ - '[SSL Certificates](/cloud/guides/security/ssl/)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
 relations:
@@ -25,21 +25,21 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-mo
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
 
-Linode has another guide for installing Drush and creating a Drupal website, [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/). Depending on your experience level with Drush, you may want to start with that guide.
+Linode has another guide for installing Drush and creating a Drupal website, [Install Drupal using Drush on Ubuntu 18.04](/cloud/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/). Depending on your experience level with Drush, you may want to start with that guide.
 
 ## Before You Begin
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account), [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access), and [create firewall rules](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{% content "limited-user-note-shortguide" %}}
 
-1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
+1.  Install and configure a [LAMP stack on Ubuntu 18.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
-1.  Install [Composer and Drush on Ubuntu 18.04](/docs/guides/how-to-install-drush-on-ubuntu-18-04/)
+1.  Install [Composer and Drush on Ubuntu 18.04](/cloud/guides/how-to-install-drush-on-ubuntu-18-04/)
 
 
 1.  Make sure that your system is up to date, using:
@@ -64,7 +64,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note respectIndent=false >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/cloud/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/cloud/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 

@@ -41,16 +41,16 @@ Additional best practices for WordPress upgrades are listed below:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
-1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
+1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
 
-1. WordPress should already be installed. See the Linode guides on [Installing WordPress](/docs/guides/install-wordpress-ubuntu-18-04/) and [Deploying WordPress from Quick Deploy Apps](/docs/marketplace-docs/guides/wordpress/).
+1. WordPress should already be installed. See the Linode guides on [Installing WordPress](/cloud/guides/install-wordpress-ubuntu-18-04/) and [Deploying WordPress from Quick Deploy Apps](/cloud/marketplace-docs/guides/wordpress/).
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Update PHP
@@ -93,7 +93,7 @@ Although unlikely, the site or its contents could be corrupted during the update
 The WordPress site can be backed up externally using FTP or SCP. It can also be backed up in a different folder on the Linode. In the long run, it is much safer to back up the files and database to external storage space. This preserves the archive in the event the server hard drive becomes corrupted or access to the server is permanently lost. However, to quickly upgrade WordPress or PHP, a temporary backup copy can be made somewhere else on the Linode.
 
 {{< note >}}
-For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/guides/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
+For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](https://techdocs.akamai.com/cloud-computing/docs/backup-service). A variety of third-party tools are also available. [cPanel](/cloud/guides/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
 {{< /note >}}
 
 To back up the WordPress files on the Linode, follow the below steps:
@@ -109,7 +109,7 @@ To back up the WordPress files on the Linode, follow the below steps:
         sudo cp  public_html/ -r  ~/wpbackup
 
     {{< note respectIndent=false >}}
-To back up files to another system, launch an FTP application from the other system and connect to Linode. Navigate to the `/var/www/html/yourdomainname.com` and copy over the entire contents of the `public_html` directory. For more information on using FTP, see our [Transfer Files with FileZilla](/docs/guides/filezilla/) guide.
+To back up files to another system, launch an FTP application from the other system and connect to Linode. Navigate to the `/var/www/html/yourdomainname.com` and copy over the entire contents of the `public_html` directory. For more information on using FTP, see our [Transfer Files with FileZilla](/cloud/guides/filezilla/) guide.
     {{< /note >}}
 
 There are several alternatives for backing up a WordPress database. The [phpMyAdmin](https://www.phpmyadmin.net/) application is a popular choice. Many plug-ins can also back up the database. However, the MySQL utility `mysqldump` works in all situations without any additional tools. Back up your WordPress database by following the below procedure.
@@ -129,7 +129,7 @@ To use a newer version of PHP, all necessary PHP modules must be upgraded to the
         sudo apt install php7.4
 
     {{< note respectIndent=false >}}
-If the `php7.4` component cannot be found on the system, version 7.4 might still be the default version. To determine the default version of the `php` package, run the command `sudo apt list php`. If this displays a reference to version 7.4, run the command `sudo apt install php`. To install a different version of PHP, follow the instructions in the [How to Install a Specific Version of PHP](/docs/guides/how-to-update-php-for-wordpress/#how-to-install-a-specific-version-of-php) section.
+If the `php7.4` component cannot be found on the system, version 7.4 might still be the default version. To determine the default version of the `php` package, run the command `sudo apt list php`. If this displays a reference to version 7.4, run the command `sudo apt install php`. To install a different version of PHP, follow the instructions in the [How to Install a Specific Version of PHP](/cloud/guides/how-to-update-php-for-wordpress/#how-to-install-a-specific-version-of-php) section.
     {{< /note >}}
 
 1. Install the 7.4 version of the other PHP modules, along with the `libapache2-mod-php7.4` component. The following list includes the essential PHP libraries for WordPress.
@@ -166,7 +166,7 @@ If NGINX is used as the web server, run the following commands instead:
 
 Also, change the `fastcgi_pass` value in `/etc/nginx/conf.d/yourdomain.com.conf` to `fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;`.
 
-Consult the Linode guide on [NGINX and PHP](/docs/guides/serve-php-php-fpm-and-nginx/) for more details.
+Consult the Linode guide on [NGINX and PHP](/cloud/guides/serve-php-php-fpm-and-nginx/) for more details.
     {{< /note >}}
 
 1. Restart the Apache server to apply the changes.
@@ -191,7 +191,7 @@ php7.3/focal 7.3.29-1+ubuntu20.04.1+deb.sury.org+1 all
 1. Install this version of PHP.
 
         sudo apt install php7.3
-1. Update all other PHP packages to the same version at the same time. For example, `php7.3-mysql` and `libapache2-mod-php7.3` must also be installed. See the [Update PHP on Ubuntu 20.04](/docs/guides/how-to-update-php-for-wordpress/#update-php-on-ubuntu-2004) section for a complete list.
+1. Update all other PHP packages to the same version at the same time. For example, `php7.3-mysql` and `libapache2-mod-php7.3` must also be installed. See the [Update PHP on Ubuntu 20.04](/cloud/guides/how-to-update-php-for-wordpress/#update-php-on-ubuntu-2004) section for a complete list.
 
 If the package is not available, it might be available via the `ondrej` *Personal Package Archive* (PPA), developed by Ondřej Surý. This archive provides access to the most recent versions of PHP. The same naming convention as above is used.
 

@@ -25,14 +25,14 @@ WordPress is an open-source content management system (CMS). WordPress remains p
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Prerequisites
@@ -70,9 +70,9 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 Both of the guides linked below are for CentOS 8 rather than AlmaLinux 8. However, the steps in these guides have been tested and verified to work on AlmaLinux without requiring any changes.
     {{< /note >}}
 
-    - To create a LAMP stack, follow the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide. The `php.ini` file referred to in the guide can be found at the following location: `/etc/opt/remi/php74/php.ini`.
+    - To create a LAMP stack, follow the [How to Install a LAMP Stack on CentOS 8](/cloud/guides/how-to-install-a-lamp-stack-on-centos-8/) guide. The `php.ini` file referred to in the guide can be found at the following location: `/etc/opt/remi/php74/php.ini`.
 
-    - To create a LEMP stack, follow the [How to Install the LEMP Stack on CentOS 8](/docs/guides/how-to-install-the-lemp-stack-on-centos-8/) guide. The `www.conf` file referred to in the guide can be found at `/etc/opt/remi/php74/php-fpm.d/www.conf`, and the `php.ini` file can be found at `/etc/opt/remi/php74/php.ini`.
+    - To create a LEMP stack, follow the [How to Install the LEMP Stack on CentOS 8](/cloud/guides/how-to-install-the-lemp-stack-on-centos-8/) guide. The `www.conf` file referred to in the guide can be found at `/etc/opt/remi/php74/php-fpm.d/www.conf`, and the `php.ini` file can be found at `/etc/opt/remi/php74/php.ini`.
 
         In addition to the steps in the guide, take the following steps to prepare your NGINX configuration for WordPress.
 
@@ -188,4 +188,4 @@ Your WordPress site is up and running. You can reach the site's dashboard, where
 
 To get the most out of your WordPress site, check out WordPress's [First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)guide. It helps you figure out how to start using and customizing your WordPress site.
 
-To go beyond the basic configuration on your WordPress site, take a look at our [Configuring WordPress](/docs/guides/configuring-wordpress/) guide. It walks you through more advanced configuration options that open up new features for your WordPress installation.
+To go beyond the basic configuration on your WordPress site, take a look at our [Configuring WordPress](/cloud/guides/configuring-wordpress/) guide. It walks you through more advanced configuration options that open up new features for your WordPress installation.

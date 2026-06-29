@@ -52,7 +52,7 @@ Once your MainConcept Live Encoder Quick Deploy App is deployed, you can log in 
     203-0-113-1.ip.linodeusercontent.com
     ```
 
-    See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-rdns) guide for information on viewing and configuring your rDNS.
+    See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-rdns) guide for information on viewing and configuring your rDNS.
 
 2. Once the login prompt loads, enter `admin` as the *Username* and `admin` as the *Password*.
 

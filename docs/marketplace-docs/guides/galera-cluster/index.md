@@ -20,7 +20,7 @@ marketplace_app_name: "Galera Cluster"
 Galera provides a performant MariaDB database solution with synchronous replication to achieve high availability. Galera is deployed with MariaDB, which is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. MariaDB was originally based off of MySQL and maintains backward compatibility.
 
 {{< note type="warning" title="Quick Deploy App Cluster Notice" >}}
-This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB](/docs/marketplace-docs/guides/mysql/).
+This Quick Deploy App deploys 3 Compute Instances to create a highly available and redundant MariaDB Galera cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy MariaDB on a single Compute Instance, see [Deploy MySQL/MariaDB](/cloud/marketplace-docs/guides/mysql/).
 {{< /note >}}
 
 ## Deploying a Quick Deploy App
@@ -42,7 +42,7 @@ This Quick Deploy App deploys 3 Compute Instances to create a highly available a
 
 - **Cluster Name** *(required)*: Enter the name you wish to use for this cluster deployment.
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this cluster. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Add SSH Keys to all nodes** *(required)*: If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
@@ -174,4 +174,4 @@ The standard tool for interacting with MariaDB is the `mysql` client which insta
 
 For more on MySQL/MariaDB, checkout the following guides:
 
-- [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [MariaDB Clusters with Galera](/cloud/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

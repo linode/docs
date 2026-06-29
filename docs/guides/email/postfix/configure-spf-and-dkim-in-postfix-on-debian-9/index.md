@@ -42,10 +42,10 @@ SPF (Sender Policy Framework) is a system that identifies to mail servers what h
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions to configure the SPF policy agent and OpenDKIM into Postfix work on any distribution. You only need to make respective code adjustments for the package tool, and identify the exact path to the Unix socket file.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 {{< note type="alert" >}}
-You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
+You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/cloud/guides/email/postfix/) for assistance.
 
 You can publish an SPF DNS record without configuring the SPF policy agent within Postfix. However, publishing DKIM DNS records without an OpenDKIM within Postfix can result in your email being discarded by the recipient's email server.
 {{< /note >}}

@@ -20,24 +20,24 @@ Of all the possible technical bases for a modern website, ["MERN holds the leadi
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the MERN Stack?
 
 MERN refers to MongoDB, Express.js, ReactJS, and Node.js, four software tools that cooperate to power millions of websites worldwide. In broad terms:
 
-- [**MongoDB**](/docs/guides/databases/mongodb/) manages data, such as customer information, technical measurements, and event records.
-- [**Express.js**](/docs/guides/express-js-tutorial/) is a web application framework for the "behaviors" of particular applications. For example, how data flows from catalog to shopping cart.
-- [**ReactJS**](/docs/guides/development/react/) is a library of user-interface components for managing the visual "state" of a web application.
-- [**Node.js**](/docs/guides/development/nodejs/) is a back-end runtime environment for the server side of a web application.
+- [**MongoDB**](/cloud/guides/databases/mongodb/) manages data, such as customer information, technical measurements, and event records.
+- [**Express.js**](/cloud/guides/express-js-tutorial/) is a web application framework for the "behaviors" of particular applications. For example, how data flows from catalog to shopping cart.
+- [**ReactJS**](/cloud/guides/development/react/) is a library of user-interface components for managing the visual "state" of a web application.
+- [**Node.js**](/cloud/guides/development/nodejs/) is a back-end runtime environment for the server side of a web application.
 
-Linode has [many articles](/docs/guides/) on each of these topics and supports thousands of [Linode customers who have created successful applications](https://www.linode.com/content-type/spotlights/) based on these tools.
+Linode has [many articles](/cloud/guides/) on each of these topics and supports thousands of [Linode customers who have created successful applications](https://www.linode.com/content-type/spotlights/) based on these tools.
 
 One of MERN’s important distinctions is the [JavaScript programming language is used throughout](https://javascript.plainenglish.io/why-mern-stack-is-becoming-popular-lets-see-in-detail-8825fd3fd5ee) the entire stack. Certain competing stacks use PHP or Python on the back end, JavaScript on the front end, and perhaps SQL for data storage. MERN developers focus on just a single programming language, [JavaScript, with all the economies](https://javascript.plainenglish.io/should-you-use-javascript-for-everything-f98015ade40a) that implies, for training and tooling.
 
@@ -92,7 +92,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
     sudo apt install mongodb-org
     ```
 
-See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our guide [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
+See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our guide [How To Install MongoDB on Ubuntu 16.04](/cloud/guides/install-mongodb-on-ubuntu-16-04/).
 
 #### Start MongoDB and Verify the Installation
 
@@ -176,7 +176,7 @@ While the acronym is MERN, the true order of its dependencies is better written 
     npm install -g yarn
     ```
 
-You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide. If you are interested in using Yarn instead of NPM, take a look at our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager/) guide.
+You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide. If you are interested in using Yarn instead of NPM, take a look at our [How to Install and Use the Yarn Package Manager](/cloud/guides/install-and-use-the-yarn-package-manager/) guide.
 
 ### Install React.js
 

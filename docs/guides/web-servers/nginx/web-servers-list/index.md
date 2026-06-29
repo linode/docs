@@ -26,7 +26,7 @@ The web server names listed here are in alphabetical order, not in any order of 
 
 The [Apache web server](https://httpd.apache.org/) is the most popular web server in the industry. It is developed by the Apache Software Foundation, it’s free and open source. Apache is available for nearly every major operating system including Linux, Unix, FreeBSD, macOS and Microsoft Windows. Because of its popularity and support by a broad developer community, Apache has a wide selection of add-on modules for everything from security to performance enhancements. While Apache is written in C, it supports a wide variety of development languages in its add-on modules. Apache supports HTTP/2 and IPv6 along with a number of important network features.
 
-To get started with the Apache HTTP server, you can consult our extensive library of [Apache guides and tutorials](/docs/guides/web-servers/apache).
+To get started with the Apache HTTP server, you can consult our extensive library of [Apache guides and tutorials](/cloud/guides/web-servers/apache).
 
 ### Apache Tomcat
 
@@ -34,11 +34,11 @@ To get started with the Apache HTTP server, you can consult our extensive librar
 
 ### Caddy Web Server
 
-The [Caddy web server](https://caddyserver.com/) is an open source and free web server developed by Matthew Holt. Caddy runs on Linux, Unix, FreeBSD, macOS, and Microsoft Windows. Caddy automatically uses secure communications with HTTPS and TLS being the defaults. According to Caddy, the server is easy to configure, fast to deploy, and it will run in a variety of environments, including in containers without modification. It’s written in the Go language. Caddy supports HTTP/2, IPv6, reverse proxy and load balancing. Caddy version 2 is now available, which the company says removes some previous limitations. To learn how to install Caddy, refer to our [guides on the Caddy web server](/docs/guides/web-servers/caddy/).
+The [Caddy web server](https://caddyserver.com/) is an open source and free web server developed by Matthew Holt. Caddy runs on Linux, Unix, FreeBSD, macOS, and Microsoft Windows. Caddy automatically uses secure communications with HTTPS and TLS being the defaults. According to Caddy, the server is easy to configure, fast to deploy, and it will run in a variety of environments, including in containers without modification. It’s written in the Go language. Caddy supports HTTP/2, IPv6, reverse proxy and load balancing. Caddy version 2 is now available, which the company says removes some previous limitations. To learn how to install Caddy, refer to our [guides on the Caddy web server](/cloud/guides/web-servers/caddy/).
 
 ### Eclipse Jetty Webserver
 
-[Eclipse Jetty](https://www.eclipse.org/jetty/) is a free and open source HTTP server, HTTP client, and java servlet container that runs under Java and Jakarta. The server can be used on Linux, Unix, and Microsoft Windows and any other operating system that supports Java applications. Jetty is designed to handle large numbers of connections simultaneously while retaining a small footprint. Jetty can run in containers and on cloud services, and it can be embedded in other applications. Jetty is used as the web server component in other open source projects including [Hadoop](/docs/guides/how-to-install-and-set-up-hadoop-cluster/), OpenNMS, and Eucalyptus. There are several versions of Jetty depending on what version of Java or Jakarta you’re using. Jetty is hosted by the [Eclipse Foundation](https://www.eclipse.org/org/).
+[Eclipse Jetty](https://www.eclipse.org/jetty/) is a free and open source HTTP server, HTTP client, and java servlet container that runs under Java and Jakarta. The server can be used on Linux, Unix, and Microsoft Windows and any other operating system that supports Java applications. Jetty is designed to handle large numbers of connections simultaneously while retaining a small footprint. Jetty can run in containers and on cloud services, and it can be embedded in other applications. Jetty is used as the web server component in other open source projects including [Hadoop](/cloud/guides/how-to-install-and-set-up-hadoop-cluster/), OpenNMS, and Eucalyptus. There are several versions of Jetty depending on what version of Java or Jakarta you’re using. Jetty is hosted by the [Eclipse Foundation](https://www.eclipse.org/org/).
 
 ### H2O Web Server
 
@@ -60,11 +60,11 @@ The [Lighttpd web server](https://www.lighttpd.net/) (pronounced “lighty”) i
 
 [NGINX](https://www.nginx.com/) (pronounced “Engine X”) is considered by many to be a preferred alternative to Apache. It’s a free and open source web server with a wide variety of other capabilities including load balancing, mail proxy, and the ability to provide predictable performance under heavy loads. While the total number of web sites using NGINX is smaller than the number using IIS, NGINX appears on a greater number of large sites, and depending on how you count, it may be as many as Apache. NGINX runs on a number of high-profile sites including Microsoft and IBM, each of which have their own web server software. The server handles a large number of concurrent users using an event-driven approach that avoids multiple threading. NGINX handles secure communications with TLS/SSL and minimizes memory usage.
 
-While NGINX is free and open source, there’s also a company of the same name that’s part of F5 as the [F5 NGINX Application Platform](https://www.nginx.com/products/), which is not free. However, the commercial version provides a number of enterprise level enhancements including security and scalability. Refer to our documentation library to [learn how to install and configure an NGINX web server on Linux](/docs/guides/web-servers/nginx/).
+While NGINX is free and open source, there’s also a company of the same name that’s part of F5 as the [F5 NGINX Application Platform](https://www.nginx.com/products/), which is not free. However, the commercial version provides a number of enterprise level enhancements including security and scalability. Refer to our documentation library to [learn how to install and configure an NGINX web server on Linux](/cloud/guides/web-servers/nginx/).
 
 ### Node.js
 
-[Node.js](https://nodejs.org/en/) is not a web server itself. It’s the underlying software for web servers built on JavaScript. Node.js provides the modules for networking, security, and other data functions. It allows concurrent operations in the web server software. Node.js is available for Linux, macOS, Microsoft Windows, IBM AIX, FreeBSD, and Open BSD. Libraries for Node.js are widely available on cloud hosting platforms. Get started using Node.js by [installing the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/).
+[Node.js](https://nodejs.org/en/) is not a web server itself. It’s the underlying software for web servers built on JavaScript. Node.js provides the modules for networking, security, and other data functions. It allows concurrent operations in the web server software. Node.js is available for Linux, macOS, Microsoft Windows, IBM AIX, FreeBSD, and Open BSD. Libraries for Node.js are widely available on cloud hosting platforms. Get started using Node.js by [installing the Node Version Manager](/cloud/guides/how-to-install-use-node-version-manager-nvm/).
 
 ### OpenLiteSpeed Web Server
 

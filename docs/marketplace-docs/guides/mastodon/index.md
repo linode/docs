@@ -60,8 +60,8 @@ Once the app is deployed, you need to obtain the credentials from the server. To
 
 1. Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click the **Linodes** link in the left menu, and select the Compute Instance you just deployed. Click **Launch LISH Console**. Log in as the `root` user. To learn more, see [Access your system console using Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your Compute Instance over SSH using the `root` user. To learn how, see [Connect to the Linode](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-linode).
 
 2. Run the following command to access the contents of the `.credentials` file:
 
@@ -86,7 +86,7 @@ This returns the admin password and other details that were automatically genera
     - **Sidekiq:** `https://{{< placeholder "[domain.tld]" >}}/sidekiq`
     - **PgHero:** `https://{{< placeholder "[domain.tld]" >}}/pghero`
 
-1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](/docs/products/platform/get-started/guides/send-email/) for more information on DNS configurations and email best practices.
+1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](https://techdocs.akamai.com/cloud-computing/docs/send-email) for more information on DNS configurations and email best practices.
 
 To learn more about Mastodon, check out the [official documentation](https://docs.joinmastodon.org/) and [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. Engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known, you can add it to the list at [Instances.social](https://instances.social/admin) by filling out the admin form.
 

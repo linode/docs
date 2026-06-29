@@ -15,7 +15,7 @@ external_resources:
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[Nginx Home Page](http://nginx.org/)'
  - '[Nginx Documentation](http://nginx.org/en/docs/)'
- - '[Nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+ - '[Nginx Configuration](/cloud/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: ruby-on-rails-nginx
@@ -27,12 +27,12 @@ deprecated: true
 [Ruby on Rails](http://rubyonrails.org/) is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with [Phusion Passenger](https://www.phusionpassenger.com/) and the [Nginx](https://www.nginx.com/) web server on Debian 8.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Follow the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and [set the Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -110,6 +110,6 @@ passenger_ruby /usr/bin/ruby;
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/docs/databases/mysql/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin). Once it's installed and configured properly, issue the following command:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/cloud/guides/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin/). Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev libmysql-ruby

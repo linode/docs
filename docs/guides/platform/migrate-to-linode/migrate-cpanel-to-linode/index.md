@@ -16,7 +16,7 @@ external_resources:
 aliases: ['/platform/migrate-to-linode/migrate-cpanel-to-linode/']
 ---
 
-This guide describes how to migrate from a server running WHM and cPanel on another hosting service to Linode. This transfer is completed using cPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide for more information about migrating your sites before beginning.
+This guide describes how to migrate from a server running WHM and cPanel on another hosting service to Linode. This transfer is completed using cPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/cloud/guides/best-practices-when-migrating-to-linode/) guide for more information about migrating your sites before beginning.
 
 {{< note >}}
 The Transfer Tool only transfers your cPanel accounts, and not your WHM settings. You will need to recreate your WHM settings on your new Linode separately.
@@ -30,14 +30,14 @@ This guide does not cover how to handle cPanel deployments that are part of a DN
 
 The first step is to deploy cPanel on the Linode platform. cPanel can be installed and configured on a Linode Compute Instance using one of the following methods:
 
--   **Akamai Quick Deploy Apps:** Deploy the [cPanel App](https://www.linode.com/marketplace/apps/cpanel/cpanel/) through Akamai Quick Deploy Apps to automatically install cPanel/WHM. This is the easiest method and enables you to quickly get up and running without needing to install cPanel manually. Review the [Deploy cPanel through the Linode Marketplace](/docs/marketplace-docs/guides/cpanel/) guide for more details.
+-   **Akamai Quick Deploy Apps:** Deploy the [cPanel App](https://www.linode.com/marketplace/apps/cpanel/cpanel/) through Akamai Quick Deploy Apps to automatically install cPanel/WHM. This is the easiest method and enables you to quickly get up and running without needing to install cPanel manually. Review the [Deploy cPanel through the Linode Marketplace](/cloud/marketplace-docs/guides/cpanel/) guide for more details.
 
--   **Manual Installation:** For more control over every step of the installation process, cPanel can be manually installed on a new Compute Instance. If choosing this method, review [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) or reference cPanel's official [Installation Guide](https://docs.cpanel.net/installation-guide/install/).
+-   **Manual Installation:** For more control over every step of the installation process, cPanel can be manually installed on a new Compute Instance. If choosing this method, review [Install cPanel on CentOS](/cloud/guides/install-cpanel-on-centos/) or reference cPanel's official [Installation Guide](https://docs.cpanel.net/installation-guide/install/).
 
 Whichever method you choose, select a Linode Compute Instance plan with enough storage capacity to accommodate the data within the cPanel accounts on your current host.
 
 {{< note type="warning" >}}
-When performing the initial cPanel configuration steps, use the Linode’s generic domain name for WHM’s Hostname setting. This generic domain will be listed under the **Reverse DNS** column of the *Networking* tab for your instance in the Cloud Manager and it will have the form `203-0-113-0.ip.linodeusercontent.com`. Review the [Viewing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) guide for more details. If you set the Hostname as your domain name now, the WHM and cPanel dashboards on your new Linode will redirect to your current host and you will not be able to access the settings for your new Linode.
+When performing the initial cPanel configuration steps, use the Linode’s generic domain name for WHM’s Hostname setting. This generic domain will be listed under the **Reverse DNS** column of the *Networking* tab for your instance in the Cloud Manager and it will have the form `203-0-113-0.ip.linodeusercontent.com`. Review the [Viewing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) guide for more details. If you set the Hostname as your domain name now, the WHM and cPanel dashboards on your new Linode will redirect to your current host and you will not be able to access the settings for your new Linode.
 {{< /note >}}
 
 ### Use the cPanel Transfer Tool
@@ -98,7 +98,7 @@ When writing this guide it was found that the SSL certificates from the test sou
 
         scp -r root@current_host_ip_address:/etc/ssl ~
 
-    You can also use [FileZilla](/docs/guides/filezilla/) to download the files.
+    You can also use [FileZilla](/cloud/guides/filezilla/) to download the files.
 
     If you are not able to login as `root` to your host, login as a user with `sudo` privileges and then copy those files to the user's home folder:
 
@@ -141,7 +141,7 @@ When writing this guide it was found that the SSL certificates from the test sou
 
 If you visit your Linode's IP address in your browser, the website served by your cPanel account will not appear. This is because the cPanel server expects your domain name to be passed in your web request, and you have not updated your DNS yet.
 
-The [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide describes a way to visit your domain prior to updating your DNS records. When you have updated your DNS, this workaround will no longer be necessary to view your site.
+The [Previewing Websites Without DNS](/cloud/guides/previewing-websites-without-dns/) guide describes a way to visit your domain prior to updating your DNS records. When you have updated your DNS, this workaround will no longer be necessary to view your site.
 
 ## Migrating DNS Records
 

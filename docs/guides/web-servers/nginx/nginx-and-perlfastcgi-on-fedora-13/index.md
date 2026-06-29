@@ -20,7 +20,7 @@ deprecated: true
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Fedora 13 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -100,15 +100,15 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com/)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com/)).
 
 ## Configure FastCGI Wrapper
 
 Issue the following command sequence to download the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) and an init script to control the FastCGI process, set the permissions, launch the wrapper for the first time, and ensure that FastCGI launches at startup:
 
     cd /opt/
-    wget -O fastcgi-wrapper http://www.linode.com/docs/assets/640-fastcgi-wrapper.sh
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/639-init-rpm.sh
+    wget -O fastcgi-wrapper 640-fastcgi-wrapper.sh
+    wget -O init-rpm.sh 639-init-rpm.sh
     mv /opt/fastcgi-wrapper /usr/bin/fastcgi-wrapper.pl
     mv /opt/init-rpm.sh /etc/rc.d/init.d/perl-fastcgi
     chmod +x /usr/bin/fastcgi-wrapper.pl
@@ -153,5 +153,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing NGINX on Fedora 13](/docs/guides/websites-with-nginx-on-fedora-13/)
-- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)
+- [Installing NGINX on Fedora 13](/cloud/guides/websites-with-nginx-on-fedora-13/)
+- [Basic NGINX Configuration](/cloud/guides/how-to-configure-nginx/)

@@ -4,7 +4,6 @@ title: "An Introduction to Neo4j"
 description: "Neoj4 is a graph database that excels at complex datasets. Learn how it differs from relational databases like SQL and discover some practical use cases."
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
-published: 2022-03-30
 published: 2024-05-09
 keywords: ['what is neo4j','what is neo4j used for','what is neo4j graph database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,7 +13,7 @@ Many of the world's largest organizations rely on Neo4j. This introduction expla
 
 ## What Is Neo4j?
 
-[Neo4j](https://neo4j.com) is a [database management system](/docs/guides/databases/) (*DBMS*). Rather than the [relational model](https://www.techtarget.com/searchdatamanagement/definition/RDBMS-relational-database-management-system) used in the SQL language, Neo4j organizes, represents, and delivers data in terms of [graph structures](https://neo4j.com/developer/graph-database/). Because of this distinction, graph database managers are often labeled as [NoSQL](/docs/guides/what-is-nosql/). However, NoSQL encompasses more than just graph databases. For example, a key-value store such as [Redis](/docs/guides/databases/redis/) is also NoSQL, but it is *not* a graph database.
+[Neo4j](https://neo4j.com) is a [database management system](/cloud/guides/databases/) (*DBMS*). Rather than the [relational model](https://www.techtarget.com/searchdatamanagement/definition/RDBMS-relational-database-management-system) used in the SQL language, Neo4j organizes, represents, and delivers data in terms of [graph structures](https://neo4j.com/developer/graph-database/). Because of this distinction, graph database managers are often labeled as [NoSQL](/cloud/guides/what-is-nosql/). However, NoSQL encompasses more than just graph databases. For example, a key-value store such as [Redis](/cloud/guides/databases/redis/) is also NoSQL, but it is *not* a graph database.
 
 The Neo4j DBMS was created by a company of the same name, which develops and maintains the associated software, library, and tool set. Neo4j is available either as self-managed software or as a cloud-based solution (called AuraDB). This guide covers the free Neo4j self-managed Community edition, though it also comes as a paid Enterprise edition. Review the Neo4j [product page](https://neo4j.com/product/neo4j-graph-database/) and [license page](https://neo4j.com/licensing/) to learn more about the differences between editions.
 

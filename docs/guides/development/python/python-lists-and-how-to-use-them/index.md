@@ -18,7 +18,7 @@ Python includes many built-in methods and operations that help you manipulate li
 
 ## Before You Begin
 
-1. This guide uses Python 3 syntax. Although there is some overlap, some of the code may not work with Python 2. To install Python 3, follow our [How to Install Python 3](/docs/guides/how-to-install-python-on-debian-10/) guide, using the **Distribution** drop down to select your Linux distribution.
+1. This guide uses Python 3 syntax. Although there is some overlap, some of the code may not work with Python 2. To install Python 3, follow our [How to Install Python 3](/cloud/guides/how-to-install-python-on-debian-10/) guide, using the **Distribution** drop down to select your Linux distribution.
 
 1. All commands in this guide can be entered either in a **Python script** or in the **Python interpreter** (also known as the Python Interactive Shell). You can learn more about either method through the Python 3 installation guide linked above.
 
@@ -161,7 +161,7 @@ Print the remaining items in `example_list`:
 [0, 4, 8]
 {{< /output >}}
 
-You can learn more about Python's slice notation in the [Reverse a List](/docs/guides/python-lists-and-how-to-use-them/#reverse-a-list) section below. The links provided at the end of this guide also provide more information.
+You can learn more about Python's slice notation in the [Reverse a List](/cloud/guides/python-lists-and-how-to-use-them/#reverse-a-list) section below. The links provided at the end of this guide also provide more information.
 
 ## How to Sort a List in Python
 
@@ -279,7 +279,7 @@ Print the strings stored in the `example_string_from_list` variable:
 1 2 3 4 5
 {{< /output >}}
 
-To learn how to convert a string to a list, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-lists).
+To learn how to convert a string to a list, see our guide [How to Convert Data Types in Python](/cloud/guides/how-to-convert-datatypes-in-python/#converting-strings-to-lists).
 
 ## How to Find an Item in a List in Python
 

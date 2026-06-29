@@ -22,7 +22,7 @@ In Python, queues are frequently used to process items using a *first in first o
 
 ### What is a Queue?
 
-A queue is a fundamental [programming data structure](/docs/guides/data-structure/). Data structures are used to organize, manage, and store data. They make programs easier to understand and write, and often faster and more reliable too.
+A queue is a fundamental [programming data structure](/cloud/guides/data-structure/). Data structures are used to organize, manage, and store data. They make programs easier to understand and write, and often faster and more reliable too.
 
 Conceptually, a queue represents data items as an ordered list. Items are removed from the list in the same order they arrived. Queues are a familiar concept in everyday life. Every time a group of people line up for something, they form a queue. For instance, a line of people at a bank or a coffee shop is a queue. The first person to arrive is at the front of the queue. They are the next person to be served. When a new customer arrives, they join the back of the queue.
 

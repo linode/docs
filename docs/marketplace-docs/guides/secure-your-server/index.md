@@ -13,7 +13,7 @@ marketplace_app_id: 692092
 marketplace_app_name: "Secure Your Server"
 ---
 
-This Quick Deploy App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. It also configures a basic firewall through [UFW](/docs/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
+This Quick Deploy App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. It also configures a basic firewall through [UFW](/cloud/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/cloud/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Deploying a Quick Deploy App
 

@@ -26,10 +26,10 @@ The `wget` command uses the following basic syntax:
 
 When used without options, `wget` will download the file specified by the `[URL]` to the current directory:
 
-    wget https://www.linode.com/docs/assets/695-wget-example.txt
+    wget 695-wget-example.txt
 
 {{< output >}}
---2018-05-18 19:40:17--  https://www.linode.com/docs/assets/695-wget-example.txt
+--2018-05-18 19:40:17--  695-wget-example.txt
 Resolving www.linode.com (www.linode.com)... 2600:3c00::12, 2600:3c00::32, 2600:3c00::22, ...
 Connecting to www.linode.com (www.linode.com)|2600:3c00::12|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -64,11 +64,11 @@ uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 
 The `-O` option controls the location and name of the file where `wget` writes the downloaded content. To download the file as `example.txt` and save it to the `mydir` directory:
 
-    wget -O mydir/example.txt https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -O mydir/example.txt 695-wget-example.txt
 
 If you specify the file name as `-` as in `wget -O -`, `wget` will output the downloaded file to the terminal. Add the `-q` flag to suppress the status output:
 
-    wget -q -O - https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -q -O - 695-wget-example.txt
 
 {{< output >}}
 This is an example resource for the `wget` document
@@ -87,10 +87,10 @@ uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 
 To view the HTTP header information attached to the resource, use the `-S` flag. Header information is often helpful for diagnosing issues with web server configuration.
 
-    wget -S https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -S 695-wget-example.txt
 
 {{< output >}}
---2018-05-18 20:19:30--  https://www.linode.com/docs/assets/695-wget-example.txt
+--2018-05-18 20:19:30--  695-wget-example.txt
 Resolving www.linode.com (www.linode.com)... 2600:3c00::22, 2600:3c00::12, 2600:3c00::32, ...
 Connecting to www.linode.com (www.linode.com)|2600:3c00::22|:443... connected.
 HTTP request sent, awaiting response...
@@ -116,7 +116,7 @@ Saving to: ‘695-wget-example.txt.5’
 
 To view only the headers, add the `-q` flag as before to suppress the status output:
 
-    wget -Sq https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -Sq 695-wget-example.txt
 
 {{< output >}}
 HTTP/1.1 200 OK
@@ -164,7 +164,7 @@ The options `-r -l 3 -k -p -H` have the following functionality:
 
 Use the `-b` option to background the download process if you do not want `wget` to occupy your terminal process.
 
-    wget -b https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -b 695-wget-example.txt
 
 {{< output >}}
 Continuing in background, pid 953.

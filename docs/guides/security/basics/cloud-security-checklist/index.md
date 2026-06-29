@@ -60,7 +60,7 @@ Misconfigurations are the most common reason for breaches, but not the only one.
 
 ### Have a Comprehensive Data Backup and Recovery Plan
 
-Data can be lost on-premise as well as in the cloud due to a variety of reasons, from hardware failure to malicious actions such as ransomware. A comprehensive backup and restoration plan spanning on-premise to the cloud is an essential part of an organization’s data protection plan to survive and recover from a security event. Create an extensive backup strategy that defines which data must be backed up, how often that data must be backed up, and monitor backup and recovery tasks. Backups can be done on-premise, off-site, or through your CSP. See the [How to Prevent a Ransomware Attack](/docs/guides/ransomware-attack/#how-to-prevent-a-ransomware-attack) section of our guide on preventing ransomware attacks for more information.
+Data can be lost on-premise as well as in the cloud due to a variety of reasons, from hardware failure to malicious actions such as ransomware. A comprehensive backup and restoration plan spanning on-premise to the cloud is an essential part of an organization’s data protection plan to survive and recover from a security event. Create an extensive backup strategy that defines which data must be backed up, how often that data must be backed up, and monitor backup and recovery tasks. Backups can be done on-premise, off-site, or through your CSP. See the [How to Prevent a Ransomware Attack](/cloud/guides/ransomware-attack/#how-to-prevent-a-ransomware-attack) section of our guide on preventing ransomware attacks for more information.
 
 ### Security Patches and Updates
 

@@ -21,7 +21,7 @@ relations:
 
 ## What is a Self-Signed TLS Certificate?
 
-Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process outlined in this guide.
+Self-signed TLS certificates are suitable for personal use or for applications that are used internally within an organization. If you intend to use your SSL certificate on a website, see our guide on enabling TLS for [NGINX](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process outlined in this guide.
 
 ## Create the Certificate
 
@@ -77,4 +77,4 @@ Email Address []:admin@example.com
 
         chmod 400 /root/certs/MyKey.key
 
-4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**
+4.  Back up your certificate and key to external storage. For instructions see our guide on [How to Download Files from Your Linode](/cloud/guides/download-files-from-a-compute-instance/) **This is an important step. Do not skip it!**

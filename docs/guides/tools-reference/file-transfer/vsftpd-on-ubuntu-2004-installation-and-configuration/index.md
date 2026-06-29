@@ -33,10 +33,10 @@ This guide demonstrates:
 
 ## Before You Begin
 
-This guide assumes that you have access to a server running Ubuntu 20.04 that you can install the FTP server on and upload files to. To create a server on Linode, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Be sure to [add a limited Linux user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to issue the commands in this guide from.
+This guide assumes that you have access to a server running Ubuntu 20.04 that you can install the FTP server on and upload files to. To create a server on Linode, follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides. Be sure to [add a limited Linux user](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to issue the commands in this guide from.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
 ## VSFTPD Installation Steps
@@ -266,7 +266,7 @@ testfile.txt testfile2.txt
 
 ## Connect to Your Server using VSFTPD
 
-This section shows how to allow connections from remote clients to VSFTPD by configuring the [UFW](/docs/guides/configure-firewall-with-ufw/) firewall. The UFW firewall was installed as part of the [VSFTPD Installation Steps](#vsftpd-installation-steps) section.
+This section shows how to allow connections from remote clients to VSFTPD by configuring the [UFW](/cloud/guides/configure-firewall-with-ufw/) firewall. The UFW firewall was installed as part of the [VSFTPD Installation Steps](#vsftpd-installation-steps) section.
 
 1.  Before enabling VSFTPD connections, make sure SSH connections are also allowed:
 

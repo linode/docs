@@ -25,7 +25,7 @@ relations:
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
@@ -174,4 +174,4 @@ Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
     ![Multicraft Server Settings.](multicraft-server-settings-1804.png)
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For more information, see the [Connect to your Minecraft Server](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) section on the [How to Set Up a Minecraft Server on Ubuntu or Debian](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian) guide.
+    You can now successfully start and manage your Minecraft server through Multicraft! For more information, see the [Connect to your Minecraft Server](/cloud/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) section on the [How to Set Up a Minecraft Server on Ubuntu or Debian](/cloud/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian) guide.

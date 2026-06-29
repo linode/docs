@@ -10,7 +10,7 @@ keywords: ['python unittest','unittest mock','python unittest assert','mock obje
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-The Python unittest library helps you test your application code for errors in an automated way. It’s one of the testing methods discussed in our guide, [An Overview of Python Testing Frameworks for Unit Testing](/docs/guides/python-testing-frameworks-for-software-unit-testing/#unittest-python-testing-framework-example). Mock testing is especially useful while your code is yet to be completed and your development is progressing. It performs continuous testing during development and provides good insights into how an application might ultimately function. This guide shows you how to use the Python unittest library to create mock objects to test your code.
+The Python unittest library helps you test your application code for errors in an automated way. It’s one of the testing methods discussed in our guide, [An Overview of Python Testing Frameworks for Unit Testing](/cloud/guides/python-testing-frameworks-for-software-unit-testing/#unittest-python-testing-framework-example). Mock testing is especially useful while your code is yet to be completed and your development is progressing. It performs continuous testing during development and provides good insights into how an application might ultimately function. This guide shows you how to use the Python unittest library to create mock objects to test your code.
 
 ## What is the Purpose of Mock Objects in Unit Testing?
 

@@ -20,7 +20,7 @@ Also, without Docker container monitoring, you can’t know how the microservice
 
 ## Docker Container Monitoring: The Basics
 
-A major reason why containers are popular is because they lend themselves to [Continuous Integration/Continuous Deployment (CI/CD)](/docs/guides/introduction-ci-cd/). This is a [DevOps methodology](https://www.zdnet.com/article/what-is-devops-an-executive-guide-to-agile-development-and-it-operations/) designed to enable programmers to integrate their code into a shared repository early and often. Once there, containerized programs are deployed quickly and efficiently.
+A major reason why containers are popular is because they lend themselves to [Continuous Integration/Continuous Deployment (CI/CD)](/cloud/guides/introduction-ci-cd/). This is a [DevOps methodology](https://www.zdnet.com/article/what-is-devops-an-executive-guide-to-agile-development-and-it-operations/) designed to enable programmers to integrate their code into a shared repository early and often. Once there, containerized programs are deployed quickly and efficiently.
 
 Docker also enables developers to pack, ship, and run any application as a lightweight, portable, self-sufficient container, which can run virtually anywhere. Containers give you instant application portability.
 
@@ -46,7 +46,7 @@ Docker [continues to work](https://www.zdnet.com/article/a-big-step-forward-in-c
 
 Unlike other container technologies, Docker also supports software-defined networking (SDN). This enables DevOps teams to define networks for containers, without worrying about hardware switches. Instead, they set up complex network topologies and define networks via configuration files.
 
-Simultaneously, SDN and [Docker make it possible to exploit microservices](/docs/guides/deploying-microservices-with-docker/). Together, they make it more efficient to build applications from loosely coupled services working together with each other through well-known protocols such as HTTP and TCP.
+Simultaneously, SDN and [Docker make it possible to exploit microservices](/cloud/guides/deploying-microservices-with-docker/). Together, they make it more efficient to build applications from loosely coupled services working together with each other through well-known protocols such as HTTP and TCP.
 
 Finally, Docker's success owes a large debt to simply being the right open technology at the right time to help users take advantage of the cloud computing revolution.
 
@@ -88,7 +88,7 @@ Put it all together and there's no question about it. You must monitor your cont
 
 ## The Five Best Container Monitoring Tools
 
-Many of the best container monitoring programs are open-source programs. Linode provides the basics to get started with the Elasticsearch, Logstash, and Kibana (ELK) stack using [Filebeat and Metricbeat with Kibana](/docs/guides/how-to-monitor-containers-with-the-elastic-stack/) and time-series analysis with [Graphite and a Grafana Dashboard](/docs/guides/install-graphite-and-grafana/). With some effort, you can build your own container monitoring system.
+Many of the best container monitoring programs are open-source programs. Linode provides the basics to get started with the Elasticsearch, Logstash, and Kibana (ELK) stack using [Filebeat and Metricbeat with Kibana](/cloud/guides/how-to-monitor-containers-with-the-elastic-stack/) and time-series analysis with [Graphite and a Grafana Dashboard](/cloud/guides/install-graphite-and-grafana/). With some effort, you can build your own container monitoring system.
 
 The programs in the list below are in alphabetical order, not in a best to worst order. That's because you can't rank them fairly. They all have their own strengths and weaknesses and often measure different metrics. So chances are if you're serious about keeping a close eye on your containers, you need to use several of these programs.
 
@@ -120,7 +120,7 @@ While sold primarily as a software-as-a-service (SaaS), it can also be deployed 
 
 Its partner program, [Kibana](https://www.elastic.co/kibana/), is a free, open user UI for visualizing your Elasticsearch data and navigating the ELK Stack. You can track query loads to see how requests flow through your apps with it. Kibana comes with the usual UI dashboard classics: histograms, line graphs, pie charts, sunbursts, and more. And, of course, you can search across all of your documents.
 
-For container monitoring purposes, you use [Filebeat](https://www.elastic.co/beats/filebeat) and [Metricbeat](https://www.elastic.co/beats/metricbeat) to automatically capture container data. Filebeat automatically finds containers and stores their logs in Elasticsearch. You deploy Metricbeat automatically in your containers. Once there, it collects system-level CPU usage, memory, file system, disk IO, and network IO statistics. Its modules, written in Go, can also keep an eye on programs within the containers such as Apache, NGINX, [MongoDB](/docs/guides/mongodb-introduction/), [MySQL](/docs/guides/an-overview-of-mysql/), [PostgreSQL](/docs/guides/an-introduction-to-postgresql/), and Prometheus. All this data can then be accessed using Kibana.
+For container monitoring purposes, you use [Filebeat](https://www.elastic.co/beats/filebeat) and [Metricbeat](https://www.elastic.co/beats/metricbeat) to automatically capture container data. Filebeat automatically finds containers and stores their logs in Elasticsearch. You deploy Metricbeat automatically in your containers. Once there, it collects system-level CPU usage, memory, file system, disk IO, and network IO statistics. Its modules, written in Go, can also keep an eye on programs within the containers such as Apache, NGINX, [MongoDB](/cloud/guides/mongodb-introduction/), [MySQL](/cloud/guides/an-overview-of-mysql/), [PostgreSQL](/cloud/guides/an-introduction-to-postgresql/), and Prometheus. All this data can then be accessed using Kibana.
 
 It's very flexible. You need to spend considerable time learning how to configure and use it, but it's worth the time.
 

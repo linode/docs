@@ -16,7 +16,7 @@ As one of the most popular programming languages, the Python ecosystem offers a 
 
 ## Django-REST
 
-Django is a full-featured web development framework that includes out-of-the-box solutions for user management, security, and database connections. To build a web API, you can use the [Django REST framework](https://www.django-rest-framework.org/tutorial/quickstart/) that is built on top of standard Django. If you ever wrote an API using [Ruby on Rails](/docs/guides/development/ror/), [Spring with Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/), or Java, then Django will feel familiar.
+Django is a full-featured web development framework that includes out-of-the-box solutions for user management, security, and database connections. To build a web API, you can use the [Django REST framework](https://www.django-rest-framework.org/tutorial/quickstart/) that is built on top of standard Django. If you ever wrote an API using [Ruby on Rails](/cloud/guides/development/ror/), [Spring with Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin/), or Java, then Django will feel familiar.
 
 ### When to Choose Django-REST to Build Your API
 
@@ -143,4 +143,4 @@ Since Bottle is fairly new, the framework has little organic documentation. Its 
 
 If you'd like to learn how to write an API using the FastAPI framework, take a look at the following guide:
 
-- [CRUD READ operations in Python Using FastAPI: View, List](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/)
+- [CRUD READ operations in Python Using FastAPI: View, List](/cloud/guides/crud-read-operations-use-fastapi-to-write-an-api/)

@@ -18,12 +18,12 @@ Follow along with this tutorial to learn about the advantages of running Nginx v
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Getting Started with Docker
@@ -32,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Docker containers also have the advantage of container orchestration. Platforms like Kubernetes can leverage the portability and self-contained nature of Docker containers to efficiently deploy applications to clusters.
 
-Read more about Docker, its advantages, and its use cases in our guide [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/). Learn about using Docker with Kubernetes container orchestration in our guide on how to [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/).
+Read more about Docker, its advantages, and its use cases in our guide [When and Why to Use Docker](/cloud/guides/when-and-why-to-use-docker/). Learn about using Docker with Kubernetes container orchestration in our guide on how to [Manage a Docker Cluster with Kubernetes](/cloud/guides/manage-a-docker-cluster-with-kubernetes/).
 
 ### Why Run Nginx in a Docker Container?
 
@@ -42,7 +42,7 @@ Beyond this, a Dockerized Nginx instance can be a gateway to more complicated se
 
 ### Installing Docker
 
-To install Docker, follow the instructions in our guide on [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/). Use the drop down at the top of the guide to select the appropriate distribution. The present tutorial assumes that you have followed the sections on:
+To install Docker, follow the instructions in our guide on [Installing and Using Docker](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/). Use the drop down at the top of the guide to select the appropriate distribution. The present tutorial assumes that you have followed the sections on:
 
 - Installing Docker Engine
 - Starting and Testing Docker
@@ -92,10 +92,10 @@ Open a Web browser and navigate to your system's public IP address. For example,
 ![The default Nginx welcome page](nginx-welcome.png)
 
 {{< note >}}
-Depending on the system's firewall settings, you may first need to open port `80`/`http`. Refer to the links in the firewall section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) guide to learn how.
+Depending on the system's firewall settings, you may first need to open port `80`/`http`. Refer to the links in the firewall section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) guide to learn how.
 {{< /note >}}
 
-Jump ahead to the section on [Applying Custom Nginx Configurations](/docs/guides/deploying-nginx-docker-container/#applying-custom-nginx-configurations) to take the next step in running your own website through the Nginx container.
+Jump ahead to the section on [Applying Custom Nginx Configurations](/cloud/guides/deploying-nginx-docker-container/#applying-custom-nginx-configurations) to take the next step in running your own website through the Nginx container.
 
 ### Managing the Nginx Container
 
@@ -294,7 +294,7 @@ From there, follow along with the steps below to create a simple Nginx Docker im
 
 Once again, you should be able to navigate to your system's public IP address in a Web browser to see your custom website.
 
-To move ahead with more advanced Dockerfile setups, take a look at our guide [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles/). There, you can find a thorough overview of Dockerfile creation and usage.
+To move ahead with more advanced Dockerfile setups, take a look at our guide [How to Use a Dockerfile to Build a Docker Image](/cloud/guides/how-to-use-dockerfiles/). There, you can find a thorough overview of Dockerfile creation and usage.
 
 ## Conclusion
 

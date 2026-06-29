@@ -49,7 +49,7 @@ Before deployment, you need a Hugging Face API token to access the Gemma 3 model
 1. Create a free account at [huggingface.co/join](https://huggingface.co/join).
 1. Accept the Gemma license at [huggingface.co/google/gemma-3-12b-it](https://huggingface.co/google/gemma-3-12b-it).
 1. Generate a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). Read-only access is sufficient.
-1. Provide this token during the Marketplace deployment process.
+1. Provide this token during the deployment process.
 
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
@@ -64,7 +64,7 @@ Before deployment, you need a Hugging Face API token to access the Gemma 3 model
 
 Your Open WebUI admin credentials are stored in a `.credentials` file on your instance. To retrieve them:
 
-1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your instance via SSH or Lish. See [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/) for assistance, or use the [Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Once logged in, retrieve your credentials from the `.credentials` file:
 

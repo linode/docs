@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Linode API
 
-Quick Deploy Apps are deployed in the API via the [StackScripts Endpoint Collection](/docs/api/stackscripts).
+Quick Deploy Apps are deployed in the API via the [StackScripts Endpoint Collection](https://techdocs.akamai.com/linode-api/reference/api-summary).
 
 ## Linode CLI
 

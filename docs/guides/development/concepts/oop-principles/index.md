@@ -39,7 +39,7 @@ public class ClassName {
 
 - **Objects**: These are derived from classes and populate the abstract of their classes' properties with concrete values. They are the things built from the blueprints provided by classes. Objects also tend to be where the behaviors defined on classes get executed, bringing your application to life.
 
-    Java lets you instantiate an object from a class using the `new` keyword. Here, a new object gets created from the class created above. This example works when the class has a *constructor* defined. You can see an example of a constructor definition in the [Examples of Object Oriented Programming](/docs/guides/oop-principles/#examples-of-object-oriented-programming) section further on.
+    Java lets you instantiate an object from a class using the `new` keyword. Here, a new object gets created from the class created above. This example works when the class has a *constructor* defined. You can see an example of a constructor definition in the [Examples of Object Oriented Programming](/cloud/guides/oop-principles/#examples-of-object-oriented-programming) section further on.
 
     {{< file >}}
 ClassName objectName = new ClassName();
@@ -309,6 +309,6 @@ Playing Minecraft.
 
 In this guide you learned the fundamental principles of object-oriented programming. The concepts covered were encapsulation, abstraction, inheritance, and polymorphism. Applying these concepts helps to ensure that you are making the most of what the paradigm can do.
 
-Throughout this tutorial, the focus has been on OOP related to Java. But keep in mind that these concepts apply anywhere that supports object-oriented programming. [JavaScript](/docs/guides/development/javascript/), [Python](/docs/guides/development/python/), and [Ruby](/docs/guides/development/ror/) are popular examples.
+Throughout this tutorial, the focus has been on OOP related to Java. But keep in mind that these concepts apply anywhere that supports object-oriented programming. [JavaScript](/cloud/guides/development/javascript/), [Python](/cloud/guides/development/python/), and [Ruby](/cloud/guides/development/ror/) are popular examples.
 
 

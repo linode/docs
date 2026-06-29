@@ -17,7 +17,7 @@ external_resources:
 
 [Vim](https://www.vim.org/) reigns as one of the most widely used command line text editors. It offers a high degree of customization, runs on a wide range of operating systems, and comes pre-installed on many Unix-based systems.
 
-You can learn more about Vim, including how to operate and navigate the editor, through our guide [Getting Started Using Vi and Vim](/docs/guides/what-is-vi/). Additionally, our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/) teaches you to configure and customize your Vim instance.
+You can learn more about Vim, including how to operate and navigate the editor, through our guide [Getting Started Using Vi and Vim](/cloud/guides/what-is-vi/). Additionally, our guide [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/) teaches you to configure and customize your Vim instance.
 
 Color schemes are a useful component of Vim customization. They allow you to define how Vim displays both the background and text. Factor in Vim's syntax highlighting, and the color scheme possibilities are vast. Not only can color schemes make your editor more appealing, they can make text easier to read and navigate.
 
@@ -26,17 +26,17 @@ In this tutorial, learn more about Vim color schemes. This includes reviewing ex
 {{< note >}}
 This guide should also apply to NeoVim, a project based on Vim that adds many new features. However, it's likely your NeoVim instance uses an `init.vim` file instead of a `.vimrc` for storing configurations. The `init.vim` is typically stored at `~/.config/nvim/init.vim`.
 
-You can learn more about NeoVim and how to get started customizing it through our guide [How to Install NeoVim and Plugins with Vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/).
+You can learn more about NeoVim and how to get started customizing it through our guide [How to Install NeoVim and Plugins with Vim-plug](/cloud/guides/how-to-install-neovim-and-plugins-with-vim-plug/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to View Vim Color Schemes
@@ -113,7 +113,7 @@ wget https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/c
 
 ### Install Using a Vim plug-in Manager
 
-Our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/#integrate-plug-ins) covers how to get started with a plug-in manager and provides the installation process for [Vim-plug](https://github.com/junegunn/vim-plug). Essentially:
+Our guide [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/#integrate-plug-ins) covers how to get started with a plug-in manager and provides the installation process for [Vim-plug](https://github.com/junegunn/vim-plug). Essentially:
 
 ```command
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -121,7 +121,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 
 Once you have a plug-in manager like Vim-plug installed, you can use the manager's installation command to install a new color scheme.
 
-Using Vim-plug you can install the `solarized` scheme by adding the following lines to your `vimrc` file. If you followed our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/), you already have a `.vimrc` file which includes the first and last lines of this example. Otherwise, you can create one in Vim by opening a file at `~/.vimrc`.
+Using Vim-plug you can install the `solarized` scheme by adding the following lines to your `vimrc` file. If you followed our guide [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/), you already have a `.vimrc` file which includes the first and last lines of this example. Otherwise, you can create one in Vim by opening a file at `~/.vimrc`.
 
 ```file {title="~/.vimrc"}
 call plug#begin('~/.vim/plugged')

@@ -67,7 +67,7 @@ To become more familiar with GraphQL's capabilities refer to the [Apollo blog's 
 
 ### Apollo GraphQL Client Example
 
-The example in this section queries an open [GraphQL service](https://api.spacex.land/graphql/) that [SpaceX](https://www.spacex.com/) provides. Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs).
+The example in this section queries an open [GraphQL service](https://api.spacex.land/graphql/) that [SpaceX](https://www.spacex.com/) provides. Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/cloud/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs).
 
 From your system's command line, install the GraphQL client:
 
@@ -127,7 +127,7 @@ Several implementations of a [GraphQL server](https://blog.graphqleditor.com/gra
 
 ### Server Installation Steps
 
-Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/docs/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs) on your server.
+Before beginning the steps in this section, ensure you have [installed Node.js using the Node Version Manager](/cloud/guides/how-to-install-nodejs-and-nginx-on-ubuntu-18-04/#install-nodejs) on your server.
 
 To install the Apollo GraphQL server use the following command:
 

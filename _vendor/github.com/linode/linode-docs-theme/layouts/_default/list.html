@@ -4,9 +4,6 @@
 {{ end }}
 
 {{ define "main" }}
-  <noscript>
-    {{ template "list-nojs" . }}
-  </noscript>
   {{ template "list-js" . }}
 {{ end }}
 
@@ -238,87 +235,6 @@
       </div>
     </template>
   </div>
-{{ end }}
-
-{{ define "list-nojs" }}
-  <section class="mb-6 w-full">
-    <div class="mb-8">
-      <div
-        class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-        <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
-          {{ .Title }}
-          {{ if .Sections }}
-            Categories
-          {{ end }}
-        </h1>
-        <div>
-          <span
-            class="py-1 px-3 text-sm text-titlecolor no-underline font-semibold border border-titlecolor rounded-full">
-            {{ T (printf "%s-count-available" .Section )   (len .RegularPagesRecursive) }}
-          </span>
-        </div>
-      </div>
-      <div class="mb-8">
-        {{ .Summary }}
-      </div>
-      <hr class="mb-6" />
-    </div>
-    <div class="flex flex-wrap items-stretch -mx-2 md:-mx-2-5">
-      {{ range .Sections }}
-        <div class="px-2 md:px-2-5 py-2 md:py-2-5 w-1/2 md:w-1/4">
-          <a
-            class="h-64 flex items-center rounded-lg bg-white hover:shadow-lg text-icongray hover:text-brand"
-            href="{{ .RelPermalink }}">
-            <div class="flex flex-col justify-center w-full">
-              <div class="w-full flex justify-center mb-8">
-                {{ partial "helpers/bundle-image.html" (dict "page" . "class" "w-24 h-24" "command" "Resize" "options" "640x jpg") }}
-              </div>
-              <h3
-                class="text-center text-lg mb-2"
-                style="letter-spacing: -0.2px;">
-                {{ .LinkTitle }}
-              </h3>
-              <span
-                class="text-center text-basicgray text-sm"
-                style="letter-spacing: -0.3px;">
-                {{ $numGuides := len .RegularPagesRecursive }}
-                {{ T (printf "%s-count" .Section )   (len .RegularPagesRecursive ) }}
-              </span>
-            </div>
-          </a>
-        </div>
-      {{ end }}
-    </div>
-
-    <div class="mt-8 space-y-8">
-      {{ range $i, $ := .RegularPages }}
-        <div
-          class="bg-white rounded-md md:flex md:items-center{{ if eq $i 0 }}
-            shadow-sm
-          {{ end }}">
-          <div class="h-full bg-gray-200">
-            <div
-              class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
-              {{ partial "helpers/bundle-image.html" (dict "page" . "class" "absolute top-0 h-full w-full object-cover" "command" "Resize" "options" "640x jpg") }}
-            </div>
-          </div>
-          <div class="px-6 md:pl-10 py-4">
-            <a
-              href="{{ .RelPermalink }}"
-              class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400">
-              <h3 class="mb-2 text-2xl ">
-                {{ .LinkTitle }}
-              </h3>
-            </a>
-            <p
-              class="text-darkgray leading-6 text-sm md:text-base three-lines-ellipsis">
-              {{ .Summary }}
-            </p>
-          </div>
-        </div>
-      {{ end }}
-    </div>
-  </section>
 {{ end }}
 
 {{ define "section-list-tiles-static" }}

@@ -10,16 +10,16 @@ keywords: ['LAMP Stack Application', 'How to create a LAMP stack application', '
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
-- '[LAMP stack](/docs/guides/web-servers/lamp/)'
+- '[LAMP stack](/cloud/guides/web-servers/lamp/)'
 - '[Model-View-Controller](https://www.guru99.com/mvc-tutorial.html)'
 ---
 
-[LAMP stack](/docs/guides/web-servers/lamp/) refers to a development framework for Web and mobile applications based on four open-source components:
+[LAMP stack](/cloud/guides/web-servers/lamp/) refers to a development framework for Web and mobile applications based on four open-source components:
 
 - [Linux](https://www.linode.com/distributions/) operating system
-- [Apache](/docs/guides/web-servers/apache/) Web server
-- [MySQL](/docs/guides/databases/mysql/) relational database management system (RDBMS)
-- [PHP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/), [Perl](/docs/guides/development/perl/), or [Python](/docs/guides/development/python/) programming language
+- [Apache](/cloud/guides/web-servers/apache/) Web server
+- [MySQL](/cloud/guides/databases/mysql/) relational database management system (RDBMS)
+- [PHP](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/), [Perl](/cloud/guides/development/perl/), or [Python](/cloud/guides/development/python/) programming language
 
 LAMP played a key role in Web work for 20+ years and influenced Facebook, Slack, Wikipedia, and WordPress. It's widely supported by hosting providers. Tens of millions of new LAMP-based sites come online each year. Abundant documentation and rich communities of practitioners make LAMP a default choice for development still.
 
@@ -31,11 +31,11 @@ It has an underlying Linux OS for hosting, an Apache Web server for presenting a
 
 ### Apache vs. NGINX
 
-LAMP isn't the only open-source Web stack solution. There are alternatives such as [LEMP](/docs/guides/web-servers/lemp/), that replace Apache with [NGINX](/docs/guides/web-servers/nginx/) (pronounced "engine X"). [NGINX is faster than Apache](https://hackr.io/blog/nginx-vs-apache) and newer, but requires more advanced configuration, and is less robust on Windows than Apache.
+LAMP isn't the only open-source Web stack solution. There are alternatives such as [LEMP](/cloud/guides/web-servers/lemp/), that replace Apache with [NGINX](/cloud/guides/web-servers/nginx/) (pronounced "engine X"). [NGINX is faster than Apache](https://hackr.io/blog/nginx-vs-apache) and newer, but requires more advanced configuration, and is less robust on Windows than Apache.
 
 ### RDBMS and Programming Language
 
-Two other variations of LAMP use alternative software for "M" and "P". [MariaDB](/docs/guides/databases/mariadb/) is a drop-in [replacement for MySQL](https://www.guru99.com/mariadb-vs-mysql.html). thought there are differences between the two that are explained in this Guide. In general, everything you do with MySQL applies immediately to MariaDB as well. Several different programming languages work well in a LAMP stack, and while this guide discusses PHP, nearly all the principles of LAMP illustrated below apply equally to the Python programming language and others.
+Two other variations of LAMP use alternative software for "M" and "P". [MariaDB](/cloud/guides/databases/mariadb/) is a drop-in [replacement for MySQL](https://www.guru99.com/mariadb-vs-mysql.html). thought there are differences between the two that are explained in this Guide. In general, everything you do with MySQL applies immediately to MariaDB as well. Several different programming languages work well in a LAMP stack, and while this guide discusses PHP, nearly all the principles of LAMP illustrated below apply equally to the Python programming language and others.
 
 ### LAMP Benefits
 
@@ -45,7 +45,7 @@ LAMP's suitability extends beyond purely technical specifications. For example, 
 
 ## Install the LAMP Stack
 
-Everything that follows assumes the availability of a Linux host, familiarity with command-line work in the Linux filesystem, and permission to run as `root`, or with `sudo` privileges. The installation in this guide focuses purely on the "AMP" layers of LAMP. For a more depth look at installing LAMP, explore [our section of LAMP guides](/docs/guides/web-servers/lamp/).
+Everything that follows assumes the availability of a Linux host, familiarity with command-line work in the Linux filesystem, and permission to run as `root`, or with `sudo` privileges. The installation in this guide focuses purely on the "AMP" layers of LAMP. For a more depth look at installing LAMP, explore [our section of LAMP guides](/cloud/guides/web-servers/lamp/).
 
 ### Install "A", "M", and "P" Within "L"
 
@@ -78,7 +78,7 @@ sudo service mysql start
 
 Confirm that Apache is running with the following steps:
 
-1. You need to [identify the IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) of the host and enter it in your web browser as a URL, such as `http://localhost` or `http://192.0.2.1` or a similar address.
+1. You need to [identify the IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) of the host and enter it in your web browser as a URL, such as `http://localhost` or `http://192.0.2.1` or a similar address.
 
 1. After visiting this URL, your web browser should display the default Apache2 page with the message "It works!" indicating that Apache is running correctly.
 
@@ -240,7 +240,7 @@ This demonstrates the flow of data from a Web browser all the way to the databas
 
 ## Application Context
 
-LAMP is a reliable basis for Web development, with decades of successful deliveries over a range of requirements. It directly supports only [server-side processing](https://www.indeed.com/career-advice/career-development/client-side-vs-server-side). The model application above delivers pure HTML to the browser. LAMP is equally capable of serving CSS and [JavaScript](/docs/guides/languages/javascript/) but does not build in tooling for these client-side technologies. Projects reliant on elaborate modern user interface effects, usually choose a framework such as [React](/docs/guides/development/react/).
+LAMP is a reliable basis for Web development, with decades of successful deliveries over a range of requirements. It directly supports only [server-side processing](https://www.indeed.com/career-advice/career-development/client-side-vs-server-side). The model application above delivers pure HTML to the browser. LAMP is equally capable of serving CSS and [JavaScript](/cloud/guides/languages/javascript/) but does not build in tooling for these client-side technologies. Projects reliant on elaborate modern user interface effects, usually choose a framework such as [React](/cloud/guides/development/react/).
 
 Server-side processing remains a common approach for many applications, and LAMP handles these types of applications well. Server-side computation typically involves several functions beyond the model application above, including account management, forms processing, security restrictions, analytic, and cost reporting, more robust exception handling, and quality assurance instrumentation. Contemporary applications often build an MVC [model-view-controller](https://www.guru99.com/mvc-tutorial.html) architecture, and/or define a REST [representational state transfer](https://restfulapi.net/) perspective. A commercial-grade installation usually migrates the database server to a separate host, and high-volume applications often introduce load balancers, security-oriented proxies, content delivery network (CDN) service, and other refinements. These functions are layers over the basic data flow between the user, browser, business logic processing, and datastore that the model application embodies.
 

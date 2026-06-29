@@ -28,7 +28,7 @@ In order to install and configure ModSecurity, you need to have a Linux server w
 
 - Apache 2
 
-For instructions, see our guide on [How to Install Apache Web Server on Ubuntu](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
+For instructions, see our guide on [How to Install Apache Web Server on Ubuntu](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
 {{< note >}}
 This demonstration has been performed on Ubuntu 20.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
@@ -144,7 +144,7 @@ To begin using ModSecurity, enable it in the Apache configuration file by follow
 </VirtualHost>
     ```
 
-    If you are running a website that uses SSL, add `SecRuleEngine` directive to that website's configuration file as well. See our guide on [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) for more information.
+    If you are running a website that uses SSL, add `SecRuleEngine` directive to that website's configuration file as well. See our guide on [SSL Certificates with Apache on Debian & Ubuntu](/cloud/guides/ssl-apache2-debian-ubuntu/#configure-apache-to-use-the-ssl-certificate) for more information.
 
 1.  Restart the apache2 service to apply the configuration:
     ```

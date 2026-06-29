@@ -10,7 +10,7 @@ keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/','/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
 external_resources:
- - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
+ - '[Using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
@@ -30,7 +30,7 @@ After following these instructions, you'll be able to connect to `localhost` on 
 
 ## Prerequisites
 
--   [MySQL](/docs/guides/hosting-a-website-ubuntu-18-04/#install-mysql) is installed.
+-   [MySQL](/cloud/guides/hosting-a-website-ubuntu-18-04/#install-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
 ## How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY

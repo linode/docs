@@ -127,7 +127,6 @@ export function newSearchExplorerHydrated(searchConfig) {
 				return;
 			}
 			let stack = this.$store.search.explorer.keyOpenStack;
-			debugDev('handleKeyOpenStack', stack.length, this.explorer.facets.length);
 			if (!stack.length || !this.explorer.facets.length) {
 				return;
 			}
@@ -162,7 +161,7 @@ export function newSearchExplorerHydrated(searchConfig) {
 				let position = 0;
 				facets.forEach((n) => {
 					// These are also indexed on its own.
-					if (n.href.startsWith('/docs/guides/') || n.href.startsWith('/docs/products/')) {
+					if (n.href.startsWith(window.docsRelUrl('/guides/')) || n.href.startsWith(window.docsRelUrl('/products/'))) {
 						position++;
 						n.hit = {
 							objectID: n.href,
@@ -216,7 +215,6 @@ export function newSearchExplorerHydrated(searchConfig) {
 
 				this.openAndCloseNodes();
 				this.$store.search.explorer.hydrated = true;
-				debugDev('hydrated');
 			}, createExplorerNodeRequest);
 		},
 
@@ -256,7 +254,20 @@ export function newSearchExplorerHydrated(searchConfig) {
 			if (!pageInfo) {
 				return;
 			}
-			debug('openAndCloseNodes', pageInfo.href);
+			debugDev('openAndCloseNodes', pageInfo.href, window.location.href, 'sec', pageInfo.hrefSection);
+			let roots = this.explorer.rootNodes;
+			for (let i = 0; i < roots.length; i++) {
+				let n = roots[i];
+				if (n.level === 1) {
+					// Only show the current section unless on home page or the topresults page.
+					n.hidden = !(
+						pageInfo.kind == 'home' ||
+						pageInfo.href.endsWith('/topresults/') ||
+						(n.href && pageInfo.href.startsWith(n.href))
+					);
+				}
+			}
+			// return pageInfo.kind == 'home' || n.href == pageInfo.href;
 			if (pageInfo.kind === 'home') {
 				closeLevel(1, this.explorer.facets);
 			} else {
@@ -298,7 +309,6 @@ export function newSearchExplorerNode(searchConfig, node) {
 		},
 
 		init: function init() {
-			debug('init', this.node.href);
 			templates = {
 				templateNode: this.$refs['templateNode'],
 				templateNodePages: this.$refs['templateNodePages'],

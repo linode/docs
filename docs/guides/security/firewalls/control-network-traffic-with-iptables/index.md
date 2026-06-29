@@ -12,8 +12,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
 bundles: ['debian-security', 'centos-security', 'network-security']
 external_resources:
- - '[Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)'
- - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
+ - '[Security Basics](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance)'
+ - '[Using the Linode Shell (Lish)](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
 tags: ["networking","security"]
@@ -133,7 +133,7 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
     sudo iptables -D INPUT 7
 {{< note type="alert" >}}
-Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+Editing rules does not automatically save them. See our section on [deploying rulesets](/cloud/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
 {{< /note >}}
 
 ### View Your Current iptables Rules
@@ -334,7 +334,7 @@ COMMIT
 {{< /file >}}
 
 
-**Optional:** If you plan to use [Linode Longview](/docs/products/tools/longview/get-started/) or [Linode's NodeBalancers](/docs/products/networking/nodebalancers/get-started/), add the respective rule after the section for allowing HTTP and HTTPS connections:
+**Optional:** If you plan to use [Linode Longview](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-longview) or [Linode's NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
     # Allow incoming Longview connections from longview.linode.com
     -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
@@ -394,7 +394,7 @@ The process for deploying iptables rulesets varies depending on which Linux dist
 
 ### Debian / Ubuntu
 
-UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
@@ -403,13 +403,13 @@ UFW is the iptables controller included with Ubuntu, but it is also available in
         sudo iptables-restore < /tmp/v4
         sudo ip6tables-restore < /tmp/v6
 
-3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
+3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/cloud/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ### CentOS / Fedora
 
 **CentOS 7 or Fedora 20 and above**
 
-In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
+In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 1.  If you prefer to use iptables, FirewallD must first be stopped and disabled.
 
@@ -619,7 +619,7 @@ To verify the rules are applied and available after the system reboot use the co
 
 ## Network Lock-out
 
-When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](/docs/products/compute/compute-instances/guides/lish/) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
+When you're applying network rules, especially with both IPv4 and IPv6 and multiple interfaces, it is easy to lock yourself out. In the event you apply the rule and are unable to access your server, you may gain access through [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) in the Linode Manager. The following steps will guide you through using the graphical interface of your Linode to gain access to your server:
 
 1.  Connect to the Linode Cloud Manager.
 2.  Select the Linode you wish to gain access to.

@@ -32,14 +32,14 @@ There is no cross-play between different platforms (Linux and Xbox, for example)
 
 ## Before You Begin
 
-1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.wiki.gg/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/products/platform/get-started/) guide for instructions.
+1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.wiki.gg/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide for instructions.
 
-1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
+1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/cloud/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 
 1.  To connect to your Ubuntu Ark server, you must have a copy of the [Ark: Survival Evolved](http://www.playark.com/) game client running on a local machine.
 
 {{< note >}}
-The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Securing Your Ark Server
@@ -48,7 +48,7 @@ The steps in this guide require root privileges unless otherwise noted. Be sure 
 
         adduser ark
 
-1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for instructions.
+1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide for instructions.
 
     | Port | Use |
     | --- | --- |

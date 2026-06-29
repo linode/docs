@@ -27,9 +27,9 @@ The first step is to have a SurrealDB server installed and running. Additionally
 
 To lay this foundation, follow two of our previous guides:
 
--   Use [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/) to learn how to install and run SurrealDB.
+-   Use [Getting Started with SurrealDB](/cloud/guides/getting-started-with-surrealdb/) to learn how to install and run SurrealDB.
 
--   Use [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/) to learn about creating limited users and disabling root access.
+-   Use [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/) to learn about creating limited users and disabling root access.
 
 Referencing those two guides, you need to do the following to keep up with the rest of this tutorial:
 
@@ -59,7 +59,7 @@ Referencing those two guides, you need to do the following to keep up with the r
 
     {{< tabs >}}
     {{< tab "Debian-based" >}}
-    On a Debian or Ubuntu system, refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide, and use commands like the following to open the port:
+    On a Debian or Ubuntu system, refer to our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide, and use commands like the following to open the port:
 
     ```command
     sudo ufw allow 8000/tcp
@@ -67,7 +67,7 @@ Referencing those two guides, you need to do the following to keep up with the r
     ```
     {{< /tab >}}
     {{< tab "RHEL-based" >}}
-    On a CentOS or similar system (e.g. AlmaLinux and Rocky Linux), refer to our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide, and use commands like the following to open the port:
+    On a CentOS or similar system (e.g. AlmaLinux and Rocky Linux), refer to our [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/) guide, and use commands like the following to open the port:
 
     ```command
     sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
@@ -87,7 +87,7 @@ To prepare the SurrealDB database for the application, you should define the sch
 
 Since this tutorial uses an example to-do list application to demonstrate, the steps here can provide a basic model. Follow along to see how you can use SurrealDB's `DEFINE` commands to craft a database for your own application's needs.
 
-For more on modeling databases in SurrealDB, take a look at the SurrealDB documentation linked at the end of this guide. For more advanced modeling ideas, check out our [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling/) guide.
+For more on modeling databases in SurrealDB, take a look at the SurrealDB documentation linked at the end of this guide. For more advanced modeling ideas, check out our [Modeling Data with SurrealDB’s Inter-document Relations](/cloud/guides/surrealdb-interdocument-modeling/) guide.
 
 1.  Create a file to store your SurrealQL queries. This tutorial names the file `surreal.surql`. To execute SurrealDB queries over HTTP using cURL, it is easiest to work with queries stored in a file like this.
 
@@ -99,7 +99,7 @@ For more on modeling databases in SurrealDB, take a look at the SurrealDB docume
 
 1.  Define a user account scope, called `account`, and give the scope `SIGNUP` and `SIGNIN` functions. This single command lays the basis for user access that the example application can use for full login functionality.
 
-    To learn more, take a look at the section on scoped user accounts in our [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/#how-to-manage-scoped-user-accounts-and-access-in-surrealdb) guide.
+    To learn more, take a look at the section on scoped user accounts in our [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/#how-to-manage-scoped-user-accounts-and-access-in-surrealdb) guide.
 
     ```file {title="surreal.surql" lang="sql"}
     DEFINE SCOPE account SESSION 24h
@@ -148,15 +148,15 @@ The SurrealDB database is now prepared to act as the backend for your applicatio
 
 Moreover, the schema setups in the previous section allow you to work with the SurrealDB endpoints more easily. By managing the schemas' default values and restrictions, you can implement logic that distinguishes API access.
 
-All of this makes SurrealDB an excellent backend for Jamstack architectures, which is what the rest of this guide uses. You can learn more about Jamstack through our guide [Getting Started with the Jamstack](/docs/guides/what-is-jamstack/).
+All of this makes SurrealDB an excellent backend for Jamstack architectures, which is what the rest of this guide uses. You can learn more about Jamstack through our guide [Getting Started with the Jamstack](/cloud/guides/what-is-jamstack/).
 
-Specifically, the next steps in this tutorial help you set up a basic frontend application using the [Gatsby](https://www.gatsbyjs.com/) framework. Gatsby uses React to generate static sites, and thus makes a good base for a Jamstack application. Learn more about Gatsby in our guide [Generating Static Sites with Gatsby](/docs/guides/generating-static-sites-with-gatsby/).
+Specifically, the next steps in this tutorial help you set up a basic frontend application using the [Gatsby](https://www.gatsbyjs.com/) framework. Gatsby uses React to generate static sites, and thus makes a good base for a Jamstack application. Learn more about Gatsby in our guide [Generating Static Sites with Gatsby](/cloud/guides/generating-static-sites-with-gatsby/).
 
 ### Setting Up the Prerequisites
 
 Before developing the code for the Gatsby frontend, you need to install some prerequisites. Additionally, this tutorial generates the new Gatsby project from a base template to streamline the development.
 
-1.  First, follow along with our [Installing and Using NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) guide to install the Node Version Manager (NVM).
+1.  First, follow along with our [Installing and Using NVM](/cloud/guides/how-to-install-use-node-version-manager-nvm/#install-nvm) guide to install the Node Version Manager (NVM).
 
 1.  Then run the commands below to install and start using the current LTS release of Node.js:
 
@@ -773,9 +773,9 @@ Use the **Sign Up** option to create a user account. From there, you should be l
 
 There are several options for deploying a Jamstack application like the one shown throughout this tutorial. With the SurrealDB server providing an accessible backend and a static site for the frontend, you have a lot of versatility for hosting.
 
-See the deployment section of the [Gatsby guide](/docs/guides/generating-static-sites-with-gatsby/#deploy-a-gatsby-static-site) linked above for more ideas.
+See the deployment section of the [Gatsby guide](/cloud/guides/generating-static-sites-with-gatsby/#deploy-a-gatsby-static-site) linked above for more ideas.
 
-For a more traditional static-site deployment process, read [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/). Additionally, our guide on how to [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/) showcases a modern and streamlined process using object storage.
+For a more traditional static-site deployment process, read [Set up a Web Server and Host a Website on Linode](/cloud/guides/set-up-web-server-host-website/). Additionally, our guide on how to [Deploy a Static Site using Hugo and Object Storage](/cloud/guides/host-static-site-object-storage/) showcases a modern and streamlined process using object storage.
 
 Object storage provides an efficient and powerful possibility for hosting the static frontends of Jamstack applications.
 
@@ -787,7 +787,7 @@ The steps that follow outline a method for deploying the Gatsby application crea
     gatsby build
     ```
 
-1.  Install `s3cmd` and configure it for your Linode Object Storage credentials and settings. See how to do that in our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/).
+1.  Install `s3cmd` and configure it for your Linode Object Storage credentials and settings. See how to do that in our guide [Using S3cmd with Object Storage](https://techdocs.akamai.com/cloud-computing/docs/using-s3cmd-with-object-storage).
 
 1.  Use `s3cmd` to create a new bucket, initialize the bucket as a website, and sync the application's static files to the bucket:
 
@@ -799,7 +799,7 @@ The steps that follow outline a method for deploying the Gatsby application crea
 
 1.  At this point, you can access the application at the Linode Object Storage website URL, such as `example-surreal-app.website-[cluster-id].linodeobjects.com`.
 
-1.  **Optional**: If using a custom domain name, create a `CNAME` domain record mapping the object storage bucket's URL to the same domain name as your SurrealDB server. Doing so can help prevent CORS-related difficulties. See how to do this in the *Next Steps* section of the [object storage deployment guide](/docs/guides/host-static-site-object-storage/#optional-next-steps).
+1.  **Optional**: If using a custom domain name, create a `CNAME` domain record mapping the object storage bucket's URL to the same domain name as your SurrealDB server. Doing so can help prevent CORS-related difficulties. See how to do this in the *Next Steps* section of the [object storage deployment guide](/cloud/guides/host-static-site-object-storage/#optional-next-steps).
 
 ## Conclusion
 
@@ -807,4 +807,4 @@ This tutorial provides the tools needed to start implementing SurrealDB as a bac
 
 More importantly, leveraging SurrealDB's APIs can make applications more adaptable. Whether it's for a traditional frontend, or a modern architecture like Jamstack with a static site generator, SurrealDB can be a full backend resource. This provides a lot of flexibility.
 
-Be sure to look at our other guides on SurrealDB, linked earlier in this tutorial. Additionally, learn more about schemas and document relations with our guide on [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling/).
+Be sure to look at our other guides on SurrealDB, linked earlier in this tutorial. Additionally, learn more about schemas and document relations with our guide on [Modeling Data with SurrealDB’s Inter-document Relations](/cloud/guides/surrealdb-interdocument-modeling/).

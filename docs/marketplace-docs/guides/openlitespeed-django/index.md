@@ -47,7 +47,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ### Accessing the OpenLiteSpeed Django App
 
-1.  Log in to your Compute Instance over SSH, using the sudo user created during deployment or `root`. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
+1.  Log in to your Compute Instance over SSH, using the sudo user created during deployment or `root`. See [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/) for assistance. You should see output similar to the following:
 
     ```output
     *********************************************************
@@ -67,7 +67,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 1.  The Django page is automatically configured with the custom domain provided during deployment, or the default rDNS.
 
     {{< note >}}
-    For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
+    For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide for instructions on setting up your DNS records in Cloud Manager, and read through [DNS Records: An Introduction](/cloud/guides/dns-overview/) for general information about how DNS works.
     {{< /note >}}
 
 Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) for further configuration steps.

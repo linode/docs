@@ -94,7 +94,7 @@ Please do **not** remove the Passenger files from `opt` after the install. They 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
     cd /opt
-    wget -O init-deb.sh http://www.linode.com/docs/assets/566-init-deb.sh
+    wget -O init-deb.sh 566-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -107,7 +107,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.04 (Jaunty) guide](/docs/databases/mysql/ubuntu-9-04-jaunty). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.04 (Jaunty) guide](/cloud/guides/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
@@ -120,7 +120,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
+- [Nginx Configuration](/cloud/guides/how-to-configure-nginx/)
 
 
 

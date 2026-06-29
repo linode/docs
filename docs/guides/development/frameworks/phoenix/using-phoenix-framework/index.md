@@ -20,17 +20,17 @@ In this tutorial, learn more about the Phoenix framework and what sets it apart.
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the Phoenix Framework?
 
-[Phoenix](https://www.phoenixframework.org/) is a web application development framework, similar in its approach to frameworks like [Ruby on Rails](/docs/guides/ruby-on-rails-apache-debian/) and [Django](https://www.djangoproject.com/).
+[Phoenix](https://www.phoenixframework.org/) is a web application development framework, similar in its approach to frameworks like [Ruby on Rails](/cloud/guides/ruby-on-rails-apache-debian/) and [Django](https://www.djangoproject.com/).
 
 Like these other frameworks, the Phoenix framework is a server-side solution. And like many modern web development frameworks, Phoenix uses a model-view-controller (MVC) architectural pattern for application development.
 
@@ -131,11 +131,11 @@ Web applications typically utilize a database server for persisting application 
 
 The official Phoenix documentation recommends [PostgreSQL](https://www.postgresql.org/) for your database server, and this guide follows that recommendation.
 
-To learn more about PostgreSQL, you can refer to our [Introduction to PostgreSQL](/docs/guides/an-introduction-to-postgresql/) guide. You can also refer to our [8 Most Popular Databases](/docs/guides/list-of-databases/) guide to compare database solutions.
+To learn more about PostgreSQL, you can refer to our [Introduction to PostgreSQL](/cloud/guides/an-introduction-to-postgresql/) guide. You can also refer to our [8 Most Popular Databases](/cloud/guides/list-of-databases/) guide to compare database solutions.
 
 You can learn more about the databases supported by Phoenix through the [official documentation](https://hexdocs.pm/phoenix/ecto.html) on Phoenix and the module it uses by default for database connections, Ecto.
 
-To install PostgreSQL on your system, you can follow one of our guides. See, for instance, [How to Install and Use PostgreSQL on Ubuntu 20.04](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/) or [How to Install and Use PostgreSQL on CentOS 8](/docs/guides/centos-install-and-use-postgresql/).
+To install PostgreSQL on your system, you can follow one of our guides. See, for instance, [How to Install and Use PostgreSQL on Ubuntu 20.04](/cloud/guides/how-to-install-use-postgresql-ubuntu-20-04/) or [How to Install and Use PostgreSQL on CentOS 8](/cloud/guides/centos-install-and-use-postgresql/).
 
 Additional distributions are covered in PostgreSQL's [official installation guide](https://www.postgresql.org/download/).
 
@@ -241,7 +241,7 @@ Follow these steps to set up a Phoenix project template, run the base applicatio
 
     By default, Phoenix serves the application on `localhost:4000`. To access this remotely, you can use an SSH tunnel.
 
-    - On **Windows**, you can use the PuTTY tool to set up your SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use`4000` as the **Source port** and `127.0.0.1:4000` as the **Destination**.
+    - On **Windows**, you can use the PuTTY tool to set up your SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/cloud/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use`4000` as the **Source port** and `127.0.0.1:4000` as the **Destination**.
 
     - On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the remote server and `192.0.2.0` with the remote server's IP address:
 

@@ -31,9 +31,9 @@ In order to secure your cPanel account, you need to have a Linux server with the
 
 - cPanel
 
-For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Quick Deploy Apps](/docs/marketplace-docs/guides/cpanel/).
+For a quick an easy way to install cPanel on Linode, check out our guide on [How to Deploy cPanel with Quick Deploy Apps](/cloud/marketplace-docs/guides/cpanel/).
 
-Otherwise, you can find instructions on how to manually install cPanel in our guide on [How to Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
+Otherwise, you can find instructions on how to manually install cPanel in our guide on [How to Install cPanel on CentOS](/cloud/guides/install-cpanel-on-centos/).
 
 This guide provides instructions on how to secure a cPanel account. Once cPanel is installed, log in as the `root` user and complete the steps to [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/). If you are running cPanel on a Linode as a reseller, you can provide this guide to your account holders to assist them in managing their accounts securely.
 
@@ -101,7 +101,7 @@ You can specify SSH access through the use of SSH keys for authentication. This 
 
 1.  Click **Manage SSH Keys**.
 
-1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
+1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see [SSH add keys](/cloud/guides/use-public-key-authentication-with-ssh/).
 
     ![Select 'Generate a New Key' or 'Import Key'.](cpanel-ssh-access.png "Select 'Generate a New Key' or 'Import Key'.")
 

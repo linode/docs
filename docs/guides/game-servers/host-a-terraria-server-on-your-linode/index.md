@@ -31,9 +31,9 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure a Firewall for Terraria
 {{< note >}}
@@ -42,7 +42,7 @@ Terraria only uses IPv4 and does not use IPv6.
 
 ### Firewalld
 
-Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/guides/introduction-to-firewalld-on-centos/) for more information.
+Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/cloud/guides/introduction-to-firewalld-on-centos/) for more information.
 
 1.  Enable and start firewalld:
 
@@ -77,13 +77,13 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
 ### UFW
 
-[UFW (Uncomplicated Firewall)](/docs/security/firewalls/configure-firewall-with-ufw/) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
+[UFW (Uncomplicated Firewall)](/cloud/guides/configure-firewall-with-ufw/) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
 
 1.  If needed, install UFW:
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/products/compute/compute-instances/guides/lish/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp
@@ -99,7 +99,7 @@ The second command in this step, `sudo ufw delete 4` references the fourth rule 
 
 ### iptables
 
-To manually configure iptables without using a controller, see our [iptables guide](/docs/guides/control-network-traffic-with-iptables/) for a general ruleset.
+To manually configure iptables without using a controller, see our [iptables guide](/cloud/guides/control-network-traffic-with-iptables/) for a general ruleset.
 
 1.  You'll also want to add the rule below for Terraria:
 

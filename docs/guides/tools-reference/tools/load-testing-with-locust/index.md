@@ -89,7 +89,7 @@ Since Locust is built around Python, its installation requires Python to be inst
     ```command
     sudo ufw allow 8089/tcp
     ```
-    Learn more about UFW in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
+    Learn more about UFW in our [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/) guide.
     {{< /tab >}}
     {{< tab "RHEL: CentOS, AlmaLinux, Rocky" >}}
     On **CentOS** and other RHEL derivatives (like **AlmaLinux** and **Rocky Linux**), you can manage firewall rules using firewalld. With firewalld configured and running, you can open the necessary port with the following commands:
@@ -97,7 +97,7 @@ Since Locust is built around Python, its installation requires Python to be inst
     sudo firewall-cmd --zone=public --add-port=8089/tcp --permanent
     sudo firewall-cmd --reload
     ```
-    Learn more in our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide.
+    Learn more in our [Configure a Firewall with Firewalld](/cloud/guides/introduction-to-firewalld-on-centos/) guide.
     {{< /tab >}}
     {{< /tabs >}}
 
@@ -111,7 +111,7 @@ Follow the instructions below to run a basic load test against an example applic
 
 A web application is required to run a load test using the example in this guide. You may use your own existing application or set up the below application that uses Python's [Flask](https://flask.palletsprojects.com/en/) web application framework. Since Locust is already running with Python, using Flask minimizes other dependencies needed to run an example load test.
 
-If you'd rather use a preinstalled Flask application, you can deploy our [Flask Quick Deploy App](/docs/marketplace-docs/guides/flask/). Note that the Flask Quick Deploy App does not include Locust and would require Locust installation after deployment.
+If you'd rather use a preinstalled Flask application, you can deploy our [Flask Quick Deploy App](/cloud/marketplace-docs/guides/flask/). Note that the Flask Quick Deploy App does not include Locust and would require Locust installation after deployment.
 
 {{< note title="Using Your Own Application" >}}
 Should you prefer to use your own web application, you can skip the steps for **Installing and Starting the Example Application** and move ahead to [Creating a Test Script](#creating-a-test-script). When asked to provide **host** information when running your load test, replace the URLs for the example Flask application with your own.
@@ -119,7 +119,7 @@ Should you prefer to use your own web application, you can skip the steps for **
 
 #### Installing and Starting the Example Application
 
-This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. Note that running Ubuntu is not required to complete the steps below.
+This guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/cloud/guides/flask-and-gunicorn-on-ubuntu/) guide. Note that running Ubuntu is not required to complete the steps below.
 
 1.  Install Python's virtualenv tool. This lets you set up virtual Python environments so that you can install project dependencies in an isolated environment rather than on your entire system.
 

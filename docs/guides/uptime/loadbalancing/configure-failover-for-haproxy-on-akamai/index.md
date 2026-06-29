@@ -17,7 +17,7 @@ This guide uses the free and open source (*FOSS*) version of HAProxy to create a
 
 ## Before You Begin
 
-1.  Follow the steps in [Getting Started with HAProxy TCP Load Balancing and Health Checks](/docs/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/) to create the example HAProxy instance and WordPress backend servers.
+1.  Follow the steps in [Getting Started with HAProxy TCP Load Balancing and Health Checks](/cloud/guides/getting-started-with-haproxy-tcp-load-balancing-and-health-checks/) to create the example HAProxy instance and WordPress backend servers.
 
 1.  Deploy a second HAProxy instance in the same data center, configured identically to the first HAProxy server.
 
@@ -28,7 +28,7 @@ This guide uses the free and open source (*FOSS*) version of HAProxy to create a
 1.  Link the second HAProxy instance to the new IP address on the first instance by following the *Configuring IP Sharing* section of [Managing IP Addresses on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#configuring-ip-sharing).
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Configure the Shared IP Address

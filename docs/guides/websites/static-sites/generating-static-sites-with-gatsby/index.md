@@ -21,9 +21,9 @@ Through this tutorial, learn what Gatsby is and what it has to offer. By follow 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -40,7 +40,7 @@ Through this tutorial, learn what Gatsby is and what it has to offer. By follow 
         ```
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Gatsby?
@@ -73,7 +73,7 @@ Finally, another remarkable difference between the two frameworks is Gatsby's ec
 
 These steps walk you through installing the tooling for creating and managing Gatsby projects. The Gatsby framework itself only needs to be installed on a project-by-project basis, but having Gatsby's command-line tool (CLI) installed makes the process of working with Gatsby significantly easier.
 
-1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). Gatsby requires Node.js and NPM. Additionally, NPM can be used later for installing Gatsby plugins.
+1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/). Gatsby requires Node.js and NPM. Additionally, NPM can be used later for installing Gatsby plugins.
 
 1. Install the Gatsby CLI as a global NPM package:
 
@@ -93,7 +93,7 @@ These steps walk you through installing the tooling for creating and managing Ga
 
 1. Ensure that your system has Git installed. Gatsby requires Git to download starters, even for the default Gatsby template.
 
-    Follow our tutorial on [How to Install Git on Linux](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#how-to-install-git-on-linux) to see how you can check if Git is installed and, if it is not, how you can install it.
+    Follow our tutorial on [How to Install Git on Linux](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/#how-to-install-git-on-linux) to see how you can check if Git is installed and, if it is not, how you can install it.
 
 ## How to Use Gatsby
 
@@ -134,7 +134,7 @@ gatsby develop
 
 Then, navigate to `localhost` port `8000` in a web browser. To visit the application remotely, you can use an SSH tunnel:
 
-- On **Windows**, you can use the PuTTY tool to set up your SSH tunnel. Follow our guide on [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), and use `8000` as the port number.
+- On **Windows**, you can use the PuTTY tool to set up your SSH tunnel. Follow our guide on [Connecting to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/), and use `8000` as the port number.
 
 - On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the remote server and `192.0.2.0` with the remote server's IP address:
 
@@ -272,12 +272,12 @@ gatsby build
 
 Gatsby uses the `build` command to render your website and store the static files for it in the `public` subdirectory. These are the files you need to copy to the host you plan to use to serve your static site.
 
-You can learn more about that process through our guide on how to [Deploy a Static Site Using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/#upload-your-static-site-to-linode-object-storage), following the section on uploading a static site to Linode Object Storage.
+You can learn more about that process through our guide on how to [Deploy a Static Site Using Hugo and Object Storage](/cloud/guides/host-static-site-object-storage/#upload-your-static-site-to-linode-object-storage), following the section on uploading a static site to Linode Object Storage.
 
-Alternatively, take a look at our guides on how to [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/) or, for something more advanced, on how to [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/).
+Alternatively, take a look at our guides on how to [Set up a Web Server and Host a Website on Linode](/cloud/guides/set-up-web-server-host-website/) or, for something more advanced, on how to [Host a Website with High Availability](/cloud/guides/host-a-website-with-high-availability/).
 
 ## Conclusion
 
 This guides covered an introduction to Gatsby for creating static sites.
 
-To read further, be sure to peruse the [official Gatsby documentation](https://www.gatsbyjs.com/docs/). You may also be interested in our guide on setting up a [CI/CD Pipeline with Gatsby, Netlify, and Travis CI](/docs/guides/install-gatsbyjs/). Doing so can give you an efficient process for managing your Gatsby website.
+To read further, be sure to peruse the [official Gatsby documentation](https://www.gatsbyjs.com/docs/). You may also be interested in our guide on setting up a [CI/CD Pipeline with Gatsby, Netlify, and Travis CI](/cloud/guides/install-gatsbyjs/). Doing so can give you an efficient process for managing your Gatsby website.

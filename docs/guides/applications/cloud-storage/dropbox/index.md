@@ -16,7 +16,7 @@ aliases: ['/applications/cloud-storage/dropbox/','/web-applications/cloud-storag
 
 Dropbox allows for the storage of your documents, files, videos, and photographs. Whatever you choose to store will be available on the Dropbox website, as well as any computers, phones, or servers you have the Dropbox application installed.
 
-Prior to setting up Dropbox on your Linode it is recommended to follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. You will need a [Dropbox account](https://www.dropbox.com/). Dropbox can be used on Debian, Ubuntu, and any Red Hat Enterprise Linux-based OS.
+Prior to setting up Dropbox on your Linode it is recommended to follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. You will need a [Dropbox account](https://www.dropbox.com/). Dropbox can be used on Debian, Ubuntu, and any Red Hat Enterprise Linux-based OS.
 
 ## Installing Dependencies
 

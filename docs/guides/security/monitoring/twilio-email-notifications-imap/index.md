@@ -44,15 +44,15 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
 1. This guide shows how to set up the email-to-text forwarding system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-compute-instances). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
-1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Twilio API. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Twilio Python Helper Library](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-twilio-python-helper-library) section.
+1.  Another guide in our library, [How to Use the Linode API with Twilio](/cloud/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Twilio API. Follow this guide, starting with its [Before You Begin](/cloud/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Twilio Python Helper Library](/cloud/guides/how-to-use-the-linode-api-with-twilio/#install-the-twilio-python-helper-library) section.
 
     The guide instructs you to install the Twilio API client for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
-1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/docs/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
+1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/cloud/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
 
 1. Your email service needs to support IMAP, and support for IMAP may need to be manually enabled. For example, [Gmail has an option to turn on IMAP access in its settings](https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on).
 
@@ -64,7 +64,7 @@ The script in this section is updated in the next section to incorporate auto-fo
 
 ### Import Modules and Initialize Service Credentials
 
-1.  Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
+1.  Log into your Linode under your limited Linux user [using SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 1.  Create a new file named `forward-last-email-to-text-message.py` with your preferred terminal text editor. For example, when using `nano`, run:
 
@@ -349,7 +349,7 @@ The code example is now complete. Your script should now look like the code in [
 
 ### Run the Code
 
-1.  Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+1.  Before you run the script, set the [environment variables](/cloud/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
         export TWILIO_ACCOUNT_SID=
         export TWILIO_AUTH_TOKEN=
@@ -375,9 +375,9 @@ export EMAIL_SERVER=imap.yourdomain.com
 
     | Variable | Value |
     |----------|-------|
-    | TWILIO_ACCOUNT_SID | The Twilio account SID [located in your Twilio console](/docs/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials) |
-    | TWILIO_AUTH_TOKEN | The Twilio auth token [located in your Twilio console](/docs/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials). The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
-    | TWILIO_FROM_PHONE_NUMBER | The new number that you selected in the Twilio console [when you first signed up](/docs/guides/how-to-use-the-linode-api-with-twilio/#sign-up-for-twilio) |
+    | TWILIO_ACCOUNT_SID | The Twilio account SID [located in your Twilio console](/cloud/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials) |
+    | TWILIO_AUTH_TOKEN | The Twilio auth token [located in your Twilio console](/cloud/guides/how-to-use-the-linode-api-with-twilio/#locate-your-twilio-api-credentials). The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
+    | TWILIO_FROM_PHONE_NUMBER | The new number that you selected in the Twilio console [when you first signed up](/cloud/guides/how-to-use-the-linode-api-with-twilio/#sign-up-for-twilio) |
     | TWILIO_TO_PHONE_NUMBER | Your personal or testing phone number that you signed up to Twilio with. The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
     | EMAIL_USERNAME | Your email address. |
     | EMAIL_PASSWORD | Your password for your email. Note that some services may require you to create an app-specific password for the IMAP connection. For example, [Google requires you to create an app-specific password](https://support.google.com/accounts/answer/185833) if you use 2-step verification/2FA on your account. |
@@ -427,7 +427,7 @@ This auto-forwarding system has two parts:
 
 - The example code is [updated to search recent email by date](#iterate-through-recent-emails). The script iterates through the matching emails and creates a text message for each of them, instead of just forwarding the single most recent email. Specifically, it fetches the content for any Linode Alert email from the past 60 seconds and forwards it to Twilio.
 
-- A [cron](/docs/guides/schedule-tasks-with-cron/) job is created to run the script every minute. This means that every time the script is run, it checks for emails that have been received since the last time the script was run.
+- A [cron](/cloud/guides/schedule-tasks-with-cron/) job is created to run the script every minute. This means that every time the script is run, it checks for emails that have been received since the last time the script was run.
 
 ### Search Email by Date with Imaplib
 
@@ -557,7 +557,7 @@ The example code is similar to the code from the previous section. The updated l
 
 ### Set Up a Cron Job
 
-[Cron](/docs/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify. Follow these instructions to set up a cron job for the new script:
+[Cron](/cloud/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify. Follow these instructions to set up a cron job for the new script:
 
 1.  In your SSH session, start the *crontab* editor:
 
@@ -650,25 +650,25 @@ Your script should now look like the code in [this file](autoforward-email-with-
 
 1.  The updated script is automatically run by the cron job. CPU usage alerts are sent when a Linode on your account exceeds a threshold percentage. The Linodes on your account may or may not currently this threshold, so you may not receive any notifications.
 
-    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
+    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](https://techdocs.akamai.com/cloud-computing/docs/configure-email-alerts-for-resource-usage-on-compute-instances) for one of your Linodes. By default, this value is set to 90%.
 
 ## Next Steps
 
-The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for different resources in the Cloud Manager.
+The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](https://techdocs.akamai.com/cloud-computing/docs/configure-email-alerts-for-resource-usage-on-compute-instances) for different resources in the Cloud Manager.
 
-In addition to forwarding emails to text, you may want to forward information from the Linode API to text. The [Using the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) and [Monitor your Linode's Network Transfer Pool with Twilio](/docs/guides/monitor-linode-network-transfer-pool-with-twilio/) guides show how to combine the Linode and Twilio APIs.
+In addition to forwarding emails to text, you may want to forward information from the Linode API to text. The [Using the Linode API with Twilio](/cloud/guides/how-to-use-the-linode-api-with-twilio/) and [Monitor your Linode's Network Transfer Pool with Twilio](/cloud/guides/monitor-linode-network-transfer-pool-with-twilio/) guides show how to combine the Linode and Twilio APIs.
 
 Twilio's API offers many other features as well. For example, you can forward notifications to more than one phone number using the [Messaging Service resource](https://www.twilio.com/docs/messaging/services/api#messaging-services-resource). Twilio's [quick start guides](https://www.twilio.com/docs/quickstart) are helpful when exploring the Twilio API.
 
 ## Troubleshooting
 
-Several troubleshooting scenarios are outlined in the [Troubleshooting](/docs/guides/how-to-use-the-linode-api-with-twilio/#troubleshooting) section of the [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) guide. Review that section for possible solutions.
+Several troubleshooting scenarios are outlined in the [Troubleshooting](/cloud/guides/how-to-use-the-linode-api-with-twilio/#troubleshooting) section of the [How to Use the Linode API with Twilio](/cloud/guides/how-to-use-the-linode-api-with-twilio/) guide. Review that section for possible solutions.
 
 When troubleshooting email forwarding, remember that you can trigger new Linode system notifications by:
 
 - Rebooting a Linode in the Cloud Manager.
 
-- Temporarily lowering [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/).
+- Temporarily lowering [alert threshold values](https://techdocs.akamai.com/cloud-computing/docs/configure-email-alerts-for-resource-usage-on-compute-instances).
 
 As well, the following possible solution may help:
 

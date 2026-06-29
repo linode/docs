@@ -11,7 +11,7 @@ keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", 
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
- - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
+ - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/cloud/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
@@ -30,13 +30,13 @@ In this guide, you'll learn how to set up a secure email server with Postfix, Do
 This tutorial assumes that you are familiar with the following:
 
 1. You are familiar with the Linux command line.
-2. You can edit files using the Nano text editor. Refer to [Nano Commands](/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
+2. You can edit files using the Nano text editor. Refer to [Nano Commands](/cloud/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
 3. You understand the basics of MySQL data.
-4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
+4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/cloud/guides/running-a-mail-server/) guide.
 
 ![Email with Postfix, Dovecot, and MySQL](email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
-For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
+For a different Linux distribution or different mail server, review our [email tutorials](/cloud/guides/email/).
 
 {{% content "email-warning-shortguide" %}}
 
@@ -56,9 +56,9 @@ Next, we will go through each step and set up our email server with Postfix, Dov
 
 ## Setting Up Your Linode
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
-1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 ## Configure DNS for Your Email Server
 
@@ -94,7 +94,7 @@ While you can generate an SSL certificate through any certificate authority, we 
 
     sudo certbot certonly --standalone
 
-You can also reference the [Install an SSL Certificate with Certbot](/docs/guides/secure-http-traffic-certbot/) guide. Make a note of the file paths for the certificate and private key on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
+You can also reference the [Install an SSL Certificate with Certbot](/cloud/guides/secure-http-traffic-certbot/) guide. Make a note of the file paths for the certificate and private key on the Linode. You will need the path to each during the [Dovecot](#dovecot) configuration steps.
 
 ## Install Packages
 
@@ -583,7 +583,7 @@ auth_mechanisms = plain login
 {{< /file >}}
 
     {{< note respectIndent=false >}}
-For reference, [view a complete `10-auth.conf` file](/docs/assets/1238-dovecot_10-auth.conf.txt).
+For reference, [view a complete `10-auth.conf` file](1238-dovecot_10-auth.conf.txt).
 {{< /note >}}
 
 1. Edit the `/etc/dovecot/conf.d/auth-sql.conf.ext` file with authentication and storage information. Ensure your file contains the following lines. Make sure the `passdb` section is uncommented, that the `userdb` section that uses the `static` driver is uncommented and updated with the right argument. Then comment out the `userdb` section that uses the `sql` driver:
@@ -630,7 +630,7 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
     1.  Change the `/etc/dovecot/dovecot-sql.conf.ext` file's `password_query` value to `password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');`
 
     {{< note respectIndent=false >}}
-For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a complete `dovecot-sql.conf.ext`file.
+For reference, [view](1284-dovecot__dovecot-sql.conf.ext.txt) a complete `dovecot-sql.conf.ext`file.
 {{< /note >}}
 
 1.  Change the owner and group of the `/etc/dovecot/` directory to `vmail` and `dovecot`:
@@ -646,7 +646,7 @@ For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a com
     {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 
-Here is [an example of a complete `10-master.conf`](/docs/assets/1240-dovecot_10-master.conf.txt) file.
+Here is [an example of a complete `10-master.conf`](1240-dovecot_10-master.conf.txt) file.
 {{< /note >}}
 
     Disable unencrypted IMAP and POP3 by setting the protocols' ports to `0`. Uncomment the `port` and `ssl` variables:
@@ -776,7 +776,7 @@ U   4 John Doe     Wed Jun 27 16:42  71/3535  Test email 4
 
     The email message header and body should display. Consider adding spam and virus filtering and a webmail client.
 
-    See [Troubleshooting problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/) for debugging steps.
+    See [Troubleshooting problems with Postfix, Dovecot, and MySQL](/cloud/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/) for debugging steps.
 
 ## Configuring an Email Client
 
@@ -789,7 +789,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 - **POP3:** If using POP3 instead of IMAP, set the port to `995` and require SSL.
 - **SMTP:** Set the port to `587` and the SSL/Security settings to `STARTTLS` or equivalent.
 
-See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
+See [Install SquirrelMail on Ubuntu 16.04](/cloud/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 {{< note >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.

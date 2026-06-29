@@ -21,9 +21,9 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -35,12 +35,12 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
             sudo dnf upgrade
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Vim Plugins Work
 
-Vim is a highly-customizable text editor. By default, Vim comes with a configuration file — usually `~/.vimrc` — that gives you a vast array of options for controlling Vim's behavior and look and feel. You can learn more about configuring your Vim instance in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/).
+Vim is a highly-customizable text editor. By default, Vim comes with a configuration file — usually `~/.vimrc` — that gives you a vast array of options for controlling Vim's behavior and look and feel. You can learn more about configuring your Vim instance in our guide [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/).
 
 Using plugins, Vim becomes even more adaptable. The editor has a wide and dedicated community of users. Many of these users have contributed exceptional tools that add new functionality or adapt existing functionality within Vim.
 
@@ -55,7 +55,7 @@ This section walks you through creating a Vim plugin. The example plugin display
 
 To help keep plugins organized and more maintainable, this guide uses the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager. Several other plugin managers exist though, so feel free to choose an option that works best for you.
 
-You can get details on how to install vim-plug in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/#install-the-vim-plug-plug-in-manager). However, if you already have cURL installed, you can install vim-plug with the following command:
+You can get details on how to install vim-plug in our guide [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/#install-the-vim-plug-plug-in-manager). However, if you already have cURL installed, you can install vim-plug with the following command:
 
     sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 

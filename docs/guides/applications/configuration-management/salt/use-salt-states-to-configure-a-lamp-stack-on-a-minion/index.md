@@ -14,7 +14,7 @@ image: UseSaltStatestoConfigureaLAMPStackonaMinion.png
 deprecated: true
 ---
 
-This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) to get started.
+This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/cloud/guides/getting-started-with-salt-basic-installation-and-setup/) to get started.
 
 ## Create the LAMP Configuration States
 The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust as needed.

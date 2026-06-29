@@ -13,5 +13,5 @@ aliases: ['/mongodb-shell-shortguide/']
 ---
 
 {{< note >}}
-To connect to your MongoDB instance, use the [MongoDB Shell](https://www.mongodb.com/products/shell) (`mongosh`). MongoDB Shell provides a command line interface you can use to interact with your MongoDB instances. For help using this tool to connect to your database, see the [Install and Use the MongoDB Shell](/docs/guides/mongodb-community-shell-installation/) guide.
+To connect to your MongoDB instance, use the [MongoDB Shell](https://www.mongodb.com/products/shell) (`mongosh`). MongoDB Shell provides a command line interface you can use to interact with your MongoDB instances. For help using this tool to connect to your database, see the [Install and Use the MongoDB Shell](/cloud/guides/mongodb-community-shell-installation/) guide.
 {{< /note >}}

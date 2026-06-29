@@ -23,7 +23,7 @@ Passive checks simply monitor traffic between the NodeBalancer and back-end serv
 -   **HTTP Status**: Requires a valid HTTP `2xx` or `3xx` response from a back-end server.
 -   **HTTP Body**: Requires a match against a regular expression in the body of an HTTP response.
 
-For additional details and options for configuring NodeBalancer health checks, see [Configuration Options for NodeBalancers: Health Checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks).
+For additional details and options for configuring NodeBalancer health checks, see [Configuration Options for NodeBalancers: Health Checks](https://techdocs.akamai.com/cloud-computing/docs/configuration-options-for-nodebalancers#health-checks).
 
 ## Deploy the Testbed
 
@@ -47,7 +47,7 @@ Use the following settings to provision each of the three back-end server instan
 -   **Details** : Name each instance `srv1`, `srv2`, and `srv3`, respectively, under **Linode Label**.
 -   **Add-ons**: A **Private IP** is mandatory for each instance. NodeBalancers only distribute client requests to back-end servers over a region's private network.
 
-1.  Once your servers are up and running, log in to each using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/), and install the NGINX web server:
+1.  Once your servers are up and running, log in to each using [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish), and install the NGINX web server:
 
     ```command
     sudo apt install nginx
@@ -111,7 +111,7 @@ It is a best practice to configure load balancing first, and then add health che
 
     ![The NodeBalancer configuration screen after making the indicated changes.](nodebalancer-configuration-screen.png)
 
-1.  When done, click the **Create NodeBalancer** button to initialize the instance. Our [Create a NodeBalancer guide](https://www.linode.com/docs/products/networking/nodebalancers/guides/create/) has more details on load balancer setup.
+1.  When done, click the **Create NodeBalancer** button to initialize the instance. Our [Create a NodeBalancer guide](https://techdocs.akamai.com/cloud-computing/docs/create-a-nodebalancer) has more details on load balancer setup.
 
 #### Verify Load Balancing
 

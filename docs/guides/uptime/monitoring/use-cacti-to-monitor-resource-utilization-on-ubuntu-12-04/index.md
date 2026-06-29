@@ -12,7 +12,7 @@ aliases: ['/uptime/monitoring/use-cacti-to-monitor-resource-utilization-on-ubunt
 external_resources:
  - '[Cacti Website](http://www.cacti.net/index.php)'
  - '[Cacti Users Plugin Community](http://cactiusers.org/index.php)'
- - '[Linux Security Basics](/docs/security/basics)'
+ - '[Linux Security Basics](/cloud/guides/security/basics/)'
 relations:
     platform:
         key: install-cacti-monitoring
@@ -25,7 +25,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.
 
-Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ If you had to enable new repositories, issue the following command to update you
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/guides/apache-web-server-ubuntu-12-04/) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/guides/run-php-cgi-apache-ubuntu-12-04/) and with [nginx](/docs/guides/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/cloud/guides/apache-web-server-ubuntu-12-04/) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/cloud/guides/run-php-cgi-apache-ubuntu-12-04/) and with [nginx](/cloud/guides/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/) running PHP as a FastCGI process.
 
 ### Install Cacti
 
@@ -91,7 +91,7 @@ This section is optional and for those looking to use Cacti to monitor additiona
 
     apt-get install snmp snmpd
 
-Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/docs/security/firewalls/) that  restrict access to only specific ip addresses that you control.
+Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/cloud/guides/security/firewalls/) that  restrict access to only specific ip addresses that you control.
 
 Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the `agentAddress` as all  interfaces. The `Agent Behavior` section should now resemble the following:
 

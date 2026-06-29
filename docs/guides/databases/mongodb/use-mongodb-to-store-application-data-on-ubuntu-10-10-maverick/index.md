@@ -20,7 +20,7 @@ deprecated: true
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 
-Before installing MongoDB, it is assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing MongoDB, it is assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Installing MongoDB
 
@@ -59,8 +59,8 @@ In typical installations, the MongoDB server process is controlled using command
 Issue the following sequence of commands to download the scripts and set the permissions on these files:
 
     cd /opt/bin/
-    wget -O mongodb-start http://www.linode.com/docs/assets/619-mongodb-start.sh
-    wget -O mongodb-stop http://www.linode.com/docs/assets/620-mongodb-stop.sh
+    wget -O mongodb-start 619-mongodb-start.sh
+    wget -O mongodb-stop 620-mongodb-stop.sh
     chmod +x *
 
 Review the contents of the `mongodb-start` and `mongodb-stop` and modify these files if your deployment requires an alternate initialization procedure. From now on, issuing `/opt/bin/mongodb-start` or `/opt/bin/mongodb-stop` will start or stop the MongoDB process, respectively. The behavior of the `mongod` process is controlled by the values set in `/opt/config/mongodb`.
@@ -98,7 +98,7 @@ Setting the `fork` option to equal `true` configures MongoDB to run as a daemon 
 
 We've also created a *very* basic "init script" as a wrapper around the `mongodb-start` and `mongo-stop` scripts described above. You will still need to modify and manage the configuration of your MongoDB server in the files above. This script only provides a means for ensuring that MongoDB will start at boot. Issue the following commands:
 
-    wget -O init-deb.sh http://www.linode.com/docs/assets/618-mongodb-init-deb.sh
+    wget -O init-deb.sh 618-mongodb-init-deb.sh
     mv init-deb.sh /etc/init.d/mongodb
     chmod +x /etc/init.d/mongodb
     /usr/sbin/update-rc.d -f mongodb defaults

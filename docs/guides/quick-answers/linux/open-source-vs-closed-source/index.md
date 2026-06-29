@@ -23,7 +23,7 @@ That’s fine for users. For programmers, it was another story. Instead of shari
 
 One developer who was especially annoyed at closed-source software was MIT’s Richard M. Stallman. He created a new legal approach, the GNU Public Library (GPL) for what he called “Free Software.” This framework would prove the launch-pad for open-source software.
 
-Over the last 30-years, open-source software made a comeback. First, the rise of the commercial Internet and web made it easier for developers to work together. Then, open-source programs such as the Linux operating system and the [Apache HTTP Server](/docs/guides/web-servers/apache-tips-and-tricks/) showed that this kind of software could be far cheaper, better, and more secure than their closed-source rivals.
+Over the last 30-years, open-source software made a comeback. First, the rise of the commercial Internet and web made it easier for developers to work together. Then, open-source programs such as the Linux operating system and the [Apache HTTP Server](/cloud/guides/web-servers/apache-tips-and-tricks/) showed that this kind of software could be far cheaper, better, and more secure than their closed-source rivals.
 
 Since then, many popular end-user programs such as Firefox, LibreOffice, and Thunderbird often replace, or rival, closed-source programs such as Internet Explorer, Microsoft Office, and Outlook.
 

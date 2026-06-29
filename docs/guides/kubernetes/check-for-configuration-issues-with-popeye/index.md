@@ -27,7 +27,7 @@ Popeye can either be installed using the package manager [Homebrew](https://brew
 
 #### Ubuntu 20.04
 
-Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](/docs/guides/kubernetes/) cluster with [kubectl](/docs/products/compute/kubernetes/guides/kubectl/) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
+Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](/cloud/guides/kubernetes/) cluster with [kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
 
 ```command
 kubectl get nodes
@@ -90,7 +90,7 @@ The following steps will complete the installation of Popeye on **MacOS**:
 
 ### Install Popeye using Linux Binary Tarballs
 
-Before proceeding with the installation of popeye, ensure that [wget](/docs/guides/how-to-use-wget/) is installed on your system. Once installed proceed with the following steps:
+Before proceeding with the installation of popeye, ensure that [wget](/cloud/guides/how-to-use-wget/) is installed on your system. Once installed proceed with the following steps:
 
 1. Determine the architecture of your system:
 

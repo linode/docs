@@ -41,15 +41,15 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
+1. Complete the steps in the [Add DNS Records](/cloud/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activity.
 
-    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Configure an Email Server with Postfix, Dovecot, and MySQL on Debian, and Ubuntu](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Configure an Email Server with Postfix, Dovecot, and MySQL on Debian, and Ubuntu](/cloud/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
         {{< note >}}
 This guide uses the PostgreSQL database as a backend for Mastodon. You can set up the SMTP server with the PostgreSQL database instead of MySQL.
@@ -60,15 +60,15 @@ This guide uses the PostgreSQL database as a backend for Mastodon. You can set u
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Docker and Docker Compose
 
 Mastodon can be installed using its included [Docker Compose](https://docs.docker.com/compose/) file. Docker Compose installs and runs all of the requisites for the Mastodon environment in Docker containers. If you have not used Docker before, it is recommended that you review the following guides:
 
-- [An Introduction to Docker](/docs/guides/introduction-to-docker/)
-- [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
+- [An Introduction to Docker](/cloud/guides/introduction-to-docker/)
+- [How to Use Docker Compose](/cloud/guides/how-to-use-docker-compose/)
 
 ### Install Docker
 

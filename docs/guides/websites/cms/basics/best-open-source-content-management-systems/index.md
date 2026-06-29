@@ -70,13 +70,13 @@ This is just what it says it is. The best open-source e-commerce CMSs incorporat
 
 Here the focus is on publishing words and possibly audio and video content. You need ways for editors and writers to prepare and publish content. You also need to be able to quickly add and change complex links, and to categorize the content. Another important element is the ability to link your content to social media and network platforms.
 
-[WordPress](/docs/guides/websites/cms/wordpress/) is by far the most well-known of these CMSs, but there are many others.
+[WordPress](/cloud/guides/websites/cms/wordpress/) is by far the most well-known of these CMSs, but there are many others.
 
 ### Social Media
 
 Developing an online community site is much more complicated than a simple website. Here content is created not only by you, but by your sites' members as well. This means you must give them the tools they need to create and share content.
 
-While social networking sites such as Facebook and Twitter are based on open-source, you can't use their code to make your own Facebook clone. There are many open-source social media CMSs, such as [Elgg](https://elgg.org/), [Mastodon](/docs/guides/install-mastodon-on-ubuntu-2004/), and [Dolphin](https://github.com/boonex/dolphin.pro), but none of them, or services based on them, have gained anything close to the success of the major social networks. Still, if you want to build a social network of your own, these give you the foundation you need.
+While social networking sites such as Facebook and Twitter are based on open-source, you can't use their code to make your own Facebook clone. There are many open-source social media CMSs, such as [Elgg](https://elgg.org/), [Mastodon](/cloud/guides/install-mastodon-on-ubuntu-2004/), and [Dolphin](https://github.com/boonex/dolphin.pro), but none of them, or services based on them, have gained anything close to the success of the major social networks. Still, if you want to build a social network of your own, these give you the foundation you need.
 
 ### Content Management System Types
 
@@ -111,7 +111,7 @@ Grav is written primarily in PHP and the [Symfony](https://symfony.com/) web app
 
 - It's not ideal for complex websites.
 
-You can quickly deploy an instance of the Grav CMS on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Grav through the Linode Marketplace](/docs/marketplace-docs/guides/grav/) guide to get started.
+You can quickly deploy an instance of the Grav CMS on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Grav through the Linode Marketplace](/cloud/marketplace-docs/guides/grav/) guide to get started.
 
 ### Drupal
 
@@ -130,7 +130,7 @@ Drupal has many loyal fans, most of whom are hard-core web developers and progra
 - It has a steep learning curve.
 - Using Drupal to its best advantage requires programming skills.
 
-You can deploy a Drupal instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Drupal through the Linode Marketplace](/docs/marketplace-docs/guides/drupal/) guide to get started.
+You can deploy a Drupal instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Drupal through the Linode Marketplace](/cloud/marketplace-docs/guides/drupal/) guide to get started.
 
 ### Ghost
 
@@ -170,7 +170,7 @@ Written in PHP, Joomla stores your data in a MySQL database. Unlike many PHP pro
 - Sophisticated sites may require a veteran Joomla developer.
 - Fewer extensions than the most popular CMSs.
 
-You can deploy an instance of the Joomla CMS on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Joomla through the Linode Marketplace](/docs/marketplace-docs/guides/joomla/) guide to get started.
+You can deploy an instance of the Joomla CMS on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying Joomla through the Linode Marketplace](/cloud/marketplace-docs/guides/joomla/) guide to get started.
 
 ### Magento
 
@@ -212,7 +212,7 @@ To take full advantage of its capabilities, you need to have Python and Zope dev
 
 ### Strapi
 
-The headless [Strapi](https://strapi.io/) CMS is built on [Node.js](https://nodejs.org/). It's customizable using APIs. Its database and file content can be accessed for display on websites, smartphones, and Internet of Things (IoT) devices. This content is delivered via the [JAMstack](https://jamstack.org/) static-site generators and front-end frameworks, such as Gatsby.js, Next.js, Nuxt.js, Angular, React, and Vue.js. On the backend, it supports both [SQL and NoSQL databases](/docs/guides/what-is-nosql/).
+The headless [Strapi](https://strapi.io/) CMS is built on [Node.js](https://nodejs.org/). It's customizable using APIs. Its database and file content can be accessed for display on websites, smartphones, and Internet of Things (IoT) devices. This content is delivered via the [JAMstack](https://jamstack.org/) static-site generators and front-end frameworks, such as Gatsby.js, Next.js, Nuxt.js, Angular, React, and Vue.js. On the backend, it supports both [SQL and NoSQL databases](/cloud/guides/what-is-nosql/).
 
 Strapi is the most popular headless CMS. This new approach takes some getting used to, although once mastered it’s useful. This is especially true when you consider how often your audience may be seeing your website, not with a desktop-based web browser, but on a smartphone, tablet, or IoT device.
 
@@ -265,7 +265,7 @@ WooCommerce is written in PHP, and like the program underneath it, it is license
 
 Its flexibility can be confusing until you have a firm grip on all the options.
 
-You can deploy a WooCommerce instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying WooCommerce through the Linode Marketplace](/docs/marketplace-docs/guides/woocommerce/) guide to get started.
+You can deploy a WooCommerce instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying WooCommerce through the Linode Marketplace](/cloud/marketplace-docs/guides/woocommerce/) guide to get started.
 
 ### WordPress
 
@@ -288,7 +288,7 @@ WordPress is written in PHP. You can argue it's the program that made PHP the la
 - Due to the sheer number of all WordPress's options, it can be confusing.
 - Because it's so popular, hackers target it more than any other CMS. Using a third-party security program such as [WordFence](https://www.wordfence.com/) or [Jetpack](https://jetpack.com/) is essential.
 
-You can deploy a WordPress instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](/docs/marketplace-docs/guides/wordpress/) guide to get started.
+You can deploy a WordPress instance on a Linode server using the Akamai Quick Deploy App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](/cloud/marketplace-docs/guides/wordpress/) guide to get started.
 
 ## Which Top Open-Source Content Management System is Right For You?
 

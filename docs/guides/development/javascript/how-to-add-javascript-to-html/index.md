@@ -2,7 +2,7 @@
 slug: how-to-add-javascript-to-html
 title: "Link JavaScript to HTML"
 title_meta: "An Essential Guide on How to Add JavaScript to HTML"
-description: "Wondering how to link javascript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external javascript files."
+description: "Wondering how to link JavaScript to HTML? Follow our step-by-step instructions, including examples, plus tips on how to add external JavaScript files."
 authors: ["Nathaniel Stickman"]
 contributors: ["Nathaniel Stickman"]
 published: 2022-05-05
@@ -166,6 +166,6 @@ Like `async`, using `defer` tells the browser to download a linked JavaScript fi
 
 This guide covered the foundational information you need to start using JavaScript on your HTML pages. Whether you plan to embed a script or link a JavaScript file in your HTML, this guide outlined the steps needed to do so.
 
-As a next step, you may be interested in looking at some of our other JavaScript tutorials. For instance, take a look at our [Traversing the Document Object Model with JavaScript](/docs/guides/traversing-the-dom/) tutorial, our [How to Modify the DOM with JavaScript](/docs/guides/javascript-dom-manipulation/) tutorial, and our [JavaScript Objects](/docs/guides/javascript-objects-tutorial/) tutorial.
+As a next step, you may be interested in looking at some of our other JavaScript tutorials. For instance, take a look at our [Traversing the Document Object Model with JavaScript](/cloud/guides/traversing-the-dom/) tutorial, our [How to Modify the DOM with JavaScript](/cloud/guides/javascript-dom-manipulation/) tutorial, and our [JavaScript Objects](/cloud/guides/javascript-objects-tutorial/) tutorial.
 
 

@@ -18,9 +18,9 @@ relations:
 deprecated: true
 ---
 
-Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/cloud/guides/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/).
 
 ## Installing nginx from Ubuntu Packages
 
@@ -128,9 +128,9 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 ### Create an Init Script to Manage nginx
 
-Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/docs/assets/634-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
+Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](634-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
 
-    wget -O init-deb.sh http://www.linode.com/docs/assets/634-init-deb.sh
+    wget -O init-deb.sh 634-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -139,14 +139,14 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/cloud/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
 
 ## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/cloud/guides/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/)
-- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/)
-- [Configure Ruby on Rails with nginx](/docs/guides/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/)
+- [Configure Perl and FastCGI with nginx](/cloud/guides/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/)
+- [Configure PHP and FastCGI with nginx](/cloud/guides/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/)
+- [Configure Ruby on Rails with nginx](/cloud/guides/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/)

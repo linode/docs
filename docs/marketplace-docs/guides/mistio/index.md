@@ -8,7 +8,7 @@ tags: ["cloud-manager", "linode platform", "quick deploy apps"]
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/products/tools/marketplace/guides/mistio/','/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
-_build:
+build:
   list: false
 noindex: true
 deprecated: true
@@ -52,7 +52,7 @@ Once the Mist.io server is successfully created, a few additional steps must be 
 
 ### Log In to Mist.io
 
-1. In a web browser, enter your Linode's [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) or the [Domain](/docs/products/networking/dns-manager/) associated with it to access your Mist.io App's login screen.
+1. In a web browser, enter your Linode's [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) or the [Domain](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 

@@ -15,11 +15,11 @@ deprecated: true
 
 PHP Fusion is a lightweight content management system built on the popular LAMP stack. Designed for maximum flexibility and broad support it's for internationalization, in its latest version PHP Fusion focuses on standards compliance, security, and modular design. PHP Fusion is an obvious choice for developers who need to deploy a system to manage content and community interaction.
 
-Before installing PHP Fusion, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, prior to installing PHP Fusion, you will need to install a fully functional [LAMP stack](/docs/lamp-guides/) on your Linode.
+Before installing PHP Fusion, we assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts/), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics/). Additionally, prior to installing PHP Fusion, you will need to install a fully functional [LAMP stack](/cloud/guides/web-servers/lamp/) on your Linode.
 
 ## Install Prerequisites
 
-After installing the [LAMP stack](/docs/lamp-guides/), there are a few additional prerequisites that you will need in order to complete this installation of PHP Fusion. Ensure that your distribution provides `wget` and `unzip` tools. On Debian and Ubuntu based systems, issue the following command:
+After installing the [LAMP stack](/cloud/guides/web-servers/lamp/), there are a few additional prerequisites that you will need in order to complete this installation of PHP Fusion. Ensure that your distribution provides `wget` and `unzip` tools. On Debian and Ubuntu based systems, issue the following command:
 
     apt-get update
     apt-get upgrade --show-upgraded

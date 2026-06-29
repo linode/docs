@@ -19,9 +19,9 @@ Learn more about `fzf` in this guide, including how to install and get started u
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -38,7 +38,7 @@ Learn more about `fzf` in this guide, including how to install and get started u
             sudo yum update
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is fzf?
@@ -79,7 +79,7 @@ You have two options when it comes to installing `fzf`. The main option provides
 
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    If you're using NeoVim, refer to our [How to Install NeoVim and Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/#install-the-vim-plug-plugin-manager) guide instead.
+    If you're using NeoVim, refer to our [How to Install NeoVim and Plugins with vim-plug](/cloud/guides/how-to-install-neovim-and-plugins-with-vim-plug/#install-the-vim-plug-plugin-manager) guide instead.
 
 1. Add the `Plug` line for `fzf`, as shown below, to the plugin section of your `.vimrc` (or `init.vim`, if you're using NeoVim):
 
@@ -202,13 +202,13 @@ let g:fzf_colors =
 
 ## Examples of Other fzf Integrations
 
-`fzf` integrates relatively easily with other tools since it's designed to work well with other commands through piping. For instance, here is an example that integrates with [ripgrep](/docs/guides/ripgrep-linux-installation/), providing interactive navigation of the results:
+`fzf` integrates relatively easily with other tools since it's designed to work well with other commands through piping. For instance, here is an example that integrates with [ripgrep](/cloud/guides/ripgrep-linux-installation/), providing interactive navigation of the results:
 
     rg test | fzf
 
 In the above, `ripgrep` finds all files containing matches for the `test` search pattern in the current directory and pipes the resulting list to `fzf` for you to view.
 
-And here is a more advanced example, integrating `fzf` with both [The Silver Searcher](/docs/guides/silver-searcher-on-linux/) and [bat](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/):
+And here is a more advanced example, integrating `fzf` with both [The Silver Searcher](/cloud/guides/silver-searcher-on-linux/) and [bat](/cloud/guides/how-to-install-and-use-the-bat-command-on-linux/):
 
     ag --count test | fzf --preview "echo {} | cut -d: -f1 | xargs bat --style=numbers --color=always --line-range :100"
 
@@ -222,7 +222,7 @@ To explain what's happening from the command above:
 
 As you can see, `fzf` provides you with unlimited possibilities for combinations with other command-line tools. You can learn more about any of the above tools by searching for our guides on them using the search bar at the top of this page.
 
-Additionally, the `zoxide` tool, a fast and intuitive alternative to `cd`, directly integrates with `fzf` to give you an interactive directory selection. Read our guide on [How to Install and Use zoxide](/docs/guides/how-to-use-zoxide/) to learn more.
+Additionally, the `zoxide` tool, a fast and intuitive alternative to `cd`, directly integrates with `fzf` to give you an interactive directory selection. Read our guide on [How to Install and Use zoxide](/cloud/guides/how-to-use-zoxide/) to learn more.
 
 ## Conclusion
 

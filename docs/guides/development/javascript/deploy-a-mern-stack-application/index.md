@@ -17,15 +17,15 @@ MERN is a stack for modern web applications. It consists of MongoDB, Express JS,
 
 This guide helps you deploy your existing MERN stack project onto Akamai cloud compute, using the MERN Quick Deploy App or by manually installing the MERN stack on a new Compute Instance. After your server is set up, learn how to copy your project to your server. If you do not yet have an existing project and wish to create a new MERN application, review one of the following guides instead:
 
-- [Install the MERN Stack and Create an Example Application](/docs/guides/install-the-mern-stack/)
+- [Install the MERN Stack and Create an Example Application](/cloud/guides/install-the-mern-stack/)
 
-- [Build a Basic Chat Application using the MERN Stack](/docs/guides/build-mern-stack-chat-application/)
+- [Build a Basic Chat Application using the MERN Stack](/cloud/guides/build-mern-stack-chat-application/)
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system using the following command:
 
@@ -34,7 +34,7 @@ This guide helps you deploy your existing MERN stack project onto Akamai cloud c
     ```
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the MERN Stack?
@@ -109,7 +109,7 @@ To get started, you need to install each of the components that make up a MERN s
     sudo apt install mongodb-org
     ```
 
-See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our guide [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
+See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our guide [How To Install MongoDB on Ubuntu 16.04](/cloud/guides/install-mongodb-on-ubuntu-16-04/).
 
 ### Install Node.js
 
@@ -139,7 +139,7 @@ See the official documentation for more on installing MongoDB [on Debian](https:
      npm install -g yarn
      ```
 
-You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide. If you are interested in using Yarn instead of NPM, take a look at our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager/) guide.
+You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide. If you are interested in using Yarn instead of NPM, take a look at our [How to Install and Use the Yarn Package Manager](/cloud/guides/install-and-use-the-yarn-package-manager/) guide.
 
 ### Install Express JS
 
@@ -157,7 +157,7 @@ If you are working on a Yarn project, use the command below instead:
 yarn add express mongoose
 ```
 
-Learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/).
+Learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/cloud/guides/express-js-tutorial/).
 
 ### Install React (if necessary for server-side rendering)
 
@@ -175,7 +175,7 @@ Alternatively, use a command like the next one if your project uses Yarn instead
 yarn add react react-dom axios
 ```
 
-Find out more about building applications with React from the [official documentation](https://reactjs.org/docs/getting-started.html) and in our guide [Deploying a React Application on Debian 10](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#create-an-example-react-app).
+Find out more about building applications with React from the [official documentation](https://reactjs.org/docs/getting-started.html) and in our guide [Deploying a React Application on Debian 10](/cloud/guides/how-to-deploy-a-react-app-on-debian-10/#create-an-example-react-app).
 
 ## Upload Your Application
 
@@ -206,7 +206,7 @@ To follow along, you can download the [MERN stack starter](https://github.com/rf
         sudo ufw reload
         ```
 
-        The above commands require you to have the UFW utility installed. It comes pre-installed if you use the Akamai Quick Deploy App. Otherwise, you can learn how to use UFW from our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide discussed above.
+        The above commands require you to have the UFW utility installed. It comes pre-installed if you use the Akamai Quick Deploy App. Otherwise, you can learn how to use UFW from our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide discussed above.
 
         You can now use `scp` from your Windows machine, with a command like the one below. Replace the path to your MERN project folder with the actual path. Likewise, replace `example-user` with your user on the server instance and `192.0.2.0` with the instance's IP address:
 
@@ -224,7 +224,7 @@ To follow along, you can download the [MERN stack starter](https://github.com/rf
 
 ### Set Up Git Version Control for Your Project
 
-Take a look at our guide [Introduction to Version Control](/docs/guides/introduction-to-version-control/#installing-git) to learn more about using Git for version control.
+Take a look at our guide [Introduction to Version Control](/cloud/guides/introduction-to-version-control/#installing-git) to learn more about using Git for version control.
 
 The examples in the steps below use GitHub. They assume you have a GitHub account and have created a blank repository on GitHub for pushing your MERN project. You can learn how to create a repository on GitHub using the steps in GitHub's [official documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
 
@@ -368,7 +368,7 @@ These next steps then need to be taken on the server instance to pull down the p
 
 You can then visit your application in a browser. By default, React runs on `localhost:3000`, and that is the case for the example application referenced above. To access it remotely, you can use an SSH tunnel.
 
-- On **Windows**, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with **3000**.
+- On **Windows**, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/cloud/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with **3000**.
 
 - On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 

@@ -22,7 +22,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -143,7 +143,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 ## Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, see the following example:
 
 {{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -180,6 +180,6 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Fedora 14](/docs/guides/websites-with-nginx-on-fedora-14/)
-- [Deploy a LEMP Server on Fedora 14](/docs/guides/lemp-server-on-fedora-14/)
-- [Configure nginx Proxy Servers](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+- [Installing Nginx on Fedora 14](/cloud/guides/websites-with-nginx-on-fedora-14/)
+- [Deploy a LEMP Server on Fedora 14](/cloud/guides/lemp-server-on-fedora-14/)
+- [Configure nginx Proxy Servers](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

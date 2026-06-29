@@ -28,12 +28,12 @@ The `ip` command is part of the Linux [iproute2](https://en.wikipedia.org/wiki/I
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## ip Command Concepts
@@ -167,7 +167,7 @@ lo               UNKNOWN        127.0.0.1/8 ::1/128
 eth0             UP             178.79.148.108/24 2a01:7e00::f03c:93ff:fe60:5030/64 fe80::f03c:93ff:fe60:5030/64
 {{< /output >}}
 {{< note >}}
-There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the guide [How to understand IP addresses](/docs/guides/how-to-understand-ip-addresses/#finding-your-ip-addresses-via-the-linux-command-line).
+There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the guide [How to understand IP addresses](/cloud/guides/how-to-understand-ip-addresses/#finding-your-ip-addresses-via-the-linux-command-line).
 {{< /note >}}
 
 ### How to Add or Delete an IP Address

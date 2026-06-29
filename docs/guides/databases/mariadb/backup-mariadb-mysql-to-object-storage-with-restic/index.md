@@ -14,7 +14,6 @@ external_resources:
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
-tags: ["saas"]
 ---
 
 ## Introduction
@@ -30,22 +29,22 @@ MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
+1. Install MariaDB on your Linode by following the [How to Install MariaDB](/cloud/guides/databases/mariadb/) guide that is appropriate for your Linode's distribution.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/guides/manage-buckets/) guide if you do not already have one.
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets) guide if you do not already have one.
 
     {{% content "object-storage-cancellation-shortguide" %}}
 
-1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
+1.  [Generate Object Storage access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys).
 
 1. Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 
@@ -168,7 +167,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 
     sudo crontab -e
 
-Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/guides/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 
@@ -234,7 +233,7 @@ It can get tedious typing out the arguments to the Restic command. To make life 
 Because the credentials that Restic uses were created under the root user's home folder, the example alias in this section only works for the root user.
 {{< /note >}}
 
-In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/) guide.
+In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/cloud/guides/how-to-add-linux-alias-command-in-bashrc-file/) guide.
 
     source /root/restic_params
     alias myrestic='restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw'

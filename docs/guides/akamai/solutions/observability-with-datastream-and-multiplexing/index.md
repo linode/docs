@@ -13,7 +13,7 @@ Having real-time visibility into log data can help determine how applications ar
 
 One way to achieve an efficient, predictable, and cost-effective observability workflow is to implement a cloud-based multiplexing solution to ingest and parse log data before it’s sent to the relevant DevOps team. Combined with Akamai’s [DataStream](https://techdocs.akamai.com/datastream2/docs/welcome-datastream2) edge-based log reporting, multiplexing can help manage how and where logs are transmitted, improve data security, and reduce overall cost.
 
-This guide outlines the business challenges of observability workflows, integration and migration need-to-knows, and illustrates a working multiplexing reference architecture using [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) running [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack/) and [Vector](https://vector.dev/).
+This guide outlines the business challenges of observability workflows, integration and migration need-to-knows, and illustrates a working multiplexing reference architecture using [Linode Kubernetes Engine (LKE)](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) running [Elastic Stack (ELK)](https://www.elastic.co/elastic-stack/) and [Vector](https://vector.dev/).
 
 ## DataStream and Multiplexing Workflow
 

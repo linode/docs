@@ -57,7 +57,7 @@
       {{ if not (strings.HasPrefix $path "/") }}
         {{ $path = path.Join $.Page.RelPermalink $path }}
       {{ end }}
-      {{ $path = strings.TrimPrefix "/docs" $path }}
+      {{ $path = strings.TrimPrefix  (partial "get-basepath.html" .) $path }}
       {{ $m := dict "link" .Destination "path" $path "fragment" $fragment "reason" $reason "sourceRef" $.Page.RelPermalink "source" $.Page "target" $page }}
       {{ site.Home.Store.SetInMap  "brokenlinks" .Destination $m }}
     {{ else }}

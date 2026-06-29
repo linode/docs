@@ -95,7 +95,7 @@ Nonetheless, there are some situations where Python is the right choice. There a
 
 It is easy to start using Python. A good place to begin is the [Python Beginner's Guide](https://wiki.python.org/moin/BeginnersGuide). The Python Wiki also has a list of tutorials and resources for [New](https://wiki.python.org/moin/BeginnersGuide/NonProgrammers) or [Experienced Programmers](https://wiki.python.org/moin/BeginnersGuide/Programmers).
 
-To run Python on Ubuntu or another Linux distribution, use the command `python3`. Python is usually already installed on most Linux systems. To download Python for other platforms, see the [Python downloads page](https://www.python.org/downloads/). For more information about how to use Python on a Linode system, see the [Linode guide to Python](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+To run Python on Ubuntu or another Linux distribution, use the command `python3`. Python is usually already installed on most Linux systems. To download Python for other platforms, see the [Python downloads page](https://www.python.org/downloads/). For more information about how to use Python on a Linode system, see the [Linode guide to Python](/cloud/guides/how-to-install-python-on-ubuntu-20-04/).
 
 ### Alternatives to Python
 

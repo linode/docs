@@ -50,7 +50,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 ### APT
 
-[Using APT to Manage Packages in Debian and Ubuntu](/docs/guides/apt-package-manager/)
+[Using APT to Manage Packages in Debian and Ubuntu](/cloud/guides/apt-package-manager/)
 
 - **Distributions:** Ubuntu, Debian, and Kali Linux
 - **Commands:** `apt`, `apt-get`, `apt-cache`
@@ -61,7 +61,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 ### DNF
 
-[Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora](/docs/guides/dnf-package-manager/)
+[Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora](/cloud/guides/dnf-package-manager/)
 
 - **Distributions:** RHEL/CentOS 8, Fedora 22, and later versions of both distributions
 - **Commands:** `dnf`, `yum`
@@ -72,7 +72,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 ### YUM
 
-[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/docs/guides/yum-package-manager/)
+[Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier](/cloud/guides/yum-package-manager/)
 
 - **Distributions:** RHEL/CentOS 7, Fedora 21, and earlier versions of both distributions
 - **Command:** `yum`
@@ -83,7 +83,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 ### Zypper
 
-[Use Zypper to Manage Packages in openSUSE](/docs/guides/zypper-package-manager/)
+[Use Zypper to Manage Packages in openSUSE](/cloud/guides/zypper-package-manager/)
 
 - **Distributions:** openSUSE
 - **Command:** `zypper`
@@ -94,7 +94,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 ### Pacman
 
-[Using Pacman to Manage Packages in Arch](/docs/guides/pacman-package-manager/)
+[Using Pacman to Manage Packages in Arch](/cloud/guides/pacman-package-manager/)
 
 - **Distributions:** Arch-based, including Arch and Manjaro
 - **Command:** `pacman`
@@ -104,7 +104,7 @@ Arch Linux and other similar distributions (like the popular Manjaro desktop dis
 
 ### Portage
 
-[Using Portage to Manage Packages in Gentoo](/docs/guides/portage-package-manager/)
+[Using Portage to Manage Packages in Gentoo](/cloud/guides/portage-package-manager/)
 
 - **Distributions:** Gentoo
 - **Command:** `emerge`
@@ -114,7 +114,7 @@ Arch Linux and other similar distributions (like the popular Manjaro desktop dis
 
 ### Slackware Package Management
 
-[Managing Packages in Slackware](/docs/guides/slackware-package-management/)
+[Managing Packages in Slackware](/cloud/guides/slackware-package-management/)
 
 - **Distributions:** Slackware
 - **Commands:** `slackpkg`, `pkgtool`, `installpkg`, `upgradepkg`, `removepkg`

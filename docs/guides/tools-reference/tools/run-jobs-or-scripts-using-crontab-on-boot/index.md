@@ -38,9 +38,9 @@ Similarly, the `@reboot` shortcut tells the cron task to run the job at system b
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Use Crontab to Schedule a Job or Script to Run at System Startup
 
@@ -129,4 +129,4 @@ cron.service - Regular background program processing daemon
 
 ## Learn More About the Cron Utility
 
-To learn more about cron jobs, see our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).
+To learn more about cron jobs, see our [Schedule Tasks with Cron](/cloud/guides/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).

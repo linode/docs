@@ -15,7 +15,6 @@ external_resources:
 - '[Wikipedia IPv4 Packet Description Page](https://en.wikipedia.org/wiki/IPv4#Packet_structure)'
 - '[RFC 2460 for IPv6](https://datatracker.ietf.org/doc/html/rfc2460)'
 - '[Subnet Calculator](http://www.csgnetwork.com/ipaddconv.html)'
-tags: ["saas"]
 ---
 
 The *Internet Protocol* (IP), as described in [RFC 791](https://datatracker.ietf.org/doc/html/rfc791), is the framework that underlies the behavior of the entire internet. The Internet Protocol Version 4 (IPv4) and Version 6 (IPv6) address systems are used to identify interfaces and locate hosts on the network. This allows hosts and routers to determine the path to another networking device and send packets to it. This guide outlines how to understand IP addresses, and how to describe and use them.
@@ -144,7 +143,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 
 ## Finding Your IP Addresses via the Linux Command Line
 {{< note >}}
-If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses).
 {{< /note >}}
 
 1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.

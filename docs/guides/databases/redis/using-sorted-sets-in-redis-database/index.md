@@ -15,18 +15,18 @@ external_resources:
 
 Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage. Redis's *Sorted Set* data type captures the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values. This tutorial dives into what Sorted Sets are and introduces you to commands you can use to manage them.
 
-Be sure to check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/redis-getting-started/).
+Be sure to check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/cloud/guides/redis-getting-started/).
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/cloud/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Sorted Sets in Redis?
@@ -37,7 +37,7 @@ In Redis, Sets are also collections of unique string values. But Sets themselves
 
 Redis's Sorted Sets can actually be thought of as a cross between Lists and Hashes. Lists, because they are ordered, and Hashes, because the scores act like keys for each value.
 
-To learn more about Lists and Sets in Redis, read our [How to Use Lists and Sets in Redis Databases](/docs/guides/using-lists-and-sets-in-redis-database/) guide.
+To learn more about Lists and Sets in Redis, read our [How to Use Lists and Sets in Redis Databases](/cloud/guides/using-lists-and-sets-in-redis-database/) guide.
 
 ### Sorted Sets and Scoring
 
@@ -178,7 +178,7 @@ You can update an element's score in a Sorted Set using the `ZADD` command again
 
 ### Remove Elements from a Sorted Set
 
-The `ZPOPMIN` and `ZPOPMAX` commands covered in [Fetch Elements from a Sorted Set](/docs/guides/using-sorted-sets-in-redis-database/#by-order) removes the lowest scored and highest scored elements, respectively.
+The `ZPOPMIN` and `ZPOPMAX` commands covered in [Fetch Elements from a Sorted Set](/cloud/guides/using-sorted-sets-in-redis-database/#by-order) removes the lowest scored and highest scored elements, respectively.
 
 Sorted Sets also have access to the `ZREM` command, which lets you remove an element based on its value.
 

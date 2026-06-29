@@ -27,16 +27,16 @@ There are many options for accessing and managing Subversion repositories on loc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
     {{< note respectIndent=false >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Subversion
@@ -120,7 +120,7 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
     {{< note respectIndent=false >}}
-If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
+If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/cloud/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
 ## Use Subversion for Version Control
@@ -168,7 +168,7 @@ If you need to access your repository over the `http://` or `https://` protocols
 
 ### Install Apache and `mod_dav_svn`
 
-Developers frequently access Subversion repositories via the SSH protocol and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
+Developers frequently access Subversion repositories via the SSH protocol and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/cloud/guides/web-servers/apache/).
 
 Install the Apache module `mod_dav_svn`:
 
@@ -234,14 +234,14 @@ If local system accounts need to access the repository, add those users to the g
         chmod -R +s /srv/svn/subversion-test
 
     {{< note type="alert" respectIndent=false >}}
-The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
+The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide for more information.
 {{< /note >}}
 
 ### Configure the Apache Web Server
 
 This section demonstrates configuration for Debian and Ubuntu systems. Similar steps will work on other distributions. Please adjust accordingly.
 
-In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/guides/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
+In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/cloud/guides/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
 
 1.  Enable the `mod_dav_svn` and `mod_dav` Apache modules. This will make it possible to use the `WebDAV` system to access the Subversion repository.
 
@@ -252,7 +252,7 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
         systemctl restart apache2
 
-3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/guides/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
+3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/cloud/guides/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
 
         /srv/www/svn.example.com/subversion-test.htpasswd
 
@@ -281,7 +281,7 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
     This configuration forwards all requests for `http://svn.example.com/` to `mod_dav_svn`. This will provide an overview of the most recent revision of the repository within a web browser. Note that this setup provides *unencrypted* access to your repository over `http`.
 
-2.  For a secure connection, configure Apache to [serve content with SSL](/docs/security/ssl/). Once your certificate files are in place, configure the virtual host to respond to requests on port `443` rather than `80`:
+2.  For a secure connection, configure Apache to [serve content with SSL](/cloud/guides/security/ssl/). Once your certificate files are in place, configure the virtual host to respond to requests on port `443` rather than `80`:
 
     {{< file "/etc/apache2/sites-available/svn.example.com.conf" apache >}}
 <VirtualHost *:443>

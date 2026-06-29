@@ -24,7 +24,7 @@ MySQL Workbench is a very handy tool for database administration. This guide is 
 
 ## Before You Begin
 
-1.  You will need MySQL installed on your Linode. You can find instructions for this and the recommended prerequisites for your particular Linux distribution in the [MySQL index](/docs/databases/mysql/) of our Guides and Tutorials pages.
+1.  You will need MySQL installed on your Linode. You can find instructions for this and the recommended prerequisites for your particular Linux distribution in the [MySQL index](/cloud/guides/databases/mysql/) of our Guides and Tutorials pages.
 
 
 ## Install and Configure MySQL Workbench

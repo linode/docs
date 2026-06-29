@@ -2,7 +2,7 @@
 slug: subversion-svn-tutorial
 title: "Install and Use the Subversion CLI Client"
 title_meta: "How to Install and Use the Subversion CLI Client"
-description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
+description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and committing your working copy changes.'
 authors: ["Cameron Laird"]
 contributors: ["Cameron Laird"]
 published: 2022-01-14
@@ -17,9 +17,9 @@ Project collaborators make local shallow copies of the repository and make chang
 Users who want to collaborate on a Subversion project must install a Subversion client on their local machine. You use the local Subversion client to manage your changes and "publish" them to the project repository. This guide shows you how to install the Subversion CLI client on an Ubuntu system and provides commands to get you started collaborating on a Subversion project.
 
 {{< note >}}
-See our [How to Install Apache Subversion on Ubuntu 20.04](/docs/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
+See our [How to Install Apache Subversion on Ubuntu 20.04](/cloud/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
 
-If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
+If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/cloud/guides/svn-vs-git/) to learn more about each VCS.
 {{< /note >}}
 
 ## Install the Subversion Client on Ubuntu

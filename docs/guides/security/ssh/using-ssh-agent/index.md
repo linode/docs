@@ -18,12 +18,12 @@ ssh-agent manages private keys for SSH connections, facilitating smoother SSH ex
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is ssh-agent?
@@ -40,7 +40,7 @@ The ssh-agent tool also has an agent forwarding feature. This allows an ssh-agen
 
 The most common use case for this feature utilizes a locally stored key on a remote server. For instance, say there's a remote machine you want to connect to through a bastion server using a key stored locally. Agent forwarding allows your local ssh-agent to share the authentication key with the bastion server's ssh-agent. This gives the bastion server the ability to connect to the remote host.
 
-Continue reading to learn how to [enable agent forwarding](/docs/guides/using-ssh-agent/#enabling-ssh-agent-forwarding) for your ssh-agent sessions.
+Continue reading to learn how to [enable agent forwarding](/cloud/guides/using-ssh-agent/#enabling-ssh-agent-forwarding) for your ssh-agent sessions.
 
 ## How to Use ssh-agent
 

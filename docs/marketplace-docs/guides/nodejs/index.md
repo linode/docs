@@ -48,19 +48,19 @@ The Node.js Quick Deploy App is running [Nginx](https://www.nginx.com/), [Node.j
 
 The Node.js sample application is stored in the `app.js` file within `/var/www/[domain]/`.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Navigate to the directory in which the application is stored:
 
         cd /var/www/[domain]
 
-1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
+1.  Open the sample application with your preferred command line text editor, such as [nano](/cloud/guides/use-nano-to-edit-files-in-linux/) or [vim](/cloud/guides/what-is-vi/).
 
         nano app.js
 
 ### Viewing the Node.js App through a Web Browser
 
-Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 ## Software Included
 

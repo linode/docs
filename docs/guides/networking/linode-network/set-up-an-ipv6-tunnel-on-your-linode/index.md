@@ -14,7 +14,7 @@ tags: ["networking","linode platform"]
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)
 
-As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/products/compute/compute-instances/guides/ipv6/) addresses in all locations.
+As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](https://techdocs.akamai.com/cloud-computing/docs/an-overview-of-ipv6-on-linode) addresses in all locations.
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:
 
@@ -34,9 +34,9 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
-1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) interface.
+1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) or [Glish](https://techdocs.akamai.com/cloud-computing/docs/access-your-desktop-environment-using-glish) interface.
 
-2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Networking](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) tab of the Linode Cloud Manager:
+2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Networking](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance#viewing-ip-addresses) tab of the Linode Cloud Manager:
 
         ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
         ip link set he-ipv6 up
@@ -79,7 +79,7 @@ If everything is working, you should see ping replies. If not, go back and make 
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
 {{< note type="alert" >}}
-When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) first to avoid having your changes overwritten on reboot.
+When manually modifying your network configuration, always disable [Network Helper](https://techdocs.akamai.com/cloud-computing/docs/automatically-configure-networking#individual-compute-instance-setting) first to avoid having your changes overwritten on reboot.
 {{< /note >}}
 
 ### Debian and Ubuntu

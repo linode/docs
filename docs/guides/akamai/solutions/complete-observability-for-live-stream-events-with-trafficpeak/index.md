@@ -1,6 +1,6 @@
 ---
 slug: complete-observability-for-live-stream-events-with-trafficpeak
-title: "Complete Observability for Live Stream Events With Trafficpeak"
+title: "Complete Observability for Live Stream Events With TrafficPeak"
 description: "This guide discusses the requirements and challenges related to implementing a observability solution for large-scale live streaming events. These challenges are addressed with a TrafficPeak-based observability architecture used to support one of the largest streaming sporting events in the world."
 authors: ["John Dutton"]
 contributors: ["John Dutton"]
@@ -43,7 +43,7 @@ TrafficPeak offers sub-second querying and optimizes log indexing with fully cus
 
 1.  [Akamai Media Services Live (Akamai MSL)](https://www.akamai.com/resources/product-brief/media-services-live) ingests the live stream feeds in a duplicated fashion. MSL logs are sent to TrafficPeak to ensure full visibility for any ingest-related issues in real-time.
 
-1.  [Linode Object Storage](/docs/products/storage/object-storage/) stores all live streaming content for instantaneous, low-latency delivery, as well as playback. Object Storage logs are sent to TrafficPeak.
+1.  [Linode Object Storage](https://techdocs.akamai.com/cloud-computing/docs/object-storage) stores all live streaming content for instantaneous, low-latency delivery, as well as playback. Object Storage logs are sent to TrafficPeak.
 
 1.  [Akamai CDN](https://www.akamai.com/solutions/content-delivery-network) caches and delivers live streaming content to millions of concurrent users. CDN logs are also sent to TrafficPeak via Akamai DataStream, including all relevant HTTP(S) information for troubleshooting purposes.
 

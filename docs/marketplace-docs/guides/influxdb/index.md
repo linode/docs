@@ -46,7 +46,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ### Accessing the InfluxDB Server
 
-1. Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as `192-0-2-17.ip.linodeusercontent.com`. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for detailed instructions.
+1. Access InfluxDB's welcome page by launching your preferred web browser and navigating to either the custom domain designated during deployment or your Linode's rDNS domain, such as `192-0-2-17.ip.linodeusercontent.com`. If you need assistance in finding your Linode's IP addresses and rDNS information, refer to the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for detailed instructions.
 
     ![Screenshot of InfluxDB login page](influxdb_login.jpg)
 

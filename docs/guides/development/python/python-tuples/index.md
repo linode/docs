@@ -14,7 +14,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 A tuple is a built-in Python data structure that stores multiple comma-separated values. Tuples are an immutable *sequence* type that can store values of any data type. A mix of different data types can also be stored in a tuple. This guide describes the characteristics of tuples and shows you the various ways you can create a Python tuple.
 
 {{< note >}}
-You should have [Python 3.0 installed on your machine](/docs/guides/how-to-install-python-on-ubuntu-20-04/) to follow along with the examples in this guide.
+You should have [Python 3.0 installed on your machine](/cloud/guides/how-to-install-python-on-ubuntu-20-04/) to follow along with the examples in this guide.
 {{< /note >}}
 
 ## Python Tuple Syntax
@@ -147,7 +147,7 @@ Use the `print()` method to view the contents of `dict_to_tuple_example`:
 dict_items([('first', 'Jane'), ('last', 'Doe'), ('year', '2000')])
 {{</ output >}}
 
-Python dictionaries also support the use of tuples as a key. See our guide [How to use Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) to learn more.
+Python dictionaries also support the use of tuples as a key. See our guide [How to use Dictionaries in Python 3](/cloud/guides/python-3-dictionaries/) to learn more.
 
 ## Tuple Unpacking
 
@@ -225,7 +225,7 @@ Use the `type()` method to confirm that the `tuple_to_list_example` variable con
 <class 'list'>
 {{</ output >}}
 
-To learn how to convert a string to a tuple, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-tuples).
+To learn how to convert a string to a tuple, see our guide [How to Convert Data Types in Python](/cloud/guides/how-to-convert-datatypes-in-python/#converting-strings-to-tuples).
 
 ## Built-in Tuple Methods
 

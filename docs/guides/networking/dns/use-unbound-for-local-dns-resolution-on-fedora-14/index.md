@@ -20,11 +20,11 @@ deprecated: true
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.
 
-If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/docs/guides/dns-overview/). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/docs/products/networking/dns-manager/guides/common-dns-configurations/). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/docs/guides/linux-system-administration-basics/#configure-the-etchosts-file) to provide this functionality.
+If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/cloud/guides/dns-overview/). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/cloud/guides/linux-system-administration-basics/#configure-the-etchosts-file) to provide this functionality.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -97,7 +97,7 @@ Before you can begin using your Unbound instance to resolve DNS queries, you nee
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](https://techdocs.akamai.com/cloud-computing/docs/manual-network-configuration-on-a-compute-instance). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 {{< file "/etc/resolve.conf" conf >}}
 nameserver 127.0.0.1
@@ -111,8 +111,8 @@ You may wish to consult the following resources for additional information on th
 
 - [Unbound Home Page](http://www.unbound.net)
 - [Wikipedia article on Classless Interdomain Routing](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-- [DNS Fundamentals](/docs/guides/dns-overview/)
-- [Linode Manager for DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
+- [DNS Fundamentals](/cloud/guides/dns-overview/)
+- [Linode Manager for DNS](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations)
 
 
 

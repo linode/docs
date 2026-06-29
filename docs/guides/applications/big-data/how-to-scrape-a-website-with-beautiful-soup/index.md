@@ -2,7 +2,7 @@
 slug: how-to-scrape-a-website-with-beautiful-soup
 title: "Scrape a Website with Beautiful Soup"
 title_meta: "How to Scrape a Website with Beautiful Soup"
-description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
+description: "Learn how to set up the Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
 authors: ["Luis Cortés"]
 contributors: ["Luis Cortés"]
 published: 2017-12-12

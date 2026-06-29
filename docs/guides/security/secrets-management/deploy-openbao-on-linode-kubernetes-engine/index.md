@@ -14,7 +14,7 @@ external_resources:
 
 [OpenBao](https://openbao.org/) is an open source secrets management solution and fork of HashiCorp Vault. This guide walks through how to deploy [OpenBao on Kubernetes](https://openbao.org/docs/platform/k8s/) with Linode Kubernetes Engine (LKE) on Akamai Cloud using the [OpenBao Helm chart](https://github.com/openbao/openbao-helm).
 
-For a single-instance manual deployment, see our [Deploying OpenBao on a Linode Instance](/docs/guides/deploying-openbao-on-a-linode-instance/) guide. If you prefer an automated one-click, single-instance deployment, see our [OpenBao Quick Deploy App](/docs/marketplace-docs/guides/openbao/).
+For a single-instance manual deployment, see our [Deploying OpenBao on a Linode Instance](/cloud/guides/deploying-openbao-on-a-linode-instance/) guide. If you prefer an automated one-click, single-instance deployment, see our [OpenBao Quick Deploy App](/cloud/marketplace-docs/guides/openbao/).
 
 ## Before You Begin
 
@@ -31,7 +31,7 @@ For a single-instance manual deployment, see our [Deploying OpenBao on a Linode 
 1.  Install the [OpenBao CLI](https://openbao.org/docs/install/) on your workstation.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Provision an LKE Cluster

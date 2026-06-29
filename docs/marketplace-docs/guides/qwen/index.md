@@ -18,7 +18,7 @@ marketplace_app_name: "Qwen Instruct with Open WebUI"
 
 Open WebUI is an open-source, self-hosted web interface for interacting with and managing Large Language Models (LLMs). It supports multiple AI backends, multi-user access, and extensible integrations, enabling secure and customizable deployment for local or remote model inference.
 
-The Marketplace application deployed in this guide uses a Qwen Instruct model as an instruction-tuned, open-weight LLM optimized for reasoning, code generation, and conversational tasks. Qwen models are designed for high-quality inference across a wide range of general-purpose and technical workloads and integrate seamlessly with self-hosted platforms like Open WebUI.
+The Quick Deploy App deployed in this guide uses a Qwen Instruct model as an instruction-tuned, open-weight LLM optimized for reasoning, code generation, and conversational tasks. Qwen models are designed for high-quality inference across a wide range of general-purpose and technical workloads and integrate seamlessly with self-hosted platforms like Open WebUI.
 
 ## Deploying a Quick Deploy App
 
@@ -35,12 +35,12 @@ Open WebUI with Qwen Instruct should be fully installed within 5-10 minutes afte
 - **Recommended plan:** RTX4000 Ada x1 Small or Larger GPU Instance
 
 {{< note type="warning" >}}
-This Marketplace App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
+This Quick Deploy App only works with Akamai GPU instances. If you choose a plan other than GPUs, the provisioning will fail, and a notice will appear in the LISH console.
 {{< /note >}}
 
 ### Open WebUI Options
 
-- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this deployment. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](/docs/products/platform/accounts/guides/manage-api-tokens/) to create one.
+- **Linode API Token** *(required)*: Your API token is used to deploy additional Compute Instances as part of this deployment. At a minimum, this token must have Read/Write access to *Linodes*. If you do not yet have an API token, see [Get an API Access Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) to create one.
 
 - **Email address (for the Let's Encrypt SSL certificate)** *(required)*: Your email is used for Let's Encrypt renewal notices. This allows you to securely access Open WebUI through a browser.
 
@@ -60,8 +60,8 @@ When deployment completes, the system automatically generates credentials to adm
 
 1. Log in to your Compute Instance using one of the methods below:
 
-    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
-    - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    - **Lish Console**: Log in to Cloud Manager, click **Linodes**, select your instance, and click **Launch LISH Console**. Log in as `root`. To learn more, see [Using the Lish Console](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
+    - **SSH**: Log in to your instance over SSH using the `root` user. To learn how, see [Connecting to a Remote Server Over SSH](/cloud/guides/connect-to-server-over-ssh/).
 
 2. Run the following command to access the contents of the `.credentials` file:
 
@@ -73,7 +73,7 @@ cat /home/$USERNAME/.credentials
 
 Once your app has finished deploying, you can log into Open WebUI using your browser.
 
-1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://DOMAIN/`, where *DOMAIN* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) guide for information on viewing rDNS.
 
 
 Now that you’ve accessed your dashboard, check out [the official OpenWebUI documentation](https://docs.openwebui.com/) to learn how to further use your instance.

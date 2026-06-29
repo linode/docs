@@ -137,7 +137,7 @@ This queries the snap repository and displays a list of available .NET SDK and r
 
 ## Server Applications
 
-While many .NET applications are standalone, others connect directly to external systems. If your application connects to other services, you may need to adjust your firewall settings so these connections are not blocked. For instructions on using UFW (the default firewall front-end interface for Ubuntu 22.04), see the guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Web services typically use ports `443`, `80`, and `8080`, though ports are application-specific. If these ports are blocked, you can adjust the firewall to allow access.
+While many .NET applications are standalone, others connect directly to external systems. If your application connects to other services, you may need to adjust your firewall settings so these connections are not blocked. For instructions on using UFW (the default firewall front-end interface for Ubuntu 22.04), see the guide [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/). Web services typically use ports `443`, `80`, and `8080`, though ports are application-specific. If these ports are blocked, you can adjust the firewall to allow access.
 
 Scripts installing .NET applications may require sudo rights to effectively change the firewall, files, or environmental settings for the user(s) of the runtime application. In addition, you may need to modify user rights and file accessibility so that your .NET-based application can properly run.
 

@@ -21,11 +21,11 @@ aliases: ['/web-servers/caddy/install-caddy-archlinux/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with the [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1.  Complete the sections of the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) and [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access).
+1.  Complete the sections of the [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) and [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access).
 
-1.  Register (purchase) your site's domain name and follow our [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide to point the domain to your Linode.
+1.  Register (purchase) your site's domain name and follow our [Manage DNS Records](https://techdocs.akamai.com/cloud-computing/docs/manage-dns-records) guide to point the domain to your Linode.
 
 1.  Update your system:
 

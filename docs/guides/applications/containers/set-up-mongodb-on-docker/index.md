@@ -24,7 +24,7 @@ This guide assumes you are comfortable with the *command-line interface* (CLI) o
 
 #### Docker Quick Deploy App
 
-You can quickly set up a secure, updated Linode with the Docker Quick Deploy App. For instructions, see our guide on [How to Deploy Docker with Quick Deploy Apps](/docs/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Quick Deploy App with the [Docker Options](/docs/marketplace-docs/guides/docker/#docker-options):
+You can quickly set up a secure, updated Linode with the Docker Quick Deploy App. For instructions, see our guide on [How to Deploy Docker with Quick Deploy Apps](/cloud/marketplace-docs/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Quick Deploy App with the [Docker Options](/cloud/marketplace-docs/guides/docker/#docker-options):
 
 - The limited sudo user to be created for the Linode
 - The password for the limited sudo user
@@ -33,11 +33,11 @@ You can quickly set up a secure, updated Linode with the Docker Quick Deploy App
 
 #### Manual Installation
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for updating your Linode.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for updating your Linode.
 
-1.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1.  Install Docker on your Linode by following the steps in our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+1.  Install Docker on your Linode by following the steps in our guide on [How to Install and Use Docker on Ubuntu and Debian](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
 ### Verify Docker Installation
 

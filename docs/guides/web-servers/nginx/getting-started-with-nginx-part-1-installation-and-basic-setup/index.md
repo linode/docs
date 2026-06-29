@@ -19,7 +19,7 @@ This guide is the first of a four-part series. Parts One and Two will walk you t
 ## Before You Begin
 
 * You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+* Set your system's [hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 * Update your system.
 
 ## Install NGINX
@@ -229,4 +229,4 @@ http {
 
 ## Part 2: (Slightly More) Advanced Configurations
 
-By now you should have a basic NGINX installation and a some foundational settings to get you started. For slightly more advanced configurations, yet still applicable to anyone hosting a site on a Linode, see Part 2 of this series: [(Slightly more) Advanced Configurations for NGINX](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/)
+By now you should have a basic NGINX installation and a some foundational settings to get you started. For slightly more advanced configurations, yet still applicable to anyone hosting a site on a Linode, see Part 2 of this series: [(Slightly more) Advanced Configurations for NGINX](/cloud/guides/getting-started-with-nginx-part-2-advanced-configuration/)

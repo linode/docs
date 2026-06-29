@@ -24,9 +24,9 @@ The cert-manager tool can be used to manage SSL/TLS certificates for application
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
-- **Previous section:** [Part 11: Prometheus and Grafana](/docs/guides/build-a-cd-pipeline-with-lke-part-11/)
-- **Next section:** [Part 13: CI/CD with GitLab](/docs/guides/build-a-cd-pipeline-with-lke-part-13/)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/cloud/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 11: Prometheus and Grafana](/cloud/guides/build-a-cd-pipeline-with-lke-part-11/)
+- **Next section:** [Part 13: CI/CD with GitLab](/cloud/guides/build-a-cd-pipeline-with-lke-part-13/)
 
 ## Presentation Text
 

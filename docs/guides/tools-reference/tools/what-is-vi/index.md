@@ -181,6 +181,6 @@ You can also exit Vi without saving your changes. To do so, add a `!` to the end
 
 ## Conclusion
 
-If you are looking to take your Vi usage to the next level, you may want to check out Vim and NeoVim. Each of these evolves from Vi and is highly customizable through numerous configuration options and community-developed plug-ins. Check out our guides [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/) and [How to Install NeoVim and Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/), where you can find an introduction to each editor and help getting started using them.
+If you are looking to take your Vi usage to the next level, you may want to check out Vim and NeoVim. Each of these evolves from Vi and is highly customizable through numerous configuration options and community-developed plug-ins. Check out our guides [Introduction to Vim Customization](/cloud/guides/introduction-to-vim-customization/) and [How to Install NeoVim and Plugins with vim-plug](/cloud/guides/how-to-install-neovim-and-plugins-with-vim-plug/), where you can find an introduction to each editor and help getting started using them.
 
 Many of the customization options described in the Vim customization guide apply to Vi as well. The guide can be a great start if you want to fine-tune your Vi experience.

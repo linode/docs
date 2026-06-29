@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/guides/understanding-total-app-security/']
 ---
 
-The [Why Security Automation is Needed for Today’s Modern Business](/docs/guides/security-automation-business) guide discusses the need for automating application security. Many developers are [moving “left” towards the earliest possible moment](https://tldrsec.com/blog/score-bot-shift-left-at-scale/) in the application development life cycle to ensure the most secure code. This guide discusses ways to approach coding your app more critically. It also outlines some of the more common security weaknesses and coding errors that could lead to subsequent problems.
+The [Why Security Automation is Needed for Today’s Modern Business](/cloud/guides/security-automation-business) guide discusses the need for automating application security. Many developers are [moving “left” towards the earliest possible moment](https://tldrsec.com/blog/score-bot-shift-left-at-scale/) in the application development life cycle to ensure the most secure code. This guide discusses ways to approach coding your app more critically. It also outlines some of the more common security weaknesses and coding errors that could lead to subsequent problems.
 
 One way to keep aware of the software vulnerabilities that attackers are likely to exploit is [MITRE's annual Common Weakness Enumeration (CWE) Most Dangerous Software Weaknesses](https://cwe.mitre.org/top25/archive/2020/2020_cwe_top25.html) list. MITRE tracks these by assigning them a number that indicates their severity and how likely it is that each may occur.
 
@@ -52,4 +52,4 @@ Take a look at the book [Alice and Bob Learn Application Security](https://www.a
 
 Some sources for online instruction are app sec classes at [Coursera](https://www.coursera.org/courses?query=application%2520security), [OWASP](https://training.owasp.org/), and [SANS](https://www.sans.org/cyber-security-courses/?msc=main-nav).
 
-The next guide in this series,[An Overview of App Security Testing Tool](/docs/guides/app-security-testing-tools), discusses different types of security testing tools with links to various application testing and shielding products.
+The next guide in this series,[An Overview of App Security Testing Tool](/cloud/guides/app-security-testing-tools), discusses different types of security testing tools with links to various application testing and shielding products.

@@ -9,7 +9,6 @@ published: 2020-07-29
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-image: DeployJenkinsX_LinodeKubEng.png
 image: 'learnk8s_jenkinsX.png'
 external_resources:
 - '[How to run Jenkins X Boot](https://jenkins-x.io/docs/install-setup/boot/how-it-works/)'
@@ -34,7 +33,7 @@ Jenkins X version 2 is no longer maintained. For more information about using Je
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) to create and connect to an LKE cluster.
 
 We recommend using three 16GB Linodes to start with.
 

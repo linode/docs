@@ -12,26 +12,26 @@ aliases: ['/applications/messaging/using-irssi-for-internet-relay-chat/','/commu
 external_resources:
  - '[Irssi Project Home Page](http://www.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
- - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
+ - '[Screen for Persistent Terminal Sessions](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
  - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
  - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
- - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
+ - '[Advanced Irssi Usage](/cloud/guides/advanced-irssi-usage/)'
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)
 
 **Irssi** is a terminal-based chat client for real-time conversations over Internet Relay Chat (**IRC**). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, **#linode** on **OFTC**.
 
-Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/guides/using-the-terminal/) and [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) if you intend to run Irssi on your Linode.
+Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/cloud/guides/using-the-terminal/) and [Introduction to Linux Concepts](/cloud/guides/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) if you intend to run Irssi on your Linode.
 
 ## Prerequisites
 
 Complete these tasks before you start:
 
--   Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
--   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) for information.
+-   Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+-   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) for information.
 
 ## Installing Irssi
 
@@ -248,4 +248,4 @@ To remove a `hilight`, use the command:
 
 ## User-friendly Plugins
 
-Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#use-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.
+Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/cloud/guides/advanced-irssi-usage/#use-plugins) section of the [Advanced Irssi Usage](/cloud/guides/advanced-irssi-usage/) guide.

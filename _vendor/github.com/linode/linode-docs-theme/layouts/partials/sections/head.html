@@ -59,9 +59,9 @@
   charset="UTF-8"
   data-domain-script="{{ site.Params.onetrust_domain_script }}"></script>
 
-{{/* Adobe Analytics.
+{{/* Adobe Launch.
   This is configured for the environments production, development (Netlify and local) and staging.
-*/}}<script
-  src="{{ site.Params.adobe_launch_script }}"
-  async></script>
+*/}}
+<script src="{{ site.Params.adobe_launch_script }}" async></script>
+
 {{ partialCached "sections/head-src.html" . "-" }}

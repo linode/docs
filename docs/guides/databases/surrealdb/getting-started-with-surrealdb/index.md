@@ -29,12 +29,12 @@ Though not complete, here is a list of some of the features that SurrealDB offer
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install SurrealDB
@@ -137,7 +137,7 @@ Below are two versions of a basic command for starting up the SurrealDB server, 
 
 Notice that both of the commands have `--user` and `--pass` options. These define the root user credentials for your server instance, which you can use for queries in later examples.
 
-Before moving ahead with SurrealDB, you likely want to implement stricter security around this user, and to create other users with managed access. If so, check out our tutorial [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/).
+Before moving ahead with SurrealDB, you likely want to implement stricter security around this user, and to create other users with managed access. If so, check out our tutorial [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/).
 
 #### Running on a Different Port
 
@@ -427,10 +427,10 @@ This section provides some simple demonstrations of SurrealDB's HTTP endpoints u
 
 You now have a foundation in SurrealDB and are ready to start making use of its powerful features as a database. To build on these foundations, you may want to start with the official SurrealDB documentation linked below.
 
-Afterwards, continue reading our other tutorials on SurrealDB. These tackle more advanced and focused use cases. In particular, everyone should follow our [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/) tutorial next, ensuring a secure and controlled database server.
+Afterwards, continue reading our other tutorials on SurrealDB. These tackle more advanced and focused use cases. In particular, everyone should follow our [Managing Security and Access Control for SurrealDB](/cloud/guides/managing-security-and-access-for-surrealdb/) tutorial next, ensuring a secure and controlled database server.
 
 From there, take your pick based on your interests and needs:
 
--   [Deploying a SurrealDB Cluster](/docs/guides/deploy-surrealdb-cluster/)
--   [Building an Web Application on Top of SurrealDB](/docs/guides/surrealdb-for-web-applications)
--   [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling)
+-   [Deploying a SurrealDB Cluster](/cloud/guides/deploy-surrealdb-cluster/)
+-   [Building an Web Application on Top of SurrealDB](/cloud/guides/surrealdb-for-web-applications)
+-   [Modeling Data with SurrealDB’s Inter-document Relations](/cloud/guides/surrealdb-interdocument-modeling)

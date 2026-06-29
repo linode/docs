@@ -136,4 +136,4 @@ Here are some helpful `alias` examples that you may wish to save:
 
 ## Next Steps
 
-To learn more about saving permanent aliases in Bash configuration files as well as using arguments in aliases utilizing Bash functions, see the guide [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/).
+To learn more about saving permanent aliases in Bash configuration files as well as using arguments in aliases utilizing Bash functions, see the guide [How to Add the Linux alias Command in the .bashrc File](/cloud/guides/how-to-add-linux-alias-command-in-bashrc-file/).

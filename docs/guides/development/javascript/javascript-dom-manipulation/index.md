@@ -15,7 +15,7 @@ external_resources:
 
 The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page. In this guide, you learn about the methods and properties you can use to modify the DOM by adding and removing element nodes. You also learn how to use specialized properties to assign and update a DOM element's CSS styles.
 
-If you are not familiar with the DOM, refer to our [An Introduction to the Document Object Model (DOM)](/docs/guides/document-object-model/) and [Traversing the Document Object Model with JavaScript](/docs/guides/traversing-the-dom/) guides before continuing with this guide.
+If you are not familiar with the DOM, refer to our [An Introduction to the Document Object Model (DOM)](/cloud/guides/document-object-model/) and [Traversing the Document Object Model with JavaScript](/cloud/guides/traversing-the-dom/) guides before continuing with this guide.
 
 ## Before You Begin
 
@@ -69,8 +69,8 @@ The `document` object has several built-in methods for creating new nodes, like 
 The list below includes an overview of the steps used when creating a new element using JavaScript.
 
 - The `createElement()` method accepts the tag name of the element to create as a parameter. It creates the specified tag without any content contained within the tag.
-- Once you've created a new element, you have access to properties or additional methods of the element object that can be used to style the element, populate it with text, and achieve many other enhancements. The [How to Modify Element Attributes](/docs/guides/javascript-dom-manipulation/#how-to-modify-element-attributes) discusses these changes in greater depth.
-- When your new element looks and behaves the way you intend, you can add the element node to the DOM's target parent node. For example, you can use the `appendChild()` method to achieve this. The [Inserting Element Nodes](/docs/guides/javascript-dom-manipulation/#inserting-element-nodes) discusses `appendChild()` and other methods you can use to insert an element into the DOM.
+- Once you've created a new element, you have access to properties or additional methods of the element object that can be used to style the element, populate it with text, and achieve many other enhancements. The [How to Modify Element Attributes](/cloud/guides/javascript-dom-manipulation/#how-to-modify-element-attributes) discusses these changes in greater depth.
+- When your new element looks and behaves the way you intend, you can add the element node to the DOM's target parent node. For example, you can use the `appendChild()` method to achieve this. The [Inserting Element Nodes](/cloud/guides/javascript-dom-manipulation/#inserting-element-nodes) discusses `appendChild()` and other methods you can use to insert an element into the DOM.
 
 The example below demonstrates the steps used to create and add a new element to the DOM using the `createElement()` method. You can run the JavaScript code on the [example page](example-page.html) using your browser's developer console. The JavaScript code creates a new `li` element and a new `span` element. After adding some styling and text to these new elements, the commands append the elements as children of the existing `ul` element.
 
@@ -140,7 +140,7 @@ The example below uses both the `innerHTML` property and the `createElement()` m
 
 There are two methods available to remove an element from the DOM: the `remove()` method and the `removeChild()` method. The `remove()` method completely removes the selected element node from the DOM, while the `removeChild()` method removes the child node of the selected element node.
 
-- Each element within the DOM has a `remove()` method that allows you to remove the element node from the DOM. For instance, using the HTML from the [example page](/docs/guides/javascript-dom-manipulation/#before-you-begin), the code below removes the `em` element from the `p` element in the `second-div`:
+- Each element within the DOM has a `remove()` method that allows you to remove the element node from the DOM. For instance, using the HTML from the [example page](/cloud/guides/javascript-dom-manipulation/#before-you-begin), the code below removes the `em` element from the `p` element in the `second-div`:
 
         const second_div_em_element = document.querySelector("#second-div em");
         second_div_em_element.remove();
@@ -157,7 +157,7 @@ There are two methods available to remove an element from the DOM: the `remove()
 
 ### Inserting Element Nodes
 
-Before a new element is displayed on a web page, it must be explicitly added to the DOM. In the [Using the createElement() Method](/docs/guides/javascript-dom-manipulation/#using-the-createelement-method) section, this was achieved using the `appendChild()` method. There are, in fact, two more methods you can use to add an element to the DOM: the `insertBefore()` and the `replaceChild()` methods. These two methods let you specify where to insert an element, giving you finer control over modifying the DOM.
+Before a new element is displayed on a web page, it must be explicitly added to the DOM. In the [Using the createElement() Method](/cloud/guides/javascript-dom-manipulation/#using-the-createelement-method) section, this was achieved using the `appendChild()` method. There are, in fact, two more methods you can use to add an element to the DOM: the `insertBefore()` and the `replaceChild()` methods. These two methods let you specify where to insert an element, giving you finer control over modifying the DOM.
 
 Below, you can find examples that use each method to insert an element node into the DOM. Each example modifies the HTML displayed below.
 
@@ -206,7 +206,7 @@ After running, in sequence, all the JavaScript examples from this section, your 
 
 ## How to Modify Element Attributes
 
-All HTML elements can have attributes which provide additional information about the element. In the DOM, attributes are represented as nodes and can be added to the DOM in the same way that you add element nodes. For instance, you can use the `createAttribute()` method to add an attribute to an element node, much in the same way that you [use the `createElement()` method](/docs/guides/javascript-dom-manipulation/#using-the-createelement-method).
+All HTML elements can have attributes which provide additional information about the element. In the DOM, attributes are represented as nodes and can be added to the DOM in the same way that you add element nodes. For instance, you can use the `createAttribute()` method to add an attribute to an element node, much in the same way that you [use the `createElement()` method](/cloud/guides/javascript-dom-manipulation/#using-the-createelement-method).
 
 The `document` object also has a set of specialized properties that handle the specific needs of attributes. For example, it includes some dedicated properties that deal with attributes like classes and styles. These specialized attributes are discussed below in their own dedicated sections.
 
@@ -246,7 +246,7 @@ numeral-name
 
 You can remove any existing attribute from an element object using the `removeAttribute()` method. The `removeAttribute()` method accepts the attribute to remove's name as an argument.
 
-For example, use the `removeAttribute()` method to delete the `id` attribute added to the `first_div_li_element` in the [Setting Attributes](/docs/guides/javascript-dom-manipulation/#setting-attributes) section above.
+For example, use the `removeAttribute()` method to delete the `id` attribute added to the `first_div_li_element` in the [Setting Attributes](/cloud/guides/javascript-dom-manipulation/#setting-attributes) section above.
 
     first_div_li_element.removeAttribute("id")'
     console.log(first_div_li_element)
@@ -324,7 +324,7 @@ false
 
 Some classes, especially with modern CSS frameworks, require toggling for you to achieve the desired behavior for an element on a web page. For instance, the `active` class is often used to highlight an element. Being able to toggle the class via JavaScript could allow you to have a button that toggles highlighting on the element.
 
-The example below uses the `second_p_element` object defined in the [Checking for Classes](/docs/guides/javascript-dom-manipulation/#checking-for-classes) section. Recall that the element here does not have the `active` class assigned to it. For this reason, toggling the class adds the `active` class to the element.
+The example below uses the `second_p_element` object defined in the [Checking for Classes](/cloud/guides/javascript-dom-manipulation/#checking-for-classes) section. Recall that the element here does not have the `active` class assigned to it. For this reason, toggling the class adds the `active` class to the element.
 
     second_p_element.classList.toggle("active")
     console.log(second_p_element.classList.contains("active"));
@@ -368,4 +368,4 @@ The example below first adds and then removes the `button` class from the `a` el
 
 ## Conclusion
 
-Once you understand [what the Document Object Model is](/docs/guides/document-object-model/#what-is-the-document-object-model) and are familiar with the JavaScript methods that interface with the DOM, you are ready to start manipulating DOM elements with JavaScript. This guide showed you how to use several DOM methods and properties to add and remove elements from the DOM. You also learned how to use specialized properties to assign and update a DOM element's CSS styles.
+Once you understand [what the Document Object Model is](/cloud/guides/document-object-model/#what-is-the-document-object-model) and are familiar with the JavaScript methods that interface with the DOM, you are ready to start manipulating DOM elements with JavaScript. This guide showed you how to use several DOM methods and properties to add and remove elements from the DOM. You also learned how to use specialized properties to assign and update a DOM element's CSS styles.

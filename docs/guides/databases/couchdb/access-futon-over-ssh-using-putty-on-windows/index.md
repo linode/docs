@@ -10,8 +10,8 @@ keywords: ["futon", " couchdb", " apache", " ssh", " putty", " windows", " os x"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel/','/databases/couchdb/ssh-tunnel/','/databases/couchdb/access-futon-over-ssh-using-putty-on-windows/']
 external_resources:
- - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
- - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
+ - '[Using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/)'
+ - '[Linode Docs - CouchDB](/cloud/guides/databases/couchdb/)'
 tags: ["database"]
 ---
 
@@ -23,7 +23,7 @@ tags: ["database"]
 
 **SSH with Windows Using PuTTY**
 
-If you need to get set up with PuTTY, see [our guide](/docs/guides/connect-to-server-over-ssh-using-putty/) on using it and verifying your Linode's SSH key fingerprint.
+If you need to get set up with PuTTY, see [our guide](/cloud/guides/connect-to-server-over-ssh-using-putty/) on using it and verifying your Linode's SSH key fingerprint.
 
 To set up the SSH tunnel:
 

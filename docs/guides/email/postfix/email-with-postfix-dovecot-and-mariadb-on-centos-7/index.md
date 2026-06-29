@@ -11,7 +11,7 @@ tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
 external_resources:
- - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
+ - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/cloud/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
@@ -21,17 +21,17 @@ In this guide, you'll learn how to set up a secure virtual user mail server with
 
 ![Email with Postfix, Dovecot and MariaDB on CentOS 7](Email_with_Postfix_Dovecot_and_MariaDB_on_CentOS_7_smg.jpg)
 
-For a different Linux distribution or different mail server, review our [email tutorials](/docs/email/).
+For a different Linux distribution or different mail server, review our [email tutorials](/cloud/guides/email/).
 
 {{% content "email-warning-shortguide" %}}
 
 ## Before You Begin
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
-1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
-1. Review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
+1. Review the concepts in the [Running a Mail Server](/cloud/guides/running-a-mail-server/) guide.
 
 ## Configure DNS
 
@@ -43,7 +43,7 @@ example.com MX 10 example.com
 mail.example.com MX 10 example.com
 {{< /output >}}
 
-Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
+Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ## Update Hosts File
 
@@ -718,7 +718,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 -   **SSL:** Incoming and outgoing servers require authentication and SSL encryption.
 -   **Ports:** Use Port `993` for secure IMAP, Port `995` for secure POP3, and Port `587` with SSL for SMTP.
 
-See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
+See [Install SquirrelMail on Ubuntu 16.04](/cloud/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 ## Adding New Domains, Email Addresses, and Aliases
 
@@ -726,7 +726,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
 ### Domains
 
-1.  To add a new domain, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1.  To add a new domain, [connect to your Linode via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance).
 
 1.  Log in to the MySQL server:
 

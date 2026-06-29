@@ -19,7 +19,7 @@ image: Hosting-a-Website-smg.jpg
 
 Hosting a website is one of the most common uses for a Linode. A website can be anything from a single HTML file to an interactive application with multiple components, and the hosting process varies greatly depending on the type of website being served. This guide walks you through the process of setting up some of the most common simple website types.
 
-Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
+Complete the steps in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide before you begin. The steps in this guide take you from a configured Linode to a fully functioning website.
 
 This guide is written for Debian 9 and Ubuntu 18.04. If you are using a different distribution, adapt the commands (e.g. using `yum` instead of `apt`).
 
@@ -29,9 +29,9 @@ The application you use to serve your website depends on the type of site. Find 
 
 ### Static Sites
 
-If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/guides/how-to-deploy-a-react-app-on-ubuntu-18-04/) apps. NGINX is a good choice for hosting this type of website.
+If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/cloud/guides/how-to-deploy-a-react-app-on-ubuntu-18-04/) apps. NGINX is a good choice for hosting this type of website.
 
-If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/docs/guides/how-to-choose-static-site-generator/).
+If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/cloud/guides/how-to-choose-static-site-generator/).
 
 1.  Install NGINX:
 
@@ -89,17 +89,17 @@ server {
 
     If NGINX loads successfully, continue to the [Test your Website](#test-your-website) section below.
 
-This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 ### LAMP Stack
 
-Other sites, such as [WordPress](/docs/guides/install-wordpress-ubuntu-18-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/docs/web-servers/lamp/) section.
+Other sites, such as [WordPress](/cloud/guides/install-wordpress-ubuntu-18-04/), need a database in addition to a web server. This combination is known as a **stack**. WordPress is often used with the extremely popular LAMP stack (Linux, Apache, MariaDB and PHP). To install a LAMP stack manually, find the guide for your distribution in our [LAMP](/cloud/guides/web-servers/lamp/) section.
 
-If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. See our [WordPress with Docker Compose](/docs/guides/wordpress-with-docker-compose/) guide for details. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/).
+If you are using WordPress, another option is to use Docker. All of the components needed to run WordPress, along with WordPress itself, are bundled into a container that can be deployed with single command. See our [WordPress with Docker Compose](/cloud/guides/wordpress-with-docker-compose/) guide for details. Official Docker images are also available for other CMS platforms including [Ghost](https://hub.docker.com/_/ghost/) and [Joomla](https://hub.docker.com/_/joomla/).
 
 ### Other Site Types
 
-If none of these application stacks fit your situation, review our [Websites](/docs/websites/) and [Development](/docs/development/) sections to find a solution that works for your project.
+If none of these application stacks fit your situation, review our [Websites](/cloud/guides/websites/) and [Development](/cloud/guides/development/) sections to find a solution that works for your project.
 
 ## Test your Website
 
@@ -110,7 +110,7 @@ Test your website(s) before you add DNS records and make the site available publ
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
-Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/products/networking/dns-manager/) guide.
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide.
 {{< /note >}}
 
 1.  From the **Domains** section, click on **Create Domain**. The domain creation page is displayed.
@@ -162,7 +162,7 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 1.  Enter a hostname in the **Hostname** field.
 
-1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) to find your Linode's IP address.
+1.  Enter the IP address of your server in the **IP Address** field. See [this quick answer page](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) to find your Linode's IP address.
 
 1.  Select a time interval from the **TTL** menu. *TTL* stands for *time to live*, and affects how long DNS records are cached by DNS resolvers. When the designated time to live is reached, the resolver must query the authoritative name servers for new records.
 
@@ -172,4 +172,4 @@ The exact form fields will vary depending on the type of DNS record you select.
 
 Computers use DNS to determine the IP address associated with a domain name. Reverse DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain.
 
-For more information about how to configure a reverse DNS, see [Configure Your Linode for Reverse DNS (rDNS)](/docs/networking/dns/configure-your-linode-for-reverse-dns/)
+For more information about how to configure a reverse DNS, see [Configure Your Linode for Reverse DNS (rDNS)](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance)

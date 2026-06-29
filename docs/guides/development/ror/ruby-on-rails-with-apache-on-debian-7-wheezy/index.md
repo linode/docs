@@ -25,7 +25,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -74,7 +74,7 @@ After issuing this command, attempt to run `rails` again. If it works, then you 
 
 Alternatively, you can amend your global \$PATH by adding it to your "/etc/environment" file.
 
-To install support for the [MySQL database system](/docs/guides/use-mysql-relational-databases-on-debian-6-squeeze/) in Rails, issue the following commands:
+To install support for the [MySQL database system](/cloud/guides/use-mysql-relational-databases-on-debian-6-squeeze/) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient-dev mysql-client mysql-common
     gem install mysql
@@ -83,7 +83,7 @@ Additionally, the application you deploy will likely have additional dependencie
 
 ## Configuring Apache to Work with Passenger
 
-If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) Apache guide](/docs/web-servers/apache/installation/debian-6-squeeze), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) Apache guide](/cloud/guides/apache-2-web-server-on-debian-6-squeeze/), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/

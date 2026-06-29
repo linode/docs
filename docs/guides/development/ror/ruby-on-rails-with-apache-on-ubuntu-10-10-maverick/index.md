@@ -13,8 +13,8 @@ aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-10-maverick/','/
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
   - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
-  - '[Install the Apache HTTP Server on Ubuntu 10.10 (Maverick)](/docs/web-servers/apache/installation/ubuntu-10-10-maverick)'
-  - '[Install the MySQL Database System on Ubuntu 10.10 (Maverick)](/docs/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/)'
+  - '[Install the Apache HTTP Server on Ubuntu 10.10 (Maverick)](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/)'
+  - '[Install the MySQL Database System on Ubuntu 10.10 (Maverick)](/cloud/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/)'
 relations:
     platform:
         key: ruby-on-rails-apache
@@ -27,7 +27,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -60,7 +60,7 @@ If you are unsure of the version you require, you can install the latest version
 
     gem install rails
 
-This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/) in Rails, issue the following commands:
+This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/cloud/guides/use-mysql-relational-databases-on-ubuntu-10-10-maverick/) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient16-dev mysql-client mysql-common
     gem install mysql
@@ -69,7 +69,7 @@ Additionally, the application you deploy will likely have additional dependencie
 
 ## Configuring Apache to Work with Passenger
 
-If you configured Apache virtual hosting as outlined in the [Ubuntu 10.10 (Maverick) Apache guide](/docs/web-servers/apache/installation/ubuntu-10-10-maverick), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Ubuntu 10.10 (Maverick) Apache guide](/cloud/guides/how-to-install-apache-web-server-ubuntu-18-04/), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 DocumentRoot /srv/www/example.com/public_html/

@@ -11,7 +11,7 @@ external_resources:
 - '[Cloud-init Documentation](https://cloudinit.readthedocs.io/en/latest/)'
 ---
 
-Akamai's [Metadata service](/docs/products/compute/compute-instances/guides/metadata/) gives you the ability to automate system configuration when deploying Compute Instances. This is primarily accomplished by adding user data in the form of cloud-config scripts. These scripts are processed by the cloud-init software running within the system of the newly deployed instance. To learn more about adding user data and user data formats, review [Add User Data When Deploying a Compute Instance](/docs/products/compute/compute-instances/guides/metadata/#add-user-data).
+Akamai's [Metadata service](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service) gives you the ability to automate system configuration when deploying Compute Instances. This is primarily accomplished by adding user data in the form of cloud-config scripts. These scripts are processed by the cloud-init software running within the system of the newly deployed instance. To learn more about adding user data and user data formats, review [Add User Data When Deploying a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service#add-user-data).
 
 Cloud-init has supported Akamai's Metadata service since [version 23.3.1](https://github.com/canonical/cloud-init/releases/tag/23.3) (released in August 2023). While this version of cloud-init has been included in several of the distribution images offered by Akamai, most distributions do not have cloud-init installed by default. Furthermore, the version of cloud-init provided in most distributions' package repositories is older and incompatible with the Metadata service.
 
@@ -19,9 +19,9 @@ This guide walks you through how to install a new version of cloud-init on distr
 
 ## Deploy a Compute Instance
 
-The first step is to create a fresh Compute Instance running the distribution of your choice. If the selected distribution is already marked as cloud-init compatible, you do not need to follow the steps in this guide. If the distribution is not cloud-init compatible, continue with this guide to create a cloud-init compatible image for this distribution. For details on Metadata/cloud-init compatibility, review [Overview of the Metadata Service > Availability](/docs/products/compute/compute-instances/guides/metadata/#availability).
+The first step is to create a fresh Compute Instance running the distribution of your choice. If the selected distribution is already marked as cloud-init compatible, you do not need to follow the steps in this guide. If the distribution is not cloud-init compatible, continue with this guide to create a cloud-init compatible image for this distribution. For details on Metadata/cloud-init compatibility, review [Overview of the Metadata Service > Availability](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service#availability).
 
-This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
+This instance forms the basis for a cloud-init deployment template. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides. The instructions in this guide cover Debian, Ubuntu, and RHEL-based systems (CentOS, Fedora, AlmaLinux, Rocky Linux, etc.). The steps have not been verified with other distributions but may be adaptable with some modifications.
 
 ## Install Cloud-Init
 
@@ -68,7 +68,7 @@ Akamai's Metadata service requires that an instance have cloud-init version 23.3
     ```
 
     {{< note >}}
-    The [PEP 668](https://peps.python.org/pep-0668/) specification attempts to prevent conflicts between Python packages installed via the OS package manager and PIP. The specification recommends installing packages with Pip in Python virtual environments, like [Virtualenv](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#manage-virtual-environments-in-linux).
+    The [PEP 668](https://peps.python.org/pep-0668/) specification attempts to prevent conflicts between Python packages installed via the OS package manager and PIP. The specification recommends installing packages with Pip in Python virtual environments, like [Virtualenv](/cloud/guides/how-to-manage-packages-and-virtual-environments-on-linux/#manage-virtual-environments-in-linux).
 
     That approach does not work well with the cloud-init installer, so the steps here recommend overriding the specification. In our tests, this did not result in any issues, but be aware that the use of this option can impact the behavior of some Python packages.
     {{< /note >}}
@@ -127,7 +127,7 @@ A few configuration steps are necessary to prepare the cloud-init installation f
     ```
 ## Create a Custom Image
 
-Creating an image from the instance setup above allows you to deploy new instances leveraging the Metadata service and custom cloud-init deployment scripts. For more on creating an image of an Akamai Compute Instance, you can refer to our [Capture an Image](/docs/products/tools/images/guides/capture-an-image/#capturing-an-image-through-cloud-manager) guide.
+Creating an image from the instance setup above allows you to deploy new instances leveraging the Metadata service and custom cloud-init deployment scripts. For more on creating an image of an Akamai Compute Instance, you can refer to our [Capture an Image](https://techdocs.akamai.com/cloud-computing/docs/capture-an-image#capturing-an-image-through-cloud-manager) guide.
 
 What follows is a summary of steps you can use to create a base image from the instance on which you installed cloud-init.
 
@@ -149,9 +149,9 @@ What follows is a summary of steps you can use to create a base image from the i
 
 ## Deploy an Instance with User-Data
 
-With a base cloud-init image ready, you can deploy a new instance of the Metadata service and cloud-init user data whenever you need. Refer to our guide on how to [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) for image deployment. Refer to our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/docs/guides/configure-and-secure-servers-with-cloud-init/) for more on adding user data to new instances.
+With a base cloud-init image ready, you can deploy a new instance of the Metadata service and cloud-init user data whenever you need. Refer to our guide on how to [Deploy an Image to a New Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/deploy-an-image-to-a-new-compute-instance) for image deployment. Refer to our guide on how to [Use Cloud-Init to Automatically Configure and Secure Your Servers](/cloud/guides/configure-and-secure-servers-with-cloud-init/) for more on adding user data to new instances.
 
-The steps that follow walk you through a simple new deployment from a base cloud-init image. This includes a simple cloud-init user data script modeled on our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+The steps that follow walk you through a simple new deployment from a base cloud-init image. This includes a simple cloud-init user data script modeled on our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
 {{< note >}}
 Newly deployed Compute Instances do not have network access during boot. This prevents cloud-init from properly running. The last several steps below address this, restarting the cloud-init process after the initial boot.
@@ -163,7 +163,7 @@ Newly deployed Compute Instances do not have network access during boot. This pr
 
     ![Screenshot of deploying an instance from a custom image](create-instance-new-image.png)
 
-1.  Select a region in which the Metadata service is available. These are listed in the Metadata [reference documentation](/docs/products/compute/compute-instances/guides/metadata/#availability).
+1.  Select a region in which the Metadata service is available. These are listed in the Metadata [reference documentation](https://techdocs.akamai.com/cloud-computing/docs/overview-of-the-metadata-service#availability).
 
 1.  Select your desired instance plan, enter a label for the new instance, and create credentials for the root user.
 
@@ -201,7 +201,7 @@ Newly deployed Compute Instances do not have network access during boot. This pr
 
 1.  Start the deployment by selecting **Create Linode**, and wait for the new instance to be deployed. You can follow its progress from the **Linodes** section of the Cloud Manager.
 
-1.  Access the instance as the root user through the Lish console. Learn how in our [Access Your System Console Using Lish (Linode Shell)](/docs/products/compute/compute-instances/guides/lish/) guide.
+1.  Access the instance as the root user through the Lish console. Learn how in our [Access Your System Console Using Lish (Linode Shell)](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) guide.
 
 1.  Reset cloud-init. This ensures that, on the next boot, cloud-init runs as if for the initial system boot.
 

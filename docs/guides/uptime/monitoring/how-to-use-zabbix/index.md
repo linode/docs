@@ -45,14 +45,14 @@ Some of the main highlights and advantages of Zabbix are as follows. See the [li
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  The Zabbix server software must already be installed on a Linode. Consult the documentation on [Deploying Zabbix Using the Linode Marketplace](/docs/marketplace-docs/guides/zabbix/) for more information.
+1.  The Zabbix server software must already be installed on a Linode. Consult the documentation on [Deploying Zabbix Using the Linode Marketplace](/cloud/marketplace-docs/guides/zabbix/) for more information.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Configure Zabbix
@@ -61,7 +61,7 @@ To use Zabbix to monitor a Linux host, the host must be running the official Zab
 
 ### How to Install the Zabbix Server
 
-Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Quick Deploy App documentation](/docs/marketplace-docs/guides/zabbix/). Currently, the Quick Deploy App only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
+Although Zabbix can be installed from the source code or packages, it is quicker and easier to use the Linode Marketplace. For information on how to install Zabbix using this method, see the [Zabbix Quick Deploy App documentation](/cloud/marketplace-docs/guides/zabbix/). Currently, the Quick Deploy App only supports Zabbix installations on CentOS. For package installation guidelines for other Linux distributions, see the [Zabbix installation instructions](https://www.zabbix.com/documentation/6.0/en/manual/installation/install_from_packages).
 
 ### How to Install the Zabbix Client
 

@@ -18,7 +18,7 @@ relations:
 deprecated: true
 ---
 
-This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 10.04 LTS (Lucid) guide](/docs/web-servers/apache/installation/ubuntu-10-04-lucid). These steps should be performed via an SSH session to your Linode as the root user.
+This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 10.04 LTS (Lucid) guide](/cloud/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). These steps should be performed via an SSH session to your Linode as the root user.
 
 ## Use a Self-Signed SSL Certificate with Apache
 
@@ -187,7 +187,7 @@ You should now be able to visit your site with SSL enabled. Congratulations, you
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Install Apache on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/apache/installation/ubuntu-10-04-lucid)
+- [Install Apache on Ubuntu 10.04 LTS (Lucid)](/cloud/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/)
 - [Official Apache Documentation](http://httpd.apache.org/docs/2.0/)
 
 

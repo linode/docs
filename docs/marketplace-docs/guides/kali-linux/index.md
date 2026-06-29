@@ -69,7 +69,7 @@ To access your Kali Linux desktop through a VNC client:
 There are many options for macOS and Windows, but this guide uses [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
 {{< /note >}}
 
-1. From your desktop, create an SSH tunnel to your Compute Instance with the command below replacing `{{< placeholder "USERNAME" >}}` with the VNC username you created and `[ip]` with the IPv4 address of your Compute Instance. To learn more on viewing IP addresses, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
+1. From your desktop, create an SSH tunnel to your Compute Instance with the command below replacing `{{< placeholder "USERNAME" >}}` with the VNC username you created and `[ip]` with the IPv4 address of your Compute Instance. To learn more on viewing IP addresses, see [Managing IP Addresses](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance).
 
     ```output
     ssh -L 61000:localhost:5901 -N -l {{< placeholder "USERNAME" >}} [ip]

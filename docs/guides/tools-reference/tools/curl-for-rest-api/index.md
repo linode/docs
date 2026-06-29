@@ -156,7 +156,7 @@ Some of the similarities and differences between `curl` and `wget` are as follow
 - `curl` is bidirectional and can do transfers in parallel.
 - `curl` supports many more security measures, different releases of HTTP, and dual stack IPv4/Ipv6 transfers.
 
-Either utility is fine for most simple HTTP requests and downloads. If you are familiar with only one of the tools and it is suitable for your requirements, continue to use it. However, `wget` is only a simple transfer utility. `curl` is a better all-purpose tool for heavy duty and professional use. See our guide [How to Use wget](/docs/guides/how-to-use-wget/) to learn more about this pared-down alternative to curl.
+Either utility is fine for most simple HTTP requests and downloads. If you are familiar with only one of the tools and it is suitable for your requirements, continue to use it. However, `wget` is only a simple transfer utility. `curl` is a better all-purpose tool for heavy duty and professional use. See our guide [How to Use wget](/cloud/guides/how-to-use-wget/) to learn more about this pared-down alternative to curl.
 
 ## cURL Methods
 

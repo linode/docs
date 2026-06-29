@@ -18,12 +18,12 @@ Learn in this guide everything you need to know about OpenResty and how to insta
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is OpenResty?
@@ -42,7 +42,7 @@ OpenResty is meant to allow your entire app within NXINGX. This makes OpenResty 
 
 However, there are some use cases that do not take advantage of the extra features of OpenResty. For instance, your web application may not need the additional NGINX modules, or Lua scripting offered by OpenResty. Such cases do not warrant changing over to OpenResty from NGINX, although they could still operate on OpenResty's NGINX core.
 
-Since OpenResty is essentially an enhanced version of NGINX, comparisons between NGINX and Apache apply to OpenResty vs Apache. Thus, you can learn more about how it would compare with Apache through our guide [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/).
+Since OpenResty is essentially an enhanced version of NGINX, comparisons between NGINX and Apache apply to OpenResty vs Apache. Thus, you can learn more about how it would compare with Apache through our guide [A Comparison of the NGINX and Apache Web Servers](/cloud/guides/comparing-nginx-and-apache-web-servers/).
 
 ## How to Install OpenResty
 
@@ -170,7 +170,7 @@ sudo systemctl status openresty
 
 With an OpenResty instance installed and running, you can now try out a few examples.
 
-This guide uses the standard HTTP port (`80`) for its examples. To follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
+This guide uses the standard HTTP port (`80`) for its examples. To follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
 
 OpenResty serves as a simple welcome page by default, similar to the default NGINX page. You can access the welcome page by navigating to the server's remote IP address in a web browser. For instance, if your server's remote IP address is `192.0.2.0`, navigate in your browser to `http://192.0.2.0`.
 

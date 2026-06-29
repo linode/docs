@@ -32,7 +32,7 @@ This guide shows how to:
 {{< note type="alert" >}}
 This guide’s example instructions create a [1GB Linode](https://www.linode.com/pricing/#compute-shared) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to delete the Linode when you have finished the guide.
 
-If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](/docs/guides/understanding-billing-and-payments/).
+If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](https://techdocs.akamai.com/cloud-computing/docs/understanding-how-billing-works).
 {{< /note >}}
 
 ## Before You Begin
@@ -41,15 +41,15 @@ If you remove the resource, [you are only be billed for the hour(s) that the res
 The steps outlined in this guide require [Ansible version 2.9.10 or greater](https://github.com/ansible/ansible/releases/tag/v2.9.10) and were tested on a Linode running Ubuntu 22.04. The instructions can be adapted to other Linux distributions or operating systems.
 {{< /note >}}
 
-1.  Provision a server that acts as the Ansible [*control node*](/docs/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
+1.  Provision a server that acts as the Ansible [*control node*](/cloud/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
 
-1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
+1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
 
 1.  Ensure that you have performed system updates:
 
         sudo apt update && sudo apt upgrade
 
-1.  Install Ansible on your control node. Follow the steps in the [Install Ansible](/docs/guides/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
+1.  Install Ansible on your control node. Follow the steps in the [Install Ansible](/cloud/guides/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/cloud/guides/getting-started-with-ansible/) guide.
 
 1.  Ensure you have Python version 2.7 or higher installed on your control node. Issue the following command to check your system's Python version:
 
@@ -63,7 +63,7 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
         sudo apt install python3-pip
 
-1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide.
+1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](https://techdocs.akamai.com/linode-api/reference/get-started#get-an-access-token) section of the [Getting Started with the Linode API](https://techdocs.akamai.com/linode-api/reference/get-started) guide.
 
 ## Install the Linode Ansible Collection
 
@@ -88,7 +88,7 @@ The Linode Ansible collection is now installed and ready to deploy and manage Li
 
 ## Configure Ansible
 
-When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](/docs/products/platform/accounts/guides/manage-api-tokens/) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
+When interfacing with the Linode Ansible collection, it is generally good practice to use variables to securely store sensitive strings like API tokens. This section shows how to securely store and access the [Linode API Access token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) (generated in the [Before You Begin](#before-you-begin) section) along with a root password that is assigned to new Linode instances. Both of these are encrypted with [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html).
 
 ### Create an Ansible Vault Password File
 
@@ -125,7 +125,7 @@ These lines specify the location of your password file.
 
 ### Encrypt Variables with Ansible Vault
 
-1.  Create a directory to store variable files used with your [Ansible playbooks](/docs/guides/getting-started-with-ansible/#what-is-ansible):
+1.  Create a directory to store variable files used with your [Ansible playbooks](/cloud/guides/getting-started-with-ansible/#what-is-ansible):
 
         mkdir -p ~/development/group_vars/
 
@@ -187,7 +187,7 @@ token: !vault |
 
 ## Understanding Fully Qualified Collection Namespaces
 
-Ansible is now configured and the Linode Ansible collection is installed. You can create [playbooks](/docs/guides/running-ansible-playbooks/#playbook-basics) to leverage the collection and create compute instances and other Linode resources.
+Ansible is now configured and the Linode Ansible collection is installed. You can create [playbooks](/cloud/guides/running-ansible-playbooks/#playbook-basics) to leverage the collection and create compute instances and other Linode resources.
 
 Within playbooks, the Linode Ansible collection is further divided by resource types through the [Fully Qualified Collection Name](https://github.com/ansible-collections/overview#terminology)(FQCN) affiliated with the desired resource. These names serve as identifiers that help Ansible to more easily and authoritatively delineate between modules and plugins within a collection.
 

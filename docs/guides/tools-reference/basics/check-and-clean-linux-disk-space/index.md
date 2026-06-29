@@ -173,4 +173,4 @@ Before removing packages, ensure that they are not required by the system. Usual
 
 ## Next Steps
 
-Still looking for more disk space? You may want to think about getting additional space for your Linux system. You can follow our [Resizing a Linode](/docs/products/compute/compute-instances/guides/resize/) guide to learn how to increase your Linode's plan size.
+Still looking for more disk space? You may want to think about getting additional space for your Linux system. You can follow our [Resizing a Linode](https://techdocs.akamai.com/cloud-computing/docs/resize-a-compute-instance) guide to learn how to increase your Linode's plan size.

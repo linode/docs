@@ -18,11 +18,11 @@ relations:
 deprecated: true
 ---
 
-In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
+In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/cloud/guides/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges. When the PHP interpreter is embedded in the web server process, PHP scripts are executed by and with the permissions of the web server's user. In smaller deployments, this is perfectly acceptable, but in larger deployments and operations it can create security risks. While Apache's `itk` message passing module (mpm) makes it possible to run Apache processes under user processes in a per-virtual host setup, this is incompatible with the embedded interpreter. The `itk` module is compatible with PHP running as a CGI process.
 
-Additionally, in our experience, `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes using the method outlined below.
+Additionally, in our experience, `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/cloud/guides/development/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes using the method outlined below.
 
-Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, we recommend considering the [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances), and the article concerning [systems administration basics](/cloud/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/cloud/guides/web-servers/apache/).
 
 ## Enable Universe Repositories
 
@@ -61,7 +61,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/cloud/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 
@@ -73,7 +73,7 @@ In order to set up Apache to use PHP-CGI on Ubuntu systems, you must enable the 
 
     a2enmod actions
 
-The required directives can be set anywhere in Apache's [configuration tree](/docs/guides/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Ubuntu systems, this is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
+The required directives can be set anywhere in Apache's [configuration tree](/cloud/guides/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Ubuntu systems, this is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
 {{< file "Apache Configuration Block" apache >}}
 ScriptAlias /local-bin /usr/bin
@@ -129,7 +129,7 @@ Now, in the `<VirtualHost >` entries for your sites (the site-specific files in 
 {{< /file >}}
 
 
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/guides/linux-users-and-groups/) for more information about creating the necessary users and groups.
+In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/cloud/guides/linux-users-and-groups/) for more information about creating the necessary users and groups.
 
 ## More Information
 

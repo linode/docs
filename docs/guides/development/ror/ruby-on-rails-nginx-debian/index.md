@@ -18,7 +18,7 @@ external_resources:
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[NGINX Home Page](http://nginx.org/)'
  - '[NGINX Documentation](http://nginx.org/en/docs/)'
- - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
+ - '[NGINX Configuration](/cloud/guides/how-to-configure-nginx/)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["ruby"]
@@ -35,12 +35,12 @@ deprecated: true
 Ruby on Rails is a web framework that allows web designers and developers to implement dynamic, fully featured web applications. When deploying a Rails app in production, developers can choose from several popular app servers including Puma, Unicorn, and Passenger. This guide will use Passenger, because of its convenient integration with NGINX.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+1.  Follow the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Securing the Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guides, and [set the Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -126,7 +126,7 @@ PID    VMSize    Private  Name
 
 ## Install MySQL Support (Optional)
 
-If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/guides/how-to-install-mysql-on-debian-8/) guide. Once it's installed and configured properly, issue the following command:
+If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/cloud/guides/how-to-install-mysql-on-debian-8/) guide. Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev
 

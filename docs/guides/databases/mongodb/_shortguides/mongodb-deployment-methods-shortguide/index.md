@@ -12,7 +12,7 @@ show_on_rss_feed: false
 aliases: ['/mongodb-deployment-methods-shortguide/']
 ---
 
-To perform the steps in the guide, you need to have a running MongoDB database as well as the [MongoDB Shell](/docs/guides/mongodb-community-shell-installation/) installed (either locally or on your remote instance). To deploy MongoDB, follow the instructions on [MongoDB's documentation site](https://www.mongodb.com/docs/manual/administration/install-on-linux/) or use one of the following Linode guides:
+To perform the steps in the guide, you need to have a running MongoDB database as well as the [MongoDB Shell](/cloud/guides/mongodb-community-shell-installation/) installed (either locally or on your remote instance). To deploy MongoDB, follow the instructions on [MongoDB's documentation site](https://www.mongodb.com/docs/manual/administration/install-on-linux/) or use one of the following Linode guides:
 
-    - [Installing MongoDB on Ubuntu 20.04](/docs/guides/install-mongodb-on-ubuntu-20-04/)
-    - [Installing MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/)
+    - [Installing MongoDB on Ubuntu 20.04](/cloud/guides/install-mongodb-on-ubuntu-20-04/)
+    - [Installing MongoDB on CentOS 7](/cloud/guides/install-mongodb-on-centos-7/)

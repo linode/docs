@@ -84,4 +84,4 @@ The output from the `platform.python_version` is more minimal compared to the `s
 
 With that, you have everything you need for checking your current Python version. The steps above cover you whether you need to see the Python version from the command line or from within a Python script.
 
-You can continue learning about Python with our collection of [Python guides](/docs/guides/development/python/). We cover everything from fundamental Python concepts to building Python web applications.
+You can continue learning about Python with our collection of [Python guides](/cloud/guides/development/python/). We cover everything from fundamental Python concepts to building Python web applications.

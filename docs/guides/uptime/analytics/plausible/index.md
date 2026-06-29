@@ -13,21 +13,21 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started).
 
-1.  You need to generate an [API Token](/docs/products/platform/accounts/guides/manage-api-tokens/).
+1.  You need to generate an [API Token](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens).
 
-1.  [Deploy a Docker Quick Deploy App](/docs/marketplace-docs/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
+1.  [Deploy a Docker Quick Deploy App](/cloud/marketplace-docs/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
 
-1.  You need a domain name configured in the [DNS Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
+1.  You need a domain name configured in the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-dns-manager). Create A/AAAA records pointing to the server hosting Docker.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Cloning the Plausible Repository
 
-1.  After you created your Compute Instance, you can [login via SSH](/docs/guides/connect-to-server-over-ssh/) via your local terminal. Once you login, update and upgrade your server.
+1.  After you created your Compute Instance, you can [login via SSH](/cloud/guides/connect-to-server-over-ssh/) via your local terminal. Once you login, update and upgrade your server.
 
     ```command
     sudo apt update && sudo apt upgrade -y

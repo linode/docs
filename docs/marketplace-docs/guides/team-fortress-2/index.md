@@ -6,7 +6,7 @@ modified: 2024-01-22
 keywords: ['team fortress','marketplace', 'tf2', 'server']
 tags: ["linode platform","quick deploy apps","cloud-manager"]
 aliases: ['/products/tools/marketplace/guides/team-fortress-2/','/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-marketplace-apps/','/guides/team-fortress-2-marketplace-app/']
-_build:
+build:
   list: false
 noindex: true
 deprecated: true
@@ -15,7 +15,7 @@ contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 {{< note type="warning" title="This app is no longer available for deployment" >}}
-Team Fortress 2 has been removed from Quick Deploy Apps and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/docs/guides/team-fortress2-on-debian-and-ubuntu/) guide.
+Team Fortress 2 has been removed from Quick Deploy Apps and can no longer be deployed. This guide is retained for reference only. For information on how to deploy and set up Team Fortress 2 manually on a Compute Instance, see our [Team Fortress 2 on Debian and Ubuntu](/cloud/guides/team-fortress2-on-debian-and-ubuntu/) guide.
 {{< /note >}}
 
 Team Fortress 2 (TF2) is a team-based multiplayer first-person shooter game. In TF2, you and your team choose from 9 unique classes and play against an enemy team in a variety of game modes. These modes include capture the flag, king of the hill, and even a battle pitting your team against a robotic horde.

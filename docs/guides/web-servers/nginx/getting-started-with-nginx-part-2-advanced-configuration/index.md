@@ -18,7 +18,7 @@ image: Getting-Started-with-NGINX-Part-2-smg.jpg
 
 ## Before You Begin
 
--   This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+-   This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 -   You will need root access to the system, or a user account with `sudo` privilege.
 
@@ -169,7 +169,7 @@ You can allow or deny browser features with this header, depending on whether yo
 
 To summarize where we are so far:
 
-* We're continuing with the configuration from [Part 1](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), so we have a single site being served over HTTP.
+* We're continuing with the configuration from [Part 1](/cloud/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/#configuration-recap), so we have a single site being served over HTTP.
 
 * We've added the caching and HTTP header changes mentioned above.
 
@@ -243,4 +243,4 @@ http {
 
 ## Part 3: Enable TLS for HTTPS Connections
 
-If a well-running HTTP site is all you're looking for, the configurations in this guide will meet that requirement. If you plan to serve your site over HTTPS, then continue to Part 3 of this series: [Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/).
+If a well-running HTTP site is all you're looking for, the configurations in this guide will meet that requirement. If you plan to serve your site over HTTPS, then continue to Part 3 of this series: [Enable TLS for HTTPS Connections](/cloud/guides/getting-started-with-nginx-part-3-enable-tls-for-https/).

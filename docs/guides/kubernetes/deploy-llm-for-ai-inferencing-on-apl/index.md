@@ -19,9 +19,9 @@ LLMs (large language models) generate human-like text and perform language-based
 
 App Platform also integrates [Istio](https://istio.io/latest/docs/overview/what-is-istio/) and [Knative](https://knative.dev/docs/concepts/), both of which are prerequisites for using KServe. App Platform automates the provisioning process of these applications.
 
-This guide describes the steps required to: install KServe with App Platform, deploy the Meta Llama 3.1 8B model using the Hugging Face runtime server, and deploy a chatbot interface using Open WebUI. Once functional, use our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl/) guide to add and run a RAG pipeline and deploy an AI Agent that exposes an OpenAI compatible API.
+This guide describes the steps required to: install KServe with App Platform, deploy the Meta Llama 3.1 8B model using the Hugging Face runtime server, and deploy a chatbot interface using Open WebUI. Once functional, use our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/cloud/guides/deploy-rag-pipeline-and-chatbot-on-apl/) guide to add and run a RAG pipeline and deploy an AI Agent that exposes an OpenAI compatible API.
 
-If you prefer to manually install an LLM and RAG Pipeline on LKE rather than using Akamai App Platform, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/docs/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
+If you prefer to manually install an LLM and RAG Pipeline on LKE rather than using Akamai App Platform, see our [Deploy a Chatbot and RAG Pipeline for AI Inference on LKE](/cloud/guides/ai-chatbot-and-rag-pipeline-for-inference-on-lke/) guide.
 
 ## Diagram
 
@@ -316,7 +316,7 @@ Once the AI user interface is ready, you should be able to access the web UI for
 
 ## Next Steps
 
-See our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/docs/guides/deploy-rag-pipeline-and-chatbot-on-apl) guide to expand on the architecture built in this guide. This tutorial deploys a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set and attaches relevant data as context when users send the LLM queries.
+See our [Deploy a RAG Pipeline and Chatbot with App Platform for LKE](/cloud/guides/deploy-rag-pipeline-and-chatbot-on-apl) guide to expand on the architecture built in this guide. This tutorial deploys a RAG (Retrieval-Augmented Generation) pipeline that indexes a custom data set and attaches relevant data as context when users send the LLM queries.
 
 ## appendix 1: Ingress control
 

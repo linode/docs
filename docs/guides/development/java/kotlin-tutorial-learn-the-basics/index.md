@@ -11,7 +11,7 @@ tags: ['java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---
 
-Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in our [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and Native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.
+Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in our [Kotlin vs Java guide](/cloud/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and Native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.
 
 {{< note >}}
 To execute the Kotlin code snippets demonstrated in this guide, you can use the [Kotlin online playground](https://try.kotlinlang.org/). Or, if you are using an IDE like Android Studio or IntelliJ, you can install the [Kotlin plugin](https://kotlinlang.org/docs/install-eap-plugin.html).
@@ -160,7 +160,7 @@ The value of Area is: 8
 The value of Area is: 20
 {{</ output >}}
 
-The value of `area` is computed within the `Square` class for this reason the value of `area` changes. However, a direct assignment of `area` is not possible.[Classes](/docs/guides/kotlin-tutorial-learn-the-basics/#declare-a-kotlin-class) are discussed in more detail later in this guide.
+The value of `area` is computed within the `Square` class for this reason the value of `area` changes. However, a direct assignment of `area` is not possible.[Classes](/cloud/guides/kotlin-tutorial-learn-the-basics/#declare-a-kotlin-class) are discussed in more detail later in this guide.
 
 The same thing holds true, but in a different way, for read-only variables that contain a [lambda function](https://kotlinlang.org/docs/lambdas.html) like in the following example:
 
@@ -501,7 +501,7 @@ A class always has a primary constructor. If you don’t provide one, then Kotli
       }
     }
 
-To instantiate an object based on `Rectangle`, provide the `height` and `width` values, such as `var Test = Rectangle(2, 4)`. If you provide default values for the two parameters, you could call it using the same strategy as when working with [default parameters and named parameters for functions](/docs/guides/kotlin-tutorial-learn-the-basics/#default-parameters). For example, the class declaration below allows instantiating `Rectangle` without any arguments.
+To instantiate an object based on `Rectangle`, provide the `height` and `width` values, such as `var Test = Rectangle(2, 4)`. If you provide default values for the two parameters, you could call it using the same strategy as when working with [default parameters and named parameters for functions](/cloud/guides/kotlin-tutorial-learn-the-basics/#default-parameters). For example, the class declaration below allows instantiating `Rectangle` without any arguments.
 
     class Rectangle(height: Int = 2, width: Int = 2) {
       ...
@@ -551,4 +551,4 @@ To use the `SayHowdy()` method, call it from `TestStatic` class using `TestStati
 
 ## Conclusion
 
-This guide provides the basics of the Kotlin language. Kotlin is a robust language used for a wide variety of needs. It simplifies much of the functionality that Java provides, reduces errors, and speeds development. Kotlin also provides a significant level of flexibility in developing code for a variety of needs and environments. If you are not as familiar with Java, read our [Kotlin vs. Java: Key Differences](/docs/guides/kotlin-vs-java-understanding-their-differences/) to understand how the two languages compare.
+This guide provides the basics of the Kotlin language. Kotlin is a robust language used for a wide variety of needs. It simplifies much of the functionality that Java provides, reduces errors, and speeds development. Kotlin also provides a significant level of flexibility in developing code for a variety of needs and environments. If you are not as familiar with Java, read our [Kotlin vs. Java: Key Differences](/cloud/guides/kotlin-vs-java-understanding-their-differences/) to understand how the two languages compare.

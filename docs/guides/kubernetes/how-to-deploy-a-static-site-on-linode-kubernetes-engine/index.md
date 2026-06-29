@@ -16,7 +16,7 @@ aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/'
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Compute Instances you want to add as worker nodes to your cluster.
 
-Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
+Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/cloud/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
 {{< note type="alert" >}}
 Following the instructions in this guide creates billable resources on your account in the form of Compute Instances and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
@@ -32,7 +32,7 @@ This guide shows you how to:
 
 ## Before You Begin
 
-- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series.
+- You should have a working knowledge of Kubernetes' key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/cloud/guides/beginners-guide-to-kubernetes/) series.
 
 - You also need to prepare your workstation with some prerequisite software:
 
@@ -44,9 +44,9 @@ This guide shows you how to:
 
 - Finally, you need to create an LKE cluster, if you do not already have one:
 
-    - To create a cluster from the Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
+    - To create a cluster from the Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](https://techdocs.akamai.com/cloud-computing/docs/linode-kubernetes-engine) guide. Specifically, follow the [Create an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/create-a-cluster) and [Connect to your LKE Cluster with kubectl](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl) sections.
 
-    - To create a cluster via the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial. Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
+    - To create a cluster via the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api) tutorial. Specifically, follow the [Create an LKE Cluster](https://techdocs.akamai.com/cloud-computing/docs/deploy-and-manage-a-kubernetes-cluster-with-the-api#create-an-lke-cluster) section.
 
 ### Install kubectl
 
@@ -56,7 +56,7 @@ You should have `kubectl` installed on your local workstation. `kubectl` is the 
 
 ### Install Git
 
-To perform some of the commands in this guide you need to have Git installed on your workstation. Git is a version control system that allows you to save your codebase in various states to ease development and deployment. Follow our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide for instructions on how to install Git.
+To perform some of the commands in this guide you need to have Git installed on your workstation. Git is a version control system that allows you to save your codebase in various states to ease development and deployment. Follow our [How to Install Git on Linux, Mac or Windows](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/) guide for instructions on how to install Git.
 
 ### Install Docker
 
@@ -70,7 +70,7 @@ You use [Docker Hub](https://hub.docker.com/) to store your Docker image. If you
 
 A *static site generator* (SSG) is a command line tool that takes text files written in a markup language like [Markdown](https://daringfireball.net/projects/markdown/), applies a stylized template to the content, and produces valid HTML, CSS, and JavaScript files. Static sites are prized for their simplicity and speed, as they do not generally have to interact with a database.
 
-The Linode documentation website, and this guide, employ [Hugo](https://gohugo.io). Hugo is a powerful and fast SSG written in the [Go](/docs/guides/install-go-on-ubuntu/#what-is-go) programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/docs/guides/how-to-choose-static-site-generator/).
+The Linode documentation website, and this guide, employ [Hugo](https://gohugo.io). Hugo is a powerful and fast SSG written in the [Go](/cloud/guides/install-go-on-ubuntu/#what-is-go) programming language, but you can choose one that best suits your needs by reading our [How to Choose a Static Site Generator guide](/cloud/guides/how-to-choose-static-site-generator/).
 
 The steps in this guide are generally the same across SSGs: install a static site generator, create some content in a text file, and then generate your site's HTML through a build process.
 
@@ -383,7 +383,7 @@ In this section you create a Docker container for your static site, which you th
 
 ## Deploying the Container to LKE
 
-In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#deployment) from the container you created in the previous section, and a [Service](/docs/guides/kubernetes-reference/#services) to load balance the deployment.
+In this section, you create a [Deployment](/cloud/guides/kubernetes-reference/#deployment) from the container you created in the previous section, and a [Service](/cloud/guides/kubernetes-reference/#services) to load balance the deployment.
 
 1.  Begin by navigating to a location outside of your static site directory. You do not need your static site directory for the remainder of this guide.
 
@@ -391,7 +391,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
     cd ..
     ```
 
-1.  Create a new directory to house your Kubernetes [manifests](/docs/guides/kubernetes-reference/#kubernetes-manifests), and move into that directory:
+1.  Create a new directory to house your Kubernetes [manifests](/cloud/guides/kubernetes-reference/#kubernetes-manifests), and move into that directory:
 
     ```command
     mkdir manifests && cd manifests
@@ -455,10 +455,10 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a [NodeBalancer](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-nodebalancers).
 
     {{< note title="Cloud Controller Manager (CCM)" >}}
-    The NodeBalancer's creation is controlled through the [Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
+    The NodeBalancer's creation is controlled through the [Cloud Controller Manager (CCM)](/cloud/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/cloud/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
     {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:
@@ -510,11 +510,11 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
 
 ## General Network and Firewall Information
 
-To learn more about networking within LKE, open ports, and configuring firewall rules, see [General Network and Firewall Information](/docs/products/compute/kubernetes/get-started/#general-network-and-firewall-information).
+To learn more about networking within LKE, open ports, and configuring firewall rules, see [General Network and Firewall Information](https://techdocs.akamai.com/cloud-computing/docs/getting-started-with-lke-linode-kubernetes-engine#general-network-and-firewall-information).
 
 ## Next Steps
 
-If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
+If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/cloud/guides/dns-overview/) and [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove any billable resources that were generated.
 
@@ -540,4 +540,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You are prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](https://techdocs.akamai.com/cloud-computing/docs/manage-a-cluster-with-kubectl#persist-the-kubeconfig-context).

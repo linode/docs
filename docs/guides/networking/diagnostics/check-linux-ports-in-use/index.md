@@ -56,11 +56,11 @@ tcp6       0      0 [::]:http               [::]:*                  LISTEN      
 tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      2145/sshd: /usr/sbi
 {{</ output >}}
 
-To learn how to install netstat, interpret its output, and view common command line options, see our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/) guide.
+To learn how to install netstat, interpret its output, and view common command line options, see our [Inspecting Network Information with netstat](/cloud/guides/inspecting-network-information-with-netstat/) guide.
 
 ### Using ss
 
-Another way to have Linux check ports is via the [**ss**](/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
+Another way to have Linux check ports is via the [**ss**](/cloud/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
 
 Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, this unrestricted list can get quite big on busy machines, so it is useful to restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
 
@@ -87,7 +87,7 @@ LISTEN        0          128                     [::]:ssh                       
 
 Using just the `-l` parameter tells ss to list all Linux's listening ports, which are omitted by default, making it easier to check for listening ports in Linux.
 
-To take a deeper dive into the ss tool, read our [Learning to Use the ss Tool to its Full Potential](/docs/guides/ss/) guide. This guide provides commands specific to each protocol, commands to view general statistics about a system's current connections, and ways to filter your output.
+To take a deeper dive into the ss tool, read our [Learning to Use the ss Tool to its Full Potential](/cloud/guides/ss/) guide. This guide provides commands specific to each protocol, commands to view general statistics about a system's current connections, and ways to filter your output.
 
 ### Using lsof
 
@@ -109,4 +109,4 @@ hugo      57981     jdoe 8041u  IPv4 0x3dab8c45a423853b      0t0  TCP localhost:
 hugo      57981     jdoe 8042u  IPv4 0x3dab8c45a3a8e2db      0t0  TCP localhost:bmc_patroldb->localhost:51706 (ESTABLISHED)
 {{</ output >}}
 
-`lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues. To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.
+`lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues. To learn more about the `lsof` command read our [How to List Open Files with lsof](/cloud/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.

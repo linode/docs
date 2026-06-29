@@ -44,7 +44,7 @@ The following sections help you install the software you need before you can clo
 
 You may have one or more of these software installed. To verify installation, type the name of the software followed by `--version`, such as `git --version`, and press **Enter**. Some products, such as Node.js, use `-v` in place of `--version`. If the version you have installed is equal to or higher than the version used for the guide, then you don’t need to perform another installation. If you have an older software version, update it.
 
-You also need to install an email application. Canvas uses this email service to send notifications to users. There are numerous email server options and the one you choose depends on how you want to configure email for your server. One option is to use a third-party mail service such as [Mailgun](https://www.mailgun.com/). Another option is to install and configure a local email server using a product combination like [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/). You can also use an existing email server that you already have in place. You need to know email essentials like the email domain, the username and password for an email account, and the address of the Simple Mail Transfer Protocol (SMTP) server for this guide.
+You also need to install an email application. Canvas uses this email service to send notifications to users. There are numerous email server options and the one you choose depends on how you want to configure email for your server. One option is to use a third-party mail service such as [Mailgun](https://www.mailgun.com/). Another option is to install and configure a local email server using a product combination like [Postfix, Dovecot, and MySQL](/cloud/guides/email-with-postfix-dovecot-and-mysql/). You can also use an existing email server that you already have in place. You need to know email essentials like the email domain, the username and password for an email account, and the address of the Simple Mail Transfer Protocol (SMTP) server for this guide.
 
 ### Update and Upgrade Your Ubuntu 22.04 Instance
 
@@ -218,7 +218,7 @@ To install Ruby on Ubuntu 22.04, you don't necessarily need to install the Ruby 
 
 To install the Ruby Bundler on Ubuntu 22.04, you need to have a few prerequisites installed:
 
-- **Ruby**: The Ruby programming language should be installed on your Ubuntu 22.04 machine. You can install it by following the steps explained in the [Install Ruby](/docs/guides/install-canvas-lms-on-ubuntu-2204/#install-ruby) section.
+- **Ruby**: The Ruby programming language should be installed on your Ubuntu 22.04 machine. You can install it by following the steps explained in the [Install Ruby](/cloud/guides/install-canvas-lms-on-ubuntu-2204/#install-ruby) section.
 
 - **RubyGems**: RubyGems is a package manager for the Ruby programming language. It should be installed with Ruby by default. You can check if it's installed by running the command `gem -v` in the terminal. If a version number is displayed, then RubyGems is installed.
 

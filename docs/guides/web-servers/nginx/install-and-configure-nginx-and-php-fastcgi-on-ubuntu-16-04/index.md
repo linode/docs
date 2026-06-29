@@ -13,7 +13,7 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI article on Wikipedia](https://en.wikipedia.org/wiki/FastCGI)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[How to Configure Ngnix](/docs/guides/how-to-configure-nginx/)'
+ - '[How to Configure Ngnix](/cloud/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi
@@ -26,12 +26,12 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 ![Install and configure nginx and PHP-FastCGI on Ubuntu 16.04](nginx-php-fcgi-tg.png "Install and configure nginx and PHP-FastCGI on Ubuntu 16.04")
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Complete the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide, specifically [setting the hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname).
 
 - To confirm your hostname, issue the following commands on your Linode:
 
@@ -40,7 +40,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The first command shows your short hostname, and the second shows your fully qualified domain name (FQDN).
 
-- If you are new to Linux systems administration, you may want to consider the [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/) guide and the [Linux Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
+- If you are new to Linux systems administration, you may want to consider the [Introduction to Linux Concepts](/cloud/guides/introduction-to-linux-concepts/) guide and the [Linux Administration Basics](/cloud/guides/linux-system-administration-basics/) guide.
 
 - Update your system:
 

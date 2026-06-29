@@ -154,7 +154,7 @@ It is simple to create a custom systemd service that will run any script or proc
     May 02 15:03:37 localhost bash[2973]: Looping...
     ```
 
-    For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/introduction-to-systemctl).
+    For more information about using `systemctl` commands, see the [systemctl guide](/cloud/guides/introduction-to-systemctl).
 
 ## Troubleshooting
 

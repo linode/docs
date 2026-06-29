@@ -13,7 +13,7 @@ aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/websites/
 deprecated: true
 ---
 
-Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a [database](/docs/databases/) engine like [MySQL](/docs/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different types and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
+Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a [database](/cloud/guides/databases/) engine like [MySQL](/cloud/guides/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different types and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
 
 As the system's functionality is highly modular, one might even be inclined to think about Drupal not strictly as a content management system but rather as a content management framework. In addition to the core infrastructure, there are a number of Drupal modules that allow administrators of Drupal sites to provide specific functionality to the users of their sites without needing to spend resources on custom development. Furthermore, Drupal has an advanced theming engine that allows for a great amount of flexibility for displaying content in a visually useful and productive manner.
 
@@ -21,15 +21,15 @@ As the system's functionality is highly modular, one might even be inclined to t
 
 Before we begin with the Drupal installation, there are few other guides that provide instructions for installing the necessary prerequisites.
 
-- If you're new to Linux system administration, consider our [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/) guides.
-- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to get a fully updated and running system.
-- Then, you will want to use one of the [LAMP](/docs/web-servers/lamp/) guides, or for beginners, the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
-- If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql/), our guides provide some additional information regarding these dependencies.
+- If you're new to Linux system administration, consider our [Linux System Administration Basics](/cloud/guides/linux-system-administration-basics/) guides.
+- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to get a fully updated and running system.
+- Then, you will want to use one of the [LAMP](/cloud/guides/web-servers/lamp/) guides, or for beginners, the [Hosting a Website](/cloud/guides/hosting-a-website-ubuntu-18-04/) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
+- If you want more information about installing [Apache](/cloud/guides/web-servers/apache/) or [the MySQL database](/cloud/guides/databases/mysql/), our guides provide some additional information regarding these dependencies.
 
 With these dependencies installed and running, we're ready to begin installing the Drupal content management system. We assume that you have a working SSH connection to your server and database credentials to access your database server.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Download and Install Drupal 7
@@ -143,7 +143,7 @@ You're now ready to begin using Drupal.
 
 Because Drupal is such a flexible and versatile system, it is difficult to recommend any particular set of practices for effective Drupal administration. The following guidelines and suggestions may be helpful on your journey:
 
--   Drupal sites tend to consume a great deal of system resources because of the way the system interacts with the database server. If you're having this kind of problem, consider resizing your Linode for more RAM or running your database on a [dedicated database server](/docs/guides/how-to-install-mysql-on-debian-7/).
+-   Drupal sites tend to consume a great deal of system resources because of the way the system interacts with the database server. If you're having this kind of problem, consider resizing your Linode for more RAM or running your database on a [dedicated database server](/cloud/guides/how-to-install-mysql-on-debian-7/).
 -   While it may be tempting to use many modules, it's often prudent to restrict your use of contributed modules to only those that provide functionality that you actively need. Turn off modules that you're not using to reduce your risk of running out of system resources or presenting possible security vulnerabilities.
 -   Linode - and the Drupal community - recommend that you avoid doing development work on you production machine. If at all possible, keep a clone of your production environment on an alternate server or on your local machine. This will allow you to test new modules and changes without affecting your live site.
 

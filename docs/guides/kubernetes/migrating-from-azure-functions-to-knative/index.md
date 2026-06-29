@@ -30,7 +30,7 @@ This guide walks through the process of migrating an Azure function to a Knative
 
 ## Before You Begin
 
-1.  Read our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and create a Linode account if you do not already have one.
+1.  Read our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and create a Linode account if you do not already have one.
 
 1.  Create a personal access token using the instructions in our [Manage personal access tokens](https://techdocs.akamai.com/cloud-computing/docs/manage-personal-access-tokens) guide.
 
@@ -38,7 +38,7 @@ This guide walks through the process of migrating an Azure function to a Knative
 
 1.  Install the Linode CLI using the instructions in our [Install and configure the CLI](https://techdocs.akamai.com/cloud-computing/docs/install-and-configure-the-cli) guide.
 
-1.  Follow the instructions in our [Installing and Using NVM (Node Version Manager)](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
+1.  Follow the instructions in our [Installing and Using NVM (Node Version Manager)](/cloud/guides/how-to-install-use-node-version-manager-nvm/) guide to install NVM and the latest Long Term Support (LTS) release of Node.
 
 1.  Ensure that you have Knative's [`func` CLI](https://knative.dev/docs/functions/install-func/) installed.
 
@@ -65,7 +65,7 @@ This guide walks through the process of migrating an Azure function to a Knative
     ```
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Provision a Kubernetes Cluster

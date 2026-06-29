@@ -31,7 +31,7 @@ mount [-fnrsvw] [-t fstype] [-o options] device mountpoint
 
 There are other, less used, combinations that the [mount command supports](https://man7.org/linux/man-pages/man8/mount.8.html). This guide uses the term "operation" to indicate a task that the `mount` command performs and the term "option" to indicate how the `mount` command performs the task.
 
-When looking at the command line syntax, [`-fnrsvw`] represents a list of operations you can perform. However, you can perform only one at a time. Of the options shown, `-f` (fake) allows you to perform a dry run of the operation to ensure it works before you perform the actual operation. The `-t` option (which stands for the type of file system, or how the mount command creates the connection) is discussed in the [A Quick Overview of File Systems](/docs/guides/linux-mount-command/#a-quick-overview-of-file-systems) section.
+When looking at the command line syntax, [`-fnrsvw`] represents a list of operations you can perform. However, you can perform only one at a time. Of the options shown, `-f` (fake) allows you to perform a dry run of the operation to ensure it works before you perform the actual operation. The `-t` option (which stands for the type of file system, or how the mount command creates the connection) is discussed in the [A Quick Overview of File Systems](/cloud/guides/linux-mount-command/#a-quick-overview-of-file-systems) section.
 
 The `mount` command also comes with a number of options that don’t deal with the file system type. You use the `-o` switch to specify one or more options, with each option comma-separated. Not all options work with all operations, as explained later. The following are the most commonly used options:
 
@@ -83,7 +83,7 @@ umount -h|-V
 
 When looking at the command line syntax, [`-dflnrv`] represents a list of operations you can perform. However, you can perform only one at a time. Of the options shown, `-f` (fake) allows you to perform a dry run of the operation to ensure it works before you do it for real. As with the mount command, you can specify a particular file system using the `-t` option. Since the server already knows about the special file system, you use this option less often than when working with the mount command.
 
-The main concern when using `umount` is ensuring the device you want to unmount is in a stable state with no users connected to it. The following is a list of operations you can perform with `umount` and options to modify `umount` behavior. Some of the operations are covered in more detail in the [How to Use the Linux Umount Command](/docs/guides/linux-mount-command/#how-to-use-the-linux-umount-command) section. The operations are case-sensitive so that `-a` is different from `-A`:
+The main concern when using `umount` is ensuring the device you want to unmount is in a stable state with no users connected to it. The following is a list of operations you can perform with `umount` and options to modify `umount` behavior. Some of the operations are covered in more detail in the [How to Use the Linux Umount Command](/cloud/guides/linux-mount-command/#how-to-use-the-linux-umount-command) section. The operations are case-sensitive so that `-a` is different from `-A`:
 
 - `-a`, `--all`: Unmounts all of the file systems described in the `/proc/self/mountinfo` file except file systems of type `proc`, `devfs`, `devpts`, `sysfs`, `rpc_pipefs`, and `nfsd`. As an alternative, you can use the `-t` option to specify particular file system types.
 
@@ -95,11 +95,11 @@ The main concern when using `umount` is ensuring the device you want to unmount 
 
 - `--fake`: Performs all the required tasks for an unmount except for the actual unmounting process. This option allows you to see what happens when you run the command without using the `--fake` switch.
 
-- `-f`, `--force`: Forces an unmount to occur. Using this option can cause umount to hang. The [Performing a Forced Unmount](/docs/guides/linux-mount-command/#performing-a-forced-unmount) section covers this operation in more detail.
+- `-f`, `--force`: Forces an unmount to occur. Using this option can cause umount to hang. The [Performing a Forced Unmount](/cloud/guides/linux-mount-command/#performing-a-forced-unmount) section covers this operation in more detail.
 
 - `-i`, `--internal-only`: Doesn’t call the `umount.<file system>` helper code found in the `/sbin` directory, even if it exists. If you perform a directory command on the `/sbin` directory you may see files such as `mount.cifs` and `umount.udisks2` that are helpers. The mount or umount part of the helper filename references the command, while the `cifs` and `udisks2` part of the filename reference the file system. This option can be helpful when an unprivileged help hangs when attempting to unmount a drive.
 
-- `-l`, `--lazy`: Unmounts the file system from the file hierarchy immediately, but cleans up the references later to allow the umount command to return earlier so the system isn't blocked. The[ Performing a Lazy Unmount](/docs/guides/linux-mount-command/#performing-a-lazy-unmount) section provides more details on this operation.
+- `-l`, `--lazy`: Unmounts the file system from the file hierarchy immediately, but cleans up the references later to allow the umount command to return earlier so the system isn't blocked. The[ Performing a Lazy Unmount](/cloud/guides/linux-mount-command/#performing-a-lazy-unmount) section provides more details on this operation.
 
 - `-N`, `--namespace ns`: Unmounts the [mount namespace](https://man7.org/linux/man-pages/man7/mount_namespaces.7.html) specified by `ns`, where `ns` is either a Process ID (PID) running in the [target namespace](https://www.redhat.com/sysadmin/mount-namespaces), or it’s a special file representing the namespace. The umount command switches to the target namespace to read from `/etc/fstab`, write to `/etc/mtab` or `/run/mount`, or perform the umount system call. Otherwise, it uses the original namespace so that the target namespace doesn’t have to contain any special libraries.
 

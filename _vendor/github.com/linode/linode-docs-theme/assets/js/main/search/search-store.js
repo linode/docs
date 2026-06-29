@@ -39,7 +39,7 @@ const createSectionFacetsSorted = function (searchConfig, result) {
 			let title = last.replace('-', ' ');
 			// First letter upper case.
 			title = title.charAt(0).toUpperCase() + title.slice(1);
-			let href = `/docs/${parts.join('/').toLowerCase()}/`;
+			let href = `${window.docsRelUrl('/')}${parts.join('/').toLowerCase()}/`;
 			let node = {
 				href: href,
 				key: k,
@@ -460,7 +460,7 @@ export function normalizeAlgoliaResult(result) {
 		};
 
 		if (!hit.thumbnailUrl) {
-			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
+			hit.thumbnailUrl = window.docsRelUrl('/media/images/Linode-Default-416x234.jpg');
 		}
 
 		hit.tagsValues = function () {

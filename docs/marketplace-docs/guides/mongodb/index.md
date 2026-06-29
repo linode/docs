@@ -54,7 +54,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/cloud/guides/connect-to-server-over-ssh/) or [Lish](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 
@@ -94,5 +94,5 @@ For more information on access control and user management, as well as other tip
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/cloud/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/cloud/guides/build-database-clusters-with-mongodb/)

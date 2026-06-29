@@ -20,7 +20,7 @@ deprecated: true
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 10.04 LTS (Lucid) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Install Prerequisites
 
@@ -92,7 +92,7 @@ Direct your browser to your Linode's IP address or FQDN (fully qualified domain 
 
 ![Language selection in Openfire setup on Ubuntu 10.04 (Lucid).](397-openfire-ubuntu-10.04-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/products/networking/dns-manager/)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager)).
 
 ![Domain and admin ports selection in Openfire setup on Ubuntu 10.04 (Lucid).](398-openfire-ubuntu-10.04-02-domain-ports-selection.png)
 

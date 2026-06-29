@@ -84,10 +84,8 @@ class IssueType:
 
 DOCS_DIR = [
     "docs/guides",
-    "docs/products",
     "docs/bundles",
     "docs/assets",
-    "docs/api",
     "docs/reference-architecture",
     "docs/release-notes",
     "docs/marketplace-docs"
@@ -126,7 +124,7 @@ issue_types.append(IssueType(
 issue_types.append(IssueType(
     id = 'incorrect-root',
     title = "Incorrect root directory",
-    summary = "The link does not point to the correct root (/docs/)",
+    summary = "The link does not point to the correct root (/cloud/)",
     severity = 'failure',
     weight = 30
 ))
@@ -155,13 +153,10 @@ def get_guides():
     issues = []
 
     # Add top level guides
-    guides.append(Guide("docs/","docs/_index.md", "Docs Home", "/docs/"))
-    guides.append(Guide("docs/products/","docs/products/_index.md", "Product Docs", "/docs/products/"))
-    guides.append(Guide("docs/marketplace/", "", "Marketplace", "/docs/marketplace/"))
+    guides.append(Guide("docs/","docs/_index.md", "Docs Home", "/cloud/"))
     guides.append(Guide("docs/marketplace-docs/", "", "Marketplace Docs", "/docs/marketplace-docs/"))
     guides.append(Guide("docs/resources/", "", "Resources", "/docs/resources/"))
     guides.append(Guide("docs/topresults/?docType=community", "", "Q&A", "/docs/topresults/?docType=community"))
-    assets.append(Asset("/docs/api/openapi.yaml","/docs/api/openapi.yaml"))
 
     # Iterate through each file in each docs directory
     for dir in DOCS_DIR:
@@ -200,15 +195,13 @@ def get_guides():
                                     #print("New file path: " + new_file_path)
                                     os.rename(old_file_path,new_file_path)
 
-                            canonical_link = "/docs/guides/" + expanded_guide['slug'] + "/"
-                        # ... If the guide is in the API section...
-                        elif "slug" in expanded_guide.keys() and "docs/api/" in file_path:
-                            canonical_link = "/docs/api/" + expanded_guide['slug'] + "/"
+                            canonical_link = "/cloud/guides/" + expanded_guide['slug'] + "/"
                         # ... If the guide is in any other section...
                         else:
                             canonical_link = "/" + file_path
                             canonical_link = canonical_link.replace('/index.md','/')
                             canonical_link = canonical_link.replace('/_index.md','/')
+                            canonical_link = canonical_link.replace('/docs/','/cloud/') # Convert docs-prefix links to cloud-prefix links
 
                         # Construct the guide object
                         guide = Guide(root, file_path, expanded_guide['title'], canonical_link)
@@ -228,8 +221,8 @@ def get_guides():
 
                 # If the file is something else, like an image or other asset...
                 else:
-                    if "docs/guides/" in file_path:
-                        link = "/docs/guides/" + path_segments[-2] + "/" + path_segments[-1]
+                    if "cloud/guides/" in file_path:
+                        link = "/cloud/guides/" + path_segments[-2] + "/" + path_segments[-1]
                     else:
                         link = "/" + file_path
                     assets.append(Asset(file_path,link))
@@ -380,8 +373,8 @@ def check_internal_links_markdown(guides, assets):
                 # Ignore links to resources within the same directory
                 if not "/" in link and "." in link:
                     continue
-                # Log issue if link does not start with /docs/
-                if not link.startswith('/docs/'):
+                # Log issue if link does not start with /cloud/
+                if not link.startswith('/cloud/'):
                     issues.append(Issue(link_unmodified,'incorrect-root'))
                     continue
                 # Log issue if link ends with two slashes /
@@ -396,7 +389,7 @@ def check_internal_links_markdown(guides, assets):
                 # Check if link points to a canonical internal link
                 if not next((x for x in guides if x.link == link), None):
                     # Checks if the link matches an alias or not
-                    if next((x for x in guides if link.replace('/docs/','/') in x.aliases), None) is not None:
+                    if next((x for x in guides if link.replace('/cloud/','/') in x.aliases), None) is not None:
                         issues.append(Issue(link_unmodified,'points-to-alias'))
                     else:
                         issues.append(Issue(link_unmodified,'not-found'))
@@ -463,18 +456,19 @@ def main():
         {'='*40}
         """))
 
-        # Output information about each issue type and any associated issues
-        for t in issue_types:
-          if t.severity == 'failure' and not len(t.issues) == 0:
-            # Output heading for this issue type
-            print(textwrap.dedent(f"""
-              {t.title} ({(t.severity).upper()}): {str(len(t.issues))}
-                  {t.summary}
-              """))
-            # Output the list of errors if the issue severity is a failure
-            for i in t.issues:
-              print(f"    - {i.link}")
+    # Output information about each issue type and any associated issues
+    for t in issue_types:
+      # Output heading for this issue type
+      print(textwrap.dedent(f"""
+        {t.title} ({(t.severity).upper()}): {str(len(t.issues))}
+            {t.summary}
+        """))
+      # Output the list of errors if the issue severity is a failure
+      for i in t.issues:
+        print(f"    - {i.link}")
 
+
+    if test_failed:
         sys.exit(1)
 
 if __name__ == "__main__":

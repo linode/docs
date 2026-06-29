@@ -15,7 +15,7 @@ aliases: ['/websites/static-sites/install-gatsbyjs/']
 
 ## What is Gatsby?
 
-Gatsby is a [Static Site Generator](/docs/guides/how-to-choose-static-site-generator/#what-is-a-static-site) for React built on Node.js. Gatsby uses a modern web technology stack based on client-side Javascript, reusable APIs, and prebuilt Markdown, otherwise known as the [*JAMstack*](https://jamstack.org/). This method of building a site is fast, secure, and scalable. All production site pages are prebuilt and static, so Gatsby does not have to build HTML for each page request.
+Gatsby is a [Static Site Generator](/cloud/guides/how-to-choose-static-site-generator/#what-is-a-static-site) for React built on Node.js. Gatsby uses a modern web technology stack based on client-side Javascript, reusable APIs, and prebuilt Markdown, otherwise known as the [*JAMstack*](https://jamstack.org/). This method of building a site is fast, secure, and scalable. All production site pages are prebuilt and static, so Gatsby does not have to build HTML for each page request.
 
 ## What is the CI/CD Pipeline?
 
@@ -49,17 +49,17 @@ This guide sets up the following flow of events:
 
 ## Before You Begin
 
-1.  Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and deploy a Linode running Ubuntu 18.04.
+1.  Follow the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guide and deploy a Linode running Ubuntu 18.04.
 
-1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{% content "limited-user-note-shortguide" %}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](https://techdocs.akamai.com/cloud-computing/docs/create-a-domain) and setting up [reverse DNS](https://techdocs.akamai.com/cloud-computing/docs/configure-rdns-reverse-dns-on-a-compute-instance) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 
-1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-using-homebrew-on-macos) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
+1.  [Install Git](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/cloud/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-using-homebrew-on-macos) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
 
 ## Prepare Your Production Linode
 
@@ -421,7 +421,7 @@ sudo: false
 
 ### Give Travis Permission to Deploy to Your Linode
 
-In order to let Travis push your code to your production Linode, you first need to give the Travis build environment access to the Linode. This will be accomplished by generating a [public-private key pair](/docs/guides/use-public-key-authentication-with-ssh/) for your build environment and then uploading the public key to your Linode. Your code will be deployed over SSH, and the SSH agent in the build environment will be configured to use your new private key.
+In order to let Travis push your code to your production Linode, you first need to give the Travis build environment access to the Linode. This will be accomplished by generating a [public-private key pair](/cloud/guides/use-public-key-authentication-with-ssh/) for your build environment and then uploading the public key to your Linode. Your code will be deployed over SSH, and the SSH agent in the build environment will be configured to use your new private key.
 
 The private key will also need to be encrypted, as the key file will live in your Gatsby project's Git repository, and you should **never** check a plain-text version of it into version control.
 

@@ -24,8 +24,8 @@ The goal of this series is to set up a continuous deployment pipeline for a Kube
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
-- **Next section:** [Part 2: Sample Application](/docs/guides/build-a-cd-pipeline-with-lke-part-2/)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/cloud/guides/build-a-cd-pipeline-with-lke/)
+- **Next section:** [Part 2: Sample Application](/cloud/guides/build-a-cd-pipeline-with-lke-part-2/)
 
 ## Presentation Text
 

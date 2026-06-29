@@ -152,7 +152,7 @@ The `document` object contains numerous other objects that all make up the DOM. 
 
 You are likely to work most frequently with *element* nodes. DOM element nodes correspond to a web page's HTML elements. They allow you to access and manipulate the building blocks of a web page.
 
-The script used in the [How the DOM Differs from HTML Source](/docs/guides/document-object-model/#how-the-dom-differs-from-html-source-code) section added a `<ul>` element and `<li>` elements to the page. This added the following two kinds of nodes to the page:
+The script used in the [How the DOM Differs from HTML Source](/cloud/guides/document-object-model/#how-the-dom-differs-from-html-source-code) section added a `<ul>` element and `<li>` elements to the page. This added the following two kinds of nodes to the page:
 
 - *Element nodes*, which were created using the `document.createElement` method.
 - *Text nodes*, created with the `document.createTextNode` method.
@@ -187,7 +187,7 @@ As a result, the DOM is updated and the text, `item`, contained within the `<li>
         </body>
     </html>
 
-See our guide [Traversing the Document Object Model with JavaScript](/docs/guides/traversing-the-dom), to learn about other built-in document object methods.
+See our guide [Traversing the Document Object Model with JavaScript](/cloud/guides/traversing-the-dom), to learn about other built-in document object methods.
 
 ## Conclusion
 

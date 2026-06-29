@@ -20,9 +20,9 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -34,7 +34,7 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
 
             sudo dnf upgrade
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Appsmith?
@@ -69,9 +69,9 @@ The first step is to install Docker and Docker Compose. Docker runs Appsmith, wh
 
 1.  Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
 
-    -   **Debian** and **Ubuntu**: Use our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+    -   **Debian** and **Ubuntu**: Use our guide on [How to Install and Use Docker on Ubuntu and Debian](/cloud/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-    -   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Use our guide on [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
+    -   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Use our guide on [How to Install and Use Docker on CentOS and Fedora](/cloud/guides/installing-and-using-docker-on-centos-and-fedora/).
 
 1.  Install Docker Compose using your distribution's package manager.
 
@@ -111,7 +111,7 @@ With the Docker Compose files for Appsmith downloaded, you can now start up Apps
 
 With the initial run, Docker Compose starts by downloading the necessary image files for the Appsmith services. For this reason, the first time you run this command may take longer than subsequent times.
 
-Docker Compose starts up the Appsmith services once it has finished with these initial downloads. Read on to the [How to Start Using Appsmith](/docs/guides/deploy-appsmith-docker/#how-to-start-using-appsmith) section below to see it in action.
+Docker Compose starts up the Appsmith services once it has finished with these initial downloads. Read on to the [How to Start Using Appsmith](/cloud/guides/deploy-appsmith-docker/#how-to-start-using-appsmith) section below to see it in action.
 
 ### Stopping Appsmith
 
@@ -129,9 +129,9 @@ However, doing so is often not feasible, especially not for numerous users. Like
 
 You can do so by navigating to the Appsmith server's URL, which may be an IP address, like `192.0.2.0`. But first, you need to ensure that the server's firewall provides external access to the HTTP port, port `80`.
 
--   **Debian** and **Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+-   **Debian** and **Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw/).
 
--   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
+-   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/cloud/guides/introduction-to-firewalld-on-centos/).
 
 Having opened the port, navigate to the server's URL/IP address, and you should be greeted by the Appsmith welcome page.
 
@@ -214,7 +214,7 @@ Setting up Appsmith for automatic updates requires a configuration change in a d
 
         sudo docker compose up -d
 
-Alternatively, you can make manual updates to your Appsmith instance. Take a look at the section on [Updating Appsmith](/docs/guides/deploy-appsmith-docker/#updating-appsmith) below for the commands to do so.
+Alternatively, you can make manual updates to your Appsmith instance. Take a look at the section on [Updating Appsmith](/cloud/guides/deploy-appsmith-docker/#updating-appsmith) below for the commands to do so.
 
 ## How to Manage the Appsmith Instance
 
@@ -246,7 +246,7 @@ You can update your Appsmith instance manually, if you have not enabled automati
     sudo docker rm -f appsmith
     sudo docker run -d --name appsmith -p 80:80 -v "$PWD/stacks:/appsmith-stacks" appsmith/appsmith-ce
 
-Alternatively, refer to the [Configuring Automatic Updates](/docs/guides/deploy-appsmith-docker/#configuring-automatic-updates) section above for steps to enable automatic updates on your Appsmith instance.
+Alternatively, refer to the [Configuring Automatic Updates](/cloud/guides/deploy-appsmith-docker/#configuring-automatic-updates) section above for steps to enable automatic updates on your Appsmith instance.
 
 ## Conclusion
 

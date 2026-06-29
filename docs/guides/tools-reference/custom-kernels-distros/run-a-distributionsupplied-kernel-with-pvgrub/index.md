@@ -15,14 +15,14 @@ deprecated: true
 {{% content "all-linodes-kvm-shortguide" %}}
 
 {{< note type="alert" >}}
-This guide is for legacy Xen Linodes. For newer Linodes, consult our [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide.
+This guide is for legacy Xen Linodes. For newer Linodes, consult our [How to Change your Linode's Kernel](https://techdocs.akamai.com/cloud-computing/docs/manage-the-kernel-on-a-compute-instance) guide.
 {{< /note >}}
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 
-If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/docs/guides/install-a-custom-distribution/) guide before taking these steps.
+If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/cloud/guides/install-a-custom-distribution/) guide before taking these steps.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/products/platform/get-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 ## Ubuntu 13.04 (Raring)
 
@@ -576,7 +576,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 
 1.  Issue the following commands as `root` to retrieve and run the script:
 
-        wget -O selinux.sh http://www.linode.com/docs/assets/542-centos5-native-kernel-selinux-enforcing.sh
+        wget -O selinux.sh 542-centos5-native-kernel-selinux-enforcing.sh
         chmod +x selinux.sh
         ./selinux.sh
 

@@ -31,7 +31,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 
@@ -47,7 +47,7 @@ Your logs will be displayed from oldest to newest. To reverse this order and dis
 
 ### Paging through Your Logs
 
-journalctl pipes its output to [the `less` command](/docs/guides/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
+journalctl pipes its output to [the `less` command](/cloud/guides/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
 
 Furthermore, your logs can be navigated and searched by using all the same key commands available in `less`:
 

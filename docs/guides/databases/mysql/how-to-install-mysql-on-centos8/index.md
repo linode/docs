@@ -236,4 +236,4 @@ Don’t forget the semicolon at the end of the command.
 
 ## Conclusion
 
-One of the biggest takeaways is that both MySQL and MariaDB provide enterprise-level database functionality. Each has its specialization. Installing either product is relatively easy using the Package Manager. When installing MySQL, take additional steps when working with the [MySQL installation script](/docs/guides/how-to-install-mysql-on-centos8/#configure-mysql-using-mysql-installation-script). Remote access to MySQL setup requires that you configure MySQL to allow remote login and then set up UFW as well.
+One of the biggest takeaways is that both MySQL and MariaDB provide enterprise-level database functionality. Each has its specialization. Installing either product is relatively easy using the Package Manager. When installing MySQL, take additional steps when working with the [MySQL installation script](/cloud/guides/how-to-install-mysql-on-centos8/#configure-mysql-using-mysql-installation-script). Remote access to MySQL setup requires that you configure MySQL to allow remote login and then set up UFW as well.

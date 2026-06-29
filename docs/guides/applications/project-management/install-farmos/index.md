@@ -22,13 +22,13 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account), [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access), and [create firewall rules](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{% content "limited-user-note-shortguide" %}}
 
-1.  Install and configure a [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Skip the configuration steps for setting up MySQL and use the steps outlined in this guide instead.
+1.  Install and configure a [LAMP stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/). Skip the configuration steps for setting up MySQL and use the steps outlined in this guide instead.
 
 ## MySQL Setup
 
@@ -54,7 +54,7 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Download and Install farmOS
 
-1.  Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1.  Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -80,7 +80,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
         sudo a2enmod rewrite
 
-1.  Specify the rewrite conditions for your farmOS site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+1.  Specify the rewrite conditions for your farmOS site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -105,7 +105,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
 ## Configure farmOS
 
-1.  Go to your Linode's domain or [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
+1.  Go to your Linode's domain or [IP address](https://techdocs.akamai.com/cloud-computing/docs/managing-ip-addresses-on-a-compute-instance) in a web browser. This shows you the first step of the farmOS/Drupal web configuration.
 
 1.  The first screen you encounter asks you to choose a profile and a language:
 
@@ -127,7 +127,7 @@ Ensure that the version number matches the farmOS version you wish to download.
 
     ![welcome](welcome.png)
 
-1.  After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities from your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory:
+1.  After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities from your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 20.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory:
 
         sudo chmod 644 sites/default
         sudo chmod 644 ./sites/default/settings.php
@@ -146,7 +146,7 @@ After each user is created, use the **People** tab to verify success:
 
 ### Registering a Domain Name for farmOS
 
-To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/products/networking/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
+To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 

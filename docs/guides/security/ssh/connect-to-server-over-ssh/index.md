@@ -17,8 +17,8 @@ A *secure shell* (SSH) is used for secure communication between devices. When mo
 
 The following articles cover the basics of connecting to a remote server (such as a Linode) over SSH from different environments:
 
-- [How to Connect to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
-- [How to Connect to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/)
-- [How to Connect to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/)
-- [How to Connect to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)
-- [How to Connect to a Remote Server Over SSH on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/)
+- [How to Connect to a Remote Server Over SSH on Linux](/cloud/guides/connect-to-server-over-ssh-on-linux/)
+- [How to Connect to a Remote Server Over SSH on a Mac](/cloud/guides/connect-to-server-over-ssh-on-mac/)
+- [How to Connect to a Remote Server Over SSH on Windows](/cloud/guides/connect-to-server-over-ssh-on-windows/)
+- [How to Connect to a Remote Server Over SSH using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/)
+- [How to Connect to a Remote Server Over SSH on Chrome](/cloud/guides/connect-to-server-over-ssh-on-chrome/)

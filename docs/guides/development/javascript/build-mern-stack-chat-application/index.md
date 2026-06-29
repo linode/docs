@@ -21,9 +21,9 @@ This MERN tutorial helps you get started building a MERN app of your own for an 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system using the following command:
 
@@ -32,7 +32,7 @@ This MERN tutorial helps you get started building a MERN app of your own for an 
     ```
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is MERN Stack?
@@ -99,7 +99,7 @@ Two of the MERN components should be installed before you start on your project:
     sudo apt install mongodb-org
     ```
 
-See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/) guide.
+See the official documentation for more on installing MongoDB [on Debian](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/) and [on Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/). You can also refer to our [How To Install MongoDB on Ubuntu 16.04](/cloud/guides/install-mongodb-on-ubuntu-16-04/) guide.
 
 #### Install Node.js
 
@@ -123,7 +123,7 @@ See the official documentation for more on installing MongoDB [on Debian](https:
     nvm install node
     ```
 
-You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide.
+You can additionally refer to our [How to Install and Use the Node Package Manager (NPM) on Linux](/cloud/guides/install-and-use-npm-on-linux/#how-to-install-or-update-npm) guide.
 
 ### Developing the App
 
@@ -284,7 +284,7 @@ The next sections show you how to set these up for a basic chat application.
     }
     ```
 
-You can learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/docs/guides/express-js-tutorial/).
+You can learn more about getting started with Express JS in our guide [Express JS Tutorial: Get Started Building a Website](/cloud/guides/express-js-tutorial/).
 
 #### Create the React Frontend
 
@@ -459,7 +459,7 @@ With the prerequisites installed and the project set up, you can now start up yo
 
     Your MERN stack application should now be running. Access the frontend by navigating to `localhost:3000` in a browser. You can access the application remotely using an SSH tunnel:
 
-    - On **Windows**, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with `3000`.
+    - On **Windows**, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/cloud/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with `3000`.
 
     - On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
@@ -469,12 +469,12 @@ With the prerequisites installed and the project set up, you can now start up yo
 
     ![Example MERN stack application](mern-app-example.png)
 
-When you are ready to make your application accessible to the public, take a look at our [Deploying a React Application on Debian 10](/docs/guides/how-to-deploy-a-react-app-on-debian-10/) guide. Specifically, the [Configure your Web Server](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#configure-your-web-server) and [Create your Deployment Script](/docs/guides/how-to-deploy-a-react-app-on-debian-10/#create-your-deployment-script) sections give you the additional steps you need to make your React frontend available.
+When you are ready to make your application accessible to the public, take a look at our [Deploying a React Application on Debian 10](/cloud/guides/how-to-deploy-a-react-app-on-debian-10/) guide. Specifically, the [Configure your Web Server](/cloud/guides/how-to-deploy-a-react-app-on-debian-10/#configure-your-web-server) and [Create your Deployment Script](/cloud/guides/how-to-deploy-a-react-app-on-debian-10/#create-your-deployment-script) sections give you the additional steps you need to make your React frontend available.
 
 ## Conclusion
 
 You now have a working MERN stack application. This code above can form a basis that you can modify and expand on to your needs.
 
-Ready to deploy your MERN stack app to a server? Refer to our [Deploy a MERN Stack Application on Akamai](/docs/guides/deploy-a-mern-stack-application/) guide. There, you can learn how to set up a server for a MERN stack and copy over your MERN project for deployment.
+Ready to deploy your MERN stack app to a server? Refer to our [Deploy a MERN Stack Application on Akamai](/cloud/guides/deploy-a-mern-stack-application/) guide. There, you can learn how to set up a server for a MERN stack and copy over your MERN project for deployment.
 
-One way you can enhance your MERN stack app is by adding authentication. Learn how to implement authentication into your Express JS server through our [User Authentication with JSON Web Tokens (JWTs) and Express](/docs/guides/how-to-authenticate-using-jwt/) guide.
+One way you can enhance your MERN stack app is by adding authentication. Learn how to implement authentication into your Express JS server through our [User Authentication with JSON Web Tokens (JWTs) and Express](/cloud/guides/how-to-authenticate-using-jwt/) guide.

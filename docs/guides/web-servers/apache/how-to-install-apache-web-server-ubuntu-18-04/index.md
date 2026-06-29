@@ -12,7 +12,7 @@ tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
- - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
+ - '[Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)'
 image: InstallApache_Ubuntu1804LTS.png
 relations:
     platform:
@@ -24,19 +24,19 @@ aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/','
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 18.04 LTS.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Ubuntu 18.04](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/cloud/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+1.  Set up your Linode in the [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) and [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) guide.
 
-    - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+    - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide.
 
     {{% content "limited-user-note-shortguide" %}}
 
@@ -48,7 +48,7 @@ Install Apache 2.4:
 
 ## Multi-Processing Modules
 
-Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Ubuntu 18.04 LTS the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/#multi-processing-modules) guide.
+Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Ubuntu 18.04 LTS the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/cloud/guides/tuning-your-apache-server/#multi-processing-modules) guide.
 
 1.  You can check which MPM is currently configured with the following command:
 
@@ -322,7 +322,7 @@ You can control the server in the following ways.
 
 ### Optional: Firewall
 
-Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A common firewall for Ubuntu is [UFW](/docs/guides/configure-firewall-with-ufw/).
+Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A common firewall for Ubuntu is [UFW](/cloud/guides/configure-firewall-with-ufw/).
 
 If you had UFW installed before you installed Apache, Apache will have registered with UFW during installation and provides some simple to use configurations.
 
