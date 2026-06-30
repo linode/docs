@@ -633,6 +633,7 @@ doveadm
 downscaled
 dpkg
 dport
+dpus
 dragos
 dropbox
 Dropbox
@@ -923,6 +924,7 @@ gpc
 gpg
 GPGTools
 gping
+gpudirect
 GPUs
 gradle
 grafana
@@ -2514,6 +2516,7 @@ suid
 sukharev
 SUnit
 supabase
+supercomputing
 Superinsight
 superset
 supervisorctl
