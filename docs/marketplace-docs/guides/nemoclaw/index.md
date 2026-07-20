@@ -37,6 +37,8 @@ This Quick Deploy App creates a limited user on the system named `nemoclaw` and 
 
 ## NemoClaw Options
 
+- **Email address** *(required)*: Enter the email address you want to use for generating the SSL certificates via Let's Encrypt.
+
 {{% content "marketplace-required-limited-user-fields-shortguide" %}}
 
 {{% content "marketplace-special-character-limitations-shortguide" %}}
