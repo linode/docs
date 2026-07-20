@@ -95,8 +95,10 @@ Once the deployment is complete, you need to perform the onboarding wizard to co
    - **Supply provider credentials**: Enter the API key or connection details for your chosen provider.
 
    {{< note >}}
-   **Important**: NemoClaw requires an external Large Language Model (LLM) to function. You must provide valid credentials for at least one of the supported inference providers during onboarding. Once setup is complete, the onboarding script is automatically removed, and it won't prompt again on the next login.
+   **Important**: NemoClaw requires an external Large Language Model (LLM) to function. You must provide valid credentials for at least one of the supported inference providers during onboarding.
     {{< /note >}}
+
+Once the setup is complete, the onboarding script is automatically removed, and it won't prompt again on the next login.
 
 ### Accessing the Dashboard
 
