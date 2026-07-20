@@ -129,7 +129,7 @@ The NemoClaw dashboard is not exposed on a public HTTP(S) endpoint. Instead, acc
 3. Open your browser and visit the local URL with the token to access the dashboard.
 
 {{< note >}}
-**Security**: The dashboard token is sensitive. Treat it like a password and do not share or commit it to a version control.
+**Security**: The dashboard token is sensitive. Treat it like a password and do not share or commit it to version control.
 {{< /note >}}
 
 {{% content "marketplace-update-note-shortguide" %}}
