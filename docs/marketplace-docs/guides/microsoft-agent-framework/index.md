@@ -14,7 +14,7 @@ marketplace_app_id: 2165612
 marketplace_app_name: "Microsoft Agent Framework"
 ---
 
-Microsoft Agent Framework is an open-source framework for building, orchestrating, and deploying AI agents and multi-agent applications. It provides developers with the tools to create intelligent agents that can reason, use tools, collaborate, and automate complex workflows.
+Microsoft Agent Framework is an open source framework for building, orchestrating, and deploying AI agents and multi-agent applications. It provides you with the tools to create intelligent agents that can reason, use tools, collaborate, and automate complex workflows.
 
 ## Deploying a Quick Deploy App
 
@@ -39,57 +39,57 @@ Microsoft Agent Framework is an open-source framework for building, orchestratin
 
 ## Getting Started after Deployment
 
-### Testing Python's SDK
+### Testing Python SDK
 
-Once the deployment is complete, the `agent-framework` library should already be installed on your instance. This will allow you to import the library into your software.
+Once the deployment is complete, the `agent-framework` library should already be installed on your instance. This allows you to import the library into your software. To get started:
 
-1. To get started, create an example directory called `science`.
+1. Create an example directory called `science`.
 
     ```command
     mkdir science
     ```
 
-2. Create a test Python file called `sky.py` that will allow us to use our AI model.
+2. Create a test Python file called `agent.py` that allows you to use our AI model.
 
-```
-cd science
-vim sky.py
-```
+    ```
+    cd science
+    vim agent.py
+    ```
 
-3. Enter the following content into the `sky.py` Python file.
+3. Enter the following content into the `agent.py` Python file.
 
-```python
-import asyncio
-from openai import AsyncOpenAI
-from agent_framework import Agent
-from agent_framework.openai import OpenAIChatClient
+    ```python
+    import asyncio
+    from openai import AsyncOpenAI
+    from agent_framework import Agent
+    from agent_framework.openai import OpenAIChatClient
 
-async def main():
-    client = OpenAIChatClient(
-        model="Qwen/Qwen3-14B-AWQ",
-        base_url="http://localhost:8000/v1",
-        api_key="dummy",
-    )
+    async def main():
+        client = OpenAIChatClient(
+            model="Qwen/Qwen3-14B-AWQ",
+            base_url="http://localhost:8000/v1",
+            api_key="dummy",
+        )
 
-    agent = client.as_agent(
-        name="Assistant",
-        instructions="You are a helpful assistant.",
-    )
+        agent = client.as_agent(
+            name="Assistant",
+            instructions="You are a helpful assistant.",
+        )
 
-    result = await agent.run("Why is the sky blue?")
+        result = await agent.run("Why is the sky blue?")
 
-    print(result)
+        print(result)
 
-if __name__ == "__main__":
-    asyncio.run(main())
-```
+    if __name__ == "__main__":
+        asyncio.run(main())
+    ```
 
-4. Once you save the file you can execute it with the following command.  
+4. Once you save the file, execute it with the following command.
 
-```command
-python3 sky.py
-```
+    ```command
+    python3 agent.py
+    ```
 
-This example uses a self-hosted model exposed via vLLM's API. If you want to use a provider model you can refer to Microsoft Agent Framework documentation.
+This example uses a self-hosted model exposed via the LLM's API. If you want to use a provider model, refer to the Microsoft Agent Framework documentation.
 
 {{% content "marketplace-update-note-shortguide" %}}

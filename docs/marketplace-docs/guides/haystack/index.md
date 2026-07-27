@@ -14,7 +14,7 @@ marketplace_app_id: 2165521
 marketplace_app_name: "Haystack"
 ---
 
-Haystack is an open-source framework for building applications that use large language models (LLMs). Instead of requiring developers to write custom orchestration logic for every use case, it provides a structured way to assemble AI functionality through reusable components connected in pipelines. This approach makes it well suited for creating retrieval-augmented generation (RAG) systems, AI agents, search experiences, chat applications, and other LLM-driven solutions.
+Haystack is an open source framework for building applications that use large language models (LLMs). Instead of requiring you to write custom orchestration logic for every use case, it provides a structured way to assemble AI functionality through reusable components connected in pipelines. This approach makes it well-suited for creating retrieval-augmented generation (RAG) systems, AI agents, search experiences, chat applications, and other LLM-driven solutions.
 
 ## Deploying a Quick Deploy App
 
@@ -39,53 +39,54 @@ Haystack is an open-source framework for building applications that use large la
 
 ## Getting Started after Deployment
 
-### Testing Agent
+### Testing Python SDK
 
-Once the deployment is complete, the `haystack-ai` library should already be installed on your instance. This will allow you to import the library into your software.
+Once the deployment is complete, the `haystack-ai` library should already be installed on your instance. This allows you to import the library into your software. To get started:
 
-1. To get started, create an example directory called `science`.
+1. Create an example directory called `science`.
 
     ```command
     mkdir science
     ```
 
-2. To get started, create a test Python file called `agent.py` that will allow us to use our AI model.
+2. Create a test Python file called `agent.py` that allows you to use our AI model.
 
-```
-vim agent.py
-```
+    ```
+    cd science
+    vim agent.py
+    ```
 
 3. Enter the following content into the `agent.py` Python file.
 
-```python
-from haystack.components.agents import Agent
-from haystack.components.generators.chat import OpenAIChatGenerator
-from haystack.dataclasses import ChatMessage
-from haystack.tools import ComponentTool
-from haystack.utils import Secret
+    ```python
+    from haystack.components.agents import Agent
+    from haystack.components.generators.chat import OpenAIChatGenerator
+    from haystack.dataclasses import ChatMessage
+    from haystack.tools import ComponentTool
+    from haystack.utils import Secret
 
-agent = Agent(
-    chat_generator=OpenAIChatGenerator(
-        api_base_url="http://localhost:8000/v1",
-        api_key=Secret.from_token("EMPTY"),
-        model="Qwen/Qwen3-14B-AWQ",
-    ),
-    system_prompt="You are a helpful assistant that can search the web for information.",
-)
+    agent = Agent(
+        chat_generator=OpenAIChatGenerator(
+            api_base_url="http://localhost:8000/v1",
+            api_key=Secret.from_token("EMPTY"),
+            model="Qwen/Qwen3-14B-AWQ",
+        ),
+        system_prompt="You are a helpful assistant that can search the web for information.",
+    )
 
-result = agent.run(
-    messages=[ChatMessage.from_user("What is Haystack AI?")]
-)
+    result = agent.run(
+        messages=[ChatMessage.from_user("What is Haystack AI?")]
+    )
 
-print(result["last_message"].text)
-```
+    print(result["last_message"].text)
+    ```
 
-4. Once you save the file you can execute it with the following command.  
+4. Once you save the file, execute it with the following command.
 
-```command
-python3 sky.py
-```
+    ```command
+    python3 agent.py
+    ```
 
-This example uses a self-hosted model exposed via vLLM's API. If you want to use a provider model you can refer to Haystack documentation.
+This example uses a self-hosted model exposed via the LLM's API. If you want to use a provider model, refer to the Haystack documentation.
 
 {{% content "marketplace-update-note-shortguide" %}}
