@@ -138,4 +138,4 @@ The NemoClaw dashboard is not exposed on a public HTTP(S) endpoint. Instead, acc
 
 - Review the [NemoClaw Documentation](https://docs.nvidia.com/nemoclaw/latest/) for advanced features and configurations.
 - Check the [NemoClaw GitHub Repository](https://github.com/NVIDIA/NemoClaw) for the latest updates and community support.
-- Explore inference provider documentation to optimize your chosen AI model endpoint.
+- Explore [inference provider documentation](https://docs.nvidia.com/nemoclaw/user-guide/deepagents/inference/learn-and-choose/choose-inference-provider) for optimizing your chosen AI model endpoint.
