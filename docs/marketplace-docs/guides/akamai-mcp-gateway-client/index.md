@@ -5,7 +5,7 @@ published: 2026-05-18
 modified: 2026-05-18
 keywords: ['LLM', 'AI Agent', 'Akamai MCP', 'Akamai MCP Gateway']
 tags: ["quick deploy apps", "AI", "AI Agent", "LLM"]
-aliases: ['/products/tools/marketplace/guides/akamai-mcp-client/','/guides/akamai-mcp-client/','/marketplace-docs/guides/akamai-mcp-client/']
+aliases: []
 external_resources:
 - '[Akamai MCP Gateway](https://techdocs.akamai.com/mcp-gateway/docs/welcome)'
 authors: ["Akamai"]

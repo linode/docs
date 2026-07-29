@@ -9,7 +9,7 @@ modified: 2013-10-02
 keywords: ["Movable Type", "MT HOWTO"]
 tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/movable-type/manage-web-content-with-movable-type/','/websites/cms/manage-web-content-with-movable-type/','/web-applications/cms-guides/movable-type/']
+aliases: []
 deprecated: true
 ---
 

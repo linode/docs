@@ -9,7 +9,7 @@ modified: 2018-05-10
 keywords: ["mtr", "traceroute", "latency", "loss"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/','/troubleshooting/interpreting-mtr-reports/']
+aliases: []
 external_resources:
  - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
  - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'

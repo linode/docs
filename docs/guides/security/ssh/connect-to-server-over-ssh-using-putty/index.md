@@ -10,7 +10,7 @@ modified: 2022-01-28
 keywords: ['ssh','putty','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/ssh/ssh-connections-using-putty-on-windows/','/networking/using-putty/']
+aliases: []
 relations:
     platform:
         key: connecting-to-server-over-ssh

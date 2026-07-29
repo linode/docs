@@ -5,7 +5,7 @@ published: 2026-06-15
 modified: 2026-03-15
 keywords: ['AI Framework', 'AI', 'AI Agent']
 tags: ["quick deploy apps", "AI Framework", "AI", "AI Agent"]
-aliases: ['/products/tools/marketplace/guides/crewai/','/guides/crewai/']
+aliases: []
 external_resources:
 - '[CrewAI](https://crewai.com)'
 - '[CrewAI Documentation](https://docs.crewai.com/en/introduction)'

@@ -8,7 +8,7 @@ published: 2009-10-13
 modified: 2017-02-21
 keywords: ["apache", "redirect", "mod_alias", "URLs", "REST"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/','/web-servers/apache/configuration/redirecting-urls/','/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/']
+aliases: []
 external_resources:
  - '[Installing Apache](/cloud/guides/web-servers/apache/)'
  - '[LAMP stack guides](/cloud/guides/web-servers/lamp/)'

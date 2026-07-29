@@ -6,7 +6,7 @@ keywords: ['productivity','notes','docs']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
-aliases: ['/products/tools/marketplace/guides/joplin/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

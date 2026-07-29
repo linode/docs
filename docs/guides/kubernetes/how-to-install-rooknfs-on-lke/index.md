@@ -9,7 +9,7 @@ published: 2021-08-13
 keywords: ['rooknfs','kubernetes', 'lke', 'linode kubernetes engine']
 tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/kubernetes/how-to-install-rooknfs-on-LKE/']
+aliases: []
 deprecated: true
 ---
 

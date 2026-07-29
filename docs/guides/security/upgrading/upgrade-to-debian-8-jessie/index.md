@@ -13,7 +13,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 8
-aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+aliases: []
 deprecated: true
 ---
 

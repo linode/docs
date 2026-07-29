@@ -7,7 +7,7 @@ keywords: ['uptime','monitoring','ping']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
-aliases: ['/products/tools/marketplace/guides/uptime-kuma/','/guides/uptimekuma-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

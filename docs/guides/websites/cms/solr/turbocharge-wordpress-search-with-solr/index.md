@@ -8,7 +8,7 @@ published: 2015-04-03
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
+aliases: []
 deprecated: true
 ---
 

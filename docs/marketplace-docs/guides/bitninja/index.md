@@ -7,7 +7,7 @@ keywords: ['spam','security','waf']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
-aliases: ['/products/tools/marketplace/guides/bitninja/','/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
+aliases: []
 build:
   list: false
 noindex: true

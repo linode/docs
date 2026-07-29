@@ -8,7 +8,7 @@ contributors: ["Hackersploit"]
 published: 2021-03-26
 modified: 2022-11-29
 keywords: ["freeipa","identity management", "authentication","security"]
-aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
+aliases: []
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

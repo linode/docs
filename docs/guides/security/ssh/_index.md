@@ -1,6 +1,6 @@
 ---
 title: 'SSH'
-aliases: ['/networking/ssh/','/tools-reference/ssh/','/guides/networking/ssh/']
+aliases: []
 show_in_lists: true
 ---
 

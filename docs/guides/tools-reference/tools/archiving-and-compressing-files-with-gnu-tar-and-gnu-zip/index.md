@@ -9,7 +9,7 @@ published: 2010-01-30
 modified: 2018-01-29
 keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "compress", "tarball"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/','/linux-tools/common-commands/tar-gzip/']
+aliases: []
 external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'

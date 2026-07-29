@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["mysql", "standalone myql", "separate mysql", "wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["database","mysql"]
-aliases: ['/databases/mysql/standalone-mysql-server/']
+aliases: []
 deprecated: true
 ---
 

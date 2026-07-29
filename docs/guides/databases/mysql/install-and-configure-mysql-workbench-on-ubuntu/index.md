@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2017-08-08
 keywords: ["mysql", "mysql workbench", "mysql sample database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/mysql-workbench/','/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/']
+aliases: []
 external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
  - '[Deploy MySQL Workbench for Database Administration](/cloud/guides/deploy-mysql-workbench-for-database-administration/)'

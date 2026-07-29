@@ -10,7 +10,7 @@ keywords: ['install redis ubuntu']
 tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: REDIS.jpg
-aliases: ['/databases/redis/ubuntu-12.04-precise-pangolin/']
+aliases: []
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'

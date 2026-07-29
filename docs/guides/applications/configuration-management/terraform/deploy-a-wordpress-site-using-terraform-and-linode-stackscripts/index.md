@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Terraform Linode Provider](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[Terraform Input Variables](https://www.terraform.io/intro/getting-started/variables.html)'
-aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/','/applications/configuration-management/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/']
+aliases: []
 image: deploy-wordpress-using-terraform-linode-stackscripts.png
 ---
 

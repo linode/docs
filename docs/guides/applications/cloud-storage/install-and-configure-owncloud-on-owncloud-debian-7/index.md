@@ -15,7 +15,7 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: Debian 7
-aliases: ['/applications/cloud-storage/owncloud-debian-7/','/guides/owncloud-debian-7/']
+aliases: []
 deprecated: true
 ---
 

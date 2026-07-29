@@ -4,7 +4,7 @@ description: "Deploy MainConcept Live Encoder demo, an enterprise ready live enc
 published: 2023-09-14
 keywords: ['encoder','video','live','rtmp','rtsp','rtp','udp','zixi','srt','mpeg-dash','hls']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/mainconcept-live-encoder-demo/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

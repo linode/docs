@@ -8,7 +8,7 @@ published: 2009-07-29
 modified: 2022-10-03
 keywords: ["dns", "record", "domain", "resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/dns-records-an-introduction/','/networking/dns/introduction-to-dns-records/','/dns-guides/introduction-to-dns-records/','/dns-guides/introduction-to-dns/','/guides/dns-records-an-introduction/']
+aliases: []
 tags: ["dns","networking"]
 image: dns-records-an-introduction.png
 ---

@@ -13,7 +13,7 @@ external_resources:
 - '[s3cmd Options and Commands](https://s3tools.org/usage)'
 - '[s3cmd Sync How-To](https://s3tools.org/s3cmd-sync)'
 tags: ["linode platform"]
-aliases: ['/platform/object-storage/host-static-site-object-storage/']
+aliases: []
 image: host-a-static-site-using-linode-object-storage.png
 ---
 

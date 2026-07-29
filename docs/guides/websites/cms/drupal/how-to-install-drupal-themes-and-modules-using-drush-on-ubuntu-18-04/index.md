@@ -20,7 +20,7 @@ relations:
         key: how-to-install-drupal-themes
         keywords:
            - distribution: Ubuntu 18.04
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/']
+aliases: []
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.

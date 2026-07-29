@@ -9,7 +9,7 @@ modified: 2011-06-30
 keywords: ["nagios", "monitoring"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/nagios/debian-5-lenny/','/uptime/monitoring/monitor-services-with-nagios-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: install-nagios-monitoring

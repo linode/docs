@@ -10,7 +10,7 @@ tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[netcat](https://en.wikipedia.org/wiki/Netcat)'
-aliases: ['/networking/diagnostics/netcat/']
+aliases: []
 ---
 
 Netcat is a simple but handy UNIX utility that reads and writes data across network connections, using either TCP or UDP. The purpose of this guide is to help you learn the `netcat` command line utility and use it productively.

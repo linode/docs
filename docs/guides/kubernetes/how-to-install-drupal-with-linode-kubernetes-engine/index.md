@@ -10,7 +10,7 @@ keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
-aliases: ['/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/']
+aliases: []
 ---
 
 [Drupal](https://www.drupal.org) is an advanced and powerful content management framework, built on the PHP scripting language and supported by a database engine like MySQL. Drupal provides a flexible system that can be used to manage websites for a variety of use cases. For example, you can create rich, interactive “community” websites with forums, user blogs, and private messaging.

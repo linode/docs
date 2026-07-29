@@ -9,7 +9,7 @@ modified: 2017-12-28
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/how-to-use-docker-compose/']
+aliases: []
 ---
 
 ![How to Use Docker Compose](how-to-use-docker-compose-title.jpg "How to Use Docker Compose title graphic")

@@ -9,7 +9,7 @@ modified: 2023-03-14
 keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/troubleshooting/troubleshooting-common-apache-issues/','/web-servers/apache/troubleshooting/']
+aliases: []
 image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'

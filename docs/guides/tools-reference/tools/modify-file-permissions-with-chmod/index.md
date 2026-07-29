@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Manage File Permission with Users and Groups](/cloud/guides/linux-users-and-groups/)'
  - '[Administration Basics](/cloud/guides/linux-system-administration-basics/)'
-aliases: ['/linux-tools/common-commands/chmod/','/tools-reference/modify-file-permissions-with-chmod/','/tools-reference/tools/modify-file-permissions-with-chmod/']
+aliases: []
 bundles: ['debian-security', 'centos-security']
 tags: ["security","linux"]
 image: modify_file_permissions_with_chmod_smg.png

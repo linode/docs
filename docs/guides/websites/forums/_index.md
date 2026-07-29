@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-03-01
 keywords: ["bulletin board", "boards", "forums", "phpbb", "smf"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/','/web-applications/bulletin-boards/']
+aliases: []
 show_in_lists: true
 ---
 

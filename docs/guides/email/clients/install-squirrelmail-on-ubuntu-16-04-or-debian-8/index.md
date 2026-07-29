@@ -16,7 +16,7 @@ relations:
         key: how-to-install-squirrelmail
         keywords:
             - distribution: Debian 8
-aliases: ['/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/']
+aliases: []
 deprecated: true
 ---
 

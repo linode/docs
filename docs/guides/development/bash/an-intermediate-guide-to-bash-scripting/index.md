@@ -10,7 +10,7 @@ keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
-aliases: ['/development/bash/an-intermediate-guide-to-bash-scripting/']
+aliases: []
 ---
 
 In the previous guide of this series, [Getting Started with Bash Scripting](/cloud/guides/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.

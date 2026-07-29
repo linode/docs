@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/twiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/twiki/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: install-twiki

@@ -9,7 +9,7 @@ published: 2010-03-18
 modified: 2015-02-11
 keywords: ["smf", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/install-a-simple-machines-forum-on-your-website/','/websites/forums/discussion-forums-with-smf/','/web-applications/bulletin-boards/smf/']
+aliases: []
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'
  - '[Modifications, Styles, and Upgrades](http://custom.simplemachines.org/)'

@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-centos-5/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-centos-5/']
+aliases: []
 external_resources:
  - '[Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)'

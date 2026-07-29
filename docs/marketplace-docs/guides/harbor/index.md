@@ -7,7 +7,7 @@ keywords: ['harbor','container','container registry','docker']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Harbor](https://goharbor.io/)'
-aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

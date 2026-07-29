@@ -8,7 +8,7 @@ published: 2014-04-11
 keywords: ["fedora", "lamp", "fedora 20 lamp", "lamp server", "linux lamp", "fedora 20 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lamp/lamp-server-on-fedora-20/','/lamp-guides/fedora-20/','/websites/lamp/lamp-server-on-fedora-20/']
+aliases: []
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

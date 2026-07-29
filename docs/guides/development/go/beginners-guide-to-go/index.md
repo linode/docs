@@ -14,7 +14,7 @@ external_resources:
 - '[Go](https://golang.org)'
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
-aliases: ['/development/go/beginners-guide-to-go/']
+aliases: []
 ---
 
 ## Introduction

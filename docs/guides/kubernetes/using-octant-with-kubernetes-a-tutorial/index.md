@@ -14,7 +14,7 @@ external_resources:
 - '[Octant](https://octant.dev/)'
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'
 - '[Octant on Twitter](https://twitter.com/projectoctant)'
-aliases: ['/applications/containers/kubernetes/using-octant-with-kubernetes-a-tutorial/','/kubernetes/using-octant-with-kubernetes-a-tutorial/']
+aliases: []
 ---
 
 ## What is Octant?

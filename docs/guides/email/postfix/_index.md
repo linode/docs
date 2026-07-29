@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2009-07-16
 keywords: ["postfix", "postfix on linux", "postfix Linode", "linux mail server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/','/email/postfix/postfix2.9.6-dovecot2.0.19-mysql/']
+aliases: []
 show_in_lists: true
 ---
 

@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/','/web-servers/nginx/python-uwsgi/debian-5-lenny/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: wsgi-uwsgi-nginx

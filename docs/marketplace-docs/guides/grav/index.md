@@ -7,7 +7,7 @@ keywords: ['cms','blog','website']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Grav](https://getgrav.org/)'
-aliases: ['/products/tools/marketplace/guides/grav/','/guides/grav-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

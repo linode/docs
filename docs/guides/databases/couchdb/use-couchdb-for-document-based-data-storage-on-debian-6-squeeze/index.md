@@ -8,7 +8,7 @@ published: 2011-02-23
 modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-6-squeeze/','/databases/couchdb/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: couchdb-document-data-storage

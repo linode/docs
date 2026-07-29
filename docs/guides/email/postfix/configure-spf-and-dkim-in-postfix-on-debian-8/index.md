@@ -20,7 +20,7 @@ relations:
         key: configure-spf-dkim-postfix
         keywords:
             - distribution: Debian 8
-aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
+aliases: []
 deprecated: true
 ---
 {{< note >}}

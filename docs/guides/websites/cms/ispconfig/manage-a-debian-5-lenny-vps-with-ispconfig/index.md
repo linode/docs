@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/ispconfig/manage-a-debian-5-lenny-vps-with-ispconfig/','/websites/cms/manage-a-debian-5-lenny-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig

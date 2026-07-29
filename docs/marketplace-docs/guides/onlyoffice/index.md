@@ -6,7 +6,7 @@ keywords: ['onlyoffice','documents','collaboration','office suite']
 tags: ["quick deploy apps", "linode platform", "cloud manager","education"]
 external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
-aliases: ['/products/tools/marketplace/guides/onlyoffice/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

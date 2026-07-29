@@ -8,7 +8,7 @@ published: 2018-03-02
 keywords: ["memcached","deluge","amplification","memcrashed","denial","DoS","DDoS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["security"]
-aliases: ['/security/mitigations/mitigating-memcached-amplification-attacks/']
+aliases: []
 ---
 
 ## What is Memcrashed?

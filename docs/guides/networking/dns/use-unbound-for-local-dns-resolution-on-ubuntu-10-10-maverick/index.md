@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-10-10-maverick/','/dns-guides/unbound-dns-resolver-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

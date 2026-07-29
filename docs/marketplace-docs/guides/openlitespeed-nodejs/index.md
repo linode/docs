@@ -7,7 +7,7 @@ keywords: ['web server','nodejs','openlitespeed']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
-aliases: ['/products/tools/marketplace/guides/openlitespeed-nodejs/','/guides/deploying-openlitespeed-nodejs-marketplace-app/','/guides/openlitespeed-nodejs-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

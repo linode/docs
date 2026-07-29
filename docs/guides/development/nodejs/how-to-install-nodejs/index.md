@@ -8,7 +8,7 @@ published: 2014-12-18
 modified: 2017-02-15
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nodejs/a-nodejs-installation-crash-course/','/websites/nodejs/installing-nodejs/','/development/nodejs/how-to-install-nodejs/','/development/nodejs/set-up-and-install-nodejs/','/development/nodjs/a-nodejs-installation-crash-course/','/development/nodejs/installing-nodejs/']
+aliases: []
 external_resources:
  - '[NodeSchool](https://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/nvm-sh/nvm)'

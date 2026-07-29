@@ -8,7 +8,7 @@ published: 2009-12-07
 modified: 2017-08-30
 keywords: ["apache", "access control", "security", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/configuration/rule-based-access-control/','/websites/apache-tips-and-tricks/rulebased-access-control-for-apache/','/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/']
+aliases: []
 external_resources:
  - '[LAMP Stack Guides](/cloud/guides/web-servers/lamp/)'
  - '[Apache Configuration and Administration](/cloud/guides/web-servers/apache/)'

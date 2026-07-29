@@ -9,7 +9,7 @@ modified: 2022-12-14
 keywords: ['kubernetes','orchestration','docker','container']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/','/guides/getting-started-with-kubernetes/']
+aliases: []
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes: Creating a cluster with kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)'

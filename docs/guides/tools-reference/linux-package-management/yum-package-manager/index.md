@@ -11,7 +11,7 @@ keywords: ['yum','installing','updating','upgrading','uninstalling','removing','
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: YUM1.jpg
-aliases: ['/guides/how-to-use-yum/']
+aliases: []
 external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
 ---

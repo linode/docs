@@ -16,7 +16,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/lemp/how-to-install-the-lemp-stack-on-centos-8/']
+aliases: []
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->

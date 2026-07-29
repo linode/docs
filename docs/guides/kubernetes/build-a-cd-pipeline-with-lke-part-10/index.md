@@ -9,7 +9,7 @@ modified: 2023-08-18
 keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
-aliases: ['/guides/lke-continuous-deployment-part-10/']
+aliases: []
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server](cd-presentation-header-10-installing-metrics-server.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server")

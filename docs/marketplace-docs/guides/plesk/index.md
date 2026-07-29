@@ -9,7 +9,7 @@ external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
  - '[Plesk Help Center](https://support.plesk.com/hc/en-us/categories/201413825-Technical-Questions)'
-aliases: ['/products/tools/marketplace/guides/plesk/','/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/','/platform/one-click/deploy-plesk-with-one-click-apps/','/guides/deploy-plesk-with-one-click-apps/','/guides/plesk-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

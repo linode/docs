@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["open source analytics", "piwik ubuntu 10.10", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/analytics/piwik/ubuntu-10-10-maverick/','/uptime/analytics/piwik-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: using-piwik-analytics

@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2012-06-07
 keywords: ["audio", " video", " stream", " streaming", " media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/media-servers/','/communications/media-servers/']
+aliases: []
 show_in_lists: true
 ---
 

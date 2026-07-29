@@ -9,7 +9,7 @@ modified: 2017-08-21
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ecommerce/install-opencart-on-centos-7/','/web-applications/e-commerce/opencart/centos-7/','/websites/ecommerce/opencart-on-centos-7/']
+aliases: []
 external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'

@@ -10,7 +10,7 @@ external_resources:
 - '[Google Gemma 3 4B Model](https://huggingface.co/google/gemma-3-4b-it)'
 - '[Google Gemma 3 12B Model](https://huggingface.co/google/gemma-3-12b-it)'
 - '[Open WebUI Documentation](https://docs.openwebui.com/)'
-aliases: ['/products/tools/marketplace/guides/gemma3-with-openwebui/','/guides/gemma3-with-openwebui-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

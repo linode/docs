@@ -7,7 +7,7 @@ keywords: ['database','cluster','backups','configuration management']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
-aliases: ['/products/tools/marketplace/guides/clustercontrol/','/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

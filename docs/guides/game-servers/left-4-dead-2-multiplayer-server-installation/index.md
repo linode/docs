@@ -10,7 +10,7 @@ modified: 2019-02-01
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
+aliases: []
 dedicated_cpu_link: true
 ---
 

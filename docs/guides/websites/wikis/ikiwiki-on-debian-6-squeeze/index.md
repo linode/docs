@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["ikiwiki debian squeeze", "ikiwiki debian 6", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/ikiwiki/debian-6-squeeze/','/websites/wikis/ikiwiki-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

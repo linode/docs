@@ -9,7 +9,7 @@ modified: 2016-07-21
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/erp/install-odoo-9-erp-on-ubuntu-14-04/','/websites/cms/install-odoo-9-erp-on-ubuntu-14-04/']
+aliases: []
 external_resources:
  - '[Odoo User Documentation](https://doc.odoo.com/book/)'
 deprecated: true

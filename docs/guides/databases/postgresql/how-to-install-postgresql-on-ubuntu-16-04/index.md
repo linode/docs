@@ -9,7 +9,7 @@ published: 2016-05-20
 modified: 2020-03-30
 keywords: ["postgresql", "ubuntu 16.04", "postgre", "postgresql database", "open source database", "relational database"]
 tags: ["ubuntu","database","postgresql"]
-aliases: ['/databases/postgresql/how-to-install-postgresql-on-ubuntu-16-04/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'

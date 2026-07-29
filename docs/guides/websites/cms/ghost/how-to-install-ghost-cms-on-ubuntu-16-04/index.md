@@ -9,7 +9,7 @@ published: 2017-09-12
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 16.04"]
 tags: ["nginx","ubuntu","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/','/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/','/websites/cms/ghost/how-to-install-ghost-cms-on-ubuntu-16-04/']
+aliases: []
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/)'
 - '[Ghost Theme Documentation](https://ghost.org/docs/themes/)'

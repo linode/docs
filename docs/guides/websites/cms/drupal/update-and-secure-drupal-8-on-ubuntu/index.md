@@ -6,7 +6,7 @@ authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 published: 2016-05-11
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
-aliases: ['/websites/cms/drupal/update-and-secure-drupal-8-on-ubuntu/','/websites/cms/update-and-secure-drupal-8-on-ubuntu/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["drupal","cms"]
 deprecated: true

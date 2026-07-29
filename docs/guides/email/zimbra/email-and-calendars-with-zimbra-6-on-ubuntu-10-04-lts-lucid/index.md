@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["zimbra ubuntu 10.04", "zimbra lucid", "zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/zimbra/install-zimbra-ubuntu-10-04-lucid/','/email/zimbra/email-and-calendars-with-zimbra-6-on-ubuntu-10-04-lts-lucid/']
+aliases: []
 relations:
     platform:
         key: zimbra-groupware

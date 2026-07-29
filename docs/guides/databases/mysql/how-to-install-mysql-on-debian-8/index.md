@@ -8,7 +8,7 @@ published: 2015-06-12
 modified: 2015-08-26
 keywords: ["MySQL on Linux", "Debian 8", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/mysql-relational-databases-debian-8/','/databases/mysql/how-to-install-mysql-on-debian-8/']
+aliases: []
 external_resources:
  - '[MySQL 5.5 Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/index.html)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'

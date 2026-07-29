@@ -9,7 +9,7 @@ modified: 2013-09-24
 keywords: ["git", "girocco", "gitweb", "project hosting", "social coding"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/application-stacks/git-repository-hosting/','/applications/development/git-based-development-networks-with-girocco-on-debian-5-lenny/','/development/version-control/git-based-development-networks-with-girocco-on-debian-5-lenny/']
+aliases: []
 deprecated: true
 ---
 

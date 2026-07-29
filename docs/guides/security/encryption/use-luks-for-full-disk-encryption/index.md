@@ -5,7 +5,7 @@ description: This tutorial will guide you through creating a secure, LUKS-encryp
 authors: ["Nick Brewer"]
 contributors: ["Nick Brewer"]
 published: 2016-11-02
-aliases: ['/security/encryption/use-luks-for-full-disk-encryption/','/security/use-luks-for-full-disk-encryption/','/security/full-disk-encryption/']
+aliases: []
 keywords: ["full disk encryption", "debian", "luks", "lassie"]
 tags: ["security","debian","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

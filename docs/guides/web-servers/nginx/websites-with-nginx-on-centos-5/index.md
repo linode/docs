@@ -9,7 +9,7 @@ modified: 2014-03-27
 keywords: ["nginx", "http", "web servers", "centos", "centos", "centos 5"]
 tags: ["centos","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/installation/centos-5/','/web-servers/nginx/websites-with-nginx-on-centos-5/','/websites/nginx/websites-with-nginx-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["dns", "resolving", "caching", "unbound", "debian"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-debian-5-lenny/','/dns-guides/unbound-dns-resolver-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

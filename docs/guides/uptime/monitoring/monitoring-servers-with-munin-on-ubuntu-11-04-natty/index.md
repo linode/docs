@@ -9,7 +9,7 @@ modified: 2013-02-18
 keywords: ["munin", "monitoring", "ubuntu", " ubuntu 11.04", "natty", " ubuntu natty"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/munin/ubuntu-11-04-natty/','/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: install-munin-monitoring

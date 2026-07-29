@@ -1,1 +1,117 @@
-(()=>{function s(e=0){let o=new Date;return o.setTime(o.getTime()+e*24*60*60*1e3),o}function d(e){if(localStorage.getItem(e)===null)return;let o=new Date,t=localStorage.getItem(`${e}_exp`),r=t!==null?new Date(t):o;if(isNaN(r)){localStorage.removeItem(`${e}_exp`);return}o<r||(localStorage.removeItem(e),localStorage.removeItem(`${e}_exp`))}function f(e,o,t=null,r=!0){let l=localStorage.getItem(e);l!==null&&l!==o&&!r||(localStorage.setItem(e,o),t!==null&&localStorage.setItem(`${e}_exp`,t.toUTCString()))}function p(e,o,t=null,r=!0){if(o=encodeURIComponent(o),document.cookie.indexOf(`${e}=`)>=0&&document.cookie.indexOf(`${e}=${o}`)<0&&!r)return;let l=t!==null?`expires=${t.toUTCString()}; `:"";document.cookie=`${e}=${o}; domain=.linode.com; ${l}path=/; secure; samesite=lax; `}function a(e){let o=new URL(window.location.href),t=o.searchParams.get(e.param);if(e.local&&d(e.local),!t||e.regex&&!t.match(e.regex))return;let r=e.days?s(e.days):null;e.local&&f(e.local,t,r),e.cookie&&p(e.cookie,t,r)}a({param:"r",cookie:"referralCode",days:14,regex:/^[0-9a-f]{40}$/i});var h=Object.fromEntries(document.cookie.split(/\s*;\s*/).map(e=>e.split(/\s*=\s*/))),g=document.getElementsByTagName("body")[0];h.referralCode&&g.classList.add("js-is-referral"),a({param:"promo",cookie:"promoCode",local:"promoCode",days:1,regex:/^[0-9a-z-_]*$/i}),a({param:"promo_length",cookie:"promoLength",local:"promoLength",days:1,regex:/^[0-9]*$/}),a({param:"promo_value",cookie:"promoValue",local:"promoValue",days:1,regex:/^[0-9]*$/});function k(e,o){Array.from(document.querySelectorAll('a[href*="login.linode.com"][href*="/signup"]')).forEach(r=>{let l=new URL(r.href);if(l.searchParams.has("promo")){if(!r.hasAttribute("data-promo-override")||!o)return;l.searchParams.delete("promo")}e&&l.searchParams.set("promo",e),r.href=l.toString()})}function w(e,o){Array.from(document.querySelectorAll('form[action*="login.linode.com/signup"]')).forEach(r=>{let l=new URL(r.action),m=r.querySelector('input[name="promo"]');if(m){if(!m.hasAttribute("data-promo-override")||!o)return;m.remove()}if(e){let i=document.createElement("input");i.setAttribute("type","hidden"),i.setAttribute("name","promo"),i.setAttribute("value",e),r.appendChild(i)}})}function n(e,o){k(e,o),w(e,o)}var c=Object.fromEntries(document.cookie.split(/\s*;\s*/).map(e=>e.split(/\s*=\s*/))),u=localStorage.getItem("promoCode");c.referralCode?n("",!0):u||c.promoCode?n(u||c.promoCode,!0):fetch("https://www.linode.com/wp-json/linode/v1/promo-data").then(e=>{if(!e.ok)throw new Error("");return e}).then(e=>e.json()).then(e=>{e.global&&e.global.promo_code&&n(e.global.promo_code,!1)}).catch(e=>{})})();
+(() => {
+  function daysFromNow(days = 0) {
+    let d = /* @__PURE__ */ new Date();
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1e3);
+    return d;
+  }
+  function expireFromLocal(name) {
+    if (null === localStorage.getItem(name)) return;
+    let now = /* @__PURE__ */ new Date(), exp_value = localStorage.getItem(`${name}_exp`), exp_date = null !== exp_value ? new Date(exp_value) : now;
+    if (isNaN(exp_date)) {
+      localStorage.removeItem(`${name}_exp`);
+      return;
+    }
+    if (now < exp_date) return;
+    localStorage.removeItem(name);
+    localStorage.removeItem(`${name}_exp`);
+  }
+  function saveToLocal(name, value, exp_date = null, overwrite = true) {
+    let saved = localStorage.getItem(name);
+    if (null !== saved && saved !== value && !overwrite) return;
+    localStorage.setItem(name, value);
+    if (null !== exp_date) {
+      localStorage.setItem(`${name}_exp`, exp_date.toUTCString());
+    }
+  }
+  function saveToCookie(name, value, exp_date = null, overwrite = true) {
+    value = encodeURIComponent(value);
+    if (document.cookie.indexOf(`${name}=`) >= 0 && document.cookie.indexOf(`${name}=${value}`) < 0 && !overwrite) return;
+    let expires = null !== exp_date ? `expires=${exp_date.toUTCString()}; ` : "";
+    document.cookie = `${name}=${value}; domain=.akamai.com; ${expires}path=/; secure; samesite=lax; `;
+  }
+  function storeParams(args) {
+    let url = new URL(window.location.href), param_value = url.searchParams.get(args.param);
+    if (args.local) expireFromLocal(args.local);
+    if (!param_value) return;
+    if (args.regex && !param_value.match(args.regex)) return;
+    let exp_date = args.days ? daysFromNow(args.days) : null;
+    if (args.local) saveToLocal(args.local, param_value, exp_date);
+    if (args.cookie) saveToCookie(args.cookie, param_value, exp_date);
+  }
+  storeParams({
+    "param": "r",
+    "cookie": "referralCode",
+    "days": 14,
+    "regex": /^[0-9a-f]{40}$/i
+  });
+  var cookies = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
+  var body = document.getElementsByTagName("body")[0];
+  if (cookies.referralCode) {
+    body.classList.add("js-is-referral");
+  }
+  storeParams({
+    "param": "promo",
+    "cookie": "promoCode",
+    "local": "promoCode",
+    "days": 1,
+    "regex": /^[0-9a-z-_]*$/i
+  });
+  storeParams({
+    "param": "promo_length",
+    "cookie": "promoLength",
+    "local": "promoLength",
+    "days": 1,
+    "regex": /^[0-9]*$/
+  });
+  storeParams({
+    "param": "promo_value",
+    "cookie": "promoValue",
+    "local": "promoValue",
+    "days": 1,
+    "regex": /^[0-9]*$/
+  });
+  function updateLinkPromoCodes(promo, should_override) {
+    let $links = Array.from(document.querySelectorAll(`a[href*="login.linode.com"][href*="/signup"]`));
+    $links.forEach(($link) => {
+      let link_url = new URL($link.href);
+      if (link_url.searchParams.has("promo")) {
+        if (!$link.hasAttribute("data-promo-override")) return;
+        if (!should_override) return;
+        link_url.searchParams.delete("promo");
+      }
+      if (promo) {
+        link_url.searchParams.set("promo", promo);
+      }
+      $link.href = link_url.toString();
+    });
+  }
+  function updateFormPromoCodes(promo, should_override) {
+    let $forms = Array.from(document.querySelectorAll(`form[action*="login.linode.com/signup"]`));
+    $forms.forEach(($form) => {
+      let form_url = new URL($form.action), $promo_field = $form.querySelector('input[name="promo"]');
+      if ($promo_field) {
+        if (!$promo_field.hasAttribute("data-promo-override")) return;
+        if (!should_override) return;
+        $promo_field.remove();
+      }
+      if (promo) {
+        let $new_promo_field = document.createElement("input");
+        $new_promo_field.setAttribute("type", "hidden");
+        $new_promo_field.setAttribute("name", "promo");
+        $new_promo_field.setAttribute("value", promo);
+        $form.appendChild($new_promo_field);
+      }
+    });
+  }
+  function updatePromoCodes(promo, should_override) {
+    updateLinkPromoCodes(promo, should_override);
+    updateFormPromoCodes(promo, should_override);
+  }
+  var cookies2 = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
+  var localPromoCode = localStorage.getItem("promoCode");
+  if (cookies2.referralCode) {
+    updatePromoCodes("", true);
+  } else if (localPromoCode || cookies2.promoCode) {
+    updatePromoCodes(localPromoCode || cookies2.promoCode, true);
+  }
+})();

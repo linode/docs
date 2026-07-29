@@ -9,7 +9,7 @@ modified: 2011-07-22
 keywords: ["apache", "proxypass", "apache on centos", "multiple web servers"]
 tags: ["proxy","centos","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/','/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/']
+aliases: []
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'

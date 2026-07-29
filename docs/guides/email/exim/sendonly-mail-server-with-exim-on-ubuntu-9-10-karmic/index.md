@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/exim/sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic/','/email/exim/send-only-mta-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: deploy-exim-sendonly-email

@@ -11,7 +11,7 @@ modified: 2021-06-23
 keywords: ["prestashop", "ecommerce", "cms"]
 tags: ["cms", "lamp", "ssl", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

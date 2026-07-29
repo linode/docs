@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/','/web-servers/nginx/python-uwsgi/ubuntu-10-10-maverick/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: wsgi-uwsgi-nginx

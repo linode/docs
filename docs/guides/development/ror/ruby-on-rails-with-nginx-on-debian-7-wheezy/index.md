@@ -9,7 +9,7 @@ modified: 2014-12-09
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/frameworks/ruby-on-rails-nginx/debian-7-wheezy/','/development/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/','/websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
+aliases: []
 external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'

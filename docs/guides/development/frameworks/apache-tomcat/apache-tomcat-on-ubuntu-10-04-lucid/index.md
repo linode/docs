@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["apache tomcat ubuntu 10.04", "java", "java ubuntu 10.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-10-04-lucid/','/development/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/','/websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/','/frameworks/apache-tomcat/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

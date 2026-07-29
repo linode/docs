@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["database","postgresql","centos"]
-aliases: ['/databases/postgresql/centos-5/']
+aliases: []
 deprecated: true
 ---
 

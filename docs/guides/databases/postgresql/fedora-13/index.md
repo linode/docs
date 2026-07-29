@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Fedora 13
 tags: ["database","postgresql","fedora"]
-aliases: ['/databases/postgresql/fedora-13/']
+aliases: []
 deprecated: true
 ---
 

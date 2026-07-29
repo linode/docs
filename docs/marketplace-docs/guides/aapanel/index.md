@@ -5,7 +5,7 @@ published: 2021-08-13
 modified: 2022-03-08
 keywords: ['control panel', 'web hosting']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/aapanel/','/guides/deploying-aapanel-marketplace-app/','/guides/aapanel-marketplace-app/']
+aliases: []
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
 - '[aaPanel Documentation](https://doc.aapanel.com/web)'

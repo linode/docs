@@ -5,7 +5,7 @@ published: 2021-03-31
 modified: 2023-10-27
 keywords: ["ticket management", "quick deploy apps"]
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/peppermint/','/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

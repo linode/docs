@@ -7,7 +7,7 @@ tags: ["ubuntu","quick deploy apps", "database", "linode platform", "cloud manag
 external_resources:
 - '[About Valkey](https://valkey.io/)'
 - '[Valkey Documentation](https://valkey.io/docs/)'
-aliases: ['/products/tools/marketplace/guides/valkey/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

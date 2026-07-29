@@ -12,7 +12,7 @@ external_resources:
 - '[Vault Reference Architecture and Best Practices](https://learn.hashicorp.com/vault/day-one/ops-reference-architecture)'
 - '[Vault Secrets Engines](https://www.vaultproject.io/docs/secrets/index.html)'
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
-aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
+aliases: []
 tags: ["security","automation"]
 ---
 

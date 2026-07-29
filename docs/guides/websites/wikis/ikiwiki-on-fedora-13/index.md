@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/ikiwiki-on-fedora-13/','/web-applications/wikis/ikiwiki/fedora-13/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

@@ -15,7 +15,7 @@ external_resources:
 - '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Writing a Test](https://kitchen.ci/docs/getting-started/writing-test/)'
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
-aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/','/applications/configuration-management/salt/test-salt-locally-with-kitchen-salt/']
+aliases: []
 tags: ["automation","salt"]
 ---
 

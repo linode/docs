@@ -8,7 +8,7 @@ published: 2010-02-18
 modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/centos-5/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-centos-5/']
+aliases: []
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
  - '[CouchDB Community Wiki](http://wiki.apache.org/couchdb/)'

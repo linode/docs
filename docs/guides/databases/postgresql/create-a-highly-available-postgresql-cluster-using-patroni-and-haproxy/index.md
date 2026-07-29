@@ -14,7 +14,7 @@ external_resources:
  - '[Patroni Repository](https://github.com/zalando/patroni)'
  - '[etcd Documentation](https://coreos.com/etcd/docs/latest/)'
 tags: ["database","postgresql"]
-aliases: ['/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/']
+aliases: []
 image: postgresql-cluster-patroni.jpg
 ---
 

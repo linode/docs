@@ -8,7 +8,7 @@ published: 2010-05-03
 modified: 2013-10-01
 keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/discussion-forums-with-vanilla-forums/','/web-applications/bulletin-boards/vanilla/']
+aliases: []
 deprecated: true
 ---
 

@@ -6,7 +6,7 @@ keywords: ['superinsight','database','relational','unstructured','postgresql']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
-aliases: ['/products/tools/marketplace/guides/superinsight/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

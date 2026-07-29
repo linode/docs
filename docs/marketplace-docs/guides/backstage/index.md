@@ -8,7 +8,7 @@ tags: ["ubuntu", "quick deploy apps", "developer portal", "developer", "linode p
 external_resources:
 - '[Backstage](https://backstage.io/)'
 - '[Backstage documentation](https://backstage.io/docs/overview/what-is-backstage)'
-aliases: ['/products/tools/marketplace/guides/backstage/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

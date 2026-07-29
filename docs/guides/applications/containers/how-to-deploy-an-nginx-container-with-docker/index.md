@@ -12,7 +12,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
-aliases: ['/applications/containers/how-to-deploy-an-nginx-container-with-docker/']
+aliases: []
 ---
 
 ![How to Deploy Docker Containers](deploy-container.jpg)

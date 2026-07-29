@@ -8,7 +8,7 @@ tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ArangoDB](https://arangodb.com/community-server/)'
 - '[ArangoDB documentation](https://docs.arangodb.com/stable/about-arangodb/)'
-aliases: ['/products/tools/marketplace/guides/arangodb/','/guides/arangodb-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

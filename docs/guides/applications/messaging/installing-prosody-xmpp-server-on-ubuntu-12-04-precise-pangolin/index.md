@@ -8,7 +8,7 @@ published: 2012-10-03
 keywords: ["prosody", "prosody ubuntu", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-12-04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[The official Prosody server website](http://prosody.im/)'
  - '[Prosody Configuration Overview](http://prosody.im/doc/configure#overview)'

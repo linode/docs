@@ -7,7 +7,7 @@ keywords: ['ark','survival evolved','marketplace apps', 'server']
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","quick deploy apps","cloud-manager"]
-aliases: ['/products/tools/marketplace/guides/ark-survival-evolved/','/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/', '/platform/one-click/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-one-click-apps/','/guides/deploying-ark-survival-evolved-with-marketplace-apps/','/guides/ark-survival-evolved-marketplace-app/']
+aliases: []
 build:
   list: false
 noindex: true

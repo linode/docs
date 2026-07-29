@@ -15,7 +15,7 @@ external_resources:
 - '[LKE Enterprise Product Documentation](https://techdocs.akamai.com/cloud-computing/docs/lke-enterprise)'
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
-aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/','/guides/how-to-deploy-an-lke-cluster-using-terraform/','/products/compute/kubernetes/guides/deploy-cluster-using-terraform/']
+aliases: []
 ---
 
 ## In this Guide

@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/','/frameworks/ruby-on-rails-apache/ubuntu-9-04-jaunty/','/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/']
+aliases: []
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 relations:

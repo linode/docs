@@ -6,7 +6,7 @@ published: 2024-08-05
 title: "Deploy InfluxDB"
 external_resources:
 - '[InfluxData](https://www.influxdata.com/)'
-aliases: ['/products/tools/marketplace/guides/influxdb/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

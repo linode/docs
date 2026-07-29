@@ -5,7 +5,7 @@ published: 2026-02-18
 modified: 2026-02-18
 keywords: ['ollama', 'open-webui', 'qwen', 'ai', 'llm', 'llm-inference', 'self-hosted-ai']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
-aliases: ['/products/tools/marketplace/guides/ollama/']
+aliases: []
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
 - '[Ollama Documentation](https://ollama.com/)'

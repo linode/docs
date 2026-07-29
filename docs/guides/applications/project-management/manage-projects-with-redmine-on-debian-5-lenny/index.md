@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["redmine", "redmine debian", "redmine linux", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["debian", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/manage-projects-with-redmine-on-debian-5-lenny/','/web-applications/project-management/redmine/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: manage-projects-with-redmine

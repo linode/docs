@@ -7,7 +7,7 @@ keywords: ['web server','cpanel','litespeed']
 tags: ["quick deploy apps", "linode platform", "cloud manager","managed hosting"]
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
-aliases: ['/products/tools/marketplace/guides/litespeed-cpanel/','/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

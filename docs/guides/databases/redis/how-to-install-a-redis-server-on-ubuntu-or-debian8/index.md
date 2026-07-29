@@ -9,7 +9,7 @@ published: 2016-04-20
 modified: 2017-09-13
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
+aliases: []
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'

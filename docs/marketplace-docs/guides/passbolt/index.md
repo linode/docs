@@ -5,7 +5,7 @@ published: 2024-03-19
 modified: 2024-08-05
 keywords: ['passbolt','password manager','security','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/products/tools/marketplace/guides/passbolt/','/products/tools/marketplace/guides/deploy-passbolt-through-the-linode-marketplace/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 marketplace_app_id: 1329430

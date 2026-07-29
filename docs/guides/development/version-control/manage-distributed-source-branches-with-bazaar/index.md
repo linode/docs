@@ -8,7 +8,7 @@ published: 2010-01-18
 modified: 2011-05-23
 keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/manage-distributed-source-branches-with-bazaar/','/applications/development/manage-distributed-source-branches-with-bazaar/','/linux-tools/version-control/bazaar/']
+aliases: []
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'

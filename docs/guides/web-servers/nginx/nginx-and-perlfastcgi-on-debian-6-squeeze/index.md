@@ -9,7 +9,7 @@ modified: 2011-05-10
 keywords: ["nginx perl debian 6", "nginx perl fastcgi", "nginx debian squeeze", "fastscgi perl", "nginx debian"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-6-squeeze/','/web-servers/nginx/perl-fastcgi/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi

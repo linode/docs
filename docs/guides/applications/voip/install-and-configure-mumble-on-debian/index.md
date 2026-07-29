@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
-aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
+aliases: []
 deprecated: true
 ---
 

@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["php cgi", "php ubuntu 10.10", "php ubuntu maverick", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick/','/web-servers/apache/php-cgi/ubuntu-10-10-maverick/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: php-cgi-apache

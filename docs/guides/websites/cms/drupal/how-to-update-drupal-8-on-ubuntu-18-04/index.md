@@ -15,7 +15,7 @@ relations:
         key: how-to-update-drupal-8
         keywords:
            - distribution: Ubuntu 18.04
-aliases: ['/websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/']
+aliases: []
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While Drupal 8.1 includes a simple feature for incremental updates, you must preform manual Drupal core updates for any preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. The examples in this guide assume you have a functional [Drupal 8 installation](/cloud/guides/how-to-install-and-configure-drupal-on-ubuntu-18-04/) running a [LAMP stack](/cloud/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) on Ubuntu 18.04.

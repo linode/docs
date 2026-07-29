@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.04", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi

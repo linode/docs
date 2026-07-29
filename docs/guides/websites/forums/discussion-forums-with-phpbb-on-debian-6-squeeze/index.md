@@ -9,7 +9,7 @@ modified: 2011-05-09
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/bulletin-boards/phpbb/debian-6-squeeze/','/websites/forums/discussion-forums-with-phpbb-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: how-to-install-phpbb

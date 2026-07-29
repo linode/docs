@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/python-uwsgi/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: wsgi-uwsgi-nginx

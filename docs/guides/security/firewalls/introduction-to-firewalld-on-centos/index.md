@@ -15,7 +15,7 @@ external_resources:
  - '[Firewalld Official Site](http://www.firewalld.org/)'
  - '[RHEL 9 Security guide: Using and configuring firewalld](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/using-and-configuring-firewalld_firewall-packet-filters)'
  - '[Fedora Wiki: Firewalld](https://fedoraproject.org/wiki/Firewalld)'
-aliases: ['/security/firewalls/introduction-to-firewalld-on-centos/']
+aliases: []
 image: introduction-to-firewalld-on-centos.png
 ---
 

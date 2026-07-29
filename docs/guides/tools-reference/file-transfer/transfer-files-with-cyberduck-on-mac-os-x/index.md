@@ -8,7 +8,7 @@ published: 2009-11-13
 modified: 2011-08-22
 keywords: ["cyberduck", "ftp", "mac os scp", "sftp", "mac os sftp program", "mac os ftp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/','/networking/file-transfer/transfer-files-cyberduck/']
+aliases: []
 deprecated: true
 ---
 

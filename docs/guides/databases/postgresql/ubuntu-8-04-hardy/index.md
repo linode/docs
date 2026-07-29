@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","postgresql"]
-aliases: ['/databases/postgresql/ubuntu-8-04-hardy/']
+aliases: []
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---

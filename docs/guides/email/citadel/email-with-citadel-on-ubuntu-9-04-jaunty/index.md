@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["citadel", "ubuntu 9.04 mail server", "groupware", "email server", "email howto"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/citadel/email-with-citadel-on-ubuntu-9-04-jaunty/','/email/citadel/ubuntu-9-04-jaunty/']
+aliases: []
 relations:
     platform:
         key: email-with-citadel

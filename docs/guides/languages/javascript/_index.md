@@ -1,4 +1,4 @@
 ---
 title: JavaScript
-aliases: ['/languages/javascript/']
+aliases: []
 ---

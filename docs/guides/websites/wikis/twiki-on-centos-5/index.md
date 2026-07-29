@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/twiki/centos-5/','/websites/wikis/twiki-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: install-twiki

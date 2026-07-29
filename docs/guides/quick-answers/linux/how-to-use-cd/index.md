@@ -11,7 +11,7 @@ keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UseTheCDCommand.png
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-use-cd/']
+aliases: []
 ---
 
 ## What is cd?

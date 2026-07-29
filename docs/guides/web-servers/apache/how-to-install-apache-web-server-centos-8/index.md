@@ -18,7 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/apache/how-to-install-apache-web-server-centos-8/']
+aliases: []
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.

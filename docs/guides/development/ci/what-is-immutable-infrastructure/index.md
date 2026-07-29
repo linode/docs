@@ -9,7 +9,7 @@ keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 audiences: ["intermediate"]
 tags: ["automation"]
-aliases: ['/development/ci/what-is-immutable-infrastructure/']
+aliases: []
 ---
 
 ## What is Immutable Infrastructure?

@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 dedicated_cpu_link: true
-aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
+aliases: []
 ---
 
 ![HAProxy for Load Balancing](HAProxy.jpg)

@@ -9,7 +9,7 @@ modified: 2013-11-18
 keywords: ["Apache", "web sever", "CentOS 5"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/installation/centos-5/','/web-servers/apache/apache-2-web-server-on-centos-5/','/websites/apache/apache-2-web-server-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

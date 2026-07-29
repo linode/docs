@@ -9,7 +9,7 @@ modified: 2018-09-20
 keywords: ["sslv3", "poodle", "security", "patch", "ubuntu", "debian", "centos", "fedora"]
 tags: ["web server","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/security-patches/disabling-sslv3-for-poodle/']
+aliases: []
 deprecated: true
 ---
 

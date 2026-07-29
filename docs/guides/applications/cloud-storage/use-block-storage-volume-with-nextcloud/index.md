@@ -11,7 +11,7 @@ tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
-aliases: ['/applications/cloud-storage/use-block-storage-volume-with-nextcloud/']
+aliases: []
 ---
 
 ## What is Nextcloud?

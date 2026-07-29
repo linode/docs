@@ -10,7 +10,7 @@ modified: 2023-08-10
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/','/networking/ssh/use-public-key-authentication-with-ssh/']
+aliases: []
 bundles: ['debian-security', 'centos-security', 'network-security']
 image: use_public_key_authentication_with_ssh.png
 ---

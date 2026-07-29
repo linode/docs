@@ -8,7 +8,7 @@ published: 2010-11-29
 modified: 2018-04-02
 keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/','/linux-tools/common-commands/tail/']
+aliases: []
 tags: ["linux"]
 ---
 

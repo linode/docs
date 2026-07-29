@@ -15,7 +15,7 @@ relations:
         key: how-to-install-drupal-docker-compose
         keywords:
            - distribution: Debian 10
-aliases: ['/websites/cms/drupal/docker-drupal/how-to-install-drupal-with-docker-compose-debian-10/','/websites/cms/drupal/how-to-install-drupal-with-docker-compose-debian-10/']
+aliases: []
 ---
 
 ## What Are Docker and Docker Compose?

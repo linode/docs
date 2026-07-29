@@ -8,7 +8,7 @@ published: 2017-11-06
 modified: 2025-06-18
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
+aliases: []
 tags: ["saas", "digital agencies"]
 image: use-terraform-to-provision-linode-environments.png
 ---

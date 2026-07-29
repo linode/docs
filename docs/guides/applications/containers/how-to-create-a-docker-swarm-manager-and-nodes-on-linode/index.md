@@ -13,7 +13,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
-aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/']
+aliases: []
 ---
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")

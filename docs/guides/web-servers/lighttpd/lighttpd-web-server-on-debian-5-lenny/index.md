@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["lighttpd server", "lighttpd Linode", "web server", "Linode web server", "Linode hosting"]
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/','/web-servers/lighttpd/debian-5-lenny/','/web-servers/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: install-lighttpd

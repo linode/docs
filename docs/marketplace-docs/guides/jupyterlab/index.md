@@ -7,7 +7,7 @@ keywords: ['productivity','notebook','data science']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Project Jupyter](https://jupyter.org/)'
-aliases: ['/products/tools/marketplace/guides/jupyterlab/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

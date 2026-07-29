@@ -8,7 +8,7 @@ published: 2010-05-27
 modified: 2011-04-29
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/fedora-13/','/databases/mongodb/use-mongodb-to-store-application-data-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: use-mongodb-store-app-data

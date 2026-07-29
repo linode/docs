@@ -7,7 +7,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2018-04-18
 keywords: ['jenkins','pipeline','ci','automation', 'continuous integration', 'continuous delivery']
-aliases: ['/development/ci/introduction-ci-cd/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[How to Automate Builds with Jenkins on Ubuntu](/cloud/guides/automate-builds-with-jenkins-on-ubuntu/)'

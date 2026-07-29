@@ -14,7 +14,7 @@ external_resources:
  - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
  - '[Configuring SSL Reversae Proxy](https://rocket.chat/docs/installation/manual-installation/configuring-ssl-reverse-proxy/)'
  - '[Configuring HTTPS Servers](http://nginx.org/en/docs/http/configuring_https_servers.html)'
-aliases: ['/applications/messaging/installing-rocketchat-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

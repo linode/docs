@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["zimbra debian 6", "zimbra squeeze", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/zimbra/install-zimbra-debian-6-squeeze/','/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: zimbra-groupware

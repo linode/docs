@@ -9,7 +9,7 @@ modified: 2020-12-01
 keywords: ["ubuntu 10.10 upgrade", "ubuntu maverick upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-10-maverick/','/upgrading/upgrade-to-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: how-to-upgrade-ubuntu

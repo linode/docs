@@ -6,7 +6,7 @@ authors: ["Huw Evans"]
 contributors: ["Huw Evans"]
 published: 2016-10-03
 keywords: ["gpg", "ssh", "authentication", "ssh-agent", "gpg-agent", "yubikey", "smartcard", "ssh key"]
-aliases: ['/security/authentication/gpg-key-for-ssh-authentication/','/security/gpg-key-for-ssh-authentication/']
+aliases: []
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

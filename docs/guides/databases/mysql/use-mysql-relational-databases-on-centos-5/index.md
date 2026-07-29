@@ -8,7 +8,7 @@ published: 2009-08-11
 modified: 2014-01-22
 keywords: ["MySQL on Linux", "MySQL CentOS", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/centos-5/','/databases/mysql/use-mysql-relational-databases-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: use-mysql-relationaldb

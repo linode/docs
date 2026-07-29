@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/basics/securing-your-lamp-stack/']
+aliases: []
 image: SecureLAMPstack.png
 ---
 

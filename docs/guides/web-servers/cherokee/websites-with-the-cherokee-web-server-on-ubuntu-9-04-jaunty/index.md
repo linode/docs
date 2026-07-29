@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/','/web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/']
+aliases: []
 relations:
     platform:
         key: install-cherokee-server

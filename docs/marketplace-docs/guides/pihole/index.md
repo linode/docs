@@ -7,7 +7,7 @@ keywords: ['pi-hole','adblocker','dns','sinkhole']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Pi-hole](https://pi-hole.net/)'
-aliases: ['/products/tools/marketplace/guides/pihole/','/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

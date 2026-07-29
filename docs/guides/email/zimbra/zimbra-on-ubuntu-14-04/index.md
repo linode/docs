@@ -15,7 +15,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 14.04
-aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+aliases: []
 deprecated: true
 ---
 

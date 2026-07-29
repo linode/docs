@@ -9,7 +9,7 @@ modified: 2013-09-23
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lemp/lemp-server-on-centos-5/','/lemp-guides/centos-5/','/websites/lemp/lemp-server-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: install-lemp-stack

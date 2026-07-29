@@ -21,7 +21,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 14.04
-aliases: ['/email/citadel/email-with-citadel-on-ubuntu-14-04/']
+aliases: []
 deprecated: true
 ---
 

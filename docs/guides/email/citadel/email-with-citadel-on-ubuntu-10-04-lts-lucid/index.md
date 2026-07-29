@@ -9,7 +9,7 @@ modified: 2013-09-25
 keywords: ["citadel", "citadel ubuntu 10.04", "ubuntu 10.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/citadel/ubuntu-10-04-lucid/','/email/citadel/email-with-citadel-on-ubuntu-10-04-lts-lucid/']
+aliases: []
 relations:
     platform:
         key: email-with-citadel

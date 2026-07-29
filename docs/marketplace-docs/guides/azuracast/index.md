@@ -10,7 +10,7 @@ external_resources:
 - '[AzuraCast Website](https://www.azuracast.com/)'
 - '[Troubleshooting AzuraCast](https://www.azuracast.com/docs/help/troubleshooting/)'
 - '[AzuraCast Github](https://github.com/azuracast/azuracast)'
-aliases: ['/products/tools/marketplace/guides/azuracast/','/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/','/guides/deploy-azuracast-with-one-click-apps/','/platform/one-click/deploy-azuracast-with-one-click-apps/','/guides/azuracast-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

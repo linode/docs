@@ -9,7 +9,7 @@ modified: 2017-08-14
 keywords: ["python", "python virtual environment", "virtualenv"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/python/create-a-python-virtualenv-on-ubuntu-1610/','/development/create-a-python-virtualenv-on-ubuntu-1610/']
+aliases: []
 external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]

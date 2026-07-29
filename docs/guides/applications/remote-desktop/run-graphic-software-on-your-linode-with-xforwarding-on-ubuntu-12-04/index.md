@@ -9,7 +9,7 @@ modified: 2014-04-25
 keywords: ["x11", "x-forwarding", "ssh", "x over ssh", "ubuntu", " ubuntu 12.04"]
 tags: ["ubuntu", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/remote-desktop/run-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/','/applications/remote-desktop/running-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04/','/remote-desktops/x-forwarding-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
  - '[Cygwin/X](http://x.cygwin.com/)'

@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["knowledge exchange", "question and answers", "q&a", "debian lenny"]
 tags: ["debian", "apache", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/social-networking/question-and-answer-communities-with-osqa-on-debian-5-lenny/','/web-applications/social-networking/osqa/']
+aliases: []
 deprecated: true
 ---
 

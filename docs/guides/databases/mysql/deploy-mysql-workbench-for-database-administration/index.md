@@ -12,7 +12,7 @@ external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
-aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
+aliases: []
 ---
 
 ![Deploy MySQL Workbench for Database Administration](deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")

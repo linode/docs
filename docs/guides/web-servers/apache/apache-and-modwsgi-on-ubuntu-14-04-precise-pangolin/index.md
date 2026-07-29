@@ -8,7 +8,7 @@ published: 2015-11-18
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/','/websites/apache/apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[A Basic "Hello World" Django Application](https://dfpp.readthedocs.io/en/latest/chapter_01.html)'
  - '[Deploy Django Applications with mod\_wsgi](/cloud/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)'

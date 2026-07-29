@@ -6,7 +6,7 @@ modified: 2023-10-27
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "docker", "container"]
 image: DeployYacht_marketplaceapps.png
-aliases: ['/products/tools/marketplace/guides/yacht/','/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
+aliases: []
 external_resources:
 - '[Getting Started](https://yacht.sh/docs/Installation/Getting_Started)'
 authors: ["Akamai"]

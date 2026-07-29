@@ -15,7 +15,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: CentOS 7
-aliases: ['/applications/voip/install-asterisk-on-centos-7/']
+aliases: []
 ---
 
 ![How to Install Asterisk on CentOS 7](how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")

@@ -5,7 +5,7 @@ published: 2021-09-03
 modified: 2024-01-31
 keywords: ['monitoring','splunk', 'data solution']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/splunk/','/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
+aliases: []
 external_resources:
 - '[Splunk](http://splunk.com/)'
 authors: ["Akamai"]

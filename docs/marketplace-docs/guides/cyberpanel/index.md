@@ -8,7 +8,7 @@ tags: ["quick deploy apps", "linode platform", "cloud manager"]
 image: DeployCyberPanel_marketplaceapps.png
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
-aliases: ['/products/tools/marketplace/guides/cyberpanel/','/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

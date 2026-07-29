@@ -9,7 +9,7 @@ modified: 2015-10-05
 keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
 tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/wordpress/','/websites/cms/wordpress/how-to-install-and-configure-wordpress/','/websites/cms/manage-web-content-with-wordpress/','/websites/cms/how-to-install-and-configure-wordpress/']
+aliases: []
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'

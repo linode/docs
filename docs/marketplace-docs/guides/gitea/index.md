@@ -7,7 +7,7 @@ keywords: ['Gitea','version control','git']
 tags: ["linode platform","version control system","quick deploy apps","cloud-manager"]
 external_resources:
 - '[Gitea Documentation](https://docs.gitea.io/)'
-aliases: ['/products/tools/marketplace/guides/gitea/','/guides/deploy-gitea-with-one-click-apps/', '/guides/deploy-gitea-with-marketplace-apps/', '/guides/gitea-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

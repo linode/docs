@@ -9,7 +9,7 @@ modified: 2019-02-01
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/configuration/front-end-proxy-and-software-load-balancing/','/websites/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/index.cfm/','/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/','/uptime/loadbalancing/use-nginx-for-proxy-services-and-software-load-balancing/','/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer/']
+aliases: []
 external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'

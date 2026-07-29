@@ -9,7 +9,7 @@ modified: 2013-10-02
 keywords: ["flatpress", "cms", "php", "content management", "content management systems"]
 tags: ["php","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/manage-web-content-with-flatpress/','/websites/cms/flatpress/manage-web-content-with-flatpress/','/web-applications/cms-guides/flatpress/']
+aliases: []
 deprecated: true
 ---
 

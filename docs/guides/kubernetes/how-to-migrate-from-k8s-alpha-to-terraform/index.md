@@ -15,7 +15,7 @@ external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Beginners Guide to Terraform](/cloud/guides/beginners-guide-to-terraform/)'
 - '[Using Terraform to Provision Linode Environments](/cloud/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
-aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
+aliases: []
 build:
   list: false
 deprecated: true

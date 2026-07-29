@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.10", "karmic"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','/development/frameworks/django/django-apache-and-modpython-on-ubuntu-9-10-karmic/','/development/frameworks/django-apache-and-modpython-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: django-apache-modpython

@@ -9,7 +9,7 @@ modified: 2013-10-03
 keywords: ["directadmin", "install", "control panels", "debian"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/installing-directadmin-on-debian-6/','/web-applications/control-panels/directadmin/installing-directadmin/']
+aliases: []
 deprecated: true
 ---
 

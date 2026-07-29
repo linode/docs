@@ -5,7 +5,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2017-04-13
 keywords: ["web server", "apache", "nginx", "lighttpd", "cherokee", "http server"]
-aliases: ['/web-servers/nginx/python-uwsgi/','/web-servers/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_on_frontpage: true
 weight: 50

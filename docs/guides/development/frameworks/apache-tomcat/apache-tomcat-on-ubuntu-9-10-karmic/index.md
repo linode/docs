@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["apache tomcat ubuntu 9.10", "java", "java ubuntu 9.10", "java servlets ubuntu karmic", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-9-10-karmic/','/development/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/','/frameworks/apache-tomcat/ubuntu-9-10-karmic/','/websites/frameworks/apache-tomcat-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

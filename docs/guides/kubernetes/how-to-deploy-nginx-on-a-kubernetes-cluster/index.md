@@ -11,7 +11,7 @@ keywords: ["kubernetes","docker","container","deployment","nginx"]
 tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: DeployNGINX_Linode.png
-aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
+aliases: []
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/)'

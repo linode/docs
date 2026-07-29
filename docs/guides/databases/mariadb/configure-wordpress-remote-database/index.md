@@ -13,7 +13,7 @@ external_resources:
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 tags: ["wordpress","mariadb","database"]
-aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
+aliases: []
 ---
 
 ![Configure WordPress to use a Remote Database](Configure_WordPress_to_use_a_Remote_Database_smg.jpg)

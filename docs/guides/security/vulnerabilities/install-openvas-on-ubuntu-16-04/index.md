@@ -7,7 +7,7 @@ contributors: ["Phil Zona"]
 published: 2017-02-06
 modified: 2016-12-19
 keywords: ["openvas", "ubuntu", "install openvas"]
-aliases: ['/security/vulnerabilities/install-openvas-on-ubuntu-16-04/','/security/install-openvas-on-ubuntu-16-04/']
+aliases: []
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true

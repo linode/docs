@@ -9,7 +9,7 @@ published: 2018-01-29
 keywords: ["split", "files", "unix", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
-aliases: ['/tools-reference/tools/divide-files-with-split/']
+aliases: []
 ---
 
 ## What is split?

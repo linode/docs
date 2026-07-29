@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","postgresql"]
-aliases: ['/databases/postgresql/debian-6-squeeze/']
+aliases: []
 deprecated: true
 ---
 

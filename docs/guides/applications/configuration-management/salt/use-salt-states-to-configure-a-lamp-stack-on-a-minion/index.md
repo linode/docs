@@ -9,7 +9,7 @@ modified: 2019-01-02
 keywords: ["salt", "salt states", "linux", "apache", "mysql", "php", "debian 8"]
 tags: ["automation","salt","debian","lamp","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/salt/salt-states-configuration-apache-mysql-php/','/applications/configuration-management/salt/use-salt-states-to-configure-a-lamp-stack-on-a-minion/','/applications/configuration-management/use-salt-states-to-configure-a-lamp-stack-on-a-minion/']
+aliases: []
 image: UseSaltStatestoConfigureaLAMPStackonaMinion.png
 deprecated: true
 ---

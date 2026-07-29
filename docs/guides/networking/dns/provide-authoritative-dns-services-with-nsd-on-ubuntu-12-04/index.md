@@ -8,7 +8,7 @@ published: 2012-10-09
 keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/','/dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[NSD Homepage](http://nlnetlabs.nl/projects/nsd/)'
  - '[NSD Memory Usage Calculator](http://nlnetlabs.nl/projects/nsd/nsd-memsize.html)'

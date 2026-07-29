@@ -8,7 +8,7 @@ published: 2012-11-08
 keywords: ["phpBB", "forum software", "web applications", "PHP", "Ubuntu 12.04", "precise pangolin"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/launch-discussion-forums-with-phpbb-on-ubuntu-12-04/','/websites/forums/discussion-forums-with-phpbb-on-ubuntu-12-04-precise-pangolin/','/web-applications/bulletin-boards/phpbb/ubuntu-12-04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles)'
  - '[Styles Forum](http://www.phpbb.com/community/viewforum.php?f=80)'

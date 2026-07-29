@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/','/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-10-maverick/','/websites/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: multiple-servers-proxypass

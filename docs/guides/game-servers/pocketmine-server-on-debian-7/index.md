@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[PocketMine.net](https://www.pocketmine.net/)'
  - '[PocketMine Documentation](http://pocketmine-mp.readthedocs.org/en/latest/)'
-aliases: ['/game-servers/pocketmine-server-on-debian-7/','/applications/game-servers/pocketmine-server-on-debian-7/']
+aliases: []
 dedicated_cpu_link: true
 deprecated: true
 ---

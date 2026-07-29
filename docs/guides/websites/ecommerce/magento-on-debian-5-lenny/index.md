@@ -8,7 +8,7 @@ published: 2010-01-18
 modified: 2011-08-22
 keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/e-commerce/magento/debian-5-lenny/','/websites/ecommerce/magento-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-magento

@@ -5,7 +5,7 @@ published: 2026-02-12
 modified: 2026-02-12
 keywords: ['gpt-oss', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'openai-gpt-oss']
 tags: ["quick deploy apps", "cloud manager", "ai", "llm-inference", "llm"]
-aliases: ['/products/tools/marketplace/guides/gpt-oss-with-openwebui/']
+aliases: []
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
 - '[GPT-OSS 20B on Hugging Face](https://huggingface.co/openai/gpt-oss-20b)'

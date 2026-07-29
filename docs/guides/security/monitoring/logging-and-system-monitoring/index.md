@@ -8,7 +8,7 @@ published: 2020-10-29
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/monitoring/logging-and-system-monitoring/']
+aliases: []
 image: Logging_and_system_monitoring.png
 ---
 

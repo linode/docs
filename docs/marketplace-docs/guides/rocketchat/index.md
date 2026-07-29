@@ -8,7 +8,7 @@ tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Rocket.Chat](https://rocket.chat/)'
 - '[Rocket.Chat documentation](https://docs.rocket.chat/guides/user-guides)'
-aliases: ['/products/tools/marketplace/guides/rocketchat/','/guides/deploying-rocketchat-marketplace-app/','/guides/rocketchat-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

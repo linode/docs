@@ -13,7 +13,7 @@ external_resources:
 - '[Arch Wiki Fish Entry](https://wiki.archlinux.org/index.php/Fish)'
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-install-configure-and-run-fish/']
+aliases: []
 deprecated: true
 
 ---

@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
 tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/applications/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/development/bug-tracking/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/','/web-applications/project-management/mantis/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key:  mantis-bug-tracker

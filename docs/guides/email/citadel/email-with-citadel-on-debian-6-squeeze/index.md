@@ -8,7 +8,7 @@ published: 2011-11-09
 keywords: ["citadel debian 6", "citadel debian squeeze", "debian 6 mail server", "groupware", "email server"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/citadel/email-with-citadel-on-debian-6-squeeze/','/email/citadel/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: email-with-citadel

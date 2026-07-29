@@ -7,7 +7,7 @@ keywords: ['counter-strike','cs', 'go','marketplace']
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","quick deploy apps","cloud-manager"]
-aliases: ['/products/tools/marketplace/guides/counter-strike-go/','/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

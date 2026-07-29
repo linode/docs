@@ -9,7 +9,7 @@ modified: 2017-06-01
 keywords: ["install Java", "Debian", "OpenJDK", "Java JDK"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/java/install-java-on-debian/','/development/install-java-on-debian/','/development/installing-java-on-debian/']
+aliases: []
 external_resources:
 - '[Java Debian Wiki](https://wiki.debian.org/Java)'
 audiences: ["beginner"]

@@ -7,7 +7,7 @@ keywords: ['backups','cpanel', 'backup']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
-aliases: ['/products/tools/marketplace/guides/jetbackup/','/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

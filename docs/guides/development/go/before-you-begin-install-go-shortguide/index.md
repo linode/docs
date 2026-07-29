@@ -9,7 +9,7 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
-aliases: ['/development/go/before-you-begin-install-go-shortguide/']
+aliases: []
 ---
 
 To run the examples in this guide, your workstation or server will need to have Go installed, and the `go` CLI will need to be set in your terminal's PATH:

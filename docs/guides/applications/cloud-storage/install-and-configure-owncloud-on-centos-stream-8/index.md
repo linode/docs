@@ -11,7 +11,7 @@ keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Install_ownCloud_CentOS_stream.png
 tags: ["centos"]
-aliases: ['/guides/how-to-install-owncloud-centos-stream-8/']
+aliases: []
 relations:
     platform:
         key: how-to-install-owncloud

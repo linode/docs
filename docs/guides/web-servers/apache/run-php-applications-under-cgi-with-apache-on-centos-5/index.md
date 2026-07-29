@@ -9,7 +9,7 @@ modified: 2014-01-14
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/run-php-applications-under-cgi-with-apache-on-centos-5/','/websites/apache/run-php-applications-under-cgi-with-apache-on-centos-5/','/web-servers/apache/php-cgi/centos-5/']
+aliases: []
 relations:
     platform:
         key: php-cgi-apache

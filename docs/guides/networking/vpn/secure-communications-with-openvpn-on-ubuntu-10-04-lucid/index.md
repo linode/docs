@@ -9,7 +9,7 @@ modified: 2013-08-22
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu lucid", "ubuntu 10.4"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/openvpn/ubuntu-10-04-lucid/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: secure-communications-openvpn

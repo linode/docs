@@ -8,7 +8,7 @@ tags: ["ssl","cloud-manager","linode platform","security","quick deploy apps","v
 bundles: ['network-security']
 external_resources:
 - '[OpenVPN Community Resources](https://openvpn.net/community-resources/)'
-aliases: ['/products/tools/marketplace/guides/openvpn/','/platform/marketplace/marketplace-openvpn/', '/platform/one-click/one-click-openvpn/','/guides/one-click-openvpn/','/guides/marketplace-openvpn/','/guides/deploying-openvpn-marketplace-app/','/guides/openvpn-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -11,7 +11,7 @@ keywords: ["python 3", "miniconda", "continuum"]
 headless: true
 show_on_rss_feed: false
 tags: ["python"]
-aliases: ['/development/python/install_python_miniconda/']
+aliases: []
 ---
 <!-- Installation instructions for Python 3. -->
 

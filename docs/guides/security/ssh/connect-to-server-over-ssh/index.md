@@ -10,7 +10,7 @@ keywords: ['ssh','linux','connect to server over ssh','connect to linode over ss
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: SSH.jpg
-aliases: ['/guides/networking/ssh/connect-to-server-over-ssh/']
+aliases: []
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.

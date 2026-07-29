@@ -9,7 +9,7 @@ published: 2010-04-12
 modified: 2018-09-20
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/manage-cpan-modules-with-cpan-minus/','/applications/development/manage-cpan-modules-with-cpan-minus/','/development/perl/manage-cpan-modules-with-cpan-minus/','/linux-tools/utilities/cpanm/']
+aliases: []
 external_resources:
  - '[cpanminus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
  - '[cpanminus Development](http://github.com/miyagawa/cpanminus/)'

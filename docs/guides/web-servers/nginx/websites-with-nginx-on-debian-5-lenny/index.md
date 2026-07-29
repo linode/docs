@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["nginx", "http", "web servers", "debian", "debian lenny", "debian 5"]
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/websites-with-nginx-on-debian-5-lenny/','/web-servers/nginx/websites-with-nginx-on-debian-5-lenny/','/web-servers/nginx/installation/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

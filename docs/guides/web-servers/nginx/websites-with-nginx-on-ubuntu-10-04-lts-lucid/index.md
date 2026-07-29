@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/installation/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

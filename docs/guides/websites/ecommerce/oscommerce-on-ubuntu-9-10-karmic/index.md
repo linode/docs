@@ -8,7 +8,7 @@ published: 2010-02-08
 modified: 2011-08-22
 keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/','/websites/ecommerce/oscommerce-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: how-to-install-osCommerce

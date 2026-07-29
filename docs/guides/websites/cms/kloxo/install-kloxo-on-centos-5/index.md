@@ -9,7 +9,7 @@ modified: 2013-10-03
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 tags: ["centos","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/kloxo/install-kloxo-on-centos-5/','/web-applications/control-panels/kloxo/installation/','/websites/cms/install-kloxo-on-centos-5/']
+aliases: []
 deprecated: true
 ---
 

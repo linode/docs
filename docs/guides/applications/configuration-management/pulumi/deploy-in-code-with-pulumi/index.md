@@ -12,7 +12,7 @@ external_resources:
 - '[Pulumi Documentation](https://www.pulumi.com/docs/)'
 - '[Pulumi API reference](https://www.pulumi.com/docs/languages-sdks/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
-aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
+aliases: []
 ---
 
 ## What is Pulumi?

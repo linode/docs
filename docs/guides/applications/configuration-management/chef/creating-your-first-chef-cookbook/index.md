@@ -9,7 +9,7 @@ published: 2015-06-10
 modified: 2019-12-03
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/','/applications/configuration-management/chef/creating-your-first-chef-cookbook/']
+aliases: []
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'

@@ -4,7 +4,7 @@ description: "Deploy MainConcept XDCAM Transcoder demo, an enterprise ready tool
 published: 2023-09-14
 keywords: ['transcoder','encoder','video','sony','xdcam','xdcam hd','xdcam ex','xdcam imx','dvcam','rest api']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/mainconcept-xdcam-transcoder-demo/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

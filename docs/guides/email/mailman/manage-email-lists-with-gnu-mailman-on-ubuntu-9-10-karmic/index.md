@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/','/email/mailman/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: use-gnu-mailman

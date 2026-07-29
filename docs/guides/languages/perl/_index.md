@@ -1,4 +1,4 @@
 ---
 title: Perl
-aliases: ['/languages/perl/']
+aliases: []
 ---

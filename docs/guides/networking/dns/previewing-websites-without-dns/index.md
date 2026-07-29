@@ -8,7 +8,7 @@ published: 2014-01-16
 modified: 2018-05-22
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-guides/preview-websites/','/networking/dns/previewing-websites-without-dns/','/networking/dns/previewing-websites-without-dns-classic-manager/']
+aliases: []
 tags: ["dns","networking"]
 ---
 

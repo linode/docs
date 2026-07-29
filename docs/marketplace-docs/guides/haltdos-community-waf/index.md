@@ -6,7 +6,7 @@ keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
-aliases: ['/products/tools/marketplace/guides/haltdos-community-waf/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

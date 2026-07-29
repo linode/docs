@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-03-01
 keywords: ["e-commerce", "online store", "store", "shopping cart", "magento", "oscommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ecommerce/','/web-applications/e-commerce/']
+aliases: []
 show_in_lists: true
 ---
 

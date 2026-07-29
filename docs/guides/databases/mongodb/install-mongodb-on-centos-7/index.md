@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
-aliases: ['/databases/mongodb/install-mongodb-on-centos-7/']
+aliases: []
 ---
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.

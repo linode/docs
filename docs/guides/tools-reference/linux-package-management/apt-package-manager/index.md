@@ -11,7 +11,7 @@ keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
-aliases: ['/guides/using-apt-package-manager/']
+aliases: []
 ---
 
 *Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Ubuntu, Debian, Kali Linux, and other Debian-based Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.

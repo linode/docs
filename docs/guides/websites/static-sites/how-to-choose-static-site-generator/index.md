@@ -8,7 +8,7 @@ contributors: ["Edward Angert"]
 published: 2018-03-14
 keywords: ["static site", "static site generator", "ssg", "jekyll", "hugo", "gatsby", "hexo", "gitbook"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/static-sites/how-to-choose-static-site-generator/']
+aliases: []
 ---
 
 ![How to Choose a Static Site Generator](how-to-choose-a-static-site-generator.png "How to Choose a Static Site Generator")

@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "centos"]
 tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-centos-5/','/web-applications/project-management/egroupware/centos-5/']
+aliases: []
 external_resources:
  - '[EGroupware Home Page](http://www.egroupware.org/)'
  - '[EGroupware Documentation](http://www.egroupware.org/wiki/)'

@@ -15,7 +15,7 @@ external_resources:
   - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 dedicated_cpu_link: true
-aliases: ['/applications/media-servers/install-plex-media-server-with-salt/']
+aliases: []
 ---
 
 Plex is a media server that allows you to stream video and audio content that you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.

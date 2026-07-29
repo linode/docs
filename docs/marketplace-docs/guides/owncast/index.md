@@ -9,7 +9,7 @@ external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
 - '[Owncast Documentation](https://owncast.online/docs/)'
-aliases: ['/products/tools/marketplace/guides/owncast/','/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

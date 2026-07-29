@@ -9,7 +9,7 @@ modified: 2013-02-18
 keywords: ["nginx", "nginx ubuntu 11.04", "nginx fastcgi", "nginx php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/php-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi

@@ -9,7 +9,7 @@ modified: 2012-10-15
 keywords: ["apache SSL", "ssl on debian", "web sever", "debian lenny"]
 tags: ["apache","security","ssl","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/ssl-guides/debian-5-lenny/','/security/ssl/ssl-certificates-with-apache-2-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-fedora-14/','/web-servers/nginx/python-uwsgi/fedora-14/']
+aliases: []
 relations:
     platform:
         key: wsgi-uwsgi-nginx

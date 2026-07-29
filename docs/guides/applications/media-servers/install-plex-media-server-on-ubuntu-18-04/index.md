@@ -10,7 +10,7 @@ modified: 2020-01-04
 keywords: ["plex media server", "install plex", "plex ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/media-servers/install-plex-media-server-on-ubuntu-18-04/','/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/']
+aliases: []
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true

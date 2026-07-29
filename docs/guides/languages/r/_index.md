@@ -1,4 +1,4 @@
 ---
 title: R
-aliases: ['/languages/r/']
+aliases: []
 ---

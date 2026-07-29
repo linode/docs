@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy/webpy-on-ubuntu-10-10-maverick/','/development/frameworks/webpy-on-ubuntu-10-10-maverick/','/frameworks/webpy/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: webpy

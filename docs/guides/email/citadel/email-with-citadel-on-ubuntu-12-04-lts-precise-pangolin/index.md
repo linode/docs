@@ -9,7 +9,7 @@ modified: 2014-08-15
 keywords: ["citadel", "citadel ubuntu 12.04", "ubuntu 12.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/citadel/ubuntu-12-04-precise-pangolin/','/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/']
+aliases: []
 relations:
     platform:
         key: email-with-citadel

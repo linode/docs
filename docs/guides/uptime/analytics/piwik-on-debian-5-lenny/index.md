@@ -9,7 +9,7 @@ modified: 2014-01-28
 keywords: ["open source analytics", "piwik debian", "piwik", "analytics", "debian. tracking", "statistics"]
 tags: ["debian","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/analytics/piwik/debian-5-lenny/','/uptime/analytics/piwik-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: using-piwik-analytics

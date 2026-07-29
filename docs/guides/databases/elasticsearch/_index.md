@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2014-06-05
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 Keywords: 'elasticsearch,what is elasticsearch,install elasticsearch'
-aliases: ['/databases/elasticsearch/']
+aliases: []
 ---
 
 Elasticsearch, a distributed, RESTful search and analytics engine capable of solving a growing number of use cases, serves as the core of an Elastic Stack and centrally stores your data.

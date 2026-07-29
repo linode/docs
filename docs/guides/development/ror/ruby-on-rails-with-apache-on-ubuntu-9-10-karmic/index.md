@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-apache/ubuntu-9-10-karmic/','/development/ror/ruby-on-rails-with-apache-on-ubuntu-9-10-karmic/']
+aliases: []
 external_resources:
     - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
     - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'

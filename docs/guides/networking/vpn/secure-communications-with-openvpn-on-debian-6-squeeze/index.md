@@ -9,7 +9,7 @@ modified: 2013-08-22
 keywords: ["openvpn debian 6", "openvpn debian", "debian vpn"]
 tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/secure-communications-with-openvpn-on-debian-6-squeeze/','/networking/openvpn/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: secure-communications-openvpn

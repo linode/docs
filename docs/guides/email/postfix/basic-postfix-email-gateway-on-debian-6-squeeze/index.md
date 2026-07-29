@@ -9,7 +9,7 @@ modified: 2013-09-25
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/basic-postfix-email-gateway-on-debian-6-squeeze/','/email/postfix/gateway-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: basic-postifx-gateway

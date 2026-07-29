@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/track-bugs-and-manage-development-with-flyspray/','/development/bug-tracking/track-bugs-and-manage-development-with-flyspray/','/web-applications/project-management/flyspray/','/applications/development/track-bugs-and-manage-development-with-flyspray/']
+aliases: []
 deprecated: true
 ---
 

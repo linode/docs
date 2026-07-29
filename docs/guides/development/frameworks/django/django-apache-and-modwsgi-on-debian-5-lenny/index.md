@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-5-lenny/','/frameworks/django-apache-mod-wsgi/debian-5-lenny/','/websites/frameworks/django-apache-and-modwsgi-on-debian-5-lenny/','/development/frameworks/django-apache-and-modwsgi-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: django-apache-modwsgi

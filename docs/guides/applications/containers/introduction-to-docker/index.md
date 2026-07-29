@@ -12,7 +12,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
-aliases: ['/applications/containers/introduction-to-docker/']
+aliases: []
 ---
 
 ![An introduction to Docker](docker-introduction.png "An introduction to Docker")

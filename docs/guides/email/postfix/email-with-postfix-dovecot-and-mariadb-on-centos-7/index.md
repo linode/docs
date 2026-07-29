@@ -9,7 +9,7 @@ modified: 2018-10-10
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
 tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mariadb-on-centos-7/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-7/']
+aliases: []
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/cloud/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'

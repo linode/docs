@@ -10,7 +10,7 @@ modified: 2018-03-15
 keywords: ["cron", "crontab", "automation"]
 tags: ["automation","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/schedule-tasks-with-cron/','/linux-tools/utilities/cron/']
+aliases: []
 image: schedule-tasks-with-cron.png
 ---
 

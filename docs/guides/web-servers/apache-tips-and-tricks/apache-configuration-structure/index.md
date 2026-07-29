@@ -8,7 +8,7 @@ published: 2010-02-24
 modified: 2018-03-06
 keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache-tips-and-tricks/apache-configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/','/web-servers/apache/configuration/configuration-structure/']
+aliases: []
 external_resources:
  - '[Apache Installation](/cloud/guides/web-servers/apache/)'
  - '[LAMP Stack Guides](/cloud/guides/web-servers/lamp/)'

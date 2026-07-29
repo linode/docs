@@ -15,7 +15,7 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
-aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
+aliases: []
 image: SecureWordpress.png
 ---
 

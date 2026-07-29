@@ -9,7 +9,7 @@ modified: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'Apache']
 tags: ['ssl','apache','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/']
+aliases: []
 relations:
     platform:
         key: how-to-use-certbot-with-apache

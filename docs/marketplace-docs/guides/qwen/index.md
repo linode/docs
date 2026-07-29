@@ -5,7 +5,7 @@ published: 2026-02-18
 modified: 2026-02-18
 keywords: ['qwen', 'qwen-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'qwen-llm']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
-aliases: ['/products/tools/marketplace/guides/qwen-instruct-with-openwebui/']
+aliases: []
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
 - '[Qwen Documentation](https://github.com/QwenLM)'

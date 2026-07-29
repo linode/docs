@@ -17,7 +17,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: Ubuntu 12.04
-aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-12-04/']
+aliases: []
 deprecated: true
 ---
 

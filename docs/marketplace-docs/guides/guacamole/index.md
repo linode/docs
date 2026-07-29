@@ -5,7 +5,7 @@ published: 2020-12-11
 modified: 2025-10-03
 keywords: ['guacamole', 'marketplace', 'remote desktop']
 tags: ["cloud-manager","linode platform","quick deploy apps"]
-aliases: ['/products/tools/marketplace/guides/guacamole/','/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
+aliases: []
 external_resources:
  - '[Guacamole Documentation](https://guacamole.apache.org/doc/gug/)'
 authors: ["Akamai"]

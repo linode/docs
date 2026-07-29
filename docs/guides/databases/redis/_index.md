@@ -6,6 +6,6 @@ contributors: ["Linode"]
 keywords: ["MongoBD", "Redis server", "Redis tutorial", "Redis guide", "NoSQL"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/databases/redis/']
+aliases: []
 ---
 

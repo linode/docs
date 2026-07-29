@@ -10,7 +10,7 @@ keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Install_ownCloud_Ubuntu2004.png
 tags: ["ubuntu"]
-aliases: ['/guides/how-to-install-owncloud-ubuntu-20-04/']
+aliases: []
 relations:
     platform:
         key: how-to-install-owncloud

@@ -9,7 +9,7 @@ modified: 2011-05-13
 keywords: ["debian 6 send email", "debian 6 exim", "mail server", "linux mail", "smtp server", "debian exim", "debian squeeze"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/exim/send-only-mta-debian-6-squeeze/','/email/exim/sendonly-mail-server-with-exim-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: deploy-exim-sendonly-email

@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["apache", "apache ubuntu 8.04", "apache ubuntu hardy", "web server", "apache on ubuntu", "apache hardy"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/installation/ubuntu-8-04-hardy/','/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/','/websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

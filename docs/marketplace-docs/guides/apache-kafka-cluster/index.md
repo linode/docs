@@ -8,7 +8,7 @@ tags: ["ubuntu","quick deploy apps", "streaming applications", "linode platform"
 external_resources:
 - '[About Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Documentation](https://kafka.apache.org/documentation/)'
-aliases: ['/products/tools/marketplace/guides/apache-kafka-cluster/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

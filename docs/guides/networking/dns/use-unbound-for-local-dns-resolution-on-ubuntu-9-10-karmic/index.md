@@ -9,7 +9,7 @@ modified: 2013-07-15
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-9-10-karmic/','/dns-guides/unbound-dns-resolver-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

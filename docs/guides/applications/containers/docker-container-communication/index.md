@@ -15,7 +15,7 @@ external_resources:
 - '[Docker: Understanding Container Communication](https://docs.docker.com/engine/userguide/networking/default_network/container-communication/)'
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
-aliases: ['/applications/containers/docker-container-communication/']
+aliases: []
 ---
 
 ![Connect Docker Containers](connect-docker-containers.jpg)

@@ -11,7 +11,7 @@ keywords: ["java", "jdk", "install java"]
 tags: ["java","ubuntu"]
 headless: true
 show_on_rss_feed: false
-aliases: ['/development/java/install-java-jdk/']
+aliases: []
 ---
 
 1.  Install `software-properties-common`:

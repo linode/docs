@@ -9,7 +9,7 @@ modified: 2011-05-09
 keywords: ["cherokee", "web sever", "cherokee ubuntu 9.10", "cherokee ubuntu karmic", "ubuntu karmic"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/','/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic/','/web-servers/cherokee/installing-cherokee-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: install-cherokee-server

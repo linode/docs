@@ -9,7 +9,7 @@ modified: 2012-10-03
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/prosody/ubuntu-10-10-maverick/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: how-to-install-prosody

@@ -8,7 +8,7 @@ published: 2010-05-03
 modified: 2013-09-24
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/ubuntu-10-04-lucid/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: couchdb-document-data-storage

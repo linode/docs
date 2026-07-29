@@ -5,7 +5,7 @@ description: "Resources and other information related to Akamai Quick Deploy App
 keywords: ['akamai quick deploy apps']
 tab_group_main:
     weight: 40
-aliases: ['/products/tools/marketplace/resources/','/products/tools/marketplace-one-click-apps/resources/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

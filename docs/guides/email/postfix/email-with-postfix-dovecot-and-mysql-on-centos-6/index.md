@@ -20,7 +20,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: CentOS 6
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-6/']
+aliases: []
 deprecated: true
 ---
 

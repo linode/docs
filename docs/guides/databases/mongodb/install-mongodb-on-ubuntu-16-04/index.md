@@ -18,7 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 tags: ["ubuntu","database","nosql"]
-aliases: ['/databases/mongodb/install-mongodb-on-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

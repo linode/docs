@@ -10,7 +10,7 @@ modified: 2013-09-27
 keywords: ["seaside", "smalltalk", "pharo", "squeak", "apache", "framework"]
 tags: ["web applications","apache","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/deploy-smalltalk-applications-with-seaside/','/frameworks/seaside/','/websites/frameworks/deploy-smalltalk-applications-with-seaside/','/development/frameworks/seaside/deploy-smalltalk-applications-with-seaside/']
+aliases: []
 relations:
     platform:
         key: seaside-framework

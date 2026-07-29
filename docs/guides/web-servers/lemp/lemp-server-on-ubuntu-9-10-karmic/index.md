@@ -9,7 +9,7 @@ modified: 2011-05-03
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/lemp-guides/ubuntu-9-10-karmic/','/websites/lemp/lemp-server-on-ubuntu-9-10-karmic/','/web-servers/lemp/lemp-server-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: install-lemp-stack

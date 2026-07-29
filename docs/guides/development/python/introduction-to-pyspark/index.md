@@ -17,7 +17,7 @@ concentrations: ["Scientific Computing and Big Data"]
 languages: ["python"]
 dedicated_cpu_link: true
 tags: ["python"]
-aliases: ['/development/python/introduction-to-pyspark/']
+aliases: []
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","postgresql"]
-aliases: ['/databases/postgresql/debian-5-lenny/']
+aliases: []
 deprecated: true
 ---
 

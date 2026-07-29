@@ -8,7 +8,7 @@ published: 2009-11-06
 modified: 2017-02-21
 keywords: ["mod_rewrite", "REST", "URLs", "redirect", "apache", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/','/web-servers/apache/configuration/rewriting-urls/','/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/']
+aliases: []
 external_resources:
  - '[Installing Apache](/cloud/guides/web-servers/apache/)'
  - '[LAMP stack guides](/cloud/guides/web-servers/lamp/)'

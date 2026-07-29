@@ -9,7 +9,7 @@ modified: 2019-01-29
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/','/networking/vpn/set-up-a-hardened-openvpn-server/']
+aliases: []
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 deprecated: true

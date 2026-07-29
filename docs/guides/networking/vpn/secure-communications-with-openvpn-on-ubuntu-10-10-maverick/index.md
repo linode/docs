@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-10-10-maverick/','/networking/openvpn/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: secure-communications-openvpn

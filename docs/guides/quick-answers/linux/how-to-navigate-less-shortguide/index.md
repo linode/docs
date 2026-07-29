@@ -9,7 +9,7 @@ keywords: ["linux", "how to", "less", "key commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-navigate-less-shortguide/']
+aliases: []
 ---
 
 | Key command | Action |

@@ -9,7 +9,7 @@ modified: 2011-06-03
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 tags: ["nginx","apache","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/plone/','/websites/cms/plone/manage-web-content-with-plone-on-debian-5-lenny/','/websites/cms/manage-web-content-with-plone-on-debian-5-lenny/']
+aliases: []
 deprecated: true
 ---
 

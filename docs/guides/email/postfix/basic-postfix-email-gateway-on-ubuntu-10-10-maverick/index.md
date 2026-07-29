@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/gateway-ubuntu-10-10-maverick/','/email/postfix/basic-postfix-email-gateway-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: basic-postifx-gateway

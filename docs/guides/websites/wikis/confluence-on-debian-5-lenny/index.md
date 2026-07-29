@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["confluence debian 5", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/confluence-on-debian-5-lenny/','/web-applications/wikis/confluence/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: using-confluence

@@ -8,7 +8,7 @@ published: 2012-10-09
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/mailman/ubuntu-12-04-precise-pangolin/','/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-12-04-precise-pangolin/']
+aliases: []
 relations:
     platform:
         key: use-gnu-mailman

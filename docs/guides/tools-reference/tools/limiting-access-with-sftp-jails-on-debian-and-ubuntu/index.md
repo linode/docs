@@ -10,7 +10,7 @@ modified: 2018-01-29
 keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
 tags: ["ubuntu","debian","linux","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/sftp-jails/','/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/']
+aliases: []
 external_resources:
 - '[OpenSSH Documentation](http://www.openssh.org/manual.html)'
 - '[An Introduction to Users and Groups](/cloud/guides/linux-users-and-groups/)'

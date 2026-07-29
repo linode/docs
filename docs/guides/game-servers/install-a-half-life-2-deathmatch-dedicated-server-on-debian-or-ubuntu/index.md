@@ -17,7 +17,7 @@ external_resources:
 - '[AlliedModders Wiki](https://wiki.alliedmods.net)'
 - '[Botrix](http://www.famaf.unc.edu.ar/~godin/botrix)'
 dedicated_cpu_link: true
-aliases: ['/game-servers/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/']
+aliases: []
 ---
 
 ![Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](HL2DM.jpg "Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu")

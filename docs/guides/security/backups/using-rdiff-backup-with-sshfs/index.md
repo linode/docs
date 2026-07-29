@@ -9,7 +9,7 @@ modified: 2017-11-29
 keywords: ["rdiff-backup", "sshfs", "network backup", "linux backup"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linux-tools/rdiff-backup/','/security/backups/using-rdiff-backup-with-sshfs/']
+aliases: []
 deprecated: true
 ---
 

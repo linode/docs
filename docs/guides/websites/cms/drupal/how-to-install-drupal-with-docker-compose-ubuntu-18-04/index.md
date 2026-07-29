@@ -15,7 +15,7 @@ relations:
         key: how-to-install-drupal-docker-compose
         keywords:
            - distribution: Ubuntu 18.04
-aliases: ['/websites/cms/drupal/how-to-install-drupal-with-docker-compose-ubuntu-18-04/','/websites/cms/drupal/docker-drupal/how-to-install-drupal-with-docker-compose-ubuntu-18-04/']
+aliases: []
 ---
 
 ## What Are Docker and Docker Compose?

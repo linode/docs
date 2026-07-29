@@ -8,7 +8,7 @@ published: 2009-10-29
 modified: 2012-10-08
 keywords: ["mysql on linux", "mysql ubuntu", "mysql karmic", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/use-mysql-relational-databases-on-ubuntu-9-10-karmic/','/databases/mysql/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: use-mysql-relationaldb

@@ -9,7 +9,7 @@ published: 2010-07-30
 modified: 2024-11-07
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
+aliases: []
 bundles: ['debian-security', 'centos-security', 'network-security']
 external_resources:
  - '[Security Basics](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance)'

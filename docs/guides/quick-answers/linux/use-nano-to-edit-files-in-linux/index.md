@@ -7,7 +7,7 @@ contributors: ["Edward Angert"]
 published: 2017-05-04
 keywords: ["nano", "terminal", "command line", "shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/use-nano-to-edit-files-in-linux/','/quick-answers/linux/use-nano-to-edit-files-in-linux/']
+aliases: []
 external_resources:
  - '[Using nano](/cloud/guides/use-nano-text-editor-commands/)'
  - '[nano help](https://www.nano-editor.org/dist/v2.8/nano.html)'

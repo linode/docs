@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["ubuntu tls certificate", "ubuntu ssl certificate", "ubuntu self certified"]
 tags: ["ubuntu", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-ubuntu-18-04/']
+aliases: []
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:

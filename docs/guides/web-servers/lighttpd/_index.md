@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2009-07-16
 keywords: ["lighttpd web server", "lighttpd Linux", "lighttpd Linode HOWTO"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lighttpd/','/web-servers/lighttpd/']
+aliases: []
 show_in_lists: true
 ---
 

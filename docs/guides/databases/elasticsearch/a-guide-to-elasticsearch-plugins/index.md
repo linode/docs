@@ -15,7 +15,7 @@ keywords: ['elastic', 'elasticsearch', 'plugins', 'search', 'analytics', 'search
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 dedicated_cpu_link: true
 tags: ["ubuntu","debian","database","java"]
-aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
+aliases: []
 ---
 
 ![Header image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg "How to Install and Use Elasticsearch Plugins")

@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 tags: ["database","postgresql"]
-aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/','/guides/how-to-back-up-your-postgresql-database/']
+aliases: []
 image: back-up-postgresql-database-title.jpg
 ---
 

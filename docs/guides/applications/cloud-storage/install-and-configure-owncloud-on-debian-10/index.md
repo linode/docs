@@ -9,7 +9,7 @@ published: 2021-01-29
 keywords: ['ownCloud on Debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["debian"]
-aliases: ['/guides/how-to-install-owncloud-debian-10/']
+aliases: []
 relations:
     platform:
         key: how-to-install-owncloud

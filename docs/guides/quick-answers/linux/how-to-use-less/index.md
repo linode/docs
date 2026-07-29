@@ -9,7 +9,7 @@ published: 2018-09-05
 keywords: ["linux", "how to", "less", "page"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-use-less/']
+aliases: []
 ---
 
 ## What is Less?

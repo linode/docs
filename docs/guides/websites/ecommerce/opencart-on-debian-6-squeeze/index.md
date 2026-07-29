@@ -8,7 +8,7 @@ published: 2011-09-16
 modified: 2011-09-20
 keywords: ["opencart", "ecommerce", "commerce", "store", "debian", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/e-commerce/opencart/debian-6/','/websites/ecommerce/opencart-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: how-to-install-opencart

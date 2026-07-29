@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["nginx", "fastcgi perl", "nginx debian", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/perl-fastcgi/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi

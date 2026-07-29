@@ -9,7 +9,7 @@ modified: 2017-02-15
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/','/websites/cms/managing-domains-and-databases/','/websites/cms/use-cpanel-to-manage-domains-and-databases/','/web-applications/control-panels/cpanel/managing-domains-and-databases/']
+aliases: []
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'

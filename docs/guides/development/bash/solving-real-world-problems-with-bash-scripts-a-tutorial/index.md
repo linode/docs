@@ -10,7 +10,7 @@ keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
-aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
+aliases: []
 ---
 
 ## Introduction

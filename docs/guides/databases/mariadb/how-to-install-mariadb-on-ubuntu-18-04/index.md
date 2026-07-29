@@ -8,7 +8,7 @@ contributors: ["Ryan Syracuse"]
 published: 2020-01-31
 keywords: ["mariadb", "Ubuntu 18.04", "ubuntu", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mariadb/mariadb-setup-ubuntu-18.04/','/databases/mariadb/how-to-install-mariadb-on-ubuntu-18-04/']
+aliases: []
 image: Installing_MariaDB_on_Ubuntu1804.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'

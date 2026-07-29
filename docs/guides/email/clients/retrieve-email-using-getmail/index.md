@@ -8,7 +8,7 @@ published: 2010-02-01
 modified: 2017-08-22
 keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/getmail/','/email/clients/retrieve-email-using-getmail/']
+aliases: []
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'

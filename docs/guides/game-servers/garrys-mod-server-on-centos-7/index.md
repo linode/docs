@@ -9,7 +9,7 @@ modified: 2019-02-01
 keywords: ["garry's mod", "centos", "centos 7"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/game-servers/garrys-mod-server-on-centos-7/','/game-servers/garrys-mod-server-on-centos-7/']
+aliases: []
 external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'

@@ -8,7 +8,7 @@ tags: ["debian","docker","quick deploy apps", "web applications","linode platfor
 image: Deploy_Plex_oneclickapps.png
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
-aliases: ['/products/tools/marketplace/guides/plex/','/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

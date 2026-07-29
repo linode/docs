@@ -11,7 +11,7 @@ keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " s
 bundles: ['network-security']
 tags: ["networking","vpn","ubuntu","security","proxy","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/','/networking/vpn/create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7/']
+aliases: []
 external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'

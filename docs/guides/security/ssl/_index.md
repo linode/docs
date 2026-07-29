@@ -1,6 +1,6 @@
 ---
 title: SSL Certificates
-aliases: ['/websites/ssl/','/web-servers/apache/ssl-guides/','/security/ssl/']
+aliases: []
 show_in_lists: true
 ---
 

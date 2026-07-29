@@ -8,7 +8,7 @@ published: 2010-07-28
 modified: 2013-09-24
 keywords: ["redis ubuntu 10.04", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/ubuntu-10-04-lucid/','/databases/redis/redis-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: how-to-install-redis

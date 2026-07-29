@@ -7,7 +7,7 @@ keywords: ['web server','Rails','openlitespeed']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Rails](https://docs.litespeedtech.com/cloud/images/rails/)'
-aliases: ['/products/tools/marketplace/guides/openlitespeed-rails/','/guides/deploying-openlitespeed-rails-marketplace-app/','/guides/openlitespeed-rails-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

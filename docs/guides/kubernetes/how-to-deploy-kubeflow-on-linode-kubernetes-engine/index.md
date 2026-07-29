@@ -14,7 +14,7 @@ external_resources:
 - '[Multi-user, auth-enabled Kubeflow installation](https://www.kubeflow.org/docs/started/k8s/kfctl-istio-dex/)'
 - '[Kubeflow Jupyter notebooks](https://www.kubeflow.org/docs/notebooks/)'
 - '[Kubeflow pipelines](https://www.kubeflow.org/docs/pipelines/)'
-aliases: ['/kubernetes/how-to-deploy-kubeflow-on-linode-kubernetes-engine/']
+aliases: []
 ---
 
 ## What is Kubeflow?

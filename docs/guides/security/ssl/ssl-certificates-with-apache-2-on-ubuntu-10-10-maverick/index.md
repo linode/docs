@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/ssl-guides/ubuntu-10-10-maverick/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

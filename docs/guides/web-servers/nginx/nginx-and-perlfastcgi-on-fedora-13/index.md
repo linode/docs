@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["nginx", "nginx fedora 13", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/perl-fastcgi/fedora-13/','/websites/nginx/nginx-and-perlfastcgi-on-fedora-13/','/web-servers/nginx/nginx-and-perlfastcgi-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi

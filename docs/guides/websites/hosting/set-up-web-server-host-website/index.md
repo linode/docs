@@ -9,7 +9,7 @@ modified: 2021-10-18
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
+aliases: []
 image: Hosting-a-Website-smg.jpg
 ---
 

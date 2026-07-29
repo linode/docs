@@ -5,7 +5,7 @@ published: 2022-02-22
 modified: 2022-04-09
 keywords: ['nodejs','development','javascript']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/nodejs/','/guides/nodejs-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

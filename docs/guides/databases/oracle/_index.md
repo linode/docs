@@ -6,6 +6,6 @@ contributors: ["Linode"]
 keywords: ["oracle linux", "oracle 10g xe", "oracle debian", "oracle administration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/databases/oracle/']
+aliases: []
 ---
 

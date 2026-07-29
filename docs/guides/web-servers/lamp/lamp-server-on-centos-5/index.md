@@ -9,7 +9,7 @@ modified: 2011-07-19
 keywords: ["LAMP", "CentOS", "CentOS 5"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lamp/lamp-server-on-centos-5/','/lamp-guides/centos-5/','/web-servers/lamp/lamp-server-on-centos-5/']
+aliases: []
 external_resources:
   - '[CentOS Linux Home Page](http://www.centos.org/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

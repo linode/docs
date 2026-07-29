@@ -22,7 +22,7 @@ tags: ["monitoring","container","kubernetes","docker"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
-aliases: ['/kubernetes/how-to-deploy-the-elastic-stack-on-kubernetes/','/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']
+aliases: []
 ---
 
 ## What is the Elastic Stack?

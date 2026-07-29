@@ -9,7 +9,7 @@ modified: 2019-01-25
 keywords: ["puppet", "automation", "lamp", "configuration management"]
 tags: ["lamp","ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/configuration-management/create-puppet-module/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/','/applications/puppet/create-puppet-module/']
+aliases: []
 relations:
     platform:
         key: install-puppet-lamp-master

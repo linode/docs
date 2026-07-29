@@ -10,7 +10,7 @@ keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: cd-presentation-header.png
 tags: ["kubernetes", "lke", "media"]
-aliases: ['/guides/lke-continuous-deployment-series/']
+aliases: []
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](cd-presentation-header.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine")

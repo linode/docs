@@ -7,7 +7,7 @@ contributors: ["James Stewart"]
 published: 2015-04-30
 modified: 2019-08-12
 keywords: ["openvpn", "vpn"]
-aliases: ['/networking/vpn/install-openvpn-access-server-on-linux/','/networking/vpn/openvpn-access-server/','/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["networking","security","vpn"]
 ---

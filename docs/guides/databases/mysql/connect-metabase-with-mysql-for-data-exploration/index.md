@@ -13,7 +13,7 @@ external_resources:
  - '[Metabase](https://metabase.com/)'
  - '[Employees Testing Database](https://github.com/datacharmer/test_db)'
 tags: ["ubuntu","debian","database","mysql"]
-aliases: ['/databases/mysql/connect-metabase-with-mysql-for-data-exploration/']
+aliases: []
 ---
 
 ![Connect Metabase with mysql for data exploration](Connect_Metabase_with_MySQL_for_Data_Exploration_smg.jpg)

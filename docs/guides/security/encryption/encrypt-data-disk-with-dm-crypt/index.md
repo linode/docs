@@ -9,7 +9,7 @@ modified: 2022-11-22
 keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
+aliases: []
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
 ---
 

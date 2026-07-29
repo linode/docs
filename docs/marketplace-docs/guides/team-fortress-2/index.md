@@ -5,7 +5,7 @@ published: 2019-04-04
 modified: 2024-01-22
 keywords: ['team fortress','marketplace', 'tf2', 'server']
 tags: ["linode platform","quick deploy apps","cloud-manager"]
-aliases: ['/products/tools/marketplace/guides/team-fortress-2/','/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/', '/platform/one-click/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-one-click-apps/','/guides/deploying-team-fortress-2-with-marketplace-apps/','/guides/team-fortress-2-marketplace-app/']
+aliases: []
 build:
   list: false
 noindex: true

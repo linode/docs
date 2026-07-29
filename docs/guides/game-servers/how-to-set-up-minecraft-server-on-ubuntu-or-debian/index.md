@@ -9,7 +9,7 @@ published: 2015-01-28
 modified: 2022-01-14
 keywords: ["minecraft", "ubuntu", "debian"]
 tags: ["ubuntu", "debian"]
-aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: How_to_Set_Up_a_Minecraft_Server_smg.jpg
 external_resources:

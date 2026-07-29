@@ -9,7 +9,7 @@ modified: 2013-10-02
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/mango/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick/','/web-applications/cms-guides/mango/ubuntu-10-10-maverick/','/websites/cms/manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: manage-content-with-markdown-and-mango

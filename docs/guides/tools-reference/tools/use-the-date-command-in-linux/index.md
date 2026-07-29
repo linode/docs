@@ -8,7 +8,7 @@ published: 2010-08-23
 modified: 2017-08-21
 keywords: ["date", "time", "linux commands", "shell", "timey wimey"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/use-the-date-command-in-linux/','/linux-tools/common-commands/date/','/tools-reference/tools/linux-date-command/']
+aliases: []
 tags: ["linux"]
 ---
 

@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2009-07-16
 keywords: ["Apache web server", "Apache on Linode", "Linode web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/','/websites/apache/','/web-servers/apache/php-cgi/ubuntu-10.04-lucid/','/web-servers/apache/mod-wsgi/ubuntu-10.04-lucid/']
+aliases: []
 show_in_lists: true
 ---
 

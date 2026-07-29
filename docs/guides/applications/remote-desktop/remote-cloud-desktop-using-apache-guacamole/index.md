@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
  - '[Apache Tomcat](https://tomcat.apache.org/)'
-aliases: ['/applications/remote-desktop/remote-desktop-using-apache-guacamole-on-docker/','/guides/remote-desktop-using-apache-guacamole-on-docker/']
+aliases: []
 ---
 
 ![Virtual Cloud Desktop Using Apache Guacamole](Apache_Guacamole.jpg)

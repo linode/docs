@@ -8,7 +8,7 @@ published: 2011-04-29
 modified: 2018-12-11
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/set-up-an-ipv6-tunnel-on-your-linode/','/networking/ipv6-tunnels/','/networking/linode-network/set-up-an-ipv6-tunnel-on-your-linode/']
+aliases: []
 tags: ["networking","linode platform"]
 ---
 

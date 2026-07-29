@@ -9,7 +9,7 @@ modified: 2015-09-16
 keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/web-servers/nginx/installation/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[Linode nginx Documentation](/cloud/guides/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'

@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-03-01
 keywords: ["statistics", "analytics", "stats", "piwik"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/analytics/','/uptime/analytics/']
+aliases: []
 show_in_lists: true
 ---
 

@@ -9,7 +9,7 @@ modified: 2017-04-03
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/migration/migrate-server-to-linode/','/migrate-to-linode/disk-images/migrating-a-server-to-your-linode/','/platform/disk-images/migrating-a-server-to-your-linode/']
+aliases: []
 deprecated: true
 deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
 ---

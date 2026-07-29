@@ -9,7 +9,7 @@ modified: 2013-09-25
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/dovecot-system-users-debian-6-squeeze/','/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: postfix-dovecot-user-accounts

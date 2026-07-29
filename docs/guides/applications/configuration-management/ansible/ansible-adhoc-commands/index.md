@@ -9,7 +9,7 @@ published: 2020-06-11
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Learning_Adhoc_Commands_in_Ansible_1200x631.png
-aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
+aliases: []
 tags: ["automation"]
 ---
 

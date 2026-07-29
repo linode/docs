@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["Apache", "web sever", "Ubuntu Jaunty"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-04-jaunty/','/web-servers/apache/installation/ubuntu-9-04-jaunty/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

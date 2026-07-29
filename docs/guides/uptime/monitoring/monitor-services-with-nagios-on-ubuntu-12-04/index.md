@@ -9,7 +9,7 @@ modified: 2013-04-05
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/nagios/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[Nagios Home Page](http://www.nagios.org/)'
  - '[Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'

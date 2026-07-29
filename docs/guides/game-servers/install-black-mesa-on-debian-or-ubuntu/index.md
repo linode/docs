@@ -14,7 +14,7 @@ external_resources:
 - '[The Official Black Mesa Wiki](http://wiki.blackmesasource.com/)'
 - '[The Valve Wiki](https://developer.valvesoftware.com/)'
 - '[SourceMod.net](https://www.sourcemod.net)'
-aliases: ['/game-servers/install-black-mesa-on-debian-or-ubuntu/','/applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
+aliases: []
 dedicated_cpu_link: true
 ---
 

@@ -9,7 +9,7 @@ modified: 2011-05-23
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/mailman/debian-6-squeeze/','/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: use-gnu-mailman

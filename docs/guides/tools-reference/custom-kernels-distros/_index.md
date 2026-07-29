@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2009-07-16
 keywords: ["linode instances", "pv grub", "linux kernel", "linode platform", "linux distributions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/custom-instances/','/tools-reference/custom-kernels-distros/', '/advanced/pv-grub-howto/']
+aliases: []
 show_in_lists: true
 ---
 

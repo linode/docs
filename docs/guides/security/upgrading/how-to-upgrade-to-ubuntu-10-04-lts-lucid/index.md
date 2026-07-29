@@ -9,7 +9,7 @@ modified: 2020-12-01
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-10-04-lts-lucid/','/upgrading/upgrade-to-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: how-to-upgrade-ubuntu

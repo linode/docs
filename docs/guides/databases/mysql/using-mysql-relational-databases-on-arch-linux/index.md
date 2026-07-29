@@ -8,7 +8,7 @@ published: 2011-04-05
 modified: 2014-01-23
 keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/using-mysql-relational-databases-on-arch-linux/','/databases/mysql/arch-linux/']
+aliases: []
 relations:
     platform:
         key: use-mysql-relationaldb

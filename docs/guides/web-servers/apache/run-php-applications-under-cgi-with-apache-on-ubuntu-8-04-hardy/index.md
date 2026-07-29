@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/php-cgi/ubuntu-8-04-hardy/','/web-servers/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/','/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-8-04-hardy/']
+aliases: []
 relations:
     platform:
         key: php-cgi-apache

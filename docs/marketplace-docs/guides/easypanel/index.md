@@ -4,7 +4,7 @@ description: "Deploy Easypanel on a Linode Compute Instance. This provides a mod
 published: 2022-05-31
 keywords: ['easypanel','control panel','cpanel']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/easypanel/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

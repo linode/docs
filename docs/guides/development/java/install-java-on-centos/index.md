@@ -9,7 +9,7 @@ modified: 2017-06-01
 keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/installing-java-on-centos/','/development/install-java-on-centos/','/development/java/install-java-on-centos/']
+aliases: []
 external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 audiences: ["beginner"]

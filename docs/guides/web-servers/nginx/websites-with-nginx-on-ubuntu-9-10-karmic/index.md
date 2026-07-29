@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["nginx", "http", "web servers", "ubuntu", "ubuntu 9.10", "ubuntu karmic"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/websites-with-nginx-on-ubuntu-9-10-karmic/','/web-servers/nginx/installation/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

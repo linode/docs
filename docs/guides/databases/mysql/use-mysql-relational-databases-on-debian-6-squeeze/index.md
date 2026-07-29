@@ -8,7 +8,7 @@ published: 2011-01-26
 modified: 2014-01-14
 keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linux", "mysql linux Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/use-mysql-relational-databases-on-debian-6-squeeze/','/databases/mysql/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: use-mysql-relationaldb

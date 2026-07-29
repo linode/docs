@@ -1,4 +1,4 @@
 ---
 title: Foundational
-aliases: ['/audiences/foundational/']
+aliases: []
 ---

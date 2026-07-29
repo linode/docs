@@ -10,7 +10,7 @@ keywords: ["nodejs", "version management"]
 tags: ["version control system"]
 headless: true
 show_on_rss_feed: false
-aliases: ['/development/nodejs/how-to-install-nvm/']
+aliases: []
 ---
 
 1.  Install the [Node Version Manager](https://github.com/nvm-sh/nvm) (NVM) for Node.js. This program helps you manage different Node.js versions on a single system.

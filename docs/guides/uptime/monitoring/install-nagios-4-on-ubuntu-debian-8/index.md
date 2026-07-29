@@ -6,7 +6,7 @@ authors: ["Paulo Telles"]
 contributors: ["Paulo Telles"]
 published: 2016-04-12
 keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
-aliases: ['/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/','/uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/']
+aliases: []
 tags: ["debian","monitoring","lamp","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

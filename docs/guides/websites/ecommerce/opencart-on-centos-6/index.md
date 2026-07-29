@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2011-09-20
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/e-commerce/opencart/centos-6/','/websites/ecommerce/opencart-on-centos-6/']
+aliases: []
 relations:
     platform:
         key: how-to-install-opencart

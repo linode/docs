@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["Catalyst", "dynamic content", "web applications"]
 tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/catalyst-and-modperl/','/websites/frameworks/catalyst-and-modperl/','/development/frameworks/catalyst/catalyst-and-modperl/','/frameworks/catalyst/']
+aliases: []
 deprecated: true
 ---
 

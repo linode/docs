@@ -14,7 +14,7 @@ relations:
         key: custom-compiled-kernel
         keywords:
             - distribution: CentOS 7
-aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/']
+aliases: []
 ---
 
 ![Custom Compiled Kernel on CentOS](custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")

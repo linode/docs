@@ -9,7 +9,7 @@ modified: 2021-01-29
 keywords: ["CentOS", "CentOS 7", "apache", "yum install httpd"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/install-and-configure-apache-on-centos-7/','/websites/apache/install-and-configure-apache-on-centos-7/']
+aliases: []
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

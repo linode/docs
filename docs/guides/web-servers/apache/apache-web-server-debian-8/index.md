@@ -9,7 +9,7 @@ modified: 2018-12-31
 keywords: ["apache debian 8", "apache debian jessie", "linux web server", "apache on debian", "apache jessie", "apache", "debian", "web server"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-web-server-debian-8/','/web-servers/apache/apache-web-server-debian-8/']
+aliases: []
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)'

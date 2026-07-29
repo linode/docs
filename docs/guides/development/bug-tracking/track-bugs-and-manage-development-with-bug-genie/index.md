@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["bug tracking", "issue tracking", "feature development", "bug genie", "the bug genie"]
 tags: ["lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/track-bugs-and-manage-development-with-bug-genie/','/applications/development/track-bugs-and-manage-development-with-bug-genie/','/web-applications/project-management/bug-genie/','/development/bug-tracking/track-bugs-and-manage-development-with-bug-genie/']
+aliases: []
 deprecated: true
 ---
 

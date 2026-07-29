@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra-framework-and-nginx-on-debian-6-squeeze/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-debian-6-squeeze/','/frameworks/sinatra/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: sinatra-nginx

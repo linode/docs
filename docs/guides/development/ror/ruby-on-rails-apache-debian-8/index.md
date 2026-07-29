@@ -10,7 +10,7 @@ modified: 2017-09-13
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-apache-debian-8/','/websites/ror/ruby-on-rails-apache-debian-8/']
+aliases: []
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'

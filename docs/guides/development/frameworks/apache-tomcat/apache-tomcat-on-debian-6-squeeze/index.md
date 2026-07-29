@@ -9,7 +9,7 @@ modified: 2011-05-13
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/apache-tomcat-on-debian-6-squeeze/','/development/frameworks/apache-tomcat-on-debian-6-squeeze/','/frameworks/apache-tomcat/debian-6-squeeze/','/development/frameworks/apache-tomcat/apache-tomcat-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

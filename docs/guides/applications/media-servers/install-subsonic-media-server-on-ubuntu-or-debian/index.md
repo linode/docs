@@ -8,7 +8,7 @@ contributors: ["Alex Fornuto"]
 published: 2015-02-02
 modified: 2019-01-31
 keywords: ["subsonic", "music", "audio", "streaming", "media server"]
-aliases: ['/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/','/applications/media-servers/subsonic/']
+aliases: []
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

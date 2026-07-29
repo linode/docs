@@ -8,7 +8,7 @@ published: 2010-05-27
 modified: 2011-04-29
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-fedora-13/','/databases/couchdb/fedora-13/']
+aliases: []
 relations:
     platform:
         key: couchdb-document-data-storage

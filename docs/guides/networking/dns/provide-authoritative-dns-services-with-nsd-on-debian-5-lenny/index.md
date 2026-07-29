@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-5-lenny/','/dns-guides/nsd-authoritative-dns-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: authoritative-dns-nsd

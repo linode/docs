@@ -5,7 +5,7 @@ published: 2026-02-26
 modified: 2026-02-26
 keywords: ['artificial intelligence', 'ai', 'LLM', 'machine learning', 'deepseek', 'deepseek-r1', 'open webui', 'vllm', 'reasoning']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/deepseek-with-openwebui/']
+aliases: []
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
 - '[DeepSeek R1 Distill Qwen 7B on Hugging Face](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)'

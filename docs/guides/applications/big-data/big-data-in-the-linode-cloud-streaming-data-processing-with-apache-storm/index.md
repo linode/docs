@@ -14,7 +14,7 @@ external_resources:
 - '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
 dedicated_cpu_link: true
-aliases: ['/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm/']
+aliases: []
 ---
 
 [Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.

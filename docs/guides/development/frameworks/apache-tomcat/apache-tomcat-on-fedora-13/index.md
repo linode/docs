@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["apache tomcat fedora 13", "java", "java fedora 13", "java servlets fedora 13", "java fedora"]
 tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/frameworks/apache-tomcat/fedora-13/','/websites/frameworks/apache-tomcat-on-fedora-13/','/development/frameworks/apache-tomcat/apache-tomcat-on-fedora-13/','/development/frameworks/apache-tomcat-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

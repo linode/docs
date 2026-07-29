@@ -8,7 +8,7 @@ published: 2021-07-01
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/websites/how-to-install-certbot-on-centos-8/','/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/','/guides/how-to-install-certbot-on-centos-8/']
+aliases: []
 relations:
     platform:
         key: how-to-use-certbot-with-nginx

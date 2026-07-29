@@ -20,7 +20,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/squid/squid-http-proxy-centos-8/']
+aliases: []
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on CentOS 8. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:

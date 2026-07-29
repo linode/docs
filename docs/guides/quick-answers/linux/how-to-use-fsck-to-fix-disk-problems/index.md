@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
+aliases: []
 ---
 
 ![Header image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg "Using fsck to Find and Repair Disk Errors and Bad Sectors")

@@ -8,7 +8,7 @@ published: 2017-05-08
 keywords: ["coreos", "container linux", "login", "core"]
 tags: ["container","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/linux/log-in-to-coreos-container-linux/','/quick-answers/log-in-to-coreos-container-linux/']
+aliases: []
 ---
 
 The `root` user is not active by default in Container Linux, so root login is not available. Instead, log in as the `core` user.

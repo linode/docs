@@ -8,7 +8,7 @@ published: 2010-10-28
 modified: 2012-10-08
 keywords: ["redis ubuntu 10.10", "redis maverick", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/redis-on-ubuntu-10-10-maverick/','/databases/redis/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: how-to-install-redis

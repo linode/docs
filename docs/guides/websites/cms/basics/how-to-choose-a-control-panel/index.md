@@ -8,7 +8,7 @@ published: 2018-08-01
 keywords: ["control panel", "cpanel", "whm", "plesk", "vesta", "vestacp", "virtualmin", "virtualmin pro", "webmin"]
 tags: ["monitoring","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/basics/how-to-choose-a-control-panel/','/websites/cms/how-to-choose-a-control-panel/']
+aliases: []
 ---
 
 ## What is a Control Panel?

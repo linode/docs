@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2010-09-30
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clusters-with-mongodb/']
+aliases: []
 external_resources:
  - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
  - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'

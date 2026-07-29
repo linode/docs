@@ -8,7 +8,7 @@ published: 2014-10-13
 modified: 2019-01-15
 keywords: ["filezilla", "ftp", "scp", "sftp", "transfer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/file-transfer/filezilla/','/networking/file-transfer/transfer-files-filezilla/']
+aliases: []
 external_resources:
  - '[FileZilla Documentation](https://wiki.filezilla-project.org/Documentation)'
 ---

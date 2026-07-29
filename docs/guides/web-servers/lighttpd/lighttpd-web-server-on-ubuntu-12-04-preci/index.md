@@ -8,7 +8,7 @@ published: 2013-09-11
 keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lighttpd/ubuntu-12-04-precise/','/web-servers/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
+aliases: []
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod\_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'

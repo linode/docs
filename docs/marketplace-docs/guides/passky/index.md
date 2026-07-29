@@ -6,7 +6,7 @@ keywords: ['passky','password manager','security','authentication']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
-aliases: ['/products/tools/marketplace/guides/passky/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

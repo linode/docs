@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-debian-5-lenny/','/websites/frameworks/apache-tomcat-on-debian-5-lenny/','/development/frameworks/apache-tomcat-on-debian-5-lenny/','/frameworks/apache-tomcat/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

@@ -13,7 +13,7 @@ external_resources:
 - '[Metricbeat Modules](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-modules.html)'
 - '[Elastic Container Monitoring](https://www.elastic.co/docker-kubernetes-container-monitoring)'
 - '[Docker Command-Line Reference](https://docs.docker.com/reference/)'
-aliases: ['/applications/containers/how-to-monitor-containers-with-the-elastic-stack/']
+aliases: []
 ---
 
 ![Container Instrumentation with the Elastic Stack](container-instrumentation-with-the-elastic-stack.png "Container Instrumentation with the Elastic Stack")

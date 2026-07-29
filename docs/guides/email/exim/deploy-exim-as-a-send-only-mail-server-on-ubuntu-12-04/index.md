@@ -9,7 +9,7 @@ modified: 2014-01-21
 keywords: ["exim", "ubuntu 12.04", "send-only email", "mail server", "linux mail", "smtp server"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/exim/deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04/','/email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','/email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
+aliases: []
 external_resources:
  - '[Exim Homepage](http://www.exim.org/)'
  - '[Email Guides](/cloud/guides/email/)'

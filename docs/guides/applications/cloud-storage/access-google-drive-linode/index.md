@@ -9,7 +9,7 @@ modified: 2016-03-17
 keywords: ["google", "drive", "console", "fuse", "apt", "ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/cloud-storage/access-google-drive-linode/']
+aliases: []
 deprecated: true
 ---
 

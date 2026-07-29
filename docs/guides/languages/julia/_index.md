@@ -1,4 +1,4 @@
 ---
 title: Julia
-aliases: ['/languages/julia/']
+aliases: []
 ---

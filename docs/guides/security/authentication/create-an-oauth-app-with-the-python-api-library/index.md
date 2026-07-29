@@ -13,7 +13,7 @@ image: how-to-create-an-oauth-app-with-the-linode-python-api-library.png
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ['linode','api','python','library','oauth']
 tags: ["linode platform","python","managed hosting"]
-aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/']
+aliases: []
 ---
 
 Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://techdocs.akamai.com/linode-api/reference/api). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.

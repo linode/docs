@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-debian-5-lenny/','/communications/xmpp/ejabberd/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-ejabberd

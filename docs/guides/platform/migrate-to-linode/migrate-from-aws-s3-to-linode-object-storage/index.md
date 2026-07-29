@@ -7,7 +7,7 @@ contributors: ["John Dutton"]
 published: 2024-09-23
 keywords: ['migrate','migration','object storage','aws','s3','rclone']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/migrate-to-linode-object-storage/']
+aliases: []
 external_resources:
 - '[Linode Object Storage product documentation](https://techdocs.akamai.com/cloud-computing/docs/object-storage)'
 - '[Linode Object Storage guides & tutorials](/cloud/guides/platform/object-storage/)'

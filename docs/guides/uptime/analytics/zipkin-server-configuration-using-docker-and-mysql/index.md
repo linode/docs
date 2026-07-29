@@ -9,7 +9,7 @@ modified: 2017-10-27
 keywords: ["zipkin", "Docker", "tracking"]
 tags: ["docker","statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/zipkin-server-configuration-using-docker-and-mysql/','/uptime/zipkin-server-configuration-using-docker-and-mysql/']
+aliases: []
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---

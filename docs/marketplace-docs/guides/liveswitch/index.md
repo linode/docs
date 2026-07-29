@@ -7,7 +7,7 @@ keywords: ['liveswitch','streaming','video']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
-aliases: ['/products/tools/marketplace/guides/liveswitch/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

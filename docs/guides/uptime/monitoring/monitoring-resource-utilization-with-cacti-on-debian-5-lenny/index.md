@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["Cacti", "Debian", "Lenny", "SNMP"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/monitoring/monitoring-resource-utilization-with-cacti-on-debian-5-lenny/','/server-monitoring/cacti/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: install-cacti-monitoring

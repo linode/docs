@@ -9,7 +9,7 @@ modified: 2014-01-15
 keywords: ["squirrelmail", "ubuntu", "12.04", "mail client"]
 tags: ["ubuntu","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/clients/installing-squirrelmail-on-ubuntu-12-04/','/email/squirrelmail-ubuntu12-04/']
+aliases: []
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 relations:

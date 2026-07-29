@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/proxies/using-apache-for-proxy-and-clustering-services-on-ubuntu-10-04-lucid/','/web-servers/apache/proxy-configuration/proxy-and-clustering-services-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering

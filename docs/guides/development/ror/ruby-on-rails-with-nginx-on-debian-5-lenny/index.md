@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["ruby on rails", "rails on debian", "ruby on nginx", "rails apps"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/frameworks/ruby-on-rails-nginx/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: ruby-on-rails-nginx

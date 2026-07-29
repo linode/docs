@@ -10,7 +10,7 @@ modified: 2019-02-01
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 dedicated_cpu_link: true
-aliases: ['/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/']
+aliases: []
 ---
 
 ![How to Scrape a Website with BeautifulSoup](beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")

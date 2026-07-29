@@ -7,7 +7,7 @@ contributors: ["Alex Fornuto"]
 published: 2012-10-25
 keywords: ["redis ubuntu 12.04", "redis precise pangolin", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/redis-on-ubuntu-12-04-precise-pangolin/','/databases/redis/ubuntu-12-04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'

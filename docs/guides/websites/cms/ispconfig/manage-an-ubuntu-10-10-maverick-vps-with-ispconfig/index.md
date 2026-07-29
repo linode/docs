@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/control-panels/ispconfig/ubuntu-10-10-maverick/','/websites/cms/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/','/websites/cms/ispconfig/manage-an-ubuntu-10-10-maverick-vps-with-ispconfig/']
+aliases: []
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig

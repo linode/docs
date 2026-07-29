@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2020-11-17
 modified: 2020-11-06
 keywords: ["alias command bashrc"]
-aliases: ['/quick-answers/linux/how-to-add-linux-alias-command-in-bashrc-file/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
 ---

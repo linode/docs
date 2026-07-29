@@ -4,7 +4,7 @@ description: "Deploy MainConcept Plugins for FFmpeg demo, an enterprise ready se
 published: 2023-09-14
 keywords: ['ffmpeg','encoding','decoding','video','vvc','hevc','avc','mpeg-h','xhe-aac','mpeg-2 ts']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/mainconcept-ffmpeg-plugins-demo/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

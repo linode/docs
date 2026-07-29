@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 tags: ["web server","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/','/web-servers/cherokee/php-fastcgi-fedora-13/']
+aliases: []
 relations:
     platform:
         key: cherokee-php-fastcgi

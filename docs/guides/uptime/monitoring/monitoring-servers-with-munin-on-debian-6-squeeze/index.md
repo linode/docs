@@ -9,7 +9,7 @@ modified: 2011-11-08
 keywords: ["munin", "monitoring"]
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze/','/server-monitoring/munin/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: install-munin-monitoring

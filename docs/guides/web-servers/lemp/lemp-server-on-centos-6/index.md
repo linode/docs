@@ -9,7 +9,7 @@ modified: 2013-01-08
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lemp/lemp-server-on-centos-6/','/web-servers/lemp/lemp-server-on-centos-6/','/lemp-guides/centos-6/']
+aliases: []
 external_resources:
  - '[Basic nginx Configuration](/cloud/guides/how-to-configure-nginx/)'
  - '[Clustered Web Servers and Software Load Balancing with nginx](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)'

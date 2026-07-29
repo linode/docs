@@ -10,7 +10,7 @@ published: 2011-11-14
 modified: 2021-07-07
 keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache-tips-and-tricks/modevasive-on-apache/','/websites/apache-tips-and-tricks/modevasive-on-apache/','/web-servers/apache/mod-evasive/']
+aliases: []
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]

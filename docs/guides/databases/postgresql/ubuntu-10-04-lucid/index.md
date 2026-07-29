@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","postgresql"]
-aliases: ['/databases/postgresql/ubuntu-10-04-lucid/']
+aliases: []
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---

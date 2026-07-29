@@ -9,7 +9,7 @@ published: 2011-11-10
 modified: 2018-12-19
 keywords: ["apache", " mod_security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache/mod-security/','/web-servers/apache-tips-and-tricks/modsecurity-on-apache/','/web-servers/apache-tips-and-tricks/configure-modsecurity-on-apache/']
+aliases: []
 external_resources:
  - '[ModSecurity Home Page](http://www.modsecurity.org)'
  - '[OWASP Home Page](https://www.owasp.org/index.php/Main_Page)'

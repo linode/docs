@@ -15,7 +15,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
-aliases: ['/development/r/how-to-deploy-rshiny-server-on-ubuntu-and-debian/']
+aliases: []
 ---
 
 ![How to Deploy Interactive R Apps with Shiny Server](shiny-server.jpg)

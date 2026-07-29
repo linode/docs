@@ -18,7 +18,7 @@ relations:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 18.04
-aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/cms/install-wordpress-ubuntu-18-04/']
+aliases: []
 ---
 
 ## What is WordPress?

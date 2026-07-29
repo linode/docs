@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["prosody", "prosody ubuntu karmic", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/prosody/ubuntu-9-10-karmic/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: how-to-install-prosody

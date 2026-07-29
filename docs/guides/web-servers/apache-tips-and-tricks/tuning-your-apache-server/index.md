@@ -8,7 +8,7 @@ published: 2015-02-27
 modified: 2019-02-01
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache-tips-and-tricks/tuning-your-apache-server/','/web-servers/apache-tips-and-tricks/tuning-your-apache-server/']
+aliases: []
 external_resources:
  - '[Apache Performance Tuning](https://httpd.apache.org/docs/2.4/misc/perf-tuning.html)'
  - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.4/mod/mpm_common.html)'

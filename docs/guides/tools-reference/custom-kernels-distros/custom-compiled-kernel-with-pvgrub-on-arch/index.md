@@ -13,7 +13,7 @@ relations:
         key: custom-compiled-kernel-pvgrub
         keywords:
             - distribution: Arch Linux
-aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-on-arch/']
+aliases: []
 deprecated: true
 ---
 

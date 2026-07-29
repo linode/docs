@@ -9,7 +9,7 @@ keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'
-aliases: ['/development/awk/introduction-to-awk/','/development/introduction-to-awk/']
+aliases: []
 ---
 
 ## What is AWK?

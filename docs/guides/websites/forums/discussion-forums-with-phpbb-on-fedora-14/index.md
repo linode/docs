@@ -9,7 +9,7 @@ modified: 2013-10-01
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/discussion-forums-with-phpbb-on-fedora-14/','/web-applications/bulletin-boards/phpbb/fedora-14/']
+aliases: []
 relations:
     platform:
         key: how-to-install-phpbb

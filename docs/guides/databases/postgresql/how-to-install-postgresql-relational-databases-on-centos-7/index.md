@@ -15,7 +15,7 @@ relations:
         key: use-postrgesql-database
         keywords:
             - distribution: CentOS 7
-aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/','/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/']
+aliases: []
 tags: ["database","postgresql","centos"]
 ---
 

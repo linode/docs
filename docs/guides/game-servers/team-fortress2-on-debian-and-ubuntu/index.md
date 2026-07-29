@@ -9,7 +9,7 @@ modified: 2019-02-01
 keywords: ["team fortress 2", "team fortress", "steam", "ubuntu", "debian"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/','/game-servers/team-fortress2-on-debian-and-ubuntu/']
+aliases: []
 dedicated_cpu_link: true
 ---
 

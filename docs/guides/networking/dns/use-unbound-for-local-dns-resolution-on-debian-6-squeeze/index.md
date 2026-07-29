@@ -9,7 +9,7 @@ modified: 2011-05-13
 keywords: ["unbound debian 6", "unbound debian squeeze", "dns debian", "dns", "resolving", "caching", "unbound", "debian"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-guides/unbound-dns-resolver-debian-6-squeeze/','/networking/dns/use-unbound-for-local-dns-resolution-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

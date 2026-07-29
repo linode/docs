@@ -9,7 +9,7 @@ modified: 2015-01-21
 keywords: ["wordpress", "mysql", "replication", "master-master", "high availability"]
 tags: ["debian","ubuntu","wordpress","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
+aliases: []
 deprecated: true
 ---
 

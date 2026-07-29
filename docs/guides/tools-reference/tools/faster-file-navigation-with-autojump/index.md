@@ -12,7 +12,7 @@ external_resources:
  - '[autojump GitHub](https://github.com/wting/autojump)'
  - '[Autojump Is a Faster Way to Browse Your Filesystem – Lifehacker](https://lifehacker.com/5583546/autojump-is-a-faster-way-to-browse-your-filesystem)'
 tags: ["linux"]
-aliases: ['/tools-reference/tools/faster-file-navigation-with-autojump/']
+aliases: []
 ---
 
 ## What is autojump?

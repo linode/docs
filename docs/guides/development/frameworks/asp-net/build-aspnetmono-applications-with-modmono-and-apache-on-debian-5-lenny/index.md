@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/asp-net/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/frameworks/mod-mono/debian-5-lenny/','/development/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/','/websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key:  asp-mono-apache

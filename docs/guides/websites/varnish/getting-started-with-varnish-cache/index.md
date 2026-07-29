@@ -8,7 +8,7 @@ published: 2014-02-05
 modified: 2017-02-24
 keywords: ["Varnish", "Ubuntu", "Debian", "Cache", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/varnish/getting-started-with-varnish-cache/','/web-servers/varnish/']
+aliases: []
 external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---

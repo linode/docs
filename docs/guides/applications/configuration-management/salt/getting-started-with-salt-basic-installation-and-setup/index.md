@@ -8,7 +8,7 @@ published: 2015-09-22
 modified: 2019-01-02
 keywords: ["salt", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/install-and-configure-salt-master-and-minion-servers/','/applications/salt/install-salt/','/applications/configuration-management/install-salt/','/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/','/applications/configuration-management/salt/getting-started-with-salt-basic-installation-and-setup/']
+aliases: []
 image: GettingStartedwithSalt.png
 tags: ["automation","salt"]
 ---

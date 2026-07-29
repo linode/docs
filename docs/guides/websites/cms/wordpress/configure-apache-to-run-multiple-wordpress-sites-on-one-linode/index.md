@@ -9,7 +9,7 @@ modified: 2018-12-17
 keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 tags: ["ubuntu","apache","lamp","wordpress","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/wordpress/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/','/websites/cms/configure-apache-to-run-multiple-wordpress-sites-on-one-linode/']
+aliases: []
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'

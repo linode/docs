@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/forums/discussion-forums-with-phpbb-on-debian-5-lenny/','/web-applications/bulletin-boards/phpbb/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-phpbb

@@ -9,7 +9,7 @@ modified: 2020-12-03
 keywords: ["migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linode platform"]
-aliases: ['/platform/migrate-to-linode/best-practices-when-migrating-to-linode/']
+aliases: []
 ---
 
 This guide describes the recommended strategy for migrating your services from another host to Linode. The specific steps you need to carry out vary depending on the software you use. However, the high-level outline is generally the same regardless of the nature of your service. The [Migrate to Linode](/cloud/guides/platform/migrate-to-linode/) section offers other guides which describe migrating particular services in more detail.

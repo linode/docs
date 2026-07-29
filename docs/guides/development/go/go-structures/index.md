@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ATutorialforLearningStructsinGo.png
 external_resources:
   - '[Go](https://golang.org)'
-aliases: ['/development/go/go-structures/']
+aliases: []
 ---
 
 ## Introduction

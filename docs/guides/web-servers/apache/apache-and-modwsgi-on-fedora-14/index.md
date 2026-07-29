@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","fedora","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-and-modwsgi-on-fedora-14/','/web-servers/apache/apache-and-modwsgi-on-fedora-14/','/web-servers/apache/mod-wsgi/fedora-14/']
+aliases: []
 relations:
     platform:
         key: apache-mod-wsgi

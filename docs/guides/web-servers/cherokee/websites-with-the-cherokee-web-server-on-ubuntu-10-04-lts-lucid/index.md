@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["cherokee", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/','/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: install-cherokee-server

@@ -7,7 +7,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-29
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drush-on-centos-8/']
+aliases: []
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: InstallDrushonCentOS8.png

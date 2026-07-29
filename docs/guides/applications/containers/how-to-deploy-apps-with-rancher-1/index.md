@@ -11,7 +11,7 @@ tags: ["container","docker","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
-aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-1/']
+aliases: []
 deprecated: true
 deprecated_link: applications/containers/how-to-deploy-apps-with-rancher/
 ---

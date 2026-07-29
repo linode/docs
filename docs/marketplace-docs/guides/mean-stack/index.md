@@ -11,7 +11,7 @@ external_resources:
 - '[Angular Getting Started](https://angular.io/start)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 - '[PM2 Getting Started](https://pm2.keymetrics.io/docs/usage/quick-start/)'
-aliases: ['/products/tools/marketplace/guides/mean-stack/','/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/', '/guides/deploy-mean-with-one-click-apps/','/guides/deploy-mean-with-marketplace-apps/','/guides/mean-stack-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

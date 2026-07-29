@@ -9,7 +9,7 @@ published: 2019-03-26
 keywords: ["helm", "kubernetes", "container", "k8s"]
 tags: ["kubernetes","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/']
+aliases: []
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm 2 Documentation](https://v2.helm.sh/docs/)'

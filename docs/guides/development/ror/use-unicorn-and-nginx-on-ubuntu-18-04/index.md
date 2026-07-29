@@ -9,7 +9,7 @@ published: 2020-01-03
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 18.04", " nginx", "reverse proxy", "ubuntu 18.04"]
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/','/websites/ror/use-unicorn-and-nginx-on-ubuntu-18-04/']
+aliases: []
 image: UseUnicornandNginxtoConfigureRubyon-RailsApplicationsonUbuntu1804.png
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'

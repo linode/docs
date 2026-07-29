@@ -9,7 +9,7 @@ modified: 2018-01-02
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/install-odoo-10-on-ubuntu-16-04/','/websites/erp/install-odoo-10-on-ubuntu-16-04/']
+aliases: []
 external_resources:
  - '[Odoo User Documentation](https://www.odoo.com/documentation/user/10.0/)'
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'

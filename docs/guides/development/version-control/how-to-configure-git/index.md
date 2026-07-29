@@ -15,7 +15,7 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
-aliases: ['/development/version-control/how-to-configure-git/']
+aliases: []
 ---
 
 ![Git Started Today](git_getting_started.png)

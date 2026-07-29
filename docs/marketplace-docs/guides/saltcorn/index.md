@@ -7,7 +7,7 @@ keywords: ['saltcorn','database','development']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
-aliases: ['/products/tools/marketplace/guides/saltcorn/','/guides/saltcorn-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

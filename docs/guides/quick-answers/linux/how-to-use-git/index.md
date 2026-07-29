@@ -6,7 +6,7 @@ authors: ["Angel Guarisma"]
 contributors: ["Angel Guarisma"]
 published: 2017-06-19
 modified: 2017-07-17
-aliases: ['/quick-answers/linux/how-to-use-git/','/quick-answers/how-to-use-git/']
+aliases: []
 keywords: ["Linux", "how to use Git", "github", "create git repo"]
 tags: ["version control system","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

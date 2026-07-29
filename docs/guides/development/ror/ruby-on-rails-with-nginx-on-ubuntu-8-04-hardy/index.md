@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["ruby on rails", "rails on ubuntu", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/','/frameworks/ruby-on-rails-nginx/ubuntu-8-04-hardy/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy/']
+aliases: []
 relations:
     platform:
         key: ruby-on-rails-nginx

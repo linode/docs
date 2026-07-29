@@ -9,7 +9,7 @@ published: 2020-01-31
 modified: 2024-05-16
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']
+aliases: []
 image: Installing_MariaDB_on_Debian10.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'

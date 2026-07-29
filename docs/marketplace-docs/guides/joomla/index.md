@@ -6,7 +6,7 @@ keywords: ['joomla','csm','website']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
-aliases: ['/products/tools/marketplace/guides/joomla/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

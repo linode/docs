@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","postgresql"]
-aliases: ['/databases/postgresql/ubuntu-9-10-karmic/']
+aliases: []
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---

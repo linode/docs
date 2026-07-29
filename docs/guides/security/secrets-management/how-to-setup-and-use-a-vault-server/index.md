@@ -8,7 +8,7 @@ contributors: ["Hackersploit"]
 published: 2021-03-26
 keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
+aliases: []
 tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png
 external_resources:

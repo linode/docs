@@ -9,7 +9,7 @@ modified: 2013-10-03
 keywords: ["directadmin", " reseller", " accounts"]
 tags: ["web server","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/directadmin/creating-accounts-on-directadmin/','/websites/cms/creating-accounts-on-directadmin/','/web-applications/control-panels/directadmin/directadmin-accounts/']
+aliases: []
 deprecated: true
 ---
 

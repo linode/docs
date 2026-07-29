@@ -8,7 +8,7 @@ published: 2009-10-19
 modified: 2011-08-22
 keywords: ["winscp", "ftp", "windows scp", "sftp", "windows sftp program"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/file-transfer/transfer-files-winscp/','/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/']
+aliases: []
 deprecated: true
 ---
 

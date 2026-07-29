@@ -6,7 +6,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2015-04-03
 modified: 2020-12-01
-aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/','/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu/']
+aliases: []
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "debian", "ubuntu"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

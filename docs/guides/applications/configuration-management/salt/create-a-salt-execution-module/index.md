@@ -12,7 +12,7 @@ image: CreateaSaltExecutionModule.png
 external_resources:
 - '[Writing Execution Modules](https://docs.saltproject.io/en/latest/ref/modules/)'
 - '[Execution of Salt Modules From Within States](https://docs.saltproject.io/en/latest/ref/states/all/salt.states.module.html#execution-of-salt-modules-from-within-states)'
-aliases: ['/applications/configuration-management/create-a-salt-execution-module/','/applications/configuration-management/salt/create-a-salt-execution-module/']
+aliases: []
 tags: ["automation","salt"]
 ---
 

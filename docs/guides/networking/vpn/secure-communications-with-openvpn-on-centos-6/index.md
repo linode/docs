@@ -9,7 +9,7 @@ modified: 2013-12-23
 keywords: ["openvpn", "networking", "vpn", "centos"]
 tags: ["networking","security","vpn","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/secure-communications-with-openvpn-on-centos-6/','/networking/openvpn/centos-6/']
+aliases: []
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'

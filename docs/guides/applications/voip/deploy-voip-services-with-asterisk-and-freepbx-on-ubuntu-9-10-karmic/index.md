@@ -9,7 +9,7 @@ modified: 2013-08-02
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-9-10-karmic/','/communications/voip-services-ubuntu9-10/']
+aliases: []
 dedicated_cpu_link: true
 relations:
     platform:

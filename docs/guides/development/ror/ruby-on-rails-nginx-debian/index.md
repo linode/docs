@@ -10,7 +10,7 @@ modified: 2017-12-28
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ror/ruby-on-rails-nginx-debian-8/','/development/ror/ruby-on-rails-nginx-debian/','/development/ror/ruby-on-rails-nginx-debian-8/']
+aliases: []
 external_resources:
  - '[Passenger Official Debian 9 Installation Guide](https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/)'
  - '[Ruby and Passenger Quickstart](https://www.phusionpassenger.com/library/walkthroughs/start/ruby.html#preparing-the-example-application)'

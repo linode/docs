@@ -9,7 +9,7 @@ modified: 2017-07-28
 keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", "ubuntu 16.04 "]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lamp/install-lamp-on-ubuntu-18-04/','/websites/lamp/install-lamp-on-ubuntu-16-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/']
+aliases: []
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

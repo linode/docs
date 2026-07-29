@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "debian"]
 tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/project-management/egroupware/debian-5-lenny/','/applications/project-management/power-team-collaboration-with-egroupware-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: collaborate-with-egroupware

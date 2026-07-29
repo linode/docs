@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["nginx arch linux", "nginx arch", "nginx fastcgi", "nginx php"]
 tags: ["web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/php-fastcgi/arch-linux/','/web-servers/nginx/nginx-and-phpfastcgi-on-arch-linux/','/websites/nginx/nginx-and-phpfastcgi-on-arch-linux/']
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi

@@ -16,7 +16,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["web server"]
-aliases: ['/web-servers/caddy/install-caddy-archlinux/']
+aliases: []
 ---
 
 ## Before You Begin

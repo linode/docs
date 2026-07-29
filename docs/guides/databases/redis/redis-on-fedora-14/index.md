@@ -8,7 +8,7 @@ published: 2010-12-06
 modified: 2013-09-24
 keywords: ["redis fedora 14", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/fedora-14/','/databases/redis/redis-on-fedora-14/']
+aliases: []
 relations:
     platform:
         key: how-to-install-redis

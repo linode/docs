@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Vagrant](http://www.vagrantup.com)'
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
-aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environments/','/applications/configuration-management/vagrant-linode-environments/']
+aliases: []
 deprecated: true
 ---
 

@@ -8,7 +8,7 @@ published: 2010-05-05
 modified: 2014-08-13
 keywords: ["oracle ubuntu 10.04", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/oracle/10g-ubuntu-10-04-lucid/','/databases/oracle/oracle-10g-express-edition-on-ubuntu-10-04-lts-lucid/']
+aliases: []
 relations:
     platform:
         key: install-oracle10g-express

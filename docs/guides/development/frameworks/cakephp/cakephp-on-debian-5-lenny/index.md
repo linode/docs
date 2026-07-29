@@ -9,7 +9,7 @@ modified: 2014-02-10
 keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 tags: ["web applications","lamp","php","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/frameworks/cakephp/','/websites/frameworks/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp/cakephp-on-debian-5-lenny/','/development/frameworks/cakephp-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key:  cake-php

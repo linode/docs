@@ -8,7 +8,7 @@ published: 2014-06-17
 keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/voip/deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise/','/communications/voip-services-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[Asterisk Documentation](http://www.asterisk.org/docs)'
  - '[Asterisk Community](http://www.asterisk.org/community)'

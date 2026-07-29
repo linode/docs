@@ -8,7 +8,7 @@ published: 2018-02-23
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 tags: ["python","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/','/applications/containers/kubernetes/deploy-minio-on-kubernetes-using-kubespray-and-ansible/']
+aliases: []
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)'

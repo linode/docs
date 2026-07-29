@@ -5,7 +5,7 @@ description: "A collection of guides to help you learn how to deploy each Quick 
 modified: 2024-04-29
 tab_group_main:
     weight: 30
-aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one-click-apps/guides/']
+aliases: []
 ---
 
 ## Basics
@@ -51,6 +51,7 @@ aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one
 - [HashiCorp Nomad](/cloud/marketplace-docs/guides/hashicorp-nomad/)
 - [HashiCorp Vault](/cloud/marketplace-docs/guides/hashicorp-vault/)
 - [Hermes Agent](/cloud/marketplace-docs/guides/hermes/)
+- [Haystack](/cloud/marketplace-docs/guides/haystack/)
 - [InfluxDB](/cloud/marketplace-docs/guides/influxdb/)
 - [Jenkins](/cloud/marketplace-docs/guides/jenkins/)
 - [JetBackup](/cloud/marketplace-docs/guides/jetbackup/)
@@ -69,8 +70,9 @@ aliases: ['/products/tools/marketplace/guides/','/products/tools/marketplace-one
 - [Mastodon](/cloud/marketplace-docs/guides/mastodon/)
 - [MEAN Stack](/cloud/marketplace-docs/guides/mean-stack/)
 - [MERN Stack](/cloud/marketplace-docs/guides/mern-stack/)
+- [Microsoft Agent Framework](/cloud/marketplace-docs/guides/microsoft-agent-framework/)
 - [Microweber](/cloud/marketplace-docs/guides/microweber/)
-- [Minecraft ](/cloud/marketplace-docs/guides/minecraft/)
+- [Minecraft](/cloud/marketplace-docs/guides/minecraft/)
 - [Moodle](/cloud/marketplace-docs/guides/moodle/)
 - [MySQL/MariaDB](/cloud/marketplace-docs/guides/mysql/)
 - [NATS Single Node](/cloud/marketplace-docs/guides/nats-single-node/)

@@ -10,7 +10,7 @@ keywords: ["Saltstack", " salt", " salt-ssh"]
 tags: ["automation","salt","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ConfigureandUseSaltSSHtoManageyourLinodes.png
-aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/','/applications/configuration-management/salt/configure-and-use-salt-ssh/']
+aliases: []
 ---
 
 ## Introduction to Salt SSH

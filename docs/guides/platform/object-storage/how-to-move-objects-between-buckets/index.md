@@ -12,7 +12,7 @@ image: Moving_Objects_Between_Buckets_in_Linode_Object_Storage_1200x631.png
 external_resources:
 - '[Cyberduck duck documentation](https://trac.cyberduck.io/wiki/help/en/howto/cli)'
 tags: ["linode platform"]
-aliases: ['/platform/object-storage/how-to-move-objects-between-buckets/']
+aliases: []
 ---
 
 {{% content "object-storage-ga-shortguide" %}}

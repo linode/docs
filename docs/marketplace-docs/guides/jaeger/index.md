@@ -7,7 +7,7 @@ keywords: ['distributed tracing', 'tracing','microservices','monitoring','observ
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Jaeger Official Documentation](https://www.jaegertracing.io/docs/)'
-aliases: ['/products/tools/marketplace/guides/jaeger/','/guides/jaeger-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

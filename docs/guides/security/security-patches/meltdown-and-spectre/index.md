@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2018-01-11
 modified: 2018-11-08
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
-aliases: ['/security/security-patches/meltdown-and-spectre/','/security/meltdown-and-spectre/','/platform/meltdown_statement/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 promo_default: false
 external_resources:

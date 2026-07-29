@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["debian tls certificate", "debian ssl certificate", "debian self certified"]
 tags: ["debian", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-debian-10/']
+aliases: []
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:

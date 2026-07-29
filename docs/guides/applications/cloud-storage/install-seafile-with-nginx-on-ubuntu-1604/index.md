@@ -11,7 +11,7 @@ tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
-aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
+aliases: []
 deprecated: true
 ---
 

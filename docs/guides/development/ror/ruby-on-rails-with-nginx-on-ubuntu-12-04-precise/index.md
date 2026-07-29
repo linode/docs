@@ -9,7 +9,7 @@ modified: 2014-02-11
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/','/frameworks/ruby-on-rails-nginx/ubuntu-12-04-precise/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/index.cfm/','/development/ror/ruby-on-rails-with-nginx-on-ubuntu-12-04-precise/']
+aliases: []
 external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'

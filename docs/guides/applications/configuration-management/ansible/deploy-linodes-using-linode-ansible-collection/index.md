@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2022-07-14
 keywords: ['ansible','Linode Ansible Collection','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/deploy-linodes-using-linode-collection/']
+aliases: []
 external_resources:
 - '[Ansible Collections](https://github.com/ansible-collections/overview)'
 - '[The Linode Ansible collection](https://github.com/linode/ansible_linode)'

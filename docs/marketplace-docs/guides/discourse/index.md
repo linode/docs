@@ -9,7 +9,7 @@ external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'
 - '[Discourse Community](https://meta.discourse.org)'
-aliases: ['/products/tools/marketplace/guides/discourse/','/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

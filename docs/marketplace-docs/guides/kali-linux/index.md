@@ -9,7 +9,7 @@ external_resources:
 - '[What is Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)'
 - '[Should I Use Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)'
 - '[Kali Linux official documentation](https://www.kali.org/docs/)'
-aliases: ['/products/tools/marketplace/guides/kali-linux/','/products/tools/marketplace/guides/kalilinux/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -12,7 +12,7 @@ external_resources:
   - '[Official WordPress Image on Docker Hub](https://hub.docker.com/_/wordpress/)'
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
   - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
-aliases: ['/quick-answers/linux/wordpress-with-docker-compose/']
+aliases: []
 ---
 
 ![Install WordPress with Docker Compose](install-wordpress-with-docker-compose.png "Install WordPress with Docker Compose")

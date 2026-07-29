@@ -9,7 +9,7 @@ modified: 2011-04-19
 keywords: ["joomla", "cms", "content management systems"]
 tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/joomla/','/websites/cms/joomla/manage-web-content-with-joomla/','/websites/cms/manage-web-content-with-joomla/']
+aliases: []
 deprecated: true
 ---
 

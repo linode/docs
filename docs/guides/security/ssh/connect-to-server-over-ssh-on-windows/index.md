@@ -11,7 +11,7 @@ keywords: ['ssh','linux','windows','connect to server over ssh','connect to lino
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: SSHWINDOWS.jpg
-aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
+aliases: []
 relations:
     platform:
         key: connecting-to-server-over-ssh

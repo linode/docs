@@ -8,7 +8,7 @@ published: 2010-04-26
 modified: 2018-04-26
 keywords: ["version control", "hg", "mercurial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/manage-distributed-version-control-with-mercurial/','/linux-tools/version-control/mercurial/','/applications/development/manage-distributed-version-control-with-mercurial/']
+aliases: []
 external_resources:
  - '[HG Init, a Guide by Joel Spolsky](http://hginit.com/)'
 audiences: ["beginner"]

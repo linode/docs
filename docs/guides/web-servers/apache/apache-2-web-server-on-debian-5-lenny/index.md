@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-2-web-server-on-debian-5-lenny/','/web-servers/apache/installation/debian-5-lenny/','/web-servers/apache/apache-2-web-server-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

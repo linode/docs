@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["groupware", "email", "collaboration", "ubuntu", "karmic"]
 tags: ["ubuntu", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-ubuntu-9-10-karmic/','/web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: collaborate-with-egroupware

@@ -7,7 +7,7 @@ tags: ["ubuntu","quick deploy apps", "web applications","linode platform", "clou
 external_resources:
 - '[About OpenBao](https://openbao.org/)'
 - '[OpenBao] Documentation](https://openbao.org/docs/)'
-aliases: ['/products/tools/marketplace/guides/openbao/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

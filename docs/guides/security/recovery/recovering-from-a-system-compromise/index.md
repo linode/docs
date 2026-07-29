@@ -9,7 +9,7 @@ modified: 2018-04-18
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/recovery/recovering-from-a-system-compromise/','/troubleshooting/compromise-recovery/','/security/recovering-from-a-system-compromise/']
+aliases: []
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")

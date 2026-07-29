@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ABeginnersGuidetoSalt.png
 external_resources:
  - '[SaltStack Documentation](https://docs.saltproject.io/)'
-aliases: ['/applications/configuration-management/beginners-guide-to-salt/','/applications/configuration-management/salt/beginners-guide-to-salt/']
+aliases: []
 tags: ["automation","salt"]
 ---
 

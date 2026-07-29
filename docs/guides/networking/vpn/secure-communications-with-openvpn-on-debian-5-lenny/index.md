@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["openvpn", "networking", "vpn", "debian", "lenny"]
 tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/openvpn/debian-5-lenny/','/networking/vpn/secure-communications-with-openvpn-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: secure-communications-openvpn

@@ -9,7 +9,7 @@ published: 2011-11-08
 modified: 2022-01-14
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/using-nano/','/linux-tools/text-editors/nano/','/tools-reference/tools/use-nano-text-editor-commands/']
+aliases: []
 tags: ["linux"]
 ---
 

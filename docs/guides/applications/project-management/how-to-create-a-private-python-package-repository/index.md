@@ -13,7 +13,7 @@ external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
  - '[pypiserver/pypiserver on GitHub](https://github.com/pypiserver/pypiserver)'
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
-aliases: ['/applications/project-management/how-to-create-a-private-python-package-repository/']
+aliases: []
 ---
 
 ![How to Create a Private Python Package Repository](Private_Python_Pack_Repo.jpg "How to Create a Private Python Package Repository")

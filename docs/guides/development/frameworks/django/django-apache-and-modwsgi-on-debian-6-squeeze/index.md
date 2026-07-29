@@ -9,7 +9,7 @@ modified: 2011-05-13
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-6-squeeze/','/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','/frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: django-apache-modwsgi

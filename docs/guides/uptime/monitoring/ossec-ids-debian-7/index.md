@@ -6,7 +6,7 @@ authors: ["Sunday Ogwu-Chinuwa"]
 contributors: ["Sunday Ogwu-Chinuwa"]
 published: 2015-02-05
 keywords: ["IDS", " Intrusion Detection System"]
-aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7/']
+aliases: []
 tags: ["debian","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

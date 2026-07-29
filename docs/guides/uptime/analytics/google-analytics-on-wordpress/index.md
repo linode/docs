@@ -12,7 +12,7 @@ external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for Websites](/cloud/guides/google-analytics-for-websites/)'
-aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
+aliases: []
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.

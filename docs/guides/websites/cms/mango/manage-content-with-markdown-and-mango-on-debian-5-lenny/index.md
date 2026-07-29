@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/mango/debian-5-lenny/','/websites/cms/mango/manage-content-with-markdown-and-mango-on-debian-5-lenny/','/websites/cms/manage-content-with-markdown-and-mango-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: manage-content-with-markdown-and-mango

@@ -9,7 +9,7 @@ modified: 2011-06-07
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/proxy-configuration/proxy-and-clustering-services-debian-5-lenny/','/websites/proxies/using-apache-for-proxy-and-clustering-services-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering

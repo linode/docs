@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2016-04-20
 modified: 2017-02-20
 keywords: ["redis", " centos 7", " redis cluster", " centos"]
-aliases: ['/databases/redis/deploy-redis-on-centos-7/','/databases/redis/install-and-configure-redis-on-centos-7/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'

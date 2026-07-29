@@ -8,7 +8,7 @@ published: 2010-10-13
 modified: 2013-10-03
 keywords: ["osCommerce", "Fedora", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/e-commerce/oscommerce/fedora-13/','/websites/ecommerce/oscommerce-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: how-to-install-osCommerce

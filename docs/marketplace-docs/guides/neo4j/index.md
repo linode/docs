@@ -5,7 +5,7 @@ published: 2026-02-23
 modified: 2026-02-23
 keywords: ['neo4j', 'graph-database', 'cypher', 'bolt', 'graph-analytics', 'database', 'graph']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "database", "graph-database"]
-aliases: ['/products/tools/marketplace/guides/neo4j/']
+aliases: []
 external_resources:
 - '[Neo4j Documentation](https://neo4j.com/docs/)'
 - '[Cypher Query Language Manual](https://neo4j.com/docs/cypher-manual/current/)'

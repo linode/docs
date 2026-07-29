@@ -7,7 +7,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-02-29
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
-aliases: ['/websites/cms/drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drush-drupal/']
+aliases: []
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Drush_onUbuntu1804.png

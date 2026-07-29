@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["openfire debian 6", "openfire debian squeeze", "openfire linux", "linux xmpp", "instant messaging", "real-time messaging", "xmpp server", "chat software", "linux jabber server"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-debian-6-squeeze/','/communications/xmpp/openfire/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: how-to-install-openfire

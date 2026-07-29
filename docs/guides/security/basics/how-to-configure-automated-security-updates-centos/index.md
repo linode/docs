@@ -9,7 +9,7 @@ published: 2020-10-22
 keywords: ["centos automated security upgrades", "centos cockpit dashboard"]
 tags: ["centos", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/basics/how-to-configure-automated-security-updates-centos/']
+aliases: []
 relations:
     platform:
         key: automated-security-upgrades

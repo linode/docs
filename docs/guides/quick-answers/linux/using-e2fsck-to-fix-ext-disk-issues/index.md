@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
+aliases: []
 ---
 
 ## What is e2fsck?

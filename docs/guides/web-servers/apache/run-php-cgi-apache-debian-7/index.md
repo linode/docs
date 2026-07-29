@@ -9,7 +9,7 @@ modified: 2015-11-18
 keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','/web-servers/apache/php-cgi/debian-7-wheezy/','/web-servers/apache/run-php-cgi-apache-debian-7/','/websites/apache/run-php-cgi-apapache-debian-7/']
+aliases: []
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'

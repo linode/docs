@@ -9,7 +9,7 @@ modified: 2018-03-21
 keywords: ["nginx", "lemp", "php"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lemp/install-a-lemp-stack-on-debian/','/web-servers/lemp/lemp-server-on-debian-8/','/websites/lemp/lemp-server-on-debian-8/','/web-servers/lemp/lemp-stack-on-debian-8/']
+aliases: []
 relations:
     platform:
         key: install-lemp-stack

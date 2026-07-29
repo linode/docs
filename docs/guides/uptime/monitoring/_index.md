@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2009-07-16
 keywords: ["server monitoring", "cacti", "monit", "munin", "nagios", "rrdtool"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/','/uptime/monitoring/']
+aliases: []
 show_in_lists: true
 ---
 

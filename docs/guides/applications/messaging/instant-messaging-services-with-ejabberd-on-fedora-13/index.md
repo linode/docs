@@ -9,7 +9,7 @@ modified: 2013-09-24
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/ejabberd/fedora-13/','/applications/messaging/instant-messaging-services-with-ejabberd-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: how-to-install-ejabberd

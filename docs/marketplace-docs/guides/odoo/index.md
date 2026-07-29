@@ -7,7 +7,7 @@ keywords: ['odoo','business','crm','ecommerce']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
-aliases: ['/products/tools/marketplace/guides/odoo/','/guides/odoo-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

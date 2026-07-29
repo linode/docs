@@ -11,7 +11,7 @@ keywords: ['kubernetes','cloud controller manager','load balancing','nodebalance
 tags: ["docker","networking","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: TutInstall_LinCCM_UnmanagedKubCluster.png
-aliases: ['/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/','/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/']
+aliases: []
 ---
 
 The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) provides a way for Kubernetes clusters to access additional Linode services. Linode’s CCM provides access to Linode’s load balancing service, [Linode NodeBalancers](https://techdocs.akamai.com/cloud-computing/docs/nodebalancer).

@@ -9,7 +9,7 @@ modified: 2013-09-26
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","nginx","fedora","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/','/frameworks/sinatra/fedora-14/','/development/frameworks/sinatra/sinatra-framework-and-nginx-on-fedora-14/']
+aliases: []
 relations:
     platform:
         key: sinatra-nginx

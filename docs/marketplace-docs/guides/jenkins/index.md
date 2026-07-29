@@ -9,7 +9,7 @@ external_resources:
 - '[Creating Your First Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/hello-world/)'
 - '[Managing Jenkins Masters and Nodes](https://jenkins.io/doc/book/managing/)'
 - '[Managing Jenkins Plugins](https://jenkins.io/doc/book/managing/plugins/)'
-aliases: ['/products/tools/marketplace/guides/jenkins/','/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-one-click-apps/','/guides/how-to-deploy-jenkins-with-marketplace-apps/','/guides/jenkins-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

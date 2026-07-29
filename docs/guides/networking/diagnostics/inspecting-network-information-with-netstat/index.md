@@ -10,7 +10,7 @@ tags: ["monitoring","networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[netstat](http://netstat.net/)'
-aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/','/networking/diagnostics/inspecting-network-information-with-netstat/']
+aliases: []
 ---
 
 The `netstat` command line utility shows information about the network status of a workstation or server. `netstat` is available on Unix-like and Windows operating systems, with some differences in its usage between these systems.

@@ -8,7 +8,7 @@ published: 2021-03-26
 keywords: ["how to secure cpanel", "how to protect cpanel from hackers"]
 tags: ["security","cpanel","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/basics/securing-cpanel/']
+aliases: []
 image: cPanelSecurity.png
 ---
 

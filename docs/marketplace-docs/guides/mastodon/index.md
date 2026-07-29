@@ -8,7 +8,7 @@ tags: ["linode platform","mastodon","quick deploy apps","cloud-manager",]
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
   - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
-aliases: ['/products/tools/marketplace/guides/mastodon/','/guides/mastodon-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

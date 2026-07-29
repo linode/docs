@@ -8,7 +8,7 @@ contributors: ["Gabriel Cánepa"]
 published: 2017-10-02
 modified: 2022-12-27
 keywords: ["neovim", "text", "editor", "vim", "nvim", "plugins"]
-aliases: ['/tools-reference/how-to-install-neovim-and-plugins-with-vim-plug/','/tools-reference/tools/how-to-install-neovim-and-plugins-with-vim-plug/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[NeoVim official website](https://neovim.io)'

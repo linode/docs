@@ -10,7 +10,7 @@ keywords: ['migrate','Google Cloud Platform','GCP','Linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: L_MigrateFromGCPtoLin.png
 tags: ["linode platform"]
-aliases: ['/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/']
+aliases: []
 ---
 
 This guide describes the recommended strategy for migrating your services from a Google Cloud Platform (GCP) VM instance to Linode. The specific steps you’ll need to carry out will vary depending on the software you use, but the high-level outline is generally the same regardless of the nature of your service. The Migrate to Linode section offers other guides which describe migrating particular services in more detail.

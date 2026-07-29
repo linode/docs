@@ -9,7 +9,7 @@ published: 2016-05-09
 keywords: ["apache tomcat ubuntu 16.04", "tomcat java", "java ubuntu 16.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-16-04/','/websites/frameworks/apache-tomcat-on-ubuntu-16-04/','/development/frameworks/apache-tomcat-on-ubuntu-16-04/']
+aliases: []
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

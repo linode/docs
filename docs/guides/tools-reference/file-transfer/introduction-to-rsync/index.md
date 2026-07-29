@@ -8,7 +8,7 @@ published: 2009-09-08
 modified: 2017-09-14
 keywords: ["rsync", "backup", "back up", "copy", "file transfer", "synchronize", "sync"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/introduction-to-rsync/','/linux-tools/utilities/rsync/']
+aliases: []
 external_resources:
  - '[rsync Linux Man Page](https://linux.die.net/man/1/rsync)'
  - '[Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)'

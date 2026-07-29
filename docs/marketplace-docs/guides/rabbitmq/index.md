@@ -7,7 +7,7 @@ keywords: ['rabbitmq', 'message broker', 'scheduling']
 tags: ["debian", "quick deploy apps", "web applications", "linode platform", "cloud manager"]
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
-aliases: ['/products/tools/marketplace/guides/rabbitmq/','/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/','/guides/deploy-rabbitmq-with-marketplace-apps/','/guides/rabbitmq-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -11,7 +11,7 @@ tags: ["proxy","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
-aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']
+aliases: []
 ---
 
 ## What is a Reverse Proxy?

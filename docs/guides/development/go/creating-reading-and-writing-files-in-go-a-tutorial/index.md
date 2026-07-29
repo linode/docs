@@ -13,7 +13,7 @@ external_resources:
   - '[The os package](https://golang.org/pkg/os/)'
   - '[The io package](https://golang.org/pkg/io/)'
   - '[The viper package](https://github.com/spf13/viper)'
-aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/']
+aliases: []
 ---
 
 ## Introduction

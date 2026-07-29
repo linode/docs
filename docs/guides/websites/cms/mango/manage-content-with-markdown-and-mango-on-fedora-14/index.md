@@ -9,7 +9,7 @@ modified: 2013-10-02
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/mango/manage-content-with-markdown-and-mango-on-fedora-14/','/web-applications/cms-guides/mango/fedora-14/','/websites/cms/manage-content-with-markdown-and-mango-on-fedora-14/']
+aliases: []
 relations:
     platform:
         key: manage-content-with-markdown-and-mango

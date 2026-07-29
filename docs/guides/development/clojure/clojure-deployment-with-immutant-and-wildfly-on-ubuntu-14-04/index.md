@@ -9,7 +9,7 @@ modified: 2015-12-21
 keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 tags: ["java", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/clojure/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','/applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/','/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
+aliases: []
 external_resources:
   - '[Installing Leiningen](http://leiningen.org/#install)'
   - '[Installing Oracle JDK 8](https://launchpad.net/~webupd8team/+archive/java)'

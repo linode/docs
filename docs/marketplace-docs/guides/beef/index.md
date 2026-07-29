@@ -7,7 +7,7 @@ keywords: ['security','vulnerability','penetration testing']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[BeEF](https://beefproject.com/)'
-aliases: ['/products/tools/marketplace/guides/beef/','/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

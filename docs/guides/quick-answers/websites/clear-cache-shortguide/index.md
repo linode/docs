@@ -9,7 +9,7 @@ published: 2018-06-28
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ClearCacheAndCookies.png
-aliases: ['/quick-answers/websites/clear-cache-shortguide/']
+aliases: []
 ---
 
 A browser's cache improves website loading performance by reducing the data processing and fetching.  When a sizeable amount of cached content is  stored, it slows down the system and reduces the performance of the application.

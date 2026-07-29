@@ -1,4 +1,4 @@
 ---
 title: Java
-aliases: ['/languages/java/']
+aliases: []
 ---

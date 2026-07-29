@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2014-04-09
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/','/databases/mongodb/ubuntu-12/']
+aliases: []
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'

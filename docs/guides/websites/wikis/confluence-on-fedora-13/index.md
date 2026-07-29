@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/confluence/fedora-13/','/websites/wikis/confluence-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: using-confluence

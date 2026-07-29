@@ -6,7 +6,7 @@ keywords: ['vector database','database','chromadb']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ChromaDB Official Documentation](https://www.trychroma.com/)'
-aliases: ['/products/tools/marketplace/guides/chromadb/','/guides/chromadb-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

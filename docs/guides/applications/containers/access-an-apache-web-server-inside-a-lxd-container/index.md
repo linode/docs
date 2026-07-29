@@ -13,7 +13,7 @@ external_resources:
   - '[Blog post series on LXD 2.0](https://stgraber.org/2016/03/11/lxd-2-0-blog-post-series-012/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
-aliases: ['/applications/containers/access-an-apache-web-server-inside-a-lxd-container/']
+aliases: []
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)

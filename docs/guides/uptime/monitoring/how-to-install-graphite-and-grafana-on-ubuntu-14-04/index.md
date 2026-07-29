@@ -6,7 +6,7 @@ authors: ["Sergey Pariev"]
 contributors: ["Sergey Pariev"]
 published: 2015-12-02
 keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "analytics"]
-aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/']
+aliases: []
 tags: ["monitoring","postregsql","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

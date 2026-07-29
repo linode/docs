@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["nagios", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/monitoring/monitor-services-with-nagios-on-ubuntu-10-10-maverick/','/server-monitoring/nagios/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: install-nagios-monitoring

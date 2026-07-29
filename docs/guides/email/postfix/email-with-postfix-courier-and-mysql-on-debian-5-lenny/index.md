@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on debian", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/','/email/postfix/courier-mysql-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: email-postfix-courier-mysql

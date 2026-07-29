@@ -14,7 +14,7 @@ keywords: ["apache debian 8", "linux web server", "elasticsearch", "logstash", "
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
-aliases: ['/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/']
+aliases: []
 relations:
     platform:
         key: visualize-apache-logs-using-elastic-stack

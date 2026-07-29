@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["postfix ubuntu 10.10", "dovecot ubuntu 10.10", "ubuntu 10.10 mail server", "dovecot", "email", "ubuntu", "maverick"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/dovecot-mysql-ubuntu-10-10-maverick/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: email-postfix-dovecot-mysql

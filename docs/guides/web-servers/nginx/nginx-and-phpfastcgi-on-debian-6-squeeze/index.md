@@ -9,7 +9,7 @@ modified: 2011-06-15
 keywords: ["nginx", "nginx debian 6", "nginx fastcgi", "nginx php"]
 tags: ["web server","debian","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-debian-6-squeeze/','/web-servers/nginx/php-fastcgi/debian-6-squeeze/','/websites/nginx/nginx-and-phpfastcgi-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi

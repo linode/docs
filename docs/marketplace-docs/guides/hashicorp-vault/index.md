@@ -4,7 +4,7 @@ description: "Deploy HashiCorp Vault, an open source, centralized secrets manage
 published: 2022-08-09
 keywords: ['HashiCorp','vault','secrets',]
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/hashicorp-vault/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

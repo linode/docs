@@ -8,7 +8,7 @@ published: 2017-03-30
 keywords: ["apache", "centos", "rss", "reader", "ttrss", "tt-rss"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/','/websites/apache/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7/']
+aliases: []
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
 ---

@@ -8,7 +8,7 @@ published: 2014-01-28
 keywords: ["docker", "ubuntu", "centos", "container"]
 tags: ["ubuntu","container","docker","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/docker.md/','/applications/containers/what-is-docker/','/containers/docker/']
+aliases: []
 deprecated: true
 ---
 

@@ -8,7 +8,7 @@ published: 2023-08-22
 keywords: ['kubernetes','pulumi','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation","managed hosting"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
-aliases: ['/products/compute/kubernetes/guides/deploy-cluster-using-pulumi/']
+aliases: []
 external_resources:
 - '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/cloud/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
 - '[Deploying a Static Site on Linode Kubernetes Engine](/cloud/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'

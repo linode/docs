@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["apache fedora 13", "fedora web server", "linux web server"]
 tags: ["web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/apache-2-web-server-on-fedora-13/','/web-servers/apache/installation/fedora-13/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

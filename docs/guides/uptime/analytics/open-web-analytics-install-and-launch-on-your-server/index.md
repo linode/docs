@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
-aliases: ['/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/']
+aliases: []
 ---
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.

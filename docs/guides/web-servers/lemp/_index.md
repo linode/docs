@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-06-29
 keywords: ["LEMP", "LEMP stack", "LEMP server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lemp/','/web-servers/lemp/','/lemp-guides/']
+aliases: []
 show_in_lists: true
 ---
 

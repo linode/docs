@@ -10,7 +10,7 @@ modified: 2017-11-10
 keywords: ["webmin", "control", "panel", "admin panel"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/how-to-install-a-webmin-control-panel-and-modules/','/websites/cms/webmin-control-panel/','/web-applications/control-panels/webmin/installing-webmin/']
+aliases: []
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'

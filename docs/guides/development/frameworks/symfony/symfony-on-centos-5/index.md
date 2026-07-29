@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["cakephp", "cakephp debian", "php framework", "CentOS", "develop php"]
 tags: ["web applications","apache","php","centos","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/symfony-on-centos-5/','/development/frameworks/symfony/symfony-on-centos-5/','/frameworks/symfony/']
+aliases: []
 deprecated: true
 ---
 

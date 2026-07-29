@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: Debian 9
 tags: ["debian","database","nosql"]
-aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-debian-9/']
+aliases: []
 deprecated: true
 ---
 

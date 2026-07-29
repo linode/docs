@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
-aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mail-in-a-box/how-to-create-an-email-server-with-mail-in-a-box/','/guides/how-to-create-an-email-server-with-mail-in-a-box/']
+aliases: []
 image: Mail_in_a_box.jpg
 ---
 

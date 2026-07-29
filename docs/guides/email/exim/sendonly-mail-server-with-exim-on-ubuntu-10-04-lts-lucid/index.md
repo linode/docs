@@ -9,7 +9,7 @@ modified: 2013-09-26
 keywords: ["exim", "exim ubuntu 10.04", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 tags: ["ubuntu","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/exim/send-only-mta-ubuntu-10-04-lucid/','/email/exim/sendonly-mail-server-with-exim-on-ubuntu-10-04-lts-lucid/']
+aliases: []
 relations:
     platform:
         key: deploy-exim-sendonly-email

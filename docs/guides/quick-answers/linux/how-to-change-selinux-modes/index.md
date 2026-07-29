@@ -8,7 +8,7 @@ contributors: ["Angel Guarisma"]
 published: 2017-06-22
 modified: 2017-10-18
 keywords: ["selinux"]
-aliases: ['/quick-answers/linux/how-to-change-selinux-modes/','/quick-answers/linux/how-to-disable-selinux/']
+aliases: []
 tags: ["fedora","centos","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

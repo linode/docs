@@ -20,7 +20,7 @@ relations:
         key: get-started-selinux
         keywords:
             - distribution: CentOS 8
-aliases: ['/security/selinux/a-beginners-guide-to-selinux-on-centos-8/']
+aliases: []
 ---
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.

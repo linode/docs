@@ -7,7 +7,7 @@ contributors: ["Scott Sumner"]
 published: 2015-07-23
 modified: 2019-02-01
 keywords: ["teamspeak", "virtual intercom", "chat", "game server"]
-aliases: ['/game-servers/install-teamspeak/','/applications/game-servers/install-teamspeak/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'

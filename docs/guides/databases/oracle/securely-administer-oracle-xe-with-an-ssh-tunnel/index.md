@@ -8,7 +8,7 @@ published: 2010-01-28
 modified: 2011-05-17
 keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/oracle/ssh-tunnel/','/databases/oracle/securely-administer-oracle-xe-with-an-ssh-tunnel/']
+aliases: []
 external_resources:
  - '[Using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'

@@ -9,7 +9,7 @@ modified: 2011-05-02
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/','/lamp-guides/ubuntu-8-04-hardy/','/web-servers/lamp/lamp-server-on-ubuntu-8-04-lts-hardy/']
+aliases: []
 external_resources:
 - '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
 - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'

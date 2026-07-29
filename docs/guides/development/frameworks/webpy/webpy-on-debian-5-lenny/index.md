@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/webpy/webpy-on-debian-5-lenny/','/frameworks/webpy/debian-5-lenny/','/development/frameworks/webpy-on-debian-5-lenny/','/websites/frameworks/webpy-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: webpy

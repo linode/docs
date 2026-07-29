@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/ikiwiki-on-ubuntu-10-04-lucid/','/web-applications/wikis/ikiwiki/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

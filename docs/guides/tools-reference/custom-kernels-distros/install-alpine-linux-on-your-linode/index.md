@@ -16,7 +16,7 @@ relations:
         key: how-to-install-linux
         keywords:
             - distribution: Alpine
-aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
+aliases: []
 deprecated: True
 ---
 

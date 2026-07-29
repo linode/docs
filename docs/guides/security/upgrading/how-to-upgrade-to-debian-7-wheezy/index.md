@@ -8,7 +8,7 @@ published: 2013-05-10
 keywords: ["debian upgrade", "upgrade distro", "wheezy upgrade", "wheezy"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/upgrading/upgrade-to-debian-7-wheezy/','/security/upgrading/how-to-upgrade-to-debian-7-wheezy/']
+aliases: []
 relations:
     platform:
         key: how-to-upgrade-debian

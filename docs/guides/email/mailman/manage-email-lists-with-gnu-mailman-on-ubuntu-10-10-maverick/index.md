@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/mailman/ubuntu-10-10-maverick/','/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: use-gnu-mailman

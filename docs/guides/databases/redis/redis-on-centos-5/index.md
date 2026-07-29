@@ -8,7 +8,7 @@ published: 2010-08-05
 modified: 2013-07-07
 keywords: ["redis centos 5", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/centos-5/','/databases/redis/redis-on-centos-5/']
+aliases: []
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
  - '[Redis Configuration](http://redis.io/topics/config)'

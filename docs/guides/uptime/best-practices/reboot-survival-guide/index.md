@@ -8,7 +8,7 @@ published: 2015-02-27
 modified: 2015-10-28
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
+aliases: []
 image: reboot-survival-guide.png
 ---
 

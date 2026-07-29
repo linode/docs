@@ -6,7 +6,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2014-11-21
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/']
+aliases: []
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

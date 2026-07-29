@@ -9,7 +9,7 @@ modified: 2017-11-27
 keywords: ["openssl", "apache ssl", "subjectaltname", "ssl linux"]
 tags: ["apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/multipls-ssl-sites-using-subjectaltname/','/security/ssl/using-openssls-subjectaltname-with-multiple-site-domains/','/security/ssl-certificates/subject-alternate-names/', '/ssl-guides/subject-alt-name-ssl/']
+aliases: []
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---

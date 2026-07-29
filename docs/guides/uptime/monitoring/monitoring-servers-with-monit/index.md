@@ -11,7 +11,7 @@ external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 tags: ["monitoring"]
-aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
+aliases: []
 ---
 
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should.

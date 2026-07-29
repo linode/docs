@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["zimbra debian 5", "zimbra lenny", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/zimbra/email-and-calendars-with-zimbra-6-on-debian-5-lenny/','/email/zimbra/install-zimbra-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: zimbra-groupware

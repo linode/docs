@@ -1,4 +1,4 @@
 ---
 title: Ruby
-aliases: ['/languages/ruby/']
+aliases: []
 ---

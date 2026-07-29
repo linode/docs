@@ -9,7 +9,7 @@ modified: 2013-09-27
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/','/frameworks/webpy/ubuntu-12-04-precise-pangolin/','/development/frameworks/webpy/webpy-on-ubuntu-12-04-precise-pangolin/','/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/']
+aliases: []
 relations:
     platform:
         key: webpy

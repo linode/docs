@@ -9,7 +9,7 @@ modified: 2019-01-02
 keywords: ["pritunl", "vpn", "vpn server", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+aliases: []
 deprecated: true
 ---
 

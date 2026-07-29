@@ -9,7 +9,7 @@ modified: 2020-12-04
 keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
+aliases: []
 relations:
     platform:
         key: iredmail

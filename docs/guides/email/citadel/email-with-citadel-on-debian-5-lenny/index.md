@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["citadel", "debian mail server", "groupware", "email server", "email howto"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/citadel/email-with-citadel-on-debian-5-lenny/','/email/citadel/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: email-with-citadel

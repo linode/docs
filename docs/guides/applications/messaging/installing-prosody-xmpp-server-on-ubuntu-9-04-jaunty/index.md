@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["prosody", "prosody ubuntu jaunty", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/prosody/ubuntu-9-04-jaunty/','/applications/messaging/installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty/']
+aliases: []
 relations:
     platform:
         key: how-to-install-prosody

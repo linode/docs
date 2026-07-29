@@ -7,7 +7,7 @@ contributors: ["Elle Krout"]
 published: 2015-02-27
 modified: 2019-02-01
 keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
-aliases: ['/databases/mysql/mysql-performance-tuning-tutorial/','/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/','/databases/mysql/tuning-your-mysql-database/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'

@@ -8,5 +8,5 @@ keywords: ["linode", "akamai"]
 tags: ["linode platform", "akamai platform", "use case"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/guides/akamai/get-started/']
+aliases: []
 ---

@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/basics/how-to-secure-phpmyadmin/']
+aliases: []
 image: Securing_phpMyAdmin.png
 ---
 

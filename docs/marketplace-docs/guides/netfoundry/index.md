@@ -9,7 +9,7 @@ external_resources:
 - '[NetFoundry](https://netfoundry.io/)'
 - '[NetFoundry official documentation](https://support.netfoundry.io/hc/en-us)'
 - '[Create and Manage Edge Routers - NetFoundry documentation](https://support.netfoundry.io/hc/en-us/articles/360044956032-Create-and-Manage-Edge-Routers)'
-aliases: ['/products/tools/marketplace/guides/netfoundry/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

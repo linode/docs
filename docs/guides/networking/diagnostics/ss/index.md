@@ -11,7 +11,7 @@ tags: ["networking","statistics","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'
-aliases: ['/networking/diagnostics/ss/']
+aliases: []
 ---
 
 ## Introduction

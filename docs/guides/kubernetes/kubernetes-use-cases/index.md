@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2019-09-04
 keywords: ['kubernetes', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/','/kubernetes/kubernetes-use-cases/']
+aliases: []
 tags: ["kubernetes"]
 ---
 

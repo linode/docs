@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/webalizer-on-debian-5-lenny/','/web-applications/analytics/webalizer/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: using-webalizer-analytics

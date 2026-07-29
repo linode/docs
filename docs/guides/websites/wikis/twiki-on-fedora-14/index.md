@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/twiki-on-fedora-14/','/web-applications/wikis/twiki/fedora-14/']
+aliases: []
 relations:
     platform:
         key: install-twiki

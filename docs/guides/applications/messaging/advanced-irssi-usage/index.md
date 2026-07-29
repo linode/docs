@@ -9,7 +9,7 @@ modified: 2018-04-10
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 tags: ["perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/advanced-irssi-usage/','/communications/irc/advanced-irssi/']
+aliases: []
 external_resources:
  - '[Irssi Script Repository](http://scripts.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'

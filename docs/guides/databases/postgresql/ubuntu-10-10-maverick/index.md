@@ -14,7 +14,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","postgresql"]
-aliases: ['/databases/postgresql/ubuntu-10-10-maverick/']
+aliases: []
 deprecated: true
 deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 ---

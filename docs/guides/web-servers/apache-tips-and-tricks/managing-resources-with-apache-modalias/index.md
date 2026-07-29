@@ -8,7 +8,7 @@ published: 2010-02-24
 modified: 2011-08-22
 keywords: ["resources", "http", "files", "management", "mod_alias", "Alias", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache-tips-and-tricks/managing-resources-with-apache-modalias/','/web-servers/apache/configuration/managing-resources-with-apache-alias/','/web-servers/apache-tips-and-tricks/managing-resources-with-apache-modalias/']
+aliases: []
 external_resources:
  - '[Apache Installation](/cloud/guides/web-servers/apache/)'
  - '[LAMP Stack Guides](/cloud/guides/web-servers/lamp/)'

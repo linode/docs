@@ -9,7 +9,7 @@ published: 2018-03-21
 modified: 2024-05-06
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/','/applications/configuration-management/ansible/getting-started-with-ansible/']
+aliases: []
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'

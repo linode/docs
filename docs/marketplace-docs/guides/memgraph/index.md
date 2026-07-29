@@ -5,7 +5,7 @@ published: 2026-02-20
 modified: 2026-02-20
 keywords: ['memgraph', 'graph-database', 'cypher', 'bolt', 'real-time-analytics', 'database', 'graph']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "database", "graph-database"]
-aliases: ['/products/tools/marketplace/guides/memgraph/']
+aliases: []
 external_resources:
 - '[Memgraph Documentation](https://memgraph.com/docs)'
 - '[Memgraph Cypher Manual](https://memgraph.com/docs/querying/cypher)'

@@ -15,7 +15,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/security/upgrading/upgrade-to-ubuntu-18-04/']
+aliases: []
 image: upgrade-ubuntu-18-title.jpg
 ---
 

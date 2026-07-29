@@ -5,7 +5,7 @@ published: 2021-08-13
 modified: 2024-01-22
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/magicspam/','/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
+aliases: []
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
 build:

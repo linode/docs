@@ -8,7 +8,7 @@ published: 2010-03-24
 modified: 2011-04-29
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/ubuntu-9-10-karmic/','/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: use-mongodb-store-app-data

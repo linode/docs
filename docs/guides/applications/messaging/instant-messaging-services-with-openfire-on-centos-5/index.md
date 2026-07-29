@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["openfire", "openfire centos", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/communications/xmpp/openfire/centos-5/','/applications/messaging/instant-messaging-services-with-openfire-on-centos-5/']
+aliases: []
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'

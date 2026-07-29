@@ -7,5 +7,5 @@ published: 2019-10-09
 keywords: ["bash","shell","programming","language"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/development/bash/']
+aliases: []
 ---

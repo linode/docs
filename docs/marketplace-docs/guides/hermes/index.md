@@ -5,7 +5,7 @@ published: 2026-06-17
 modified: 2026-06-17
 keywords: ['AI', 'AI Agent']
 tags: ["quick deploy apps", "AI", "AI Agent"]
-aliases: ['/products/tools/marketplace/guides/hermes/','/guides/hermes/']
+aliases: []
 external_resources:
 - '[Hermes Agent](https://hermes-agent.nousresearch.com)'
 - '[Hermes Agent Documentation](https://hermes-agent.nousresearch.com/docs)'

@@ -9,7 +9,7 @@ modified: 2012-10-31
 keywords: ["nginx perl ubuntu 11.04", "nginx perl fastcgi", "nginx ubuntu natty", "fastscgi perl", "nginx ubuntu"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/perl-fastcgi/ubuntu-11-04-natty/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/','/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi

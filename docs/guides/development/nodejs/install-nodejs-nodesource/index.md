@@ -10,7 +10,7 @@ keywords: []
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
-aliases: ['/development/nodejs/install-nodejs-nodesource/']
+aliases: []
 ---
 
 1.  Use `curl` to download the setup script provided by NodeSource. Replace the Node version in the `curl` command with the [version you would like to install](https://github.com/nodesource/distributions/tree/master/deb):

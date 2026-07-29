@@ -15,7 +15,7 @@ external_resources:
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
 - '[NGINX](https://www.nginx.com/resources/wiki/)'
 - '[Gunicorn](http://docs.gunicorn.org/en/stable/)'
-aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
+aliases: []
 ---
 
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.

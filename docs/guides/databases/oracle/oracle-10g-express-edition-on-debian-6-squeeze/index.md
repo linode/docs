@@ -8,7 +8,7 @@ published: 2011-02-23
 modified: 2014-08-13
 keywords: ["oracle debian squeeze", "oracle 10g debian 6", "oracle debian 6", "oracle debian", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/oracle/oracle-10g-express-edition-on-debian-6-squeeze/','/databases/oracle/10g-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: install-oracle10g-express

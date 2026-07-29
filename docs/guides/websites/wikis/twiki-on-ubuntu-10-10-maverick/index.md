@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/twiki/ubuntu-10-10-maverick/','/websites/wikis/twiki-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: install-twiki

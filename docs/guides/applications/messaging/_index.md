@@ -1,6 +1,6 @@
 ---
 title: Messaging & Chat
-aliases: ['/applications/messaging/','/communications/xmpp/']
+aliases: []
 show_in_lists: true
 ---
 

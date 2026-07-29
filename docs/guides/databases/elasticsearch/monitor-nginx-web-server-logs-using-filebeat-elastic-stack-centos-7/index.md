@@ -13,7 +13,7 @@ keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kib
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 dedicated_cpu_link: true
 tags: ["analytics","database","centos","monitoring"]
-aliases: ['/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/']
+aliases: []
 ---
 ![Monitor NGINX Logs with Elastic](Monitor_NGINX_Elastic.jpg)
 

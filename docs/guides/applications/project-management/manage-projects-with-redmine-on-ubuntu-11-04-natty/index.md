@@ -9,7 +9,7 @@ modified: 2013-02-18
 keywords: ["redmine", "redmine ubuntu 11.04", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-11-04-natty/','/web-applications/project-management/redmine/ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: manage-projects-with-redmine

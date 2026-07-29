@@ -6,7 +6,7 @@ keywords: [ 'simplex','chat', 'server']
 tags: ["cloud","linode platform", "quick deploy apps"]
 external_resources:
 - '[SimpleX Official](https://simplex.chat/)'
-aliases: ['/products/tools/marketplace/guides/simplex/']
+aliases: []
 authors: ["Shum"]
 contributors: ["Shum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

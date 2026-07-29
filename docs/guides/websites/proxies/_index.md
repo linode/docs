@@ -1,5 +1,5 @@
 ---
 title:  Proxies
-aliases: ['/websites/proxies/']
+aliases: []
 ---
 

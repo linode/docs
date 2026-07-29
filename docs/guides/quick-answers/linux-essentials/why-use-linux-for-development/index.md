@@ -9,7 +9,7 @@ published: 2018-07-11
 keywords: ['linux', 'development', 'dev', 'develop', 'developing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux-essentials/why-use-linux-for-development/']
+aliases: []
 ---
 
 Linux is one of the most popular platforms used for development. Its widespread adoption stems from core design principles behind its kernel: to be extensible, efficient, modular, simple, robust and open source.

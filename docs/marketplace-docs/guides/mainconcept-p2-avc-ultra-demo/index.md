@@ -4,7 +4,7 @@ description: "Deploy MainConcept P2 AVC-ULTRA Transcoder demo, an enterprise rea
 published: 2023-09-14
 keywords: ['transcoder','encoder','video','panasonic','p2 avc-ultra','p2 avc-intra','p2 avc longg','avc-intra rp2027','rest api']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/mainconcept-p2-avc-ultra-demo/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

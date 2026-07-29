@@ -9,7 +9,7 @@ modified: 2014-01-15
 keywords: ["squirrelmail", "debian", "debian 7", "mail client"]
 tags: ["debian","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/squirrelmail-debian7/','/email/clients/installing-squirrelmail-on-debian-7/']
+aliases: []
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 relations:

@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ikiwiki debian lenny", "ikiwiki debian 5", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/ikiwiki-on-debian-5-lenny/','/web-applications/wikis/ikiwiki/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

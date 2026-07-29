@@ -8,7 +8,7 @@ published: 2021-12-17
 keywords: ["log4j","security","log4shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["security"]
-aliases: ['/security/mitigations/mitigating-log4j-vulnerabilities/']
+aliases: []
 ---
 
 ## Understanding log4j Vulnerabilities

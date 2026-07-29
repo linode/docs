@@ -8,7 +8,7 @@ published: 2010-11-29
 modified: 2018-02-21
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/manage-processes-with-killall-and-kill/','/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/','/linux-tools/common-commands/killall-kill/']
+aliases: []
 tags: ["linux"]
 ---
 

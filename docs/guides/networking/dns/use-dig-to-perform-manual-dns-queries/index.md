@@ -9,7 +9,7 @@ modified: 2018-05-22
 keywords: ["dig", "dns", "troubleshooting", "domain names"]
 tags: ["dns","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/use-dig-to-perform-manual-dns-queries/','/linux-tools/common-commands/dig/']
+aliases: []
 ---
 
 ![Use dig to Perform Manual DNS Queries](use-dig-to-perform-manual-dns-queries.jpg "Use dig to Perform Manual DNS Queries")

@@ -7,5 +7,5 @@ published: 2011-11-03
 modified: 2013-10-03
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/kloxo/','/web-applications/control-panels/kloxo/']
+aliases: []
 ---

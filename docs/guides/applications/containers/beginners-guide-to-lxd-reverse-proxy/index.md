@@ -19,7 +19,7 @@ external_resources:
   - '[NGINX Reverse Proxy Settings](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
   - '[Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/)'
   - '[TLS Termination Proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy)'
-aliases: ['/applications/containers/beginners-guide-to-lxd-reverse-proxy/']
+aliases: []
 ---
 
 ## Introduction

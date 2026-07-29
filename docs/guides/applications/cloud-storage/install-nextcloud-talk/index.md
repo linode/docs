@@ -12,7 +12,7 @@ tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
-aliases: ['/applications/cloud-storage/install-nextcloud-talk/']
+aliases: []
 ---
 
 ## What is Nextcloud 14?

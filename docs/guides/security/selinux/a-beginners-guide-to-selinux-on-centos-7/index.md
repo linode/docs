@@ -10,7 +10,7 @@ modified: 2017-07-21
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
-aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
+aliases: []
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'

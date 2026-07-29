@@ -10,7 +10,7 @@ modified: 2019-02-01
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
+aliases: []
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
 deprecated: true

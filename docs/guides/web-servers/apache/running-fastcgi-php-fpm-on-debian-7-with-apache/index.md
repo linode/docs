@@ -9,7 +9,7 @@ modified: 2014-08-16
 keywords: ["apache", "fastcgi", "php-fpm", "php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/','/web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/','/web-servers/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/','/websites/apache/php-fpm/debian-7/']
+aliases: []
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'

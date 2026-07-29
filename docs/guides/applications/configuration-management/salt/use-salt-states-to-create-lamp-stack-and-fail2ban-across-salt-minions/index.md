@@ -9,7 +9,7 @@ modified: 2019-01-02
 keywords: ["salt", "salt state", "lamp stack", "apache", "mysql", "php", "fail2ban", "salt minions", "debian 8"]
 tags: ["automation","salt","debian","lamp","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/salt/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/','/applications/configuration-management/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/','/applications/salt/salt-states-apache-mysql-php-fail2ban/','/applications/salt/use-salt-states-to-create-lamp-stack-and-fail2ban-across-salt-minions/']
+aliases: []
 image: UseSaltStatestoCreateLAMPStackandFail2banAcrossSaltminions.png
 ---
 

@@ -9,7 +9,7 @@ modified: 2021-06-22
 keywords: ["farmos", "Drupal", "LAMP"]
 tags: ["drupal", "lamp", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/install-farmos/']
+aliases: []
 ---
 
 ![Farm_OS Banner](FarmOS.png)

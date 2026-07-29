@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["apache", "proxypass", "apache on fedora", "multiple web servers"]
 tags: ["proxy","web server","apache","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-14/','/websites/apache/multiple-web-servers-with-proxypass-on-fedora-14/','/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-14/']
+aliases: []
 relations:
     platform:
         key: multiple-servers-proxypass

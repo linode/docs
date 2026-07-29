@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["nginx", "nginx debian", "nginx fastcgi", "nginx php"]
 tags: ["web server","debian","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/php-fastcgi/debian-5-lenny/','/web-servers/nginx/nginx-and-phpfastcgi-on-debian-5-lenny/','/websites/nginx/nginx-and-phpfastcgi-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi

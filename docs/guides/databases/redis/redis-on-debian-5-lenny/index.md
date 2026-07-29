@@ -8,7 +8,7 @@ published: 2010-07-27
 modified: 2012-10-08
 keywords: ["redis debian 5", "redis lenny", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/debian-5-lenny/','/databases/redis/redis-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-redis

@@ -12,7 +12,7 @@ external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Screen for Persistent Terminal Sessions](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
-aliases: ['/applications/messaging/using-weechat-for-irc/']
+aliases: []
 ---
 
 [WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.

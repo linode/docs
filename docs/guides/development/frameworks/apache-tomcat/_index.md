@@ -6,6 +6,6 @@ contributors: ["Linode"]
 published: 2020-04-15
 keywords: ["web applications", "web frameworks", "Linode applications", "tomcat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tomcat/','/development/frameworks/apache-tomcat/']
+aliases: []
 show_in_lists: true
 ---

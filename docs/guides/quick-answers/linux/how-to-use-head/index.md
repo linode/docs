@@ -7,7 +7,7 @@ contributors: ["Phil Zona"]
 published: 2017-04-10
 keywords: ["linux", "how to", "head", "first lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/linux/how-to-use-head/','/quick-answers/how-to-use-head/']
+aliases: []
 tags: ["linux"]
 ---
 

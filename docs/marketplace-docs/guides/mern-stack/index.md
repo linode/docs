@@ -10,7 +10,7 @@ external_resources:
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
 - '[Node.js Getting Started](https://nodejs.org/en/docs/guides/getting-started-guide/)'
-aliases: ['/products/tools/marketplace/guides/mern-stack/','/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', '/guides/deploy-mern-with-one-click-apps/','/guides/deploy-mern-with-marketplace-apps/','/guides/mern-stack-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

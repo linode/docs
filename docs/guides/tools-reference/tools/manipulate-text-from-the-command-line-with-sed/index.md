@@ -8,7 +8,7 @@ published: 2010-07-01
 modified: 2017-03-23
 keywords: ["sed", "find and replace", "regular expression", "unix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linux-tools/common-commands/sed/','/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/']
+aliases: []
 external_resources:
  - '[Administration Basics](/cloud/guides/linux-system-administration-basics/)'
 tags: ["linux"]

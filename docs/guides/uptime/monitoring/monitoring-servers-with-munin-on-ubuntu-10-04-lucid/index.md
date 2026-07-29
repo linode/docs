@@ -9,7 +9,7 @@ modified: 2013-10-01
 keywords: ["munin", "monitoring"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/munin/ubuntu-10-04-lucid/','/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: install-munin-monitoring

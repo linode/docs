@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: ApacheAirflowTut_CreateConn_Var.png
 external_resources:
 - '[Apache Airflow Official Documentation](https://airflow.apache.org/docs/stable/)'
-aliases: ['/applications/big-data/apache-airflow-tutorial-creating-connections-and-variables/']
+aliases: []
 ---
 
 ## What is Apache Airflow?

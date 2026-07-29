@@ -16,7 +16,7 @@ relations:
         key: install-caddy-server
         keywords:
             - distribution: CentOS 7
-aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
+aliases: []
 ---
 
 ![Install Caddy on CentOS](Caddy.jpg)

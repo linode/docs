@@ -8,7 +8,7 @@ published: 2010-11-30
 modified: 2011-04-19
 keywords: ["nagios", "server monitoring", "nagios linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/nagios/','/uptime/monitoring/nagios-server-monitoring/']
+aliases: []
 tags: ["monitoring"]
 deprecated: true
 ---

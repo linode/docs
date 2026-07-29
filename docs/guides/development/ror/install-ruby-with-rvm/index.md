@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
 tags: ["ruby"]
-aliases: ['/development/ror/install-ruby-with-rvm/']
+aliases: []
 ---
 
 1.  Install the mpapis GPG key:

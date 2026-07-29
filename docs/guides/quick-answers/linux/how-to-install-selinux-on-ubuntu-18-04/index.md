@@ -8,7 +8,7 @@ contributors: ["Angel Guarisma"]
 published: 2017-06-30
 modified: 2021-04-15
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
-aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
+aliases: []
 tags: ["ubuntu","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 relations:

@@ -8,7 +8,7 @@ published: 2010-04-02
 modified: 2014-01-13
 keywords: ["screen", "gnu screen", "terminal", "console", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linux-tools/utilities/screen/','/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/']
+aliases: []
 external_resources:
  - '[GNU Screen Home Page](http://www.gnu.org/software/screen/)'
  - '[GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)'

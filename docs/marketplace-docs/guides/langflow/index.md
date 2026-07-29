@@ -9,7 +9,7 @@ external_resources:
 - '[Langflow Documentation](https://docs.langflow.org/)'
 - '[Langflow Quickstart](https://docs.langflow.org/get-started-quickstart)'
 - '[Langflow Repository](https://github.com/langflow-ai/langflow)'
-aliases: ['/products/tools/marketplace/guides/langflow/','/platform/marketplace/langflow/','/guides/deploy-langflow-with-marketplace-apps/','/guides/langflow-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

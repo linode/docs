@@ -9,7 +9,7 @@ modified: 2021-12-29
 keywords: ["nginx", "lemp", "php", 'mariadb']
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/','/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/','/websites/lemp/lemp-server-on-centos-7-with-fastcgi/','/websites/lemp-guides/centos-7/']
+aliases: []
 image: lemp-on-centos-7-title-graphic.jpg
 ---
 

@@ -14,7 +14,7 @@ external_resources:
 - '[Tideways XHProf Extension](https://github.com/tideways/php-xhprof-extension)'
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/cloud/guides/how-to-use-docker-compose/)'
-aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
+aliases: []
 ---
 
 ## Goals For This Guide

@@ -8,7 +8,7 @@ published: 2014-01-22
 modified: 2017-09-05
 keywords: ["MySQL on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/centos-6/','/databases/mysql/how-to-install-mysql-on-centos-6/','/databases/mysql/using-mysql-relational-databases-on-centos-6-4/']
+aliases: []
 external_resources:
  - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'

@@ -9,7 +9,7 @@ modified: 2015-03-26
 keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-centos-5/','/email/postfix/dovecot-mysql-centos-5/']
+aliases: []
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
  - '[Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny)'

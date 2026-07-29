@@ -17,7 +17,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: CentOS 7
-aliases: ['/security/ssl/ssl-apache2-centos/']
+aliases: []
 ---
 
 ![SSL Certificates with Apache on CentOS](SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)

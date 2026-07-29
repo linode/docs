@@ -9,7 +9,7 @@ modified: 2024-11-14
 keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
+aliases: []
 external_resources:
 - '[MySQL Command-Line Client documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)'
 ---

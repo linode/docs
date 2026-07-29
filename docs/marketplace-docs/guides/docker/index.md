@@ -11,7 +11,7 @@ external_resources:
  - '[Docker Documentation](https://docs.docker.com/)'
  - '[Play with Docker](https://training.play-with-docker.com/)'
  - '[Docker Hub](https://www.docker.com/products/docker-hub)'
-aliases: ['/products/tools/marketplace/guides/docker/','/platform/marketplace/deploying-docker-with-marketplace-apps/', '/platform/one-click/deploying-docker-with-one-click-apps/','/guides/deploying-docker-with-one-click-apps/','/guides/deploying-docker-with-marketplace-apps/','/guides/docker-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

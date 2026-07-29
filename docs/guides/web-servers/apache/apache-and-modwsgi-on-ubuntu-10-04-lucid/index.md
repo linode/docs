@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/mod-wsgi/ubuntu-10-04-lucid/','/web-servers/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/','/websites/apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: apache-mod-wsgi

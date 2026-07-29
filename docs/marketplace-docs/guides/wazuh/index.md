@@ -7,7 +7,7 @@ keywords: ['security','vulnerability','monitoring']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
-aliases: ['/products/tools/marketplace/guides/wazuh/','/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

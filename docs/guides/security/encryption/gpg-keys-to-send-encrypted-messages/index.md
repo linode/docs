@@ -12,7 +12,7 @@ external_resources:
 - '[Primes, Modular Arithmetic, and Public Key Cryptography ](http://pi.math.cornell.edu/~mec/2003-2004/cryptography/diffiehellman/diffiehellman.html)'
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'
 tags: ["security"]
-aliases: ['/security/encryption/gpg-keys-to-send-encrypted-messages/']
+aliases: []
 ---
 
 ## What is GnuPG?

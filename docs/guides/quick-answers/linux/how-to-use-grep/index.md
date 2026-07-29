@@ -7,7 +7,7 @@ contributors: ["Phil Zona"]
 published: 2017-04-10
 modified: 2017-11-27
 keywords: ["linux", "how to", "grep", "filter"]
-aliases: ['/quick-answers/linux/how-to-use-grep/','/quick-answers/how-to-use-grep/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
 ---

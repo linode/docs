@@ -8,7 +8,7 @@ published: 2021-07-01
 keywords: ["Debian", "Certbot", "TLS", "SSL", "HTTPS", "Encryption", "NGINX"]
 tags: ["debian", "ssl", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/how-to-install-certbot-on-debian-10/']
+aliases: []
 relations:
     platform:
         key: how-to-use-certbot-with-nginx

@@ -7,7 +7,7 @@ contributors: ["Edward Angert"]
 published: 2017-04-13
 modified: 2017-07-17
 keywords: ["terminal", "command line", "shell", "tips", "tricks", "easy linux", "cli"]
-aliases: ['/quick-answers/linux/linux-command-line-tips/','/quick-answers/linux-command-line-tips/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
 ---

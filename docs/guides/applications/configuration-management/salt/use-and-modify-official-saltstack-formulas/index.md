@@ -12,7 +12,7 @@ image: UseandModifyOfficialSaltStackFormulas.png
 external_resources:
 - '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
-aliases: ['/applications/configuration-management/salt/use-and-modify-official-saltstack-formulas/','/applications/configuration-management/use-and-modify-official-saltstack-formulas/']
+aliases: []
 tags: ["automation","salt"]
 ---
 

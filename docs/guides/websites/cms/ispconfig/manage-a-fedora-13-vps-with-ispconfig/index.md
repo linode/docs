@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/ispconfig/manage-a-fedora-13-vps-with-ispconfig/','/websites/cms/manage-a-fedora-13-vps-with-ispconfig/','/web-applications/control-panels/ispconfig/fedora-13/']
+aliases: []
 relations:
     platform:
         key: manage-a-linode-with-ISPConfig

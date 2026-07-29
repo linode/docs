@@ -9,7 +9,7 @@ modified: 2018-12-31
 keywords: ["apache", "ubuntu", "ubuntu 14.04", "trusty tahr", "http", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/apache-web-server-on-ubuntu-14-04/','/websites/apache/apache-web-server-on-ubuntu-14-04/']
+aliases: []
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/cloud/guides/web-servers/apache-tips-and-tricks/)'

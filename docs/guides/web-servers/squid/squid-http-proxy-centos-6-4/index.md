@@ -8,7 +8,7 @@ published: 2014-03-03
 keywords: ["squid", "proxy", "centos", "6.4", "http"]
 tags: ["proxy","web server","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/squid/squid-http-proxy-centos-6-4/','/web-servers/squid/squid-http-proxy-centos-6-4/']
+aliases: []
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
 relations:

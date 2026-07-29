@@ -1,4 +1,4 @@
 ---
 title: Intermediate
-aliases: ['/audiences/intermediate/']
+aliases: []
 ---

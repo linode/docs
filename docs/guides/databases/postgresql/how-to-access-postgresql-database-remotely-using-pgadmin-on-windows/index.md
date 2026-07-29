@@ -9,7 +9,7 @@ published: 2010-04-28
 modified: 2016-05-12
 keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/postgresql/pgadmin-windows/','/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-windows/']
+aliases: []
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'

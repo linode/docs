@@ -19,7 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/','/web-servers/apache/installation/ubuntu-10.10-maverick/','/web-servers/apache/installation/ubuntu-12.04-precise-pangolin/']
+aliases: []
 ---
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 18.04 LTS.

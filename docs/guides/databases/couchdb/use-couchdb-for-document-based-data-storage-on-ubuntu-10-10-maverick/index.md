@@ -8,7 +8,7 @@ published: 2010-12-06
 modified: 2012-10-08
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-10-10-maverick/','/databases/couchdb/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: couchdb-document-data-storage

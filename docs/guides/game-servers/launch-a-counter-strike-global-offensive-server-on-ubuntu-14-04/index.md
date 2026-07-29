@@ -8,7 +8,7 @@ published: 2016-02-25
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", "steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/','/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
+aliases: []
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 dedicated_cpu_link: true

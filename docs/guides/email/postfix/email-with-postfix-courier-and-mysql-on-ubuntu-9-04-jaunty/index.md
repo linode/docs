@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/courier-mysql-ubuntu-9-04-jaunty/','/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-04-jaunty/']
+aliases: []
 relations:
     platform:
         key: email-postfix-courier-mysql

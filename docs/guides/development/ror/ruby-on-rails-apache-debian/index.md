@@ -9,7 +9,7 @@ published: 2018-03-12
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/','/frameworks/ruby-on-rails-apache/ubuntu-10.04-lucid/']
+aliases: []
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[Phusion Passenger](https://www.phusionpassenger.com/)'

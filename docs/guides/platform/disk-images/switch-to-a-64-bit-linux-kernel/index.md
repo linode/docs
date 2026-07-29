@@ -8,7 +8,7 @@ published: 2014-04-14
 modified: 2016-10-13
 keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/switching-kernels/','/migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/','/platform/disk-images/switch-to-a-64-bit-linux-kernel/','/migrate-to-linode/disk-images/switching-to-a-64bit-kernel/']
+aliases: []
 external_resources:
  - '[ArchWiki](https://wiki.archlinux.org/index.php/Migrating_between_architectures)'
  - '[AskUbuntu](http://askubuntu.com/questions/81824/how-can-i-switch-a-32-bit-installation-to-a-64-bit-one)'

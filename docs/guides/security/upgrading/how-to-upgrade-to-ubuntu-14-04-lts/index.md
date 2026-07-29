@@ -14,7 +14,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 14.04
-aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
+aliases: []
 deprecated: true
 ---
 

@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2018-12-11
 modified: 2018-12-14
 keywords: ['debian','upgrade','update']
-aliases: ['/security/upgrading/upgrade-debian-to-the-newest-release/']
+aliases: []
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 ---

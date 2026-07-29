@@ -7,5 +7,5 @@ published: 2011-11-02
 modified: 2013-10-03
 keywords: ['directadmin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/directadmin/','/web-applications/control-panels/directadmin/']
+aliases: []
 ---

@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "docker compose", "container"]
 tags: ["container", "docker"]
 headless: true
-aliases: ['/applications/containers/install-docker-compose/']
+aliases: []
 ---
 
 <!--- Installation instructions for Docker Compose -->

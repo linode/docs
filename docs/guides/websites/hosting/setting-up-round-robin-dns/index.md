@@ -9,7 +9,7 @@ modified: 2023-03-30
 keywords: ["hosting a website", "website", "linode quickstart guide", "high availability", "failover"]
 tags: ["web server","nginx","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting/setting-up-round-robin-dns/','/websites/setting-up-round-robin-dns/']
+aliases: []
 ---
 
 ## What is Round-Robin DNS

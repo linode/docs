@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["nginx fedora 12", "nginx fedora", "nginx", "http", "web servers", "fedora 12"]
 tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/websites-with-nginx-on-fedora-12/','/web-servers/nginx/installation/fedora-12/','/websites/nginx/websites-with-nginx-on-fedora-12/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

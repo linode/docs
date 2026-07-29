@@ -12,7 +12,7 @@ tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 audiences: ["beginner"]
 languages: ["go"]
-aliases: ['/development/go/install-go-on-ubuntu/']
+aliases: []
 ---
 
 ![How to Install Go on Ubuntu](install-go-ubuntu-title.jpg "How to Install Go on Ubuntu")

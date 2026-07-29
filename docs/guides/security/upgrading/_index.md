@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2012-06-01
 keywords: ["upgrading"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/upgrading/','/upgrading/']
+aliases: []
 show_in_lists: true
 ---
 

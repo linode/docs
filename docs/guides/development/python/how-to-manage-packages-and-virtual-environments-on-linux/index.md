@@ -9,7 +9,7 @@ published: 2021-02-12
 keywords: ['How to install python on linux','manage python environments in linux', 'virtualenv python', 'pipenv tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/python/how-to-manage-packages-and-virtual-environments-on-linux/']
+aliases: []
 ---
 
 Python is a programming language with a large library of third party modules, or packages. Python developers rely on third party packages to simplify problems when they are writing code. When you install third party Python packages to your machine, you typically use a repository, like [Pypi](https://pypi.org/search/). This repository contains packages that can, by default, be installed with [Pip](https://pip.pypa.io/en/stable/). Pip is a tool used to install Python packages, like [Apt](https://en.wikipedia.org/wiki/APT_(software)) for Ubuntu, onto the host system.

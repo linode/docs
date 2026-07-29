@@ -15,7 +15,7 @@ external_resources:
  - '[Minecraft Wiki](http://minecraft.wiki/w/Minecraft_Wiki)'
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
-aliases: ['/applications/game-servers/minecraft-with-bungee-cord/','/game-servers/minecraft-with-bungee-cord/']
+aliases: []
 dedicated_cpu_link: true
 ---
 

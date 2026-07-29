@@ -16,7 +16,7 @@ relations:
         key: how-to-install-linux
         keywords:
             - distribution: CoreOS
-aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
+aliases: []
 deprecated: true
 ---
 {{< note >}}

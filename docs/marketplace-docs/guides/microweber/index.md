@@ -4,7 +4,7 @@ description: "Deploy Microweber, an open-source, drag and drop website builder a
 published: 2022-09-06
 keywords: ['Microweber','website builder','cms']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/microweber/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

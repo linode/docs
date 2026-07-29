@@ -9,7 +9,7 @@ modified: 2018-04-16
 keywords: ["ntopng", "network monitor", "diagnostics"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/diagnostics/deploy-ntopng-on-debian-8/','/networking/diagnostics/install-ntopng-for-network-monitoring-on-debian8/']
+aliases: []
 ---
 
 ![Monitor Your Network with ntopng](monitor-your-network-with-ntopng.jpg "Monitor Your Network with ntopng")

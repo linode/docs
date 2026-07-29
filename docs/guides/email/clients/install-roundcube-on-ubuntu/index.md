@@ -7,7 +7,7 @@ contributors: ["Sean Webber"]
 published: 2016-02-01
 modified: 2017-12-18
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
-aliases: ['/email/clients/install-roundcube-on-ubuntu/','/email/clients/install-roundcube-on-ubuntu-14-04/']
+aliases: []
 tags: ["ubuntu","postfix","email","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

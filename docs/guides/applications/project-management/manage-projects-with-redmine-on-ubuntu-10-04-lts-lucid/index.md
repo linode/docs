@@ -9,7 +9,7 @@ modified: 2011-06-07
 keywords: ["redmine", "redmine ubuntu 10.04", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/manage-projects-with-redmine-on-ubuntu-10-04-lts-lucid/','/web-applications/project-management/redmine/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: manage-projects-with-redmine

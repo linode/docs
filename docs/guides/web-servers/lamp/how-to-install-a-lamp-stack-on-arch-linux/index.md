@@ -8,7 +8,7 @@ published: 2013-10-07
 modified: 2015-12-07
 keywords: ["arch lamp", "arch lamp stack", "lamp linux", "arch linode", "arch linux lamp", "arch linux", "arch", "lamp", "lamp stack", "apache", "mysql", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lamp/lamp-server-on-arch-linux/','/web-servers/lamp/lamp-server-on-arch-linux/','/lamp-guides/arch-linux-10-2013/','/lamp-guides/arch-linux/','/web-servers/lamp/how-to-install-a-lamp-stack-on-arch-linux/']
+aliases: []
 external_resources:
  - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

@@ -10,7 +10,7 @@ tags: ["linux","java","apache","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
-aliases: ['/websites/cms/solr/add-a-custom-search-to-your-site-with-solr/','/websites/cms/add-a-custom-search-to-your-site-with-solr/']
+aliases: []
 deprecated: true
 ---
 

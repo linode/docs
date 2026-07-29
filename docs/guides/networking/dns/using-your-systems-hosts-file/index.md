@@ -9,7 +9,7 @@ modified: 2019-01-28
 keywords: ["hosts", "hosts file", "hostname", "alias", "dnsec"]
 tags: ["dns","networking","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/using-your-systems-hosts-file/']
+aliases: []
 ---
 
 ![Using Your System's Hosts File](using-your-systems-hosts-files.jpg)

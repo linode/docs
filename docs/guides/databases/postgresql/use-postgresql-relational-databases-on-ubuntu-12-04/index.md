@@ -7,7 +7,7 @@ contributors: ["Linode"]
 published: 2012-10-08
 keywords: ["postgresql", "ubuntu 12.04", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/postgresql/ubuntu-12-04-precise-pangolin/','/databases/postgresql/use-postgresql-relational-databases-on-ubuntu-12-04/']
+aliases: []
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'

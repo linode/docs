@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/django-apache-and-modwsgi-on-centos-5/','/frameworks/django-apache-mod-wsgi/centos-5/','/development/frameworks/django-apache-and-modwsgi-on-centos-5/','/development/frameworks/django/django-apache-and-modwsgi-on-centos-5/']
+aliases: []
 external_resources:
  - '[The Django Project Home Page](http://www.djangoproject.com/)'
  - '[The Django Project Introductory Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'

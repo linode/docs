@@ -9,7 +9,7 @@ modified: 2011-08-22
 keywords: ["prosody", "prosody debian lenny", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/installing-prosody-xmpp-server-on-debian-5-lenny/','/communications/xmpp/prosody/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-prosody

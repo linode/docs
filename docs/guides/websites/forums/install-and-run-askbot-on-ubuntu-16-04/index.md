@@ -13,7 +13,7 @@ external_resources:
  - '[AskBot Documentation](https://askbot.org/doc/index.html)'
  - '[AskBot Official Q&A Forum](https://askbot.org)'
  - '[AskBot Official Website](https://askbot.com)'
-aliases: ['/websites/forums/install-and-run-askbot-on-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

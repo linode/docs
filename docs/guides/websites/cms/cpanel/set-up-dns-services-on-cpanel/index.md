@@ -11,7 +11,7 @@ modified: 2021-10-21
 keywords: ["DNS", "cPanel", "DNS on cPanel"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/set-up-dns-services-on-cpanel/','/websites/cms/cpanel/set-up-dns-services-on-cpanel/','/web-applications/control-panels/cpanel/dns-on-cpanel/']
+aliases: []
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'

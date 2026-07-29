@@ -10,7 +10,7 @@ published: 2010-01-18
 modified: 2018-12-18
 keywords: ["nginx", "web server", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/how-to-configure-nginx/','/websites/nginx/how-to-configure-nginx/','/web-servers/nginx/configuration/basic/','/websites/nginx/how-to-configure-nginx/index.cfm/','/websites/nginx/basic-nginx-configuration/index.cfm/','/websites/nginx/basic-nginx-configuration/']
+aliases: []
 tags: ["web server","nginx"]
 ---
 

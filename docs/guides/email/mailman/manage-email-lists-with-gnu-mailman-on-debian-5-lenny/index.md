@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/mailman/debian-5-lenny/','/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: use-gnu-mailman

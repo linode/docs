@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Official Drupal Image on Docker Hub](https://hub.docker.com/_/drupal/)'
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
-aliases: ['/quick-answers/linux/drupal-with-docker-compose/']
+aliases: []
 ---
 
 ## What Are Docker and Docker Compose?

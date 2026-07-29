@@ -10,7 +10,7 @@ keywords: ["install turtl", " cloud-based storage", " monitor system security", 
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 
-aliases: ['/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/']
+aliases: []
 deprecated: true
 ---
 

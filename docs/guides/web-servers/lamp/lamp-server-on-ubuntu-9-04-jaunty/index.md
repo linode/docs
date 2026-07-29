@@ -9,7 +9,7 @@ modified: 2011-05-02
 keywords: ["ubuntu lamp server", "ubuntu web server", "ubuntu jaunty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lamp/lamp-server-on-ubuntu-9-04-jaunty/','/lamp-guides/ubuntu-9-04-jaunty/','/web-servers/lamp/lamp-server-on-ubuntu-9-04-jaunty/']
+aliases: []
 external_resources:
   - '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

@@ -8,7 +8,7 @@ published: 2012-11-13
 keywords: ["apache tomcat ubuntu 12.04", "java", "java ubuntu 12.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-12-04-precise-pangolin/','/frameworks/apache-tomcat/ubuntu-12-04-precise-pangolin/','/development/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

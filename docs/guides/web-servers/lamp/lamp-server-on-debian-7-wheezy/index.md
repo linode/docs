@@ -9,7 +9,7 @@ modified: 2015-12-01
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/lamp/lamp-server-on-debian-7-wheezy/','/lamp-guides/debian-7-wheezy/','/websites/lamp/lamp-server-on-debian-7-wheezy/']
+aliases: []
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

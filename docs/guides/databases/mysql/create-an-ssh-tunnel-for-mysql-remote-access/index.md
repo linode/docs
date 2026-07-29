@@ -8,7 +8,7 @@ published: 2010-01-06
 modified: 2018-03-05
 keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/','/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
+aliases: []
 external_resources:
  - '[Using PuTTY](/cloud/guides/connect-to-server-over-ssh-using-putty/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'

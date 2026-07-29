@@ -8,7 +8,7 @@ published: 2015-08-12
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["monitoring"]
-aliases: ['/uptime/monitoring/monitor-systems-logwatch/','/guides/monitor-systems-logwatch/','/server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/server-monitoring/logwatch/ubuntu-10-10-maverick/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/server-monitoring/logwatch/ubuntu-10-04-lucid/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/server-monitoring/logwatch/fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-14/','/guides/monitor-system-logs-with-logwatch-on-fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-13/','/server-monitoring/logwatch/fedora-13/','/guides/monitor-system-logs-with-logwatch-on-fedora-13/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/debian-5-lenny/','/guides/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/','/uptime/monitoring/logwatch-log-monitoring/','/guides/logwatch-log-monitoring/']
+aliases: []
 image: monitor-system-logs-logwatch.jpg
 ---
 

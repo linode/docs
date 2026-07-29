@@ -8,7 +8,7 @@ published: 2011-06-08
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-debian-6-squeeze/','/dns-guides/nsd-authoritative-dns-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: authoritative-dns-nsd

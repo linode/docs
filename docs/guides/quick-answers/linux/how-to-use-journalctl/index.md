@@ -12,7 +12,7 @@ external_resources:
   - '[systemd-journald man page](https://www.freedesktop.org/software/systemd/man/systemd-journald.service.html#)'
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-use-journalctl/']
+aliases: []
 ---
 
 ## What is journalctl?

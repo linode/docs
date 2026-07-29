@@ -10,7 +10,7 @@ modified: 2021-07-15
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','centos','fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/how-to-use-yum-dnf/','/guides/how-to-use-dnf/']
+aliases: []
 external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'

@@ -9,7 +9,7 @@ modified: 2021-08-09
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/basics/docker-security-essentials/']
+aliases: []
 image: DockerSecurityEssentials.png
 ---
 

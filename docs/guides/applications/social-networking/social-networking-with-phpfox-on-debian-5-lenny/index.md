@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["phpfox", "social networking", "community"]
 tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/social-networking/social-networking-with-phpfox-on-debian-5-lenny/','/web-applications/social-networking/phpfox/debian-5-lenny/']
+aliases: []
 deprecated: true
 ---
 

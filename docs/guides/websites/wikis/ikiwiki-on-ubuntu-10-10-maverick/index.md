@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/ikiwiki-on-ubuntu-10-10-maverick/','/web-applications/wikis/ikiwiki/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

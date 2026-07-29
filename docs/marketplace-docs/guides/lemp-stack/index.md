@@ -8,7 +8,7 @@ tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","quick dep
 image: feature.png
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
-aliases: ['/products/tools/marketplace/guides/lemp-stack/','/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/','/guides/lemp-stack-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -15,7 +15,7 @@ external_resources:
 - '[Mastodon GitHub - List of Rake Tasks](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/List-of-Rake-tasks.md)'
 - '[Docker Hub - Mastodon](https://hub.docker.com/r/gargron/mastodon/)'
 - '[Code Koalas - Setting Up Your First Mastodon Instance](https://codekoalas.com/blog/setting-your-first-mastodon-instance)'
-aliases: ['/applications/messaging/install-mastodon-on-ubuntu-1604/']
+aliases: []
 relations:
     platform:
         key: install-mastodon

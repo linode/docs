@@ -13,7 +13,7 @@ external_resources:
  - '[rsync Man Page](http://linux.die.net/man/1/rsync)'
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 tags: ["security"]
-aliases: ['/security/backups/backing-up-your-data/']
+aliases: []
 ---
 
 ![Backing Up Your Data](Backing_Up_Your_Data_smg.jpg)

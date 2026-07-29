@@ -9,7 +9,7 @@ modified: 2014-01-28
 keywords: ["open source analytics", "piwik ubuntu 12.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/piwik-on-ubuntu-12-04-precise-pangolin/','/web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
+aliases: []
 relations:
     platform:
         key: using-piwik-analytics

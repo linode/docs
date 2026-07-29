@@ -8,7 +8,7 @@ published: 2015-02-23
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/install-docker-and-lamp-stack/','/applications/containers/linode-lamp-container-docker/','/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/']
+aliases: []
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'

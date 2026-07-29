@@ -8,7 +8,7 @@ published: 2010-11-29
 modified: 2018-01-23
 keywords: ["linux", "common commands", "sort", "uniq", "shell", "bash"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/manipulate-lists-with-sort-and-uniq/','/linux-tools/common-commands/sort-uniq/']
+aliases: []
 tags: ["linux"]
 ---
 

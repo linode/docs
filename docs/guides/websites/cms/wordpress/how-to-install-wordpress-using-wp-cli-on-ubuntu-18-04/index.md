@@ -9,7 +9,7 @@ contributors: ["Navjot Singh"]
 published: 2018-08-06
 modified: 2020-02-17
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/']
+aliases: []
 tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

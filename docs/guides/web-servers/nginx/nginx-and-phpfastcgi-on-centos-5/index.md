@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["nginx", "nginx centos 5", "nginx fastcgi", "nginx php"]
 tags: ["centos","web server","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/','/web-servers/nginx/php-fastcgi/centos-5/','/websites/nginx/nginx-and-phpfastcgi-on-centos-5/']
+aliases: []
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'

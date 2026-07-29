@@ -7,7 +7,7 @@ keywords: ['airflow','workflow management','data engineering']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Apache Airflow](https://airflow.apache.org/docs/)'
-aliases: ['/products/tools/marketplace/guides/apache-airflow/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

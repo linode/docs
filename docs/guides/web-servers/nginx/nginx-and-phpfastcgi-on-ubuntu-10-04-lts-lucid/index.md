@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["nginx", "nginx ubuntu 10.04", "nginx fastcgi", "nginx php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/','/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid/','/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/']
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi

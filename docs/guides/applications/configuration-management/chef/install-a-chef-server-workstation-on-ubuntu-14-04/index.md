@@ -8,7 +8,7 @@ published: 2015-06-10
 keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
 tags: ["ubuntu","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','/applications/chef/setting-up-chef-ubuntu-14-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/','/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-14-04/']
+aliases: []
 external_resources:
  - '[Chef](http://www.chef.io)'
 relations:

@@ -5,7 +5,7 @@ description: "Akamai Quick Deploy Apps are managed easily with developer tools l
 keywords: ['akamai quick deploy apps','developer resources']
 tab_group_main:
     weight: 50
-aliases: ['/products/tools/marketplace/developers/','/products/tools/marketplace-one-click-apps/developers/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

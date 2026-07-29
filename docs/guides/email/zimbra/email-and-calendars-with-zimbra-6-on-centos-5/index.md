@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["zimbra on centos", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["centos","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/zimbra/install-zimbra-centos-5/','/email/zimbra/email-and-calendars-with-zimbra-6-on-centos-5/']
+aliases: []
 external_resources:
  - '[Zimbra Community Documentation](http://www.zimbra.com/community/documentation.html)'
  - '[Zimbra Wiki](http://wiki.zimbra.com/index.php?title=Main_Page)'

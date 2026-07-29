@@ -10,7 +10,7 @@ modified: 2021-02-19
 keywords: ["virtual memory", "memory", "linux", "ram", "usage", "troubleshooting."]
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/monitoring/use-vmstat-to-monitor-system-performance/','/linux-tools/common-commands/vmstat/']
+aliases: []
 external_resources:
  - '[Linux Ate My Ram](http://www.linuxatemyram.com/)'
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'

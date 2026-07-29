@@ -7,7 +7,7 @@ keywords: ['web server','django','openlitespeed']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[OpenLiteSpeed Django](https://docs.litespeedtech.com/cloud/images/django/)'
-aliases: ['/products/tools/marketplace/guides/openlitespeed-django/','/guides/deploying-openlitespeed-django-marketplace-app/','/guides/openlitespeed-django-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

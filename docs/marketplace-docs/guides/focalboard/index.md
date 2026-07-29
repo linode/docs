@@ -7,7 +7,7 @@ keywords: ['focalboard','project','productivity','kanban']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
-aliases: ['/products/tools/marketplace/guides/focalboard/','/guides/focalboard-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

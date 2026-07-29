@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["ejabberd", "ejabberd ubuntu hardy", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy/','/communications/xmpp/ejabberd/ubuntu-8-04-hardy/']
+aliases: []
 relations:
     platform:
         key: how-to-install-ejabberd

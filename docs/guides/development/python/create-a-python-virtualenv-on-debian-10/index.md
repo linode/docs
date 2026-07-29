@@ -20,7 +20,7 @@ relations:
         key: python-virtual-env
         keywords:
             - distribution: Debian 10
-aliases: ['/development/python/create-a-python-virtualenv-on-debian-10/']
+aliases: []
 ---
 
 ## What is a Python Virtual Environment?

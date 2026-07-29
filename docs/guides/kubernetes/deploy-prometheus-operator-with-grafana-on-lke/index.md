@@ -16,7 +16,7 @@ external_resources:
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
 - '[Alertmanager Documentation](https://prometheus.io/docs/alerting/latest/alertmanager/)'
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
-aliases: ['/kubernetes/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/','/guides/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/']
+aliases: []
 ---
 
 In this guide, you will deploy the [Prometheus Operator](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) to your Linode Kubernetes Engine (LKE) cluster using [Helm](https://helm.sh/), either as:

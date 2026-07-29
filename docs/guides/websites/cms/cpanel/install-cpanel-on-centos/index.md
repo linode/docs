@@ -9,7 +9,7 @@ modified: 2023-07-25
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 tags: ["centos","cms","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/','/websites/cms/cpanel/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos/','/websites/cms/cpanel-on-centos-6-5/']
+aliases: []
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'

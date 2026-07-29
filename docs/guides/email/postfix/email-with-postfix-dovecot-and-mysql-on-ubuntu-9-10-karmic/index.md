@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["postfix ubuntu 9.10", "postfix karmic", "postfix dovecot", "ubuntu mail server", "linux mail server"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/','/email/postfix/dovecot-mysql-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: email-postfix-dovecot-mysql

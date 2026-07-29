@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
 headless: true
 tags: ["dns","networking"]
-aliases: ['/networking/dns/update-dns-at-common-name-server-authorities/']
+aliases: []
 ---
 
 {{< note type="secondary" title="Updating DNS records at common nameserver authorities" isCollapsible=true >}}

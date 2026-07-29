@@ -8,7 +8,7 @@ published: 2009-08-18
 modified: 2020-12-01
 keywords: ["custom distro", "custom distribution", "advanced Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode/','/custom-instances/custom-distro-howto/']
+aliases: []
 deprecated: true
 ---
 

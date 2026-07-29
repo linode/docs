@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 12"]
 tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/ssl-guides/fedora-12/','/security/ssl/ssl-certificates-with-apache-2-on-fedora-12/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

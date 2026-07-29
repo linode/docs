@@ -7,7 +7,7 @@ keywords: ['akaunting','accounting','productivity']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Akaunting](https://akaunting.com)'
-aliases: ['/products/tools/marketplace/guides/akaunting/','/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

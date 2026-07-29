@@ -10,7 +10,7 @@ keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: Upgrade_CentOS7_to_8.png
-aliases: ['/tools-reference/custom-kernels-distros/how-to-upgrade-from-centos-7-to-centos-8/']
+aliases: []
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:

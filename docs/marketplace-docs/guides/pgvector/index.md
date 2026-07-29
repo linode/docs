@@ -9,7 +9,7 @@ external_resources:
 - '[pgvector GitHub](https://github.com/pgvector/pgvector)'
 - '[pgvector Documentation](https://github.com/pgvector/pgvector#readme)'
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
-aliases: ['/products/tools/marketplace/guides/pgvector/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

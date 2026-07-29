@@ -20,7 +20,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian and Ubuntu
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
+aliases: []
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.

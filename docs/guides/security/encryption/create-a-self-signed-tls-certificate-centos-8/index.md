@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["centos tls certificate", "centos ssl certificate", "centos self certified"]
 tags: ["centos", "security", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/encryption/how-to-make-a-selfsigned-ssl-certificate-centos-8/']
+aliases: []
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:

@@ -9,7 +9,7 @@ contributors: ["Ryan Syracuse"]
 published: 2020-01-31
 keywords: ["mariadb", "Debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-9/','/databases/mariadb/mariadb-setup-debian/']
+aliases: []
 image: Installing_MariaDB_on_Debian9.png
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'

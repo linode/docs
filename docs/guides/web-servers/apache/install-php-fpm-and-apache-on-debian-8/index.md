@@ -9,7 +9,7 @@ modified: 2017-02-21
 keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/install-php-fpm-and-apache-on-debian-8/','/web-servers/apache/install-php-fpm-and-apache-on-debian-8/']
+aliases: []
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
  - '[FastCGI Process Manager](http://php.net/manual/en/install.fpm.configuration.php)'

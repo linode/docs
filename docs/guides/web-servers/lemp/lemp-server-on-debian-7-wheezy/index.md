@@ -8,7 +8,7 @@ published: 2014-02-07
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lemp/lemp-server-on-debian-7-wheezy/','/web-servers/lemp/lemp-server-on-debian-7-wheezy/','/lemp-guides/debian-7-wheezy/']
+aliases: []
 external_resources:
  - '[Basic Nginx Configuration](/cloud/guides/how-to-configure-nginx/)'
  - '[Clustered Web Servers and Software Load Balancing with Nginx](/cloud/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)'

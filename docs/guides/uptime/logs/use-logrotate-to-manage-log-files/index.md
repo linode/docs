@@ -9,7 +9,7 @@ published: 2010-10-11
 modified: 2018-03-20
 keywords: ["logrotate", "log files", "access logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linux-tools/utilities/logrotate/','/uptime/logs/use-logrotate-to-manage-log-files/']
+aliases: []
 ---
 
 ## What is logrotate?

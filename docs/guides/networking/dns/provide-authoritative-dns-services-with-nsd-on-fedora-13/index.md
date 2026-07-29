@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["NSD", "DNS", "resolving", "Fedora 13", "networking"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-guides/nsd-authoritative-dns-fedora-13/','/networking/dns/provide-authoritative-dns-services-with-nsd-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: authoritative-dns-nsd

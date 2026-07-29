@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
-aliases: ['/applications/cloud-storage/tahoe-lafs-on-debian-9/']
+aliases: []
 deprecated: true
 ---
 

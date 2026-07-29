@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/vpn/secure-communications-with-openvpn-on-ubuntu-9-10-karmic/','/networking/openvpn/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: secure-communications-openvpn

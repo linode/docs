@@ -7,6 +7,6 @@ published: 2015-01-18
 keywords: ["networking", "network guide", "networking howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/networking/diagnostics/']
+aliases: []
 deprecated: false
 ---

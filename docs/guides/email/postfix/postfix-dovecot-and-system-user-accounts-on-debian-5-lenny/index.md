@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ssl","debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/dovecot-system-users-debian-5-lenny/','/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: postfix-dovecot-user-accounts

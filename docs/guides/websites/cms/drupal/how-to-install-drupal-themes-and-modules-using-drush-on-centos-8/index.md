@@ -20,7 +20,7 @@ relations:
         key: how-to-install-drupal-themes
         keywords:
            - distribution: CentOS 8
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
+aliases: []
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. This tutorial uses Drush to install themes and modules. It will also briefly cover backups and migrations for Drupal websites.

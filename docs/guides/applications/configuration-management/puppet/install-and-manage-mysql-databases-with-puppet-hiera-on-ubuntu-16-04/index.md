@@ -19,7 +19,7 @@ relations:
         key: install-puppet-mysql-hiera
         keywords:
             - distribution: Ubuntu 16.04
-aliases: ['/applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/','/applications/configuration-management/puppet/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/']
+aliases: []
 deprecated: true
 deprecated_link: 'applications/configuration-management/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-18-04/'
 ---

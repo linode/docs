@@ -9,7 +9,7 @@ modified: 2013-05-10
 keywords: ["ubuntu 11.04 upgrade", "ubuntu natty upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-11-04-natty/','/upgrading/upgrade-to-ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: how-to-upgrade-ubuntu

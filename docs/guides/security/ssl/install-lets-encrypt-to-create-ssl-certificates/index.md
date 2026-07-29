@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
-aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
+aliases: []
 deprecated: true
 deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 ---

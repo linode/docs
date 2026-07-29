@@ -8,7 +8,7 @@ published: 2010-02-08
 modified: 2012-10-03
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/couchdb/debian-5-lenny/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: couchdb-document-data-storage

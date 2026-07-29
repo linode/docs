@@ -9,7 +9,7 @@ modified: 2013-02-05
 keywords: ["upgrading", "ubuntu", "precise"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/upgrading/upgrade-to-ubuntu-12-04-precise/','/security/upgrading/how-to-upgrade-to-ubuntu-12-04-precise/']
+aliases: []
 relations:
     platform:
         key: how-to-upgrade-ubuntu

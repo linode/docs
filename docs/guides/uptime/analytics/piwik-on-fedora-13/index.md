@@ -9,7 +9,7 @@ modified: 2013-10-01
 keywords: ["open source analytics", "piwik fedora 13", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/piwik-on-fedora-13/','/web-applications/analytics/piwik/fedora-13/']
+aliases: []
 relations:
     platform:
         key: using-piwik-analytics

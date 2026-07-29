@@ -8,7 +8,7 @@ published: 2011-07-01
 keywords: ["postfix debian 6", "dovecot debian 6", "debian 6 mail server", "dovecot", "email", "debian", "squeeze"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/dovecot-mysql-debian-6-squeeze/','/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: email-postfix-dovecot-mysql

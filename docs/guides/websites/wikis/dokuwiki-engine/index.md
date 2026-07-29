@@ -9,7 +9,7 @@ modified: 2017-07-27
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/dokuwiki/','/websites/wikis/dokuwiki-engine/']
+aliases: []
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
  - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'

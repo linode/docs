@@ -14,7 +14,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 16.04
-aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 12", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["fedora","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-courier-and-mysql-on-fedora-12/','/email/postfix/courier-mysql-fedora-12/']
+aliases: []
 relations:
     platform:
         key: email-postfix-courier-mysql

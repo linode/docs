@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-2-web-server-on-debian-6-squeeze/','/web-servers/apache/installation/debian-6-squeeze/','/web-servers/apache/apache-2-web-server-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

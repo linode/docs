@@ -20,7 +20,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/','/networking/squid/squid-http-proxy-ubuntu-12-04/']
+aliases: []
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on Ubuntu 18.04. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:

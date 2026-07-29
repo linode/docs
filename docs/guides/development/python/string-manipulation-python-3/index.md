@@ -13,7 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
-aliases: ['/development/python/string-manipulation-python-3/']
+aliases: []
 ---
 
 ## Strings in Python

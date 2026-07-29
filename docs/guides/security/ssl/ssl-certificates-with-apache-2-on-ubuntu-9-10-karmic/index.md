@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/ssl-guides/ubuntu-9-10-karmic/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

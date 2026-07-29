@@ -13,7 +13,7 @@ external_resources:
 - '[Apache Spark project page](https://spark.apache.org/)'
 - '[Apache Hadoop project page](http://hadoop.apache.org/)'
 tags: ["ubuntu","debian","database","centos"]
-aliases: ['/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/']
+aliases: []
 ---
 
 Spark is a general purpose cluster computing system. It can deploy and run parallel applications on clusters ranging from a single node to thousands of distributed nodes. Spark was originally designed to run Scala applications, but also supports Java, Python and R.

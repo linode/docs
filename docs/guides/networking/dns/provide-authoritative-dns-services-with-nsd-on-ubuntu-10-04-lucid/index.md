@@ -9,7 +9,7 @@ modified: 2013-09-25
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid/','/dns-guides/nsd-authoritative-dns-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: authoritative-dns-nsd

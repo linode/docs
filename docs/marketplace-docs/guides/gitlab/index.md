@@ -8,7 +8,7 @@ tags: ["linode platform","version control system","quick deploy apps","cloud-man
 external_resources:
 - '[GitLab Administrator Documentation](https://docs.gitlab.com/ee/administration/)'
 - '[GitLab Official Documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html)'
-aliases: ['/products/tools/marketplace/guides/gitlab/','/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/','/guides/gitlab-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

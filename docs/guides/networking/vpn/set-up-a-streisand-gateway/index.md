@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 tags: ["networking","security","vpn"]
-aliases: ['/networking/vpn/set-up-a-streisand-gateway/']
+aliases: []
 ---
 
 ![Streisand Gateway](Streisand_Gateway.jpg)

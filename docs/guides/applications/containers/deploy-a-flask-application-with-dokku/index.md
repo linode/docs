@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[Dokku PaaS](http://dokku.viewdocs.io/dokku/)'
 - '[Flask](http://flask.pocoo.org/)'
-aliases: ['/applications/containers/deploy-a-flask-application-with-dokku/']
+aliases: []
 ---
 
 Dokku is a self-hosted Platform-as-a-Service (PaaS) that makes deploying applications simple using Git. Although Dokku's implementation is similar to Heroku, it lacks certain key features such as auto-scaling. Dokku is an extremely powerful tool that automatically runs your application inside Docker and requires minimal configuration of web servers.

@@ -8,7 +8,7 @@ published: 2009-08-11
 modified: 2012-10-08
 keywords: ["MySQL on Linux", "MySQL Ubuntu", "MySQL Hardy", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/ubuntu-8-04-hardy/','/databases/mysql/use-mysql-relational-databases-on-ubuntu-8-04-hardy/']
+aliases: []
 relations:
     platform:
         key: use-mysql-relationaldb

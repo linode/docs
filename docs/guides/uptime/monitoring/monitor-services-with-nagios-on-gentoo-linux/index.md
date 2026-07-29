@@ -8,7 +8,7 @@ published: 2010-11-15
 modified: 2013-10-01
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/server-monitoring/nagios/gentoo/','/uptime/monitoring/monitor-services-with-nagios-on-gentoo-linux/']
+aliases: []
 relations:
     platform:
         key: install-nagios-monitoring

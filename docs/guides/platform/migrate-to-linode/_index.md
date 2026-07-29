@@ -1,5 +1,5 @@
 ---
 title:  Migrate to Linode
-aliases: ['/migrate-to-linode/','/platform/migrate-to-linode/']
+aliases: []
 show_in_lists: true
 ---

@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2021-06-25
 modified: 2021-06-23
 keywords: ["install lamp ubuntu 20.04", "apache install", "mysql install", "php", "ubuntu 20.04"]
-aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-20-04/']
+aliases: []
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

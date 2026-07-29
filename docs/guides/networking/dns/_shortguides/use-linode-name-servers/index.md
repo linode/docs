@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
 tags: ["dns","networking","linux platform"]
 headless: true
-aliases: ['/networking/dns/use-linode-name-servers/']
+aliases: []
 ---
 
 ### (Optional) Prepare Your Domain Name to Move

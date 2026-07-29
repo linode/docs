@@ -9,7 +9,7 @@ modified: 2011-06-07
 keywords: ["confluence centos 5", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/confluence-on-centos-5/','/web-applications/wikis/confluence/centos-5/']
+aliases: []
 external_resources:
  - '[Confluence Homepage](http://www.atlassian.com/software/confluence/)'
  - '[Confluence Documentation](http://confluence.atlassian.com/display/DOC/Confluence+Documentation+Home)'

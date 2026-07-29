@@ -8,7 +8,7 @@ published: 2014-01-02
 modified: 2015-09-16
 keywords: ["mysql", "phpmyadmin", "sql", "debian", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/docs/databases/mysql/managing-mysql-with-phpmyadmin-on-debian-7-wheezy/','/databases/mysql/install-mysql-phpmyadmin-debian-7/','/databases/mysql/phpmyadmin-debian-7-wheezy/']
+aliases: []
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'

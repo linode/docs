@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/','/web-servers/apache/php-cgi/fedora-12/','/websites/apache/run-php-applications-under-cgi-with-apache-on-fedora-12/']
+aliases: []
 relations:
     platform:
         key: php-cgi-apache

@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-03-01
 keywords: ["wiki", "mediawiki", "ikiwiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/','/websites/wikis/']
+aliases: []
 show_in_lists: true
 ---
 

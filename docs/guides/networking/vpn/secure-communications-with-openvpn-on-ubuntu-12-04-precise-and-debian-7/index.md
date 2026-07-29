@@ -9,7 +9,7 @@ modified: 2014-02-17
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu precise", "12.04", "debian 7", "debian"]
 tags: ["networking","vpn","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/openvpn/ubuntu-12-04-precise/','/networking/vpn/secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7/']
+aliases: []
 external_resources:
  - '[Official OpenVPN Documentation](http://openvpn.net/index.php/open-source/documentation/howto.html)'
  - '[Tunnelblick OS X OpenVPN Client](http://code.google.com/p/tunnelblick/)'

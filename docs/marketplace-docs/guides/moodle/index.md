@@ -5,7 +5,7 @@ published: 2021-08-13
 modified: 2023-04-11
 keywords: ['learning','educator','management', and 'school']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/moodle/','/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
+aliases: []
 external_resources:
 - '[Moodle](https://moodle.org/)'
 authors: ["Akamai"]

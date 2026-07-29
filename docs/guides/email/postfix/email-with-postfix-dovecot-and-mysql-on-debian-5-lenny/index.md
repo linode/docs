@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql-on-debian-5-lenny/','/email/postfix/dovecot-mysql-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: email-postfix-dovecot-mysql

@@ -8,7 +8,7 @@ published: 2009-08-02
 modified: 2017-02-15
 keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/ssh/using-the-terminal/','/tools-reference/tools/using-the-terminal/','/tools-reference/ssh/using-the-terminal/','/using-linux/using-the-terminal/']
+aliases: []
 external_resources:
  - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'
 tags: ["linux"]

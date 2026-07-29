@@ -9,7 +9,7 @@ modified: 2011-05-02
 keywords: ["ubuntu lamp server", "ubuntu 9.10 lamp", "karmic lamp", "ubuntu web server", "ubuntu karmic"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/lamp-guides/ubuntu-9-10-karmic/','/websites/lamp/lamp-server-on-ubuntu-9-10-karmic/','/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/']
+aliases: []
 external_resources:
   - '[Ubuntu Linux Homepage](http://www.ubuntu.com/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'

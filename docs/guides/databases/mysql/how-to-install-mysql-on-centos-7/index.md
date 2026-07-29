@@ -21,7 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 tags: ["database","mysql","centos"]
-aliases: ['/databases/mysql/how-to-install-mysql-on-centos-7/']
+aliases: []
 image: how-to-install-mysql-on-centos-7.png
 ---
 

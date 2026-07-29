@@ -9,7 +9,7 @@ modified: 2012-10-03
 keywords: ["openfire", "openfire ubuntu 9.10", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-9-10-karmic/','/communications/xmpp/openfire/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: how-to-install-openfire

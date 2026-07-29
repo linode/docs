@@ -8,7 +8,7 @@ published: 2015-09-18
 keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
 tags: ["mysql","apache","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/development/java-development-wildfly-centos-7/','/development/java-development-wildfly-centos-7/','/development/java/java-development-wildfly-centos-7/']
+aliases: []
 external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 audiences: ["intermediate"]

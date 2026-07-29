@@ -8,7 +8,7 @@ published: 2014-01-15
 modified: 2024-05-29
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
+aliases: []
 show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/cloud/guides/a-beginners-guide-to-github/)'

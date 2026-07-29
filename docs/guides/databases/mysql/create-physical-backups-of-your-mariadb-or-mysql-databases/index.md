@@ -11,7 +11,7 @@ external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'
  - '[Database Backup Methods; MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
-aliases: ['/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/']
+aliases: []
 ---
 
 While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system it only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.

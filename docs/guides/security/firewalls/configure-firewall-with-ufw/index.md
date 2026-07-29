@@ -10,7 +10,7 @@ keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tuto
 bundles: ['debian-security', 'network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["networking","security"]
-aliases: ['/security/firewalls/configure-firewall-with-ufw/']
+aliases: []
 ---
 
 ## What is UFW?

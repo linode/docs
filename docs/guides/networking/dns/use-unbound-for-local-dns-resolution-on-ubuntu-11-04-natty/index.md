@@ -9,7 +9,7 @@ modified: 2013-02-18
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-guides/unbound-dns-resolver-ubuntu-11-04-natty/','/networking/dns/use-unbound-for-local-dns-resolution-on-ubuntu-11-04-natty/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

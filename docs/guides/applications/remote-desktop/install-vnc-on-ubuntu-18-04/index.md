@@ -18,7 +18,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-18-04/']
+aliases: []
 deprecated: true
 deprecated_link: 'guides/install-vnc-on-ubuntu-20-04/'
 ---

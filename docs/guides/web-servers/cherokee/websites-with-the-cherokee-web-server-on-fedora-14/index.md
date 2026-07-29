@@ -9,7 +9,7 @@ modified: 2013-10-07
 keywords: ["cherokee fedora 14", "cherokee web sever", "cherokee", "fedora 14"]
 tags: ["web server","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/','/web-servers/cherokee/installing-cherokee-fedora-14/','/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/']
+aliases: []
 relations:
     platform:
         key: install-cherokee-server

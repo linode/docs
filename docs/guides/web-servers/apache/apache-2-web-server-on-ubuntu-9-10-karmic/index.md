@@ -9,7 +9,7 @@ modified: 2011-05-17
 keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/','/web-servers/apache/installation/ubuntu-9-10-karmic/','/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: how-to-install-apache2

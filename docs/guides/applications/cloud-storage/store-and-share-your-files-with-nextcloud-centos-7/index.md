@@ -13,7 +13,7 @@ external_resources:
   - '[Using the occ command](https://docs.nextcloud.com/server/12/admin_manual/configuration_server/occ_command.html#http-user-label)'
   - '[nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html)'
   - '[Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl)'
-aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud-centos-7/']
+aliases: []
 relations:
     platform:
         key: install-nextcloud

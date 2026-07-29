@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/social-networking/planet/debian-5-lenny/','/applications/social-networking/create-an-aggregate-blog-using-planet-on-debian-5-lenny/']
+aliases: []
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/cloud/guides/schedule-tasks-with-cron/)'

@@ -13,7 +13,7 @@ external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
 image: Installing_Multicraft_on_Ubuntu_smg.jpg
-aliases: ['/game-servers/multicraft-on-ubuntu/','/applications/game-servers/multicraft-on-ubuntu/']
+aliases: []
 dedicated_cpu_link: true
 relations:
     platform:

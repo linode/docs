@@ -9,7 +9,7 @@ modified: 2012-10-03
 keywords: ["openfire", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-debian-5-lenny/','/communications/xmpp/openfire/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: how-to-install-openfire

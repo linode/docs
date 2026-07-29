@@ -9,7 +9,7 @@ modified: 2016-03-14
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/','/applications/messaging/install-openfire-on-ubuntu-12-04-for-instant-messaging/','/communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','/communications/xmpp/openfire/ubuntu-12.04-precise-pangolin/']
+aliases: []
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'

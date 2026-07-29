@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2015-10-12
 modified: 2023-06-27
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
-aliases: ['/tools-reference/tools/using-fail2ban-to-block-network-probes/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/security/using-fail2ban-for-security/','/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/']
+aliases: []
 bundles: ['debian-security', 'centos-security']
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

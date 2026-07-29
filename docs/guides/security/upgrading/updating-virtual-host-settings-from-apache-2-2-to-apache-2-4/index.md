@@ -9,7 +9,7 @@ published: 2014-03-12
 keywords: ["Apache 2.2", "Apache 2.4", "Ubuntu", "Debian", "CentOS", "Fedora", "Arch", "Gentoo", "update", "upgrade"]
 tags: ["apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/','/web-servers/apache/2-2-2-4-upgrade/']
+aliases: []
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---

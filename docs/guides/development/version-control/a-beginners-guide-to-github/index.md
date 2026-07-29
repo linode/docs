@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2015-12-02
 keywords: ["GitHub", "Git", "pull request", "Write For Linode", "article submissions", "linode guides and tutorials"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/a-beginners-guide-to-github/','/github-guide/']
+aliases: []
 tags: ["version control system"]
 ---
 

@@ -16,7 +16,7 @@ relations:
         key: setup-wireguard-vpn
         keywords:
             - distribution: Debian 9
-aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
+aliases: []
 ---
 
 ## What is WireGuard?

@@ -20,7 +20,7 @@ relations:
         key: configure-spf-dkim-postfix
         keywords:
             - distribution: Debian 9
-aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9/']
+aliases: []
 ---
 
 This guide provides instructions to set up SPF and DKIM with Postfix.

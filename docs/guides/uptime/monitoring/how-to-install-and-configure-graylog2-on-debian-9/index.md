@@ -14,7 +14,7 @@ external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 dedicated_cpu_link: true
-aliases: ['/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/']
+aliases: []
 deprecated: true
 ---
 

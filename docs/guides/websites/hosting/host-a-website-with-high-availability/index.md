@@ -14,7 +14,7 @@ external_resources:
 - '[Apache Web Server](https://httpd.apache.org/)'
 - '[Keepalived](http://www.keepalived.org/)'
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
-aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
+aliases: []
 tags: ["web server", "digital agencies", "ecommerce"]
 image: host-a-website-with-high-availability-title-graphic.jpg
 ---

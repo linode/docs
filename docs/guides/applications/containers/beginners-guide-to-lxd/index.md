@@ -17,7 +17,7 @@ external_resources:
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
   - '[NGINX Reverse Proxy Settings](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
-aliases: ['/applications/containers/beginners-guide-to-lxd/']
+aliases: []
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)

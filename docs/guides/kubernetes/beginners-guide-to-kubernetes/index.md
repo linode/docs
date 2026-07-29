@@ -8,7 +8,7 @@ published: 2019-07-29
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["kubernetes","container","managed hosting","education", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes/','/applications/containers/beginners-guide-to-kubernetes/','/kubernetes/beginners-guide-to-kubernetes/']
+aliases: []
 concentrations: ["Kubernetes", "container"]
 external_resources:
 - '[Kubernetes API Reference Documentation](https://kubernetes.io/docs/reference/)'

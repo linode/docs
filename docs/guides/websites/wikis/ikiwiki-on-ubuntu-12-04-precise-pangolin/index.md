@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "Precise Pangolin"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/ikiwiki/ubuntu-12-04-precise-pangolin/','/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin/']
+aliases: []
 relations:
     platform:
         key: using-ikiwiki

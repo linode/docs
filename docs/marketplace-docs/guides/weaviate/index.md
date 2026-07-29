@@ -7,7 +7,7 @@ keywords: ['vector database','database','weaviate']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[Weaviate Official Documentation](https://docs.weaviate.io/weaviate)'
-aliases: ['/products/tools/marketplace/guides/weaviate/','/guides/weaviate-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

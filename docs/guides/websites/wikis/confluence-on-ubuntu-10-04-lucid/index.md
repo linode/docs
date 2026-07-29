@@ -9,7 +9,7 @@ modified: 2011-06-07
 keywords: ["confluence ubuntu 10.04", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/confluence/ubuntu-10-04-lucid/','/websites/wikis/confluence-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: using-confluence

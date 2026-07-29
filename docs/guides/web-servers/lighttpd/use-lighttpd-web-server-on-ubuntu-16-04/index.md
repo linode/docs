@@ -8,7 +8,7 @@ contributors: ["Dave Messina"]
 published: 2016-05-19
 modified: 2021-05-26
 keywords: ["lighttpd", "web server", "web hosting"]
-aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
+aliases: []
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:

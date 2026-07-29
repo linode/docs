@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu lucid", "ubuntu 10.04"]
 tags: ["apache","security","ssl","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/ssl-guides/ubuntu-10-04-lucid/','/security/ssl/ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

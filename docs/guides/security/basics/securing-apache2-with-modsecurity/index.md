@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/basics/securing-apache2-with-modsecurity/']
+aliases: []
 image: SecureApache2_ModSecurity.png
 relations:
     platform:

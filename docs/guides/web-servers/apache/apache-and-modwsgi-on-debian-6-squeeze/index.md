@@ -9,7 +9,7 @@ modified: 2012-01-26
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/apache-and-modwsgi-on-debian-6-squeeze/','/web-servers/apache/mod-wsgi/debian-6-squeeze/','/websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: apache-mod-wsgi

@@ -8,7 +8,7 @@ published: 2010-04-20
 modified: 2017-08-23
 keywords: ["backup", "syncronize files", "unison", "debian", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/synchronize-files-with-unison/','/linux-tools/unison/']
+aliases: []
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 tags: ["linux"]

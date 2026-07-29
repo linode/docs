@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/postfix/postfix-dovecot-and-system-user-accounts-on-ubuntu-10-10-maverick/','/email/postfix/dovecot-system-users-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: postfix-dovecot-user-accounts

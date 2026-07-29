@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]
-aliases: ['/development/python/manage-python-environments-pipenv/']
+aliases: []
 ---
 
 ## What is Pipenv?

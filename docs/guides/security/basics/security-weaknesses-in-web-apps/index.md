@@ -9,7 +9,7 @@ published: 2021-06-21
 keywords: ['web app security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/guides/understanding-total-app-security/']
+aliases: []
 ---
 
 The [Why Security Automation is Needed for Today’s Modern Business](/cloud/guides/security-automation-business) guide discusses the need for automating application security. Many developers are [moving “left” towards the earliest possible moment](https://tldrsec.com/blog/score-bot-shift-left-at-scale/) in the application development life cycle to ensure the most secure code. This guide discusses ways to approach coding your app more critically. It also outlines some of the more common security weaknesses and coding errors that could lead to subsequent problems.

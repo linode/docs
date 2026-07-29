@@ -7,7 +7,7 @@ keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","quick deploy apps", "web applications","linode platform", "cloud manager"]
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
-aliases: ['/products/tools/marketplace/guides/cloudron/','/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

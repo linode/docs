@@ -13,7 +13,7 @@ external_resources:
   - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'
 audiences: ["intermediate"]
-aliases: ['/development/iot/install-thingsboard-iot-dashboard/']
+aliases: []
 deprecated: true
 ---
 

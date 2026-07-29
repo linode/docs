@@ -8,7 +8,7 @@ tags: ["quick deploy apps", "linode platform", "cloud manager"]
 bundles: ['network-security']
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
-aliases: ['/products/tools/marketplace/guides/pritunl/','/guides/deploying-pritunl-marketplace-app/','/guides/pritunl-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

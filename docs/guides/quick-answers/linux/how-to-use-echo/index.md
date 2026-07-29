@@ -7,7 +7,7 @@ authors: ["Rajakavitha Kodhandapani"]
 contributors: ["Rajakavitha Kodhandapani"]
 published: 2021-03-05
 keywords: ["linux", "how to", "echo"]
-aliases: ['quick-answers/how-to-use-echo/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UseEchoCommand.png
 tags: ["linux"]

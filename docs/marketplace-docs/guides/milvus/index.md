@@ -9,7 +9,7 @@ external_resources:
 - '[Milvus.io](https://milvus.io/)'
 - '[Milvus Documentation](https://milvus.io/docs)'
 - '[Milvus Quickstart Guide](https://milvus.io/docs/install_standalone-docker.md)'
-aliases: ['/products/tools/marketplace/guides/milvus/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -7,5 +7,5 @@ published: 2020-02-18
 keywords: ["drupal", "cms", "apache", "php", "content management system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/websites/cms/drupal/']
+aliases: []
 ---

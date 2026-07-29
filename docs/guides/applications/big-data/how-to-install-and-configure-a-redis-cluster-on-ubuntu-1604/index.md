@@ -9,7 +9,7 @@ modified: 2021-05-17
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/big-data/redis-cluster/','/applications/big-data/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/']
+aliases: []
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
  - '[Install and Configure Redis on CentOS 7](/cloud/guides/install-and-configure-redis-on-centos-7/)'

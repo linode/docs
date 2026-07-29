@@ -7,7 +7,7 @@ tags: ["ubuntu","quick deploy apps", "database", "linode platform", "cloud manag
 external_resources:
 - '[About Apache Cassandra](https://cassandra.apache.org/)'
 - '[Apache Cassandra Documentation](https://cassandra.apache.org/doc/latest/cassandra/architecture/overview.html)'
-aliases: ['/products/tools/marketplace/guides/apache-cassandra-cluster/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

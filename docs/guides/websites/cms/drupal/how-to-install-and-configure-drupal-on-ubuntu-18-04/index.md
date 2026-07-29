@@ -15,7 +15,7 @@ relations:
         key: how-to-install-drupal
         keywords:
            - distribution: Ubuntu 18.04
-aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/']
+aliases: []
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu 18.04.

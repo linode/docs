@@ -9,7 +9,7 @@ keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'
-aliases: ['/development/go/go-context/']
+aliases: []
 ---
 [Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
 

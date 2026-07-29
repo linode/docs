@@ -8,7 +8,7 @@ contributors: ["Angel Guarisma"]
 published: 2017-06-19
 modified: 2017-06-12
 keywords: ["linux", "how to", "grep", "wget"]
-aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'

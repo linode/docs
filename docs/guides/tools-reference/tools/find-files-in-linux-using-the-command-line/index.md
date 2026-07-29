@@ -10,7 +10,7 @@ modified: 2021-12-29
 keywords: ['find','linux','files','findutils','command line','find files','find files in linux']
 tags: ["linux","find"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/filter-file-systems-with-the-find-command/','/tools-reference/tools/find-files-in-linux-using-the-command-line/','/linux-tools/common-commands/find/']
+aliases: []
 external_resources:
 - '[Ubuntu Manual page on find](http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html)'
 - '[GNU page on find](https://www.gnu.org/software/findutils/manual/html_mono/find.html)'

@@ -9,7 +9,7 @@ modified: 2013-10-01
 keywords: ["arno-iptables-firewall", "Debian firewall", "Linux firewall", "networking"]
 tags: ["networking","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/firewalls/arno-iptables-debian-5-lenny/','/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/']
+aliases: []
 deprecated: true
 ---
 

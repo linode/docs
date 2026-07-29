@@ -10,7 +10,7 @@ tags: ["linode platform","wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[WordPress.com: Moving to Self-Hosted WordPress](https://move.wordpress.com/)'
-aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
+aliases: []
 ---
 
 This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/cloud/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.

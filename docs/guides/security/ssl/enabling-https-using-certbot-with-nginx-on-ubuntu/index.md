@@ -10,7 +10,7 @@ keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'ubuntu', "ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: SecureWeb.jpg
-aliases: ['/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/','/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/','/quick-answers/websites/how-to-install-certbot-on-ubuntu-18-04/','/guides/how-to-install-certbot-on-ubuntu-18-04/']
+aliases: []
 relations:
     platform:
         key: how-to-use-certbot-with-nginx

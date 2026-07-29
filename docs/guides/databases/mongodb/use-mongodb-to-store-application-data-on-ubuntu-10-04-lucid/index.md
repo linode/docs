@@ -8,7 +8,7 @@ published: 2010-05-03
 modified: 2013-09-24
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/use-mongodb-to-store-application-data-on-ubuntu-10-04-lucid/','/databases/mongodb/ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: use-mongodb-store-app-data

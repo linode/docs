@@ -7,7 +7,7 @@ contributors: ["Joe D."]
 published: 2015-02-06
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/development/developing-git-github/','/development/version-control/how-to-install-git-and-clone-a-github-repository/','/development/version-control/developing-git-github/']
+aliases: []
 external_resources:
  - '[Working with the Git Repository](/cloud/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'

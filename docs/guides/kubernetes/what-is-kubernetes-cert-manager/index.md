@@ -9,7 +9,7 @@ published: 2020-05-13
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
 tags: ["security","kubernetes"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/','/kubernetes/what-is-kubernetes-cert-manager/']
+aliases: []
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
 ---

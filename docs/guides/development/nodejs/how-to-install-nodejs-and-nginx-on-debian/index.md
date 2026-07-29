@@ -9,7 +9,7 @@ modified: 2017-04-11
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", " debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-debian/','/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/index.cfm/','/websites/nodejs/nodejs-nginx-debian/','/websites/nodejs/how-to-install-nodejs-and-nginx-on-debian/']
+aliases: []
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'

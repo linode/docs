@@ -9,7 +9,7 @@ modified: 2013-11-27
 keywords: ["web.py","web applications","python","web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/webpy/webpy-on-ubuntu-10-04-lucid/','/frameworks/webpy/ubuntu-10-04-lucid/','/websites/frameworks/webpy-on-ubuntu-10-04-lucid/','/development/frameworks/webpy-on-ubuntu-10-04-lucid/']
+aliases: []
 relations:
     platform:
         key: webpy

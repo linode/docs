@@ -10,7 +10,7 @@ published: 2018-02-01
 keywords: ["tar", "star", "GNU-Tar", "cryptocurrency"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
+aliases: []
 ---
 
 `tar` and `gzip` provide a standard interface to create archives and to compress files in Linux. These utilities take a large number of files, save them together in an archive, and compresses the archive to save space. `tar` does not compress files by itself. Used in conjunction with `gzip`, an archived file can be compressed to reduce disk space. The resulting archived file has the file extension, `tar.gz` and is sometimes called a "tarball".

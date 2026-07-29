@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick/','/websites/apache/apache-and-mod-wsgi-on-ubuntu-10-10-maverick/','/web-servers/apache/mod-wsgi/ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: apache-mod-wsgi

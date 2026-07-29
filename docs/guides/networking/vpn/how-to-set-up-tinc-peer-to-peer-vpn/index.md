@@ -9,7 +9,7 @@ modified: 2017-09-20
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
 tags: ["ubuntu","networking","security","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/','/networking/how-to-set-up-tinc-peer-to-peer-vpn/']
+aliases: []
 ---
 
 ![How to Set up tinc, a Peer-to-Peer VPN](tinc.jpg "How to Set up tinc, a Peer-to-Peer VPN")

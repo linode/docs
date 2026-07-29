@@ -13,7 +13,7 @@ external_resources:
   - '[Go Essentials for Full Stack Web Development](https://www.packtpub.com/web-development/go-essentials-full-stack-web-development-video/)'
 audiences: ["beginner"]
 languages: ["go"]
-aliases: ['/development/go/getting-started-with-go-packages/']
+aliases: []
 ---
 
 ## What is Go?

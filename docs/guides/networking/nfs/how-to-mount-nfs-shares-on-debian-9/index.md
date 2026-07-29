@@ -8,7 +8,7 @@ contributors: ["Linode"]
 published: 2014-02-27
 modified: 2017-11-07
 keywords: ["NFS", "network file system"]
-aliases: ['/networking/how-to-mount-nfs-shares-on-debian-9/','/networking/how-to-mount-nfs-shares-on-debian-8/','/networking/nfs/how-to-mount-nfs-shares-on-debian-9/','/networking/basic-nfs-configuration-on-debian-7/','/networking/file-transfer/basic-nfs-debian/']
+aliases: []
 tags: ["networking","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 deprecated: true

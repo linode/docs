@@ -13,7 +13,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'
-aliases: ['/uptime/monitoring/install-graphite-and-grafana/']
+aliases: []
 ---
 
 ## What are Graphite and Grafana?

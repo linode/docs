@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["social network", "dolphin", "boonex"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/social-networking/dolphin/','/web-applications/social-networking/dolphin/']
+aliases: []
 external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'

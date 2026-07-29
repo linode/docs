@@ -8,7 +8,7 @@ published: 2010-03-29
 modified: 2015-01-09
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/using-irssi-for-internet-relay-chat/','/communications/irc/irssi/']
+aliases: []
 external_resources:
  - '[Irssi Project Home Page](http://www.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'

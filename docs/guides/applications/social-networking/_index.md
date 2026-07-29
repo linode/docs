@@ -6,7 +6,7 @@ contributors: ["Linode"]
 published: 2010-03-01
 keywords: ["social networking", "micro blog", "elgg"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/social-networking/','/applications/social-networking/']
+aliases: []
 ---
 
 Social networking sites allow people to meet new people and keep in touch with old friends. These guides will help you deploy a social networking portal.

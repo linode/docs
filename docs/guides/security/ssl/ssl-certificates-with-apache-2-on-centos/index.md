@@ -9,7 +9,7 @@ modified: 2014-10-21
 keywords: ["apache ssl", "ssl on centos", "web server", "centos 5", "centos 6", "centos 7"]
 tags: ["centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-centos/','/web-servers/ssl/ssl-certificates-with-apache-2-on-centos-5-6/','/security/ssl/ssl-certificates-with-apache-2-on-centos-5-6/','/web-servers/apache/ssl-guides/centos/']
+aliases: []
 relations:
     platform:
         key: ssl-certificate-apache

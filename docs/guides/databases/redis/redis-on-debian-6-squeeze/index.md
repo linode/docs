@@ -8,7 +8,7 @@ published: 2011-04-05
 modified: 2013-07-07
 keywords: ["redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/redis/redis-on-debian-6-squeeze/','/databases/redis/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: how-to-install-redis

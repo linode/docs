@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["apache tomcat ubuntu 10.10", "java", "java ubuntu 10.10", "java servlets ubuntu maverick", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/','/frameworks/apache-tomcat/ubuntu-10-10-maverick/','/development/frameworks/apache-tomcat/apache-tomcat-on-ubuntu-10-10-maverick/','/development/frameworks/apache-tomcat-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

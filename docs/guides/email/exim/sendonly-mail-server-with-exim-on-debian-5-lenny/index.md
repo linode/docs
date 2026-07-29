@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["exim", "mail server", "linux mail", "smtp server", "debian exim", "debian lenny"]
 tags: ["debian","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/','/email/exim/send-only-mta-debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: deploy-exim-sendonly-email

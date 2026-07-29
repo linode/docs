@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["groupware", "email", "collaboration", "fedora"]
 tags: ["fedora", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/project-management/power-team-collaboration-with-egroupware-on-fedora-13/','/web-applications/project-management/egroupware/fedora-13/']
+aliases: []
 relations:
     platform:
         key: collaborate-with-egroupware

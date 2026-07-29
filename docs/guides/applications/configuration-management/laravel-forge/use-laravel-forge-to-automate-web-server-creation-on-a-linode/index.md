@@ -11,7 +11,7 @@ tags: ["automation", "php", "drupal", "wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
-aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/','/applications/configuration-management/laravel-forge/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
+aliases: []
 ---
 
 ![Laravel Forge Banner](Laravel_Forge.jpg)

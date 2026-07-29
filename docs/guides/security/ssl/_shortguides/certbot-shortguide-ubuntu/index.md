@@ -6,7 +6,7 @@ authors: ["Edward Angert"]
 contributors: ["Edward Angert"]
 published: 2018-06-28
 keywords: []
-aliases: ['/quick-answers/websites/certbot-shortguide-ubuntu/']
+aliases: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 ---

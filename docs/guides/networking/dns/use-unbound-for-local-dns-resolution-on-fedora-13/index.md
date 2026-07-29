@@ -9,7 +9,7 @@ modified: 2013-07-15
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-guides/unbound-dns-resolver-fedora-13/','/networking/dns/use-unbound-for-local-dns-resolution-on-fedora-13/']
+aliases: []
 relations:
     platform:
         key: unbound-local-dns-resolution

@@ -7,7 +7,7 @@ published: 2024-06-10
 updated: 2024-08-13
 external_resources:
 - '[Couchbase](https://www.couchbase.com/)'
-aliases: ['/products/tools/marketplace/guides/couchbase-cluster/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

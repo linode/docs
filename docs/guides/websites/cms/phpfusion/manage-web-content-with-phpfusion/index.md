@@ -9,7 +9,7 @@ modified: 2013-10-02
 keywords: ["cms", "php fusion", "content mangement system", "lamp"]
 tags: ["php","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/php-fusion/','/websites/cms/phpfusion/manage-web-content-with-phpfusion/','/websites/cms/manage-web-content-with-phpfusion/']
+aliases: []
 deprecated: true
 ---
 

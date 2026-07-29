@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/wikis/twiki-on-debian-5-lenny/','/web-applications/wikis/twiki/debian-5-lenny/']
+aliases: []
 relations:
     platform:
         key: install-twiki

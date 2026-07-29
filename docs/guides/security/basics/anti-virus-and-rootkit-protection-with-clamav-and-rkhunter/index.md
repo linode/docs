@@ -11,7 +11,7 @@ bundles: ['debian-security', 'centos-security']
 tags: ["security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: AntiVirus_Rootkitprotec_ClamAV_rkkunter.png
-aliases: ['/security/basics/anti-virus-and-rootkit-protection-with-clamav-and-rkhunter/']
+aliases: []
 ---
 
 ## Anti-virus and Rootkit Detection

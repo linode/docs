@@ -12,7 +12,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
 - '[MongoDB Documentation](https://docs.mongodb.com/)'
-aliases: ['/guides/mongodb-and-its-use-cases/']
+aliases: []
 ---
 
 [*MongoDB*](https://www.mongodb.com/) is a *document-oriented database* and an alternative to traditional *Relational DataBase Management System* (RDBMS) applications. MongoDB is a *NoSQL* database that stores data in a more flexible and less structured manner. This guide provides an introduction to MongoDB and describes how it works. It also explains how MongoDB differs from SQL-based databases including [MySQL](https://www.mysql.com/) and lists its main use cases.

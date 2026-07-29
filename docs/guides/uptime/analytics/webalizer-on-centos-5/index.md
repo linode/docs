@@ -9,7 +9,7 @@ modified: 2011-12-02
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 tags: ["centos","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/webalizer-on-centos-5/','/web-applications/analytics/webalizer/centos-5/']
+aliases: []
 external_resources:
  - '[Webalizer Homepage](http://www.mrunix.net/webalizer/)'
 relations:

@@ -7,7 +7,7 @@ authors: ["Linode"]
 contributors: ["Linode"]
 published: 2020-03-17
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
-aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
+aliases: []
 bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

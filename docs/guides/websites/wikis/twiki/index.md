@@ -8,7 +8,7 @@ published: 2010-03-31
 modified: 2013-10-04
 keywords: ["twiki", "wiki", "perl", "markdown"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/twiki/','/websites/wikis/twiki/']
+aliases: []
 tags: ["wiki"]
 deprecated: true
 ---

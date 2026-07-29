@@ -6,7 +6,7 @@ keywords: ['owncloud','filesharing','collaboration']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[ownCloud](https://owncloud.com/)'
-aliases: ['/products/tools/marketplace/guides/owncloud/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

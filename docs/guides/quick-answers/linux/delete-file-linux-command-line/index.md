@@ -9,7 +9,7 @@ modified: 2022-01-14
 keywords: ["remove files", "delete files", "rm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/delete-file-linux-command-line/']
+aliases: []
 ---
 
 This guide shows how to use `rm` to remove files, directories, and other content from the command line in Linux.

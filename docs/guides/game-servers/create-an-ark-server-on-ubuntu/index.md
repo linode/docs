@@ -16,7 +16,7 @@ external_resources:
  - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Dedicated_server_setup)'
  - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Console_commands)'
  - '[Studio Wilpost on Epic Games and Steam crossplay](https://survivetheark.com/index.php?/forums/topic/539019-community-crunch-225-crystal-isles-anniversary-event-epic-games-store-and-more/)'
-aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/','/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/', '/guides/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
+aliases: []
 dedicated_cpu_link: true
 ---
 

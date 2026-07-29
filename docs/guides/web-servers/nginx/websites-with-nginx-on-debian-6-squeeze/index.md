@@ -9,7 +9,7 @@ modified: 2014-01-28
 keywords: ["nginx", "http", "web servers", "debian", "debian squeeze", "debian 6"]
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/websites-with-nginx-on-debian-6-squeeze/','/websites/nginx/websites-with-nginx-on-debian-6-squeeze/','/web-servers/nginx/installation/debian-6-squeeze/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

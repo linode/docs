@@ -6,7 +6,7 @@ keywords: ['cloud native','microservices','distributed systems', 'PubSub']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[NATS](https://nats.io/)'
-aliases: ['/products/tools/marketplace/guides/nats-single-node/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

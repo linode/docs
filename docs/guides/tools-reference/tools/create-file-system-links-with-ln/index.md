@@ -8,7 +8,7 @@ published: 2010-10-11
 modified: 2018-03-12
 keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/create-file-system-links-with-ln/','/linux-tools/common-commands/ln/']
+aliases: []
 external_resources:
   - '[What is the Difference Between a Hard Link and a Symbolic Link? (Ask Ubuntu)](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)'
 tags: ["linux"]

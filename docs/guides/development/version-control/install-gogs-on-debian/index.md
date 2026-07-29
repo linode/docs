@@ -9,7 +9,7 @@ modified: 2017-11-09
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
 tags: ["debian","version control system","nginx","postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/install-gogs-on-debian-8-jessie/','/applications/development/install-gogs-on-debian-8-jessie/','/development/version-control/install-gogs-on-debian/','/applications/development/install-gogs-on-debian-jessie/']
+aliases: []
 external_resources:
     - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'

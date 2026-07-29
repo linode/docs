@@ -9,7 +9,7 @@ published: 2020-10-22
 keywords: ["debian unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["debian", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/basics/how-to-configure-automated-security-updates-debian/']
+aliases: []
 relations:
     platform:
         key: automated-security-upgrades

@@ -7,7 +7,7 @@ contributors: ["Edward Angert"]
 published: 2018-06-28
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/websites/certbot-shortguide-centos/']
+aliases: []
 headless: true
 ---
 

@@ -5,7 +5,7 @@ published: 2025-12-05
 modified: 2025-12-05
 keywords: ['elk stack', 'elk', 'kibana', 'logstash', 'elasticsearch', 'logging', 'siem', 'cluster', 'elastic stack']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "elk", "logging"]
-aliases: ['/products/tools/marketplace/guides/elastic-stack/']
+aliases: []
 external_resources:
 - '[Elastic Stack Documentation](https://www.elastic.co/docs)'
 authors: ["Akamai"]

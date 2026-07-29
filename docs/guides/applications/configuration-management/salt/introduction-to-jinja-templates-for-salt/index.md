@@ -13,7 +13,7 @@ external_resources:
 - '[Salt Best Practices](https://docs.saltproject.io/en/latest/topics/best_practices.html#modularity-within-states)'
 - '[Salt States Tutorial](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
-aliases: ['/applications/configuration-management/introduction-to-jinja-templates-for-salt/','/applications/configuration-management/salt/introduction-to-jinja-templates-for-salt/']
+aliases: []
 tags: ["automation","salt"]
 ---
 ## Introduction to Templating Languages

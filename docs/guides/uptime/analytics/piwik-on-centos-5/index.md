@@ -9,7 +9,7 @@ modified: 2014-01-28
 keywords: ["open source analytics", "piwik centos 5", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["centos","statistics","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/analytics/piwik-on-centos-5/','/web-applications/analytics/piwik/centos-5/']
+aliases: []
 relations:
     platform:
         key: using-piwik-analytics

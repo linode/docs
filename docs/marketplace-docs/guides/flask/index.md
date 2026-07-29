@@ -9,7 +9,7 @@ image: Flask_oneclickapps.png
 external_resources:
 - '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
-aliases: ['/products/tools/marketplace/guides/flask/','/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/','/guides/flask-marketplace-app/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

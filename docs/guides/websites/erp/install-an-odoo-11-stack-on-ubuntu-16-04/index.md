@@ -9,7 +9,7 @@ modified: 2021-10-18
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 11", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/install-an-odoo-11-stack-on-ubuntu-16-04/','/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04/']
+aliases: []
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'

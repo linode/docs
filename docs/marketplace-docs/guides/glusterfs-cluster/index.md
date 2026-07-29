@@ -7,7 +7,7 @@ tags: ["ubuntu","quick deploy apps", "web applications", "linode platform", "clo
 external_resources:
 - '[About GlusterFS](https://www.gluster.org/)'
 - '[GlusterFS Documentation](https://docs.gluster.org/en/latest/)'
-aliases: ['/products/tools/marketplace/guides/harbor/','/products/tools/marketplace/guides/glusterfs-cluster/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -9,7 +9,7 @@ modified: 2017-04-28
 keywords: ["ssl", "ip"]
 tags: ["centos","cpanel","ssl","cms","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/install-a-commercial-ssl-certificate-using-cpanel/','/websites/cms/cpanel/install-a-commercial-ssl-certificate-using-cpanel/','/web-applications/control-panels/cpanel/ssl-on-cpanel/']
+aliases: []
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'
  - '[cPanel Support](https://cpanel.com/support)'

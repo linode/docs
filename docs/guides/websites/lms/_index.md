@@ -7,5 +7,5 @@ published: 2021-05-28
 keywords: ["LMS", "learning management software"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/websites/lms/']
+aliases: []
 ---

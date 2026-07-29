@@ -10,7 +10,7 @@ keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
 tags: ["debian", "postgresql", "database", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: InstallOdoo13Stack_Ubuntu1804.png
-aliases: ['/websites/erp/install-an-odoo-13-stack-on-ubuntu-18-04/','/websites/cms/install-an-odoo-13-stack-on-ubuntu-18-04/']
+aliases: []
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'

@@ -9,7 +9,7 @@ modified: 2011-04-29
 keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
 tags: ["web applications","java","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/frameworks/apache-tomcat/fedora-12/','/development/frameworks/apache-tomcat-on-fedora-12/','/websites/frameworks/apache-tomcat-on-fedora-12/','/development/frameworks/apache-tomcat/apache-tomcat-on-fedora-12/']
+aliases: []
 relations:
     platform:
         key:  apache-tomcat

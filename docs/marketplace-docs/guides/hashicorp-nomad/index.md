@@ -4,7 +4,7 @@ description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration fo
 published: 2022-08-09
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
-aliases: ['/products/tools/marketplace/guides/hashicorp-nomad/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

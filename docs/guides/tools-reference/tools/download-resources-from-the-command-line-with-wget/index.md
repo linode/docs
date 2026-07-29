@@ -8,7 +8,7 @@ published: 2010-10-25
 modified: 2018-05-18
 keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/download-resources-from-the-command-line-with-wget/','/linux-tools/common-commands/wget/']
+aliases: []
 tags: ["linux"]
 ---
 

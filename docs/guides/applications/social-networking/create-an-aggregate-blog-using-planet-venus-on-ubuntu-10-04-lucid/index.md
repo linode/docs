@@ -9,7 +9,7 @@ modified: 2013-10-04
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/social-networking/planet/ubuntu-10-04-lucid/','/applications/social-networking/create-an-aggregate-blog-using-planet-venus-on-ubuntu-10-04-lucid/']
+aliases: []
 external_resources:
     - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
     - '[Using Cron to Schedule Tasks](/cloud/guides/schedule-tasks-with-cron/)'

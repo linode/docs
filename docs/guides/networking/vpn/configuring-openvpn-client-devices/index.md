@@ -14,7 +14,7 @@ external_resources:
  - '[OpenVPN GUI for Windows](https://openvpn.net/index.php/open-source/downloads.html)'
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 tags: ["networking","security","vpn"]
-aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
+aliases: []
 ---
 
 This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/cloud/guides/set-up-a-hardened-openvpn-server/) and [Two](/cloud/guides/tunnel-your-internet-traffic-through-an-openvpn-server/), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.

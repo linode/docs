@@ -5,7 +5,7 @@ published: 2026-01-26
 modified: 2026-01-26
 keywords: ['mistral', 'mistral-7b-instruct', 'open-webui', 'vllm', 'ai', 'llm', 'llm-inference', 'mistral-7b']
 tags: ["quick deploy apps", "linode platform", "cloud manager", "ai", "llm-inference", "llm"]
-aliases: ['/products/tools/marketplace/guides/mistral7b-instruct-with-openwebui/']
+aliases: []
 external_resources:
 - '[Open WebUI Documentation](https://docs.openwebui.com/getting-started/)'
 - '[Minstral Documentation](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3)'

@@ -10,7 +10,7 @@ keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 headless: true
 show_on_rss_feed: false
-aliases: ['/applications/containers/kubernetes/how-to-install-kubectl/','/kubernetes/how-to-install-kubectl/']
+aliases: []
 tags: ["kubernetes"]
 ---
 

@@ -13,7 +13,7 @@ external_resources:
   - '[systemd man page](http://man7.org/linux/man-pages/man1/init.1.html)'
   - '[systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/start-service-at-boot/']
+aliases: []
 ---
 
 ## What is systemd?

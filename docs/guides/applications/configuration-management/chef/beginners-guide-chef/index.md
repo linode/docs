@@ -8,7 +8,7 @@ published: 2015-06-10
 modified: 2021-03-04
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/beginners-guide-chef/','/applications/chef/beginners-guide-chef/','/applications/configuration-management/chef/beginners-guide-chef/']
+aliases: []
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/cloud/guides/install-a-chef-server-workstation-on-ubuntu-18-04/)'

@@ -8,7 +8,7 @@ published: 2018-09-06
 keywords: ["burp suite", "burp", "proxy"]
 tags: ["linode platform","cloud manager","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/']
+aliases: []
 ---
 
 When testing with [Burp Suite](https://portswigger.net/burp), you may find yourself working in an environment with specific network restrictions. For example, a firewall appliance can interfere with your testing by dropping or modifying packets, resulting in false positives or false negatives.

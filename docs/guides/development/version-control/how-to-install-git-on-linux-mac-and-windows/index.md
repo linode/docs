@@ -9,7 +9,7 @@ published: 2009-09-04
 modified: 2022-01-14
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
+aliases: []
 os: ["mac", "linux", "windows"]
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'

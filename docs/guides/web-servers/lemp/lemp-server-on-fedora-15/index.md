@@ -9,7 +9,7 @@ modified: 2012-06-21
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/lemp-guides/fedora-15/','/websites/lemp/lemp-server-on-fedora-15/','/web-servers/lemp/lemp-server-on-fedora-15/']
+aliases: []
 relations:
     platform:
         key: install-lemp-stack

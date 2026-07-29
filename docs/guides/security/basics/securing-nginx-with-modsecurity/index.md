@@ -9,7 +9,7 @@ published: 2021-03-26
 keywords: ["nginx security", "nginx best practices security", "secure nginx config"]
 tags: ["security","web server","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/basics/securing-nginx-with-modsecurity/']
+aliases: []
 image: SecureNginx_ModSecurity.png
 relations:
     platform:

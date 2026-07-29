@@ -7,5 +7,5 @@ published: 2020-02-10
 keywords: ["ghost", "cms", "blog", "blogging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 show_in_lists: true
-aliases: ['/websites/cms/ghost/']
+aliases: []
 ---

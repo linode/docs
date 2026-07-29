@@ -8,7 +8,7 @@ published: 2013-10-24
 modified: 2014-02-10
 keywords: ["LAMP","Gentoo Linux","Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/lamp/lamp-server-on-gentoo/','/lamp-guides/gentoo-10-2013/','/web-servers/lamp/lamp-server-on-gentoo/']
+aliases: []
 external_resources:
   - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'

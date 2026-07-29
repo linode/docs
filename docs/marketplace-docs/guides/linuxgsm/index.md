@@ -7,7 +7,7 @@ keywords: ['game servers','multiplayer','game']
 tags: ["quick deploy apps", "linode platform", "cloud manager"]
 external_resources:
 - '[LinuxGSM](https://linuxgsm.com/)'
-aliases: ['/products/tools/marketplace/guides/linuxgsm/']
+aliases: []
 authors: ["Akamai"]
 contributors: ["Akamai"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

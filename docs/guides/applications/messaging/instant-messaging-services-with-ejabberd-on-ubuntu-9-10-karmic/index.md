@@ -9,7 +9,7 @@ modified: 2012-10-31
 keywords: ["ejabberd", "ejabberd ubuntu karmic", "ejabberd ubuntu 9.10", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic/','/communications/xmpp/ejabberd/ubuntu-9-10-karmic/']
+aliases: []
 relations:
     platform:
         key: how-to-install-ejabberd

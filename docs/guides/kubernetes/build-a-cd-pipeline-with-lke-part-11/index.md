@@ -9,7 +9,7 @@ modified: 2022-12-14
 keywords: ['kubernetes', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["kubernetes", "lke"]
-aliases: ['/guides/lke-continuous-deployment-part-11/']
+aliases: []
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana](cd-presentation-header-11-prometheus-and-grafana.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana")

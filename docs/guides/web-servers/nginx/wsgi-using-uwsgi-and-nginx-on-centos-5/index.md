@@ -9,7 +9,7 @@ modified: 2011-05-09
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["centos","web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/python-uwsgi/centos-5/','/web-servers/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/','/websites/nginx/wsgi-using-uwsgi-and-nginx-on-centos-5/']
+aliases: []
 relations:
     platform:
         key: wsgi-uwsgi-nginx

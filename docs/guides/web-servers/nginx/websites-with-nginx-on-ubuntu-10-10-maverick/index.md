@@ -9,7 +9,7 @@ modified: 2012-10-08
 keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
 tags: ["web server","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/','/web-servers/nginx/installation/ubuntu-10-10-maverick/','/web-servers/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/']
+aliases: []
 relations:
     platform:
         key: websites-with-nginx

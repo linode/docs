@@ -13,7 +13,7 @@ external_resources:
 - '[Redmine Official Docs](https://www.redmine.org/guide/)'
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
 - "[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)"
-aliases: ['/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/']
+aliases: []
 deprecated: true
 ---
 

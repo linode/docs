@@ -15,7 +15,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
-aliases: ['/development/javascript/how-to-create-and-use-single-file-components-vuejs/']
+aliases: []
 ---
 
 When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/cloud/guides/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
