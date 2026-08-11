@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Page</title>
+    <style>
+      div {
+          margin-bottom: 1em;
+      }
+
+      .hidden {
+          display: none;
+          visibility: hidden;
+      }
+
+      #message-content {
+          background-color: lightgray;
+          text-align: center;
+          color: red;
+      }
+
+      #interactive-content {
+          text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message-content" class="hidden"></div>
+    <div id="interactive-content">
+      <div>
+        <button id="message-activate-button">Click Here</button> to activate a message.
+      </div>
+      <div>
+        <img id="target-img" src="target-img.png"/>
+      </div>
+      <div>
+        <form id="message-send-form">
+          <input type="text" id="message-send-text" value="Type a message to send here.">
+          <input type="button" id="message-send-button" value="Send Message">
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Provides a function for displaying messages. Includes a timer to reset
+      // the message display area after five seconds.
+      const displayMessage = (messageText) => {
+          messageContentElement.innerHTML = "<p>" + messageText + "</p>";
+          messageContentElement.classList.remove("hidden");
+
+          setTimeout(() => {
+              messageContentElement.innerHTML = "";
+              messageContentElement.classList.add("hidden");
+          }, 5000);
+      }
+    </script>
+  </body>
+</html>
