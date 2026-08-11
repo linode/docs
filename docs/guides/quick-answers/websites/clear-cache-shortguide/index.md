@@ -26,13 +26,12 @@ When you clear the cache the performance of the system and application is enhanc
 
 > **On MacOS**
 >
-> While in the browser press **Command** + **Shift** + **Delete** keys.
+> While in the browser press **command** + **shift** + **delete** keys.
 
 ### In the Browser
-1.  Click the Chrome menu and select **Clear Browsing Data...**.
+1.  Click the Chrome menu and select **Delete Browsing Data...**.
 
-1.  In the **Clear browsing data** window, click the **Advanced** tab.
-  ![Chrome Clear Browsing Data](cache-chrome.png "Chrome Clear Browser Data")
+1.  In the **Delete browsing data** window.
 
 1.  Select the following:
  - Browsing history
@@ -40,9 +39,9 @@ When you clear the cache the performance of the system and application is enhanc
  - Cookies and other site data
  - Cached images and files
 
-      In the **Time range** drop-down menu, choose the period of time for which you want to clear cached information. To clear your entire cache, select **All time**.
+      Choose the period of time for which you want to clear cached information. To clear your entire cache, select **All time** from the **More** drop-down menu.
 
-1.  Click the **Clear data** button.
+1.  Click the **Delete data** button.
 1.  Close all windows in the browser and re-open the browser.
 
 ### Disable Cache with Developer Tools
@@ -69,7 +68,7 @@ Chrome allows you to browse in Incognito Mode.
 
 1.  To create an Incognito window, click the **File** menu and select **New Incognito Window**.
 
-      - You can also open an Incognito window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **Command** + **Shift** + **N** (MacOS).
+      - You can also open an Incognito window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **command** + **shift** + **N** (MacOS).
 
 ## Clear the Cache in FireFox
 
@@ -81,42 +80,43 @@ Chrome allows you to browse in Incognito Mode.
 
 > **On MacOS**
 >
-> While in the browser press **Command** + **Shift** + **Delete** keys.
+> While in the browser press **command** + **shift** + **delete** keys.
 
 ### In the Browser
 
-1. Click the **History** menu and select **Clear Recent History…**.
-![Firefox Clear Recent History](cache-firefox.png "Firefox Clear Recent History")
-1. In the **Time range to clear** drop-down menu, select the desired range; to clear your entire cache, select **Everything**.
-1. In the **History** section, select the elements of the history to clear; to clear your entire cache, select all items.
-1. Click **Clear Now**.
+1. Click the **Application Menu** (three horizontal lines in the top-right corner) and select **Settings**.
+1. From the left sidebar, click on **Privacy & Security**.
+1. Scroll down to the **Cookies and Site Data** section and click the **Clear browsing data...** button.
+1. In the overlay window, locate the **When:** drop-down menu and select your desired timeframe; to clear your entire cache, select **Everything**.
+1. In the list below, ensure **Cached Web Content** is checked.
+1. Click the **Clear** button.
 1. Close all windows in the browser and re-open the browser.
 
 ### Disable Cache with Web Developer Tools
 
-Firefox has a Web Developer tools dashboard built in. Within this you have the ability to disable caching in a specific tab.
+Firefox has a Web Developer tools dashboard built in. Within this, you have the ability to disable caching in a specific tab.
 
-1.  To open the Web Developer tools panel, click on the **Tools** menu, then click **Web Developer**, and **Toggle Tools**.
+1. To open the Web Developer tools panel, click on the **Application Menu** (three horizontal lines), hover over **More tools**, and select **Web Developer Tools** (or press **F12**).
 
-1.  The dashboard will open at the bottom of the screen.
+2. The dashboard will open at the bottom or side of the screen.
 
-1.  Click the **Network** tab, and select the **Disable Cache** checkbox.
+3. Click the **Network** tab, and select the **Disable Cache** checkbox.
 
-      ![Firefox Web Developer Tools Disabled Cache](firefox-disable-cache-developer-tools.png "Firefox Web Developer Tools Disabled Cache")
-
-1.  Reload the page. This will load the page with the cache disabled.
+4. Reload the page. This will load the page with the cache disabled.
 
 ### Private Browsing in Firefox
 
 A private browser window can be opened in Firefox.
 
-- Private browsing allows you to surf the web without saving cookies or browsing history or from using any previously cached data.
-- It does not mean you can mask your identity on the web or your activity online.
+- Private browsing allows you to surf the web without saving cookies, site data, or browsing history.
+- It does not mean you can mask your identity on the web or your activity online to your network or ISP.
 - Data is cleared upon exiting the browser window.
 
-1.  To open a private browsing session, click the **File** menu and select **New Private Window**.
+1. To open a private browsing session, click the **Application Menu** (three horizontal lines) and select **New Private Window**.
 
-      - You can also open a private window with the keyboard shortcut **Ctrl** + **Shift** + **P** (Windows and Linux) or **Command** + **Shift** + **P** (MacOS).
+      - You can also open a private window with the keyboard shortcut **Ctrl** + **Shift** + **P** (Windows and Linux) or **command** + **shift** + **P** (macOS).
+
+## Clear the Cache in Safarihift** + **P** (MacOS).
 
 ## Clear the Cache in Safari
 
@@ -128,15 +128,13 @@ A private browser window can be opened in Firefox.
 
 3. Go to the **Safari** menu and click **Quit Safari** to exit the browser.
 
-      On MacOS, press **Command** + **Q** to exit the browser completely.
+      On MacOS, press **command** + **Q** to exit the browser completely.
 
 ### Disable Cache with Developer Tools
 
 Safari has a Developer tools dashboard built in, but you may need to enable it. Within this you have the ability to disable caching in a specific tab.
 
-1.  First, to enable it, click the **Safari** menu, **Preferences**. Then in the **Advanced** tab, choose **Show Develop menu in menu bar**.
-
-      ![Safari Preferences Show Develop Menu](safari-show-develop-menu.png "Safari Preferences Show Develop Menu")
+1.  First, to enable it, click the **Safari** menu, **Settings**. Then in the **Advanced** tab, choose **Show features for web developers**.
 
 1.  Close the preference panel. The **Develop** menu should now appear on the menu bar.
 
@@ -144,9 +142,7 @@ Safari has a Developer tools dashboard built in, but you may need to enable it. 
 
 1.  The dashboard will open at the bottom of the screen.
 
-1.  Click the **Network** tab, and select the icon for **Ignore the resource cache when loading resources**.
-
-      ![Safari Web Developer Tools Disabled Cache](safari-disable-cache-developer-tools.png "Safari Web Developer Tools Disabled Cache")
+1.  Click the **Network** tab, and select the **Disable Caches**.
 
 1.  Reload the page. This will load the page with the cache disabled.
 
@@ -161,7 +157,7 @@ A private browser window can be opened in Safari.
 
 1.  To open a private browsing session, click the **File** menu and select **New Private Window**.
 
-      - You can also open a private window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **Command** + **Shift** + **N** (MacOS).
+      - You can also open a private window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **command** + **shift** + **N** (MacOS).
 
 ## Clear the Cache in Edge
 
@@ -173,47 +169,42 @@ A private browser window can be opened in Safari.
 
 > **On MacOS**
 >
-> While in the browser press **Command** + **Shift** + **Delete** keys.
+> While in the browser press **command** + **shift** + **delete** keys.
 
 ### In the Browser
-1. Click the **History** menu and select **Settings**.
-1. In the **Clear browsing data** section click **Choose What to Clear**.
-  ![Edge Clear Browsing Data](cache-edge.png "Edge Clear Browsing Data")
 
-
-1. Select the following:
- - Browsing history
- - Download history
- - Cookies and other site data
- - Cached images and files
-
-      In the **Time range** drop-down menu, choose the period of time for which you want to clear cached information. To clear your entire cache, select **All Time**.
-
-1. Click the **Clear Now** button.
-1. Close all windows in the browser and re-open the browser.
+1. Click the **Settings and more** menu (three horizontal dots in the top-right corner) and select **Settings**.
+2. In the left-hand sidebar, click on **Privacy, search, and services**.
+3. Scroll down to the **Clear browsing data** section and click the **Choose what to clear** button next to *Clear browsing data now*.
+4. In the **Time range** drop-down menu, choose the period of time for which you want to clear cached information. To clear your entire cache, select **All time**.
+5. Select the checkboxes for the following:
+   - Browsing history
+   - Download history
+   - Cookies and other site data
+   - Cached images and files
+6. Click the **Clear now** button.
+7. Close all windows in the browser and re-open the browser.
 
 ### Disable Cache with Developer Tools
 
-Edge has a Developer tools dashboard built in. Within this you have the ability to disable caching in a specific tab.
+Edge has a Developer tools dashboard built in. Within this, you have the ability to disable caching in a specific tab.
 
-1.  To open the Developer tools panel, click on the **Tools** menu, then click **Developer**, and **Developer Tools**.
+1. To open the Developer tools panel, click on the **Settings and more** menu (three dots), hover over **More tools**, and select **Developer tools**. Simply press **F12** or **Ctrl + Shift + I** (Windows) and  **command + option + I** in MacOS.
 
-1.  The dashboard will open at the side or bottom of the screen. You can change the location of this panel to your preference.
+1. The dashboard will open at the side or bottom of the screen. You can change the location of this panel to your preference.
 
-1.  Click the **Network** tab, and select the **Disable cache** checkbox.
+1. Click the **Network** tab, and select the **Disable cache** checkbox.
 
-      ![Edge Developer Tools Disabled Cache](edge-disable-cache-developer-tools.png "Edge Developer Tools Disabled Cache")
-
-1.  Reload the page. This will load the page with the cache disabled.
+1. Reload the page. This will load the page with the cache disabled.
 
 ### InPrivate Browsing in Edge
 
 Edge allows you to browse in InPrivate Mode.
 
-- This is a private browser window which allows you to surf the web without the browser saving your cookies or site history.
+- This is a private browser window which allows you to surf the web without the browser saving your cookies, site data, or browsing history.
 - However, it does not mean that your browsing is private to your network, ISP, or search engines.
 - You must exit the browser window to clear the history, cookies, and data created during the session.
 
-1.  To create an new InPrivate window, click the **File** menu and select **New InPrivate Window**.
+1. To create a new InPrivate window, click the **Settings and more** menu (three dots) and select **New InPrivate window**.
 
-      - You can also open an InPrivate window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **Command** + **Shift** + **N** (MacOS).
+      - You can also open an InPrivate window with the keyboard shortcut **Ctrl** + **Shift** + **N** (Windows and Linux) or **command** + **shift** + **N** (macOS).
