@@ -200,6 +200,7 @@ binlog
 bin_t
 bioinformaticists
 biomes
+birthdate
 bitbucket
 Bitly
 bitnami
@@ -2223,6 +2224,7 @@ rochko
 rockyou
 rocommunity
 rofi
+rollforward
 rollout
 rooknfs
 rosenblatt
