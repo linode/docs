@@ -1489,6 +1489,8 @@ Matthes
 Matz
 Mavan
 mawk
+max_replication_slots
+max_wal_senders
 maxconn
 maxdepth
 maxretry
@@ -2869,6 +2871,7 @@ vvv
 vz
 vznetaddbr
 wafs
+wal_level
 walkthrough
 walkthroughs
 WAN
