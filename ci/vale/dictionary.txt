@@ -565,6 +565,7 @@ devpts
 devtmpfs
 dex
 df
+dgraph
 dhclient
 dhparams
 dia
