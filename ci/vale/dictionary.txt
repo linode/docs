@@ -89,6 +89,7 @@ architecting
 aren
 Argocd
 argv
+ARNs
 arpack
 arping
 arptables
@@ -782,6 +783,8 @@ filesystems
 filezilla
 filimonov
 findtime
+finalizer
+finalizers
 finnix
 fintech
 firefart
@@ -1292,6 +1295,7 @@ Kompose
 Konqueror
 konsole
 konversation
+kopia
 kotin
 kourier
 KPI
@@ -2813,6 +2817,7 @@ vdev
 vdevs
 ve
 veeam
+velero
 venv
 ver
 veracode
