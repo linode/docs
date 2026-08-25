@@ -1,4 +1,4 @@
-# github.com/linode/linode-docs-theme v0.0.0-20260804204406-67facb6d50eb
+# github.com/linode/linode-docs-theme v0.0.0-20260825162528-5a6e64e7ede8
 # github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.21300.20800
 # github.com/gohugoio/hugo-mod-jslibs/turbo/v8 v8.20000.20400
 # github.com/hotwired/turbo v8.0.4+incompatible
