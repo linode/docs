@@ -10,3 +10,5 @@ require (
 	github.com/linode/linode-docs-theme v0.0.0-20260714195911-d7bad1a0f68a // indirect
 	github.com/linode/linode-website-partials v0.0.0-20250814204525-0d7fe4159951 // indirect
 )
+
+replace github.com/linode/linode-docs-theme => /Users/nmelehan/Desktop/linode/linode-docs-theme
