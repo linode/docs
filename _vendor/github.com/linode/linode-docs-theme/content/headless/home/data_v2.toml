@@ -1,7 +1,7 @@
 hero_text = "Developer resources for building on Akamai Connected Cloud"
 
 # Ordered list of section to display cards with the last 3 articles.
-cards_sections = ["guides", "reference-architecture", "marketplace-docs"]
+cards_sections = ["guides", "reference-architecture"]
 
 [cards_now_on_tech_docs]
     title = "Now on Akamai TechDocs"
