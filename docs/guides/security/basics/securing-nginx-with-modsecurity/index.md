@@ -33,7 +33,7 @@ In order to install and configure ModSecurity, you need to have a Linux server w
 For instructions, see our guide on [How to Install NGINX on Ubuntu 18.04 LTS](/cloud/guides/how-to-install-nginx-ubuntu-18-04). Installation instructions for several other Linux distributions are also accessible from this guide.
 
 {{< note >}}
-This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
+This demonstration has been performed on Ubuntu 24.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
 ## Downloading & Building ModSecurity
@@ -48,8 +48,8 @@ To begin the installation process, follow the steps outlined below:
 
         sudo apt-get install bison build-essential ca-certificates curl dh-autoreconf doxygen \
           flex gawk git iputils-ping libcurl4-gnutls-dev libexpat1-dev libgeoip-dev liblmdb-dev \
-          libpcre3-dev libpcre++-dev libssl-dev libtool libxml2 libxml2-dev libyajl-dev locales \
-          lua5.3-dev pkg-config wget zlib1g-dev zlibc libxslt libgd-dev
+          libpcre3-dev libpcre2-dev libssl-dev libtool libxml2 libxml2-dev libyajl-dev locales \
+          lua5.3-dev pkg-config wget zlib1g-dev libxslt1-dev libgd-dev libperl-dev
 
 1.  Ensure that git is installed:
 
@@ -237,6 +237,10 @@ Now that you have configured ModSecurity to work with Nginx, you must enable Mod
 
         modsecurity on;
         modsecurity_rules_file /etc/nginx/modsec/main.conf;
+
+    {{< note >}}
+    Edit the file that is actually symlinked in `sites-enabled/`. Verify with `ls -la /etc/nginx/sites-enabled/`.
+    {{< /note >}}
 
     Here is an example configuration file that includes the above lines:
 
