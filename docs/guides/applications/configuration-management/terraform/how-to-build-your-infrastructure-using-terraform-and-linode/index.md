@@ -302,6 +302,8 @@ In the previous step, you used Terraform to provision a Linode that could act as
 When deploying multiple Linodes with Terraform, remember that you need to assign a unique name for each Linode.
 
 In production environments, your SSH key and root password should be unique for each resource. Having said that, the example Linodes in this guide shares keys and root passwords.
+
+When specifying a region for your instances in Dallas, TX, always use the canonical ID for the region as `us-central`. While the Linode API still accepts the legacy alias `us-south`, it returns `us-central` in its state. Using `us-south` in your Terraform configuration results in perpetual configuration drift during terraform plan and will trigger a `[400] Cannot migrate linode to the same region` error during terraform apply.
 {{< /note >}}
 
 1.  Create another file called `linode-terraform-db.tf`. Substitute in your SSH key and root password where indicated. **Do not delete** `linode-terraform-web.tf`.
@@ -311,7 +313,7 @@ In production environments, your SSH key and root password should be unique for 
       image = "linode/centos7"
       label = "Terraform-Db-Example"
       group = "Terraform"
-      region = "us-south"
+      region = "us-central"
       type = "g6-standard-1"
       swap_size = 1024
       authorized_keys = [ "YOUR_PUBLIC_SSH_KEY" ]
@@ -705,3 +707,8 @@ backend "s3" {
     }
   }
 ```
+
+### Troubleshooting Configuration Drift
+
+If you previously deployed resources using region = `us-south`, you may notice that running terraform plan continuously attempts to migrate your instance from `us-central` to `us-south`. The error reads: ``Error: failed to migrate instance ... [400] [region] Cannot migrate linode to the same region``.
+To fix this, simply update your .tf files to use region = "us-central". Because your Terraform state file already recognizes the instance as residing in us-central the ID that us returned by the API, updating your configuration to match clears the drift immediately. No instances are destroyed or migrated.
