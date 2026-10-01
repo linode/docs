@@ -638,7 +638,7 @@ Since Postfix uses `mbox` by default rather than `Maildir`, some additional conf
         unix_listener /var/spool/postfix/private/auth {
         mode = 0660
         user = postfix
-        group = postifx
+        group = postfix
         }
     ```
 
