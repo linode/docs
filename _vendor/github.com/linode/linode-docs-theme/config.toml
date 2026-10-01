@@ -117,15 +117,6 @@
         noun          = "Reference"
         explorer_icon = "#icon-explorer--reference-architecture"
 
-      [params.search_config2.sections.marketplace-docs]
-        name          = "marketplace-docs"
-        hugo_section  = "marketplace-docs"
-        weight        = 25
-        title         = "Quick Deploy Apps"
-        noun          = "Marketplace"
-        filters       = "section.lvl0:marketplace-docs"
-        explorer_icon = "#icon-explorer--marketplace"
-
       [params.search_config2.sections.blog]
         name                        = "blog"
         weight                      = 50
