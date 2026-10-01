@@ -17,6 +17,7 @@ relations:
         key: how-to-install-owncloud
         keywords:
             - distribution: CentOS Stream 8
+deprecated: true
 ---
 
 ## What is ownCloud?
