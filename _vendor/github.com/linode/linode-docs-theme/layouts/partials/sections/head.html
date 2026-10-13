@@ -45,7 +45,7 @@
         window.OneTrust.geolocationResponse[key] = window.OneTrust.geolocationResponse[key] || val;
       }
     }
-    if ( userRegionCode && userRegionCode === 'CA' ) {
+    if ( userRegionCode && (userRegionCode === 'CA' || userRegionCode === 'FL' || userRegionCode === 'PA') ) {
       setOTGeoData( 'stateCode', userRegionCode );
     }
     setOTGeoData( 'countryCode', userCountryCode );
