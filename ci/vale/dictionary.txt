@@ -241,6 +241,7 @@ breakpoint
 breakpoints
 brightbox
 broot
+brotli
 browserify
 bs4
 btmp
