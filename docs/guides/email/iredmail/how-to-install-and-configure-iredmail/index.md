@@ -15,6 +15,7 @@ external_resources:
 - '[iRedMail DNS instructions](https://docs.iredmail.org/setup.dns.html)'
 - '[Certbot](https://certbot.eff.org/)'
 - '[Mail Tester](https://www.mail-tester.com/)'
+- '[Email Spam Tester](https://email-spam-tester.com/)'
 relations:
     platform:
         key: iredmail
@@ -415,7 +416,7 @@ To further configure and use iRedMail, follow these instructions.
 
     ![iRedMail User Login](Mailuser-Login.png)
 
-1.  iRedMail now displays the user dashboard. From here, it is possible to send an email and test the application. Click the **Compose** button on the left-hand menu and complete the email. To validate the domain records, try sending a test email to [Mail Tester](https://www.mail-tester.com/).
+1.  iRedMail now displays the user dashboard. From here, it is possible to send an email and test the application. Click the **Compose** button on the left-hand menu and complete the email. To validate the domain records, try sending a test email to [Mail Tester](https://www.mail-tester.com/). To also see whether Gmail, Yahoo, and other large providers deliver the message to the inbox or to spam, send a test to [Email Spam Tester](https://email-spam-tester.com/).
 
     ![iRedMail Webmail Interface](iRedMail-User-Interface.png)
 
